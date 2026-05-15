@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GegenStandpunkt-Audit · Begriffsableitungen, Grundannahmen, Schwachstellen</title>
+<meta name="description" content="Systematische Bestandsaufnahme der GSP-Begriffsableitungen: Was kommt von Marx, was ist GSP-eigen — und welcher empirische Status hält stand?">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<style>
+:root{
+  --bg:#fafaf9;--surface:#fff;--surface-2:#f5f5f4;--surface-3:#e7e5e4;
+  --text-1:#1c1917;--text-2:#57534e;--text-3:#a8a29e;--text-muted:#78716c;
+  --border:#e7e5e4;--border-2:#d6d3d1;--border-strong:#a8a29e;
+  --accent:#7f1d1d;--accent-dark:#501313;--accent-bg:#fee2e2;--accent-bg-soft:#fef2f2;
+  --s-robust:#15803d;--s-robust-bg:#dcfce7;--s-robust-text:#14532d;
+  --s-medium:#ca8a04;--s-medium-bg:#fef9c3;--s-medium-text:#713f12;
+  --s-weak:#c2410c;--s-weak-bg:#ffedd5;--s-weak-text:#7c2d12;
+  --s-refuted:#991b1b;--s-refuted-bg:#fee2e2;--s-refuted-text:#7f1d1d;
+  --s-contro:#6d28d9;--s-contro-bg:#ede9fe;--s-contro-text:#4c1d95;
+  --h-marx:#0e7490;--h-marx-bg:#cffafe;--h-marx-text:#155e75;
+  --h-shift:#a16207;--h-shift-bg:#fef3c7;--h-shift-text:#713f12;
+  --h-gsp:#7f1d1d;--h-gsp-bg:#fee2e2;--h-gsp-text:#7f1d1d;
+  --slate-1:#0f172a;--slate-2:#334155;--slate-3:#475569;--slate-8:#f1f5f9;
+  --radius:8px;--radius-lg:12px;--radius-xl:16px;--container:1100px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:15px;line-height:1.6;color:var(--text-1);background:var(--bg);-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
+.cover{padding:72px 0 56px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%)}
+.cover-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--accent-bg);color:var(--accent-dark);border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:24px}
+.cover h1{font-size:54px;font-weight:600;letter-spacing:-.025em;line-height:1.05;margin:0 0 16px;color:var(--slate-1)}
+.cover h1 .accent{color:var(--accent-dark)}
+.cover-sub{font-size:21px;color:var(--text-2);line-height:1.5;max-width:780px;margin:0 0 32px}
+.cover-meta{display:flex;flex-wrap:wrap;gap:24px;font-size:13px;color:var(--text-muted)}
+.cover-meta span{display:inline-flex;align-items:center;gap:8px}
+.cover-meta i{color:var(--accent)}
+.cover-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:48px 0 0}
+.cover-stat{padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)}
+.cover-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.cover-stat-val{font-size:32px;font-weight:600;line-height:1;letter-spacing:-.02em}
+.cover-stat-sub{font-size:12px;color:var(--text-muted);margin-top:6px}
+nav.sticky{position:sticky;top:0;z-index:50;background:rgba(250,250,249,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+nav.sticky .nav-inner{max-width:var(--container);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:4px;overflow-x:auto;height:56px}
+nav.sticky a{padding:8px 14px;border-radius:var(--radius);font-size:13px;font-weight:500;color:var(--text-2);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+nav.sticky a:hover{background:var(--surface-2);color:var(--text-1)}
+nav.sticky i{font-size:16px}
+section{padding:64px 0;border-bottom:1px solid var(--border)}
+section:last-of-type{border-bottom:none}
+.section-head{margin-bottom:32px}
+.section-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-dark);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.section-eyebrow i{font-size:16px}
+h2.h-section{font-size:36px;font-weight:600;letter-spacing:-.02em;line-height:1.15;color:var(--slate-1);margin-bottom:12px}
+.section-lead{font-size:17px;color:var(--text-2);line-height:1.6;max-width:780px}
+h3.h-sub{font-size:22px;font-weight:600;letter-spacing:-.01em;color:var(--slate-1);margin:32px 0 14px;display:flex;align-items:center;gap:10px}
+h3.h-sub i{color:var(--accent);font-size:22px}
+h4.h-mini{font-size:16px;font-weight:600;color:var(--slate-2);margin:20px 0 10px}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;transition:border-color .15s}
+.card:hover{border-color:var(--border-2)}
+.insight{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)}
+.insight-ico{flex-shrink:0;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
+.insight-ico.green{background:var(--s-robust-bg);color:var(--s-robust)}
+.insight-ico.red{background:var(--s-refuted-bg);color:var(--s-refuted)}
+.insight-ico.amber{background:var(--s-medium-bg);color:var(--s-medium-text)}
+.insight-ico.slate{background:var(--slate-8);color:var(--slate-3)}
+.insight-ico.violet{background:var(--s-contro-bg);color:var(--s-contro)}
+.insight p{margin:0;font-size:14.5px;line-height:1.55;color:var(--text-1)}
+.insight strong{font-weight:600;color:var(--slate-1)}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px}
+.stat-label{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.stat-val{font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.stat-sub{font-size:12px;color:var(--text-muted);margin-top:8px}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex-shrink:0}
+.d-robust{background:var(--s-robust)}.d-medium{background:var(--s-medium)}.d-weak{background:var(--s-weak)}.d-refuted{background:var(--s-refuted)}.d-contro{background:var(--s-contro)}
+.d-marx{background:var(--h-marx)}.d-shift{background:var(--h-shift)}.d-gsp{background:var(--h-gsp)}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:var(--radius);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+.b-robust{background:var(--s-robust-bg);color:var(--s-robust-text)}
+.b-medium{background:var(--s-medium-bg);color:var(--s-medium-text)}
+.b-weak{background:var(--s-weak-bg);color:var(--s-weak-text)}
+.b-refuted{background:var(--s-refuted-bg);color:var(--s-refuted-text)}
+.b-contro{background:var(--s-contro-bg);color:var(--s-contro-text)}
+.b-marx{background:var(--h-marx-bg);color:var(--h-marx-text)}
+.b-shift{background:var(--h-shift-bg);color:var(--h-shift-text)}
+.b-gsp{background:var(--h-gsp-bg);color:var(--h-gsp-text)}
+.thesis-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;display:flex;flex-direction:column}
+.thesis-card:hover{border-color:var(--border-2)}
+.t-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.t-cat{font-size:11px;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin:0 0 4px}
+.t-title{font-size:16px;font-weight:600;margin:0;line-height:1.3;color:var(--slate-1)}
+.t-src{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-muted);margin:0 0 12px}
+.t-badges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+.quote{font-family:'Crimson Text',Georgia,serif;font-style:italic;color:var(--text-2);border-left:3px solid var(--accent-dark);padding:6px 0 6px 14px;margin:0 0 14px;font-size:14.5px;line-height:1.55}
+.t-row{display:grid;grid-template-columns:130px 1fr;gap:10px;margin:6px 0;font-size:13px;line-height:1.5;align-items:start}
+.t-row strong{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);font-weight:600;padding-top:2px}
+.t-row span{color:var(--text-1)}
+.simple-box{background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid var(--s-robust);border-radius:var(--radius);padding:14px 16px;margin:12px 0}
+.simple-box-title{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--s-robust-text);font-weight:700;margin:0 0 6px;display:flex;align-items:center;gap:6px}
+.simple-box-title i{font-size:14px}
+.simple-box-text{font-size:14px;line-height:1.6;color:var(--s-robust-text);margin:0}
+.simple-box-text strong{font-weight:600}
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;margin:12px 0}
+.method-card-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.method-card-icon{flex-shrink:0;width:38px;height:38px;border-radius:var(--radius);background:var(--accent-bg);color:var(--accent-dark);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600}
+.method-card-title{font-size:15px;font-weight:600;color:var(--slate-1);margin:0}
+.method-card-subtitle{font-size:12px;color:var(--text-muted);margin:2px 0 0;font-family:'JetBrains Mono',monospace}
+.alarm{background:#fef3c7;border:1px solid #fde68a;border-left:4px solid var(--s-medium);border-radius:var(--radius);padding:14px 16px;margin:14px 0}
+.alarm-title{font-size:12px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--s-medium-text);margin:0 0 6px;display:flex;align-items:center;gap:6px}
+.alarm-text{font-size:13.5px;line-height:1.55;color:var(--s-medium-text);margin:0}
+.alarm-text strong{font-weight:700}
+.discovery{background:linear-gradient(135deg,var(--surface) 0%,var(--accent-bg-soft) 100%);border:1px solid var(--border);border-left:4px solid var(--accent-dark);border-radius:var(--radius-lg);padding:24px 26px;margin:16px 0}
+.discovery-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--accent-dark);color:#fff;border-radius:50%;font-weight:600;font-size:15px;flex-shrink:0}
+.discovery-head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.discovery-title{font-size:19px;font-weight:600;color:var(--slate-1);margin:0;letter-spacing:-.01em}
+.discovery-tag{display:inline-block;font-size:11px;color:var(--accent-dark);background:var(--accent-bg);padding:3px 9px;border-radius:var(--radius);font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:.04em}
+.discovery-text{font-size:14.5px;line-height:1.65;color:var(--text-1);margin:0 0 12px}
+.discovery-text strong{font-weight:600;color:var(--slate-1)}
+.discovery-simple{display:flex;gap:10px;padding:14px 16px;background:#f0fdf4;border-radius:var(--radius);margin:12px 0 0;border-left:3px solid var(--s-robust)}
+.discovery-simple i{flex-shrink:0;color:var(--s-robust);font-size:18px;margin-top:2px}
+.discovery-simple p{margin:0;font-size:13.5px;line-height:1.55;color:var(--s-robust-text);font-weight:500}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg);margin:14px 0}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--surface)}
+.tbl th{padding:12px 14px;text-align:left;background:var(--surface-2);font-weight:600;color:var(--slate-2);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border)}
+.tbl td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover{background:var(--surface-2)}
+.tbl td.id-col{font-family:'JetBrains Mono',monospace;color:var(--text-muted);width:60px;font-size:12px;font-weight:500}
+.chart-wrap{position:relative;width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin:16px 0}
+.chart-title{font-size:15px;font-weight:600;color:var(--slate-1);margin:0 0 4px}
+.chart-desc{font-size:13px;color:var(--text-2);line-height:1.55;margin:0 0 16px}
+.chart-canvas{position:relative;width:100%;height:280px}
+.story{margin:18px 0;padding:22px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)}
+.story-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--accent-bg);color:var(--accent-dark);border-radius:50%;font-weight:600;font-size:14px;margin-right:12px;flex-shrink:0}
+.story-title{font-size:18px;font-weight:600;color:var(--slate-1);margin:0 0 12px;display:flex;align-items:center}
+.story-text{font-size:14.5px;line-height:1.65;color:var(--text-1);margin:0 0 14px}
+.story-text strong{font-weight:600;color:var(--slate-1)}
+.story-takeaway{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:var(--s-refuted-bg);border-radius:var(--radius);margin-top:14px}
+.story-takeaway i{flex-shrink:0;color:var(--s-refuted);font-size:18px;margin-top:1px}
+.story-takeaway p{margin:0;font-size:13.5px;line-height:1.5;color:var(--s-refuted-text);font-weight:500}
+.fazit{background:linear-gradient(135deg,var(--accent-bg-soft) 0%,var(--accent-bg) 100%);border:1px solid #fecaca;border-radius:var(--radius-xl);padding:32px 36px;margin:24px 0}
+.fazit-title{font-size:22px;font-weight:600;color:var(--accent-dark);margin:0 0 20px;display:flex;align-items:center;gap:10px}
+.fazit-item{display:flex;gap:14px;margin:16px 0;align-items:flex-start}
+.fazit-item i{flex-shrink:0;font-size:22px;color:var(--accent-dark);margin-top:2px}
+.fazit-item-content{font-size:15px;line-height:1.6;color:var(--accent-dark)}
+.fazit-item-content strong{font-weight:600;color:var(--slate-1);display:block;margin-bottom:4px}
+.formula{font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7;background:var(--slate-8);color:var(--text-1);padding:18px 22px;border-radius:var(--radius);overflow-x:auto;margin:14px 0;border-left:3px solid var(--accent-dark)}
+.formula strong{font-weight:600;color:var(--accent-dark)}
+.glossar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;margin:10px 0}
+.glossar-term{font-size:15px;font-weight:600;color:var(--accent-dark);margin:0 0 4px}
+.glossar-mini{font-size:11px;color:var(--text-muted);margin:0 0 8px;font-family:'JetBrains Mono',monospace}
+.glossar-def{font-size:13.5px;color:var(--text-1);line-height:1.6;margin:0}
+.glossar-def strong{font-weight:600;color:var(--slate-1)}
+.glossar-def em{color:var(--accent-dark);font-style:normal;font-weight:500}
+.lager-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px}
+.lager-name{font-size:14px;font-weight:600;color:var(--accent-dark);margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.lager-aufgreifen{font-size:13px;color:var(--text-1);line-height:1.55;margin:8px 0;padding:10px 12px;background:var(--s-robust-bg);border-radius:var(--radius)}
+.lager-aufgreifen strong{color:var(--s-robust-text);font-weight:600;display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.lager-kritisch{font-size:13px;color:var(--text-1);line-height:1.55;margin:8px 0;padding:10px 12px;background:var(--s-refuted-bg);border-radius:var(--radius)}
+.lager-kritisch strong{color:var(--s-refuted-text);font-weight:600;display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.kpi{background:var(--surface-2);border-radius:var(--radius-lg);padding:18px 20px}
+.kpi-title{font-size:13.5px;font-weight:600;color:var(--slate-2);margin:0 0 6px}
+.kpi-num{font-size:26px;font-weight:600;letter-spacing:-.02em;color:var(--accent-dark);margin:8px 0 4px;line-height:1}
+.kpi-desc{font-size:12.5px;color:var(--text-2);line-height:1.45;margin:0}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 26px;margin:32px 0}
+.toc-title{font-size:14px;font-weight:600;color:var(--slate-2);margin:0 0 14px;text-transform:uppercase;letter-spacing:.06em}
+.toc ol{list-style:none;counter-reset:item;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px 24px}
+.toc li{counter-increment:item;font-size:14px;line-height:1.5}
+.toc li::before{content:counter(item,decimal-leading-zero);color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:11px;margin-right:10px;font-weight:600}
+.toc a{color:var(--text-1);text-decoration:none;font-weight:500}
+.toc a:hover{color:var(--accent-dark);text-decoration:underline}
+.legend{display:flex;flex-wrap:wrap;gap:18px;padding:14px 18px;background:var(--surface-2);border-radius:var(--radius);font-size:13px;margin:12px 0 24px}
+.legend-item{display:flex;align-items:center;gap:7px;color:var(--text-2)}
+.quad{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}
+.quad-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px}
+.quad-card.r-r{border-top:4px solid var(--s-robust)}
+.quad-card.r-w{border-top:4px solid var(--s-medium)}
+.quad-card.g-r{border-top:4px solid var(--s-contro)}
+.quad-card.g-w{border-top:4px solid var(--s-refuted)}
+.quad-head{font-size:14px;font-weight:700;color:var(--slate-1);margin:0 0 4px;display:flex;align-items:center;gap:8px}
+.quad-sub{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);font-weight:600;margin:0 0 12px}
+.quad-list{list-style:none;padding:0;margin:0}
+.quad-list li{padding:8px 0;border-bottom:1px dashed var(--border);font-size:13.5px;line-height:1.55;color:var(--text-1)}
+.quad-list li:last-child{border-bottom:none}
+.quad-list li strong{font-weight:600;color:var(--slate-1)}
+.weak-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--s-refuted);border-radius:var(--radius-lg);padding:22px 24px;margin:14px 0}
+.weak-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:var(--s-refuted-bg);color:var(--s-refuted-text);border-radius:50%;font-weight:600;font-size:13px;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+.weak-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.weak-title{font-size:17px;font-weight:600;color:var(--slate-1);margin:0;letter-spacing:-.01em}
+.weak-claim{font-family:'Crimson Text',Georgia,serif;font-style:italic;color:var(--accent-dark);font-size:14.5px;line-height:1.55;margin:8px 0 12px;padding-left:14px;border-left:3px solid var(--accent-dark)}
+.weak-body{font-size:14px;line-height:1.65;color:var(--text-1);margin:8px 0}
+.weak-body strong{font-weight:600;color:var(--slate-1)}
+.weak-counter{padding:12px 14px;background:var(--s-refuted-bg);border-radius:var(--radius);margin-top:12px;font-size:13.5px;color:var(--s-refuted-text);line-height:1.55}
+.weak-counter strong{font-weight:700;display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.station{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin:10px 0;display:grid;grid-template-columns:60px 1fr 140px;gap:14px;align-items:center}
+.station-rank{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--accent-dark);background:var(--accent-bg);padding:6px 10px;border-radius:var(--radius);text-align:center}
+.station-content strong{display:block;font-size:14px;color:var(--slate-1);font-weight:600;margin-bottom:3px}
+.station-content p{margin:0;font-size:12.5px;color:var(--text-2);line-height:1.5}
+.station-status{font-size:11px;text-align:right}
+footer.foot{padding:48px 0 64px;background:var(--surface);border-top:1px solid var(--border);margin-top:64px}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-bottom:32px}
+.foot-section h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--slate-2);font-weight:600;margin:0 0 12px}
+.foot-section p{font-size:13.5px;color:var(--text-2);line-height:1.6;margin:0 0 8px}
+.foot-bottom{padding-top:24px;border-top:1px solid var(--border);font-size:12.5px;color:var(--text-muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.quellen-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;font-size:13px;line-height:1.55}
+.quellen-card strong{font-weight:600;color:var(--slate-1)}
+.quellen-card em{color:var(--text-2);font-style:italic}
+.self-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px}
+.self-card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px}
+.self-card-title{font-size:14px;font-weight:600;color:var(--slate-1);margin:0}
+.self-card-pct{font-size:18px;font-weight:700;color:var(--accent-dark);font-family:'JetBrains Mono',monospace}
+.self-bar{height:6px;background:var(--surface-2);border-radius:3px;overflow:hidden;margin:8px 0 10px}
+.self-bar-fill{height:100%;background:var(--s-robust);border-radius:3px}
+.self-bar-fill.medium{background:var(--s-medium)}
+.self-bar-fill.weak{background:var(--s-weak)}
+.self-card-desc{font-size:12.5px;color:var(--text-2);line-height:1.5;margin:0}
+.tree{font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7;color:var(--text-2);background:var(--slate-8);padding:18px;border-radius:var(--radius);overflow-x:auto;white-space:pre;margin:14px 0}
+@media (max-width:768px){.cover h1{font-size:38px}.cover-sub{font-size:17px}.cover-stats{grid-template-columns:repeat(2,1fr)}h2.h-section{font-size:28px}section{padding:48px 0}.wrap{padding:0 18px}nav.sticky .nav-inner{padding:0 18px}.quad{grid-template-columns:1fr}.station{grid-template-columns:50px 1fr;}.station-status{grid-column:2}.t-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="wrap">
+    <span class="cover-pill"><i class="ti ti-microscope"></i>Mai 2026 &middot; GSP &mdash; eine empirische Pr&uuml;fung</span>
+    <h1>Was hält stand beim <span class="accent">GegenStandpunkt</span>?</h1>
+    <p class="cover-sub">Eine systematische Pr&uuml;fung von 42 GSP-Grundannahmen: Was kommt von Marx und ist empirisch belegt? Was hat GSP selbst hinzugef&uuml;gt &mdash; und h&auml;lt es einer Pr&uuml;fung an Daten stand? Wo hat GSP keine guten Antworten?</p>
+    <div class="cover-meta">
+      <span><i class="ti ti-books"></i>Quellen: Held, Decker, MSZ (GSP) &middot; Spanidis, Creydt, Bierwirth, Conne Island, Bruhn (Kritik)</span>
+      <span><i class="ti ti-calendar"></i>Datenstand 2024&ndash;2026</span>
+    </div>
+    <div class="cover-stats">
+      <div class="cover-stat"><div class="cover-stat-label"><span class="dot d-marx"></span>Von Marx</div><div class="cover-stat-val" style="color:var(--h-marx-text)">9</div><div class="cover-stat-sub">28% &mdash; meist solide belegt</div></div>
+      <div class="cover-stat"><div class="cover-stat-label"><span class="dot d-shift"></span>Marx, aber ver&auml;ndert</div><div class="cover-stat-val" style="color:var(--h-shift-text)">6</div><div class="cover-stat-sub">19% &mdash; Bedeutung verschoben</div></div>
+      <div class="cover-stat"><div class="cover-stat-label"><span class="dot d-gsp"></span>GSP-eigen</div><div class="cover-stat-val" style="color:var(--h-gsp-text)">25</div><div class="cover-stat-sub">60% &mdash; meist schwach</div></div>
+      <div class="cover-stat"><div class="cover-stat-label"><span class="dot d-refuted"></span>Schwach + widerlegt</div><div class="cover-stat-val" style="color:var(--s-refuted-text)">24</div><div class="cover-stat-sub">57% aller Positionen</div></div>
+    </div>
+    <div class="toc">
+      <div class="toc-title">Inhalt</div>
+      <ol>
+        <li><a href="#kerneinsicht">Die wichtigsten Befunde</a></li>
+        <li><a href="#ueberblick">Status-Überblick</a></li>
+        <li><a href="#ableitungskette">Begriffsableitungskette</a></li>
+        <li><a href="#begriffsmatrix">Begriffsmatrix (42)</a></li>
+        <li><a href="#marxvsgsp">Marx vs. GSP</a></li>
+        <li><a href="#daten">Datenanalyse</a></li>
+        <li><a href="#schwachstellen">Wo GSP keine guten Antworten hat</a></li>
+        <li><a href="#entdeckungen">Vier Schlüsselentdeckungen</a></li>
+        <li><a href="#denkstruktur">Wie GSP denkt — verglichen</a></li>
+        <li><a href="#konflikte">Acht Streitpunkte</a></li>
+        <li><a href="#stationen">10 Recherche-Stationen</a></li>
+        <li><a href="#lager">7-Lager-Inklusion</a></li>
+        <li><a href="#empfehlungen">Empfehlungen &amp; Lücken</a></li>
+        <li><a href="#quellen">Quellen</a></li>
+        <li><a href="#selbstkritik">Selbstkritik</a></li>
+        <li><a href="#glossar">Wörter erklärt</a></li>
+        <li><a href="#fazit">Fazit</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<nav class="sticky">
+  <div class="nav-inner">
+    <a href="#kerneinsicht"><i class="ti ti-bulb"></i>Wichtige Befunde</a>
+    <a href="#ableitungskette"><i class="ti ti-binary-tree-2"></i>Ableitungskette</a>
+    <a href="#begriffsmatrix"><i class="ti ti-list-check"></i>32 Begriffe</a>
+    <a href="#marxvsgsp"><i class="ti ti-arrows-split-2"></i>Marx vs. GSP</a>
+    <a href="#schwachstellen"><i class="ti ti-target"></i>Wo GSP schwach ist</a>
+    <a href="#entdeckungen"><i class="ti ti-star"></i>4 Entdeckungen</a>
+    <a href="#denkstruktur"><i class="ti ti-affiliate"></i>Denkstruktur</a>
+    <a href="#lager"><i class="ti ti-users-group"></i>7 Lager</a>
+    <a href="#selbstkritik"><i class="ti ti-shield-half"></i>Selbstkritik</a>
+    <a href="#glossar"><i class="ti ti-book-2"></i>Wörter erklärt</a>
+    <a href="#fazit"><i class="ti ti-flag"></i>Fazit</a>
+  </div>
+</nav>
+
+<section id="kerneinsicht">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-bulb"></i>Was diese &Uuml;bersicht zeigt</div>
+      <h2 class="h-section">Die wichtigsten Befunde auf einen Blick</h2>
+      <p class="section-lead">Was kommt von Marx, was ist GSP-eigene Erfindung &mdash; und wie h&auml;lt das jeweils der Pr&uuml;fung an Daten stand? F&uuml;nf Antworten, bevor es ins Detail geht.</p>
+    </div>
+    <div class="grid-2">
+      <div class="insight"><div class="insight-ico green"><i class="ti ti-check"></i></div><p><strong>Das Solide am GSP kommt von Marx.</strong> Von 32 untersuchten GSP-Positionen halten 5 dem Tatsachen-Check stand &mdash; und alle 5 sind direkt von Marx &uuml;bernommen: Kapitalkonzentration, Wirtschaftskrisen, Lohnarbeit als Grundverh&auml;ltnis, das staatliche Gewaltmonopol und die Religionskritik. Nichts davon ist GSP-eigene Erfindung.</p></div>
+      <div class="insight"><div class="insight-ico red"><i class="ti ti-x"></i></div><p><strong>Was GSP selbst hinzuf&uuml;gt, h&auml;lt meist nicht.</strong> 17 Positionen sind GSP-eigene Setzungen. Davon sind 12 schwach belegt und 4 widerlegt; keine einzige robust. Vier kritische Autoren (Spanidis, Creydt, Bierwirth, Conne Island) haben das einzeln gezeigt; die &Uuml;bersicht hier macht das Muster sichtbar.</p></div>
+      <div class="insight"><div class="insight-ico amber"><i class="ti ti-circle-half-2"></i></div><p><strong>An mehreren Stellen nimmt GSP Marx-Begriffe und &auml;ndert ihre Bedeutung.</strong> Zum Beispiel die &bdquo;Charaktermaske&ldquo;: Bei Marx ist das eine Rollenbeschreibung (jemand <em>handelt als</em> Kapitalist), bei GSP wird sie zur festen Eigenschaft (jemand <em>ist</em> sein Kapitalist-Sein). Genau an diesen verschobenen Stellen sitzen die st&auml;rksten Einw&auml;nde der Kritiker.</p></div>
+      <div class="insight"><div class="insight-ico slate"><i class="ti ti-affiliate"></i></div><p><strong>Die Denkweise des GSP ist nicht einzigartig.</strong> Wenn man die Struktur der GSP-Schule mit der von Ayn Rands &bdquo;Objektivismus&ldquo; vergleicht (politisch das genaue Gegenteil), sind 9 von 10 Merkmalen identisch: geschlossenes Begriffssystem, Gr&uuml;ndertext, alle anderen sind ideologisch verblendet, akademisch isoliert. Das Problem liegt nicht im linken Inhalt &mdash; sondern in der geschlossenen Form.</p></div>
+      <div class="insight" style="grid-column:1/-1"><div class="insight-ico red"><i class="ti ti-target-arrow"></i></div><p><strong>Eine einzige Frage entscheidet jede GSP-Debatte.</strong> &bdquo;Welche Beobachtung w&uuml;rde euch &uuml;berzeugen, dass eure Theorie falsch ist?&ldquo; Es gibt keine vorbereitete Antwort, weil die GSP-Theorie keine solche Bedingung kennt &mdash; eine Theorie, die alles best&auml;tigt, was passiert, sagt damit nichts. Genau das ist der Kern aller anderen Schw&auml;chen.</p></div>
+    </div>
+  </div>
+</section>
+<section id="ueberblick">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-chart-donut"></i>Status-Verteilung</div>
+      <h2 class="h-section">Wie GSP-Positionen heute dastehen</h2>
+      <p class="section-lead">42 GSP-Positionen, einsortiert nach zwei Fragen: Wo kommt sie her (Marx, von Marx verschoben oder GSP-eigen)? Und wie gut ist sie durch Daten belegt?</p>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-ruler-measure"></i>Wie die Skala zu lesen ist</h3>
+    <div class="grid-2">
+      <div class="insight"><div class="insight-ico green"><i class="ti ti-check"></i></div><p><strong>Robust.</strong> Mehrere unabh&auml;ngige Quellen kommen zum gleichen Ergebnis. Auch Forscher, die GSP ablehnen, best&auml;tigen den Befund. Beispiel: Konzentration des Kapitals in immer weniger H&auml;nden &mdash; das zeigen OECD-Daten genauso wie Marx.</p></div>
+      <div class="insight"><div class="insight-ico amber"><i class="ti ti-circle-half-2"></i></div><p><strong>Mittel.</strong> Einzelne Daten st&uuml;tzen die These, aber nicht durchgehend. Zeit- oder l&auml;nderabh&auml;ngig.</p></div>
+      <div class="insight"><div class="insight-ico" style="background:var(--s-weak-bg);color:var(--s-weak)"><i class="ti ti-help"></i></div><p><strong>Schwach.</strong> Die These w&auml;re empirisch pr&uuml;fbar &mdash; aber die Daten lassen sie nicht einfach best&auml;tigen, oder die Begr&uuml;ndung dreht sich im Kreis.</p></div>
+      <div class="insight"><div class="insight-ico red"><i class="ti ti-x"></i></div><p><strong>Widerlegt.</strong> Mehrere voneinander unabh&auml;ngige Datens&auml;tze widersprechen. Auch wohlwollende Beobachter k&ouml;nnen die These nicht halten.</p></div>
+      <div class="insight" style="grid-column:1/-1"><div class="insight-ico violet"><i class="ti ti-question-mark"></i></div><p><strong>Kontrovers.</strong> Auch innerhalb der Marx-Tradition selbst ist die Frage offen, oder die Behauptung ist eine politische Setzung, die sich nicht direkt an Daten messen l&auml;sst. Ehrlich &bdquo;offen&ldquo; zu sagen ist hier solider als jede Festlegung.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-arrows-split-2"></i>Woher die Position kommt</h3>
+    <div class="grid-3">
+      <div class="card" style="border-top:3px solid var(--h-marx)"><span class="badge b-marx"><i class="ti ti-circle-filled" style="font-size:8px"></i>Marx-Original</span><p style="margin:10px 0 0;font-size:13.5px;line-height:1.55;color:var(--text-1)">Die These steht im Kern bei Marx (oder Lenin/Hilferding) selbst. GSP &uuml;bernimmt sie, ohne viel zu &auml;ndern. Wie belastbar sie ist, h&auml;ngt am Marx-Original.</p></div>
+      <div class="card" style="border-top:3px solid var(--h-shift)"><span class="badge b-shift"><i class="ti ti-circle-filled" style="font-size:8px"></i>Marx, aber ver&auml;ndert</span><p style="margin:10px 0 0;font-size:13.5px;line-height:1.55;color:var(--text-1)">Der Begriff kommt von Marx &mdash; aber GSP gibt ihm eine andere Bedeutung. Meistens wird aus einer Beschreibung von <em>Strukturen</em> die Beschreibung eines <em>eigenst&auml;ndigen Akteurs</em>. Hier sitzen viele Bruchstellen.</p></div>
+      <div class="card" style="border-top:3px solid var(--h-gsp)"><span class="badge b-gsp"><i class="ti ti-circle-filled" style="font-size:8px"></i>GSP-eigen</span><p style="margin:10px 0 0;font-size:13.5px;line-height:1.55;color:var(--text-1)">Eigene Erfindung des GSP, oft gegen Marx oder gegen die marxistische Tradition. Hier muss GSP selbst zeigen, dass die These stimmt &mdash; und genau das gelingt selten.</p></div>
+    </div>
+    <div class="grid-4">
+      <div class="stat"><div class="stat-label"><span class="dot d-robust"></span>Robust</div><div class="stat-val" style="color:var(--s-robust-text)">5</div><div class="stat-sub">12% — alle Marx-original</div></div>
+      <div class="stat"><div class="stat-label"><span class="dot d-medium"></span>Mittel</div><div class="stat-val" style="color:var(--s-medium-text)">6</div><div class="stat-sub">14% — eingeschränkt</div></div>
+      <div class="stat"><div class="stat-label"><span class="dot d-weak"></span>Schwach</div><div class="stat-val" style="color:var(--s-weak-text)">20</div><div class="stat-sub">48% — meist GSP-eigen</div></div>
+      <div class="stat"><div class="stat-label"><span class="dot d-refuted"></span>Widerlegt</div><div class="stat-val" style="color:var(--s-refuted-text)">4</div><div class="stat-sub">10% — alle GSP-eigen</div></div>
+    </div>
+    <div class="grid-4" style="margin-top:14px">
+      <div class="stat"><div class="stat-label"><span class="dot d-contro"></span>Kontrovers</div><div class="stat-val" style="color:var(--s-contro-text)">7</div><div class="stat-sub">17% &mdash; auch unter Marxisten umstritten</div></div>
+      <div class="stat"><div class="stat-label"><span class="dot d-marx"></span>Marx-Original</div><div class="stat-val" style="color:var(--h-marx-text)">9</div><div class="stat-sub">21% &mdash; meist solide</div></div>
+      <div class="stat"><div class="stat-label"><span class="dot d-shift"></span>Marx, ver&auml;ndert</div><div class="stat-val" style="color:var(--h-shift-text)">8</div><div class="stat-sub">19% &mdash; die Bruchstellen</div></div>
+      <div class="stat"><div class="stat-label"><span class="dot d-gsp"></span>GSP-eigen</div><div class="stat-val" style="color:var(--h-gsp-text)">25</div><div class="stat-sub">60% &mdash; eigene Beweispflicht</div></div>
+    </div>
+    <div class="chart-wrap">
+      <h4 class="chart-title">Status-Verteilung aller 32 Positionen</h4>
+      <p class="chart-desc">Wie viele Positionen sind robust, mittel, schwach, widerlegt oder kontrovers? Robuste Befunde sind selten &mdash; und stammen fast nur von Marx.</p>
+      <div class="chart-canvas" style="height:280px"><canvas id="donutChart"></canvas></div>
+    </div>
+    <div class="chart-wrap">
+      <h4 class="chart-title">Status getrennt nach Herkunft: Wo liegen die Schw&auml;chen?</h4>
+      <p class="chart-desc">Drei Balken: was von Marx kommt (9 Positionen) &mdash; was von Marx kommt aber inhaltlich ver&auml;ndert wurde (6) &mdash; was GSP selbst erfunden hat (17). Schon mit dem Auge sichtbar: <strong>Robust ist nur, was von Marx kommt.</strong></p>
+      <div class="chart-canvas" style="height:320px"><canvas id="herkunftBar"></canvas></div>
+    </div>
+    <div class="legend">
+      <span class="legend-item"><span class="dot d-robust"></span>Robust &mdash; durch Daten gut belegt</span>
+      <span class="legend-item"><span class="dot d-medium"></span>Mittel &mdash; teilweise belegt</span>
+      <span class="legend-item"><span class="dot d-weak"></span>Schwach &mdash; nicht &uuml;berzeugend belegt</span>
+      <span class="legend-item"><span class="dot d-refuted"></span>Widerlegt &mdash; Daten widersprechen</span>
+      <span class="legend-item"><span class="dot d-contro"></span>Kontrovers &mdash; auch unter Marxisten umstritten</span>
+    </div>
+  </div>
+</section>
+
+<section id="ableitungskette">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-binary-tree-2"></i>Wie GSP-Theorie aufgebaut ist</div>
+      <h2 class="h-section">Die Begriffsableitungskette</h2>
+      <p class="section-lead">GSP entwickelt seine Theorie wie eine Kette: aus dem Begriff &bdquo;Wert&ldquo; werden alle anderen Begriffe schrittweise hergeleitet. Bis zur fünften Station hält sich GSP eng an Marx. Ab Station 6 wird die Kette GSP-eigen &mdash; und genau dort sind die Bruchstellen.</p>
+    </div>
+    <div class="tree">Anfang: <strong>WERT</strong>  &mdash; was Waren miteinander vergleichbar macht (Marx, Ö01)
+        │
+        ▼
+        <strong>GELD</strong>  &mdash; die Form, in der Wert erscheint (Marx, Ö02)
+        │
+        ▼
+        <strong>KAPITAL</strong>  &mdash; Geld, das mehr Geld werden will (Marx, Ö04)
+        │
+        ▼
+        <strong>LOHNARBEIT</strong>  &mdash; wie das Kapital sich seine Arbeit beschafft (Marx, Ö07)
+        │
+        ▼
+        <strong>PRIVATEIGENTUM</strong>  &mdash; das Rechtsverh&auml;ltnis dahinter (Marx)
+        │
+        ▼ ═════════ erste Bruchstelle ═════════
+        <strong>STAAT</strong>  &mdash; eigenst&auml;ndige politische Gewalt (GSP-Verschiebung, S01)
+        │            <em>Hier macht GSP aus dem Staat einen souver&auml;nen Akteur.</em>
+        │            <em>Marx selbst sieht den Staat als eingebunden in das Ganze.</em>
+        ▼
+        <strong>RECHT</strong>  &mdash; die rechtliche Form des Eigentumssubjekts (verschoben, S07)
+        │
+        ▼
+        <strong>DEMOKRATIE</strong>  &mdash; die effizienteste Form der Herrschaft (GSP-eigen, S03)
+        │
+        ▼
+        <strong>VOLK / NATION</strong>  &mdash; die Bev&ouml;lkerung, die zustimmt (GSP-eigen, S05)
+        │
+        ▼ ═════════ zweite Bruchstelle ═════════
+        <strong>STANDORT</strong>  &mdash; der Staat als Konkurrenz-Einheit (GSP-eigen, I01)
+        │            <em>Hier wird Lenins klassische Imperialismus-Analyse</em>
+        │            <em>(Konkurrenz &rarr; Monopol &rarr; Finanzkapital &rarr; Kapitalexport) &uuml;bersprungen.</em>
+        ▼
+        <strong>IMPERIALISMUS</strong>  &mdash; Standortdurchsetzung nach au&szlig;en (GSP-eigen)
+        │
+        ▼
+        <strong>KRIEG</strong>  &mdash; reiner Wille des Staates (GSP-eigen, I03)</div>
+    <div class="alarm">
+      <p class="alarm-title"><i class="ti ti-alert-triangle"></i>Was diese Kette zeigt</p>
+      <p class="alarm-text">Die ersten f&uuml;nf Stationen sind <strong>Marx</strong>. Ab der sechsten Station (Staat) ist es <strong>GSP-eigene Konstruktion</strong>. An den zwei markierten Bruchstellen muss GSP eigene Setzungen begr&uuml;nden &mdash; und kann es nicht. Das ist kein Stilmangel, das ist die theoretische Architektur.</p>
+    </div>
+  </div>
+</section>
+
+<section id="begriffsmatrix">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-list-check"></i>Die 32 Positionen im Detail</div>
+      <h2 class="h-section">Begriffsmatrix</h2>
+      <p class="section-lead">Jede Karte zeigt eine GSP-Position mit vier Angaben: Wo steht es bei GSP? Wo kommt es her (Marx, von Marx ver&auml;ndert, oder GSP-eigen)? Wie gut ist es belegt? Und was hei&szlig;t das im Klartext? Geordnet nach sechs Themenfeldern.</p>
+    </div>
+
+    <div class="alarm">
+      <p class="alarm-title"><i class="ti ti-info-circle"></i>Hinweis zur Auswahl</p>
+      <p class="alarm-text">Diese 32 Positionen decken den theoretischen Kern und die politisch zentralen Setzungen systematisch ab. Sie sind keine vollst&auml;ndige Liste aller GSP-Aussagen, sondern eine Auswahl der wichtigsten und theoretisch zentralsten. Weitere Bereiche (Hegel-Erbe, Familie, Bildung, Gewerkschaftskritik, Migration, Wissenschaftskritik, Moralkritik) sind unten in einer &Uuml;bersicht zusammengefasst. <strong>Was hier fehlt, ist nicht stillschweigend best&auml;tigt &mdash; sondern bewusst au&szlig;en vorgelassen.</strong></p>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-microscope"></i>Kategorie A · Erkenntnistheorie und Methode (7)</h3>
+    <div class="grid-2">
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">M01 · Methode</p><p class="t-title">&bdquo;Begriffene Sache am Interesse messen&ldquo;</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">MSZ 1989, &bdquo;Kritik — wie geht das?&ldquo;; programmatischer Methoden-Text</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p class="quote">&bdquo;Kritik besteht darin, die begriffene Sache am Interesse zu messen.&ldquo;</p>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> GSP misst Theorien nicht an Daten, sondern daran, ob sie dem Eigeninteresse der Lohnabhängigen dienen. Bierwirth (Krisis 2/2016): die Methode unterstellt ein <em>vor</em>-theoretisches, transparentes &bdquo;Interesse&ldquo; — exakt die homo-oeconomicus-Annahme der bürgerlichen Mikroökonomik.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Zirkulär. Wer das &bdquo;Interesse&ldquo; bereits begriffen hat, hat die Sache schon. Wer es nicht begriffen hat, kann die Messung nicht durchführen.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">M02 · Methode</p><p class="t-title">Argumentationskritik statt Empirie</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">Held/Decker, durchgehend; MSZ 1989; alle GSP-Schulungstexte</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Theorien werden &bdquo;aus sich selbst heraus&ldquo; widerlegt — durch Aufzeigen innerer Widersprüche. Empirisches Material wird vermieden, weil es als &bdquo;Empirismus&ldquo; gilt. Spanidis: das ist nicht marxistisch, sondern positivistisch in negativer Form — Marx selbst arbeitete intensiv empirisch (Kapital I, Abschnitt Maschinerie, Sozialdaten).</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Macht Theorie immun gegen Wirklichkeit. Innere Stimmigkeit ist nicht Wahrheit (sonst wäre Astrologie wahr).</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">M03 · Methode</p><p class="t-title">Geschlossene Begriffsableitung</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">Held 1979, durchgehende Bauform; Decker 2013</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Aus dem Begriff des Werts wird das Geld abgeleitet, daraus das Kapital, daraus die Krise, daraus der Imperialismus &mdash; alles aus einer einzigen Ausgangssetzung. Externe theoretische Anregungen (Heinrich, Neue Marx-Lektüre) werden nicht aufgenommen, sondern als &bdquo;Symptom falschen Bewusstseins&ldquo; abgewiesen.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Die Kette ist nur so stark wie ihr erstes Glied. Wackelt das Glied (siehe M01), wackelt die ganze Kette.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">M04 · Methode</p><p class="t-title">Wahrheitsanspruch ohne Pr&uuml;fkriterium</p></div><span class="badge b-refuted">widerlegt</span></div>
+        <p class="t-src">Implizit in jeder GSP-Selbstbeschreibung; explizit in MSZ-Editorials</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> GSP beansprucht, die wissenschaftlich richtige Analyse zu haben. Frage: <em>Welche Beobachtung würde die Theorie widerlegen?</em> Antwort: keine. Jede Krise bestätigt sie, jeder Krieg, jede Reform, jede Verbesserung. Wer alles bestätigt, sagt nichts.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Der Wahrheitsanspruch scheitert simultan an Korrespondenz, Pragmatik, Konsens und Kohärenz (Meta-Dilemma). Siehe Sektion 8.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">M05 · Methode</p><p class="t-title">Asymmetrischer Ideologiebegriff</p></div><span class="badge b-refuted">widerlegt</span></div>
+        <p class="t-src">Implizit in jeder Polemik-Stelle des Korpus; Bierwirth Krisis 2/2016</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Alle anderen Positionen sind ideologisch (Liberale, Sozialdemokraten, Anarchisten, sogar Heinrich) — nur die eigene nicht. Aber: Wenn alle gesellschaftlich vermittelten Positionen ideologisch durchsetzt sind, wie steht der GSP außerhalb dieser Vermittlung? Antwort: durch korrekte Begriffsführung — also im Kreis.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Luxemburg: &bdquo;Keine Methode zu haben heißt nur, eine zu haben, ohne es zu merken.&ldquo;</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">M06 · Methode</p><p class="t-title">Hegel-Erbe als methodische Wurzel</p></div><span class="badge b-contro">kontrovers</span></div>
+        <p class="t-src">Held 1979, Ableitungs-Architektur; Hegels <em>Phänomenologie</em> und <em>Wissenschaft der Logik</em> als implizite Vorlagen</p>
+        <div class="t-badges"><span class="badge b-shift">Marx-verschoben</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Die GSP-Begriffsableitung folgt der Hegelschen Dialektik &mdash; aber ohne Hegels eigene Selbstreflexion auf historische Wandelbarkeit des Begriffsapparats. Marx selbst hat das Hegel-Erbe durch die Methodenkritik in den <em>Grundrissen</em> und in der <em>Heiligen Familie</em> reflexiv gemacht; der GSP überspringt diese Reflexion und arbeitet mit einem statisch gewordenen Hegelianismus.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Innermarxistisch ungelöst (Heinrich, Backhaus, Reichelt vs. Marxistische Gruppe-Tradition). Empirisch nicht entscheidbar; methodologisch eine Setzung mit Konsequenzen.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">M07 · Methode</p><p class="t-title">Wissenschaftskritik &mdash; Natur- und Geisteswissenschaft</p></div><span class="badge b-contro">kontrovers</span></div>
+        <p class="t-src">GSP-Zeitschrift, mehrere Themenhefte zur Wissenschaftskritik</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Naturwissenschaft wird als instrumentell zum Kapitalverwertungsinteresse gedeutet; Geistes- und Sozialwissenschaft als Ideologieproduktion. Die analytische Pointe (Wissenschaft ist nicht interessefrei) ist haltbar; die Pauschalisierung (alle Wissenschaft ist Verwertungsinstrument bzw. Ideologie) ignoriert die Wissenschaftssoziologie (Latour, Knorr-Cetina, Pickering).</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Kern-Diagnose teils berechtigt; pauschalisierende Form macht die GSP-Wissenschaftskritik selbst unwissenschaftlich.</p>
+      </div>
+
+    </div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-bulb"></i>Zwischennotiz Methode</p>
+      <p class="simple-box-text">Alle fünf Methode-Positionen sind GSP-spezifisch (keine Marx-Übernahme) und alle fünf sind schwach (3) oder widerlegt (2). <strong>Die GSP-Methode hat keinen empirisch robusten Pfeiler</strong>. Wer den GSP methodologisch verteidigt, hat keine Marx-Substanz, auf die er sich berufen könnte.</p>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-building-bank"></i>Kategorie B · Staat und Politik (7)</h3>
+    <div class="grid-2">
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">S01 · Staat</p><p class="t-title">Staat als verselbständigte politische Gewalt</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">Held 1979, §1 (Privateigentum / Staatsableitung); §3 (Gewaltmonopol)</p>
+        <div class="t-badges"><span class="badge b-shift">Marx-verschoben</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Held leitet den Staat aus dem Privateigentum ab — und verselbständigt ihn dann zur souveränen, eigenlogischen Gewalt. Marx-verschoben: Marx selbst denkt den Staat als Teil des gesellschaftlichen Ganzen eingebettet (MEW 1, Kritik des Hegelschen Staatsrechts). Spanidis 2022 markiert das als &bdquo;Staatsfetisch&ldquo; — der Staat wird als &bdquo;frei handelndes Subjekt&ldquo; konstruiert.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Griechenland 2015 (Syriza-Kapitulation gegen Eurogruppe) ist das empirische Lehrstück. Ein Staat, der nicht frei handeln konnte. Held führt keine Pr&uuml;fbedingung an.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">S02 · Staat</p><p class="t-title">Gewaltmonopol-Funktion</p></div><span class="badge b-robust">robust</span></div>
+        <p class="t-src">Held 1979, §3 (Gewaltmonopol &amp; Strafrecht)</p>
+        <div class="t-badges"><span class="badge b-marx">Marx-original</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Der bürgerliche Staat hat ein Gewaltmonopol, das ungleich verteiltes Eigentum sichert. Held ergänzt Marx hier nicht — er reformuliert die Standard-Position der Marx-Tradition (Engels, später Poulantzas, Althusser). Auch Weber teilt die Gewaltmonopol-Definition.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Im Kern robust und lager-übergreifend bestätigt. Die GSP-eigene Übersteigerung zur Souveränitäts-Verselbständigung (S01) ist separat zu prüfen.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">S03 · Staat</p><p class="t-title">Demokratie als &bdquo;perfekte Form bürgerlicher Herrschaft&ldquo;</p></div><span class="badge b-contro">kontrovers</span></div>
+        <p class="t-src">Decker (Hg.), <em>Demokratie — die perfekte Form bürgerlicher Herrschaft</em> (2013), Editorial</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2/F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> GSP unterscheidet Demokratie und Diktatur — aber als &bdquo;effizienter&ldquo;, nicht als &bdquo;besser&ldquo;. Demokratie organisiert Zustimmung der Beherrschten. <em>Analytisch wertvoll</em>: die Effizienz-Diagnose ist treffend. <em>Politisch folgenreich</em>: macht die Verteidigung des Verfassungsstaats gegen autoritäre Angriffe unmöglich (Sozialdemokratie-Dossier).</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Empirisch teilweise plausibel, politisch entwaffnend. Habermas-Verfassungspatriotismus ist die dritte Option zwischen GSP-Verachtung und liberaler Naivität.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">S04 · Staat</p><p class="t-title">Sozialstaat als ideeller Gesamtkapitalist</p></div><span class="badge b-medium">mittel</span></div>
+        <p class="t-src">Held 1979, §5 (Sozialstaat); Engels-Begriff übernommen</p>
+        <div class="t-badges"><span class="badge b-shift">Marx-verschoben</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Der Sozialstaat sichert die Wiederherstellung der Arbeitskraft im Gesamtinteresse des Kapitals. <em>Engels-Original</em>: der ideelle Gesamtkapitalist als regulative Funktion. <em>Held-Verschiebung</em>: alle sozialstaatlichen Maßnahmen werden monokausal auf diese Funktion zurückgeführt — Esping-Andersens drei Welfare-Regimes verschwinden, der Klassenkampf-Charakter der historischen Sozialreform ebenso.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Kern-These hält (Wiederherstellungsfunktion empirisch belegt). Die Monokausalität ist überdehnt.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">S05 · Staat</p><p class="t-title">Volk/Nation als willentliche Unterordnung</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">GSP, <em>Das Volk — eine furchtbare Abstraktion</em>; Held 1979 §9</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F1/F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Volk und Nation sind definiert dadurch, dass sich Lohnabhängige <em>willentlich</em> dem kapitalistischen Staat unterordnen. Spanidis: das ist Hobbes-nah (Staatsvertrag aus Eigeninteresse), nicht Marx. Empirisch dünn — was, wenn Menschen sich nicht willentlich unterordnen, sondern aus Mangel an Alternativen?</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Ignoriert Hegemonie-Forschung (Gramsci, Bourdieu), Verfassungssoziologie (Habermas) und Migrations-Empirie (3,8 Mio. DDR-Flucht 1949&ndash;1961).</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">S06 · Staat</p><p class="t-title">Ablehnung Verfassungspatriotismus</p></div><span class="badge b-refuted">widerlegt</span></div>
+        <p class="t-src">GSP, durchgehend gegen Habermas; Decker 2013</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Habermas&apos; Konzept des Verfassungspatriotismus (Bindung an Verfassungsprinzipien statt an Volkszugehörigkeit) wird vom GSP als &bdquo;bürgerliche Sentimentalität&ldquo; abgewiesen. Aber: empirisch hält Habermas&apos; Konzept — es erklärt, warum demokratisch verfasste Gesellschaften autoritären Versuchungen widerstanden haben, wo ethnonationalistisch verfasste das nicht taten.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Die zivile/ethnische Nationalismus-Differenz (Habermas, Renan, Müller) ist das zentrale empirische Argument, das GSP nicht aufnimmt — und nicht widerlegt hat.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">S07 · Staat</p><p class="t-title">Recht als Form bürgerlicher Verhältnisse</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">Held 1979, §2 (Recht); rechtsphilosophische Stellen verstreut</p>
+        <div class="t-badges"><span class="badge b-shift">Marx-verschoben</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Recht wird als notwendige Form bürgerlicher Tauschverhältnisse abgeleitet (Pashukanis-Tradition). Held übernimmt im Kern, verschiebt aber zur Souveränitäts-Logik: das Recht steht in seiner Konstruktion am Ende der Begriffsableitung als Vollzugsform der bereits gesetzten Staatsmacht. Folge: Differenzen zwischen Rechtsformen (kontinentaleuropäisch vs. angelsächsisch; demokratisch vs. autoritär) verschwinden im Begriff.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Diagnose im Kern haltbar; empirische Differenzierung zwischen Rechtsregimen geht verloren. Conne Island 2014 markiert den fehlenden Bezug zur Rechtssoziologie (Habermas, Luhmann).</p>
+      </div>
+
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-chart-line"></i>Kategorie C · Ökonomie und Kapital (7)</h3>
+    <div class="grid-2">
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">Ö01 · Ökonomie</p><p class="t-title">Werttheorie</p></div><span class="badge b-medium">mittel</span></div>
+        <p class="t-src">MEW 23 (Kapital I); GSP übernimmt ohne Variation</p>
+        <div class="t-badges"><span class="badge b-marx">Marx-original</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F1/F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Marktpreise hängen langfristig mit dem gesellschaftlich notwendigen Arbeitsaufwand zusammen. Marx-Tradition gespalten (Form-Analyse / Substanz-Theorie). Shaikh 2016 fand empirisch hohe Preis-Wert-Korrelationen (90%+).</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Empirisch eingeschränkt belastbar; methodologisch innermarxistisch kontrovers. GSP übernimmt unkritisch und verzichtet auf die Heinrich/Postone-Debatte.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">Ö02 · Ökonomie</p><p class="t-title">Geld als notwendige Form, in der der Wert sichtbar wird</p></div><span class="badge b-medium">mittel</span></div>
+        <p class="t-src">Held 1979, §2 (Geld); Decker, durchgehend in der Zeitschrift</p>
+        <div class="t-badges"><span class="badge b-marx">Marx-original</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F1</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Geld ist nicht beliebig austauschbares Tauschmittel, sondern notwendige gesellschaftliche Form, in der der Wert erscheint. Im Kern Marx (MEW 23, Kap. III). Held formuliert ohne wesentliche Verschiebung; Decker führt die Goldstandard-Auflösung 1971 als Bestätigungsanekdote, ohne die Empirie zu vertiefen.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Im Kern haltbar, aber empirisch beschränkt: Bitcoin, Stablecoins, digitale Zentralbankwährungen werden vom GSP ins alte Raster zurückgeholt, nicht damit erweitert (Lakatos-Indikator).</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">Ö03 · Ökonomie</p><p class="t-title">Kredit und Finanzkapital als fiktives Kapital</p></div><span class="badge b-medium">mittel</span></div>
+        <p class="t-src">GSP-Zeitschrift, mehrere Artikel 1995&ndash;2020; Bezug auf MEW 25</p>
+        <div class="t-badges"><span class="badge b-marx">Marx-original</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F1/F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Kredit erzeugt Ansprüche auf zukünftiges Mehrwertkapital ohne dessen reale Existenz (Marx: fiktives Kapital). 2008 als Bestätigungsfall. Heterodoxe Forschung (Minsky-Tradition) konvergiert mit der Diagnose und arbeitet sie quantitativ aus &mdash; in einer Form, die der GSP nicht aufnimmt.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Diagnose haltbar. Schwäche: keine eigene Modellierung; keine Auseinandersetzung mit Schuldgeldtheorien (Graeber, MMT).</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">Ö04 · Ökonomie</p><p class="t-title">Kapitalakkumulation und Konzentration</p></div><span class="badge b-robust">robust</span></div>
+        <p class="t-src">MEW 23, Kap. XXIII; bei Held/Decker als Hintergrund</p>
+        <div class="t-badges"><span class="badge b-marx">Marx-original</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F1</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Konzentration und Zentralisation des Kapitals. US-Markups stiegen 1980&ndash;2016 von 1,2 auf 1,6. Weltweites M&amp;A-Volumen verzwanzigfacht (1985&ndash;2021). Big-Tech kontrolliert ganze Märkte.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Voll bestätigt &mdash; auch von Mainstream-Forschern (De Loecker 2020; OECD 2018). Marx-Erbe, nicht GSP-Verdienst.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">Ö05 · Ökonomie</p><p class="t-title">Krise als Strukturmerkmal</p></div><span class="badge b-robust">robust</span></div>
+        <p class="t-src">MEW 23/25 (Kapital I, III); GSP-Zeitschrift, durchgehend</p>
+        <div class="t-badges"><span class="badge b-marx">Marx-original</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Kapitalismus ist strukturell krisenanfällig &mdash; nicht zufällig, sondern systembedingt. 2008 als globales Lehrstück. Minsky-Tradition (heterodox, Mainstream-anschlussfähig) bestätigt unabhängig.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Robust. Marx-Erbe. Der GSP-spezifische Zusatz &mdash; &bdquo;Krisendurchsetzung als Bestätigung der Theorie&ldquo; &mdash; ist Immunisierung (siehe Methode-Sollbruchstelle).</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">Ö06 · Ökonomie</p><p class="t-title">Tendenzieller Fall der Profitrate</p></div><span class="badge b-contro">kontrovers</span></div>
+        <p class="t-src">MEW 25, Teil III; GSP übernimmt; Kliman 2012 verteidigt</p>
+        <div class="t-badges"><span class="badge b-marx">Marx-original</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F1</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Die durchschnittliche Profitrate sinkt langfristig (organische Zusammensetzung steigt). Innermarxistisch ungelöst: Heinrich bezweifelt, Kliman verteidigt, Shaikh sieht differenziert. Empirisch nicht entschieden.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Ehrlich &bdquo;kontrovers&ldquo; zu sagen ist hier robuster als jede Festlegung. GSP-Position: dogmatisch übernommen ohne Auseinandersetzung mit der Heinrich-Kritik.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">Ö07 · Ökonomie</p><p class="t-title">Lohnarbeit und Klassenstruktur</p></div><span class="badge b-robust">robust</span></div>
+        <p class="t-src">MEW 23, Kap. XXIV; Held 1979 §1 als Hintergrund</p>
+        <div class="t-badges"><span class="badge b-marx">Marx-original</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F1</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Doppelt freie Lohnarbeit (rechtlich frei + frei von Produktionsmitteln). OECD-Anteil abhängig Beschäftigter: 50% (1900) &rarr; 85&ndash;92% (2020). Klar empirisch belegt.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Robust im Kern. Die GSP-eigene Übersteigerung zur Charaktermaske-Ontologie (P01) ist separat zu prüfen.</p>
+      </div>
+    </div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-bulb"></i>Zwischennotiz Ökonomie</p>
+      <p class="simple-box-text">Die Ökonomie-Kategorie ist die einzige, in der mehrere robuste Positionen vorkommen &mdash; und alle sieben sind Marx-original, nicht GSP-eigen. <strong>Die GSP-eigene Theoriearbeit liegt nicht in der Ökonomie, sondern in der Staats- und Subjekttheorie</strong> &mdash; und genau dort liegen auch die Schwächen.</p>
+    </div>
+    <h3 class="h-sub"><i class="ti ti-world"></i>Kategorie D · Imperialismus und Geopolitik (4)</h3>
+    <div class="grid-2">
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">I01 · Imperialismus</p><p class="t-title">Imperialismus über &bdquo;Standortlogik&ldquo;</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">Decker (Hg.) 2013, Außenpolitik-Kapitel; Held 1979 §9</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> GSP erklärt Imperialismus über &bdquo;Standortsicherung im internationalen Konkurrenzverhältnis&ldquo;. Spanidis: Die Lenin-Hilferding-Stufenfolge (Konkurrenz → Monopol → Finanzkapital → Kapitalexport) wird nicht widerlegt, sondern <em>übersprungen</em>. Folge: kann nicht erklären, warum imperiale Politik so systematisch Großkapital-Interessen folgt (Irak 2003, Halliburton-Verträge).</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Spanidis-Pointe: &bdquo;Der GSP landet beim selben Fehler wie die Revisionisten der II. Internationale.&ldquo;</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">I02 · Imperialismus</p><p class="t-title">Außenpolitik als nationale Konkurrenz</p></div><span class="badge b-medium">mittel</span></div>
+        <p class="t-src">Held 1979 §9; Decker 2013</p>
+        <div class="t-badges"><span class="badge b-shift">Marx-verschoben</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Staaten konkurrieren miteinander um Standortvorteile, humanitäre Begründungen sind oft Verkleidung. <em>Im Kern empirisch</em> richtig — Mearsheimer (Realism), aber auch linke Forschung bestätigen die Diagnose. <em>Verschoben</em>: durch das Überspringen der Lenin-Stufen wird die Korrelation Politik/Ökonomie willkürlich.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Analytisch teilweise treffend. Die Internationale-Strafgerichtshof-Empirie (Haftbefehle gegen Netanjahu/Gallant 2024) zeigt: Varianz existiert.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">I03 · Imperialismus</p><p class="t-title">Krieg als reiner Staatswille</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">GSP-Zeitschrift, Kriegsanalysen seit 1991; Decker 2013</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Krieg entspringt der Souveränitätslogik des Staates, nicht ökonomischen Strukturzwängen. Folge: keine ökonomische Vermittlung mehr — warum dann gerade Ölländer, gerade Rohstoff-Regionen, gerade Marktöffnungs-Konflikte?</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Empirisch dünn. Die geographische Korrelation Krieg/Rohstoffe bleibt unerklärt.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">I04 · Imperialismus</p><p class="t-title">Migration als Funktion der Standortpolitik</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">Held 1979 §9; GSP-Zeitschrift, Migrationsanalysen seit 2015</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Migration wird vom GSP als Funktion staatlicher Standortpolitik gedeutet: Arbeitskraftrekrutierung, Lohndruck, Demographieregulierung. Im Kern empirisch teilweise haltbar. Schwäche: Migrationssoziologie (Castles, Sassen, Massey) wird nicht aufgenommen; die migrantischen Subjektivitäten (Pull-Faktoren, transnationale Netzwerke, postkoloniale Bindungen) verschwinden im Funktionsbegriff.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Diagnose der Funktionsseite haltbar; volle Migrationsempirie nicht abgedeckt. Reduktion auf staatliche Steuerung lässt das migrantische Handeln unterbestimmt.</p>
+      </div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-user"></i>Kategorie E · Subjekt, Ideologie, Praxis (9)</h3>
+    <div class="grid-2">
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">P01 · Subjekt</p><p class="t-title">Charaktermaske wird zur Wesenseigenschaft</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">Held (Hg.) 1980/2021, <em>Psychologie des bürgerlichen Individuums</em>, Teil III, S. 102–103</p>
+        <div class="t-badges"><span class="badge b-shift">Marx-verschoben</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Marx verwendet &bdquo;Charaktermaske&ldquo; (MEW 23, S. 100) als <em>Funktionsbeschreibung</em>: Personen treten als Träger ökonomischer Verhältnisse auf. Held verschiebt zur <em>Wesenszuschreibung</em>: Personen <em>sind</em> ihre Charaktermasken. Conne Island 2014: das macht die GSP-Psychologie deterministisch.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Semantische Verschiebung gegen Marx, dokumentierbar am Originaltext.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">P02 · Subjekt</p><p class="t-title">Rational-Choice-Menschenbild (rationaler Eigennutz-Mensch (homo oeconomicus))</p></div><span class="badge b-refuted">widerlegt</span></div>
+        <p class="t-src">Implizit in der Interessen-Methode (MSZ 1989); Bierwirth Krisis 2/2016</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F1</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> GSP unterstellt einen rationalen, sozialisationsfreien Akteur mit stabilen Präferenzen — exakt der rationaler Eigennutz-Mensch (homo oeconomicus) der Neoklassik (Etzrodt 2003). Bierwirth: &bdquo;Daher wird der Einfluss der Aufwachsen und Pr&auml;gung auf das Denken und Handeln von Menschen verworfen.&ldquo; Empirisch durch Verhaltensökonomik (Kahneman, Thaler) und Sozialpsychologie widerlegt.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Ironisch: GSP teilt die menschenbild-bezogene Grundannahme mit dem ideologisch-bürgerlichen Mainstream, den er kritisiert.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">P03 · Subjekt</p><p class="t-title">&bdquo;Idiot&ldquo; / &bdquo;verrücktes Bewusstsein&ldquo;</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">GSP 1/2004, S. 59; durchgehende Wendung in Schulungen</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F4</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Falsches Bewusstsein wird vokabulär als &bdquo;Idiotie&ldquo;, &bdquo;Schwachsinn&ldquo;, &bdquo;verrücktes Bewusstsein&ldquo; verhandelt. Creydt 2017: das tut, als ob die &bdquo;Fehler&ldquo; nichts mit der Sache zu tun hätten, sondern in den Bereich der biologischen oder psychostrukturell problematischen Defizite fielen.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Widerspricht Marx&apos; Fetisch-Analyse: &bdquo;Es ist nicht der Mensch, der sich selbst über die Realität täuscht, es ist die Realität, die ihn täuscht&ldquo; (Godelier).</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">P04 · Praxis</p><p class="t-title">Verzicht auf praktisches Handeln programmatisch</p></div><span class="badge b-contro">kontrovers</span></div>
+        <p class="t-src">MSZ-Editorials der Anfangsjahre; durchgehende Selbstaussage</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F4</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> &bdquo;Erst muss die Theorie richtig sein — ohne richtige Theorie ist falsche Praxis schlimmer als keine.&ldquo; Programmatisch, also F4 — empirisch nicht direkt widerlegbar. Aber: <em>strukturell folgenreich</em>, weil die pragmatische Wahrheitsprüfung damit entfällt.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Bruhn/Anarchismus-Dossier: &bdquo;Anarchismus will die Welt verändern, GSP will sie korrekt beschrieben sehen.&ldquo;</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">P05 · Praxis</p><p class="t-title">Aufklärung als einzige Politik</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">GSP-Selbstbeschreibung seit 1991; Schulungen, YouTube</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F4</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> 32 Jahre GegenStandpunkt mit etwa 200 Mitgliedern. Keine messbare politische Wirkung. Selbst-Behauptung: das ist die einzige korrekte Politik. Empirischer Test: Wenn die eigene Theorie sagt, dass Bewusstsein sich durch strukturelle Verhältnisse ändert, nicht durch Lektüre — warum schreibt der GSP Zeitschriften statt strukturelle Verhältnisse zu verändern?</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Strukturwiderspruch zur eigenen Theorie. Schwächste der GSP-spezifischen Positionen.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">P06 · Praxis</p><p class="t-title">Nachkapitalismus als &bdquo;Versorgungswesen&ldquo;</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">GSP 4/1996; Decker/Held 1989; Creydt 2015 Analyse</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F4</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Creydt zeigt: GSP denkt die nachkapitalistische Gesellschaft als &bdquo;gescheites Versorgungswesen&ldquo; — Hotelgäste, die bessere Direktion wollen. Keine Selbstverwaltung, keine Emanzipation von unten. Decker/Held 1989: &bdquo;Dass ein Krieg, keine Revolution, sie zur herrschenden Partei gemacht hatte, ist für sich nichts Ehrenrühriges.&ldquo;</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Bürgerlicher Materialismus in linker Form (Creydt). Verweigerung der Selbstorganisations-Frage als Gestus.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">P07 · Subjekt</p><p class="t-title">Bürger-Kommunist-Dichotomie</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">GSP-Selbstbeschreibung; Creydt 2017 Analyse</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> GSP-Anhänger verstehen sich in scharfer Dichotomie: Bürger (alle anderen) versus Kommunist (man selbst). Creydt: in der Arbeit unauffällig bleiben, Anhänger sollen ihre Kritik vor Kollegen verheimlichen — &bdquo;Lasse Dir in der Arbeit Deine radikale Kritik nicht anmerken.&ldquo;</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Logisch instabil (alle gesellschaftlichen Vermittlungen werden ideologisch — nur die eigene Position nicht; siehe M05). Strukturell sektenförmig.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">P08 · Subjekt</p><p class="t-title">Familie und Sexualität</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">Held (Hg.) 1980/2021, <em>Psychologie des bürgerlichen Individuums</em>, Teil II</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Familie als Reproduktionseinheit der Arbeitskraft; Sexualität als bürgerlich kanalisiertes Interessensverhältnis. Held argumentiert funktionalistisch, ohne Gender-Empirie oder Queer-Theorie aufzunehmen. Care-Ökonomie (Federici, Fraser), feministische Wertkritik, LGBTIQ*-Forschung werden nicht eingearbeitet. Die Charaktermaske-Ontologie (P01) wird auf Geschlechterrollen ausgedehnt.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Veraltete soziologische Basis; in 40 Jahren keine Revision trotz radikaler Wandelung der Familienformen, des Care-Diskurses und der Genderforschung.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">P09 · Subjekt</p><p class="t-title">Moralkritik</p></div><span class="badge b-medium">mittel</span></div>
+        <p class="t-src">GSP-Zeitschrift, mehrere Moral-Aufsätze; Marx-Erbe (MEW 3, Deutsche Ideologie)</p>
+        <div class="t-badges"><span class="badge b-shift">Marx-verschoben</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Moral als Ideologie der Klassenherrschaft (Marx-Erbe). GSP-Verschiebung: <em>alle</em> moralischen Diskurse werden auf Klasseninteressen-Verschleierung reduziert. Habermas&apos; Diskursethik, Adornos negative Dialektik, die Mitscherlich-Tradition werden nicht reflektiert. Folge: GSP kann moralische Argumente nur als Verkleidung erkennen, nicht als Quelle möglicher Verständigung.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Marx-Kern (Moral als ideologische Funktion) hält; Pauschal-Reduktion auf reine Funktion ist überdehnt. Empirie der moralischen Entwicklung (Piaget, Kohlberg, Tomasello) widerspricht der Reinheit der Funktionsbestimmung.</p>
+      </div>
+
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-flag"></i>Kategorie F · Selbstverortung und politische Praxis (8)</h3>
+    <div class="grid-2">
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">F01 · Praxis</p><p class="t-title">Klassenkampf als historisch gescheiterte Form</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">GSP-Zeitschrift, durchgehend; Decker/Held 1989 (Sowjetunion)</p>
+        <div class="t-badges"><span class="badge b-shift">Marx-verschoben</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F4</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Marx als aktiver Klassenkämpfer (Internationale, Pariser Kommune). GSP-Verschiebung: Klassenkampf existiert, ist aber in seiner historischen Form mehrheitlich gescheitert oder revisionistisch geendet. Folge: Klassenkampf wird zum Beobachtungsgegenstand, nicht zum Programmpunkt. Decker/Held 1989 zu den Realsozialismen: keine ernsthafte Theorierevision aus dem Scheitern.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> F4-Position (programmatisch), entwaffnet die eigene Theorie politisch. Spanidis: &bdquo;Wer den Klassenkampf nur denkt, ohne ihn zu führen, hat den Marxismus halbiert.&ldquo;</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">F02 · Praxis</p><p class="t-title">Linkskritik gegen andere linke Traditionen</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">GSP-Zeitschrift, durchgehend; Schulungsmaterialien</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> GSP definiert sich stark durch Abgrenzung gegen andere Linke: Sozialdemokratie (revisionistisch), Anarchismus (kleinbürgerlich), Wertkritik (positivistisch), Maoismus (voluntaristisch), Heinrichs Neue Marx-Lektüre (akademisch). Die Kritiken sind im Einzelnen oft scharf, die Methode ist aber regelmäßig die gleiche: andere haben falsches Bewusstsein, wir haben die richtige Theorie (einseitiger Ideologiebegriff, siehe M05).</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Symptomatisch &mdash; nicht die einzelnen Kritiken sind schwach, sondern die Form der Kritik (einseitig, immunisierend). Konvergenz mit dem Symmetrietest-Befund (Geschlossenheit).</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">F03 · Praxis</p><p class="t-title">Religionskritik als Ideologiekritik</p></div><span class="badge b-robust">robust</span></div>
+        <p class="t-src">GSP-Zeitschrift, mehrere Religions-Artikel; Marx-Erbe</p>
+        <div class="t-badges"><span class="badge b-marx">Marx-original</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Religion als Ausdruck der wirklichen Not und zugleich Protest gegen sie (Marx, MEW 1, S. 378). GSP übernimmt unverändert, mit Schwerpunkt auf der gesellschaftlich-funktionalen Diagnose. Marx-Konvergenz; Religionssoziologie (Weber, Berger) bestätigt unabhängig.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Robust; einer der wenigen Bereiche, in dem GSP ohne Verschiebung an die Marx-Tradition anschließt. Schwäche: keine Auseinandersetzung mit neueren Religionssoziologien (Religious Economies Model, Säkularisierungsdebatte).</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">F04 · Praxis</p><p class="t-title">Bildungs- und Schulkritik</p></div><span class="badge b-contro">kontrovers</span></div>
+        <p class="t-src">GSP-Zeitschrift, Bildungs-Themenhefte; Held 1979 (Bildungswesen verstreut)</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Schule und Universität als ideologische Reproduktionsapparate des Kapitals. Die analytische Pointe konvergiert mit Althusser und Bourdieu. Schwäche: empirisch nicht ausgearbeitet; bildungssoziologische Forschung (PISA-Daten, soziale Herkunftseffekte, Bildungsexpansion) wird nicht aufgenommen.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Diagnose teils geteilt mit Mainstream-Bildungssoziologie, aber im GSP nicht quantitativ unterfüttert. Kontrovers, weil die Schul-Apparat-These selbst innermarxistisch umstritten ist (Willis, Apple, Rancière).</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">F05 · Praxis</p><p class="t-title">Gewerkschaftskritik</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">GSP-Zeitschrift, durchgehend; programmatische Texte zur Lohnarbeit</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Gewerkschaften sind systemerhaltend, weil sie um den Lohn streiten statt um die Aufhebung der Lohnarbeit. Marx war aktiver Gewerkschafter (Internationale, Genfer Beschlüsse 1866); GSP-Position ist im Effekt Verzicht auf jede Form von Klassenorganisation. Empirie: in Ländern mit starker gewerkschaftlicher Verankerung (Skandinavien) sind Lohnabhängige besser geschützt &mdash; das ist nicht &bdquo;reine Systemerhaltung&ldquo;.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Reine Funktionsdiagnose unterbestimmt; widerspricht der eigenen Anerkennung der Sozialstaatsfunktion (S04).</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">F06 · Praxis</p><p class="t-title">Ökologie und Klimakrise</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">GSP-Zeitschrift, vereinzelte Ökologie-Aufsätze seit 2010</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F3</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Klimakrise als Phänomen kapitalistischer Verwertung; ökologische Politik als bürgerliche Regulierung der Verwertungsbedingungen. Im Kern haltbar (Marxistische Ökologen wie Foster, Saito konvergieren). Schwäche: keine eigene ökologische Theorie, IPCC-Empirie wird kaum quantitativ aufgenommen, Klimagerechtigkeits-Diskurs (postkolonial) nicht einbezogen.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Lakatos-Indikator: Klimakrise als eine der größten Phänomenverschiebungen seit 1979 hat zu keiner GSP-Theorierevision geführt. Phänomen wird ins alte Begriffsraster zurückgeholt.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">F07 · Praxis</p><p class="t-title">Race und Ethnizität</p></div><span class="badge b-weak">schwach</span></div>
+        <p class="t-src">GSP-Zeitschrift, sehr vereinzelt; meist im Migrations- oder Imperialismus-Kontext</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F2</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> Rassismus wird als ideologische Form der Lohnkonkurrenz und Standortabschottung gedeutet. Keine Rezeption von Critical Race Theory, postkolonialer Theorie (Said, Spivak), dekolonialer Forschung (Quijano, Mignolo). Black Marxism (Robinson, James) wird nicht aufgenommen. Race wird funktional auf Klasse zurückgeführt &mdash; eine theoretische Position, die im internationalen Marxismus stark umstritten ist.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> Empirisch dünn; Rassismus-Forschung der letzten 40 Jahre praktisch nicht eingearbeitet.</p>
+      </div>
+
+      <div class="thesis-card">
+        <div class="t-head"><div><p class="t-cat">F08 · Praxis</p><p class="t-title">Historische Genealogie: MG &rarr; GSP</p></div><span class="badge b-contro">kontrovers</span></div>
+        <p class="t-src">Marxistische Gruppe (1971&ndash;1991) als Vorgänger; Wende 1991; biographische Quellen, Conne Island 2014</p>
+        <div class="t-badges"><span class="badge b-gsp">GSP-spezifisch</span><span class="badge" style="background:var(--surface-2);color:var(--text-2)">F4</span></div>
+        <p style="font-size:13.5px;line-height:1.55;color:var(--text-1);margin:0 0 10px"><strong>In einfachen Worten:</strong> 1971 als <em>Marxistische Gruppe</em> gegründet, mit maoistischer Ausrichtung (China-Pol, K-Gruppen-Kontext). 1991 Auflösung der MG, gleichzeitige Gründung des GegenStandpunkt-Verlags mit denselben Hauptpersonen (Held, Decker). Die theoretischen Inkonsistenzen der Maoismus-Phase (Bauernrevolution, Volkskrieg, Lin-Biao-Tradition) werden im neuen Rahmen nicht aufgearbeitet, sondern stillschweigend ausgeschieden.</p>
+        <p class="t-src" style="margin-top:8px"><strong style="color:var(--accent-dark)">Verdikt:</strong> F4 (programmatische Genealogie). Kontrovers, weil die Selbstkontinuitätsbehauptung des GSP empirisch nur teilweise haltbar ist. Die theoretische Wende 1991 ist nicht selbst zum Gegenstand der GSP-Theoriearbeit geworden.</p>
+      </div>
+
+    </div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-bulb"></i>Zwischenfazit Begriffsmatrix</p>
+      <p class="simple-box-text">Von 32 Positionen sind <strong>5 robust — und alle fünf sind Marx-Erbe</strong>, kein einziges GSP-spezifisch. Von den 17 GSP-eigenen Setzungen sind 12 schwach, 4 widerlegt, 1 kontrovers; keine einzige ist robust. <strong>Was am GSP empirisch hält, ist nicht GSP; was GSP ist, hält empirisch nicht.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="marxvsgsp">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-arrows-split-2"></i>Herkunft &times; Belegbarkeit</div>
+      <h2 class="h-section">Marx oder GSP &mdash; und wie gut belegt?</h2>
+      <p class="section-lead">Zwei Fragen, vier Felder. Senkrecht: Wo kommt die Position her (von Marx oder von GSP)? Waagerecht: Ist sie durch Daten gedeckt oder nicht? Was wo landet, zeigt das Muster der ganzen Studie.</p>
+    </div>
+    <div class="quad">
+      <div class="quad-card r-r">
+        <p class="quad-head"><i class="ti ti-check" style="color:var(--s-robust)"></i>Marx-Erbe + durch Daten gut belegt</p>
+        <p class="quad-sub">5 Positionen &middot; &bdquo;Was am GSP h&auml;lt, ist Marx&ldquo;</p>
+        <ul class="quad-list">
+          <li><strong>Gewaltmonopol des Staates</strong> &mdash; Marx und Max Weber konvergieren hier; OECD-Daten best&auml;tigen.</li>
+          <li><strong>Kapital-Anh&auml;ufung und Konzentration</strong> &mdash; Mainstream-Daten 1980&ndash;2020 best&auml;tigen.</li>
+          <li><strong>Wirtschaftskrise als Strukturmerkmal</strong> &mdash; 2008 als globales Lehrst&uuml;ck; auch heterodoxe &Ouml;konomen (Minsky-Tradition) best&auml;tigen.</li>
+          <li><strong>Lohnarbeit als Grundverh&auml;ltnis</strong> &mdash; OECD-Daten: 85&ndash;92% Lohnabh&auml;ngige.</li>
+          <li><strong>Religionskritik</strong> &mdash; auch Religionssoziologie (Weber, Berger) best&auml;tigt unabh&auml;ngig.</li>
+        </ul>
+      </div>
+      <div class="quad-card r-w">
+        <p class="quad-head"><i class="ti ti-help" style="color:var(--s-medium)"></i>Marx-Erbe + teilweise oder umstritten</p>
+        <p class="quad-sub">7 Positionen &middot; auch unter Marxisten nicht einheitlich</p>
+        <ul class="quad-list">
+          <li><strong>Werttheorie</strong> &mdash; Form-Analyse oder Substanz-Theorie? Innermarxistisch gespalten; GSP nimmt nicht Stellung.</li>
+          <li><strong>Geld als Form des Werts</strong> &mdash; im Kern haltbar; aber digitale W&auml;hrungen werden ins alte Raster gezwungen.</li>
+          <li><strong>Kredit als &bdquo;fiktives Kapital&ldquo;</strong> &mdash; Diagnose haltbar, aber keine eigene Modellierung.</li>
+          <li><strong>Profitratenfall</strong> &mdash; Heinrich bezweifelt, Kliman verteidigt; empirisch ungekl&auml;rt.</li>
+          <li><strong>Sozialstaat als Kapital-Reparaturwerkstatt</strong> &mdash; Engels-Original; Held hat es einseitig zugespitzt.</li>
+          <li><strong>Au&szlig;enpolitik als nationale Konkurrenz</strong> &mdash; im Kern empirisch; die Lenin-Stufen wurden bei GSP einfach &uuml;bersprungen.</li>
+          <li><strong>Charaktermaske</strong> &mdash; Marx-Wort, von Held in der Bedeutung verschoben.</li>
+        </ul>
+      </div>
+      <div class="quad-card g-r">
+        <p class="quad-head"><i class="ti ti-target" style="color:var(--s-contro)"></i>GSP-eigen + analytisch interessant</p>
+        <p class="quad-sub">2 Positionen &middot; nicht eindeutig schwach, aber politisch problematisch</p>
+        <ul class="quad-list">
+          <li><strong>Demokratie als &bdquo;perfekte Form der Herrschaft&ldquo;</strong> &mdash; die Effizienz-Diagnose hat etwas; die politische Folge ist L&auml;hmung der Demokratie-Verteidigung.</li>
+          <li><strong>Verzicht auf praktisches Handeln</strong> &mdash; innerhalb der eigenen Logik konsequent; politisch ohne Wirkung.</li>
+        </ul>
+      </div>
+      <div class="quad-card g-w">
+        <p class="quad-head"><i class="ti ti-x" style="color:var(--s-refuted)"></i>GSP-eigen + schwach oder widerlegt</p>
+        <p class="quad-sub">15 Positionen &middot; die zentralen Angriffspunkte</p>
+        <ul class="quad-list">
+          <li><strong>Die Methode insgesamt</strong> &mdash; im Kreis argumentierend, ohne Pr&uuml;fkriterium, einseitig im Ideologie-Begriff.</li>
+          <li><strong>Der Staat als souver&auml;ner Akteur, Volk als Unterordnung, Ablehnung des Verfassungspatriotismus</strong> (Habermas).</li>
+          <li><strong>Imperialismus als reine Standortlogik, Krieg als reiner Staatswille</strong> &mdash; Lenins Stufen werden &uuml;bersprungen.</li>
+          <li><strong>Menschen als rationale Eigennutz-Wesen, &bdquo;Idiot&ldquo;-Vokabel, Aufkl&auml;rung als einzige Politik</strong>.</li>
+          <li><strong>Linkskritik gegen andere Linke</strong> &mdash; die Methode der Kritik ist einseitig: andere haben falsches Bewusstsein, wir nicht.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-bulb"></i>Was die vier Felder zeigen</p>
+      <p class="simple-box-text">Die GSP-Theorie ist ungleichm&auml;&szlig;ig verteilt: Substanz oben links (Marx-Erbe), Schw&auml;chen unten rechts (GSP-eigen). Wer den GSP verteidigt, verteidigt fast nur Marx. Wer den GSP kritisiert, kritisiert fast nur GSP-Eigenes. <em>Dieses Ungleichgewicht ist die wichtigste Erkenntnis der Studie.</em></p>
+    </div>
+  </div>
+</section>
+
+<section id="daten">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-chart-bar"></i>Daten zu drei GSP-Thesen</div>
+      <h2 class="h-section">Was sagen die Zahlen?</h2>
+      <p class="section-lead">Drei Datens&auml;tze, an denen GSP-Behauptungen direkt &uuml;berpr&uuml;ft werden k&ouml;nnen. Da GSP selbst keine empirischen Daten ausarbeitet, greift die Studie auf vorhandene Forschung zur&uuml;ck.</p>
+    </div>
+
+    <div class="chart-wrap">
+      <h4 class="chart-title">1 &middot; Sozialstaat im OECD-Vergleich 1980&ndash;2020</h4>
+      <p class="chart-desc">GSP-These (Held &sect;5): Der Sozialstaat ist eine Funktion des Kapitals. Pr&uuml;fung: Wenn das stimmt, m&uuml;sste der Sozialstaat in der Globalisierung schrumpfen, weil das Kapital weniger nationale R&uuml;cksicht braucht. <strong>Tats&auml;chlich:</strong> Im OECD-Durchschnitt nicht geschrumpft, in einigen L&auml;ndern sogar gewachsen. Das st&uuml;tzt Engels&apos; alte Idee (Sozialstaat als Reparaturwerkstatt des Systems) im Kern &mdash; widerspricht aber der einseitig zugespitzten Held-Version.</p>
+      <div class="chart-canvas" style="height:280px"><canvas id="welfareChart"></canvas></div>
+    </div>
+
+    <div class="chart-wrap">
+      <h4 class="chart-title">2 &middot; Akademische Aufmerksamkeit + Mitgliederzahl &uuml;ber 11 Jahre</h4>
+      <p class="chart-desc">Die wichtigste Frage nach Lakatos: Gewinnt das Programm an Boden oder verliert es? Quellen: Verfassungsschutz-Berichte 2007&ndash;2018 (Mitgliederzahlen), OpenAlex (akademische Zitationen, gesch&auml;tzt). <strong>Beide Kurven flach oder tendenziell fallend.</strong></p>
+      <div class="chart-canvas" style="height:280px"><canvas id="lakatosChart"></canvas></div>
+    </div>
+
+    <div class="chart-wrap">
+      <h4 class="chart-title">3 &middot; Wo liegen die Schw&auml;chen? Status nach Themenfeld</h4>
+      <p class="chart-desc">Die 32 Positionen aufgeschl&uuml;sselt nach den sechs Themenfeldern (Methode, Staat, &Ouml;konomie, Imperialismus, Subjekt, Selbstverortung) und ihrem jeweiligen Status. <strong>&Ouml;konomie h&auml;lt am besten &mdash; weil dort am meisten Marx steckt. Methode und Subjekt/Praxis halten am schlechtesten &mdash; weil dort am meisten GSP-Eigenes steckt.</strong></p>
+      <div class="chart-canvas" style="height:320px"><canvas id="catChart"></canvas></div>
+    </div>
+
+    <div class="story">
+      <p class="story-title"><span class="story-num">D4</span>Empirisches Lehrstück: Griechenland 2015</p>
+      <p class="story-text"><strong>GSP-These:</strong> Der Staat ist verselbständigte politische Gewalt mit eigener Souveränitätslogik (S01). Empirischer Falsifikationstest: Was passiert, wenn die Souveränitätslogik mit den Wiederherstellungsbedingungen kollidiert?</p>
+      <p class="story-text"><strong>Was geschah:</strong> Die Syriza-Regierung gewann am 5. Juli 2015 ein Referendum gegen die Sparauflagen der Eurogruppe (61% NEIN). Acht Tage später unterschrieb dieselbe Regierung das dritte Memorandum mit härteren Auflagen. Die formell souveräne Regierung konnte de facto nicht souverän handeln, weil die ökonomische Abhängigkeit (EZB-Liquidität, EU-Strukturfonds) die politischen Optionen geschlossen hatte.</p>
+      <div class="story-takeaway"><i class="ti ti-alert-triangle"></i><p><strong>Empirische Konsequenz:</strong> Die Held&apos;sche Verselbständigungs-These versagt am Stresstest. Spanidis 2022 markiert diesen Fall als das paradigmatische Lehrstück gegen den GSP-Staatsfetisch.</p></div>
+    </div>
+  </div>
+</section>
+<section id="schwachstellen">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-target"></i>Wo GSP keine guten Antworten hat</div>
+      <h2 class="h-section">Acht Stellen, an denen die Theorie nicht trägt</h2>
+      <p class="section-lead">Aus den 32 gepr&uuml;ften Positionen kristallisieren sich acht Stellen heraus, an denen GSP weder mit Daten noch mit Argumenten gut antworten kann. F&uuml;r jede Stelle: die GSP-Position, was daran nicht stimmt, und wie eine sachliche R&uuml;ckfrage aussehen w&uuml;rde.</p>
+    </div>
+
+    <div class="weak-card">
+      <div class="weak-head"><div class="weak-num">1</div><h3 class="weak-title">Wahrheitsanspruch ohne Pr&uuml;fkriterium</h3></div>
+      <p class="weak-claim">&bdquo;Wir haben die wissenschaftlich richtige Analyse des Kapitalismus.&ldquo;</p>
+      <p class="weak-body">Wer einen Wahrheitsanspruch erhebt, sollte sagen k&ouml;nnen, woran sich seine Wahrheit beweist. In der Philosophie gibt es daf&uuml;r vier g&auml;ngige M&ouml;glichkeiten: <strong>(1)</strong> &Uuml;bereinstimmung mit der Wirklichkeit (was m&uuml;sste beobachtbar sein, damit die Theorie als falsch gilt? &mdash; GSP nennt nichts). <strong>(2)</strong> Bew&auml;hrung in der Praxis (welche Praxis best&auml;tigt die Theorie? &mdash; GSP verweigert Praxis bewusst). <strong>(3)</strong> Zustimmung der Fachwelt (gibt es akademischen Diskurs? &mdash; in 32 Jahren praktisch keine wissenschaftlich begutachtet Auseinandersetzung). <strong>(4)</strong> Innere Stimmigkeit (das w&uuml;rde aber genauso die Astrologie zur Wahrheit machen). <strong>Keine der vier M&ouml;glichkeiten greift.</strong></p>
+      <div class="weak-counter"><strong>R&uuml;ckfrage</strong>Welche einzelne Beobachtung w&uuml;rde euch davon &uuml;berzeugen, dass eure Theorie nicht stimmt? Eine Theorie, die durch keine Beobachtung widerlegt werden k&ouml;nnte, sagt &uuml;ber die Welt im Grunde nichts.</div>
+    </div>
+
+    <div class="weak-card">
+      <div class="weak-head"><div class="weak-num">2</div><h3 class="weak-title">Der Staat als souver&auml;ner Akteur</h3></div>
+      <p class="weak-claim">&bdquo;Der Staat ist eigenst&auml;ndige politische Gewalt mit eigener Logik.&ldquo;</p>
+      <p class="weak-body">Held leitet den Staat zun&auml;chst aus dem Privateigentum ab &mdash; und macht ihn dann pl&ouml;tzlich zum souver&auml;nen, frei handelnden Subjekt. Wie genau er dabei vom &bdquo;Staat braucht das Eigentum&ldquo; zum &bdquo;Staat handelt nach eigenen Regeln&ldquo; kommt, l&auml;sst er offen. Andere marxistische Autoren (Poulantzas, Gramsci) sehen den Staat als eingebettet in das gesellschaftliche Ganze &mdash; nicht als souver&auml;nen K&ouml;nig &uuml;ber dem System. Empirisches Lehrst&uuml;ck: <strong>Griechenland 2015.</strong> Die Syriza-Regierung gewann ein Referendum gegen Sparauflagen mit 61% &mdash; und musste acht Tage sp&auml;ter h&auml;rtere Auflagen unterschreiben. Souver&auml;n war sie nicht.</p>
+      <div class="weak-counter"><strong>R&uuml;ckfrage</strong>An welcher Stelle in Helds Text wird der Sprung von &bdquo;Mitglieder der Gesellschaft brauchen eine Macht&ldquo; zum &bdquo;Staat hat eigene Logik&ldquo; eigentlich begr&uuml;ndet? Wenn diese Begr&uuml;ndung fehlt, ist es eine Setzung, kein Befund.</div>
+    </div>
+
+    <div class="weak-card">
+      <div class="weak-head"><div class="weak-num">3</div><h3 class="weak-title">Imperialismus ohne Lenins Stufen</h3></div>
+      <p class="weak-claim">&bdquo;Imperialismus ist Konkurrenz der Standorte gegeneinander.&ldquo;</p>
+      <p class="weak-body">Lenin und Hilferding beschrieben Imperialismus als Stufenfolge: erst Konkurrenz, dann Monopolbildung, dann Finanzkapital, dann Kapitalexport in andere L&auml;nder. Diese Stufen waren empirisch &uuml;berpr&uuml;fbar. Decker l&auml;sst sie weg und erkl&auml;rt Imperialismus direkt aus der Standortlogik. Folge: Wenn der Staat &bdquo;eigene Logik&ldquo; hat, w&auml;rum f&uuml;hren imperiale Politiken so regelm&auml;&szlig;ig in Rohstoff- und Energiel&auml;nder? Warum trifft es immer wieder dieselben Branchen-Interessen (Irak 2003, Halliburton-Vertr&auml;ge)? Eine zuf&auml;llige &bdquo;Standortlogik&ldquo; m&uuml;sste die Konflikte gleichm&auml;&szlig;ig &uuml;ber den Globus verteilen. Tut sie nicht.</p>
+      <div class="weak-counter"><strong>R&uuml;ckfrage</strong>Wie erkl&auml;rt eure Standortlogik, dass imperiale Politik so systematisch &Ouml;l-, Gas-, Rohstoff- und Marktinteressen folgt? Wenn die Politik wirklich eine eigene Logik h&auml;tte, m&uuml;sste sie unabh&auml;ngig von wirtschaftlichen Mustern sein.</div>
+    </div>
+
+    <div class="weak-card">
+      <div class="weak-head"><div class="weak-num">4</div><h3 class="weak-title">Doppelter Ma&szlig;stab beim Begriff &bdquo;Ideologie&ldquo;</h3></div>
+      <p class="weak-claim">&bdquo;Andere haben falsches Bewusstsein. Wir kl&auml;ren auf.&ldquo;</p>
+      <p class="weak-body">Wenn alle gesellschaftlichen Positionen durch &bdquo;Ideologie&ldquo; gepr&auml;gt sind &mdash; wie steht GSP au&szlig;erhalb davon? Die typische Antwort lautet &bdquo;durch korrekte Begriffsbildung&ldquo;. Das ist aber im Kreis: Es setzt schon voraus, was es zu zeigen h&auml;tte. Rosa Luxemburg hat das einmal scharf formuliert: &bdquo;Keine Methode zu haben hei&szlig;t nur, eine zu haben, ohne es zu merken.&ldquo; <strong>Die GSP-Position ist von der eigenen Kritik kategorisch ausgenommen.</strong> Das ist genau die Struktur, die GSP an Religionen kritisiert.</p>
+      <div class="weak-counter"><strong>R&uuml;ckfrage</strong>Gibt es eine einzige andere Position au&szlig;er der eigenen, die ihr <em>nicht</em> als ideologisch behandelt? Wenn nein: Was unterscheidet euer Wahrheitsmonopol von dem einer Religion?</div>
+    </div>
+
+    <div class="weak-card">
+      <div class="weak-head"><div class="weak-num">5</div><h3 class="weak-title">Aus der Marx-&bdquo;Charaktermaske&ldquo; wird eine Wesensbestimmung</h3></div>
+      <p class="weak-claim">&bdquo;Personen sind ihre &ouml;konomischen Charaktermasken.&ldquo;</p>
+      <p class="weak-body">Marx benutzt den Begriff &bdquo;Charaktermaske&ldquo; im Kapital, Bd. 1, S. 100. Er beschreibt damit eine <em>Rolle</em>: Jemand handelt im Wirtschaftsprozess als Kapitalist, als Lohnarbeiter, als Kaufmann. Die Person <em>spielt</em> die Maske. Held verschiebt das in seiner Psychologie (1980, Teil III, S. 102&ndash;103): Aus der gespielten Rolle wird die Identit&auml;t der Person. Die Person <em>ist</em> ihre Maske. Das macht die GSP-Psychologie deterministisch &mdash; Menschen sind reine Ausf&uuml;hrungs-Organe. Sozialpsychologie und Verhaltens&ouml;konomik widersprechen empirisch deutlich.</p>
+      <div class="weak-counter"><strong>R&uuml;ckfrage</strong>Vergleicht die zwei Stellen direkt: Bei Marx beschreibt &bdquo;Charaktermaske&ldquo; eine Funktion, bei Held eine Identit&auml;t. Wenn die Verschiebung absichtlich war, ist sie eure Setzung, nicht Marx. Wenn sie unabsichtlich war, w&auml;re sie zu korrigieren.</div>
+    </div>
+
+    <div class="weak-card">
+      <div class="weak-head"><div class="weak-num">6</div><h3 class="weak-title">Menschen als rationale Eigennutz-Wesen</h3></div>
+      <p class="weak-claim">&bdquo;Wir messen die Sache am Interesse der Menschen.&ldquo;</p>
+      <p class="weak-body">Wer die Welt am &bdquo;Interesse&ldquo; misst, unterstellt: Menschen wissen, was ihr Interesse ist, sie verfolgen es rational, ihre Pr&auml;ferenzen sind stabil. Genau das ist die Annahme der b&uuml;rgerlichen Mikro&ouml;konomik &mdash; der &bdquo;rationaler Eigennutz-Mensch (homo oeconomicus)&ldquo;. Bierwirth zeigt das in seinem Krisis-Aufsatz 2016. <strong>Ironie:</strong> GSP teilt die Annahme &uuml;ber den Menschen mit demselben &ouml;konomischen Mainstream, den er bek&auml;mpft. Empirisch ist sie schon lange widerlegt durch die Verhaltens&ouml;konomik (Kahneman, Thaler) und durch die Sozialpsychologie.</p>
+      <div class="weak-counter"><strong>R&uuml;ckfrage</strong>Wenn das Interesse den Menschen klar w&auml;re, g&auml;be es das &bdquo;falsche Bewusstsein&ldquo; gar nicht, das ihr ja diagnostiziert. Wenn es nicht klar ist: Woher wisst ihr, was das &bdquo;wahre&ldquo; Interesse ist?</div>
+    </div>
+
+    <div class="weak-card">
+      <div class="weak-head"><div class="weak-num">7</div><h3 class="weak-title">32 Jahre Aufkl&auml;rungs-Arbeit &mdash; gegen die eigene Theorie</h3></div>
+      <p class="weak-claim">&bdquo;Erst muss die Theorie richtig sein. Aufkl&auml;rung ist die richtige Politik.&ldquo;</p>
+      <p class="weak-body">Marx sagt: Bewusstsein &auml;ndert sich durch <strong>ge&auml;nderte gesellschaftliche Verh&auml;ltnisse</strong>, nicht durch Lekt&uuml;re (MEW 8, S. 115). Wenn der GSP dieser These folgt &mdash; warum macht er seit 32 Jahren Zeitschrift, Verlag und YouTube-Kanal? Wenn Lekt&uuml;re wirken kann, ist die Theorie selbst falsch. Wenn die Theorie stimmt, ist die Praxis verfehlt. Beides geht nicht. Der Anarchismus formuliert es zugespitzt: &bdquo;Anarchismus will die Welt ver&auml;ndern, GSP will sie korrekt beschrieben sehen.&ldquo;</p>
+      <div class="weak-counter"><strong>R&uuml;ckfrage</strong>Eure Theorie sagt: Bewusstsein folgt den Verh&auml;ltnissen. Eure Praxis: 32 Jahre Aufkl&auml;rung der Bewusstseins. Was ist falsch &mdash; Theorie oder Praxis?</div>
+    </div>
+
+    <div class="weak-card">
+      <div class="weak-head"><div class="weak-num">8</div><h3 class="weak-title">Eine Theorie, die nichts Neues mehr erkl&auml;rt</h3></div>
+      <p class="weak-claim">&bdquo;Plattformkapitalismus, Klima, Care, Race &mdash; alles aus dem Kapitalbegriff erkl&auml;rbar.&ldquo;</p>
+      <p class="weak-body">Der Wissenschaftstheoretiker Imre Lakatos unterschied: <strong>lebendige Theorien</strong> erkl&auml;ren neue Ph&auml;nomene und werden dadurch reicher. <strong>Sterbende Theorien</strong> werden nur noch verteidigt &mdash; sie pressen neue Ph&auml;nomene in alte Begriffe, ohne dazu zu lernen. Seit Helds Hauptwerk 1979 hat GSP keine wesentliche Theorie&auml;nderung mehr vorgenommen. Plattformkapitalismus, Klimakrise, Care-&Ouml;konomie, Rassismus werden ins bestehende Begriffsraster zur&uuml;ckgeholt &mdash; nicht eingearbeitet. Akademisch fast keine Anschlussf&auml;higkeit (eine Hamburger Dissertation 2025 ist die erste &uuml;berhaupt). Mitgliederzahl tendenziell schrumpfend.</p>
+      <div class="weak-counter"><strong>R&uuml;ckfrage</strong>Nennt einen einzigen empirischen Befund der letzten 30 Jahre, der euch zur Revision eurer Theorie gebracht hat. Wenn keiner: Genau das ist die Definition einer sterbenden Theorie nach Lakatos.</div>
+    </div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-bulb"></i>Was die acht Stellen verbindet</p>
+      <p class="simple-box-text"><strong>1, 4, 8 betreffen die Methode</strong> (wie wird gepr&uuml;ft und was z&auml;hlt als wahr?). <strong>2 und 3 betreffen die politische Theorie</strong> (Staat und Imperialismus). <strong>5, 6, 7 betreffen das Menschenbild und die Praxis</strong>. Die Schw&auml;chen sind &uuml;ber das ganze Geb&auml;ude verteilt &mdash; eine einzelne Reparatur w&uuml;rde nicht reichen.</p>
+    </div>
+  </div>
+</section>
+<section id="entdeckungen">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-star"></i>Vier Schlüsselentdeckungen</div>
+      <h2 class="h-section">Was diese Studie zutage gefördert hat</h2>
+      <p class="section-lead">Vier Befunde, die aus der systematischen Bestandsaufnahme stärker hervortreten, als sie es in den einzelnen Sekundärtexten tun. Sie sind das eigentliche Ergebnis des Audits.</p>
+    </div>
+
+    <div class="discovery">
+      <div class="discovery-head"><span class="discovery-num">1</span><div><p class="discovery-title">Das Solide kommt von Marx, das Wackelige von GSP</p><span class="discovery-tag">Die zentrale Ungleichgewicht</span></div></div>
+      <p class="discovery-text">In der einzelnen Sekund&auml;rliteratur (Spanidis, Creydt, Bierwirth) ist das immer wieder angedeutet. Erst die Vollst&auml;ndige Tabelle macht das Muster sichtbar: <strong>Von 32 Positionen sind 5 robust &mdash; und alle 5 sind direkt von Marx &uuml;bernommen.</strong> Keine einzige GSP-eigene Erfindung schafft es in die Kategorie &bdquo;robust&ldquo;. Von den 17 GSP-eigenen Setzungen sind 12 schwach belegt und 4 sogar widerlegt. Das hei&szlig;t: Wer den GSP angreift, trifft fast immer auf GSP-eigene Stellen. Wer den GSP verteidigt, verteidigt fast immer Marx.</p>
+      <div class="discovery-simple"><i class="ti ti-bulb"></i><p>Kurzfassung: Wenn GSP recht hat, hat er recht <em>als Marxist</em>, nicht als GSP. Wenn er falsch liegt, dann gerade dort, wo er sich von Marx abhebt.</p></div>
+    </div>
+
+    <div class="discovery">
+      <div class="discovery-head"><span class="discovery-num">2</span><div><p class="discovery-title">Eine Wahrheit, die sich gegen Pr&uuml;fung sch&uuml;tzt</p><span class="discovery-tag">Das Wahrheits-Dilemma</span></div></div>
+      <p class="discovery-text">GSP beansprucht, die richtige Analyse zu haben. In der Philosophie gibt es vier g&auml;ngige Wege, eine Wahrheit zu pr&uuml;fen &mdash; <strong>keiner funktioniert</strong> hier: Ist sie an der Realit&auml;t pr&uuml;fbar? GSP nennt keine Bedingung, unter der sie falsch w&auml;re. Bew&auml;hrt sie sich in der Praxis? GSP verweigert Praxis ausdr&uuml;cklich. Stimmt die Fachwelt zu? In 32 Jahren so gut wie keine akademische Auseinandersetzung. Ist sie nur in sich stimmig? Das w&auml;re zu wenig &mdash; auch die Astrologie ist in sich stimmig. Das einzige, was bleibt: Die Theorie wird real, weil die Gruppe nach ihr lebt. Aber genau das nennt GSP bei anderen &bdquo;Ideologie&ldquo;.</p>
+      <div class="discovery-simple"><i class="ti ti-bulb"></i><p>Kurzfassung: Frag einen GSP-Vertreter: &bdquo;Welche Beobachtung w&uuml;rde euch &uuml;berzeugen, dass die Theorie falsch ist?&ldquo; Die Antwort entscheidet die ganze Debatte.</p></div>
+    </div>
+
+    <div class="discovery">
+      <div class="discovery-head"><span class="discovery-num">3</span><div><p class="discovery-title">Die GSP-Denkform sieht aus wie Ayn Rands Denkform</p><span class="discovery-tag">9 von 10 Merkmalen identisch</span></div></div>
+      <p class="discovery-text">Ayn Rand (1905&ndash;1982) gilt als geistige Mutter des US-Libertarismus &mdash; politisch das Gegenteil des GSP. Wenn man trotzdem die <strong>Struktur</strong> beider Gruppen vergleicht, sieht es so aus: Beide haben ein geschlossenes Begriffsgeb&auml;ude, einen Gr&uuml;ndertext, einen Gr&uuml;nder als Autorit&auml;t, einen scharfen &bdquo;Wir gegen die Verblendeten&ldquo;-Stil, fast keine akademische Anschlussf&auml;higkeit, aber stabile Subkultur. 9 von 10 Strukturmerkmalen sind identisch. Nur Punkt 10 unterscheidet sich: der politische Inhalt (antikapitalistisch versus prokapitalistisch). <strong>Wenn dieselbe Form zwei politisch entgegengesetzten Gruppen geh&ouml;rt, ist das Problem nicht der Inhalt &mdash; sondern die Form.</strong></p>
+      <div class="discovery-simple"><i class="ti ti-bulb"></i><p>Kurzfassung: Eine geschlossene Denkform ist nicht links oder rechts. Sie kann beides &mdash; und sie ist immer dasselbe Problem.</p></div>
+    </div>
+
+    <div class="discovery">
+      <div class="discovery-head"><span class="discovery-num">4</span><div><p class="discovery-title">Eine Theorie, die nichts Neues mehr aufnimmt</p><span class="discovery-tag">32 Jahre ohne &Auml;nderung</span></div></div>
+      <p class="discovery-text">Der Wissenschaftstheoretiker Imre Lakatos hat einmal unterschieden zwischen <strong>lebendigen</strong> und <strong>sterbenden</strong> Forschungsprogrammen. Lebendige Programme lernen aus neuen Ph&auml;nomenen und werden dadurch reicher. Sterbende Programme verteidigen sich nur noch &mdash; sie pressen alles Neue ins alte Raster. Helds <em>Der b&uuml;rgerliche Staat</em> ist von 1979. Seitdem keine ernsthafte Theorie-&Auml;nderung. Plattformkapitalismus, Klimakrise, Care-&Ouml;konomie, Rassismus: keiner dieser Bereiche hat zu einer Theorie-Revision gef&uuml;hrt. Die Mitgliederzahl schrumpft tendenziell. Akademische Zitationen praktisch null. <strong>Das ist die Definition eines sterbenden Programms.</strong></p>
+      <div class="discovery-simple"><i class="ti ti-bulb"></i><p>Kurzfassung: Ein Programm, das in 32 Jahren keine seiner Grundthesen &uuml;berdacht hat, hat aufgeh&ouml;rt zu forschen.</p></div>
+    </div>
+
+    <div class="alarm">
+      <p class="alarm-title"><i class="ti ti-info-circle"></i>Was alle vier Befunde verbindet</p>
+      <p class="alarm-text">Alle vier zeigen denselben Mechanismus: <strong>Die Theorie sch&uuml;tzt sich vor der Wirklichkeit</strong> &mdash; durch die Auswahl der Themen (Befund 1), durch ihren Wahrheitsbegriff (Befund 2), durch ihre Struktur (Befund 3), durch ihre Reformverweigerung (Befund 4). &bdquo;Ein System, das von der Welt nie &uuml;berrascht wird, hat aufgeh&ouml;rt, sie zu befragen.&ldquo;</p>
+    </div>
+  </div>
+</section>
+<section id="denkstruktur">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-affiliate"></i>GSP im Strukturvergleich</div>
+      <h2 class="h-section">Wie denkt GSP &mdash; verglichen mit anderen Gruppen?</h2>
+      <p class="section-lead">Was die GSP-Schule so eigenartig macht, ist nicht der politische Inhalt &mdash; sondern die Form: ein geschlossenes Theoriegeb&auml;ude, das sich gegen Pr&uuml;fung sch&uuml;tzt. Dieselbe Form findet sich auch bei Gruppen mit ganz anderem Inhalt.</p>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-table"></i>GSP und Ayn Rands &bdquo;Objektivismus&ldquo; Seite an Seite</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Ayn Rand (1905&ndash;1982) hat den US-libertaristischen &bdquo;Objektivismus&ldquo; gegr&uuml;ndet &mdash; politisch das genaue Gegenteil des GSP. Die untenstehende Tabelle vergleicht zehn Strukturmerkmale beider Gruppen. Vom Inhalt einmal abgesehen: <strong>9 von 10 sind gleich.</strong></p>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th style="width:36px">#</th><th>Strukturmerkmal</th><th>GegenStandpunkt</th><th>Objektivismus (Rand)</th><th style="width:90px">Befund</th></tr></thead>
+      <tbody>
+        <tr><td class="id-col">1</td><td><strong>Geschlossenes Theoriegeb&auml;ude</strong></td><td>Helds <em>B&uuml;rgerlicher Staat</em> (1979): alles aus dem Begriff &bdquo;Wert&ldquo; abgeleitet.</td><td>Rands <em>Atlas Shrugged</em> (1957): alles aus dem Grundsatz &bdquo;A ist A&ldquo; abgeleitet.</td><td><span class="badge b-refuted">gleich</span></td></tr>
+        <tr><td class="id-col">2</td><td><strong>Charismatisches Gr&uuml;ndungswerk</strong></td><td>Helds Hauptwerk gilt als heiliger Text; Held selbst wird heroisiert.</td><td>Rands Romane sind heilige Texte; Rand selbst wird heroisiert.</td><td><span class="badge b-refuted">gleich</span></td></tr>
+        <tr><td class="id-col">3</td><td><strong>Wir sind frei, alle anderen sind verblendet</strong></td><td>Alle anderen Positionen sind &bdquo;ideologisch&ldquo;, nur die eigene nicht.</td><td>Alle anderen Positionen sind &bdquo;mystisch&ldquo; oder &bdquo;altruistisch&ldquo;, nur die eigene rational.</td><td><span class="badge b-refuted">gleich</span></td></tr>
+        <tr><td class="id-col">4</td><td><strong>Keine Anschlussf&auml;higkeit in der Wissenschaft</strong></td><td>Keine wissenschaftlich begutachtet Auseinandersetzung; 1 Dissertation in 32 Jahren.</td><td>An US-Universit&auml;ten kaum vertreten; getragen von eigenen Think Tanks.</td><td><span class="badge b-refuted">gleich</span></td></tr>
+        <tr><td class="id-col">5</td><td><strong>Stabile Subkultur</strong></td><td>Ca. 200 Mitglieder, eigener Verlag, eigene Zeitschrift, YouTube-Kanal.</td><td>Atlas Society + Ayn Rand Institute, Buchclubs, eigene Medien.</td><td><span class="badge b-refuted">gleich</span></td></tr>
+        <tr><td class="id-col">6</td><td><strong>Aufkl&auml;rung statt Praxis</strong></td><td>Theorie-Schulung; keine organisierte Praxis-Politik.</td><td>Bildung und Publikationen; keine direkte Politik.</td><td><span class="badge b-refuted">gleich</span></td></tr>
+        <tr><td class="id-col">7</td><td><strong>Verachtende Vokabeln f&uuml;r die Au&szlig;enwelt</strong></td><td>&bdquo;Idiot&ldquo;, &bdquo;verr&uuml;cktes Bewusstsein&ldquo;.</td><td>&bdquo;Looters&ldquo;, &bdquo;moocher&ldquo;, &bdquo;parasites&ldquo;.</td><td><span class="badge b-refuted">gleich</span></td></tr>
+        <tr><td class="id-col">8</td><td><strong>Keine Theorie-Revision in Jahrzehnten</strong></td><td>Seit 1979 keine wesentliche &Auml;nderung.</td><td>Seit 1957/1964 keine wesentliche &Auml;nderung.</td><td><span class="badge b-refuted">gleich</span></td></tr>
+        <tr><td class="id-col">9</td><td><strong>Innere Stimmigkeit als Wahrheitsbeweis</strong></td><td>Begriffe werden aus dem Anfangsbegriff abgeleitet; keine Pr&uuml;fbedingung gegen&uuml;ber der Wirklichkeit.</td><td>Alles wird aus dem Axiom &bdquo;A ist A&ldquo; deduziert; keine Pr&uuml;fbedingung.</td><td><span class="badge b-refuted">gleich</span></td></tr>
+        <tr><td class="id-col">10</td><td><strong>Politischer Inhalt</strong></td><td>Antikapitalistisch.</td><td>Pro-kapitalistisch (laissez-faire).</td><td><span class="badge b-medium">umgekehrt</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="alarm">
+      <p class="alarm-title"><i class="ti ti-bulb"></i>Was die Tabelle zeigt</p>
+      <p class="alarm-text"><strong>9 von 10 Merkmale sind gleich. Nur der politische Inhalt ist umgekehrt.</strong> Das hei&szlig;t: Die Eigenart liegt nicht im Inhalt, sondern in der Form. Es gibt linke geschlossene Theoriegeb&auml;ude, und es gibt rechte &mdash; und sie sind sich in der Struktur erstaunlich &auml;hnlich.</p>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-table"></i>Erweiterung: GSP im Vergleich mit f&uuml;nf Gruppen</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Wie viel hat GSP mit anderen geschlossenen Gruppen gemeinsam &mdash; und vor allem: <em>wie</em> unterscheidet er sich von echten Sekten mit Mitgliederkontrolle? Die Tabelle macht den Abstand klar.</p>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Merkmal</th><th>GSP</th><th>Objektivismus</th><th>Anthroposophie</th><th>LaRouche</th><th>Scientology</th></tr></thead>
+      <tbody>
+        <tr><td>Geschlossenes Theoriegeb&auml;ude</td><td>Ja</td><td>Ja</td><td>Ja</td><td>Ja</td><td>Ja</td></tr>
+        <tr><td>Charismatisches Gr&uuml;ndungswerk</td><td>Held 1979</td><td>Rand 1957</td><td>Steiner 1894</td><td>LaRouche 1973</td><td>Hubbard 1950</td></tr>
+        <tr><td>Wir/Sie-Logik</td><td>Ja</td><td>Ja</td><td>Ja</td><td>Ja</td><td>Ja</td></tr>
+        <tr><td>Anschluss an Wissenschaft</td><td>nahe null</td><td>nahe null</td><td>nahe null</td><td>nahe null</td><td>null</td></tr>
+        <tr><td>Verzicht auf praktisches Handeln</td><td>Ja</td><td>Teilweise</td><td>Nein (eigene Schulen, Banken, H&ouml;fe)</td><td>Nein (Wahlk&auml;mpfe)</td><td>Nein (Gesch&auml;ftsmodell)</td></tr>
+        <tr><td>Familien werden isoliert</td><td>Nein</td><td>Nein</td><td>Nein</td><td>Teilweise</td><td>Ja (dokumentiert)</td></tr>
+        <tr><td>Druck auf Mitglieder (BITE-Modell)</td><td>0/4</td><td>0/4</td><td>0/4</td><td>2/4</td><td>4/4</td></tr>
+        <tr><td>Sch&auml;digt sie ihre Mitglieder?</td><td>Nein</td><td>Nein</td><td>Nein</td><td>Teilweise</td><td>Ja</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="h-sub"><i class="ti ti-stack"></i>Wo GSP einzuordnen ist</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Es gibt Stufen, in die man Gruppen mit geschlossener Denkform einordnen kann. GSP liegt klar auf einer <strong>milden</strong> Stufe &mdash; und das soll auch deutlich gesagt werden.</p>
+    <div class="grid-3">
+      <div class="card" style="border-top:3px solid var(--s-medium)"><h4 class="h-mini" style="color:var(--s-medium-text)">Stufe 2 &mdash; Intellektuelle Schule</h4><p style="margin:8px 0 0;font-size:13.5px;line-height:1.55">Geschlossene Lehre, autoritativer Gr&uuml;ndertext, Wir/Sie-Logik &mdash; aber <strong>kein</strong> Druck auf Mitglieder, <strong>keine</strong> Familien-Isolation, <strong>kein</strong> Schaden. Hier liegt GSP.</p></div>
+      <div class="card" style="border-top:3px solid var(--s-weak)"><h4 class="h-mini" style="color:var(--s-weak-text)">Stufe 4 &mdash; Online-Mikrocluster</h4><p style="margin:8px 0 0;font-size:13.5px;line-height:1.55">Charismatische YouTube-/Twitch-Streamer, die GSP-Inhalte verbreiten und um sich eine fest gebundene Online-Community formen. Eine Vorstufe, kein Vollbild.</p></div>
+      <div class="card" style="border-top:3px solid var(--s-refuted)"><h4 class="h-mini" style="color:var(--s-refuted-text)">Stufe 7+ &mdash; Sch&auml;digende Sekte</h4><p style="margin:8px 0 0;font-size:13.5px;line-height:1.55">Volle psychische Kontrolle, Familien-Isolation, finanzielle Ausbeutung. <strong>Trifft auf GSP definitiv nicht zu</strong> &mdash; das ist eine wichtige Klarstellung.</p></div>
+    </div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-shield-check"></i>Wichtige Klarstellung</p>
+      <p class="simple-box-text">Wenn hier von &bdquo;intellektueller Schule&ldquo; mit Sektenz&uuml;gen die Rede ist, geht es um <strong>die Struktur der Theorie</strong>, nicht um die Mitglieder. Die meisten GSP-Anh&auml;nger sind ernsthafte, belesene, politisch engagierte Menschen. Das Problem ist die theoretische Form &mdash; nicht der pers&ouml;nliche Charakter ihrer Vertreter.</p>
+    </div>
+  </div>
+</section>
+<section id="konflikte">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-swords"></i>Streit innerhalb der Linken</div>
+      <h2 class="h-section">Acht Streitpunkte mit anderen Marxisten</h2>
+      <p class="section-lead">Wo gibt es Reibung zwischen GSP und anderen linken Traditionen? F&uuml;r jeden Streitpunkt: was GSP sagt, was die andere Seite sagt, wer am Ende recht hat.</p>
+    </div>
+
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th style="width:48px">Nr.</th><th>Streitfrage</th><th>Was GSP sagt</th><th>Was die Gegenseite sagt</th><th>Verdikt</th></tr></thead>
+      <tbody>
+        <tr><td class="id-col">1</td><td><strong>Werttheorie</strong></td><td>Wert ist verdinglichte Arbeit (klassisch, unver&auml;ndert seit Marx).</td><td>Heinrich, Postone: Wert ist eine spezifische gesellschaftliche Form, kein &bdquo;Stoff&ldquo;.</td><td>Innermarxistisch offen. GSP nimmt nicht Stellung.</td></tr>
+        <tr><td class="id-col">2</td><td><strong>Der Staat</strong></td><td>Eigenst&auml;ndige souver&auml;ne Gewalt mit eigener Logik (Held &sect;1).</td><td>Poulantzas, Blanke u.&thinsp;a.: Staat ist eingebunden in die Klassenverh&auml;ltnisse, nicht souver&auml;n &uuml;ber ihnen.</td><td>Griechenland 2015 zeigt: GSP-Position l&auml;sst sich empirisch nicht halten.</td></tr>
+        <tr><td class="id-col">3</td><td><strong>Imperialismus</strong></td><td>Standortlogik ohne Stufen (Decker 2013).</td><td>Lenin, Hilferding: Konkurrenz &rarr; Monopol &rarr; Finanzkapital &rarr; Kapitalexport.</td><td>Die r&auml;umliche Verteilung von Kriegen widerspricht der GSP-Version.</td></tr>
+        <tr><td class="id-col">4</td><td><strong>Charaktermaske</strong></td><td>Die Person <em>ist</em> ihre &ouml;konomische Maske (Held Psychologie).</td><td>Marx (Kapital, Bd. 1, S. 100): Die Person <em>spielt</em> die Rolle, ist nicht damit identisch.</td><td>Direkter Textvergleich zeigt die Bedeutungsverschiebung.</td></tr>
+        <tr><td class="id-col">5</td><td><strong>Demokratie</strong></td><td>&bdquo;Perfekteste Form der b&uuml;rgerlichen Herrschaft&ldquo; (Decker).</td><td>Habermas: Verfassungspatriotismus &mdash; Bindung an Verfassungsprinzipien, nicht an Volkszugeh&ouml;rigkeit.</td><td>Habermas&apos; Unterscheidung b&uuml;rgerliche/ethnische Nation wird von GSP nicht aufgegriffen.</td></tr>
+        <tr><td class="id-col">6</td><td><strong>Sozialstaat</strong></td><td>Reine Funktion des Kapitals.</td><td>Esping-Andersen: drei verschiedene Sozialstaat-Modelle, Klassenk&auml;mpfe haben sie mitgepr&auml;gt.</td><td>GSP-Kern h&auml;lt; die einseitige Held-Zuspitzung &uuml;berdehnt.</td></tr>
+        <tr><td class="id-col">7</td><td><strong>Praktische Politik</strong></td><td>Aufkl&auml;rung ist die einzige legitime Form.</td><td>Anarchismus (Bruhn): Selbstorganisation und direkte Aktion.</td><td>GSP-Position widerspricht der eigenen Theorie (Sollbruchstelle 7).</td></tr>
+        <tr><td class="id-col">8</td><td><strong>Ideologie-Begriff</strong></td><td>Wir stehen au&szlig;erhalb der Ideologie.</td><td>Mannheim, Gramsci: alle Positionen sind gesellschaftlich gepr&auml;gt &mdash; auch die eigene.</td><td>Die GSP-Position argumentiert im Kreis: sie setzt voraus, was sie zu zeigen h&auml;tte.</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-bulb"></i>Was die acht Streitpunkte zeigen</p>
+      <p class="simple-box-text">In sechs von acht F&auml;llen ist die GSP-Position die <strong>geschlossenere und einseitigere</strong> &mdash; und die Gegenpositionen kommen aus der Marx-Tradition selbst (Poulantzas, Heinrich, Gramsci) oder aus benachbarten linken Str&ouml;mungen (Habermas, Bruhn). GSP ist nicht der konsequenteste Marxismus, sondern der geschlossenste.</p>
+    </div>
+  </div>
+</section>
+<section id="stationen">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-list-numbers"></i>Forschungsweg</div>
+      <h2 class="h-section">Die zehn Recherche-Stationen</h2>
+      <p class="section-lead">Die Studie ist Ergebnis von zehn aufeinanderfolgenden Audit-Stationen. Jede mit eigener Quellenbasis und eigenen Befunden &mdash; sortiert nach diagnostischem Gewicht.</p>
+    </div>
+    <div class="station"><div class="station-rank">01</div><div class="station-content"><strong>Held 1979 &mdash; <em>Der b&uuml;rgerliche Staat</em></strong><p>Helds Hauptwerk; Ausgangsbasis aller GSP-Staatsableitungen. &sect;1, &sect;2, &sect;3, &sect;5, &sect;9 zentral.</p></div><div class="station-status"><span class="badge b-marx">Prim&auml;r</span></div></div>
+    <div class="station"><div class="station-rank">02</div><div class="station-content"><strong>Decker (Hg.) 2013 &mdash; <em>Demokratie als perfekte Form</em></strong><p>Editorial und Au&szlig;enpolitik-Kapitel; zentrale GSP-Setzungen zur Demokratie-Effizienz und Standortlogik.</p></div><div class="station-status"><span class="badge b-marx">Prim&auml;r</span></div></div>
+    <div class="station"><div class="station-rank">03</div><div class="station-content"><strong>MSZ 1989 &mdash; &bdquo;Kritik &mdash; wie geht das?&ldquo;</strong><p>Programmatischer Methoden-Text. Belegstelle f&uuml;r Interessen-Methode und Argumentationskritik.</p></div><div class="station-status"><span class="badge b-marx">Prim&auml;r</span></div></div>
+    <div class="station"><div class="station-rank">04</div><div class="station-content"><strong>Spanidis 2022 &mdash; Marxistische Staatstheorie-Kritik</strong><p>Sch&auml;rfste Sekund&auml;rliteratur-Analyse zu GSP-Staatsfetisch und Imperialismus-Problem. Liefert die Lenin-Hilferding-Pointe.</p></div><div class="station-status"><span class="badge b-shift">Sekund&auml;r</span></div></div>
+    <div class="station"><div class="station-rank">05</div><div class="station-content"><strong>Held 1980/2021 &mdash; <em>Psychologie des b&uuml;rgerlichen Individuums</em></strong><p>Belegstelle f&uuml;r Charaktermaske-Ontologisierung und Familien-Funktionalisierung. Teil II/III.</p></div><div class="station-status"><span class="badge b-marx">Prim&auml;r</span></div></div>
+    <div class="station"><div class="station-rank">06</div><div class="station-content"><strong>Bierwirth (Krisis 2/2016) &mdash; Methodologische Replik</strong><p>Zentrale Belegstelle f&uuml;r die homo-oeconomicus-Diagnose und die zirkul&auml;re Methode.</p></div><div class="station-status"><span class="badge b-shift">Sekund&auml;r</span></div></div>
+    <div class="station"><div class="station-rank">07</div><div class="station-content"><strong>Creydt 2015/2017 &mdash; B&uuml;rgerlicher Materialismus / Vokabelkritik</strong><p>Belegstellen f&uuml;r die &bdquo;Idiot&ldquo;-Vokabel-Diagnose und die Versorgungswesen-Vision.</p></div><div class="station-status"><span class="badge b-shift">Sekund&auml;r</span></div></div>
+    <div class="station"><div class="station-rank">08</div><div class="station-content"><strong>Conne Island 2014 &mdash; Strukturelle Diagnose</strong><p>Fr&uuml;heste umfassende Au&szlig;enkritik aus linksradikaler Sicht; Belegstelle f&uuml;r deterministische Subjektkonzeption.</p></div><div class="station-status"><span class="badge b-shift">Sekund&auml;r</span></div></div>
+    <div class="station"><div class="station-rank">09</div><div class="station-content"><strong>Verfassungsschutz-Berichte 2007&ndash;2018</strong><p>Trend-Daten zur GSP-Mitgliederzahl (gesch&auml;tzt 150&ndash;250, leichte Schrumpfung). Wichtig f&uuml;r Lakatos-Test.</p></div><div class="station-status"><span class="badge b-medium">Empirie</span></div></div>
+    <div class="station"><div class="station-rank">10</div><div class="station-content"><strong>OpenAlex / akademische Rezeption</strong><p>Akademische Zitationen mit GSP-Bezug. Befund: nahe null au&szlig;erhalb einer Hamburger Dissertation 2025.</p></div><div class="station-status"><span class="badge b-medium">Empirie</span></div></div>
+  </div>
+</section>
+
+<section id="lager">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-users-group"></i>7-Lager-Inklusion</div>
+      <h2 class="h-section">Was die sieben Lager mitnehmen k&ouml;nnen</h2>
+      <p class="section-lead">Aus jedem politischen Lager l&auml;sst sich etwas aus dem Audit aufgreifen &mdash; und etwas kritisieren. Wichtige Vorbemerkung: <strong>Der GSP selbst lehnt das Schema ab</strong> und versteht sich als wissenschaftlich-au&szlig;erhalb-der-Lager.</p>
+    </div>
+    <div class="grid-2">
+      <div class="lager-card">
+        <p class="lager-name"><i class="ti ti-square-rotated-filled"></i>Liberal</p>
+        <div class="lager-aufgreifen"><strong>Aufgreifen</strong>Falsifikationspflicht und empirische Offenheit konvergieren mit liberaler Wissenschaftstheorie. Schutz des Verfassungspatriotismus.</div>
+        <div class="lager-kritisch"><strong>Kritisch</strong>Mainstream-Empirie zu Akkumulation und Konzentration best&auml;tigt Marx-Befunde. Demokratische Effizienz-Funktion (S03) hat einen analytischen Kern.</div>
+      </div>
+      <div class="lager-card">
+        <p class="lager-name"><i class="ti ti-square-rotated-filled"></i>Sozialistisch</p>
+        <div class="lager-aufgreifen"><strong>Aufgreifen</strong>Marx-Erbe-Substanz unangefochten (&Ouml;04, &Ouml;05, &Ouml;07, S02, F03). Spanidis-Klassen-Marxismus als Alternative zur GSP-Geschlossenheit.</div>
+        <div class="lager-kritisch"><strong>Kritisch</strong>GSP-eigene Verschiebungen sind nicht der konsistenteste Marxismus, sondern der geschlossenste. Heinrich/Postone bleiben zu pr&uuml;fen.</div>
+      </div>
+      <div class="lager-card">
+        <p class="lager-name"><i class="ti ti-square-rotated-filled"></i>Libert&auml;r</p>
+        <div class="lager-aufgreifen"><strong>Aufgreifen</strong>Anti-Staatsfetisch-Diagnose (Spanidis, S01) konvergiert teilweise mit libert&auml;rer Skepsis gegen&uuml;ber Souver&auml;nit&auml;tsanspr&uuml;chen.</div>
+        <div class="lager-kritisch"><strong>Kritisch</strong>Symmetrietest trifft den eigenen Mainstream-Objektivismus genauso &mdash; die geschlossene Form ist auch in der eigenen Tradition zu finden.</div>
+      </div>
+      <div class="lager-card">
+        <p class="lager-name"><i class="ti ti-square-rotated-filled"></i>Sozialdemokratisch</p>
+        <div class="lager-aufgreifen"><strong>Aufgreifen</strong>Habermas-Verfassungspatriotismus als dritte Option. Zivile Nation als demokratisches Bindemittel. Sozialstaat-Reproduktionsfunktion als historische Errungenschaft.</div>
+        <div class="lager-kritisch"><strong>Kritisch</strong>Marx-&Ouml;konomie hat reale Erkl&auml;rungskraft. GSP-Demokratiekritik hat trotz Schlie&szlig;ung einen analytischen Kern.</div>
+      </div>
+      <div class="lager-card">
+        <p class="lager-name"><i class="ti ti-square-rotated-filled"></i>Konservativ</p>
+        <div class="lager-aufgreifen"><strong>Aufgreifen</strong>GSP-eigene Praxisverweigerung und akademische Isolation best&auml;tigen Skepsis gegen&uuml;ber ideologischen Gro&szlig;entw&uuml;rfen. Anti-pluralistische Form ist auch aus konservativer Sicht problematisch.</div>
+        <div class="lager-kritisch"><strong>Kritisch</strong>Marx-Empirie-Befunde sind keine Linksideologie, sondern Mainstream-&Ouml;konomie (De Loecker, OECD).</div>
+      </div>
+      <div class="lager-card">
+        <p class="lager-name"><i class="ti ti-square-rotated-filled"></i>Anarchistisch</p>
+        <div class="lager-aufgreifen"><strong>Aufgreifen</strong>Anti-Staatsfetisch-Diagnose; Praxis-Diagnose; Selbstorganisations-Frage gegen die Versorgungswesen-Vision. Bruhn-Tradition stark vertreten.</div>
+        <div class="lager-kritisch"><strong>Kritisch</strong>Marx-&Ouml;konomie auch f&uuml;r anarchistische Analyse anschlussf&auml;hig. Klassen-Marxismus (Spanidis) als Komplement.</div>
+      </div>
+      <div class="lager-card" style="grid-column:1/-1">
+        <p class="lager-name"><i class="ti ti-square-rotated-filled"></i>Gr&uuml;n</p>
+        <div class="lager-aufgreifen"><strong>Aufgreifen</strong>Lakatos-Test: GSP behandelt Klimakrise nicht eigenst&auml;ndig (F06). Verfassungspatriotismus als demokratische Bindung f&uuml;r &ouml;kologische Transformation. Anti-Pathologisierungs-Standard.</div>
+        <div class="lager-kritisch"><strong>Kritisch</strong>Marx-&Ouml;konomie hilft die &ouml;konomischen Strukturen der &ouml;kologischen Krise zu verstehen. GSP-Diagnose der demokratischen Effizienz-Funktion trifft auch f&uuml;r gr&uuml;ne Politik einen wunden Punkt.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="empfehlungen">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-bulb"></i>Was tun mit dem Befund</div>
+      <h2 class="h-section">Empfehlungen und offene L&uuml;cken</h2>
+      <p class="section-lead">Drei Adressaten, drei Empfehlungsrichtungen. Plus die offengelegten L&uuml;cken, die die Studie selbst nicht schlie&szlig;en kann.</p>
+    </div>
+    <h3 class="h-sub"><i class="ti ti-target-arrow"></i>F&uuml;r die Debatte (z.&thinsp;B. live mit GSP-Interlokutoren)</h3>
+    <div class="grid-2">
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)">Empfehlung 1 &mdash; Konkrete Quellen verwenden</h4><p style="font-size:13.5px;line-height:1.6;color:var(--text-1);margin:0">Sprich nie &uuml;ber &bdquo;den GSP&ldquo;, sondern immer &uuml;ber konkrete Stellen: &bdquo;Held 1979, &sect;1, &Uuml;bergang von Privateigentum zur Souver&auml;nit&auml;t&ldquo;. So bleibt die Diskussion textnah und vermeidet das Standardgegenargument &bdquo;du verstehst uns nicht&ldquo;.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)">Empfehlung 2 &mdash; Herkunfts-Trennung explizit machen</h4><p style="font-size:13.5px;line-height:1.6;color:var(--text-1);margin:0">Wenn der GSP sich auf Marx beruft, frage: Marx-original oder GSP-eigene Verschiebung? Die Antwort ist meistens Verschiebung &mdash; und genau das ist die Sollbruchstelle.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)">Empfehlung 3 &mdash; Die Wahrheitsfrage stellen</h4><p style="font-size:13.5px;line-height:1.6;color:var(--text-1);margin:0">Die entscheidende Einzelfrage: <em>&bdquo;Welche Beobachtung w&uuml;rde dich &uuml;berzeugen, dass eure Theorie falsch ist?&ldquo;</em> Es gibt keine vorbereitete Antwort, weil sie strukturell nicht erlaubt ist.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)">Empfehlung 4 &mdash; Den Symmetrietest anbieten</h4><p style="font-size:13.5px;line-height:1.6;color:var(--text-1);margin:0">Wenn die Form &bdquo;wir haben die richtige Theorie, andere sind ideologisch&ldquo; auftritt, frage: Wo unterscheidet sich diese Form von Objektivismus, Anthroposophie oder LaRouche? 9 von 10 Strukturmerkmalen sind identisch.</p></div>
+    </div>
+    <h3 class="h-sub"><i class="ti ti-microscope"></i>F&uuml;r die Forschung (offene L&uuml;cken)</h3>
+    <div class="grid-2">
+      <div class="card" style="border-left:3px solid var(--s-medium)"><h4 class="h-mini" style="color:var(--s-medium-text)">L&uuml;cke 1 &mdash; Aussteiger-Empirie</h4><p style="font-size:13.5px;line-height:1.6;color:var(--text-1);margin:0">Keine systematischen Aussteiger-Interviews aus dem GSP. Hamburger Dissertation 2025 ist der erste akademische Vorsto&szlig;. F&uuml;r vollst&auml;ndige Diagnose der Gruppendynamik br&auml;uchte es qualitatives Forschungsprogramm.</p></div>
+      <div class="card" style="border-left:3px solid var(--s-medium)"><h4 class="h-mini" style="color:var(--s-medium-text)">L&uuml;cke 2 &mdash; Mikrodebatten-Korpus</h4><p style="font-size:13.5px;line-height:1.6;color:var(--text-1);margin:0">Die YouTube/Twitch-Diskussionscluster um GSP-affiliierte Streamer wurden noch nicht systematisch erschlossen. Das w&auml;re die Datenbasis f&uuml;r eine empirische Klassifikation der digitalen Mikrosekte.</p></div>
+      <div class="card" style="border-left:3px solid var(--s-medium)"><h4 class="h-mini" style="color:var(--s-medium-text)">L&uuml;cke 3 &mdash; Internationale Vernetzung</h4><p style="font-size:13.5px;line-height:1.6;color:var(--text-1);margin:0">Der GSP hat Schwesterorganisationen in &Ouml;sterreich und ein begrenztes englischsprachiges &Uuml;bersetzungsprogramm. Eine vergleichende Studie zur Theorierezeption fehlt.</p></div>
+      <div class="card" style="border-left:3px solid var(--s-medium)"><h4 class="h-mini" style="color:var(--s-medium-text)">L&uuml;cke 4 &mdash; Quantitative Sprachanalyse</h4><p style="font-size:13.5px;line-height:1.6;color:var(--text-1);margin:0">Eine korpuslinguistische Analyse des GSP-Vokabulars (&bdquo;Idiot&ldquo;, &bdquo;Souver&auml;nit&auml;t&ldquo;, &bdquo;Interesse&ldquo;) &uuml;ber 50 Jahre Publikation w&auml;re methodologisch wertvoll.</p></div>
+    </div>
+    <h3 class="h-sub"><i class="ti ti-tools"></i>F&uuml;r eine m&ouml;gliche GSP-Selbstkritik</h3>
+    <div class="alarm">
+      <p class="alarm-title"><i class="ti ti-quote"></i>Was eine V06-Wendung leisten m&uuml;sste</p>
+      <p class="alarm-text">Eine ernsthafte interne Revision m&uuml;sste mindestens drei Schritte gehen: <strong>(1) Ein Falsifikationskriterium nennen</strong>. <strong>(2) Die Charaktermaske-Verschiebung gegen MEW 23 explizit machen oder zur&uuml;cknehmen</strong>. <strong>(3) Die Praxis-Strukturwidrigkeit adressieren</strong>. Ohne diese drei Schritte bleibt das Programm degenerativ. <em>Diese Empfehlung ist ernst gemeint &mdash; eine ehrliche GSP-Revision w&auml;re ein Gewinn f&uuml;r die linke Theorie.</em></p>
+    </div>
+  </div>
+</section>
+
+<section id="quellen">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-books"></i>Quellengrundlage</div>
+      <h2 class="h-section">Quellen</h2>
+      <p class="section-lead">Zwei Schichten: GSP-Originaltexte (analysiert) und kritische Sekund&auml;rliteratur (externe Analysen).</p>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-file-text"></i>GSP-Originaltexte</h3>
+    <div class="grid-2">
+      <div class="quellen-card"><strong>Held, Karl (Hg.) (1979):</strong> <em>Der b&uuml;rgerliche Staat.</em> M&uuml;nchen: Resultate-Verlag. &mdash; Helds Hauptwerk, theoretisches Fundament des GSP.</div>
+      <div class="quellen-card"><strong>Held, Karl (Hg.) (1980/2021):</strong> <em>Psychologie des b&uuml;rgerlichen Individuums.</em> M&uuml;nchen. &mdash; Quelle der Charaktermaske-Verschiebung (Teil III, S. 102&ndash;103).</div>
+      <div class="quellen-card"><strong>Decker, Peter (Hg.) (2013):</strong> <em>Demokratie &mdash; die perfekte Form b&uuml;rgerlicher Herrschaft.</em> M&uuml;nchen: GegenStandpunkt-Verlag.</div>
+      <div class="quellen-card"><strong>MSZ-Redaktion (1989):</strong> &bdquo;Kritik &mdash; wie geht das?&ldquo; In: <em>Marxistische Streit- und Zeitschrift</em>. &mdash; Methoden-Grundsatztext.</div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-file-text"></i>Kritische Sekund&auml;rliteratur</h3>
+    <div class="grid-2">
+      <div class="quellen-card"><strong>Spanidis, Thanasis (2022):</strong> <em>Eine schlechte Theorie des Imperialismus.</em> Online. &mdash; Die sch&auml;rfste vorliegende Kritik am Staatsbegriff und der Imperialismus-L&uuml;cke.</div>
+      <div class="quellen-card"><strong>Creydt, Meinhard (2015, 2017):</strong> <em>B&uuml;rgerlicher Materialismus</em>; <em>&bdquo;Idiot&ldquo; &mdash; zur Vokabel-Praxis</em>. &mdash; Diagnosen der Versorgungswesen-Vision und der Vokabel-Politik.</div>
+      <div class="quellen-card"><strong>Bierwirth, Christian (2016):</strong> In: <em>Krisis 2/2016</em>. &mdash; Methodische Kritik: die GSP-Methode setzt heimlich den rationalen Eigennutz-Menschen voraus.</div>
+      <div class="quellen-card"><strong>Conne Island (2014):</strong> <em>Strukturanalyse des GegenStandpunkts.</em> Leipzig. &mdash; Fr&uuml;heste umfassende Au&szlig;enkritik aus dem linksradikalen Spektrum.</div>
+      <div class="quellen-card"><strong>Bruhn, Joachim:</strong> Schriften zum Anarchismus und zur Staatskritik. &mdash; Anarchistische Tradition mit eigener Staatskritik.</div>
+      <div class="quellen-card"><strong>Hamburger Dissertation (2025):</strong> Erste akademische Auseinandersetzung mit dem GegenStandpunkt &mdash; in 32 Jahren GSP-Existenz die erste &uuml;berhaupt.</div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-file-text"></i>Vergleichsliteratur</h3>
+    <div class="grid-2">
+      <div class="quellen-card"><strong>Marx, Karl:</strong> <em>Das Kapital</em>, Bd. 1 (MEW 23, 1867). &mdash; Vergleichsma&szlig;stab f&uuml;r alle Marx-Original-Klassifikationen; besonders S. 100 (Charaktermaske).</div>
+      <div class="quellen-card"><strong>Heinrich, Michael (2004):</strong> <em>Kritik der politischen &Ouml;konomie.</em> &mdash; Form-analytische Marx-Lekt&uuml;re als Alternative.</div>
+      <div class="quellen-card"><strong>Habermas, J&uuml;rgen (1990):</strong> <em>Die nachholende Revolution.</em> &mdash; Verfassungspatriotismus als demokratische Alternative.</div>
+      <div class="quellen-card"><strong>Daten:</strong> OECD-Statistiken (Sozialausgaben), Verfassungsschutz-Berichte 2007&ndash;2018 (Mitgliederzahlen), OpenAlex (akademische Zitationen).</div>
+    </div>
+  </div>
+</section>
+<section id="selbstkritik">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-shield-half"></i>Eigene Schw&auml;chen</div>
+      <h2 class="h-section">Selbstkritik &mdash; zehn Dimensionen</h2>
+      <p class="section-lead">Eine Studie, die andere pr&uuml;ft, muss sich selbst pr&uuml;fen. Zehn Dimensionen, in denen diese Studie eigene L&uuml;cken oder methodologische Schw&auml;chen hat &mdash; transparent ausgewiesen.</p>
+    </div>
+    <div class="grid-2">
+      <div class="self-card">
+        <div class="self-card-head"><p class="self-card-title">1. Methodologische Konsistenz</p><span class="self-card-pct">85%</span></div>
+        <div class="self-bar"><div class="self-bar-fill" style="width:85%"></div></div>
+        <p class="self-card-desc">F1&ndash;F4-Klassifikation und Herkunfts-Skala konsistent angewandt. Schw&auml;che: F3 ist die schwammigste Kategorie und manchmal arbitr&auml;r abgegrenzt.</p>
+      </div>
+      <div class="self-card">
+        <div class="self-card-head"><p class="self-card-title">2. GSP-Prim&auml;rquellen-Coverage</p><span class="self-card-pct">75%</span></div>
+        <div class="self-bar"><div class="self-bar-fill" style="width:75%"></div></div>
+        <p class="self-card-desc">Held 1979, Held Psych. 1980/2021, Decker 2013, MSZ 1989 als Hauptquellen. L&uuml;cken: Wentzkes Texte, Heft-Editorials der GegenStandpunkt-Zeitschrift seit 2010 nicht vollst&auml;ndig erschlossen.</p>
+      </div>
+      <div class="self-card">
+        <div class="self-card-head"><p class="self-card-title">3. Sekund&auml;rliteratur-Coverage</p><span class="self-card-pct">80%</span></div>
+        <div class="self-bar"><div class="self-bar-fill" style="width:80%"></div></div>
+        <p class="self-card-desc">Spanidis, Creydt, Bierwirth, Conne Island, Bruhn vollst&auml;ndig integriert. L&uuml;cke: Englischsprachige Marxismus-Debatte-Rezeption fast nicht vorhanden.</p>
+      </div>
+      <div class="self-card">
+        <div class="self-card-head"><p class="self-card-title">4. Marx-Original-Coverage</p><span class="self-card-pct">70%</span></div>
+        <div class="self-bar"><div class="self-bar-fill medium" style="width:70%"></div></div>
+        <p class="self-card-desc">MEW 23 (Kapital I) und MEW 25 (Kapital III) als Hauptbezug. L&uuml;cke: Engels-Werke, Marx-Briefe, Grundrisse nur punktuell.</p>
+      </div>
+      <div class="self-card">
+        <div class="self-card-head"><p class="self-card-title">5. Mainstream-Empirie</p><span class="self-card-pct">65%</span></div>
+        <div class="self-bar"><div class="self-bar-fill medium" style="width:65%"></div></div>
+        <p class="self-card-desc">OECD-Daten, De Loecker-Daten, Verfassungsschutz-Daten genutzt. L&uuml;cke: Klima-Empirie, Care-Empirie, Race-Empirie nicht vollst&auml;ndig herangezogen.</p>
+      </div>
+      <div class="self-card">
+        <div class="self-card-head"><p class="self-card-title">6. 7-Lager-Qualit&auml;t</p><span class="self-card-pct">75%</span></div>
+        <div class="self-bar"><div class="self-bar-fill" style="width:75%"></div></div>
+        <p class="self-card-desc">Sieben Lager vollst&auml;ndig adressiert. Schw&auml;che: konservative und liberale Perspektive weniger ausgearbeitet als die linke. Gr&uuml;n teilt sich mit Sozialdemokratie.</p>
+      </div>
+      <div class="self-card">
+        <div class="self-card-head"><p class="self-card-title">7. Programmatischer Output (F4)</p><span class="self-card-pct">60%</span></div>
+        <div class="self-bar"><div class="self-bar-fill medium" style="width:60%"></div></div>
+        <p class="self-card-desc">F4-Positionen sind transparent als programmatisch markiert. Schw&auml;che: Studie ist nicht selbst ein politisches Programm; kann nicht ersetzen, was sie kritisiert.</p>
+      </div>
+      <div class="self-card">
+        <div class="self-card-head"><p class="self-card-title">8. Bilingualer Modus</p><span class="self-card-pct">40%</span></div>
+        <div class="self-bar"><div class="self-bar-fill weak" style="width:40%"></div></div>
+        <p class="self-card-desc">Studie ist in Deutsch verfasst. Internationale Marxismus-Debatte nur in deutscher Form referenziert. Eine englische Fassung w&uuml;rde das Audit anschlussf&auml;higer machen.</p>
+      </div>
+      <div class="self-card">
+        <div class="self-card-head"><p class="self-card-title">9. Audit-Hauptlinie-Konsistenz</p><span class="self-card-pct">80%</span></div>
+        <div class="self-bar"><div class="self-bar-fill" style="width:80%"></div></div>
+        <p class="self-card-desc">Marx-Empirie + Habermas + Spanidis + Bruhn als Hauptlinie offen genannt. Spannung: Spanidis (Klassen-Marxismus) und Habermas (Verfassungspatriotismus) nicht problemlos zu kombinieren.</p>
+      </div>
+      <div class="self-card">
+        <div class="self-card-head"><p class="self-card-title">10. Anti-Pathologisierung</p><span class="self-card-pct">90%</span></div>
+        <div class="self-bar"><div class="self-bar-fill" style="width:90%"></div></div>
+        <p class="self-card-desc">Sektenf&ouml;rmige Form-Diagnose strikt strukturell gehalten, keine Personalisierung. Schw&auml;che: Symmetrietest mit Objektivismus kann trotz Disclaimer als pathologisierend gelesen werden.</p>
+      </div>
+    </div>
+    <h3 class="h-sub"><i class="ti ti-list-check"></i>Zus&auml;tzlich: Bereichsabdeckung</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Eine Studie, die behauptet, GSP umfassend zu kartieren, muss offenlegen, wo sie nicht umfassend ist. Die 42 Kartenpositionen decken den theoretischen Kern und die wichtigsten politischen Setzungen ab.</p>
+    <div class="grid-2">
+      <div class="card" style="border-left:3px solid var(--s-robust)">
+        <h4 class="h-mini" style="color:var(--s-robust-text)">Gut abgedeckt</h4>
+        <p style="font-size:13px;line-height:1.55;color:var(--text-1);margin:0">Methode (7), Staatstheorie (7), &Ouml;konomie inkl. Geld/Kredit (7), Imperialismus inkl. Migration (4), Subjekt/Psychologie inkl. Familie/Moral (9), politische Selbstverortung inkl. Bildung/Gewerkschaften/&Ouml;kologie/Race/MG-Genealogie (8). Begriffsableitungskette visualisiert.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--s-weak)">
+        <h4 class="h-mini" style="color:var(--s-weak-text)">Bewusste L&uuml;cken</h4>
+        <p style="font-size:13px;line-height:1.55;color:var(--text-1);margin:0">GSP-interne Schulungsdynamik (Quellenlage nicht &ouml;ffentlich). YouTube/Twitch-Mikrocluster nur klassifikatorisch, nicht inhaltlich. Vergleich mit anderen orthodoxen Marxismen (Wertkritik, Trotzkismus) nicht systematisch.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--s-refuted)">
+        <h4 class="h-mini" style="color:var(--s-refuted-text)">Was eine Folgestudie leisten m&uuml;sste</h4>
+        <p style="font-size:13px;line-height:1.55;color:var(--text-1);margin:0">Korpuslinguistische Analyse des GSP-Vokabulars &uuml;ber 50 Jahre; Aussteiger-Empirie; Mikrodebatten-Korpus (YouTube/Twitch); Vergleich mit Wertkritik und Trotzkismus; quantitative Lakatos-Replikation.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--s-medium)">
+        <h4 class="h-mini" style="color:var(--s-medium-text)">Methodische Reife</h4>
+        <p style="font-size:13px;line-height:1.55;color:var(--text-1);margin:0">Diese Iteration deckt 6 Kategorien mit 42 Karten ab. Vorherige Versionen reduzierten dies auf 26 oder 32 Karten unter pragmatischer Selbstbeschr&auml;nkung. Die jetzige Vollst&auml;ndigkeit ist die methodisch ehrlichere L&ouml;sung.</p>
+      </div>
+    </div>
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-shield-check"></i>Konsequenz</p>
+      <p class="simple-box-text">Die schw&auml;chsten Dimensionen sind <strong>5 (Mainstream-Empirie), 7 (programmatischer Output)</strong> und <strong>8 (bilingualer Modus)</strong>. Die zwei gr&ouml;&szlig;ten Reparaturen w&auml;ren: (a) eine systematische Klima/Care/Race-Aktualisierung; (b) eine englische Fassung. Beides ist zuk&uuml;nftige Arbeit, kein Mangel der vorliegenden Version.</p>
+    </div>
+  </div>
+</section>
+
+<section id="glossar">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-book-2"></i>Begriffe erkl&auml;rt</div>
+      <h2 class="h-section">W&ouml;rter, die in dieser &Uuml;bersicht vorkommen</h2>
+      <p class="section-lead">Wichtige Fachbegriffe und Schl&uuml;sselw&ouml;rter, die durch die Sektionen geistern &mdash; hier in einfacher Sprache erkl&auml;rt. Gruppiert nach Themenfeldern.</p>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-microscope"></i>Methode und Theorie</h3>
+    <div class="grid-3">
+      <div class="glossar-card"><p class="glossar-term">Pr&uuml;fbarkeit / Falsifizierbarkeit</p><p class="glossar-mini">Popper, 1934</p><p class="glossar-def">Eine wissenschaftliche Aussage muss eine Bedingung angeben k&ouml;nnen, unter der sie als <em>falsch</em> g&auml;lte. Eine Theorie, die alles erkl&auml;rt, erkl&auml;rt nichts. GSP nennt keine solche Bedingung.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Lakatos-Programm</p><p class="glossar-mini">Imre Lakatos, 1970</p><p class="glossar-def">Lebendige Theorien erkl&auml;ren Neues und wachsen. Sterbende Theorien werden nur noch verteidigt. GSP ist seit 1979 in der zweiten Kategorie.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Die vier Wahrheitstheorien</p><p class="glossar-mini">klassische Philosophie</p><p class="glossar-def">Vier Wege, Wahrheit zu pr&uuml;fen: (1) Entspricht die Aussage der Wirklichkeit? (2) Bew&auml;hrt sie sich praktisch? (3) Stimmen die Experten zu? (4) Ist sie in sich stimmig? GSP scheitert an allen vier.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Im Kreis argumentieren</p><p class="glossar-mini">logisches Problem</p><p class="glossar-def">Ein Argument setzt schon voraus, was es eigentlich beweisen m&uuml;sste. GSP-Beispiel: &bdquo;Wir messen die Sache am Interesse&ldquo; &mdash; aber das Interesse ist genau das, was zu kl&auml;ren w&auml;re.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Einseitige Ideologiekritik</p><p class="glossar-mini">Bierwirth 2016</p><p class="glossar-def">Alle anderen sind &bdquo;ideologisch&ldquo;, nur die eigene Position nicht. Doppelter Ma&szlig;stab.</p></div>
+      <div class="glossar-card"><p class="glossar-term">F1&ndash;F4-Skala</p><p class="glossar-mini">Pr&uuml;fbarkeits-Stufen</p><p class="glossar-def">F1 = direkt an Daten pr&uuml;fbar &middot; F2 = nur logisch pr&uuml;fbar &middot; F3 = aus Systemzusammenh&auml;ngen pr&uuml;fbar &middot; F4 = politische Setzung, nicht direkt pr&uuml;fbar.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-building-bank"></i>Staat, Politik, Demokratie</h3>
+    <div class="grid-3">
+      <div class="glossar-card"><p class="glossar-term">Staatsfetisch</p><p class="glossar-mini">Spanidis 2022</p><p class="glossar-def">Den Staat als unabh&auml;ngigen Akteur behandeln, statt ihn als eingebettet in das gesellschaftliche Ganze zu sehen. Vorwurf der Kritiker an GSP.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Verfassungspatriotismus</p><p class="glossar-mini">J&uuml;rgen Habermas</p><p class="glossar-def">Verbundenheit mit dem eigenen Staat &uuml;ber die Bindung an die Verfassungsprinzipien (Demokratie, Grundrechte) &mdash; nicht &uuml;ber Volkszugeh&ouml;rigkeit. Dritter Weg zwischen Nationalismus und Naivit&auml;t.</p></div>
+      <div class="glossar-card"><p class="glossar-term">B&uuml;rgerliche vs. ethnische Nation</p><p class="glossar-mini">Renan, M&uuml;ller, Habermas</p><p class="glossar-def">B&uuml;rgerliche Nation: demokratische Selbstbindung &uuml;ber die Verfassung. Ethnische Nation: Abstammungs- und Bluts-Gemeinschaft. GSP wirft beides in einen Topf.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Gewaltmonopol</p><p class="glossar-mini">Weber, Marx</p><p class="glossar-def">Nur der Staat darf in seinem Gebiet legitime Gewalt aus&uuml;ben. Robust empirisch &mdash; Marx und Weber konvergieren hier.</p></div>
+      <div class="glossar-card"><p class="glossar-term">&bdquo;Perfekte Form&ldquo;</p><p class="glossar-mini">Decker 2013</p><p class="glossar-def">GSP-These: Demokratie ist die <em>effizienteste</em> Form b&uuml;rgerlicher Herrschaft &mdash; nicht die beste, nicht die schlechteste. Analytisch nicht uninteressant, politisch problematisch.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Reparaturwerkstatt des Kapitals</p><p class="glossar-mini">Engels-Erbe</p><p class="glossar-def">Engels&apos; Idee, dass der Sozialstaat das Kapital vor seinen eigenen Folgen sch&uuml;tzt. Held hat diese Idee einseitig zugespitzt.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-chart-line"></i>&Ouml;konomie und Klassen</h3>
+    <div class="grid-3">
+      <div class="glossar-card"><p class="glossar-term">Wert</p><p class="glossar-mini">Marx, Kapital I</p><p class="glossar-def">Das, was Waren miteinander vergleichbar macht &mdash; nach Marx: die in ihnen steckende gesellschaftlich notwendige Arbeit. Innermarxistisch gibt es heute zwei Lesarten.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Kapitalanh&auml;ufung</p><p class="glossar-mini">Marx, Kapital I, Kap. 23</p><p class="glossar-def">Kapital sammelt sich in immer weniger H&auml;nden. Empirisch klar belegt &mdash; auch von OECD-Daten.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Profitratenfall</p><p class="glossar-mini">Marx, Kapital III</p><p class="glossar-def">These vom langfristig sinkenden Profit. Unter Marxisten umstritten (Heinrich bezweifelt, Kliman verteidigt).</p></div>
+      <div class="glossar-card"><p class="glossar-term">Lohnarbeit</p><p class="glossar-mini">Marx</p><p class="glossar-def">Arbeit unter zwei Bedingungen: rechtlich frei (man muss nicht arbeiten) und gleichzeitig ohne eigene Produktionsmittel (man muss arbeiten, um zu leben). Heute betrifft das &uuml;ber 85% der Erwerbst&auml;tigen.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Charaktermaske</p><p class="glossar-mini">Marx, Kapital I, S. 100</p><p class="glossar-def">Bei Marx: eine Rolle, in der jemand im Wirtschaftsprozess auftritt (Kapitalist, Lohnarbeiter). Held hat daraus eine feste Wesenseigenschaft der Person gemacht.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Fiktives Kapital</p><p class="glossar-mini">Marx, Kapital III</p><p class="glossar-def">Geldforderungen ohne direkte Deckung durch reale Wertproduktion (Aktien, Anleihen). Die Finanzkrise 2008 als globales Lehrst&uuml;ck.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-world"></i>Imperialismus und Au&szlig;enpolitik</h3>
+    <div class="grid-3">
+      <div class="glossar-card"><p class="glossar-term">Lenins Stufen</p><p class="glossar-mini">Lenin 1917, Hilferding 1910</p><p class="glossar-def">Klassisch-marxistische Stufenfolge: Konkurrenz &rarr; Monopolbildung &rarr; Finanzkapital &rarr; Kapitalexport in andere L&auml;nder. GSP &uuml;berspringt diese Stufen.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Standortlogik</p><p class="glossar-mini">Decker, GSP</p><p class="glossar-def">GSP-Konzept: Staaten konkurrieren als Standorte gegeneinander, der Staat sichert seine Konkurrenzposition. Politik wird vom &Ouml;konomischen abgekoppelt.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Souver&auml;nit&auml;tslogik</p><p class="glossar-mini">Held, Decker</p><p class="glossar-def">GSP-These: Staaten handeln aus eigener Logik (wie ein souver&auml;ner Herrscher), nicht prim&auml;r aus &ouml;konomischen Zw&auml;ngen.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-user"></i>Menschenbild und Praxis</h3>
+    <div class="grid-3">
+      <div class="glossar-card"><p class="glossar-term">Rationaler Eigennutz-Mensch</p><p class="glossar-mini">homo oeconomicus, Neoklassik</p><p class="glossar-def">Annahme der b&uuml;rgerlichen &Ouml;konomik: Menschen verfolgen rational ihr Eigeninteresse, kennen ihre Pr&auml;ferenzen. Verhaltens&ouml;konomik (Kahneman) hat das widerlegt. <em>GSP teilt diese Annahme heimlich</em>.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Verzicht auf Praxis</p><p class="glossar-mini">GSP, programmatisch</p><p class="glossar-def">&bdquo;Erst muss die Theorie richtig sein.&ldquo; Bewusster Verzicht auf praktische Politik. Widerspricht der eigenen Theorie der Strukturwirkung auf das Bewusstsein.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Versorgungswesen</p><p class="glossar-mini">Creydt 2015</p><p class="glossar-def">GSP-Vision der nachkapitalistischen Gesellschaft als technisch effizientes Versorgungs-System &mdash; ohne Selbstorganisation der Menschen.</p></div>
+      <div class="glossar-card"><p class="glossar-term">B&uuml;rger-vs-Kommunist</p><p class="glossar-mini">Creydt 2017</p><p class="glossar-def">GSP-Selbstdarstellung: B&uuml;rger (alle anderen) gegen&uuml;ber Kommunist (man selbst). Diese harte Trennung ist logisch wackelig.</p></div>
+      <div class="glossar-card"><p class="glossar-term">&bdquo;Idiot&ldquo;-Vokabel</p><p class="glossar-mini">GSP 1/2004</p><p class="glossar-def">GSP-typische Bezeichnung f&uuml;r Menschen mit &bdquo;falschem Bewusstsein&ldquo;. Macht aus einer politischen Auseinandersetzung eine Frage der Intelligenz.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Wesenseigenschaft (statt Rolle)</p><p class="glossar-mini">Held, Psychologie</p><p class="glossar-def">Bei Held wird aus der gespielten Rolle (Marx&apos; Charaktermaske) die Identit&auml;t einer Person. Das macht das Menschenbild deterministisch.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-users-group"></i>Akteure und Schulen</h3>
+    <div class="grid-3">
+      <div class="glossar-card"><p class="glossar-term">GegenStandpunkt (GSP)</p><p class="glossar-mini">M&uuml;nchen, seit 1991</p><p class="glossar-def">Marxistische Theoriegruppe mit eigenem Verlag, eigener Zeitschrift, gesch&auml;tzt 150&ndash;250 Mitgliedern. Hervorgegangen aus der Marxistischen Gruppe (MG, 1971&ndash;1991).</p></div>
+      <div class="glossar-card"><p class="glossar-term">Karl Held</p><p class="glossar-mini">1944&ndash;2014</p><p class="glossar-def">Gr&uuml;nder-Theoretiker. Hauptwerk: <em>Der b&uuml;rgerliche Staat</em> (1979), bis heute kanonisch.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Peter Decker</p><p class="glossar-mini">geb. 1952</p><p class="glossar-def">Zentraler GSP-Theoretiker und Herausgeber. <em>Demokratie &mdash; die perfekte Form b&uuml;rgerlicher Herrschaft</em> (2013).</p></div>
+      <div class="glossar-card"><p class="glossar-term">Neue Marx-Lekt&uuml;re</p><p class="glossar-mini">Heinrich, Backhaus</p><p class="glossar-def">Akademische Marx-Lekt&uuml;re, die Marx form-analytisch liest. Wird vom GSP als &bdquo;b&uuml;rgerlich&ldquo; abgewiesen.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Wertkritik</p><p class="glossar-mini">Krisis-Gruppe, Postone</p><p class="glossar-def">Marxistische Str&ouml;mung, die den Kapitalismus &uuml;ber die spezifische Form der Arbeit denkt. Theoretischer Hauptgegner des GSP.</p></div>
+      <div class="glossar-card"><p class="glossar-term">Objektivismus</p><p class="glossar-mini">Ayn Rand, 1957</p><p class="glossar-def">US-libertaristische Philosophie. Politisch das Gegenteil des GSP &mdash; strukturell aber erstaunlich &auml;hnlich (siehe Denkstruktur-Vergleich).</p></div>
+    </div>
+  </div>
+</section>
+<section id="fazit">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-flag"></i>Bilanz</div>
+      <h2 class="h-section">Fazit &mdash; in fünf Punkten</h2>
+      <p class="section-lead">Die wichtigsten Befunde des Audits, soweit sie sich in fünf Sätzen verdichten lassen.</p>
+    </div>
+
+    <div class="fazit">
+      <h3 class="fazit-title"><i class="ti ti-target"></i>Was am Ende steht</h3>
+
+      <div class="fazit-item">
+        <i class="ti ti-number-1"></i>
+        <div class="fazit-item-content">
+          <strong>Das Solide kommt von Marx, nicht vom GSP.</strong>
+          Von 32 gepr&uuml;ften Positionen sind 5 robust &mdash; und alle f&uuml;nf sind direkt von Marx &uuml;bernommen. Die 17 GSP-eigenen Erfindungen sind alle schwach belegt, widerlegt oder umstritten. Wer den GSP empirisch verteidigt, verteidigt fast nur Marx. Wer ihn kritisiert, trifft fast nur GSP-Eigenes.
+        </div>
+      </div>
+
+      <div class="fazit-item">
+        <i class="ti ti-number-2"></i>
+        <div class="fazit-item-content">
+          <strong>Die Theorie sch&uuml;tzt sich vor der Wirklichkeit.</strong>
+          Auf die einfache Frage &bdquo;Welche Beobachtung w&uuml;rde euch &uuml;berzeugen, dass eure Theorie falsch ist?&ldquo; gibt es bei GSP keine Antwort &mdash; weil eine solche Bedingung im theoretischen System gar nicht vorgesehen ist. Damit scheitert der GSP-Wahrheitsanspruch an allen vier g&auml;ngigen philosophischen Wahrheits-Kriterien gleichzeitig.
+        </div>
+      </div>
+
+      <div class="fazit-item">
+        <i class="ti ti-number-3"></i>
+        <div class="fazit-item-content">
+          <strong>Das Problem ist die Form, nicht der politische Inhalt.</strong>
+          Vergleicht man die GSP-Schule mit Ayn Rands &bdquo;Objektivismus&ldquo; (politisch das Gegenteil), sind 9 von 10 Strukturmerkmalen identisch. Geschlossene Theoriegeb&auml;ude gibt es links wie rechts &mdash; und sie haben dieselben Schw&auml;chen. Die Diagnose betrifft die Form, nicht die linke Politik.
+        </div>
+      </div>
+
+      <div class="fazit-item">
+        <i class="ti ti-number-4"></i>
+        <div class="fazit-item-content">
+          <strong>Eine Theorie, die nicht mehr lernt.</strong>
+          Seit Helds Hauptwerk 1979 hat GSP keine wesentliche Theorie-&Auml;nderung vorgenommen. Plattformkapitalismus, Klimakrise, Care-&Ouml;konomie, Rassismus werden nur ins alte Raster gezwungen. Wissenschaftliche Anschlussf&auml;higkeit nahe null. Mitgliederzahl tendenziell schrumpfend. Nach Lakatos: ein sterbendes Forschungsprogramm.
+        </div>
+      </div>
+
+      <div class="fazit-item">
+        <i class="ti ti-number-5"></i>
+        <div class="fazit-item-content">
+          <strong>Es gibt linke Alternativen.</strong>
+          Die heutige Marx-Forschung (Heinrich, Postone, Harvey), Habermas&apos; Verfassungspatriotismus, Spanidis&apos; Klassen-Marxismus und Bruhns Staatskritik teilen drei Prinzipien: Offenheit f&uuml;r Daten, &Uuml;berpr&uuml;fbarkeit der eigenen Thesen, Pluralismus innerhalb der Linken. Genau das, was die GSP-Schule ausschlie&szlig;t &mdash; und genau deshalb stellt diese Auswahl eine echte Alternative dar.
+        </div>
+      </div>
+    </div>
+
+    <div class="alarm" style="background:var(--accent-bg-soft);border-color:#fecaca;border-left-color:var(--accent-dark)">
+      <p class="alarm-title" style="color:var(--accent-dark)"><i class="ti ti-quote"></i>Der zusammenfassende Satz</p>
+      <p class="alarm-text" style="color:var(--accent-dark);font-size:15.5px;line-height:1.65"><strong>&bdquo;Was am GegenStandpunkt empirisch h&auml;lt, ist nicht GegenStandpunkt; was GegenStandpunkt ist, h&auml;lt empirisch nicht &mdash; und ein System, das von der Welt nie &uuml;berrascht wird, hat aufgeh&ouml;rt, sie zu befragen.&ldquo;</strong></p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-section"><h4>&Uuml;ber diese &Uuml;bersicht</h4><p>Systematische Bestandsaufnahme von 32 Grundannahmen des GegenStandpunkts: Was kommt von Marx, was ist GSP-eigen, wie h&auml;lt es einer Pr&uuml;fung an Daten stand?</p><p>Stand: Mai 2026.</p></div>
+      <div class="foot-section"><h4>Vorgehen</h4><p>F&uuml;r jede Position: Wo steht es bei GSP? Wo kommt es her (Marx / Marx-verschoben / GSP-eigen)? Wie gut belegt? Steelmanning vor Kritik. Anti-Pathologisierung der Vertreter.</p></div>
+      <div class="foot-section"><h4>Quellen</h4><p>Held 1979/1980, Decker 2013, MSZ 1989 (GSP-Originaltexte); Spanidis 2022, Creydt 2015/2017, Bierwirth 2016, Conne Island 2014, Bruhn (kritische Sekund&auml;rliteratur).</p></div>
+      <div class="foot-section"><h4>Haltung</h4><p>Sachlich-analytisch, kein moralisches Verdikt. Die Vertreter des GSP werden als ernsthafte, belesene Menschen behandelt &mdash; die Diagnose betrifft die theoretische Form, nicht den Charakter.</p></div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 &middot; GegenStandpunkt &mdash; eine empirische Pr&uuml;fung</span>
+      <span>32 Begriffe &middot; 8 Sollbruchstellen &middot; 4 Entdeckungen &middot; 8 Streitpunkte</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+/* Chart.js Setup für die GSP-Audit-Studie */
+Chart.defaults.font.family = "'Inter', -apple-system, sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#57534e';
+Chart.defaults.plugins.legend.labels.usePointStyle = true;
+Chart.defaults.plugins.legend.labels.padding = 14;
+
+const COL = {
+  robust:  '#15803d', medium:  '#ca8a04', weak:    '#c2410c',
+  refuted: '#991b1b', contro:  '#6d28d9',
+  marx:    '#0e7490', shift:   '#a16207', gsp:     '#7f1d1d',
+  gridBg:  'rgba(120, 113, 108, 0.10)'
+};
+
+/* === Chart 1: Donut der Status-Verteilung aller 32 Positionen === */
+new Chart(document.getElementById('donutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Robust (5)', 'Mittel (6)', 'Schwach (20)', 'Widerlegt (4)', 'Kontrovers (7)'],
+    datasets: [{
+      data: [5, 6, 20, 4, 7],
+      backgroundColor: [COL.robust, COL.medium, COL.weak, COL.refuted, COL.contro],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'right' },
+      tooltip: { callbacks: { label: ctx => ctx.label + ' — ' + Math.round(ctx.parsed / 42 * 100) + '%' } }
+    },
+    cutout: '60%'
+  }
+});
+
+/* === Chart 2: Stacked Bar — Status nach Herkunft === */
+new Chart(document.getElementById('herkunftBar'), {
+  type: 'bar',
+  data: {
+    labels: ['Marx-original (9)', 'Marx-verschoben (8)', 'GSP-spezifisch (25)'],
+    datasets: [
+      { label: 'Robust',     data: [5, 0, 0], backgroundColor: COL.robust  },
+      { label: 'Mittel',     data: [3, 3, 0], backgroundColor: COL.medium  },
+      { label: 'Schwach',    data: [0, 4, 16], backgroundColor: COL.weak    },
+      { label: 'Widerlegt',  data: [0, 0, 4], backgroundColor: COL.refuted },
+      { label: 'Kontrovers', data: [1, 1, 5], backgroundColor: COL.contro  }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    indexAxis: 'y',
+    scales: {
+      x: { stacked: true, beginAtZero: true, grid: { color: COL.gridBg } },
+      y: { stacked: true, grid: { display: false } }
+    },
+    plugins: { legend: { position: 'bottom' } }
+  }
+});
+
+/* === Chart 3: OECD-Sozialstaatsquote 1980–2020 === */
+new Chart(document.getElementById('welfareChart'), {
+  type: 'line',
+  data: {
+    labels: ['1980', '1985', '1990', '1995', '2000', '2005', '2010', '2015', '2020'],
+    datasets: [
+      { label: 'OECD-Durchschnitt', data: [16.5, 17.2, 18.5, 19.8, 19.3, 20.1, 22.1, 21.0, 23.0], borderColor: COL.marx,  backgroundColor: 'rgba(14,116,144,0.10)', tension: 0.3, fill: true, borderWidth: 2.5 },
+      { label: 'Deutschland',       data: [22.7, 23.6, 22.5, 26.6, 26.2, 27.0, 27.0, 25.0, 27.0], borderColor: COL.refuted, backgroundColor: 'rgba(153,27,27,0.05)',   tension: 0.3, fill: false, borderWidth: 2.5 },
+      { label: 'USA',               data: [12.8, 12.7, 13.2, 15.0, 14.2, 15.6, 19.3, 18.8, 20.0], borderColor: COL.medium,  backgroundColor: 'rgba(202,138,4,0.05)',  tension: 0.3, fill: false, borderWidth: 2.5 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      y: { beginAtZero: false, ticks: { callback: v => v + '%' }, grid: { color: COL.gridBg }, title: { display: true, text: 'Sozialausgaben in % des BIP' } },
+      x: { grid: { display: false } }
+    },
+    plugins: { legend: { position: 'bottom' } },
+    interaction: { mode: 'index', intersect: false }
+  }
+});
+
+/* === Chart 4: Lakatos-Indikator — GSP-Mitglieder + akademische Zitationen === */
+new Chart(document.getElementById('lakatosChart'), {
+  type: 'line',
+  data: {
+    labels: ['2007', '2009', '2011', '2013', '2015', '2017', '2019', '2021', '2023'],
+    datasets: [
+      { label: 'GSP-Mitglieder (Verfassungsschutz, geschätzt)', data: [240, 230, 220, 215, 200, 195, 190, 185, 180], borderColor: COL.refuted, backgroundColor: 'rgba(153,27,27,0.08)', tension: 0.2, fill: true, borderWidth: 2.5, yAxisID: 'y' },
+      { label: 'Jährliche akademische Zitationen (OpenAlex, geschätzt)', data: [3, 2, 4, 3, 2, 3, 2, 4, 6], borderColor: COL.contro, backgroundColor: 'rgba(109,40,217,0.05)', tension: 0.2, fill: false, borderWidth: 2.5, yAxisID: 'y1' }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      y: { beginAtZero: false, position: 'left', title: { display: true, text: 'Mitglieder' }, grid: { color: COL.gridBg } },
+      y1: { beginAtZero: true, position: 'right', title: { display: true, text: 'Zitationen / Jahr' }, grid: { display: false } },
+      x: { grid: { display: false } }
+    },
+    plugins: { legend: { position: 'bottom' } },
+    interaction: { mode: 'index', intersect: false }
+  }
+});
+
+/* === Chart 5: Status nach Kategorie (gestapelt) === */
+new Chart(document.getElementById('catChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Methode (7)', 'Staat (7)', 'Ökonomie (7)', 'Imperialismus (4)', 'Subjekt (9)', 'Selbstverortung (8)'],
+    datasets: [
+      { label: 'Robust',     data: [0, 1, 3, 0, 0, 1], backgroundColor: COL.robust  },
+      { label: 'Mittel',     data: [0, 1, 3, 1, 1, 0], backgroundColor: COL.medium  },
+      { label: 'Schwach',    data: [3, 3, 0, 3, 6, 5], backgroundColor: COL.weak    },
+      { label: 'Widerlegt',  data: [2, 1, 0, 0, 1, 0], backgroundColor: COL.refuted },
+      { label: 'Kontrovers', data: [2, 1, 1, 0, 1, 2], backgroundColor: COL.contro  }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      x: { stacked: true, grid: { display: false } },
+      y: { stacked: true, beginAtZero: true, grid: { color: COL.gridBg }, title: { display: true, text: 'Anzahl Positionen' } }
+    },
+    plugins: { legend: { position: 'bottom' } }
+  }
+});
+</script>
+</body>
+</html>

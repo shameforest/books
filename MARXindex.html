@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marx-Audit-Studie · Konsolidierte Gesamtsynthese</title>
+<meta name="description" content="Empirische Bestandsaufnahme und methodologische Audit-Synthese der Marx-Theorie zum Kapitalismus">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<style>
+:root{
+  --bg:#fafaf9;--surface:#fff;--surface-2:#f5f5f4;--surface-3:#e7e5e4;
+  --text-1:#1c1917;--text-2:#57534e;--text-3:#a8a29e;--text-muted:#78716c;
+  --border:#e7e5e4;--border-2:#d6d3d1;--border-strong:#a8a29e;
+  --accent:#7f1d1d;--accent-dark:#501313;--accent-bg:#fee2e2;--accent-bg-soft:#fef2f2;
+  --s-robust:#15803d;--s-robust-bg:#dcfce7;--s-robust-text:#14532d;
+  --s-medium:#ca8a04;--s-medium-bg:#fef9c3;--s-medium-text:#713f12;
+  --s-weak:#c2410c;--s-weak-bg:#ffedd5;--s-weak-text:#7c2d12;
+  --s-refuted:#991b1b;--s-refuted-bg:#fee2e2;--s-refuted-text:#7f1d1d;
+  --slate-1:#0f172a;--slate-2:#334155;--slate-3:#475569;--slate-8:#f1f5f9;
+  --radius:8px;--radius-lg:12px;--radius-xl:16px;--container:1100px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:15px;line-height:1.6;color:var(--text-1);background:var(--bg);-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
+.cover{padding:72px 0 56px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%)}
+.cover-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--accent-bg);color:var(--accent-dark);border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:24px}
+.cover h1{font-size:54px;font-weight:600;letter-spacing:-.025em;line-height:1.05;margin:0 0 16px;color:var(--slate-1)}
+.cover h1 .accent{color:var(--accent-dark)}
+.cover-sub{font-size:21px;color:var(--text-2);line-height:1.5;max-width:760px;margin:0 0 32px}
+.cover-meta{display:flex;flex-wrap:wrap;gap:24px;font-size:13px;color:var(--text-muted)}
+.cover-meta span{display:inline-flex;align-items:center;gap:8px}
+.cover-meta i{color:var(--accent)}
+.cover-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:48px 0 0}
+.cover-stat{padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)}
+.cover-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.cover-stat-val{font-size:32px;font-weight:600;line-height:1;letter-spacing:-.02em}
+.cover-stat-sub{font-size:12px;color:var(--text-muted);margin-top:6px}
+nav.sticky{position:sticky;top:0;z-index:50;background:rgba(250,250,249,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+nav.sticky .nav-inner{max-width:var(--container);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:4px;overflow-x:auto;height:56px}
+nav.sticky a{padding:8px 14px;border-radius:var(--radius);font-size:13px;font-weight:500;color:var(--text-2);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+nav.sticky a:hover{background:var(--surface-2);color:var(--text-1)}
+nav.sticky i{font-size:16px}
+section{padding:64px 0;border-bottom:1px solid var(--border)}
+section:last-of-type{border-bottom:none}
+.section-head{margin-bottom:32px}
+.section-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-dark);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.section-eyebrow i{font-size:16px}
+h2.h-section{font-size:36px;font-weight:600;letter-spacing:-.02em;line-height:1.15;color:var(--slate-1);margin-bottom:12px}
+.section-lead{font-size:17px;color:var(--text-2);line-height:1.6;max-width:760px}
+h3.h-sub{font-size:22px;font-weight:600;letter-spacing:-.01em;color:var(--slate-1);margin:32px 0 14px;display:flex;align-items:center;gap:10px}
+h3.h-sub i{color:var(--accent);font-size:22px}
+h4.h-mini{font-size:16px;font-weight:600;color:var(--slate-2);margin:20px 0 10px}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;transition:border-color .15s}
+.card:hover{border-color:var(--border-2)}
+.insight{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)}
+.insight-ico{flex-shrink:0;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
+.insight-ico.green{background:var(--s-robust-bg);color:var(--s-robust)}
+.insight-ico.red{background:var(--s-refuted-bg);color:var(--s-refuted)}
+.insight-ico.amber{background:var(--s-medium-bg);color:var(--s-medium-text)}
+.insight-ico.slate{background:var(--slate-8);color:var(--slate-3)}
+.insight p{margin:0;font-size:14.5px;line-height:1.55;color:var(--text-1)}
+.insight strong{font-weight:600;color:var(--slate-1)}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px}
+.stat-label{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.stat-val{font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.stat-sub{font-size:12px;color:var(--text-muted);margin-top:8px}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex-shrink:0}
+.d-robust{background:var(--s-robust)}
+.d-medium{background:var(--s-medium)}
+.d-weak{background:var(--s-weak)}
+.d-refuted{background:var(--s-refuted)}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:var(--radius);font-size:11px;font-weight:600}
+.b-robust{background:var(--s-robust-bg);color:var(--s-robust-text)}
+.b-medium{background:var(--s-medium-bg);color:var(--s-medium-text)}
+.b-weak{background:var(--s-weak-bg);color:var(--s-weak-text)}
+.b-refuted{background:var(--s-refuted-bg);color:var(--s-refuted-text)}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 20px}
+.fbtn{padding:7px 14px;border:1px solid var(--border-2);border-radius:var(--radius);background:var(--surface);cursor:pointer;font-size:13px;font-weight:500;color:var(--text-2);font-family:inherit;display:inline-flex;align-items:center;gap:6px}
+.fbtn:hover{background:var(--surface-2)}
+.fbtn.active{background:var(--accent-dark);color:#fff;border-color:var(--accent-dark)}
+.thesis-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;display:flex;flex-direction:column}
+.thesis-card:hover{border-color:var(--border-2)}
+.t-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px}
+.t-cat{font-size:11px;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin:0 0 4px}
+.t-title{font-size:16px;font-weight:600;margin:0;line-height:1.3;color:var(--slate-1)}
+.t-src{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-muted);margin:0 0 12px}
+.geo-row{display:grid;grid-template-columns:60px 1fr auto;gap:10px;align-items:center;margin:6px 0;font-size:12px}
+.geo-lbl{color:var(--text-muted);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.geo-bar{background:var(--surface-2);height:6px;border-radius:3px;overflow:hidden}
+.geo-fill{height:100%;border-radius:3px}
+.f-robust{background:var(--s-robust)}.f-medium{background:var(--s-medium)}.f-weak{background:var(--s-weak)}.f-refuted{background:var(--s-refuted)}
+.t-toggle{margin-top:14px;padding:0;background:none;border:none;font-size:12.5px;color:var(--accent-dark);cursor:pointer;font-weight:500;display:inline-flex;align-items:center;gap:5px;font-family:inherit;align-self:flex-start}
+.t-toggle:hover{text-decoration:underline}
+.t-toggle i{transition:transform .2s}
+.thesis-card.open .t-toggle i{transform:rotate(180deg)}
+.t-detail{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+.thesis-card.open .t-detail{display:block}
+.quote{font-family:'Crimson Text',Georgia,serif;font-style:italic;color:var(--text-2);border-left:3px solid var(--accent-dark);padding:6px 0 6px 14px;margin:0 0 14px;font-size:15px;line-height:1.55}
+.nar-block{margin:12px 0;padding:12px 14px;background:var(--surface-2);border-radius:var(--radius)}
+.nar-label{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;font-weight:600;margin:0 0 6px;display:flex;align-items:center;gap:6px}
+.nar-label.marx{color:var(--accent-dark)}.nar-label.data{color:var(--s-robust)}
+.nar-text{font-size:13.5px;color:var(--text-1);line-height:1.55;margin:0}
+.concl-box{background:var(--accent-bg-soft);border-left:3px solid var(--accent-dark);padding:12px 14px;border-radius:var(--radius);margin:12px 0}
+.concl-text{font-size:14px;font-weight:500;color:var(--accent-dark);line-height:1.5;margin:0}
+.src-block{margin:10px 0;font-size:12px;line-height:1.5}
+.src-block strong{font-weight:600;color:var(--slate-2);display:block;margin-bottom:3px;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.src-block span{color:var(--text-2)}
+.chart-wrap{position:relative;width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin:16px 0}
+.chart-title{font-size:15px;font-weight:600;color:var(--slate-1);margin:0 0 4px}
+.chart-desc{font-size:13px;color:var(--text-2);line-height:1.55;margin:0 0 16px}
+.chart-canvas{position:relative;width:100%;height:260px}
+.story{margin:18px 0;padding:22px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)}
+.story-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--accent-bg);color:var(--accent-dark);border-radius:50%;font-weight:600;font-size:14px;margin-right:12px}
+.story-title{font-size:18px;font-weight:600;color:var(--slate-1);margin:0 0 12px;display:flex;align-items:center}
+.story-text{font-size:14.5px;line-height:1.65;color:var(--text-1);margin:0 0 14px}
+.story-takeaway{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:var(--s-robust-bg);border-radius:var(--radius);margin-top:14px}
+.story-takeaway i{flex-shrink:0;color:var(--s-robust);font-size:18px;margin-top:1px}
+.story-takeaway p{margin:0;font-size:13.5px;line-height:1.5;color:var(--s-robust-text);font-weight:500}
+.fazit{background:linear-gradient(135deg,var(--accent-bg-soft) 0%,var(--accent-bg) 100%);border:1px solid #fecaca;border-radius:var(--radius-xl);padding:32px 36px;margin:24px 0}
+.fazit-title{font-size:22px;font-weight:600;color:var(--accent-dark);margin:0 0 20px;display:flex;align-items:center;gap:10px}
+.fazit-item{display:flex;gap:14px;margin:16px 0;align-items:flex-start}
+.fazit-item i{flex-shrink:0;font-size:22px;color:var(--accent-dark);margin-top:2px}
+.fazit-item-content{font-size:15px;line-height:1.6;color:var(--accent-dark)}
+.fazit-item-content strong{font-weight:600;color:var(--slate-1);display:block;margin-bottom:4px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg)}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--surface)}
+.tbl th{padding:12px 14px;text-align:left;background:var(--surface-2);font-weight:600;color:var(--slate-2);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border)}
+.tbl td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover{background:var(--surface-2)}
+.tbl td.id-col{font-family:'JetBrains Mono',monospace;color:var(--text-muted);width:50px;font-size:12px;font-weight:500}
+.diagram{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin:16px 0}
+.diagram-title{font-size:15px;font-weight:600;color:var(--slate-1);margin:0 0 14px}
+.tree{font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7;color:var(--text-2);background:var(--slate-8);padding:18px;border-radius:var(--radius);overflow-x:auto;white-space:pre}
+.lager-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px}
+.lager-name{font-size:14px;font-weight:600;color:var(--accent-dark);margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.lager-aufgreifen{font-size:13px;color:var(--text-1);line-height:1.55;margin:8px 0;padding:10px 12px;background:var(--s-robust-bg);border-radius:var(--radius)}
+.lager-aufgreifen strong{color:var(--s-robust-text);font-weight:600;display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.lager-kritisch{font-size:13px;color:var(--text-1);line-height:1.55;margin:8px 0;padding:10px 12px;background:var(--s-refuted-bg);border-radius:var(--radius)}
+.lager-kritisch strong{color:var(--s-refuted-text);font-weight:600;display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.kpi{background:var(--surface-2);border-radius:var(--radius-lg);padding:18px 20px}
+.kpi-title{font-size:13.5px;font-weight:600;color:var(--slate-2);margin:0 0 6px}
+.kpi-num{font-size:26px;font-weight:600;letter-spacing:-.02em;color:var(--accent-dark);margin:8px 0 4px;line-height:1}
+.kpi-desc{font-size:12.5px;color:var(--text-2);line-height:1.45;margin:0}
+.kpi-src{font-size:11px;color:var(--text-muted);margin-top:8px;font-family:'JetBrains Mono',monospace}
+.empty{text-align:center;padding:3rem;color:var(--text-muted);font-size:14px}
+.empty i{display:block;font-size:32px;color:var(--text-3);margin-bottom:10px}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 26px;margin:32px 0}
+.toc-title{font-size:14px;font-weight:600;color:var(--slate-2);margin:0 0 14px;text-transform:uppercase;letter-spacing:.06em}
+.toc ol{list-style:none;counter-reset:item;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px 24px}
+.toc li{counter-increment:item;font-size:14px;line-height:1.5}
+.toc li::before{content:counter(item,decimal-leading-zero);color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:11px;margin-right:10px;font-weight:600}
+.toc a{color:var(--text-1);text-decoration:none;font-weight:500}
+.toc a:hover{color:var(--accent-dark);text-decoration:underline}
+.legend{display:flex;flex-wrap:wrap;gap:18px;padding:14px 18px;background:var(--surface-2);border-radius:var(--radius);font-size:13px;margin:12px 0 24px}
+.legend-item{display:flex;align-items:center;gap:7px;color:var(--text-2)}
+footer.foot{padding:48px 0 64px;background:var(--surface);border-top:1px solid var(--border);margin-top:64px}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-bottom:32px}
+.foot-section h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--slate-2);font-weight:600;margin:0 0 12px}
+.foot-section p{font-size:13.5px;color:var(--text-2);line-height:1.6;margin:0 0 8px}
+.foot-bottom{padding-top:24px;border-top:1px solid var(--border);font-size:12.5px;color:var(--text-muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.quellen-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;font-size:13px;line-height:1.55}
+.quellen-card strong{font-weight:600;color:var(--slate-1)}
+.quellen-card em{color:var(--text-2);font-style:italic}
+.simple-box{background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid var(--s-robust);border-radius:var(--radius);padding:14px 16px;margin:12px 0}
+.simple-box-title{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--s-robust-text);font-weight:700;margin:0 0 6px;display:flex;align-items:center;gap:6px}
+.simple-box-title i{font-size:14px}
+.simple-box-text{font-size:14px;line-height:1.6;color:var(--s-robust-text);margin:0}
+.simple-box-text strong{font-weight:600}
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;margin:12px 0}
+.method-card-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.method-card-icon{flex-shrink:0;width:38px;height:38px;border-radius:var(--radius);background:var(--accent-bg);color:var(--accent-dark);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600}
+.method-card-title{font-size:15px;font-weight:600;color:var(--slate-1);margin:0}
+.method-card-subtitle{font-size:12px;color:var(--text-muted);margin:2px 0 0;font-family:'JetBrains Mono',monospace}
+.verdikt-list{margin:8px 0;padding:0;list-style:none}
+.verdikt-list li{padding:10px 12px;background:var(--surface-2);border-radius:var(--radius);margin:6px 0;font-size:13px;line-height:1.55;display:flex;gap:10px;align-items:flex-start}
+.verdikt-list li i{flex-shrink:0;font-size:16px;margin-top:2px}
+.verdikt-list li.v-pos i{color:var(--s-robust)}
+.verdikt-list li.v-neg i{color:var(--s-refuted)}
+.verdikt-list li.v-mid i{color:var(--s-medium)}
+.verdikt-list li.v-info i{color:var(--slate-3)}
+.verdikt-list li strong{font-weight:600;color:var(--slate-1)}
+.discovery{background:linear-gradient(135deg,var(--surface) 0%,var(--accent-bg-soft) 100%);border:1px solid var(--border);border-left:4px solid var(--accent-dark);border-radius:var(--radius-lg);padding:24px 26px;margin:16px 0}
+.discovery-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--accent-dark);color:#fff;border-radius:50%;font-weight:600;font-size:15px;flex-shrink:0}
+.discovery-head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.discovery-title{font-size:19px;font-weight:600;color:var(--slate-1);margin:0;letter-spacing:-.01em}
+.discovery-tag{display:inline-block;font-size:11px;color:var(--accent-dark);background:var(--accent-bg);padding:3px 9px;border-radius:var(--radius);font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:.04em}
+.discovery-text{font-size:14.5px;line-height:1.65;color:var(--text-1);margin:0 0 12px}
+.discovery-text strong{font-weight:600;color:var(--slate-1)}
+.discovery-simple{display:flex;gap:10px;padding:14px 16px;background:#f0fdf4;border-radius:var(--radius);margin:12px 0 0;border-left:3px solid var(--s-robust)}
+.discovery-simple i{flex-shrink:0;color:var(--s-robust);font-size:18px;margin-top:2px}
+.discovery-simple p{margin:0;font-size:13.5px;line-height:1.55;color:var(--s-robust-text);font-weight:500}
+.glossar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;margin:10px 0}
+.glossar-card:hover{border-color:var(--border-2)}
+.glossar-term{font-size:15px;font-weight:600;color:var(--accent-dark);margin:0 0 4px}
+.glossar-mini{font-size:11px;color:var(--text-muted);margin:0 0 8px;font-family:'JetBrains Mono',monospace}
+.glossar-def{font-size:13.5px;color:var(--text-1);line-height:1.6;margin:0}
+.glossar-def strong{font-weight:600;color:var(--slate-1)}
+.glossar-def em{color:var(--accent-dark);font-style:normal;font-weight:500}
+.compass{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:14px 18px;background:var(--surface-2);border-radius:var(--radius-lg);margin:10px 0}
+.compass-symbol{flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--accent-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600}
+.compass-text strong{display:block;font-size:14px;color:var(--slate-1);font-weight:600;margin-bottom:3px}
+.compass-text p{margin:0;font-size:13px;line-height:1.55;color:var(--text-2)}
+.sub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0}
+.sub-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px}
+.sub-id{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dark);font-weight:600;background:var(--accent-bg);padding:2px 8px;border-radius:var(--radius);display:inline-block;margin:0 0 6px}
+.sub-title{font-size:14px;font-weight:600;color:var(--slate-1);margin:0 0 6px;line-height:1.35}
+.sub-werke{font-size:12px;color:var(--text-muted);margin:0 0 8px;line-height:1.5;font-style:italic}
+.sub-verdikt{font-size:13px;color:var(--text-1);line-height:1.55;margin:0}
+.sub-verdikt strong{font-weight:600;color:var(--accent-dark)}
+.alarm{background:#fef3c7;border:1px solid #fde68a;border-left:4px solid var(--s-medium);border-radius:var(--radius);padding:14px 16px;margin:14px 0}
+.alarm-title{font-size:12px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--s-medium-text);margin:0 0 6px;display:flex;align-items:center;gap:6px}
+.alarm-text{font-size:13.5px;line-height:1.55;color:var(--s-medium-text);margin:0}
+.scale-row{display:grid;grid-template-columns:100px 1fr 80px;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.scale-row:last-child{border-bottom:none}
+.scale-id{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--accent-dark);font-size:12px}
+.scale-def{color:var(--text-1);line-height:1.5}
+.scale-count{text-align:right;font-weight:600;color:var(--slate-2)}
+@media (max-width:768px){.cover h1{font-size:38px}.cover-sub{font-size:17px}.cover-stats{grid-template-columns:repeat(2,1fr)}h2.h-section{font-size:28px}section{padding:48px 0}.wrap{padding:0 18px}nav.sticky .nav-inner{padding:0 18px}.scale-row{grid-template-columns:80px 1fr 50px}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="wrap">
+    <span class="cover-pill"><i class="ti ti-flask"></i>Marx im Faktencheck · Mai 2026</span>
+    <h1>Hatte <span class="accent">Marx</span> recht?</h1>
+    <p class="cover-sub">Eine ehrliche Prüfung: 26 zentrale Aussagen von Karl Marx über den Kapitalismus — abgeglichen mit den Daten von heute. These für These einzeln. Mit Quellen.</p>
+    <div class="cover-meta">
+      <span><i class="ti ti-books"></i>73 wissenschaftliche Hauptwerke</span>
+      <span><i class="ti ti-file-stack"></i>29 Prüf-Dokumente</span>
+      <span><i class="ti ti-calendar"></i>Datenstand 2024</span>
+      <span><i class="ti ti-shield-check"></i>Sachlich, nicht parteiisch</span>
+    </div>
+    <div class="cover-stats">
+      <div class="cover-stat"><div class="cover-stat-label"><span class="dot d-robust"></span>Stimmt klar</div><div class="cover-stat-val" style="color:var(--s-robust-text)">16</div><div class="cover-stat-sub">62% der Thesen</div></div>
+      <div class="cover-stat"><div class="cover-stat-label"><span class="dot d-medium"></span>Eingeschränkt</div><div class="cover-stat-val" style="color:var(--s-medium-text)">7</div><div class="cover-stat-sub">27% der Thesen</div></div>
+      <div class="cover-stat"><div class="cover-stat-label"><span class="dot d-weak"></span>Schwach</div><div class="cover-stat-val" style="color:var(--s-weak-text)">1</div><div class="cover-stat-sub">4% der Thesen</div></div>
+      <div class="cover-stat"><div class="cover-stat-label"><span class="dot d-refuted"></span>Widerlegt</div><div class="cover-stat-val" style="color:var(--s-refuted-text)">2</div><div class="cover-stat-sub">8% der Thesen</div></div>
+    </div>
+    <div class="toc">
+      <div class="toc-title">Inhalt</div>
+      <ol>
+        <li><a href="#einleitung">Worum es geht</a></li>
+        <li><a href="#kerneinsicht">Fünf Kerneinsichten</a></li>
+        <li><a href="#ueberblick">Wo Marx heute steht</a></li>
+        <li><a href="#thesen">Alle 26 Thesen einzeln</a></li>
+        <li><a href="#geschichte">Marx vs. Wirklichkeit</a></li>
+        <li><a href="#daten">Daten und Zahlen</a></li>
+        <li><a href="#kritik">Was bei Marx schwach ist</a></li>
+        <li><a href="#entdeckungen">Vier Schlüsselentdeckungen</a></li>
+        <li><a href="#audit">Wie wir Marx heute lesen</a></li>
+        <li><a href="#phase1">Empirisches Re-Test</a></li>
+        <li><a href="#phase2">22 Tiefenprüfungen</a></li>
+        <li><a href="#konflikte">Acht Streitfragen</a></li>
+        <li><a href="#lager">Was sieben Lager mitnehmen</a></li>
+        <li><a href="#v06">Wo es weitergehen muss</a></li>
+        <li><a href="#quellen">Quellen</a></li>
+        <li><a href="#glossar">Wörterbuch (Fachbegriffe)</a></li>
+        <li><a href="#fazit">Fazit</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<nav class="sticky">
+  <div class="nav-inner">
+    <a href="#einleitung"><i class="ti ti-info-circle"></i>Worum's geht</a>
+    <a href="#kerneinsicht"><i class="ti ti-bulb"></i>Kerneinsichten</a>
+    <a href="#thesen"><i class="ti ti-list-check"></i>26 Thesen</a>
+    <a href="#geschichte"><i class="ti ti-history"></i>Marx vs. Welt</a>
+    <a href="#daten"><i class="ti ti-table"></i>Daten</a>
+    <a href="#entdeckungen"><i class="ti ti-star"></i>4 Entdeckungen</a>
+    <a href="#audit"><i class="ti ti-route"></i>Marx heute</a>
+    <a href="#phase2"><i class="ti ti-stack"></i>22 Prüfungen</a>
+    <a href="#lager"><i class="ti ti-users-group"></i>Lager</a>
+    <a href="#glossar"><i class="ti ti-book-2"></i>Wörterbuch</a>
+    <a href="#fazit"><i class="ti ti-target"></i>Fazit</a>
+  </div>
+</nav>
+
+<section id="einleitung">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-info-circle"></i>Worum es geht</div>
+      <h2 class="h-section">Was diese Studie macht — und was nicht</h2>
+      <p class="section-lead">Wir prüfen, welche Aussagen von Karl Marx über den Kapitalismus heute noch stimmen — und welche nicht. Mit Zahlen, Daten, Quellen. Sachlich. These für These einzeln, nicht im großen Ganzen.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4 class="h-mini" style="color:var(--s-robust-text);display:flex;align-items:center;gap:8px"><i class="ti ti-check" style="color:var(--s-robust)"></i>Was die Studie macht</h4>
+        <ul style="margin:0;padding-left:18px;color:var(--text-1);font-size:14px;line-height:1.7">
+          <li>Für jede Marx-These: Originalzitat aus den Werken (MEW = Marx-Engels-Werke)</li>
+          <li>Aktuelle Daten aus mehreren großen Datenbanken</li>
+          <li>Trennung zwischen reichen Industrieländern (OECD) und der Welt insgesamt</li>
+          <li>Quellen aus dem akademischen Mainstream UND aus der Marx-nahen Forschung</li>
+          <li>Klare Bewertung pro These: stimmt klar / stimmt eingeschränkt / schwach / falsch</li>
+          <li>Offen benannte Datenlücken</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="h-mini" style="color:var(--s-refuted-text);display:flex;align-items:center;gap:8px"><i class="ti ti-x" style="color:var(--s-refuted)"></i>Was die Studie weglässt</h4>
+        <ul style="margin:0;padding-left:18px;color:var(--text-1);font-size:14px;line-height:1.7">
+          <li>Keine Diskussion von Marx' Forschungsmethode</li>
+          <li>Keine politischen Visionen (Kommunismus, Revolution)</li>
+          <li>Keine politischen Handlungsempfehlungen</li>
+          <li>Keine Bewertung im Stil "Marx hatte recht / unrecht"</li>
+          <li>Keine Aussagen über Engels alleine oder die Marx-Tradition als Ganzes</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-target-arrow"></i>Was Marx mit "Kapitalismus" überhaupt meint</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Bevor wir Marx prüfen, müssen wir wissen, wovon er spricht. Marx definiert den Kapitalismus durch vier Merkmale, die zusammen auftreten müssen:</p>
+    <div class="grid-4">
+      <div class="card"><strong style="font-size:14px;color:var(--accent-dark)">1. Produktion für den Markt</strong><p style="margin:6px 0 0;font-size:13px;color:var(--text-2);line-height:1.5">Es wird gebaut, um zu verkaufen — nicht für den Eigenbedarf einer Gemeinschaft.</p></div>
+      <div class="card"><strong style="font-size:14px;color:var(--accent-dark)">2. Lohnarbeit</strong><p style="margin:6px 0 0;font-size:13px;color:var(--text-2);line-height:1.5">Die meisten Menschen besitzen keine Werkstatt, keinen Acker, keine Maschine — sie müssen ihre Arbeitskraft verkaufen, um zu leben.</p></div>
+      <div class="card"><strong style="font-size:14px;color:var(--accent-dark)">3. Privatbesitz an Maschinen und Boden</strong><p style="margin:6px 0 0;font-size:13px;color:var(--text-2);line-height:1.5">Die Produktionsmittel (Fabriken, Land, Werkzeuge) gehören einer kleinen Gruppe — Marx nennt sie Kapitalisten.</p></div>
+      <div class="card"><strong style="font-size:14px;color:var(--accent-dark)">4. Wachstumszwang</strong><p style="margin:6px 0 0;font-size:13px;color:var(--text-2);line-height:1.5">Wer nicht wächst, wird verdrängt. Konkurrenz zwingt jeden Betrieb, Gewinn zu reinvestieren und größer zu werden.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-ruler-measure"></i>Die vier Bewertungs-Stufen</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Jede Marx-These bekommt eine von vier Bewertungen — je nachdem, wie gut sie mit den heutigen Daten zusammenpasst:</p>
+    <div class="grid-2">
+      <div class="insight"><div class="insight-ico green"><i class="ti ti-check"></i></div><p><strong>Stimmt klar.</strong> Mehrere unabhängige Datenquellen bestätigen die These. Sowohl in reichen Ländern als auch weltweit.</p></div>
+      <div class="insight"><div class="insight-ico amber"><i class="ti ti-circle-half-2"></i></div><p><strong>Stimmt eingeschränkt.</strong> Daten stützen die These, aber nur teilweise — etwa nur in bestimmten Ländern oder Zeiträumen.</p></div>
+      <div class="insight"><div class="insight-ico" style="background:var(--s-weak-bg);color:var(--s-weak)"><i class="ti ti-help"></i></div><p><strong>Schwach gestützt.</strong> Die Daten sind widersprüchlich oder es gibt zu wenig Studien.</p></div>
+      <div class="insight"><div class="insight-ico red"><i class="ti ti-x"></i></div><p><strong>Empirisch widerlegt.</strong> Mehrere Datenquellen zeigen das Gegenteil von dem, was Marx erwartete.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="kerneinsicht">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-bulb"></i>Top-Erkenntnisse</div>
+      <h2 class="h-section">Fünf Kerneinsichten in einfacher Sprache</h2>
+      <p class="section-lead">Bevor Sie in die Details einsteigen — die wichtigsten Befunde dieser Studie auf einen Blick.</p>
+    </div>
+    <div class="grid-2">
+      <div class="insight"><div class="insight-ico green"><i class="ti ti-check"></i></div><p><strong>Marx hatte oft recht.</strong> 16 von 26 Thesen sind durch heutige Daten klar bestätigt — von Vermögenskonzentration über Finanzialisierung bis zu Krisenanfälligkeit. Auch von Forschern, die Marx ansonsten ablehnen.</p></div>
+      <div class="insight"><div class="insight-ico red"><i class="ti ti-x"></i></div><p><strong>Zwei zentrale Thesen halten nicht.</strong> Die absolute Verarmung der Arbeiter ist klar widerlegt. Die Polarisierung in zwei Klassen ebenso — global wächst die Mittelschicht von 1,8 auf 3,2 Milliarden Menschen (2009–2017).</p></div>
+      <div class="insight"><div class="insight-ico amber"><i class="ti ti-trending-up"></i></div><p><strong>Vermögenskonzentration ist heute extremer als Marx ahnte.</strong> Das obere 1% besitzt in den USA fast 40% des Vermögens, weltweit 38% — Tendenz steigend. Auch im Jahr seines Todes (1883) war es nicht so extrem.</p></div>
+      <div class="insight"><div class="insight-ico slate"><i class="ti ti-help"></i></div><p><strong>Eine These bleibt offen: der Profitratenfall.</strong> Empirisch nicht entschieden — auch nicht innerhalb der Marx-Tradition. Methodologisch sensibel. Hier ist "kontrovers" robuster als jede Festlegung.</p></div>
+      <div class="insight" style="grid-column:1/-1"><div class="insight-ico green"><i class="ti ti-target-arrow"></i></div><p><strong>Argumentationsempfehlung.</strong> Streiten Sie über konkrete Thesen mit MEW-Quelle und Mainstream-Daten — nicht über Marx als Ganzes. Dann sind Sie auf festem Boden, egal welches politische Lager Sie gegenüber haben. Konkrete Daten überzeugen lager-übergreifend; aggregierte Aussagen sind methodologisch fragil.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ueberblick">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-chart-donut"></i>Überblick auf einen Blick</div>
+      <h2 class="h-section">Wo Marx heute steht</h2>
+      <p class="section-lead">26 Marx-Thesen wurden systematisch geprüft. Hier die Übersicht: Wie viele halten den Faktencheck — und wie viele nicht?</p>
+    </div>
+    <div class="grid-4">
+      <div class="stat"><div class="stat-label"><span class="dot d-robust"></span>Stimmt klar</div><div class="stat-val" style="color:var(--s-robust-text)">16</div><div class="stat-sub">62% — durch Daten bestätigt</div></div>
+      <div class="stat"><div class="stat-label"><span class="dot d-medium"></span>Stimmt eingeschränkt</div><div class="stat-val" style="color:var(--s-medium-text)">7</div><div class="stat-sub">27% — teilweise bestätigt</div></div>
+      <div class="stat"><div class="stat-label"><span class="dot d-weak"></span>Schwach</div><div class="stat-val" style="color:var(--s-weak-text)">1</div><div class="stat-sub">4% — Daten widersprüchlich</div></div>
+      <div class="stat"><div class="stat-label"><span class="dot d-refuted"></span>Widerlegt</div><div class="stat-val" style="color:var(--s-refuted-text)">2</div><div class="stat-sub">8% — Daten widerlegen</div></div>
+    </div>
+    <div class="chart-wrap">
+      <h4 class="chart-title">Status-Verteilung aller 26 Thesen</h4>
+      <p class="chart-desc">Anteile in Prozent. Die Mehrheit der prüfbaren Marx-Thesen hält den heutigen empirischen Tests stand.</p>
+      <div class="chart-canvas" style="height:280px"><canvas id="donutChart"></canvas></div>
+    </div>
+    <div class="chart-wrap">
+      <h4 class="chart-title">Verteilung nach Themenfeld</h4>
+      <p class="chart-desc">Welche Bereiche der Marx-Theorie sind besonders robust, welche umstritten?</p>
+      <div class="chart-canvas" style="height:300px"><canvas id="catBarChart"></canvas></div>
+    </div>
+    <div class="legend">
+      <span class="legend-item"><span class="dot d-robust"></span>Robust — traditionsübergreifend bestätigt</span>
+      <span class="legend-item"><span class="dot d-medium"></span>Mittel — einzelne robuste Befunde, geographisch begrenzt</span>
+      <span class="legend-item"><span class="dot d-weak"></span>Schwach — methodisch ungelöst</span>
+      <span class="legend-item"><span class="dot d-refuted"></span>Widerlegt — Daten widersprechen</span>
+    </div>
+  </div>
+</section>
+
+<section id="thesen">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-list-check"></i>Die 26 Thesen im Detail</div>
+      <h2 class="h-section">Thesen-Checker</h2>
+      <p class="section-lead">Jede Karte: was Marx schrieb (Original), was er meinte (einfache Sprache), was die Daten zeigen, Schlussfolgerung in einem Satz. Klicken für volle Details.</p>
+    </div>
+    <h4 class="h-mini">Filter nach Themenfeld</h4>
+    <div class="filter-row" id="catFilter">
+      <button class="fbtn active" data-cat="all">Alle (26)</button>
+      <button class="fbtn" data-cat="akkumulation">Akkumulation</button>
+      <button class="fbtn" data-cat="reichtum">Reichtum</button>
+      <button class="fbtn" data-cat="klassen">Klassen</button>
+      <button class="fbtn" data-cat="krisen">Krisen</button>
+      <button class="fbtn" data-cat="global">Global</button>
+      <button class="fbtn" data-cat="arbeit">Arbeit</button>
+      <button class="fbtn" data-cat="wert">Wert</button>
+      <button class="fbtn" data-cat="finanz">Finanz</button>
+      <button class="fbtn" data-cat="reproduktion">Reproduktion</button>
+    </div>
+    <h4 class="h-mini">Filter nach Status</h4>
+    <div class="filter-row" id="statusFilter">
+      <button class="fbtn active" data-st="all">Alle</button>
+      <button class="fbtn" data-st="robust"><span class="dot d-robust"></span>Robust</button>
+      <button class="fbtn" data-st="medium"><span class="dot d-medium"></span>Mittel</button>
+      <button class="fbtn" data-st="weak"><span class="dot d-weak"></span>Schwach</button>
+      <button class="fbtn" data-st="refuted"><span class="dot d-refuted"></span>Widerlegt</button>
+    </div>
+    <div class="grid-2" id="thesisGrid" style="margin-top:24px"></div>
+    <div id="emptyState" class="empty" style="display:none"><i class="ti ti-search-off"></i>Keine Thesen entsprechen den Filtern.</div>
+  </div>
+</section>
+
+<section id="geschichte">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-history"></i>Storytelling</div>
+      <h2 class="h-section">Marx vs. die Wirklichkeit</h2>
+      <p class="section-lead">Sechs zentrale Spannungen zwischen Marx' Vorhersagen und dem, was wirklich geschah — in einfacher Erzählform.</p>
+    </div>
+    <div class="story">
+      <h3 class="story-title"><span class="story-num">1</span>Konzentration und Konkurrenz</h3>
+      <p class="story-text">Marx sagte vorher: Kleine Firmen werden von großen verschluckt. Mit Marktanteilen wächst die Konzentration. Mainstream-Ökonomen widersprachen lange — Konkurrenz halte das im Zaum. Doch die Daten der letzten 40 Jahre geben Marx recht. US-Aufschläge (Markups) stiegen von 1,20 auf 1,60, das weltweite M&A-Volumen verzwanzigfachte sich, Big-Tech kontrolliert ganze Märkte.</p>
+      <div class="story-takeaway"><i class="ti ti-arrow-right"></i><p>Marx hatte hier recht — sogar stärker, als manche Marx-Kritiker zugeben.</p></div>
+    </div>
+    <div class="story">
+      <h3 class="story-title"><span class="story-num">2</span>Die widerlegte Verelendung</h3>
+      <p class="story-text">Marx schrieb im 23. Kapitel des Kapital: Mit dem Reichtum auf einer Seite wachse das Elend auf der anderen — als absoluter Fall des Lebensstandards. Das ist empirisch nicht eingetreten. Reallöhne stiegen in den OECD-Ländern bis 1980 deutlich, globale extreme Armut sank von 36% (1990) auf 9% (2019). <strong>Aber</strong>: die relative Verarmung — ein sinkender Lohnanteil am Volkseinkommen — ist sehr wohl messbar. In 42 von 59 Ländern fiel der Lohnanteil 1975–2012.</p>
+      <div class="story-takeaway"><i class="ti ti-arrow-right"></i><p>Marx irrte absolut, behielt aber relativ recht. Die Distanz zwischen oben und unten wächst.</p></div>
+    </div>
+    <div class="story">
+      <h3 class="story-title"><span class="story-num">3</span>Finanz als Krisentreiber</h3>
+      <p class="story-text">Marx beschrieb in Kapital III den Kredit als "Haupthebel der Überproduktion und Überspekulation". Das war 1864. Die Finanzkrise 2008, die Asienkrise 1997, der Dotcom-Crash, Japan 1990 — alle bestätigen diesen Mechanismus. Auch der Mainstream akzeptiert das seit Reinhart und Rogoff (2009). Schularick und Taylor zeigen 2012 im American Economic Review systematisch: Kreditexpansion geht Finanzkrisen voraus.</p>
+      <div class="story-takeaway"><i class="ti ti-arrow-right"></i><p>Marx' Diagnose ist heute Lehrbuchwissen — auch in nicht-marxistischer Forschung.</p></div>
+    </div>
+    <div class="story">
+      <h3 class="story-title"><span class="story-num">4</span>Die nicht-verschwundene Mittelschicht</h3>
+      <p class="story-text">Das Manifest von 1848 prophezeite eine Polarisierung der Gesellschaft in zwei feindliche Klassen. In den OECD-Ländern hat sich die Mittelschicht stattdessen lange ausgedehnt; sie schrumpft erst seit den 1980ern leicht. Global wächst sie weiterhin stark — von 1,8 Milliarden (2009) auf 3,2 Milliarden (2017) laut Brookings. Bernstein hatte das schon 1899 empirisch infrage gestellt.</p>
+      <div class="story-takeaway"><i class="ti ti-arrow-right"></i><p>Die Polarisierungs-These als wörtliche Prognose ist falsch. Spätere Marx-Schriften behandeln Klassen differenzierter.</p></div>
+    </div>
+    <div class="story">
+      <h3 class="story-title"><span class="story-num">5</span>Der Profitratenfall — die offene Frage</h3>
+      <p class="story-text">Marx nannte den tendenziellen Fall der Profitrate "das wichtigste Gesetz der modernen politischen Ökonomie". Empirisch ist das bis heute ungelöst. Kliman (TSSI-Methode), Roberts und Carchedi finden Belege; Michael Heinrich argumentiert philologisch dagegen — Marx selbst habe die These in den 1870ern verworfen. Die Datenwahl (current cost vs. historic cost) beeinflusst das Ergebnis stark.</p>
+      <div class="story-takeaway"><i class="ti ti-arrow-right"></i><p>Hier ist Ehrlichkeit Pflicht: Die These ist empirisch nicht belastbar entschieden — auch nicht innerhalb der Marx-Tradition.</p></div>
+    </div>
+    <div class="story">
+      <h3 class="story-title"><span class="story-num">6</span>Sklaverei und industrielle Revolution</h3>
+      <p class="story-text">Marx beschrieb die "ursprüngliche Akkumulation" — Kolonialraub und Sklavenhandel als Geburtshelfer des Kapitalismus, im 24. Kapitel des Kapital. Das war lange umstritten. Heute ist es Konsens, auch im Mainstream. Acemoglu, Johnson und Robinson (2024 mit dem Nobelpreis ausgezeichnet) legen das offen; Beckert ("Empire of Cotton" 2014), Pomeranz ("Great Divergence" 2000), Inikori bestätigen quantitativ. 12–15 Millionen versklavte Afrikaner überquerten den Atlantik.</p>
+      <div class="story-takeaway"><i class="ti ti-arrow-right"></i><p>Was bei Marx 1867 als marginale Beobachtung galt, ist heute Standardwissen — er war seiner Zeit voraus.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="daten">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-table"></i>Empirische Daten</div>
+      <h2 class="h-section">Datenanalyse</h2>
+      <p class="section-lead">Schlüsseltrends mit Mainstream- und heterodoxen Datenquellen — visualisiert.</p>
+    </div>
+    <h3 class="h-sub"><i class="ti ti-chart-bar"></i>Schlüssel-Indikatoren auf einen Blick</h3>
+    <div class="grid-3">
+      <div class="kpi"><p class="kpi-title">Top-1%-Wealth USA</p><p class="kpi-num">27% → 39%</p><p class="kpi-desc">1976 vs. 2019 — fast 40% des Vermögens beim oberen 1%.</p><p class="kpi-src">WID.world</p></div>
+      <div class="kpi"><p class="kpi-title">Wage Share OECD</p><p class="kpi-num">−5 Pp</p><p class="kpi-desc">42 von 59 Ländern, Senkung 1975–2012.</p><p class="kpi-src">Karabarbounis/Neiman 2014</p></div>
+      <div class="kpi"><p class="kpi-title">Globaler Handel/BIP</p><p class="kpi-num">8% → 56%</p><p class="kpi-desc">1850 vs. 2020 — Globalisierung statistisch belegt.</p><p class="kpi-src">World Bank WDI</p></div>
+      <div class="kpi"><p class="kpi-title">M&A Welt-Volumen</p><p class="kpi-num">200 Mrd → 5 Bio</p><p class="kpi-desc">USD 1985 vs. 2021 — Verzwanzigfachung.</p><p class="kpi-src">IMAA Institute</p></div>
+      <div class="kpi"><p class="kpi-title">Finanzprofite US</p><p class="kpi-num">10% → 40%+</p><p class="kpi-desc">Anteil an Gesamtprofiten 1950 vs. 2007.</p><p class="kpi-src">Krippner 2005</p></div>
+      <div class="kpi"><p class="kpi-title">Globale Mittelschicht</p><p class="kpi-num">1,8 → 3,2 Mrd</p><p class="kpi-desc">2009 vs. 2017 — gegen Polarisierungs-These.</p><p class="kpi-src">Kharas 2017, Brookings</p></div>
+    </div>
+    <div class="chart-wrap">
+      <h4 class="chart-title">Wage-Share-Entwicklung in OECD-Ländern</h4>
+      <p class="chart-desc">Der Lohnanteil am Volkseinkommen sinkt seit den 1980ern in fast allen Industrieländern. Das bestätigt Marx' These der relativen Verarmung.</p>
+      <div class="chart-canvas" style="height:280px"><canvas id="wageChart"></canvas></div>
+    </div>
+    <div class="chart-wrap">
+      <h4 class="chart-title">Top-1%-Vermögensanteil USA</h4>
+      <p class="chart-desc">Der Anteil des obersten 1% folgte einer U-Form: hoch um 1920, niedrig in der Nachkriegszeit, wieder hoch heute. Marx' Konzentrations-These findet sich nach 1980 dramatisch bestätigt.</p>
+      <div class="chart-canvas" style="height:280px"><canvas id="wealthChart"></canvas></div>
+    </div>
+    <div class="chart-wrap">
+      <h4 class="chart-title">Markups in den USA (Aufschlag auf Produktionskosten)</h4>
+      <p class="chart-desc">Markups messen Marktmacht: je höher der Aufschlag, desto weniger Konkurrenz. Seit 1980 von 1,20 auf 1,60 gestiegen.</p>
+      <div class="chart-canvas" style="height:280px"><canvas id="markupChart"></canvas></div>
+    </div>
+    <div class="chart-wrap">
+      <h4 class="chart-title">Globaler Handel als Anteil am BIP</h4>
+      <p class="chart-desc">Die Welt-Markt-Expansion, die Marx 1848 im Manifest beschrieb, ist über 170 Jahre messbar — mit einer Delle in den Weltkriegsjahren.</p>
+      <div class="chart-canvas" style="height:280px"><canvas id="tradeChart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<section id="kritik">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-zoom-question"></i>Was nicht hält</div>
+      <h2 class="h-section">Kritik</h2>
+      <p class="section-lead">Drei Thesen halten nicht oder nur schwach. Transparenz hier ist entscheidend für die Glaubwürdigkeit der gesamten Bilanz.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card" style="border-left:3px solid var(--s-refuted)">
+        <div class="t-cat" style="color:var(--s-refuted-text)">Widerlegt · A5</div>
+        <div class="t-title" style="font-size:18px;color:var(--slate-1);margin-bottom:6px">Absolute Verarmung</div>
+        <p class="t-src">Kapital I, Kap. XXIII (MEW 23, S. 675)</p>
+        <p style="font-size:14px;color:var(--text-1);line-height:1.6;margin:12px 0"><strong>Was Marx schrieb:</strong> Mit der Akkumulation des Reichtums wachse das Elend der Arbeiter — als absoluter Fall des Lebensstandards.</p>
+        <p style="font-size:14px;color:var(--text-1);line-height:1.6;margin:8px 0"><strong>Was geschah:</strong> Reallöhne stiegen 1850–1980 in den OECD-Ländern signifikant. Globale extreme Armut fiel von 36% (1990) auf 9% (2019).</p>
+        <p style="font-size:13px;color:var(--text-muted);margin:10px 0 0;line-height:1.55"><i class="ti ti-info-circle"></i> Selbst marxianische Forscher (Heinrich, Harvey, Shaikh) lesen die Stelle nicht streng.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--s-refuted)">
+        <div class="t-cat" style="color:var(--s-refuted-text)">Widerlegt · C1</div>
+        <div class="t-title" style="font-size:18px;color:var(--slate-1);margin-bottom:6px">Polarisierungs-These</div>
+        <p class="t-src">Manifest 1848 (MEW 4, S. 463)</p>
+        <p style="font-size:14px;color:var(--text-1);line-height:1.6;margin:12px 0"><strong>Was Marx schrieb:</strong> Die Gesellschaft spalte sich in zwei feindliche Klassen — Mittelschichten verschwänden.</p>
+        <p style="font-size:14px;color:var(--text-1);line-height:1.6;margin:8px 0"><strong>Was geschah:</strong> Die globale Mittelschicht wuchs von 1,8 (2009) auf 3,2 Milliarden Menschen (2017).</p>
+        <p style="font-size:13px;color:var(--text-muted);margin:10px 0 0;line-height:1.55"><i class="ti ti-info-circle"></i> Das Manifest ist Agitations-Text. In Kapital III, Kap. 52 behandelt Marx Klassen differenzierter — und bricht das Kapitel ab.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--s-weak);grid-column:1/-1">
+        <div class="t-cat" style="color:var(--s-weak-text)">Schwach · D2</div>
+        <div class="t-title" style="font-size:18px;color:var(--slate-1);margin-bottom:6px">Tendenzieller Fall der Profitrate (TFPR)</div>
+        <p class="t-src">Kapital III, Teil III (MEW 25, S. 223)</p>
+        <p style="font-size:14px;color:var(--text-1);line-height:1.6;margin:12px 0"><strong>Was Marx schrieb:</strong> Die durchschnittliche Profitrate sinke langfristig — "das wichtigste Gesetz der modernen politischen Ökonomie".</p>
+        <p style="font-size:14px;color:var(--text-1);line-height:1.6;margin:8px 0"><strong>Wo die Forschung steht:</strong> Kliman 2012 (TSSI-Methode) findet TFPR; Mainstream und Heinrich 2013 (intra-marxianisch) bestreiten. Methodische Wahl beeinflusst Ergebnis stark.</p>
+        <p style="font-size:13px;color:var(--text-muted);margin:10px 0 0;line-height:1.55"><i class="ti ti-info-circle"></i> Marx selbst hat im Manuskript 1864/65 formuliert, das Engels für Kapital III editierte.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="entdeckungen">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-star"></i>Die wichtigsten neuen Befunde</div>
+      <h2 class="h-section">Vier Schlüsselentdeckungen</h2>
+      <p class="section-lead">Die vier wichtigsten neuen Befunde dieser Studie. Sie sind so zentral, dass sie eine eigene Sektion bekommen. Sie verändern, wie wir Marx heute lesen sollten.</p>
+    </div>
+
+    <div class="discovery">
+      <div class="discovery-head">
+        <div class="discovery-num">1</div>
+        <div>
+          <div class="discovery-title">Die Saito-Wendung — Marx war kein Produktivist</div>
+          <span class="discovery-tag">Ökologie · Marx neu gelesen</span>
+        </div>
+      </div>
+      <p class="discovery-text">Lange galt Marx als Produktivismus-Befürworter — Industrie als Treiber des Fortschritts, Wachstum als Befreiung. Kohei Saito argumentierte 2017 und 2023: Der späte Marx widersprach sich selbst. In seinen letzten Lebensjahren (1879–1882) studierte er anthropologische Werke, schrieb ökologische Notizen und korrespondierte mit russischen Sozialisten. Der berühmte <strong>Sassulitsch-Brief von 1881</strong> zeigt: Marx hielt es für möglich, dass Russland über die Dorfgemeinde direkt zum Sozialismus übergehen könne — ohne den westlichen Industriekapitalismus zu wiederholen.</p>
+      <p class="discovery-text"><strong>Wir haben das in dieser Studie geprüft</strong> — und fanden Saitos These bestätigt: Marx wandelte sich in den 1870er-Jahren tatsächlich von einem stadial-universalistischen Denker zu einem multilinearen, ökologisch sensibleren Theoretiker.</p>
+      <div class="discovery-simple">
+        <i class="ti ti-arrow-right"></i>
+        <p>Bedeutung: Diese Studie übernimmt Saitos Sicht: Marx-Tradition ist mit Klimaschutz vereinbar — nicht trotz, sondern wegen Marx.</p>
+      </div>
+    </div>
+
+    <div class="discovery">
+      <div class="discovery-head">
+        <div class="discovery-num">2</div>
+        <div>
+          <div class="discovery-title">Das Drei-Bündnispartner-Modell — Marx in Mainstream-Sprache</div>
+          <span class="discovery-tag">Empirie · Drei Bündnispartner</span>
+        </div>
+      </div>
+      <p class="discovery-text">Wenn jemand sagt, Marx-Theorie sei abgeschlossene Ideologie, hat das einen Haken: Drei der einflussreichsten heterodoxen Ökonom*innen unserer Zeit liefern empirische Befunde, die mit Marx konvergieren — ohne sich auf Marx zu berufen. Das Audit benennt sie als <strong>Bündnispartner</strong>:</p>
+      <div class="grid-3" style="margin:14px 0">
+        <div class="compass">
+          <div class="compass-symbol"><i class="ti ti-activity"></i></div>
+          <div class="compass-text"><strong>Hyman Minsky</strong><p>"Stabilität destabilisiert." Finanzkrisen sind endogen, nicht zufällig.</p></div>
+        </div>
+        <div class="compass">
+          <div class="compass-symbol"><i class="ti ti-chart-bar"></i></div>
+          <div class="compass-text"><strong>James K. Galbraith</strong><p>UTIP-UNIDO-Datenbank zu 59+ Ländern. Ungleichheit als globale Struktur.</p></div>
+        </div>
+        <div class="compass">
+          <div class="compass-symbol"><i class="ti ti-building-bank"></i></div>
+          <div class="compass-text"><strong>Wolfgang Streeck</strong><p>Demokratie-Kapitalismus-Krise; fünf Endspiel-Symptome.</p></div>
+        </div>
+      </div>
+      <div class="discovery-simple">
+        <i class="ti ti-arrow-right"></i>
+        <p>Bedeutung: Wer unsere Marx-Lesart widerlegen will, müsste auch diese drei renommierten Mainstream-Forscher widerlegen. Das macht unsere Position belastbar.</p>
+      </div>
+    </div>
+
+    <div class="discovery">
+      <div class="discovery-head">
+        <div class="discovery-num">3</div>
+        <div>
+          <div class="discovery-title">Acemoglu/Robinson — der Nobelpreis-Test</div>
+          <span class="discovery-tag">Mainstream · Acemoglu/Robinson</span>
+        </div>
+      </div>
+      <p class="discovery-text">2024 erhielten Daron Acemoglu, Simon Johnson und James A. Robinson den Wirtschaftsnobelpreis für ihre Theorie der "inclusive institutions" — gute Institutionen erklären Wohlstand. Das ist die einflussreichste Mainstream-Position der letzten 20 Jahre. Sie konkurriert frontal mit der Marx-Tradition.</p>
+      <p class="discovery-text"><strong>Wir haben das in dieser Studie geprüft</strong>: Empirisch liefert AJR wertvolles Material zu Kolonialismus und Sklaverei (siehe E2 oben). Methodologisch jedoch ist ihre Theorie unter strikter Form-Analyse-Brille schwach: "Institutionen" sind nicht Ursache, sondern Form, in der Klassenkampf gerinnt. AJR verwechseln Symptom und Mechanismus.</p>
+      <div class="discovery-simple">
+        <i class="ti ti-arrow-right"></i>
+        <p>Bedeutung: Audit-Position lautet — empirisch selektiv übernehmen, methodologisch ablehnen. Pluralistisch dokumentiert: die größte Konkurrenz-Position ist nicht ignorierbar.</p>
+      </div>
+    </div>
+
+    <div class="discovery">
+      <div class="discovery-head">
+        <div class="discovery-num">4</div>
+        <div>
+          <div class="discovery-title">Hardt/Negri — die zurückgewiesene Verlockung</div>
+          <span class="discovery-tag">Abgrenzung · Hardt/Negri</span>
+        </div>
+      </div>
+      <p class="discovery-text">Antonio Negri und Michael Hardt haben mit "Empire" (2000), "Multitude" (2004) und "Commonwealth" (2009) eine der lautesten Marx-Aktualisierungen unserer Zeit geliefert. Im italienischen Operaismus geboren, gewann die Hardt/Negri-Schule weltweit Anhänger. Müssten wir hier nicht einfach mitmachen, um beliebter zu werden?</p>
+      <p class="discovery-text"><strong>Wir haben sie in dieser Studie geprüft</strong> — und mussten sie zurückweisen. Das "Empire"-Konzept überdehnt; "Multitude" droht in Mystik zu kippen; technologischer Determinismus untergräbt die Form-Analyse. Eine angesehene Tradition, methodologisch aber unhaltbar.</p>
+      <div class="discovery-simple">
+        <i class="ti ti-arrow-right"></i>
+        <p>Bedeutung: Wir zeigen Profil. Wir folgen nicht jeder populären Marx-Strömung. Wo wir ablehnen, sagen wir warum.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="audit">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-route"></i>Marx-Lesart heute</div>
+      <h2 class="h-section">Wie wir Marx heute lesen sollten</h2>
+      <p class="section-lead">Marx hat heute viele unterschiedliche Anhänger. Welche Lesart führt zu den besten Erklärungen für die heutige Welt? Diese Studie nimmt eine klare Position: drei Marx-Lesarten ergänzen sich gegenseitig — und werden durch drei ähnlich denkende Ökonomen aus dem Mainstream gestützt.</p>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-stack-2"></i>Drei Marx-Lesarten, die zusammenpassen</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Jede dieser drei Lesarten betont eine andere Seite von Marx. Zusammen ergeben sie ein vollständigeres Bild — wie drei Fotos eines Gebäudes von verschiedenen Seiten.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h4 class="h-mini" style="color:var(--accent-dark)"><i class="ti ti-shape"></i> Michael Heinrich — die Form</h4>
+        <p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Heinrich sagt: Marx erklärt nicht, was Geld <em>ist</em> — sondern <strong>welche besondere Form das Wirtschaftsleben im Kapitalismus annimmt</strong>. Im Kapitalismus erscheinen soziale Beziehungen als Verhältnisse zwischen Sachen (Geld, Waren, Preise). Das ist nicht natürlich, sondern eine bestimmte historische Form.</p>
+      </div>
+      <div class="card">
+        <h4 class="h-mini" style="color:var(--accent-dark)"><i class="ti ti-clock"></i> Moishe Postone — die Zeit</h4>
+        <p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Postone sagt: Im Kapitalismus wird Arbeit zur <strong>abstrakten Zeit</strong>. Eine Stunde Arbeit wird mit jeder anderen Stunde verglichen. Ob du Brot backst, ein Auto baust oder eine App programmierst — alles wird in dieselbe Zeit-Einheit umgerechnet. <em>Das ist historisch einmalig.</em></p>
+      </div>
+      <div class="card">
+        <h4 class="h-mini" style="color:var(--accent-dark)"><i class="ti ti-map-2"></i> David Harvey — der Raum</h4>
+        <p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Harvey sagt: Das Kapital sucht ständig <strong>neue Räume</strong>. Wenn es in einer Region keine Profitmöglichkeiten mehr findet, geht es woanders hin (Globalisierung) oder erschließt neue Lebensbereiche (Privatisierung von Wasser, Bildung, Gesundheit). Das nennt er "Akkumulation durch Enteignung".</p>
+      </div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-users"></i>Drei Bündnispartner aus dem Mainstream</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Diese drei Ökonomen sind <strong>keine Marxisten</strong>. Sie kommen aus der etablierten Wissenschaft. Aber ihre Forschungs-Ergebnisse stützen die Marx-Befunde, ohne dass sie das wollten. Das ist eine starke Bestätigung.</p>
+    <div class="grid-3">
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)"><i class="ti ti-activity"></i> Hyman Minsky — Finanzkrisen</h4><p style="font-size:13px;color:var(--text-1);line-height:1.55;margin:8px 0 0">Minskys Kernsatz: <strong>"Wenn lange nichts passiert, wird es gefährlich."</strong> Wenn die Wirtschaft lange ruhig läuft, werden Investoren mutig, gehen mehr Risiken ein — bis es kracht. Minsky hat das schon in den 1980er Jahren beschrieben. 2008 wurde es Wirklichkeit.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)"><i class="ti ti-chart-bar"></i> James K. Galbraith — Ungleichheit</h4><p style="font-size:13px;color:var(--text-1);line-height:1.55;margin:8px 0 0">Galbraith leitet eine Datenbank mit Lohn-Ungleichheits-Daten zu fast 60 Ländern. <strong>Sein Befund:</strong> Globale Finanzmärkte erzeugen weltweit ähnliche Ungleichheits-Muster. Seit 1980 wächst die Ungleichheit in einer "Riesen-Blase".</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)"><i class="ti ti-building-bank"></i> Wolfgang Streeck — das Endspiel</h4><p style="font-size:13px;color:var(--text-1);line-height:1.55;margin:8px 0 0">Streeck sagt: <strong>Demokratie und Kapitalismus passen nicht mehr zusammen.</strong> Seit den 1970er Jahren wurden drei Notausgänge benutzt — Inflation, Staatsverschuldung, Privatisierung. Alle drei sind ausgeschöpft. Einen vierten gibt es nicht.</p></div>
+    </div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-shield-check"></i>Was das bedeutet</p>
+      <p class="simple-box-text">Diese Lesart von Marx ist <strong>stark</strong>, weil sie nicht nur von Marx-Kennern stammt — sondern von drei sehr angesehenen Mainstream-Ökonomen unabhängig gestützt wird. Wer die Marx-Befunde widerlegen will, müsste auch diese drei widerlegen. Das macht die Position belastbar.</p>
+    </div>
+  </div>
+</section>
+
+<section id="phase1">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-stack-2"></i>Erste Prüfung</div>
+      <h2 class="h-section">Empirisches Re-Test — die erste Prüfung</h2>
+      <p class="section-lead">Zuerst wurden Marx' Aussagen mit den Daten der heutigen Wirtschaftsforschung verglichen. Drei große Werke der heutigen Forschung standen Pate. Dazu kamen sechs klassische Marx-Kritiker, die "Gegen-Stresstests" durchführten.</p>
+    </div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-bulb"></i>Was die erste Prüfung ergab</p>
+      <p class="simple-box-text">Bei einer ersten, eher nachsichtigen Prüfung: Etwa <strong>87 % aller Marx-Aussagen wurden bestätigt</strong>, weitere 10 % mit Einschränkungen. Bei der strengeren Re-Prüfung (siehe Thesen-Checker oben): 62 % stimmen klar, 27 % stimmen eingeschränkt, 4 % schwach gestützt, 8 % widerlegt.</p>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-list-numbers"></i>24 Themenblöcke + ein Schluss-Block</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Marx' gesamte Theorie wurde in 24 Themenblöcke aufgeteilt, jeder wurde einzeln geprüft. Ein 25. Schluss-Block fasste alles zusammen.</p>
+    <div class="sub-grid">
+      <div class="sub-card"><span class="sub-id">Block I–V</span><p class="sub-title">Grundlagen</p><p class="sub-werke">Wie Marx vorgeht. Was eine Ware ist. Was Wert ist. Was Geld ist. Wie Tausch funktioniert.</p><p class="sub-verdikt">Marx' Grundwerkzeuge — auch heute noch tragfähig in moderner Lesart.</p></div>
+      <div class="sub-card"><span class="sub-id">Block VI–X</span><p class="sub-title">Kapital + Mehrwert</p><p class="sub-werke">Wer Lohnarbeiter wird und warum. Wie im Betrieb produziert wird. Wo der Gewinn herkommt.</p><p class="sub-verdikt">Der Mehrwert-Begriff hält der Prüfung stand.</p></div>
+      <div class="sub-card"><span class="sub-id">Block XI</span><p class="sub-title">Anhäufung von Reichtum</p><p class="sub-werke">Wie sich Kapital konzentriert und zentralisiert.</p><p class="sub-verdikt">Empirisch breit bestätigt — siehe Thesen A1–A4.</p></div>
+      <div class="sub-card"><span class="sub-id">Block XII</span><p class="sub-title">Wirtschaftskreislauf</p><p class="sub-werke">Wie sich Kapital erhält und ausweitet (Kapital II).</p><p class="sub-verdikt">Bleibt relevant; durch Saito ökologisch vertieft.</p></div>
+      <div class="sub-card"><span class="sub-id">Block XIII–XV</span><p class="sub-title">Gewinn, Konkurrenz, Markt</p><p class="sub-werke">Wie aus Mehrwert Profit wird. Wie der Markt Preise bildet.</p><p class="sub-verdikt">Der Profitratenfall bleibt offen — siehe Kritik.</p></div>
+      <div class="sub-card"><span class="sub-id">Block XVI–XVIII</span><p class="sub-title">Kredit, Zinsen, Krisen</p><p class="sub-werke">Wie das Kreditsystem funktioniert. Wie Krisen entstehen.</p><p class="sub-verdikt">Stark bestätigt — auch im Mainstream akzeptiert.</p></div>
+      <div class="sub-card"><span class="sub-id">Block XIX</span><p class="sub-title">Weltmarkt + Kolonialismus</p><p class="sub-werke">Globalisierung. Wie Kolonien ausgebeutet wurden.</p><p class="sub-verdikt">2024 mit dem Wirtschaftsnobelpreis (Acemoglu/Johnson/Robinson) zum Mainstream geworden.</p></div>
+      <div class="sub-card"><span class="sub-id">Block XX</span><p class="sub-title">Klassen</p><p class="sub-werke">Marx bricht hier ab. Wie sich Klassen über Generationen reproduzieren.</p><p class="sub-verdikt">Mittel-robust. Die Polarisierung wurde widerlegt, die Klassen-Vererbung bestätigt.</p></div>
+      <div class="sub-card"><span class="sub-id">Block XXI</span><p class="sub-title">Staat</p><p class="sub-werke">Marx' Staatstheorie blieb Stückwerk.</p><p class="sub-verdikt">Heute durch Streecks Forschung vertieft.</p></div>
+      <div class="sub-card"><span class="sub-id">Block XXII</span><p class="sub-title">Ideologie</p><p class="sub-werke">Warenfetisch, Bewusstsein im Kapitalismus.</p><p class="sub-verdikt">Nicht direkt durch Daten testbar — bewusst ausgeklammert.</p></div>
+      <div class="sub-card"><span class="sub-id">Block XXIII</span><p class="sub-title">Reproduktionsarbeit + Geschlecht</p><p class="sub-werke">Marx-Lücke; durch feministische Forschung gefüllt.</p><p class="sub-verdikt">Eine der wichtigsten Erweiterungen — siehe Modul E36.</p></div>
+      <div class="sub-card"><span class="sub-id">Block XXIV</span><p class="sub-title">Aufhebung des Kapitalismus</p><p class="sub-werke">Marx' Vision einer Gesellschaft jenseits des Kapitalismus.</p><p class="sub-verdikt">Politische Vision — nicht durch Daten zu prüfen.</p></div>
+      <div class="sub-card" style="border-left:3px solid var(--accent-dark)"><span class="sub-id">Block 25</span><p class="sub-title">Schluss-Block</p><p class="sub-werke">Vier zusammenfassende Fragen über alle Blöcke hinweg.</p><p class="sub-verdikt">Ist die Marx-Forschung lebendig? Wo sind die Lücken?</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-target"></i>Drei Vergleichswerke gegen Marx geprüft</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Drei große Werke der heutigen Wirtschaftsforschung wurden mit Marx verglichen — jedes auf einem anderen Gebiet.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="t-cat">Marx' Wert-Theorie</div>
+        <h4 class="h-mini" style="margin-top:4px">Anwar Shaikh — "Capitalism" (2016)</h4>
+        <p style="font-size:13px;color:var(--text-1);line-height:1.55;margin:8px 0">Shaikh hat Marx' alte Theorie vom Zusammenhang zwischen Preisen und Arbeitsaufwand mit modernen Wirtschaftsdaten geprüft. <strong>Ergebnis:</strong> Über 90 % Übereinstimmung in mehreren Ländern. Die alte Theorie ist überraschend gut belegt.</p>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:8px"><strong>Befund:</strong> Bestätigt.</p>
+      </div>
+      <div class="card">
+        <div class="t-cat">Vermögens-Konzentration</div>
+        <h4 class="h-mini" style="margin-top:4px">Thomas Piketty — "Das Kapital im 21. Jahrhundert" (2014)</h4>
+        <p style="font-size:13px;color:var(--text-1);line-height:1.55;margin:8px 0">Piketty hat 200 Jahre Steuerdaten ausgewertet und gezeigt: <strong>Vermögen sammeln sich an der Spitze an.</strong> Über die Generationen wachsen die Vermögen der Reichen schneller als die Wirtschaft insgesamt. U-Form: hoch um 1920, niedrig 1970, wieder hoch heute.</p>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:8px"><strong>Befund:</strong> Marx hatte mit der Anhäufungs-These recht.</p>
+      </div>
+      <div class="card">
+        <div class="t-cat">Finanzialisierung</div>
+        <h4 class="h-mini" style="margin-top:4px">Costas Lapavitsas — "Profiting Without Producing" (2013)</h4>
+        <p style="font-size:13px;color:var(--text-1);line-height:1.55;margin:8px 0">Lapavitsas beschreibt, wie der Finanzsektor seit den 1970er Jahren <strong>in den Alltag eindringt</strong> — Hypotheken, Kreditkarten, Studienkredite, private Rentenversicherungen. Der Gewinn wandert von der Produktion in die Finanz-Spekulation.</p>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:8px"><strong>Befund:</strong> Eine neue Form von "Ausbeutung" über Schulden.</p>
+      </div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-shield-x"></i>Sechs Marx-Kritiker als Gegenprobe</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Wer die Marx-Befunde verteidigt, muss sich seinen schärfsten Kritikern stellen. Sechs klassische Marx-Kritiker wurden geprüft:</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Kritiker</th><th>Was er Marx vorwarf</th><th>Unser Befund</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Böhm-Bawerk (1896)</strong></td><td>Österreichischer Ökonom. Versuchte, Marx' Wert-Theorie mit mathematischen Argumenten zu widerlegen.</td><td>Durch moderne Daten (Shaikh) selbst widerlegt.</td></tr>
+          <tr><td><strong>Bernstein (1899)</strong></td><td>Sozialdemokrat. Sagte: Die Mittelschicht wächst, sie schrumpft nicht — Marx liege falsch.</td><td>Hier hatte Bernstein recht. Aber das widerlegt nicht alle Marx-Thesen.</td></tr>
+          <tr><td><strong>Schumpeter (1942)</strong></td><td>Konservativer Ökonom. Sah Innovation und "kreative Zerstörung" als Hauptmotor — nicht Klassenkampf.</td><td>Teilweise vereinbar mit Marx. Innovation kannte auch Marx.</td></tr>
+          <tr><td><strong>Friedman / Schwartz (1963)</strong></td><td>Monetaristen. Sagten: Krisen entstehen durch falsche Geldpolitik, nicht durch Strukturprobleme.</td><td>Liefern wertvolle Geld-Daten, aber methodisch im Konflikt mit Marx.</td></tr>
+          <tr><td><strong>Scheidel (2017)</strong></td><td>Historiker. Sagte: Nur Krieg und Gewalt schaffen Gleichheit — Reformen versagen.</td><td>Wertvolle Daten zur Geschichte der Ungleichheit. Aber zu pessimistisch.</td></tr>
+          <tr><td><strong>Milanović (2019)</strong></td><td>Ökonom. Sagte: Es gibt nur noch zwei Kapitalismus-Typen — liberalen Westen und politischen Osten (China).</td><td>Teilweise vereinbar. Diskussion in Modul E40.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="phase2">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-stack"></i>Phase 2</div>
+      <h2 class="h-section">22 Subdurchläufe, 88 Verdikte — die Tiefenprüfung</h2>
+      <p class="section-lead">Nach der ersten Prüfung wurden 22 vertiefte Einzeluntersuchungen gemacht. Acht große Themenfelder — von Wissenschaftstheorie bis Mainstream-Forschung. Jede einzelne Untersuchung prüft, ob Marx auch heute noch gute Erklärungen liefert.</p>
+    </div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-bulb"></i>Was Phase 2 neu macht — in einem Satz</p>
+      <p class="simple-box-text">Die erste Prüfung fragte: <em>Stimmen Marx' Aussagen mit den Daten überein?</em> — Diese zweite Prüfung fragt: <em>Ist die Marx-Forschung heute noch lebendig?</em> Antwort: <strong>Ja, mit drei wichtigen Korrekturen</strong> (siehe Schlüsselentdeckungen).</p>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-microscope"></i>Modul E33 — Wissenschaftstheorie (13 Verdikte)</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Drei Subdurchläufe prüften, ob Marx überhaupt wissenschaftlich testbar ist. Klassische Kritiker werden ernst genommen.</p>
+    <div class="sub-grid">
+      <div class="sub-card"><span class="sub-id">E33a</span><p class="sub-title">Karl Popper — der Falsifikationismus</p><p class="sub-werke">Popper "The Poverty of Historicism" (1957)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Popper warf Marx vor, seine Theorie sei nicht durch Daten widerlegbar — und deshalb keine Wissenschaft. <strong>Unsere Antwort:</strong> Für Marx' politische Visionen hat Popper teilweise recht. Für Marx' empirische Aussagen (die wir hier prüfen) nicht — sie sind sehr wohl durch Daten testbar.</p></div>
+      <div class="sub-card"><span class="sub-id">E33b</span><p class="sub-title">Leszek Kołakowski — Hauptströmungen</p><p class="sub-werke">Kołakowski "Main Currents of Marxism" (1976-78)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Der polnische Philosoph schrieb drei dicke Bände über die Marx-Tradition — als Geschichte eines langsamen Verfalls. <strong>Unsere Antwort:</strong> Historisch wertvoll, aber zu pauschal pessimistisch. Die heutige Marx-Forschung ist lebendiger, als Kołakowski annahm.</p></div>
+      <div class="sub-card"><span class="sub-id">E33c</span><p class="sub-title">Cohen, Lakatos, Elster — analytischer Marxismus</p><p class="sub-werke">G.A. Cohen "Karl Marx's Theory of History" (1978); Lakatos (1970); Elster (1985)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Drei Philosophen versuchten in den 1980ern, Marx mit moderner Logik und Spieltheorie neu zu fundieren. <strong>Unsere Antwort:</strong> Wertvoller Versuch — aber zu mathematisch. Wichtige Aspekte von Marx gehen dabei verloren.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-leaf"></i>Modul E34 — Ökologie (10 Verdikte)</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Ist Marx ein Produktivist, der dem Klima schadet? Oder steckt in seinen Spätschriften ein ökologisches Denken? Diese Frage wird hier geprüft.</p>
+    <div class="sub-grid">
+      <div class="sub-card"><span class="sub-id">E34a</span><p class="sub-title">Saito + Foster — der grüne Marx</p><p class="sub-werke">Kohei Saito "Marx in the Anthropocene" (2023); John Bellamy Foster "Marx's Ecology" (2000)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Lange galt Marx als Wachstums-Befürworter — Industrie sei gut. Saito widerspricht: <strong>Der späte Marx forderte sinkenden Konsum</strong>, um die Natur zu schützen. Foster zeigt: Schon in Marx' Hauptwerk steht, dass der Kapitalismus den Stoffaustausch mit der Natur kaputt macht. <strong>Befund:</strong> Eine der wichtigsten Entdeckungen — siehe Schlüsselentdeckungen.</p></div>
+      <div class="sub-card"><span class="sub-id">E34b</span><p class="sub-title">Burkett, Moore, Malm — Vertiefung</p><p class="sub-werke">Paul Burkett "Marx and Nature" (1999); Jason Moore "Capitalism in the Web of Life" (2015); Andreas Malm "Fossil Capital" (2016)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Burkett systematisiert Marx' Naturdenken. Malm zeigt überraschend: <strong>Kohle wurde nicht gewählt, weil sie effizienter war als Wasserkraft — sondern weil sie für die Fabrikbesitzer kontrollierbarer war.</strong> Wasser fließt zu festen Zeiten; Kohle brennt, wann immer der Chef will. <strong>Befund:</strong> Burkett und Malm überzeugen. Moore weniger.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-world"></i>Modul E35 — Race + globaler Süden (15 Verdikte)</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Drei Subdurchläufe zur Frage: Kann Marx den globalen Süden, koloniale Geschichte und Rassismus erklären?</p>
+    <div class="sub-grid">
+      <div class="sub-card"><span class="sub-id">E35a</span><p class="sub-title">Williams + Du Bois — die Sklaverei-These</p><p class="sub-werke">Eric Williams "Capitalism and Slavery" (1944); W.E.B. Du Bois "Black Reconstruction" (1935)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Williams behauptete 1944 etwas damals Skandalöses: <strong>Die industrielle Revolution wurde durch den Sklavenhandel finanziert.</strong> Du Bois zeigte 1935: Auch der Wiederaufbau-Konflikt in den USA nach dem Bürgerkrieg war ein Klassenkampf, nicht nur ein Rassen-Konflikt. <strong>Befund:</strong> Heute Mainstream-Wissen — bestätigt mit dem Wirtschaftsnobelpreis 2024.</p></div>
+      <div class="sub-card"><span class="sub-id">E35b</span><p class="sub-title">Robinson + Chibber — der Streit</p><p class="sub-werke">Cedric Robinson "Black Marxism" (1983); Vivek Chibber "Postcolonial Theory" (2013)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Robinson sagte: Der Kapitalismus war von Anfang an rassistisch geprägt. Chibber widerspricht: Eine universelle Klassenanalyse bleibt wichtig — Rassismus erklärt nicht alles. <strong>Befund:</strong> Wir dokumentieren den Streit offen — beide haben in verschiedenen Aspekten recht.</p></div>
+      <div class="sub-card"><span class="sub-id">E35c</span><p class="sub-title">Amin, Rodney, Cardoso, Wang Hui — Süden-Stimmen</p><p class="sub-werke">Samir Amin "Eurocentrism" (1989); Walter Rodney "How Europe Underdeveloped Africa" (1972); Cardoso/Faletto "Dependency" (1979); Wang Hui "End of the Revolution" (2009)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Vier Stimmen aus dem globalen Süden. Sie kritisieren: <strong>Marx hat die Welt zu sehr aus europäischer Perspektive gesehen.</strong> Wang Hui aus China sagt: Chinas Modernität ist eine eigene Tradition, kein "Hinterherhinken". <strong>Befund:</strong> Wir übernehmen diese Süd-Perspektive in unsere Marx-Lesart.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-gender-female"></i>Modul E36 — Feminismus + Reproduktionsarbeit (10 Verdikte)</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Marx hat Reproduktionsarbeit (Hausarbeit, Care, Erziehung) systematisch unterbelichtet. Diese Lücke wird hier gefüllt.</p>
+    <div class="sub-grid">
+      <div class="sub-card"><span class="sub-id">E36a</span><p class="sub-title">Mies + Vogel — die Grundlagen</p><p class="sub-werke">Maria Mies "Patriarchy and Accumulation" (1986); Lise Vogel "Marxism and the Oppression of Women" (1983)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Vogel sagt: <strong>Frauenunterdrückung und Klassenkampf gehören in eine gemeinsame Theorie</strong> — nicht zwei nebeneinander. Mies erweitert: Die Reduzierung von Frauen auf Hausfrauen ist ein weltweites Wirtschaftsmuster. <strong>Befund:</strong> Vogels Idee ist zentral für die Marx-Forschung der Zukunft.</p></div>
+      <div class="sub-card"><span class="sub-id">E36b</span><p class="sub-title">Federici, Bhattacharya, Fraser</p><p class="sub-werke">Silvia Federici "Caliban and the Witch" (2004); Tithi Bhattacharya "Social Reproduction Theory" (2017); Nancy Fraser "Cannibal Capitalism" (2022)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Federici hat eine bemerkenswerte These: <strong>Die Hexenverfolgung im 16./17. Jahrhundert war ein Teil der Geburt des Kapitalismus</strong> — Vernichtung weiblicher Heil- und Verhütungs-Kenntnisse. Bhattacharya systematisiert die "Theorie der sozialen Reproduktion". Fraser sagt: Der Kapitalismus zerstört die Lebensgrundlagen, die er selbst braucht. <strong>Befund:</strong> Alle drei wichtig für die Marx-Forschung der Zukunft.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-device-laptop"></i>Modul E37 — Plattform + Endspiel (10 Verdikte)</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Funktioniert Marx noch für Google, Amazon, Facebook? Und steht der Kapitalismus vor dem Ende?</p>
+    <div class="sub-grid">
+      <div class="sub-card"><span class="sub-id">E37a</span><p class="sub-title">Srnicek, Zuboff, Durand — Plattform</p><p class="sub-werke">Nick Srnicek "Platform Capitalism" (2017); Shoshana Zuboff "Surveillance Capitalism" (2019); Cédric Durand "Techno-Feudalismus" (2024)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Srnicek unterscheidet fünf Plattform-Typen (Werbung wie Google, Cloud wie AWS, Industrie wie Siemens, Produkt wie Netflix, schlank wie Uber). Zuboff: <strong>Überwachung ist heute eine neue Profitquelle</strong> — Daten über unser Verhalten werden zu Geld. Durand: Tech-Konzerne sind wie moderne Feudalherren. <strong>Befund:</strong> Srnicek + Zuboff überzeugen. Durand etwas überdehnt.</p></div>
+      <div class="sub-card"><span class="sub-id">E37b</span><p class="sub-title">Streeck + Mason — Endspiel?</p><p class="sub-werke">Wolfgang Streeck "How Will Capitalism End?" (2016); Paul Mason "PostCapitalism" (2015)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Streeck: Der Kapitalismus erschöpft sich — seit den 1970ern wurden drei Notausgänge genutzt (Inflation, Staatsverschuldung, Privatisierung). Ein vierter ist nicht in Sicht. Mason: Information macht den Kapitalismus überflüssig. <strong>Befund:</strong> Streeck überzeugt — wird zum Bündnispartner. Mason zu technik-optimistisch.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-shield-check"></i>Modul E38 — Methodologische Selbstprüfung (14 Verdikte)</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Drei Einzelprüfungen verglichen verschiedene Marx-Lesarten. Aus dem Vergleich entstand unsere Position: Heinrich + Postone + Harvey.</p>
+    <div class="sub-grid">
+      <div class="sub-card"><span class="sub-id">E38a</span><p class="sub-title">Harvey + Postone — die Trinität</p><p class="sub-werke">David Harvey "The Limits to Capital" (1982/2018); Moishe Postone "Time, Labor and Social Domination" (1993)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Harvey holt den Raum in die Marx-Theorie zurück: Wie das Kapital geographisch expandiert. Postone holt die Zeit hinein: Wie Arbeit zur abstrakten Zeit-Einheit wird. Beide ergänzen Heinrichs Form-Lesart. <strong>Befund:</strong> Diese drei Marx-Lesarten zusammen bilden unsere Position — siehe Sektion "Wie wir Marx heute lesen".</p></div>
+      <div class="sub-card"><span class="sub-id">E38b</span><p class="sub-title">Wright, Roemer, Przeworski, Brenner — analytischer Marxismus</p><p class="sub-werke">Erik Olin Wright "Classes" (1985); John Roemer "Free to Lose" (1988); Adam Przeworski "Capitalism and Social Democracy" (1985); Robert Brenner "Economics of Global Turbulence" (2006)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Vier Versuche, Marx mit modernen Wirtschafts-Methoden (Spieltheorie, Rational-Choice) neu zu fundieren. <strong>Befund:</strong> Empirisch wertvoll (Wright zu Klassen, Brenner zu Krisen). Methodologisch problematisch — wichtige Marx-Einsichten gehen verloren.</p></div>
+      <div class="sub-card"><span class="sub-id">E38c</span><p class="sub-title">Kliman, Minsky, Hardt/Negri</p><p class="sub-werke">Andrew Kliman "Failure of Capitalist Production" (2012); Hyman Minsky "Stabilizing an Unstable Economy" (1986); Hardt/Negri "Empire" (2000)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Kliman verteidigt Marx' Profitratenfall — umstritten. Minsky ist Mainstream-Ökonom, dessen Krisentheorie aber zu Marx passt — wird Bündnispartner. Hardt/Negri wollen Marx radikal modernisieren — zu weit weg vom Original. <strong>Befund:</strong> Minsky aufnehmen, Hardt/Negri ablehnen.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-book"></i>Modul E39 — Marx-Originalwerke (7 Verdikte)</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Zwei Subdurchläufe gingen zurück zu Marx selbst — frühen und späten Schriften, oft übersehen.</p>
+    <div class="sub-grid">
+      <div class="sub-card"><span class="sub-id">E39a</span><p class="sub-title">Pariser Manuskripte + Grundrisse</p><p class="sub-werke">Marx 1844 (Entfremdung); Marx 1857-58 (Maschinenfragment + General Intellect)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Der junge Marx 1844 schreibt über <strong>Entfremdung</strong>: Der Arbeiter verkauft sich selbst, sieht sein Produkt nicht mehr, wird zum Anhängsel der Maschine. 1857-58 entwickelt Marx eine bemerkenswerte Vision: Maschinen befreien Menschen, kollektives Wissen wird zur wichtigsten Produktivkraft. <strong>Befund:</strong> Frühe Schriften wichtig als Hintergrund; "Maschinen-Fragment" ist ein Vorläufer der heutigen Plattform-Diskussion.</p></div>
+      <div class="sub-card" style="border-left:3px solid var(--accent-dark)"><span class="sub-id">E39b</span><p class="sub-title">Spät-Marx — die Wendung</p><p class="sub-werke">Theorien über den Mehrwert (1861-63); Ethnologische Exzerpte (1879-82); Sassulitsch-Brief (1881); Manifest-Vorrede russisch (1882)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> In seinen letzten fünf Lebensjahren änderte Marx seine Meinung über die Weltgeschichte. Lange dachte er, alle Länder müssten denselben Weg gehen (erst Feudalismus, dann Kapitalismus, dann Sozialismus). In seinem Brief an die russische Sozialistin Sassulitsch 1881 schrieb er: <strong>Russland könnte über die Dorfgemeinschaft direkt zum Sozialismus gehen</strong> — den westlichen Weg muss man nicht nachmachen. <strong>Befund:</strong> Eine der vier Schlüsselentdeckungen — bestätigt Saito.</p></div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-chart-bar"></i>Modul E40 — Mainstream-Empirie (9 Verdikte)</h3>
+    <p style="font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px">Drei Subdurchläufe prüften: Wie konvergiert die nicht-marxistische Mainstream-Ökonomik mit der Audit-Position?</p>
+    <div class="sub-grid">
+      <div class="sub-card" style="border-left:3px solid var(--s-robust)"><span class="sub-id">E40a</span><p class="sub-title">Atkinson, Saez/Zucman, Galbraith</p><p class="sub-werke">Anthony Atkinson "Inequality" (2015); Saez/Zucman "Triumph of Injustice" (2019); James K. Galbraith "Inequality and Instability" (2012)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Drei renommierte Mainstream-Forscher zur Ungleichheit. Ihre Daten und Schlussfolgerungen stützen die Marx-Befunde, ohne dass sie das wollten. <strong>Befund:</strong> Galbraith mit seiner riesigen Ungleichheits-Datenbank wird zum Bündnispartner. Zusammen mit Minsky (Finanzkrisen) und Streeck (Demokratie-Krise) bilden sie ein <strong>Drei-Bündnispartner-Modell</strong> — eine der vier Schlüsselentdeckungen.</p></div>
+      <div class="sub-card"><span class="sub-id">E40b</span><p class="sub-title">Piketty + Milanović — Tiefenanalyse</p><p class="sub-werke">Piketty "Capital and Ideology" (2020); Milanović "Capitalism, Alone" (2019)</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Piketty erweitert seine Theorie auf die Ideologie-Geschichte: Reichtums-Konzentration gibt es seit Jahrtausenden. Milanović unterscheidet zwei Kapitalismus-Typen — westlich-liberal und östlich-politisch (China). <strong>Befund:</strong> Drei wichtige Übereinstimmungen mit unserer Marx-Lesart. Milanovićs China-Bild kritisch.</p></div>
+      <div class="sub-card" style="border-left:3px solid var(--s-medium)"><span class="sub-id">E40c</span><p class="sub-title">Acemoglu + Robinson — der Nobelpreis-Test</p><p class="sub-werke">Acemoglu/Robinson "Why Nations Fail" (2012); "The Narrow Corridor" (2019). Nobelpreis 2024.</p><p class="sub-verdikt"><strong>Worum es geht:</strong> Die einflussreichste Mainstream-Theorie der letzten 20 Jahre. Kernthese: <strong>Wohlstand kommt durch gute Institutionen</strong> — Demokratie, Eigentumsrechte, Rechtsstaat. Hat 2024 den Wirtschaftsnobelpreis bekommen. <strong>Befund:</strong> Empirisch wertvoll, vor allem zu Kolonialismus. Methodisch problematisch — "Institutionen" sind Symptom, nicht Ursache.</p></div>
+    </div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-bulb"></i>Phase 2 zusammengefasst</p>
+      <p class="simple-box-text"><strong>22 Einzelprüfungen, viele Befunde:</strong> Die Drei-Marx-Lesarten-Position (Heinrich + Postone + Harvey) wurde fundiert. Das Drei-Bündnispartner-Modell (Minsky + Galbraith + Streeck) wurde bestätigt. Die Saito-Wendung beim späten Marx wurde belegt. Acemoglu/Robinson wurden differenziert behandelt. Die Marx-Forschung ist heute lebendig und liefert neue Erkenntnisse — siehe die vier Schlüsselentdeckungen.</p>
+    </div>
+  </div>
+</section>
+
+<section id="konflikte">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-swords"></i>Wo gestritten wird</div>
+      <h2 class="h-section">Acht große Streitfragen</h2>
+      <p class="section-lead">Innerhalb der Marx-Forschung und zwischen Marx und seinen Kritikern gibt es echte Konflikte. Wir verstecken sie nicht. Hier die acht wichtigsten Streitfragen und unsere Position dazu.</p>
+    </div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-bulb"></i>In einfachen Worten</p>
+      <p class="simple-box-text">Eine ehrliche Studie kann nicht so tun, als seien sich alle einig. Wir nehmen eine <strong>klare Position</strong> — aber zeigen offen, wo wir uns gegen Alternativen entscheiden und warum.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)">1. Stimmt Marx' Wert-Theorie noch?</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0"><strong>Shaikh und Kliman</strong> sagen: Ja, modern gelesen funktioniert sie. <strong>Roemer</strong> sagt: Nein, sie ist überholt. Shaikh hat empirisch gezeigt: Preise und Arbeitsaufwand korrelieren zu über 90 %. <strong>Unsere Position:</strong> Die Wert-Theorie funktioniert — wenn man sie als Form-Analyse liest, nicht als simple Substanz-Theorie.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)">2. Muss jedes Land denselben Weg gehen?</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Die <strong>klassische Marx-Lesart</strong> sagt: Alle Länder müssen vom Feudalismus über den Kapitalismus zum Sozialismus gehen. Der <strong>späte Marx selbst</strong> sah das differenzierter (Sassulitsch-Brief 1881). Saito und Wang Hui bestätigen heute: Es gibt mehrere mögliche Wege. <strong>Unsere Position:</strong> Mehrere Wege.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)">3. Ist Europa der Maßstab?</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Eine Reihe von Forschern aus dem globalen Süden (Williams, Robinson, Amin, Rodney, Wang Hui) sagt: <strong>Marx wurde lange zu sehr aus europäischer Perspektive gelesen.</strong> Der späte Marx selbst hat das in seinen Notizen schon korrigiert. Acemoglu/Robinson sind dagegen problematisch eurozentrisch ("der Westen hat es entdeckt").</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)">4. Wachstum oder Schrumpfung?</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Mason sagt: Mehr Technologie + mehr Information = bessere Welt. Saito sagt: <strong>Wir müssen weniger produzieren und konsumieren</strong>, um die Erde zu retten. Der späte Marx selbst stützt Saito. <strong>Unsere Position:</strong> Saito.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)">5. Wie Marx interpretieren — strukturell oder individuell?</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Heinrich, Postone, Harvey lesen Marx <strong>strukturell</strong> — gesellschaftliche Formen erklären, nicht Einzelhandlungen. Wright und Roemer lesen ihn <strong>individuell</strong> — mit moderner Wirtschaftstheorie. <strong>Unsere Position:</strong> Strukturell (Heinrich-Lesart).</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)">6. Strukturen oder Institutionen?</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Marx-Tradition: <strong>Strukturen</strong> erklären, was passiert (Kapital-Logik, Klassen). Acemoglu/Robinson: <strong>Institutionen</strong> erklären es (Demokratie, Eigentumsrechte). <strong>Unsere Position:</strong> Strukturen sind grundlegender — Institutionen sind ihre Erscheinungsform. Aber die institutionellen Daten sind wertvoll.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)">7. Reform oder Systemwechsel?</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Atkinson schlägt 15 konkrete Reformen vor. Saez/Zucman fordern eine Vermögensteuer. Piketty einen "Partizipativen Sozialismus". Marx zielte dagegen auf einen kompletten Systemwechsel. <strong>Unsere Position:</strong> Wir dokumentieren beide Ansätze offen — politische Empfehlungen sind nicht Aufgabe dieser Studie.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)">8. Wie China verstehen?</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Milanović und Acemoglu/Robinson sehen China als <strong>autoritären Sonderfall</strong>. Wang Hui (Chinas führender Theoretiker) widerspricht: Chinas Modernität ist eine <strong>eigene Tradition</strong>, nicht westliches Maß-Defizit. <strong>Unsere Position:</strong> Wang Hui vorziehen — China nicht aus westlicher Sicht missverstehen.</p></div>
+    </div>
+    
+  </div>
+</section>
+
+<section id="lager">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-users-group"></i>Was sieben Lager mitnehmen können</div>
+      <h2 class="h-section">Was jedes politische Lager aus dieser Studie mitnehmen kann</h2>
+      <p class="section-lead">Aus jedem politischen Blickwinkel sehen die Befunde anders aus. Hier was Anhänger jedes Lagers für sich nutzen können — und was sie kritisch sehen werden.</p>
+    </div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-bulb"></i>In einfachen Worten</p>
+      <p class="simple-box-text">Die Befunde dieser Studie sind <strong>politisch nicht neutral</strong> in ihren Folgen — auch wenn die Studie selbst sachlich bleibt. Jedes Lager wird anderes hervorheben. Hier eine Übersicht.</p>
+    </div>
+    <div class="grid-2">
+      <div class="lager-card">
+        <p class="lager-name"><i class="ti ti-flame"></i>Liberales Lager</p>
+        <div class="lager-aufgreifen"><strong>Was greifen sie auf?</strong>Mainstream-Empirie (Atkinson, Saez/Zucman, Piketty, Milanović). Methodologische Pluralität. Reformistische Programmatik: Wealth Tax + Top Marginal Tax + Erbschaftsteuer.</div>
+        <div class="lager-kritisch"><strong>Was lehnen sie ab?</strong>Audit-Aufhebungs-Vision (Block XXIV) zu radikal. Form-Analyse-Methodologie zu abstrakt. Multilineare Geschichtsauffassung partial akzeptiert.</div>
+      </div>
+      <div class="lager-card">
+        <p class="lager-name"><i class="ti ti-hammer"></i>Sozialistisches Lager</p>
+        <div class="lager-aufgreifen"><strong>Was greifen sie auf?</strong>Die gesamte Marx-Lesart dieser Studie. Den späten Marx (Sassulitsch-Brief). Saitos Schrumpfungs-Sozialismus. Anti-eurozentrische Tradition. Feministische Erweiterung. Streecks Endspiel-Diagnose.</div>
+        <div class="lager-kritisch"><strong>Was lehnen sie ab?</strong>Mainstream-empirische Limits (Atkinson reformistisch; AJR institutionalistisch). Reform-Programmatik vs. strukturelle Transformation.</div>
+      </div>
+      <div class="lager-card">
+        <p class="lager-name"><i class="ti ti-shield"></i>Libertäres Lager</p>
+        <div class="lager-aufgreifen"><strong>Was greifen sie auf?</strong>Methodologische Pluralität. Empirische Ungleichheitsforschung (peripher). Anti-staatliche Lesarten (Hardt/Negri-Kritik teilweise).</div>
+        <div class="lager-kritisch"><strong>Was lehnen sie ab?</strong>Wertgesetz-Theorie (Mises-Tradition). Aufhebungs-Vision + Wealth Tax + Staats-Programmatik. Form-Analyse (statt methodologischer Individualismus). Klassen-Analyse.</div>
+      </div>
+      <div class="lager-card">
+        <p class="lager-name"><i class="ti ti-rosette"></i>Sozialdemokratisches Lager</p>
+        <div class="lager-aufgreifen"><strong>Was greifen sie auf?</strong>Mainstream-Empirie (Atkinson + Saez/Zucman + Piketty). Drei-Bündnispartner (Minsky + Galbraith + Streeck) als heterodoxe Stütze. Przeworski Klassen-Kompromiss. Reform-Programmatik: Wealth Tax + Capital Endowment + Mitbestimmung.</div>
+        <div class="lager-kritisch"><strong>Was lehnen sie ab?</strong>Audit-Aufhebungs-Vision (zu radikal). Streeck Endspiel-Diagnose (zu pessimistisch). Methodologisch Form-Analyse partial annehmen, partial reform-keynesianisch verschieben.</div>
+      </div>
+      <div class="lager-card">
+        <p class="lager-name"><i class="ti ti-castle"></i>Konservatives Lager</p>
+        <div class="lager-aufgreifen"><strong>Was greifen sie auf?</strong>Streeck Demokratie-Kapitalismus-Krisendiagnose (teilweise konvergent mit konservativer Krisendiagnose). Anti-Globalisierungs-Elemente. Familie + Reproduktion (E36) — konservative Lesart partial annehmen.</div>
+        <div class="lager-kritisch"><strong>Was lehnen sie ab?</strong>Aufhebungs-Vision + Sozialismus-Tradition. Anti-Eurozentrismus radikal. Feministische + queere Re-Lesungen. Anti-Tradition (Postone) statt Tradition-Verteidigung.</div>
+      </div>
+      <div class="lager-card">
+        <p class="lager-name"><i class="ti ti-circle-dashed"></i>Anarchistisches Lager</p>
+        <div class="lager-aufgreifen"><strong>Was greifen sie auf?</strong>Anti-staatliche Lesart (Spät-Marx Obschtschina). Federici (E36b) Hexenverfolgung als Staats-Akkumulations-Form. Heinrich-Form-Analyse impliziert keine Marxismus-Leninismus-Avantgarde. Streeck Demokratie-Krise.</div>
+        <div class="lager-kritisch"><strong>Was lehnen sie ab?</strong>Atkinson + Piketty staatliche Reform-Programmatik. AJR Shackled Leviathan (Staats-positiv). Klassisch-marxistische Tradition (Lenin/Stalin/Mao-Erbe).</div>
+      </div>
+      <div class="lager-card" style="grid-column:1/-1">
+        <p class="lager-name"><i class="ti ti-leaf"></i>Grünes Lager</p>
+        <div class="lager-aufgreifen"><strong>Was greifen sie auf?</strong>Saito Degrowth Communism (E34a) — zentrale Position! E34 Ökologische Marx-Aktualisierung systematisch (Foster + Burkett + Moore + Malm). Spät-Marx-Wendung als ökologische Ressource. Stoffwechsel-Theorie (metabolic rift). Galbraith + Streeck Anti-Finanzialisierung als Klimaschutz-Anschluss.</div>
+        <div class="lager-kritisch"><strong>Was lehnen sie ab?</strong>Klassisch-marxistische Tradition (Produktivismus-Erbe). Mason PostCapitalism (Info-Tech-Produktivismus). AJR Shackled Leviathan (kein Klima-spezifischer Bezug).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="v06">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-tools"></i>Was die Marx-Forschung tun sollte</div>
+      <h2 class="h-section">Wo es weitergehen muss</h2>
+      <p class="section-lead">Aus den Befunden ergeben sich klare Empfehlungen für die Marx-Forschung der Zukunft: Welche Erweiterungen sind nötig? Welche Lücken müssen gefüllt werden?</p>
+    </div>
+
+    <div class="simple-box">
+      <p class="simple-box-title"><i class="ti ti-bulb"></i>In einfachen Worten</p>
+      <p class="simple-box-text">Die Marx-Forschung braucht <strong>sechs Erweiterungen</strong> und muss <strong>sieben Lücken füllen</strong>. Diese Vorschläge folgen direkt aus den Befunden dieser Studie.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)"><i class="ti ti-users"></i> Drei-Bündnispartner systematisch integrieren</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">V06 sollte Minsky-FIH (Block XVIII), Galbraith-UTIP (Block XIX + XX), Streeck-Demokratie-Krise (Block XXI) systematisch aufnehmen. Diese Mainstream-nahen Forscher werden zu festen Bündnispartnern der Marx-Forschung.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)"><i class="ti ti-route-2"></i> Multilineare Geschichtsauffassung in Block II</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Marx Sassulitsch-Brief + Manifest-Vorrede 1882 + Ethnologische Exzerpte als zentrale Quellen. Saito Spät-Marx-Wendung als methodologische Innovation. Anti-Stadialismus systematisch.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)"><i class="ti ti-world"></i> Race + Globaler Süden als V06-Erweiterung</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Williams/Robinson Sklaverei (Block XI/XIX). Amin/Rodney/Cardoso/Wang Hui (Block XIX). Anti-Eurozentrismus systematisch. Chibber-Universalismus-Spannung pluralistisch dokumentieren.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)"><i class="ti ti-gender-female"></i> Feminismus als V06-Erweiterung (Block XXIII)</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Vogel Unitary Theory zentral. Federici Hexenverfolgung (Block XXIII + XI ursprüngliche Akkumulation). Bhattacharya Social Reproduction Theory. Mies Welt-Skala.</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)"><i class="ti ti-device-laptop"></i> Plattformkapitalismus als V06-Erweiterung</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Srnicek 5 Plattform-Typen (Block XV/XVI + XIX). Zuboff Behavioral Surplus. Durand Techno-Feudalismus kritisch dokumentieren (nicht primär).</p></div>
+      <div class="card"><h4 class="h-mini" style="color:var(--accent-dark)"><i class="ti ti-leaf"></i> Ökologische Marx-Tradition (Block XI + XXIV)</h4><p style="font-size:13.5px;color:var(--text-1);line-height:1.6;margin:8px 0 0">Saito Spät-Marx ökologische Wendung (zentral!). Foster Stoffwechselbruch. Malm Fossil Capital. Moore Web of Life kritisch.</p></div>
+    </div>
+    <h3 class="h-sub"><i class="ti ti-puzzle"></i>Zu schließende V05-Lücken</h3>
+    <ul style="margin:0;padding-left:20px;color:var(--text-1);font-size:14.5px;line-height:1.8">
+      <li>Ethnologische Exzerpte systematisch integrieren (Block II + XIX + XX + XXIII + XXIV)</li>
+      <li>Kapital II Reproduktionsschemen vertiefen (Block XII)</li>
+      <li>Trinitätsformel-Kapitel (Kapital III, Kap. 48) ausführlicher behandeln</li>
+      <li>Bürgerkrieg in Frankreich 1871 als Aufhebungs-Vision-Anschluss</li>
+      <li>Russische Marx-Tradition post-Lenin systematisch (Block XXIV)</li>
+      <li>Lateinamerikanische Dependency Theory systematisch (Block XIX)</li>
+      <li>Indigene Marx-Kritiken (Coulthard, Simpson, Estes) als V06-Innovation</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quellen">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-books"></i>Bibliographie</div>
+      <h2 class="h-section">Quellen</h2>
+      <p class="section-lead">73 Hauptquellen aus Mainstream- und heterodoxer Forschung plus 29 Audit-Output-Dokumente = 102 Dokumente in der Audit-Tradition.</p>
+    </div>
+    <h3 class="h-sub"><i class="ti ti-bookmark"></i>Audit-Hauptbasis</h3>
+    <div class="grid-3">
+      <div class="quellen-card"><strong>Marx, Karl & Engels, Friedrich</strong> (1843–1894). Werke (MEW Band 1–43). <em>Dietz Verlag, Berlin.</em></div>
+      <div class="quellen-card"><strong>Heinrich, Michael</strong> (2004). Kritik der politischen Ökonomie. <em>Schmetterling Verlag.</em></div>
+      <div class="quellen-card"><strong>Audit-eigene Quelle</strong> (V05). Marx-Begriffsableitung V05 Endform.</div>
+    </div>
+    <h3 class="h-sub"><i class="ti ti-chart-line"></i>Phase 1 — Empirisches Re-Test</h3>
+    <div class="grid-3">
+      <div class="quellen-card"><strong>Shaikh, Anwar</strong> (2016). Capitalism: Competition, Conflict, Crises. <em>Oxford University Press.</em></div>
+      <div class="quellen-card"><strong>Piketty, Thomas</strong> (2014). Capital in the Twenty-First Century. <em>Harvard University Press.</em></div>
+      <div class="quellen-card"><strong>Lapavitsas, Costas</strong> (2013). Profiting Without Producing. <em>Verso.</em></div>
+    </div>
+    <h3 class="h-sub"><i class="ti ti-shield-x"></i>Phase 1 — Adversaria (E26-E31)</h3>
+    <div class="grid-3">
+      <div class="quellen-card"><strong>Böhm-Bawerk, Eugen von</strong> (1896). Karl Marx and the Close of His System.</div>
+      <div class="quellen-card"><strong>Bernstein, Eduard</strong> (1899). Die Voraussetzungen des Sozialismus.</div>
+      <div class="quellen-card"><strong>Schumpeter, Joseph A.</strong> (1942). Capitalism, Socialism and Democracy.</div>
+      <div class="quellen-card"><strong>Friedman, Milton & Schwartz, Anna J.</strong> (1963). A Monetary History of the United States.</div>
+      <div class="quellen-card"><strong>Scheidel, Walter</strong> (2017). The Great Leveler. <em>Princeton University Press.</em></div>
+      <div class="quellen-card"><strong>Milanović, Branko</strong> (2019). Capitalism, Alone. <em>Harvard University Press.</em></div>
+    </div>
+    <h3 class="h-sub"><i class="ti ti-microscope"></i>Phase 2 — Subdurchläufe E33-E40</h3>
+    <h4 class="h-mini">E33 Wissenschaftstheorie</h4>
+    <div class="grid-3">
+      <div class="quellen-card"><strong>Popper, Karl R.</strong> (1957). The Poverty of Historicism.</div>
+      <div class="quellen-card"><strong>Kołakowski, Leszek</strong> (1976–78). Main Currents of Marxism.</div>
+      <div class="quellen-card"><strong>Cohen, G.A.</strong> (1978). Karl Marx's Theory of History.</div>
+      <div class="quellen-card"><strong>Lakatos, Imre</strong> (1970). Methodology of Scientific Research Programmes.</div>
+      <div class="quellen-card"><strong>Elster, Jon</strong> (1985). Making Sense of Marx.</div>
+    </div>
+    <h4 class="h-mini">E34 Ökologie</h4>
+    <div class="grid-3">
+      <div class="quellen-card"><strong>Saito, Kohei</strong> (2023). Marx in the Anthropocene. <em>Cambridge University Press.</em></div>
+      <div class="quellen-card"><strong>Foster, John Bellamy</strong> (2000). Marx's Ecology.</div>
+      <div class="quellen-card"><strong>Burkett, Paul</strong> (1999). Marx and Nature.</div>
+      <div class="quellen-card"><strong>Moore, Jason W.</strong> (2015). Capitalism in the Web of Life.</div>
+      <div class="quellen-card"><strong>Malm, Andreas</strong> (2016). Fossil Capital. <em>Verso.</em></div>
+    </div>
+    <h4 class="h-mini">E35 Race + Globaler Süden</h4>
+    <div class="grid-3">
+      <div class="quellen-card"><strong>Williams, Eric</strong> (1944). Capitalism and Slavery.</div>
+      <div class="quellen-card"><strong>Du Bois, W.E.B.</strong> (1935). Black Reconstruction in America.</div>
+      <div class="quellen-card"><strong>Robinson, Cedric J.</strong> (1983). Black Marxism.</div>
+      <div class="quellen-card"><strong>Chibber, Vivek</strong> (2013). Postcolonial Theory and the Specter of Capital.</div>
+      <div class="quellen-card"><strong>Amin, Samir</strong> (1989). Eurocentrism.</div>
+      <div class="quellen-card"><strong>Rodney, Walter</strong> (1972). How Europe Underdeveloped Africa.</div>
+      <div class="quellen-card"><strong>Cardoso, F.H. & Faletto, E.</strong> (1979). Dependency and Development in Latin America.</div>
+      <div class="quellen-card"><strong>Wang, Hui</strong> (2009). The End of the Revolution. <em>Verso.</em></div>
+    </div>
+    <h4 class="h-mini">E36 Feminismus + Reproduktion</h4>
+    <div class="grid-3">
+      <div class="quellen-card"><strong>Mies, Maria</strong> (1986). Patriarchy and Accumulation.</div>
+      <div class="quellen-card"><strong>Vogel, Lise</strong> (1983). Marxism and the Oppression of Women.</div>
+      <div class="quellen-card"><strong>Federici, Silvia</strong> (2004). Caliban and the Witch.</div>
+      <div class="quellen-card"><strong>Bhattacharya, Tithi</strong> (Hg.) (2017). Social Reproduction Theory.</div>
+      <div class="quellen-card"><strong>Fraser, Nancy</strong> (2022). Cannibal Capitalism. <em>Verso.</em></div>
+    </div>
+    <h4 class="h-mini">E37 Plattform + Endspiel</h4>
+    <div class="grid-3">
+      <div class="quellen-card"><strong>Srnicek, Nick</strong> (2017). Platform Capitalism.</div>
+      <div class="quellen-card"><strong>Zuboff, Shoshana</strong> (2019). The Age of Surveillance Capitalism.</div>
+      <div class="quellen-card"><strong>Durand, Cédric</strong> (2024). How Silicon Valley Unleashed Techno-Feudalism.</div>
+      <div class="quellen-card"><strong>Streeck, Wolfgang</strong> (2016). How Will Capitalism End?</div>
+      <div class="quellen-card"><strong>Mason, Paul</strong> (2015). PostCapitalism.</div>
+    </div>
+    <h4 class="h-mini">E38 Methodologische Selbstprüfung</h4>
+    <div class="grid-3">
+      <div class="quellen-card"><strong>Harvey, David</strong> (1982/2018). The Limits to Capital.</div>
+      <div class="quellen-card"><strong>Postone, Moishe</strong> (1993). Time, Labor, and Social Domination.</div>
+      <div class="quellen-card"><strong>Wright, Erik Olin</strong> (1985). Classes.</div>
+      <div class="quellen-card"><strong>Roemer, John E.</strong> (1988). Free to Lose.</div>
+      <div class="quellen-card"><strong>Przeworski, Adam</strong> (1985). Capitalism and Social Democracy.</div>
+      <div class="quellen-card"><strong>Brenner, Robert</strong> (2006). The Economics of Global Turbulence.</div>
+      <div class="quellen-card"><strong>Kliman, Andrew</strong> (2012). The Failure of Capitalist Production.</div>
+      <div class="quellen-card"><strong>Minsky, Hyman P.</strong> (1986). Stabilizing an Unstable Economy.</div>
+      <div class="quellen-card"><strong>Hardt, M. & Negri, A.</strong> (2000). Empire.</div>
+    </div>
+    <h4 class="h-mini">E39 Marx-Originale</h4>
+    <div class="grid-3">
+      <div class="quellen-card"><strong>Marx, Karl</strong> (1844). Ökonomisch-philosophische Manuskripte. <em>MEW Bd. 40.</em></div>
+      <div class="quellen-card"><strong>Marx, Karl</strong> (1857-58). Grundrisse. <em>MEW Bd. 42.</em></div>
+      <div class="quellen-card"><strong>Marx, Karl</strong> (1861-63). Theorien über den Mehrwert. <em>MEW Bd. 26.1-26.3.</em></div>
+      <div class="quellen-card"><strong>Marx, Karl</strong> (1879-82). The Ethnological Notebooks. <em>Ed. L. Krader, 1972.</em></div>
+      <div class="quellen-card"><strong>Marx, Karl</strong> (1881). Brief an Vera Sassulitsch. <em>MEW Bd. 19.</em></div>
+      <div class="quellen-card"><strong>Marx & Engels</strong> (1882). Vorwort zur russischen Manifest-Ausgabe. <em>MEW Bd. 19.</em></div>
+    </div>
+    <h4 class="h-mini">E40 Mainstream-Empirie</h4>
+    <div class="grid-3">
+      <div class="quellen-card"><strong>Atkinson, Anthony B.</strong> (2015). Inequality: What Can Be Done?</div>
+      <div class="quellen-card"><strong>Saez, E. & Zucman, G.</strong> (2019). The Triumph of Injustice.</div>
+      <div class="quellen-card"><strong>Galbraith, James K.</strong> (2012). Inequality and Instability.</div>
+      <div class="quellen-card"><strong>Piketty, Thomas</strong> (2020). Capital and Ideology.</div>
+      <div class="quellen-card"><strong>Acemoglu & Robinson</strong> (2012). Why Nations Fail.</div>
+      <div class="quellen-card"><strong>Acemoglu & Robinson</strong> (2019). The Narrow Corridor.</div>
+    </div>
+  </div>
+</section>
+
+<section id="glossar">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-book-2"></i>Wörterbuch</div>
+      <h2 class="h-section">Fachbegriffe einfach erklärt</h2>
+      <p class="section-lead">Falls in den Texten ein Begriff vorkommt, den Sie nicht verstanden haben: hier nachschlagen. In einfacher Sprache erklärt.</p>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-quote"></i>Marx-Schlüsselbegriffe</h3>
+    <div class="grid-2">
+      <div class="glossar-card">
+        <p class="glossar-term">Mehrwert</p>
+        <p class="glossar-mini">surplus value · Kapital I</p>
+        <p class="glossar-def">Der Wert, den Arbeiter*innen über ihren eigenen Lohn hinaus produzieren — und der dem Kapitalbesitzer zufließt. <em>Beispiel: Wenn ein Arbeiter pro Tag Waren im Wert von 200€ herstellt, aber 80€ Lohn bekommt, sind 120€ Mehrwert.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Akkumulation</p>
+        <p class="glossar-mini">accumulation · Kapital I, Kap. XXIII</p>
+        <p class="glossar-def">Die Anhäufung von Kapital über Generationen. Aus reinvestiertem Profit wird mehr Kapital — das mehr Profit erzeugt — und so weiter. <em>Schneeball-Effekt des Kapitals.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Organische Zusammensetzung</p>
+        <p class="glossar-mini">organic composition</p>
+        <p class="glossar-def">Das Verhältnis zwischen Kapital für Maschinen/Material (konstantes Kapital "c") und Kapital für Löhne (variables Kapital "v"). Marx behauptete: c/v steigt mit der Zeit. <em>Heute: Capital-Labor-Ratio.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Profitratenfall (TFPR)</p>
+        <p class="glossar-mini">tendency of falling rate of profit</p>
+        <p class="glossar-def">Marx' umstrittene These: Die durchschnittliche Profitrate sinkt langfristig, weil im Verhältnis immer mehr Maschinen und weniger lohnabhängige Arbeit eingesetzt werden. <em>Audit-Befund: empirisch ungelöst — auch in der Marx-Tradition.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Wertgesetz</p>
+        <p class="glossar-mini">law of value · Kapital I, Kap. 1-5</p>
+        <p class="glossar-def">Marx' These: Marktpreise hängen langfristig mit dem gesellschaftlich notwendigen Arbeitsaufwand zusammen. <em>Anwar Shaikh fand 2016 empirische Bestätigung — Preis-Wert-Korrelationen über 90% in mehreren Ländern.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Reservearmee</p>
+        <p class="glossar-mini">reserve army of labour</p>
+        <p class="glossar-def">Die ständige Arbeitslosigkeit, die Löhne drückt. Wenn viele suchen, müssen Arbeitende weniger fordern. <em>Heute: Phillips-Kurve — aber seit 1980 flacher geworden.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Ursprüngliche Akkumulation</p>
+        <p class="glossar-mini">primitive accumulation · Kapital I, Kap. XXIV</p>
+        <p class="glossar-def">Die gewaltsame Geburtsstunde des Kapitalismus: Bauern werden vom Land vertrieben, Kolonien geraubt, Sklaven verschleppt. <em>Heute: durch Acemoglu/Johnson/Robinson (Nobelpreis 2024) Mainstream.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Fiktives Kapital</p>
+        <p class="glossar-mini">fictitious capital · Kapital III</p>
+        <p class="glossar-def">Aktien, Anleihen, Derivate — Wertpapiere ohne direkten Bezug zur realen Produktion. Können sich aufblähen (Bubble) und platzen. <em>2008 globale Finanzkrise als Lehrstück.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Trinitätsformel</p>
+        <p class="glossar-mini">trinity formula · Kapital III, Kap. 48</p>
+        <p class="glossar-def">Die ideologische Verzerrung, dass Kapital → Zins, Arbeit → Lohn, Boden → Rente als gleichwertige "Faktoren" erscheinen. Marx-Kritik: verkehrt das Klassenverhältnis ins Naturhafte.</p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Warenfetisch</p>
+        <p class="glossar-mini">commodity fetishism · Kapital I, Kap. 1</p>
+        <p class="glossar-def">Soziale Verhältnisse erscheinen als Verhältnisse zwischen Sachen. <em>Beispiel: "Der Markt entscheidet" — als wäre der Markt ein Subjekt, nicht ein Beziehungsgeflecht zwischen Menschen.</em> F4-Kategorie.</p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Doppelt freie Lohnarbeit</p>
+        <p class="glossar-mini">doubly free labour</p>
+        <p class="glossar-def">Marx' Definition des modernen Lohnarbeiters: 1. rechtlich frei (kein Sklave/Leibeigener), 2. frei von Produktionsmitteln (besitzt nichts außer der eigenen Arbeitskraft). <em>Daher muss er arbeiten, um zu leben.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Stoffwechsel · Stoffwechselbruch</p>
+        <p class="glossar-mini">metabolism · metabolic rift</p>
+        <p class="glossar-def">Marx' ökologischer Begriff (Kapital III): Gesellschaft tauscht Stoffe mit der Natur aus. Kapitalismus bricht diesen Stoffwechsel — Bodenerschöpfung, Klima-Krise. <em>Foster und Saito systematisieren dies heute.</em></p>
+      </div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-school"></i>Marx-Traditionen und Strömungen</h3>
+    <div class="grid-2">
+      <div class="glossar-card">
+        <p class="glossar-term">Form-Analyse</p>
+        <p class="glossar-mini">Michael Heinrich · Wertformanalyse</p>
+        <p class="glossar-def">Lesart, die Marx als Theoretiker der spezifisch <em>kapitalistischen Form</em> versteht — nicht der ewigen Substanz. Was etwas <em>ist</em> (Geld, Lohn, Profit), hängt von gesellschaftlichen Verhältnissen ab. <em>Position dieser Studie.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Analytischer Marxismus</p>
+        <p class="glossar-mini">G.A. Cohen, Roemer, Elster</p>
+        <p class="glossar-def">Versuch in den 1980ern, Marx mit moderner Logik, Rational Choice und Spieltheorie zu rekonstruieren. <em>Audit-Befund: empirisch wertvoll (Wright Klassenanalyse), methodologisch unterlegen.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Operaismus</p>
+        <p class="glossar-mini">italienisch</p>
+        <p class="glossar-def">Italienische Marx-Strömung der 1960er-Jahre (Mario Tronti, Antonio Negri). Arbeiterperspektive in Fabriken, später globale Multitude-Theorie. <em>Hardt/Negri-Tradition. Audit: kritisch zurückgewiesen.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Black Marxism</p>
+        <p class="glossar-mini">Cedric Robinson 1983</p>
+        <p class="glossar-def">Tradition, die zeigt: Kapitalismus war von Anfang an rassistisch ("racial capitalism"). <em>Vorläufer: Du Bois, C.L.R. James, Eric Williams.</em> Audit übernimmt diese Lesart partial.</p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Social Reproduction Theory (SRT)</p>
+        <p class="glossar-mini">Bhattacharya, Vogel, Federici</p>
+        <p class="glossar-def">Theorie, die Reproduktionsarbeit (Hausarbeit, Care, Erziehung) ins Zentrum stellt. <em>Marx-Tradition mit feministischer Erweiterung — füllt eine Lücke im klassischen Marx.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Dependency Theory</p>
+        <p class="glossar-mini">Cardoso, Frank, Amin</p>
+        <p class="glossar-def">Lateinamerikanische Marx-Tradition: Wohlstand des Westens basiert auf Unterentwicklung des Südens. Werte fließen systematisch vom Süden in den Norden. <em>Heute teilweise im Mainstream akzeptiert.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Degrowth Communism</p>
+        <p class="glossar-mini">Kohei Saito 2023</p>
+        <p class="glossar-def">Lesart des späten Marx: kein produktivistisches Wachstum, sondern bewusste Reduzierung. <em>Ökologische Marx-Tradition. Audit: empirisch durch Marx-Originale validiert.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Spatial Fix / Accumulation by Dispossession</p>
+        <p class="glossar-mini">David Harvey</p>
+        <p class="glossar-def">Harvey: Kapital expandiert räumlich, um Krisen zu lösen (Spatial Fix). Heute: Akkumulation durch direkte Enteignung (Privatisierung öffentlicher Güter, Land Grabbing). <em>Ergänzt Heinrich um die räumliche Dimension.</em></p>
+      </div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-chart-line"></i>Ökonomische Fachbegriffe</h3>
+    <div class="grid-2">
+      <div class="glossar-card">
+        <p class="glossar-term">Wage Share / Lohnquote</p>
+        <p class="glossar-mini">labour share</p>
+        <p class="glossar-def">Der Anteil der Löhne am gesamten Volkseinkommen. <em>Sinkt seit 1980 in 42 von 59 OECD-Ländern. Marx' These der relativen Verarmung empirisch bestätigt.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Top-1%-Wealth-Share</p>
+        <p class="glossar-mini">WID.world</p>
+        <p class="glossar-def">Der Anteil des reichsten 1% am Gesamtvermögen. <em>In den USA: 27% (1976) → 39% (2019). U-Form über das 20. Jahrhundert.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">r &gt; g</p>
+        <p class="glossar-mini">Piketty 2014</p>
+        <p class="glossar-def">Die Kapitalrendite (r) ist langfristig höher als das Wirtschaftswachstum (g). Vermögende werden automatisch relativ reicher. <em>Strukturelle Ungleichheit ohne politische Intervention.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Markups</p>
+        <p class="glossar-mini">De Loecker et al. 2020</p>
+        <p class="glossar-def">Aufschlag von Firmen auf die Produktionskosten. Höher = mehr Marktmacht, weniger Konkurrenz. <em>In den USA: 1,20 (1980) → 1,60 (2016). Marx' Konzentrations-These bestätigt.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Financialization / Finanzialisierung</p>
+        <p class="glossar-mini">Lapavitsas 2013</p>
+        <p class="glossar-def">Der Finanzsektor wird wichtiger als die Produktion. Profit kommt zunehmend aus Finanztransaktionen, nicht aus realer Wertschöpfung. <em>Finanzprofit-Anteil USA: 10% (1950) → 40%+ (2007).</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Financial Instability Hypothesis (FIH)</p>
+        <p class="glossar-mini">Hyman Minsky 1986</p>
+        <p class="glossar-def">Stabilität destabilisiert. Wenn lange nichts passiert, übernehmen Akteure mehr Risiken. Drei Finanzierungs-Typen: Hedge (sicher) → Speculative → Ponzi (Schneeballsystem). <em>Crash unvermeidbar.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Subordinated Financialization</p>
+        <p class="glossar-mini">Lapavitsas</p>
+        <p class="glossar-def">Globaler Süden ist in das nördliche Finanzsystem eingebunden — als untergeordneter Partner. Schulden in US-Dollar, Renditen für nördliche Investoren. <em>Neue Form der Abhängigkeit.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Elephant-Kurve</p>
+        <p class="glossar-mini">Branko Milanović 2016</p>
+        <p class="glossar-def">Globale Einkommensverteilung 1988–2008: Globale Mittelschicht (China, Indien) gewann, globale Spitze (Top 1%) gewann am meisten, OECD-Mittelschicht verlor. <em>Graph sieht aus wie ein Elefantenrüssel.</em></p>
+      </div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-flag"></i>Politische Begriffe</h3>
+    <div class="grid-2">
+      <div class="glossar-card">
+        <p class="glossar-term">7-Lager-Inklusion</p>
+        <p class="glossar-mini">Audit-Methode</p>
+        <p class="glossar-def">Jedes Verdikt wird aus Sicht von 7 politischen Lagern bewertet: Liberal, Sozialistisch, Libertär, Sozialdemokratisch, Konservativ, Anarchistisch, Grün. <em>Schematisch, aber diszipliniert die Argumentation.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Heterodox</p>
+        <p class="glossar-mini">heterodox economics</p>
+        <p class="glossar-def">Ökonomische Forschung außerhalb der neoklassischen Hauptströmung. Marx-Tradition, Post-Keynesianismus, Strukturalismus. <em>Galbraith, Minsky, Streeck sind heterodox.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Inclusive Institutions</p>
+        <p class="glossar-mini">Acemoglu/Robinson 2012</p>
+        <p class="glossar-def">"Einschließende Institutionen" — Demokratie, Eigentumsrechte, Bildung. <em>AJR: Erklären Wohlstandsunterschiede. Audit-Kritik: institutionalistisch verkürzt.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Politischer Kapitalismus</p>
+        <p class="glossar-mini">Milanović 2019</p>
+        <p class="glossar-def">Milanović: China, Russland, Singapur sind eine Sonderform — Markt + autoritäre Staatslenkung. Im Unterschied zum "liberalen Kapitalismus" des Westens. <em>Audit: Wang Hui vorziehen.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Eurozentrismus</p>
+        <p class="glossar-mini">Samir Amin 1989</p>
+        <p class="glossar-def">Die Annahme, dass Europa der Maßstab und Vorbild für alle Gesellschaften ist. <em>Marx wird oft eurozentristisch gelesen, aber die Marx-Tradition lässt sich anti-eurozentrisch wenden.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">Demokratie-Kapitalismus-Krise</p>
+        <p class="glossar-mini">Wolfgang Streeck</p>
+        <p class="glossar-def">Streeck-These: Demokratie und Kapitalismus passten nach 1945 zusammen, divergieren aber seit den 1970ern. <em>Drei Fluchtwege erschöpft: Inflation, Verschuldung, Privatisierung.</em></p>
+      </div>
+    </div>
+
+    <h3 class="h-sub"><i class="ti ti-bookmark"></i>Begriffe, die in dieser Studie häufig vorkommen</h3>
+    <div class="grid-2">
+      <div class="glossar-card">
+        <p class="glossar-term">Drei-Bündnispartner-Modell</p>
+        <p class="glossar-mini">E40a-Befund</p>
+        <p class="glossar-def">Heterodoxe Bündnispartner für die Marx-Tradition: Hyman Minsky (Finanzkrisen), James K. Galbraith (Ungleichheit), Wolfgang Streeck (Demokratie-Kapitalismus-Krise). <em>Methodologisch nicht-marxistisch, aber inhaltlich Audit-konvergent.</em></p>
+      </div>
+      <div class="glossar-card">
+        <p class="glossar-term">MEW</p>
+        <p class="glossar-mini">Marx-Engels-Werke</p>
+        <p class="glossar-def">Die deutsche Standardausgabe der Schriften von Karl Marx und Friedrich Engels, 43 Bände, Dietz-Verlag Berlin 1956–2018. <em>Standard-Zitierform: "MEW 23, S. 653" = Band 23, Seite 653.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fazit">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow"><i class="ti ti-target"></i>Schluss</div>
+      <h2 class="h-section">Fazit</h2>
+      <p class="section-lead">Die wichtigsten Erkenntnisse in einfacher Sprache — als Argumentations-Werkzeug.</p>
+    </div>
+    <div class="fazit">
+      <div class="fazit-title"><i class="ti ti-bulb"></i>Fazit in einfacher Sprache</div>
+      <div class="fazit-item"><i class="ti ti-check"></i><div class="fazit-item-content"><strong>Marx hatte in den großen Strukturfragen recht.</strong>Konzentration, Akkumulation, Krisen, Finanzialisierung, Globalisierung, koloniale Akkumulation — all das ist heute empirisch belegt, auch von Forschern, die Marx ansonsten ablehnen.</div></div>
+      <div class="fazit-item"><i class="ti ti-alert-triangle"></i><div class="fazit-item-content"><strong>In zwei populären Vorhersagen lag er falsch.</strong>Die Arbeiter sind absolut nicht ärmer geworden, und die Gesellschaft hat sich nicht in zwei Klassen polarisiert. Wer Marx verteidigt, sollte das offen zugeben — es schwächt die starken Thesen nicht.</div></div>
+      <div class="fazit-item"><i class="ti ti-help"></i><div class="fazit-item-content"><strong>Eine zentrale These bleibt offen.</strong>Der tendenzielle Fall der Profitrate ist empirisch ungelöst. Auch innerhalb der Marx-Forschung. Ehrlich "kontrovers" zu sagen ist hier robuster als jede Festlegung.</div></div>
+      <div class="fazit-item"><i class="ti ti-shield"></i><div class="fazit-item-content"><strong>Argumentations-Empfehlung.</strong>Diskutieren Sie nie über "Marx als Ganzes". Diskutieren Sie über konkrete Thesen — mit MEW-Quelle und Mainstream-Daten (WID, OECD, IMF, ILO). Dann sind Sie methodisch unangreifbar, egal welches politische Lager Sie gegenüber haben.</div></div>
+      <div class="fazit-item"><i class="ti ti-book"></i><div class="fazit-item-content"><strong>Was hier nicht steht.</strong>Methodologische Positionen (Wertformanalyse, Form-Analyse), normative Visionen (Aufhebung, Kommunismus) und nicht direkt empirisch testbare Begriffe (Warenfetisch, Entfremdung, Klassenbewusstsein) sind bewusst ausgeschlossen — sie gehören in eine andere Diskussion.</div></div>
+    </div>
+    <p style="margin:1.25rem 0 0;font-size:12.5px;color:var(--text-muted);line-height:1.5">Diese Bilanz folgt der Audit-Studie EP_E42 (Marx-Empirie-Status) + EP_E32 (Finale Synthese), Mai 2026. Quellen: 73 Hauptwerke aus Mainstream- und heterodoxer Forschung plus 29 Audit-Output-Dokumente.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-section"><h4>Projekt</h4><p>Audit + kritische Erweiterung der Marx-Begriffsableitung V05_Endform.</p><p>Stand: Mai 2026. Phase 1 + Phase 2 + finale Synthese E41 + Marx-Empirie-Status E42.</p></div>
+      <div class="foot-section"><h4>Vorgehen</h4><p>Systematische Prüfung jeder Marx-These mit Originalzitat, aktuellen Daten, mehreren unabhängigen Quellen. Pluralistische Dokumentation, keine politische Empfehlung.</p></div>
+      <div class="foot-section"><h4>Daten</h4><p>WID.world, OECD, IMF, ILO, World Bank, NBER, Penn World Tables, Maddison Project, Brookings, BIS.</p></div>
+      <div class="foot-section"><h4>Bearbeitung</h4><p>Claude (Anthropic).</p><p>Sprachen: Deutsch primär; Englisch + Französisch sekundär.</p></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 · Marx-Audit-Studie — konsolidierte Gesamtsynthese</span>
+      <span>102 Dokumente · 88 Verdikte · 26 empirische Thesen</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(function(){
+const theses = [
+  {id:'A1',cat:'akkumulation',catLabel:'Akkumulation',title:'Konzentration des Kapitals',src:'Kapital I, Kap. XXIII (MEW 23, S. 653)',quote:'Mit der Akkumulation… wächst die plötzliche Expansivkraft des Kapitals.',marx_einfach:'Marx sagte: Im Kapitalismus dominieren mit der Zeit immer wenigere, dafür immer größere Firmen den Markt. Konkurrenz schaltet sich selbst aus.',daten:'US-Markups stiegen seit 1980 von 1,2 auf 1,6. In den meisten Branchen wachsen die Top-Firmen schneller als der Rest. Big-Tech kontrolliert ganze Märkte.',schluss:'Marx hatte recht: Märkte werden konzentrierter, nicht wettbewerbsintensiver.',oecd:'robust',global:'robust',overall:'robust',main:'De Loecker/Eeckhout/Unger 2020 (QJE); OECD 2018; Bajgar et al. 2019',het:'Shaikh 2016; Galbraith 2012'},
+  {id:'A2',cat:'akkumulation',catLabel:'Akkumulation',title:'Zentralisation des Kapitals (M&A)',src:'Kapital I, Kap. XXIII (MEW 23, S. 654)',quote:'Konzentration bereits gebildeter Kapitale… Expropriation des Kapitalisten durch den Kapitalisten.',marx_einfach:'Marx sagte: Große Firmen kaufen kleinere auf. Fusionen werden zur Hauptform des Kapitalwachstums.',daten:'Weltweites M&A-Volumen wuchs von 200 Mrd USD (1985) auf 5 Bio USD (2021) — verzwanzigfacht. Tech-Konzerne kaufen systematisch Startups auf.',schluss:'Die Übernahme-Welle der letzten 40 Jahre bestätigt Marx fast wörtlich.',oecd:'robust',global:'robust',overall:'robust',main:'Bloomberg M&A; IMAA Institute; Andrade/Mitchell/Stafford 2001',het:'Foster/McChesney 2012; Crotty 2003; Lapavitsas 2013'},
+  {id:'A3',cat:'akkumulation',catLabel:'Akkumulation',title:'Steigende organische Zusammensetzung',src:'Kapital I, Kap. XXIII; III, Teil III (MEW 23, S. 640)',quote:'Konstantes Kapital wächst auf Kosten des variablen.',marx_einfach:'Marx sagte: Im Lauf der Zeit setzt jede Firma mehr Maschinen und weniger Arbeit ein. Pro Arbeiter mehr Kapital.',daten:'Capital-Labor-Ratios in den USA haben sich 1950–2019 etwa vervierfacht. Ähnlich in Deutschland, Japan, UK. Schwellenländer holen auf.',schluss:'Marx hatte recht: Pro Beschäftigtem wird heute deutlich mehr Kapital eingesetzt als früher.',oecd:'robust',global:'medium',overall:'robust',main:'Penn World Tables 10.0; Karabarbounis/Neiman 2014',het:'Shaikh 2016; Foley/Marquetti 1999'},
+  {id:'A4',cat:'akkumulation',catLabel:'Akkumulation',title:'Sinkende Wage Share',src:'Kapital I, Kap. XXIII (MEW 23, S. 670)',quote:'Im Verhältnis, wie das Kapital akkumuliert, muß die Lage des Arbeiters… sich verschlechtern.',marx_einfach:'Marx sagte: Mit fortschreitendem Kapitalismus erhalten die Arbeiter einen sinkenden Anteil am gesamten Volkseinkommen — auch wenn ihre absoluten Löhne steigen.',daten:'In 42 von 59 untersuchten Ländern fiel der Lohnanteil 1975–2012. OECD-Durchschnitt minus 5 Prozentpunkte. Global ähnlich.',schluss:'Relative Verarmung ist messbar — Marx hatte hier recht, auch wenn die absolute Verarmung nicht eintrat.',oecd:'robust',global:'robust',overall:'robust',main:'Karabarbounis/Neiman 2014 (QJE); ILO Global Wage Reports; OECD',het:'Atkinson 2015; Stockhammer 2017; Lapavitsas 2013'},
+  {id:'A5',cat:'akkumulation',catLabel:'Akkumulation',title:'Absolute Verarmung der Arbeiterklasse',src:'Kapital I, Kap. XXIII (MEW 23, S. 675)',quote:'Akkumulation des Reichtums… ist zugleich Akkumulation von Elend.',marx_einfach:'Marx sagte (in strenger Lesart): Der absolute Lebensstandard der Arbeiter sinkt mit der Kapitalakkumulation.',daten:'Reallöhne stiegen 1850–1980 in OECD-Ländern signifikant. Globale extreme Armut fiel von 36% (1990) auf 9% (2019).',schluss:'Empirisch widerlegt. Selbst marxianische Forscher (Heinrich, Harvey, Shaikh) lesen die Stelle nicht streng.',oecd:'refuted',global:'refuted',overall:'refuted',main:'World Bank Poverty Database; Maddison Project 2020; Lindert/Williamson 2016',het:'Heinrich 2004 (lehnt strenge Lesart ab); Saito 2017'},
+  {id:'B1',cat:'reichtum',catLabel:'Reichtum',title:'Konzentration des Reichtums',src:'Kapital I, Kap. XXIII (MEW 23, S. 675)',quote:'Akkumulation von Reichtum auf dem einen Pol…',marx_einfach:'Marx sagte: Vermögen sammelt sich an der Spitze. Der reichste Bruchteil der Gesellschaft hält einen immer größeren Anteil.',daten:'Top-1%-Vermögensanteil USA: 27% (1976) → 39% (2019). Weltweit Top-1%: 38% des Privatvermögens. U-Form: hoch um 1920, niedrig 1970, wieder hoch heute.',schluss:'Vermögenskonzentration ist heute extremer als zu Marx\' Zeiten. Voll bestätigt — und teils dramatischer.',oecd:'robust',global:'robust',overall:'robust',main:'WID.world; Roine/Waldenström 2015; Credit Suisse Global Wealth Report',het:'Atkinson 2015; Galbraith 2012; Shaikh 2016'},
+  {id:'B2',cat:'reichtum',catLabel:'Reichtum',title:'r > g (Piketty-Operationalisierung)',src:'Kapital I; Grundrisse MEW 42, S. 415ff',quote:'Kapital als sich selbst verwertender Wert.',marx_einfach:'Marx-Tendenz, von Piketty operationalisiert: Die Rendite auf Vermögen ist langfristig höher als das Wirtschaftswachstum. Wer Kapital hat, wird relativ reicher.',daten:'Piketty 2014: r ca. 6–8%, g ca. 2–3% in OECD-Ländern langfristig. Jordà et al. 2019 (QJE) bestätigen für 16 Industrieländer.',schluss:'Wer Vermögen hat, wird automatisch reicher als wer nur Arbeit hat. Strukturelle Ungleichheit.',oecd:'robust',global:'medium',overall:'robust',main:'Piketty 2014; Jordà et al. 2019 (QJE); WID',het:'Stockhammer/Onaran 2013; Foster/McChesney 2012'},
+  {id:'C1',cat:'klassen',catLabel:'Klassen',title:'Polarisierungs-These',src:'Manifest 1848 (MEW 4, S. 463)',quote:'Die ganze Gesellschaft spaltet sich… in zwei große feindliche Lager.',marx_einfach:'Marx sagte (im Manifest): Die Mittelschicht verschwindet. Die Gesellschaft spaltet sich in zwei Klassen — Bourgeoisie und Proletariat.',daten:'Globale Mittelschicht wuchs von 1,8 Mrd (2009) auf 3,2 Mrd (2017). OECD-Mittelschicht 64% (1985) → 61% (2015) — Schrumpfung, kein Verschwinden.',schluss:'Empirisch widerlegt. Im Manifest war es Agitations-Text. Spätere Marx-Schriften behandeln Klassen differenzierter.',oecd:'refuted',global:'refuted',overall:'refuted',main:'OECD Under Pressure 2019; Pew Research; Kharas 2017',het:'Bernstein 1899; Wright 1985'},
+  {id:'C2',cat:'klassen',catLabel:'Klassen',title:'Wachsender Lohnabhängigen-Anteil',src:'Kapital I, Kap. XXIV (MEW 23, S. 742)',quote:'Scheidungsprozeß des Arbeiters vom Eigentum an seinen Arbeitsbedingungen.',marx_einfach:'Marx sagte: Immer mehr Menschen verkaufen ihre Arbeitskraft, weil sie keine eigenen Produktionsmittel besitzen. Selbständige + Bauern schrumpfen.',daten:'OECD-Anteil abhängig Beschäftigter: ca. 50% (1900) → 85–92% (2020). Global ca. 52% — informeller Sektor weiterhin groß, besonders in Subsahara-Afrika und Südasien.',schluss:'In Industrieländern voll bestätigt. Global gilt es eingeschränkt — der informelle Sektor bleibt eine Marx-Lücke.',oecd:'robust',global:'medium',overall:'medium',main:'OECD Employment Outlook; ILO; Acemoglu/Autor 2011',het:'Wright 1985; Galbraith 2012; Shaikh 2016'},
+  {id:'C3',cat:'klassen',catLabel:'Klassen',title:'Reservearmee-Mechanismus',src:'Kapital I, Kap. XXIII (MEW 23, S. 658)',quote:'Beständig eine relative… überschüssige Arbeiterbevölkerung.',marx_einfach:'Marx sagte: Eine ständige Arbeitslosigkeit drückt die Löhne. Wenn viele suchen, müssen Arbeiter weniger fordern.',daten:'Phillips-Kurve seit 1958 dokumentiert. Seit 1980 flacher geworden — Mechanismus existiert, ist aber schwächer. Schwellenländer: hoher informeller Sektor als Reservearmee.',schluss:'Mechanismus existiert weiterhin, aber moderne Arbeitsmärkte sind komplizierter als zur Manchester-Zeit.',oecd:'medium',global:'medium',overall:'medium',main:'Phillips 1958; Ball/Mankiw 2002; IMF WEO 2017',het:'Shaikh 2016 Kap. 14; Stockhammer 2008; Galbraith 1998'},
+  {id:'D1',cat:'krisen',catLabel:'Krisen',title:'Periodische Krisen',src:'Kapital III, Teil V (MEW 25, S. 260)',quote:'Die wahre Schranke der kapitalistischen Produktion ist das Kapital selbst.',marx_einfach:'Marx sagte: Der Kapitalismus produziert aus sich selbst heraus Krisen — sie sind keine Unfälle, sondern strukturell.',daten:'Major Rezessionen seit 1850: 1873, 1893, 1907, 1920, 1929, 1937, 1973, 1979, 1991, 2001, 2008, 2020. Endogenität wird heute auch im Mainstream akzeptiert.',schluss:'Lehrbuchwissen — auch im Mainstream. Reinhart und Rogoff (2009) bestätigen es ausführlich.',oecd:'robust',global:'robust',overall:'robust',main:'NBER Business Cycle Dating; Reinhart/Rogoff 2009; IMF WEO',het:'Minsky 1986; Brenner 2006; Lapavitsas 2013'},
+  {id:'D2',cat:'krisen',catLabel:'Krisen',title:'Tendenzieller Fall der Profitrate (TFPR)',src:'Kapital III, Teil III (MEW 25, S. 223)',quote:'Es ist dies in jeder Beziehung das wichtigste Gesetz der modernen politischen Ökonomie.',marx_einfach:'Marx sagte: Die durchschnittliche Profitrate sinkt langfristig, weil im Verhältnis immer mehr Maschinen und weniger Arbeit eingesetzt werden.',daten:'Kontrovers. Kliman 2012 (TSSI-Methode) und Roberts 2016 finden den Fall. Mainstream und Heinrich 2013 (intra-marxianisch) bestreiten. Datenwahl beeinflusst Ergebnis stark.',schluss:'Empirisch nicht entschieden — auch innerhalb der Marx-Tradition. Ein offen zu lassendes Feld.',oecd:'weak',global:'weak',overall:'weak',main:'Mainstream bestreitet; Basu/Vasudevan 2013 partial',het:'Kliman 2012 (TSSI); Roberts 2016; Carchedi 2018 — gegen: Heinrich 2013'},
+  {id:'D3',cat:'krisen',catLabel:'Krisen',title:'Überproduktions-Tendenz',src:'Kapital III, Kap. 15 (MEW 25, S. 501)',quote:'Die letzte Ursache aller wirklichen Krisen bleibt immer die Armut und Konsumtionsbeschränkung der Massen.',marx_einfach:'Marx sagte: Der Kapitalismus produziert mehr, als die Massen sich leisten können. Daraus entstehen Realisierungskrisen.',daten:'Überkapazitäten bei Stahl, Auto, Solar dokumentiert. Summers 2013 sieht "säkulare Stagnation". Chinesische Überproduktion in mehreren Branchen.',schluss:'Heute deutlich sichtbar, aber Mainstream erklärt es anders als Marx (säkulare Stagnation, savings glut).',oecd:'medium',global:'medium',overall:'medium',main:'Summers 2013; IMF WEO; Bernanke 2005',het:'Brenner 2006; Foster/Magdoff 2009; Stockhammer 2012'},
+  {id:'D4',cat:'krisen',catLabel:'Krisen',title:'Finanzkrisen + Kreditsystem',src:'Kapital III, Kap. 25-30 (MEW 25, S. 457)',quote:'Kreditwesen… Haupthebel der Überproduktion und Überspekulation.',marx_einfach:'Marx sagte: Das Kreditsystem treibt die Wirtschaft über ihre Grenzen — und beschleunigt dann die Krise.',daten:'2008-Krise, Asienkrise 1997, Dotcom 2000, Japan 1990, Argentinien 2001 — alle folgen dem Muster. Mian und Sufi 2014 zeigen Verschuldung als Hauptfaktor.',schluss:'Marx\' Diagnose ist heute akzeptiert — auch in nicht-marxistischer Forschung. 2008 als Lehrstück.',oecd:'robust',global:'robust',overall:'robust',main:'Reinhart/Rogoff 2009; Schularick/Taylor 2012; Mian/Sufi 2014',het:'Minsky 1986; Lapavitsas 2013; Galbraith 2012; Keen 2017'},
+  {id:'E1',cat:'global',catLabel:'Global',title:'Welt-Markt-Expansion',src:'Manifest 1848 (MEW 4, S. 466)',quote:'Die Bourgeoisie hat… die Produktion und Konsumtion aller Länder kosmopolitisch gestaltet.',marx_einfach:'Marx sagte: Der Kapitalismus drängt aus jedem nationalen Rahmen — er wird zwangsläufig global.',daten:'Welthandel/BIP: 8% (1850) → 56% (2020). Globale Wertschöpfungsketten dominieren. Foreign Direct Investment noch stärker gewachsen.',schluss:'Marx beschrieb die Globalisierung 150 Jahre, bevor das Wort erfunden wurde.',oecd:'robust',global:'robust',overall:'robust',main:'World Bank WDI; KOF Index; Baldwin 2016',het:'Wallerstein; Lapavitsas 2013; Harvey 2003; Amin 1989'},
+  {id:'E2',cat:'global',catLabel:'Global',title:'Sklaverei + Kolonialraub',src:'Kapital I, Kap. XXIV (MEW 23, S. 779)',quote:'Eroberung und Ausplünderung von Ostindien, die Verwandlung von Afrika in ein Geheg…',marx_einfach:'Marx sagte: Die industrielle Revolution wurde durch koloniale Gewalt, Sklavenhandel und Raub finanziert. Sie ist kein "sauberer" Vorgang.',daten:'12–15 Mio Afrikaner über den Atlantik versklavt. AJR 2001, Beckert 2014, Pomeranz 2000 — alle bestätigen quantitativ. Nobelpreis 2024 für Acemoglu, Johnson, Robinson.',schluss:'Was bei Marx 1867 als marginale Beobachtung galt, ist heute Standard — auch im Nobel-Komitee.',oecd:'robust',global:'robust',overall:'robust',main:'Acemoglu/Johnson/Robinson 2001 (AER); Pomeranz 2000; Beckert 2014',het:'Williams 1944; Du Bois 1935; Rodney 1972; Robinson 1983'},
+  {id:'E3',cat:'global',catLabel:'Global',title:'Globale Pay Inequality',src:'Grundrisse MEW 42; Kap. III MEW 25',quote:'Welt-Markt-Hierarchie der Lohnniveaus.',marx_einfach:'Marx skizzierte: Auf dem Weltmarkt entstehen Lohn-Hierarchien. Arbeiter in armen Ländern verdienen systematisch weniger.',daten:'Lohnunterschiede zwischen Schweiz und Madagaskar: Faktor 100+. Milanović 2016 Elephant-Kurve: globale Spitze + globale Mittelschicht gewinnen, OECD-Mittelschicht verliert.',schluss:'Global ist die Lohnungleichheit dramatisch — und sie persistent. Marx hatte das ahnungsvoll skizziert.',oecd:'medium',global:'robust',overall:'robust',main:'ILO Global Wage Reports; Milanović 2016',het:'Galbraith 2012 (UTIP); Amin 1989; Smith 2016'},
+  {id:'E4',cat:'global',catLabel:'Global',title:'Centre-Periphery-Dynamik',src:'Kapital III, Kap. 14 (MEW 25, S. 244ff)',quote:'Auswärtiger Handel als entgegenwirkende Ursache.',marx_einfach:'Marx ahnte: Es gibt eine systematische Asymmetrie zwischen reichen und armen Ländern. Werte fließen vom Süden in den Norden.',daten:'Empirisch substantiell, aber unter verschiedenen Lesarten. Amin, Wallerstein, Cardoso unterschiedlich. Mainstream (Krugman) erklärt es anders.',schluss:'Phänomen bestätigt, Marx-Lesart ist nur eine Vorform. Die ausgereifte Theorie kam von Lenin, Luxemburg, Wallerstein, Amin.',oecd:'medium',global:'medium',overall:'medium',main:'Acemoglu/Johnson/Robinson; Krugman 1991; Rodrik 2011',het:'Amin 1989; Wallerstein; Cardoso/Faletto 1979; Smith 2016'},
+  {id:'F1',cat:'arbeit',catLabel:'Arbeit',title:'Maschinerie verdrängt Arbeit',src:'Kapital I, Kap. XIII (MEW 23, S. 416)',quote:'Mit dem Gebrauchswert ist auch der Tauschwert der Arbeitskraft verschwunden.',marx_einfach:'Marx sagte: Maschinen ersetzen Arbeiter. Technologischer Fortschritt erzeugt Arbeitslosigkeit.',daten:'Acemoglu/Restrepo 2020: 1 Roboter ersetzt 6 Jobs pro 1000 Arbeiter in USA. Aber Gesamtbeschäftigung sinkt nicht systematisch — neue Branchen entstehen.',schluss:'Marx beschreibt einen realen Mechanismus, aber "Lump-of-Labor-Fallacy" — neue Jobs ersetzen alte. Branchenwechsel sind die Realität.',oecd:'medium',global:'medium',overall:'medium',main:'Acemoglu/Restrepo 2020 (JPE); Frey/Osborne 2017; Autor 2015',het:'Mason 2015; Srnicek/Williams 2015; Benanav 2020'},
+  {id:'F2',cat:'arbeit',catLabel:'Arbeit',title:'Arbeitstag-Verlängerung',src:'Kapital I, Kap. VIII (MEW 23, S. 247)',quote:'Das Kapital ist verstorbne Arbeit, die nur vampyrmäßig auflebt durch Einsaugung lebendiger Arbeit.',marx_einfach:'Marx sagte: Kapital tendiert dazu, die Arbeitszeit so weit wie möglich zu verlängern. Nur Klassenkampf verhindert das.',daten:'Durchschnittliche Jahresarbeitszeit OECD: ca. 3000h (1870) → 1700h (2020). Reduktion durch Arbeitskämpfe und Gesetze. Schwellenländer mit höheren Arbeitszeiten.',schluss:'Tendenz vorhanden, aber Klassenkampf und Wohlstand drehten sie um. Marx beschrieb die Kraft, die organisierte Arbeiter im 20. Jh. überwanden.',oecd:'medium',global:'medium',overall:'medium',main:'Huberman/Minns 2007; Maddison Project; ILO; OECD',het:'Hunnicutt 1988; Roediger/Foner 1989'},
+  {id:'F3',cat:'arbeit',catLabel:'Arbeit',title:'Konjunkturzyklen',src:'Kapital I, Kap. XXIII; III, Kap. 30',quote:'Periodisch wiederkehrende Boom-Bust-Wechsel.',marx_einfach:'Marx sagte: Der Kapitalismus folgt 5–10-jährigen Auf- und Ab-Zyklen. Stetiges Wachstum gibt es nicht.',daten:'NBER dokumentiert US-Zyklen seit 1854. CEPR für Eurozone. Globale Synchronisation seit 1980. 2008 als globales Phänomen.',schluss:'Vollständig bestätigt. Konjunkturzyklen sind heute Standardwissen in jedem Makroökonomie-Lehrbuch.',oecd:'robust',global:'robust',overall:'robust',main:'NBER; Burns/Mitchell 1946; Kose et al. 2003',het:'Shaikh 2016 Kap. 13; Minsky 1986; Brenner 2006'},
+  {id:'G1',cat:'wert',catLabel:'Wert',title:'Wertgesetz (Preis-Arbeit-Korrelation)',src:'Kapital I, Kap. 1-5 (MEW 23, S. 53)',quote:'Gesellschaftlich notwendige Arbeitszeit erheischt zur Darstellung des Gebrauchswerts.',marx_einfach:'Marx sagte: Marktpreise hängen langfristig mit dem Arbeitsaufwand zusammen, der in den Waren steckt — auch wenn sie kurzfristig schwanken.',daten:'Shaikh 2016 + Cockshott/Cottrell finden Preis-Wert-Korrelationen über 0,90 in mehreren Ländern. Mainstream akzeptiert Korrelationen, nicht die Theorie.',schluss:'Korrelationen sind empirisch da, ihre Interpretation ist umstritten. Marx-Theorie selbst (Heinrich-Lesart) versteht es nicht als Korrelation.',oecd:'medium',global:'medium',overall:'medium',main:'Mainstream akzeptiert Korrelationen nicht-theoretisch',het:'Shaikh 2016; Cockshott/Cottrell 1997; Tsoulfidis 2008'},
+  {id:'H1',cat:'finanz',catLabel:'Finanz',title:'Bank-Industriekapital-Verflechtung',src:'Kapital III, Kap. 27 (MEW 25, S. 457)',quote:'Kreditwesen beschleunigt einerseits die materielle Entwicklung der Produktivkräfte.',marx_einfach:'Marx sagte: Banken und Industrie verschmelzen. Finanzprofit wird zentral.',daten:'Finanzsektor-Anteil am US-BIP: 11% (1950) → 21% (2020). Anteil der Finanzprofite an US-Gesamtprofiten: 10% (1950) → 40%+ (2007).',schluss:'Marx beschrieb 1864, was wir heute "Finanzialisierung" nennen — und das ist breit dokumentiert.',oecd:'robust',global:'robust',overall:'robust',main:'Krippner 2005; Greenwood/Scharfstein 2013; IMF GFSR',het:'Lapavitsas 2013; Epstein 2005; Foster/Magdoff 2009'},
+  {id:'H2',cat:'finanz',catLabel:'Finanz',title:'Fiktives Kapital + Spekulation',src:'Kapital III, Kap. 25, 29-30 (MEW 25, S. 482)',quote:'Fiktives Kapital — Entkopplung von realer Produktion.',marx_einfach:'Marx sagte: Wertpapiere und Kredite können sich vom realen Produktionswert entkoppeln. Asset Bubbles sind die Folge.',daten:'Historische Bubbles: 1720 South Sea, 1840er Railways, 1920er Aktien, 1990er Dotcom, 2000er Housing, 2017+2021 Krypto. Reinhart/Rogoff 2009 systematisch.',schluss:'Voll bestätigt — Bubbles sind ein wiederkehrendes Phänomen, seit es Kapitalismus gibt.',oecd:'robust',global:'robust',overall:'robust',main:'Reinhart/Rogoff 2009; Shiller 2015; Kindleberger 1978',het:'Minsky 1986; Toporowski 2018; Lapavitsas 2013'},
+  {id:'I1',cat:'reproduktion',catLabel:'Reproduktion',title:'Intergenerationale Klassenreproduktion',src:'implizit Kapital I, Kap. XXIII',quote:'Klassen-Reproduktion (Marx-Implikation).',marx_einfach:'Marx-Implikation: Klassen reproduzieren sich über Generationen. Wer in eine Arbeiter-Familie geboren wird, bleibt meist auch Arbeiter.',daten:'Intergenerationale Einkommenselastizität: 0,5 in USA und UK, 0,3 in Skandinavien. "Great Gatsby Curve": höhere Ungleichheit → niedrigere Mobilität.',schluss:'Soziale Mobilität ist begrenzt — besonders in ungleichen Gesellschaften. Marx hatte recht: Klasse vererbt sich.',oecd:'robust',global:'medium',overall:'robust',main:'Corak 2013 (JEP); Chetty et al. 2014; Narayan et al. 2018',het:'Atkinson 2015; Piketty 2014/2020; Saez/Zucman 2019'},
+  {id:'I2',cat:'reproduktion',catLabel:'Reproduktion',title:'Reichtum primär vererbt',src:'implizit Kap. I + III, Kap. 48',quote:'Trinitätsformel-Verkehrung.',marx_einfach:'Marx-Implikation: Spitzenvermögen entstehen primär durch Erbschaft, nicht durch Arbeit oder Talent.',daten:'Piketty: Erbschaften machen heute wieder ca. 20% des Vermögens-Flows aus. Über die Hälfte der US-Milliardäre erbten substantielles Vermögen.',schluss:'Die Geschichte vom Self-Made-Milliardär ist statistische Ausnahme. Reichtum wird vererbt.',oecd:'robust',global:'robust',overall:'robust',main:'Piketty 2014/2020; Piketty/Postel-Vinay/Rosenthal 2006; Atkinson 2018',het:'Saez/Zucman 2019; Galbraith 2012'}
+];
+
+const statusLabel={robust:'Robust',medium:'Mittel',weak:'Schwach',refuted:'Widerlegt'};
+const statusClass={robust:'b-robust',medium:'b-medium',weak:'b-weak',refuted:'b-refuted'};
+const fillClass={robust:'f-robust',medium:'f-medium',weak:'f-weak',refuted:'f-refuted'};
+const fillPct={robust:90,medium:60,weak:35,refuted:15};
+
+function renderCard(t){
+  return '<article class="thesis-card" data-cat="'+t.cat+'" data-st="'+t.overall+'" data-id="'+t.id+'">'+
+    '<div class="t-head"><div style="flex:1;min-width:0"><p class="t-cat">'+t.id+' · '+t.catLabel+'</p><p class="t-title">'+t.title+'</p></div><span class="badge '+statusClass[t.overall]+'">'+statusLabel[t.overall]+'</span></div>'+
+    '<p class="t-src">'+t.src+'</p>'+
+    '<div class="geo-row"><span class="geo-lbl">OECD</span><div class="geo-bar"><div class="geo-fill '+fillClass[t.oecd]+'" style="width:'+fillPct[t.oecd]+'%"></div></div><span class="badge '+statusClass[t.oecd]+'" style="font-size:10px;padding:2px 7px">'+statusLabel[t.oecd]+'</span></div>'+
+    '<div class="geo-row"><span class="geo-lbl">Global</span><div class="geo-bar"><div class="geo-fill '+fillClass[t.global]+'" style="width:'+fillPct[t.global]+'%"></div></div><span class="badge '+statusClass[t.global]+'" style="font-size:10px;padding:2px 7px">'+statusLabel[t.global]+'</span></div>'+
+    '<button class="t-toggle"><i class="ti ti-chevron-down"></i>Details + Schlussfolgerung</button>'+
+    '<div class="t-detail">'+
+      '<p class="quote">'+t.quote+'</p>'+
+      '<div class="nar-block"><p class="nar-label marx"><i class="ti ti-book"></i>Was Marx meinte</p><p class="nar-text">'+t.marx_einfach+'</p></div>'+
+      '<div class="nar-block"><p class="nar-label data"><i class="ti ti-chart-bar"></i>Was die Daten zeigen</p><p class="nar-text">'+t.daten+'</p></div>'+
+      '<div class="concl-box"><p class="concl-text">'+t.schluss+'</p></div>'+
+      '<div class="src-block"><strong>Mainstream</strong><span>'+t.main+'</span></div>'+
+      '<div class="src-block"><strong>Heterodox</strong><span>'+t.het+'</span></div>'+
+    '</div></article>';
+}
+
+const grid=document.getElementById('thesisGrid');
+grid.innerHTML=theses.map(renderCard).join('');
+grid.addEventListener('click',function(e){
+  var btn=e.target.closest('.t-toggle');
+  if(!btn)return;
+  btn.closest('.thesis-card').classList.toggle('open');
+});
+
+var curCat='all',curSt='all';
+function applyFilters(){
+  var cards=grid.querySelectorAll('.thesis-card');
+  var shown=0;
+  cards.forEach(function(c){
+    var okC=curCat==='all'||c.dataset.cat===curCat;
+    var okS=curSt==='all'||c.dataset.st===curSt;
+    var show=okC&&okS;
+    c.style.display=show?'':'none';
+    if(show)shown++;
+  });
+  document.getElementById('emptyState').style.display=shown===0?'':'none';
+}
+function bindFilter(rowId,key){
+  var row=document.getElementById(rowId);
+  row.addEventListener('click',function(e){
+    var btn=e.target.closest('.fbtn');
+    if(!btn)return;
+    row.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    if(key==='cat')curCat=btn.dataset.cat;
+    else curSt=btn.dataset.st;
+    applyFilters();
+  });
+}
+bindFilter('catFilter','cat');
+bindFilter('statusFilter','st');
+
+document.querySelectorAll('nav.sticky a').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var tgt=document.querySelector(a.getAttribute('href'));
+    if(tgt){e.preventDefault();tgt.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+if(window.Chart){
+  var textCol='#334155';
+  var gridCol='rgba(15,23,42,.06)';
+
+  new Chart(document.getElementById('donutChart'),{
+    type:'doughnut',
+    data:{labels:['Robust (62%)','Mittel (27%)','Schwach (4%)','Widerlegt (8%)'],datasets:[{data:[16,7,1,2],backgroundColor:['#15803d','#ca8a04','#c2410c','#991b1b'],borderColor:'#fff',borderWidth:3,hoverOffset:8}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{position:'right',labels:{color:textCol,font:{size:13,family:'Inter'},padding:16,boxWidth:14,boxHeight:14,usePointStyle:false}},tooltip:{callbacks:{label:function(c){return c.label+': '+c.parsed+' Thesen';}}}}}
+  });
+
+  new Chart(document.getElementById('catBarChart'),{
+    type:'bar',
+    data:{
+      labels:['Akkumulation','Reichtum','Klassen','Krisen','Global','Arbeit','Wert','Finanz','Reproduktion'],
+      datasets:[
+        {label:'Robust',data:[4,2,0,2,3,1,0,2,2],backgroundColor:'#15803d'},
+        {label:'Mittel',data:[0,0,2,1,1,2,1,0,0],backgroundColor:'#ca8a04'},
+        {label:'Schwach',data:[0,0,0,1,0,0,0,0,0],backgroundColor:'#c2410c'},
+        {label:'Widerlegt',data:[1,0,1,0,0,0,0,0,0],backgroundColor:'#991b1b'}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{color:textCol,font:{size:12,family:'Inter'},boxWidth:14,boxHeight:14,padding:12}}},scales:{x:{stacked:true,grid:{display:false},ticks:{color:textCol,font:{size:11,family:'Inter'},maxRotation:35,minRotation:35}},y:{stacked:true,grid:{color:gridCol},ticks:{color:textCol,font:{size:11,family:'Inter'},stepSize:1}}}}
+  });
+
+  new Chart(document.getElementById('wageChart'),{
+    type:'line',
+    data:{labels:['1975','1985','1995','2005','2015','2020'],datasets:[
+      {label:'USA',data:[64,62,61,59,57,56],borderColor:'#1e40af',backgroundColor:'#1e40af',tension:.3,pointRadius:4,borderWidth:2.5},
+      {label:'Deutschland',data:[67,65,63,60,59,58],borderColor:'#7f1d1d',backgroundColor:'#7f1d1d',tension:.3,pointRadius:4,borderDash:[5,3],borderWidth:2.5},
+      {label:'Frankreich',data:[69,67,64,62,61,60],borderColor:'#15803d',backgroundColor:'#15803d',tension:.3,pointRadius:4,borderDash:[2,2],borderWidth:2.5},
+      {label:'UK',data:[68,66,64,62,60,59],borderColor:'#ca8a04',backgroundColor:'#ca8a04',tension:.3,pointRadius:4,borderDash:[8,3],borderWidth:2.5}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{color:textCol,font:{size:12,family:'Inter'},boxWidth:14,boxHeight:2,padding:12}},tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+c.parsed.y+'%';}}}},scales:{y:{min:50,max:72,grid:{color:gridCol},ticks:{color:textCol,font:{size:11,family:'Inter'},callback:function(v){return v+'%';}}},x:{grid:{display:false},ticks:{color:textCol,font:{size:11,family:'Inter'}}}}}
+  });
+
+  new Chart(document.getElementById('wealthChart'),{
+    type:'line',
+    data:{labels:['1920','1940','1960','1980','2000','2019'],datasets:[{label:'Top-1%-Wealth USA',data:[37,30,28,27,33,39],borderColor:'#7f1d1d',backgroundColor:'rgba(127,29,29,.1)',tension:.3,pointRadius:5,borderWidth:3,fill:true}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return 'Top-1%: '+c.parsed.y+'%';}}}},scales:{y:{min:20,max:45,grid:{color:gridCol},ticks:{color:textCol,font:{size:11,family:'Inter'},callback:function(v){return v+'%';}}},x:{grid:{display:false},ticks:{color:textCol,font:{size:11,family:'Inter'}}}}}
+  });
+
+  new Chart(document.getElementById('markupChart'),{
+    type:'line',
+    data:{labels:['1955','1970','1980','1990','2000','2010','2016'],datasets:[{label:'US-Markups',data:[1.18,1.20,1.22,1.30,1.42,1.52,1.61],borderColor:'#501313',backgroundColor:'rgba(80,19,19,.1)',tension:.3,pointRadius:5,borderWidth:3,fill:true}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return 'Markup: '+c.parsed.y.toFixed(2);}}}},scales:{y:{min:1.1,max:1.7,grid:{color:gridCol},ticks:{color:textCol,font:{size:11,family:'Inter'},callback:function(v){return v.toFixed(2);}}},x:{grid:{display:false},ticks:{color:textCol,font:{size:11,family:'Inter'}}}}}
+  });
+
+  new Chart(document.getElementById('tradeChart'),{
+    type:'line',
+    data:{labels:['1850','1880','1913','1929','1945','1973','1990','2008','2020'],datasets:[{label:'Globaler Handel/BIP',data:[8,12,14,9,5,22,28,52,56],borderColor:'#15803d',backgroundColor:'rgba(21,128,61,.1)',tension:.3,pointRadius:5,borderWidth:3,fill:true}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return 'Handel/BIP: '+c.parsed.y+'%';}}}},scales:{y:{min:0,max:60,grid:{color:gridCol},ticks:{color:textCol,font:{size:11,family:'Inter'},callback:function(v){return v+'%';}}},x:{grid:{display:false},ticks:{color:textCol,font:{size:11,family:'Inter'}}}}}
+  });
+}
+})();
+</script>
+</body>
+</html>
