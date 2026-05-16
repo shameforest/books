@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Die Nürnberger Prozesse — Eine Lernressource</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #1a1612;
+  --bg-elev: #221d18;
+  --bg-elev-2: #2a241e;
+  --paper: #f4ede0;
+  --ink: #1a1612;
+  --ink-soft: #4a3f33;
+  --bone: #e8e1d2;
+  --bone-dim: #b8b0a0;
+  --bone-faint: #7a7264;
+  --accent: #9b2c2c;
+  --accent-soft: #c14b4b;
+  --gold: #b89968;
+  --gold-soft: #d4b88a;
+  --count-1: #6b8e9e;
+  --count-2: #a87c3c;
+  --count-3: #8b5e3c;
+  --count-4: #9b2c2c;
+  --verdict-death: #6b1818;
+  --verdict-life: #3a3530;
+  --verdict-prison: #5a4f3f;
+  --verdict-acquit: #4a6650;
+  --font-display: 'EB Garamond', 'Hoefler Text', Garamond, serif;
+  --font-body: 'Source Serif Pro', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  --radius: 2px;
+  --maxw: 1200px;
+  --readw: 68ch;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--bone); font-family: var(--font-body); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; position: relative; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle at 20% 30%, rgba(184,153,104,0.04) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(155,44,44,0.03) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+.progress-bar { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 1000; }
+.progress-bar__fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--gold)); transition: width 0.1s linear; }
+.topnav { position: sticky; top: 0; z-index: 100; background: rgba(26,22,18,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(232,225,210,0.08); padding: 0.75rem 1.5rem; }
+.topnav__inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.topnav__brand { font-family: var(--font-display); font-weight: 600; letter-spacing: 0.04em; color: var(--bone); font-size: 1.05rem; }
+.topnav__brand .accent { color: var(--accent-soft); }
+.topnav__links { display: flex; gap: 1.5rem; font-family: var(--font-sans); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 500; }
+.topnav__links a { color: var(--bone-dim); text-decoration: none; transition: color 0.2s; }
+.topnav__links a:hover { color: var(--gold-soft); }
+@media (max-width: 720px) { .topnav__links { display: none; } }
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+.hero { padding: 6rem 1.5rem 4rem; border-bottom: 1px solid rgba(232,225,210,0.1); }
+.hero__date { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
+.hero__title { font-family: var(--font-display); font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem; color: var(--paper); }
+.hero__title em { font-style: italic; color: var(--accent-soft); font-weight: 400; }
+.hero__subtitle { font-family: var(--font-display); font-style: italic; font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--bone-dim); max-width: 60ch; margin-bottom: 2rem; line-height: 1.4; }
+.hero__rule { width: 80px; height: 1px; background: var(--accent); margin: 2.5rem 0; }
+.hero__lede { font-size: 1.1rem; max-width: 62ch; color: var(--bone); line-height: 1.7; }
+.hero__lede p + p { margin-top: 1rem; }
+.dashboard { padding: 4rem 0; background: var(--bg-elev); border-top: 1px solid rgba(232,225,210,0.06); border-bottom: 1px solid rgba(232,225,210,0.06); }
+.dashboard__label { font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 2.5rem; text-align: center; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 2rem 1.5rem; }
+.stat { text-align: center; }
+.stat__num { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 500; color: var(--paper); line-height: 1; margin-bottom: 0.5rem; }
+.stat__num .unit { font-size: 0.5em; color: var(--bone-faint); margin-left: 0.2em; font-weight: 400; }
+.stat__label { font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone-dim); line-height: 1.3; }
+.section { padding: 5rem 0 4rem; }
+.section--alt { background: var(--bg-elev); }
+.section__head { margin-bottom: 3rem; border-bottom: 1px solid rgba(232,225,210,0.1); padding-bottom: 1.5rem; }
+.section__kicker { font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+.section__kicker::before { content: ''; width: 2rem; height: 1px; background: var(--accent); }
+.section__title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 500; color: var(--paper); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 1rem; }
+.section__intro { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; color: var(--bone-dim); max-width: 65ch; line-height: 1.5; }
+.prose { max-width: var(--readw); font-size: 1.05rem; line-height: 1.75; }
+.prose p { margin-bottom: 1.25rem; }
+.prose .lede::first-letter { font-family: var(--font-display); font-size: 3.8rem; font-weight: 500; float: left; line-height: 0.85; padding: 0.3rem 0.6rem 0 0; color: var(--accent-soft); }
+.prose h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--paper); margin: 2.5rem 0 1rem; letter-spacing: -0.01em; }
+.prose strong { color: var(--paper); font-weight: 600; }
+.prose em { color: var(--bone); }
+.term { border-bottom: 1px dotted var(--gold); cursor: help; position: relative; color: var(--gold-soft); }
+.term:hover::after { content: attr(data-def); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--paper); color: var(--ink); padding: 0.7rem 0.9rem; font-family: var(--font-sans); font-size: 0.82rem; line-height: 1.45; width: 280px; border-radius: var(--radius); box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 50; font-style: normal; pointer-events: none; }
+.term:hover::before { content: ''; position: absolute; bottom: calc(100% + 2px); left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: var(--paper); z-index: 50; pointer-events: none; }
+.callout { margin: 2rem 0; padding: 1.5rem 1.75rem; border-left: 3px solid; background: var(--bg-elev-2); border-radius: 0 var(--radius) var(--radius) 0; }
+.callout__label { font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.callout__title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--paper); margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+.callout__body { font-size: 1rem; line-height: 1.65; color: var(--bone); }
+.callout__body p + p { margin-top: 0.75rem; }
+.callout--principle { border-left-color: var(--gold); }
+.callout--principle .callout__label { color: var(--gold); }
+.callout--controversy { border-left-color: var(--accent); }
+.callout--controversy .callout__label { color: var(--accent-soft); }
+.callout--quote { border-left-color: var(--bone-dim); background: rgba(232,225,210,0.04); }
+.callout--quote .callout__label { color: var(--bone-dim); }
+.callout--quote .callout__body { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; line-height: 1.6; }
+.callout--quote .callout__source { display: block; margin-top: 0.75rem; font-style: normal; font-family: var(--font-sans); font-size: 0.78rem; color: var(--bone-faint); letter-spacing: 0.05em; }
+.callout--deep { border-left-color: var(--count-1); }
+.callout--deep .callout__label { color: var(--count-1); }
+.counts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 2.5rem 0; }
+.count-card { padding: 1.75rem 1.5rem; background: var(--bg-elev-2); border-top: 3px solid; border-radius: 0 0 var(--radius) var(--radius); }
+.count-card--1 { border-top-color: var(--count-1); }
+.count-card--2 { border-top-color: var(--count-2); }
+.count-card--3 { border-top-color: var(--count-3); }
+.count-card--4 { border-top-color: var(--count-4); }
+.count-card__num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 500; line-height: 1; margin-bottom: 0.5rem; }
+.count-card--1 .count-card__num { color: var(--count-1); }
+.count-card--2 .count-card__num { color: var(--count-2); }
+.count-card--3 .count-card__num { color: var(--count-3); }
+.count-card--4 .count-card__num { color: var(--accent-soft); }
+.count-card__title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--paper); margin-bottom: 0.75rem; }
+.count-card__desc { font-size: 0.92rem; color: var(--bone-dim); line-height: 1.55; }
+.count-card__desc strong { color: var(--bone); font-weight: 600; }
+.timeline { position: relative; padding: 1rem 0; margin: 2rem 0 3rem; }
+.timeline::before { content: ''; position: absolute; left: 7.5rem; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--gold) 8%, var(--gold) 92%, transparent); }
+.tl-item { display: grid; grid-template-columns: 7rem 1fr; gap: 1.5rem; margin-bottom: 1.75rem; }
+.tl-item__date { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; color: var(--gold); text-align: right; padding-top: 0.3rem; letter-spacing: 0.02em; }
+.tl-item__date small { display: block; color: var(--bone-faint); font-weight: 400; font-size: 0.7rem; margin-top: 0.2rem; }
+.tl-item__body { padding-left: 2rem; position: relative; }
+.tl-item__body::before { content: ''; position: absolute; left: -5px; top: 0.6rem; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--gold); z-index: 2; }
+.tl-item--accent .tl-item__body::before { background: var(--accent); border-color: var(--accent-soft); }
+.tl-item__title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--paper); margin-bottom: 0.4rem; line-height: 1.3; }
+.tl-item__desc { font-size: 0.94rem; color: var(--bone-dim); line-height: 1.55; }
+@media (max-width: 600px) { .timeline::before { left: 0.5rem; } .tl-item { grid-template-columns: 1fr; gap: 0.4rem; } .tl-item__date { text-align: left; padding-left: 1.5rem; } .tl-item__body { padding-left: 1.5rem; } .tl-item__body::before { left: -0.05rem; } }
+.def-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 2rem; }
+.def-filter { background: var(--bg-elev-2); color: var(--bone-dim); border: 1px solid rgba(232,225,210,0.1); padding: 0.5rem 1rem; font-family: var(--font-sans); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; cursor: pointer; border-radius: var(--radius); transition: all 0.15s; }
+.def-filter:hover { color: var(--paper); border-color: var(--gold); }
+.def-filter.active { background: var(--gold); color: var(--ink); border-color: var(--gold); font-weight: 600; }
+.def-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.75rem; margin: 1.5rem 0 3rem; }
+.def-card { background: var(--bg-elev-2); border-radius: var(--radius); padding: 1.25rem 1.25rem 1.1rem 1.5rem; position: relative; border: 1px solid rgba(232,225,210,0.06); transition: all 0.2s ease; cursor: pointer; overflow: hidden; display: flex; flex-direction: column; min-height: 230px; }
+.def-card:hover { transform: translateY(-2px); border-color: rgba(184,153,104,0.3); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.def-card__verdict-stripe { position: absolute; top: 0; left: 0; bottom: 0; width: 4px; }
+.def-card[data-verdict="death"] .def-card__verdict-stripe { background: var(--verdict-death); }
+.def-card[data-verdict="life"] .def-card__verdict-stripe { background: var(--verdict-life); }
+.def-card[data-verdict="prison"] .def-card__verdict-stripe { background: var(--verdict-prison); }
+.def-card[data-verdict="acquit"] .def-card__verdict-stripe { background: var(--verdict-acquit); }
+.def-card[data-verdict="none"] .def-card__verdict-stripe { background: rgba(232,225,210,0.1); border-right: 1px dashed var(--bone-faint); }
+.def-card__num { font-family: var(--font-mono); font-size: 0.7rem; color: var(--bone-faint); margin-bottom: 0.4rem; letter-spacing: 0.1em; }
+.def-card__name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--paper); line-height: 1.2; margin-bottom: 0.3rem; }
+.def-card__type { font-family: var(--font-sans); font-size: 0.66rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; font-weight: 600; }
+.def-card__role { font-family: var(--font-sans); font-size: 0.78rem; color: var(--bone-dim); line-height: 1.35; margin-bottom: 0.75rem; flex-grow: 1; }
+.def-card__counts { display: flex; gap: 4px; margin-bottom: 0.75rem; flex-wrap: wrap; }
+.def-card__count { width: 22px; height: 22px; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: var(--paper); }
+.def-card__count--1 { background: var(--count-1); }
+.def-card__count--2 { background: var(--count-2); }
+.def-card__count--3 { background: var(--count-3); }
+.def-card__count--4 { background: var(--count-4); }
+.def-card__count--off { background: transparent; border: 1px dashed rgba(232,225,210,0.15); color: rgba(232,225,210,0.2); }
+.def-card__verdict { font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding-top: 0.5rem; border-top: 1px solid rgba(232,225,210,0.08); }
+.def-card[data-verdict="death"] .def-card__verdict { color: #d97474; }
+.def-card[data-verdict="life"] .def-card__verdict { color: var(--bone-dim); }
+.def-card[data-verdict="prison"] .def-card__verdict { color: var(--gold-soft); }
+.def-card[data-verdict="acquit"] .def-card__verdict { color: #a8c4b0; }
+.def-card[data-verdict="none"] .def-card__verdict { color: var(--bone-faint); }
+.def-overlay { position: fixed; inset: 0; background: rgba(8,6,4,0.88); z-index: 200; display: none; align-items: center; justify-content: center; padding: 2rem 1rem; backdrop-filter: blur(8px); }
+.def-overlay.open { display: flex; }
+.def-overlay__inner { max-width: 720px; width: 100%; max-height: 88vh; overflow-y: auto; background: var(--paper); color: var(--ink); padding: 2.5rem 2.75rem; position: relative; border-radius: var(--radius); box-shadow: 0 30px 80px rgba(0,0,0,0.6); }
+.def-overlay__close { position: absolute; top: 1rem; right: 1rem; background: none; border: 1px solid rgba(26,22,18,0.2); width: 36px; height: 36px; cursor: pointer; font-size: 1.2rem; color: var(--ink); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.def-overlay__close:hover { background: rgba(26,22,18,0.06); }
+.def-overlay h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 600; margin-bottom: 0.2rem; color: var(--ink); }
+.def-overlay__role { font-family: var(--font-sans); font-size: 0.85rem; color: var(--ink-soft); letter-spacing: 0.03em; margin-bottom: 1.5rem; }
+.def-overlay__verdict-banner { padding: 0.85rem 1.1rem; margin-bottom: 1.5rem; border-radius: var(--radius); font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; }
+.def-overlay__verdict-banner.death { background: rgba(107,24,24,0.12); color: #6b1818; border-left: 3px solid #6b1818; }
+.def-overlay__verdict-banner.life { background: rgba(58,53,48,0.1); color: var(--ink); border-left: 3px solid var(--ink); }
+.def-overlay__verdict-banner.prison { background: rgba(184,153,104,0.18); color: #6b5530; border-left: 3px solid #6b5530; }
+.def-overlay__verdict-banner.acquit { background: rgba(74,102,80,0.15); color: #2d4a37; border-left: 3px solid #2d4a37; }
+.def-overlay__verdict-banner.none { background: rgba(26,22,18,0.06); color: var(--ink-soft); border-left: 3px solid var(--ink-soft); }
+.def-overlay h3 { font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #6b5530; margin: 1.5rem 0 0.5rem; }
+.def-overlay p { font-family: var(--font-body); font-size: 1rem; line-height: 1.65; color: var(--ink); margin-bottom: 0.8rem; }
+.def-overlay .kelley { font-style: italic; color: var(--ink-soft); border-left: 2px solid #b89968; padding-left: 1rem; margin: 0.5rem 0; font-size: 0.95rem; }
+.matrix-wrap { margin: 2rem 0 3rem; overflow-x: auto; background: var(--bg-elev-2); padding: 1.5rem; border-radius: var(--radius); }
+.matrix { width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 0.82rem; min-width: 640px; }
+.matrix th, .matrix td { padding: 0.55rem 0.6rem; text-align: center; border-bottom: 1px solid rgba(232,225,210,0.06); }
+.matrix th:first-child, .matrix td:first-child { text-align: left; font-family: var(--font-display); color: var(--paper); font-weight: 500; font-size: 0.95rem; white-space: nowrap; padding-left: 0.5rem; }
+.matrix th { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--bone-dim); padding-bottom: 0.8rem; border-bottom: 1px solid rgba(232,225,210,0.15); }
+.matrix__cell { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 3px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; color: var(--paper); }
+.mc-c-1 { background: var(--count-1); }
+.mc-c-2 { background: var(--count-2); }
+.mc-c-3 { background: var(--count-3); }
+.mc-c-4 { background: var(--count-4); }
+.mc-acquit { background: transparent; color: #8aaa92; border: 1px solid #4a6650; }
+.mc-not-charged { color: rgba(232,225,210,0.18); }
+.mvc-death { color: #d97474; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.mvc-life { color: var(--bone-dim); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.mvc-prison { color: var(--gold-soft); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.mvc-acquit { color: #8aaa92; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.nmt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1rem; margin: 2rem 0 3rem; }
+.nmt-card { background: var(--bg-elev-2); border-radius: var(--radius); padding: 1.5rem 1.5rem 1.25rem; border-left: 3px solid var(--gold); position: relative; transition: all 0.2s; }
+.nmt-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.nmt-card__num { position: absolute; top: 0.8rem; right: 1.25rem; font-family: var(--font-display); font-size: 2.4rem; font-weight: 500; color: rgba(232,225,210,0.08); line-height: 1; }
+.nmt-card__case { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.12em; margin-bottom: 0.3rem; }
+.nmt-card__title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; color: var(--paper); margin-bottom: 0.3rem; letter-spacing: -0.01em; line-height: 1.2; }
+.nmt-card__official { font-family: var(--font-display); font-style: italic; font-size: 0.85rem; color: var(--bone-faint); margin-bottom: 1rem; line-height: 1.3; }
+.nmt-card__stats { display: flex; gap: 1.25rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(232,225,210,0.06); flex-wrap: wrap; }
+.nmt-card__stat { font-family: var(--font-sans); font-size: 0.78rem; }
+.nmt-card__stat strong { display: block; font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; color: var(--paper); line-height: 1; margin-bottom: 0.15rem; }
+.nmt-card__stat--death strong { color: #d97474; }
+.nmt-card__stat span { color: var(--bone-faint); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.nmt-card__desc { font-size: 0.93rem; color: var(--bone); line-height: 1.55; margin-bottom: 0.75rem; }
+.nmt-card__sig { font-family: var(--font-sans); font-size: 0.8rem; color: var(--gold-soft); line-height: 1.45; padding-top: 0.6rem; border-top: 1px dashed rgba(184,153,104,0.2); }
+.nmt-card__sig strong { color: var(--paper); font-weight: 600; }
+.compare { width: 100%; margin: 2rem 0; background: var(--bg-elev-2); border-radius: var(--radius); overflow: hidden; }
+.compare__head { display: grid; grid-template-columns: 0.8fr 1fr 1fr; background: rgba(0,0,0,0.2); }
+.compare__head > div { padding: 1rem; font-family: var(--font-sans); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+.compare__head > div:first-child { color: var(--bone-faint); }
+.compare__head > div:nth-child(2) { color: var(--accent-soft); border-left: 1px solid rgba(232,225,210,0.06); }
+.compare__head > div:nth-child(3) { color: var(--gold); border-left: 1px solid rgba(232,225,210,0.06); }
+.compare__row { display: grid; grid-template-columns: 0.8fr 1fr 1fr; border-top: 1px solid rgba(232,225,210,0.06); }
+.compare__row > div { padding: 1rem; font-size: 0.9rem; line-height: 1.5; }
+.compare__row > div:first-child { font-family: var(--font-sans); font-size: 0.74rem; color: var(--bone-dim); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+.compare__row > div:nth-child(2), .compare__row > div:nth-child(3) { border-left: 1px solid rgba(232,225,210,0.06); color: var(--bone); }
+@media (max-width: 700px) { .compare__head, .compare__row { grid-template-columns: 1fr; } .compare__head > div:nth-child(2), .compare__head > div:nth-child(3), .compare__row > div:nth-child(2), .compare__row > div:nth-child(3) { border-left: none; border-top: 1px solid rgba(232,225,210,0.06); } }
+.flow { margin: 2.5rem 0 3rem; }
+.flow__inner { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem 0.6rem; }
+.flow__node { background: var(--bg-elev-2); padding: 1.1rem; border-radius: var(--radius); text-align: center; position: relative; border-top: 2px solid var(--gold); }
+.flow__node + .flow__node::before { content: '→'; position: absolute; left: -0.4rem; top: 50%; transform: translate(-100%, -50%); color: var(--gold); font-size: 1.5rem; font-weight: 300; }
+.flow__year { font-family: var(--font-mono); font-size: 0.73rem; color: var(--gold); margin-bottom: 0.3rem; letter-spacing: 0.05em; }
+.flow__name { font-family: var(--font-display); font-size: 0.98rem; font-weight: 600; color: var(--paper); line-height: 1.25; margin-bottom: 0.3rem; }
+.flow__desc { font-size: 0.78rem; color: var(--bone-dim); line-height: 1.4; }
+@media (max-width: 700px) { .flow__node + .flow__node::before { display: none; } }
+.courtroom { background: var(--bg-elev-2); padding: 2rem; margin: 2rem 0; border-radius: var(--radius); }
+.courtroom__title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; color: var(--paper); margin-bottom: 0.3rem; }
+.courtroom__sub { font-family: var(--font-sans); font-size: 0.82rem; color: var(--bone-dim); margin-bottom: 1.5rem; }
+.courtroom svg { width: 100%; height: auto; display: block; max-width: 760px; margin: 0 auto; }
+.courtroom__legend { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; margin-top: 1.5rem; font-family: var(--font-sans); font-size: 0.8rem; }
+.courtroom__legend span { display: flex; align-items: center; gap: 0.5rem; color: var(--bone-dim); }
+.courtroom__legend span i { width: 14px; height: 14px; border-radius: 2px; display: inline-block; font-style: normal; }
+.closer { padding: 6rem 0; text-align: center; border-top: 1px solid rgba(232,225,210,0.08); background: var(--bg-elev); }
+.closer__quote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.3rem, 3vw, 1.8rem); line-height: 1.4; color: var(--bone); max-width: 56ch; margin: 0 auto 1.5rem; }
+.closer__source { font-family: var(--font-sans); font-size: 0.78rem; color: var(--bone-faint); letter-spacing: 0.1em; text-transform: uppercase; }
+.sources { padding: 4rem 0; }
+.sources h2 { font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; color: var(--paper); margin-bottom: 2rem; }
+.source-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; font-size: 0.92rem; line-height: 1.5; color: var(--bone-dim); }
+.source-list > div { padding: 1.25rem; background: var(--bg-elev); border-left: 2px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0; }
+.source-list strong { display: block; color: var(--paper); font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem; }
+.source-list em { color: var(--gold-soft); font-style: italic; }
+.footer { padding: 2rem 1.5rem; text-align: center; font-family: var(--font-sans); font-size: 0.78rem; color: var(--bone-faint); background: var(--bg); border-top: 1px solid rgba(232,225,210,0.05); }
+.intro-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; margin: 2rem 0; }
+@media (max-width: 800px) { .intro-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+.aside-card { background: var(--bg-elev-2); padding: 1.5rem; border-radius: var(--radius); border-top: 2px solid var(--gold); height: fit-content; }
+.aside-card h4 { font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; font-weight: 700; }
+.aside-card p { font-size: 0.92rem; color: var(--bone); line-height: 1.55; }
+.aside-card p + p { margin-top: 0.7rem; }
+@media print { body { background: white; color: black; font-size: 11pt; } .topnav, .progress-bar, .def-overlay, .def-filters { display: none !important; } .section { padding: 1rem 0; page-break-inside: avoid; } .def-card, .nmt-card, .callout, .count-card { page-break-inside: avoid; } }
+a:focus-visible, button:focus-visible, .def-card:focus-visible, .def-filter:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-bar__fill" id="progressFill"></div></div>
+
+<nav class="topnav">
+  <div class="topnav__inner">
+    <div class="topnav__brand">Nürnberg<span class="accent">·</span>1945</div>
+    <div class="topnav__links">
+      <a href="#a">Vorgeschichte</a>
+      <a href="#b">Hauptprozess</a>
+      <a href="#c">Folgeprozesse</a>
+      <a href="#d">Recht</a>
+      <a href="#e">Wirkung</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero__date">20. November 1945 — 14. April 1949</div>
+    <h1 class="hero__title">Die Nürnberger<br><em>Prozesse</em></h1>
+    <p class="hero__subtitle">Wie aus dem militärischen Sieg über Nazi-Deutschland ein Gerichtsverfahren wurde — und damit die Grundlage des modernen Völkerstrafrechts.</p>
+    <div class="hero__rule"></div>
+    <div class="hero__lede">
+      <p>Im Herbst 1945 standen die führenden Männer Hitler-Deutschlands vor Gericht. Nicht vor einem Sieger-Tribunal mit kurzem Prozess. Sondern in einem Verfahren mit Anklage, Verteidigung, Zeugen und Beweisen. Das hatte es so noch nie gegeben.</p>
+      <p>13 Prozesse fanden in Nürnberg statt: ein großer Hauptprozess gegen 24 Angeklagte und zwölf Folgeprozesse gegen Ärzte, Juristen, Industrielle, Diplomaten und Generäle. Diese Seite erklärt sie alle — wer angeklagt war, was passiert ist und was es bis heute bedeutet.</p>
+    </div>
+  </div>
+</header>
+
+<section class="dashboard">
+  <div class="container">
+    <div class="dashboard__label">Die wichtigsten Zahlen im Überblick</div>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat__num">13</div><div class="stat__label">Prozesse insgesamt</div></div>
+      <div class="stat"><div class="stat__num">218</div><div class="stat__label">Verhandlungstage<br>im Hauptprozess</div></div>
+      <div class="stat"><div class="stat__num">240</div><div class="stat__label">Zeugen im<br>Hauptprozess</div></div>
+      <div class="stat"><div class="stat__num">199</div><div class="stat__label">Angeklagte<br>in allen Prozessen</div></div>
+      <div class="stat"><div class="stat__num">37</div><div class="stat__label">Todesurteile<br>insgesamt</div></div>
+      <div class="stat"><div class="stat__num">4</div><div class="stat__label">Anklage&shy;punkte</div></div>
+      <div class="stat"><div class="stat__num">4</div><div class="stat__label">Sieger&shy;mächte<br>als Ankläger</div></div>
+      <div class="stat"><div class="stat__num">16<span class="unit">tsd</span></div><div class="stat__label">Seiten Protokoll</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="a">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__kicker">Teil A · Vor dem Prozess</div>
+      <h2 class="section__title">Erschießen oder vor Gericht stellen?</h2>
+      <p class="section__intro">Im Frühjahr 1945 stand fest: Hitler-Deutschland würde verlieren. Aber was sollte mit den führenden Nazis geschehen? Diese Frage war alles andere als entschieden.</p>
+    </div>
+
+    <div class="intro-grid">
+      <div class="prose">
+        <p class="lede">Heute klingt es selbstverständlich: Kriegsverbrecher kommen vor Gericht. 1945 war das überhaupt nicht klar. Drei Vorschläge lagen auf dem Tisch — und der Gerichtsprozess war zunächst der unwahrscheinlichste.</p>
+
+        <p><strong>Winston Churchill</strong> wollte die führenden Nazis kurzerhand erschießen lassen, sobald man sie identifiziert hatte. Kein Prozess, keine Verteidigung. Für ihn war ihre Schuld so offensichtlich, dass jedes Verfahren nur eine Farce wäre.</p>
+
+        <p><strong>Joseph Stalin</strong> wollte zwar einen Prozess. Aber nach sowjetischem Muster: Die Schuld stand vorher fest, das Verfahren ist nur das öffentliche Schauspiel. Bei einem Abendessen 1943 in Teheran schlug er vor, 50.000 deutsche Offiziere zu erschießen. Churchill verließ empört den Raum. Stalin sagte später, er habe nur Spaß gemacht.</p>
+
+        <p><strong>Henry Morgenthau</strong>, der US-Finanzminister, schrieb sogar einen Plan: Deutschland sollte komplett entindustrialisiert werden, und die Hauptkriegsverbrecher wären "automatisch" zu erschießen — also ohne Verfahren. Präsident Roosevelt unterstützte diesen Plan zunächst.</p>
+
+        <p>Gegen alle drei stellte sich <strong>Henry Stimson</strong>, der amerikanische Kriegsminister. Sein Argument war einfach: Wenn wir die Nazis ohne Prozess töten, sind wir nicht besser als sie. Ein echtes Verfahren ist das, "was Amerikaner tun". Stimson setzte sich durch.</p>
+
+        <p>Roosevelt starb im April 1945. Sein Nachfolger Harry Truman übernahm Stimsons Linie und ernannte Robert H. Jackson zum US-Hauptankläger. Damit begann der Weg nach Nürnberg.</p>
+
+        <h3>Die Konferenz von London</h3>
+        <p>Vom 26. Juni bis zum 8. August 1945 verhandelten die vier Siegermächte in London über die Form des Prozesses. Das war schwieriger, als man heute denken könnte. Denn die Rechtssysteme der vier Länder waren grundverschieden.</p>
+
+        <p>Die <span class="term" data-def="Common Law: das britische und amerikanische Rechtssystem. Anklage und Verteidigung sammeln Beweise und liefern sich vor Gericht ein Streitgespräch. Der Richter ist eher Schiedsrichter.">Briten und Amerikaner</span> arbeiten mit dem Common Law: Anklage und Verteidigung sind Gegner, der Richter ist Schiedsrichter, Zeugen werden im Kreuzverhör befragt.</p>
+
+        <p>Die <span class="term" data-def="Civil Law: das kontinentaleuropäische Rechtssystem mit französischen und deutschen Wurzeln. Der Richter führt aktiv die Untersuchung. Die Verhandlung ist eine geordnete Bestätigung dessen, was schon ermittelt wurde.">Franzosen</span> arbeiten mit Civil Law: Der Richter untersucht aktiv, die Verhandlung ist die geordnete Bestätigung dessen, was schon ermittelt wurde.</p>
+
+        <p>Die <strong>Sowjets</strong> kannten Schauprozesse. Für sie war die Verhandlung das öffentliche Ergebnis dessen, was politisch schon entschieden war.</p>
+
+        <p>Am Ende einigte man sich auf eine Mischform — überwiegend nach dem amerikanischen Vorbild. Das Ergebnis heißt <em>Londoner Statut</em> oder <em>Charta des Internationalen Militärgerichtshofs</em>. Es ist das Gründungsdokument der Nürnberger Prozesse.</p>
+      </div>
+
+      <aside>
+        <div class="aside-card">
+          <h4>Wer war Robert H. Jackson?</h4>
+          <p>Jackson war Richter am Obersten Gerichtshof der USA. Präsident Truman beurlaubte ihn, damit er die Anklage in Nürnberg führen konnte.</p>
+          <p>Jackson schrieb die Charta in London mit. Er hielt die berühmte Eröffnungsrede. Und er führte das wichtigste Kreuzverhör — gegen Hermann Göring, das er allerdings teilweise verlor.</p>
+          <p>Sein Satz vom 21. November 1945 prägt das Selbstverständnis des Völkerstrafrechts bis heute: dass vier siegreiche Nationen ihre besiegten Feinde "freiwillig dem Urteil des Rechts unterwerfen", sei "eines der bedeutendsten Tribute, die Macht je der Vernunft gezollt hat".</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="callout callout--principle">
+      <div class="callout__label">Rechtsprinzip · Was ist neu?</div>
+      <div class="callout__title">Drei Anklagepunkte, die es so noch nie gab</div>
+      <div class="callout__body">
+        <p>Mit dem Londoner Statut wurden drei Verbrechen geschaffen, für die man bis dahin niemanden anklagen konnte: <strong>Verbrechen gegen den Frieden</strong> (also Angriffskrieg führen), <strong>Kriegsverbrechen</strong> in einer neuen, präziseren Form und <strong>Verbrechen gegen die Menschlichkeit</strong>.</p>
+        <p>Hinzu kam ein vierter Punkt: <strong>Verschwörung</strong> zu allen diesen Taten. Das war eine angloamerikanische Idee. In Kontinentaleuropa kannte das Strafrecht so etwas nicht.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family: var(--font-display); font-size: 1.6rem; color: var(--paper); margin: 3rem 0 1.5rem; font-weight: 600;">Die vier Anklagepunkte im Detail</h3>
+    <p style="max-width: var(--readw); color: var(--bone-dim); margin-bottom: 1.5rem;">Diese vier Punkte ziehen sich durch alles, was in den nächsten Sektionen kommt. Die Farben begegnen Ihnen auf der ganzen Seite wieder — bei jedem Angeklagten, in jeder Tabelle.</p>
+
+    <div class="counts-grid">
+      <div class="count-card count-card--1">
+        <div class="count-card__num">1</div>
+        <div class="count-card__title">Verschwörung</div>
+        <div class="count-card__desc">Die Nazi-Führung soll zusammen einen gemeinsamen Plan gefasst haben, um die anderen drei Verbrechen zu begehen. <strong>Strittiger Punkt:</strong> Die kontinental&shy;europäische Rechtstradition kennt diese Rechtsfigur nicht.</div>
+      </div>
+      <div class="count-card count-card--2">
+        <div class="count-card__num">2</div>
+        <div class="count-card__title">Verbrechen gegen den Frieden</div>
+        <div class="count-card__desc">Den Krieg planen, vorbereiten, beginnen oder führen — verstanden als <em>Angriffskrieg</em>. Das war 1939 noch kein internationales Strafverbrechen. <strong>Neu in Nürnberg.</strong></div>
+      </div>
+      <div class="count-card count-card--3">
+        <div class="count-card__num">3</div>
+        <div class="count-card__title">Kriegsverbrechen</div>
+        <div class="count-card__desc">Verletzung der Gesetze und Gebräuche des Krieges: Ermordung von Kriegs&shy;gefangenen, Zwangsarbeit, Geiselerschießungen, Plünderung. <strong>Völkerrechtlich am wenigsten umstritten.</strong></div>
+      </div>
+      <div class="count-card count-card--4">
+        <div class="count-card__num">4</div>
+        <div class="count-card__title">Verbrechen gegen die Menschlichkeit</div>
+        <div class="count-card__desc">Mord, Versklavung, Verfolgung aus politischen, rassischen oder religiösen Gründen — auch gegen die eigene Bevölkerung. <strong>Neu in Nürnberg.</strong> Erfasste den Holocaust.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="b">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__kicker">Teil B · Der Hauptprozess</div>
+      <h2 class="section__title">Das Internationale Militär&shy;tribunal</h2>
+      <p class="section__intro">20. November 1945 bis 1. Oktober 1946. Im Saal 600 des Nürnberger Justizpalasts. Vier Richter, vier Anklage&shy;delegationen, 21 Männer auf der Anklagebank, ein toter Angeklagter in Abwesenheit.</p>
+    </div>
+
+    <div class="prose">
+      <p>Nürnberg war kein Zufall. Die Stadt war die Bühne der Reichs&shy;parteitage gewesen — der riesigen Massen&shy;veranstaltungen, mit denen sich das NS-Regime selbst inszenierte. Sie war auch der Ort, an dem 1935 die antisemitischen "Nürnberger Gesetze" beschlossen wurden. Diese Symbolik war den Alliierten bewusst.</p>
+
+      <p>Hinzu kam ein praktischer Grund: Der Nürnberger Justiz&shy;palast war eines der wenigen großen Gerichts&shy;gebäude in Deutschland, das den Krieg fast unbeschädigt überstanden hatte. Direkt angeschlossen war ein Gefängnis. Die Angeklagten konnten zur Verhandlung gebracht werden, ohne das Gebäude zu verlassen.</p>
+    </div>
+
+    <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--paper); margin: 3rem 0 1rem; font-weight: 600;">Zeitstrahl des Hauptprozesses</h3>
+    <p style="max-width: var(--readw); color: var(--bone-dim); margin-bottom: 1rem;">Von der ersten Idee bis zur Vollstreckung der Urteile vergingen knapp drei Jahre.</p>
+
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-item__date">Nov 1943<small>Moskau</small></div><div class="tl-item__body"><div class="tl-item__title">Moskauer Deklaration</div><div class="tl-item__desc">USA, UK und UdSSR erklären: Kriegsverbrecher werden nach dem Krieg zur Verantwortung gezogen. Wo das passieren soll, bleibt noch offen.</div></div></div>
+      <div class="tl-item"><div class="tl-item__date">Apr–Mai 1945<small>Europa</small></div><div class="tl-item__body"><div class="tl-item__title">Hitlers Tod und Kapitulation</div><div class="tl-item__desc">Hitler stirbt am 30. April durch Selbstmord. Goebbels folgt am 1. Mai. Himmler nimmt am 23. Mai eine Zyankali&shy;kapsel. Die größte Menschenjagd der Geschichte beginnt — und die meisten der späteren Angeklagten werden in den folgenden Wochen gefangen genommen.</div></div></div>
+      <div class="tl-item tl-item--accent"><div class="tl-item__date">8. Aug 1945<small>London</small></div><div class="tl-item__body"><div class="tl-item__title">Londoner Statut wird unterzeichnet</div><div class="tl-item__desc">Die vier Sieger&shy;mächte beschließen die rechtliche Grundlage des Tribunals. Vier Anklagepunkte werden festgelegt. Das Gericht bekommt seine Charta.</div></div></div>
+      <div class="tl-item"><div class="tl-item__date">18. Okt 1945<small>Berlin</small></div><div class="tl-item__body"><div class="tl-item__title">Anklageschrift wird zugestellt</div><div class="tl-item__desc">In Berlin überreicht der britische Major Airey Neave den 24 Angeklagten persönlich die Anklage. Robert Ley erhängt sich wenige Tage später in seiner Zelle. Gustav Krupp wird für verhandlungs&shy;unfähig erklärt.</div></div></div>
+      <div class="tl-item tl-item--accent"><div class="tl-item__date">20. Nov 1945<small>Nürnberg</small></div><div class="tl-item__body"><div class="tl-item__title">Prozessbeginn im Saal 600</div><div class="tl-item__desc">Der Prozess beginnt mit der Verlesung der Anklage. Am nächsten Tag hält Jackson seine berühmte Eröffnungsrede.</div></div></div>
+      <div class="tl-item"><div class="tl-item__date">29. Nov 1945<small>Saal 600</small></div><div class="tl-item__body"><div class="tl-item__title">Konzentrationslager-Film</div><div class="tl-item__desc">Im Gerichtssaal wird stundenlang Filmmaterial aus den befreiten Lagern gezeigt. Mehrere Angeklagte können nicht hinsehen. Hjalmar Schacht dreht sich demonstrativ weg. Es ist einer der erschütterndsten Momente des Prozesses.</div></div></div>
+      <div class="tl-item"><div class="tl-item__date">Mär 1946<small>Saal 600</small></div><div class="tl-item__body"><div class="tl-item__title">Görings Kreuzverhör</div><div class="tl-item__desc">Hermann Göring verteidigt sich rhetorisch brillant gegen Robert Jackson. Er übernimmt politische Verantwortung, weist aber konkrete Verbrechen zurück. Jackson wirkt schlecht vorbereitet. Es ist die größte rhetorische Niederlage der amerikanischen Anklage.</div></div></div>
+      <div class="tl-item"><div class="tl-item__date">Jul–Aug 1946<small>Saal 600</small></div><div class="tl-item__body"><div class="tl-item__title">Schluss&shy;plädoyers</div><div class="tl-item__desc">Anklage und Verteidigung legen ihre Schlussworte vor. Die 22 Angeklagten halten am Ende kurze persönliche Schlusserklärungen.</div></div></div>
+      <div class="tl-item tl-item--accent"><div class="tl-item__date">1. Okt 1946<small>Urteilstag</small></div><div class="tl-item__body"><div class="tl-item__title">Urteilsverkündung</div><div class="tl-item__desc">12 Todesurteile, 3 lebenslange Haftstrafen, 4 Zeitstrafen, 3 Freisprüche. Die Welt verfolgt die Verkündung über Radio.</div></div></div>
+      <div class="tl-item tl-item--accent"><div class="tl-item__date">16. Okt 1946<small>0:01 Uhr</small></div><div class="tl-item__body"><div class="tl-item__title">Hinrichtung der Verurteilten</div><div class="tl-item__desc">Zehn der zwölf zum Tode Verurteilten werden in der Nacht durch den Strang hingerichtet. Göring nimmt zwei Stunden vorher in seiner Zelle Zyankali. Bormann ist seit Mai 1945 tot, was damals niemand weiß.</div></div></div>
+      <div class="tl-item"><div class="tl-item__date">Dez 1946 – Apr 1949<small>NMT</small></div><div class="tl-item__body"><div class="tl-item__title">Die zwölf Folgeprozesse</div><div class="tl-item__desc">Amerikanische Militär&shy;tribunale verhandeln im selben Saal 600 gegen weitere 185 Angeklagte. Es sind die Nürnberger Folgeprozesse — siehe Teil C dieser Seite.</div></div></div>
+    </div>
+
+    <div class="courtroom">
+      <div class="courtroom__title">Saal 600 — die Sitzordnung</div>
+      <div class="courtroom__sub">So saßen die Beteiligten im Gerichtssaal. Nürnberg war der erste große Prozess, in dem live in vier Sprachen übersetzt wurde — Englisch, Französisch, Russisch, Deutsch.</div>
+      <svg viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="660" height="420" fill="none" stroke="#7a7264" stroke-width="1.5"/>
+        <rect x="180" y="40" width="340" height="50" fill="#9b2c2c" opacity="0.85" rx="3"/>
+        <text x="350" y="70" text-anchor="middle" fill="#f4ede0" font-family="EB Garamond" font-size="15" font-weight="600">Richterbank · 4 Richter + 4 Stellvertreter</text>
+        <rect x="320" y="130" width="60" height="40" fill="#b89968" opacity="0.8" rx="3"/>
+        <text x="350" y="155" text-anchor="middle" fill="#1a1612" font-family="Inter" font-size="11" font-weight="600">Zeuge</text>
+        <rect x="500" y="180" width="170" height="140" fill="#6b8e9e" opacity="0.7" rx="3"/>
+        <text x="585" y="208" text-anchor="middle" fill="#f4ede0" font-family="EB Garamond" font-size="14" font-weight="600">Anklage</text>
+        <text x="585" y="226" text-anchor="middle" fill="#f4ede0" font-family="Inter" font-size="10">USA · UK</text>
+        <text x="585" y="240" text-anchor="middle" fill="#f4ede0" font-family="Inter" font-size="10">Frankreich · UdSSR</text>
+        <line x1="510" y1="252" x2="660" y2="252" stroke="#f4ede0" stroke-width="0.5" opacity="0.4"/>
+        <text x="585" y="270" text-anchor="middle" fill="#f4ede0" font-family="Inter" font-size="9.5" opacity="0.85">Jackson · Shawcross</text>
+        <text x="585" y="284" text-anchor="middle" fill="#f4ede0" font-family="Inter" font-size="9.5" opacity="0.85">de Menthon · Rudenko</text>
+        <rect x="30" y="180" width="170" height="140" fill="#a87c3c" opacity="0.7" rx="3"/>
+        <text x="115" y="208" text-anchor="middle" fill="#f4ede0" font-family="EB Garamond" font-size="14" font-weight="600">Verteidigung</text>
+        <text x="115" y="226" text-anchor="middle" fill="#f4ede0" font-family="Inter" font-size="10">Deutsche Anwälte</text>
+        <text x="115" y="240" text-anchor="middle" fill="#f4ede0" font-family="Inter" font-size="10">je 1 pro Angeklagtem</text>
+        <rect x="180" y="340" width="340" height="34" fill="#3a3530" stroke="#b89968" stroke-width="1.5" rx="2"/>
+        <text x="350" y="362" text-anchor="middle" fill="#f4ede0" font-family="EB Garamond" font-size="13" font-weight="600">Angeklagtenbank · 1. Reihe (11 Männer)</text>
+        <rect x="180" y="382" width="340" height="34" fill="#3a3530" stroke="#b89968" stroke-width="1.5" rx="2"/>
+        <text x="350" y="404" text-anchor="middle" fill="#f4ede0" font-family="EB Garamond" font-size="13" font-weight="600">Angeklagtenbank · 2. Reihe (10 Männer)</text>
+        <rect x="540" y="100" width="130" height="30" fill="none" stroke="#7a7264" stroke-width="1" stroke-dasharray="3,2" rx="2"/>
+        <text x="605" y="120" text-anchor="middle" fill="#7a7264" font-family="Inter" font-size="10">Presseplätze</text>
+        <rect x="30" y="100" width="130" height="30" fill="none" stroke="#7a7264" stroke-width="1" stroke-dasharray="3,2" rx="2"/>
+        <text x="95" y="120" text-anchor="middle" fill="#7a7264" font-family="Inter" font-size="10">Übersetzerkabinen</text>
+      </svg>
+      <div class="courtroom__legend">
+        <span><i style="background:#9b2c2c"></i>Richterbank</span>
+        <span><i style="background:#6b8e9e"></i>Anklage (4 Nationen)</span>
+        <span><i style="background:#a87c3c"></i>Verteidigung</span>
+        <span><i style="background:#3a3530;border:1px solid #b89968"></i>Angeklagte (2 Reihen)</span>
+        <span><i style="background:#b89968"></i>Zeugenstand</span>
+      </div>
+    </div>
+
+    <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--paper); margin: 3rem 0 0.75rem; font-weight: 600;">Die 24 Angeklagten des Hauptprozesses</h3>
+    <p style="max-width: var(--readw); color: var(--bone-dim); margin-bottom: 0.5rem;">Angeklagt waren 24 Männer. Robert Ley nahm sich in der Zelle das Leben. Gustav Krupp war zu krank für die Verhandlung. Martin Bormann wurde in Abwesenheit verurteilt — er war zu diesem Zeitpunkt schon tot, was niemand wusste. Auf der Anklagebank saßen 21 Männer.</p>
+    <p style="max-width: var(--readw); color: var(--bone-dim); margin-bottom: 1.5rem; font-size: 0.92rem;"><strong>Klicken Sie auf eine Karte</strong>, um Details und die psychologische Einschätzung des US-Gefängnis&shy;psychiaters <em>Douglas Kelley</em> zu sehen, der die Angeklagten monatelang persönlich betreute. Die Filter unten gruppieren nach Kelleys eigener Typologie aus <em>22 Cells in Nuremberg</em>.</p>
+
+    <div class="def-filters" id="defFilters">
+      <button class="def-filter active" data-filter="all">Alle (24)</button>
+      <button class="def-filter" data-filter="policy">Strippenzieher</button>
+      <button class="def-filter" data-filter="salesmen">Diplomaten &amp; Propagandisten</button>
+      <button class="def-filter" data-filter="gunmen">Militärs &amp; Polizei</button>
+      <button class="def-filter" data-filter="rabble">Antreiber</button>
+      <button class="def-filter" data-filter="business">Verwalter &amp; Industrie</button>
+      <button class="def-filter" data-filter="death">Tod</button>
+      <button class="def-filter" data-filter="acquit">Freispruch</button>
+    </div>
+
+    <div class="def-grid" id="defGrid"></div>
+
+    <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--paper); margin: 3rem 0 0.75rem; font-weight: 600;">Die Urteilsmatrix</h3>
+    <p style="max-width: var(--readw); color: var(--bone-dim); margin-bottom: 1.5rem;">Auf einen Blick: Wer wurde wegen welcher Anklagepunkte verurteilt — und was war das Urteil? Farbige Ziffer = schuldig auf diesem Punkt. <strong>F</strong> = freigesprochen auf diesem Punkt. <span style="color: rgba(232,225,210,0.4)">—</span> = nicht angeklagt auf diesem Punkt.</p>
+
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Angeklagter</th>
+            <th>Punkt 1<br><small>Verschwörung</small></th>
+            <th>Punkt 2<br><small>Frieden</small></th>
+            <th>Punkt 3<br><small>Krieg</small></th>
+            <th>Punkt 4<br><small>Menschlichkeit</small></th>
+            <th>Urteil</th>
+          </tr>
+        </thead>
+        <tbody id="matrixBody"></tbody>
+      </table>
+    </div>
+
+    <div class="callout callout--quote">
+      <div class="callout__label">Schlüssel&shy;moment</div>
+      <div class="callout__body">
+        Wenn vier siegreiche Nationen, im Triumph beflügelt und durch erlittenes Unrecht verletzt, die Hand der Rache zurückhalten und ihre besiegten Feinde freiwillig dem Urteil des Rechts unterwerfen, so ist das eines der bedeutendsten Tribute, die Macht jemals der Vernunft gezollt hat.
+        <span class="callout__source">Robert H. Jackson · Eröffnungsrede · 21. November 1945</span>
+      </div>
+    </div>
+
+    <div class="callout callout--deep">
+      <div class="callout__label">Vertiefung · Beweisstrategie</div>
+      <div class="callout__title">Warum Jackson auf Dokumente setzte</div>
+      <div class="callout__body">
+        <p>Robert Jackson traf eine Grundsatz&shy;entscheidung: Er wollte den Fall vor allem mit deutschen Dokumenten führen — nicht mit Zeugen&shy;aussagen von Opfern.</p>
+        <p>Die Begründung war einfach: Überlebenden&shy;aussagen kann die Verteidigung als parteiisch zurückweisen. Aber ein Befehl mit Hitlers oder Himmlers Unterschrift, ein Protokoll der Wannsee-Konferenz, das Tagebuch des Generalgouverneurs Hans Frank — diese Dokumente konnten nicht weginterpretiert werden. Die Nazis hatten sich, wie der Ankläger Robert Kempner sagte, "ihre Anklage selbst geschrieben".</p>
+        <p>Diese Strategie hatte eine Schwäche: Sie machte den Prozess für die Öffentlichkeit oft langweilig. Stundenlang wurden Akten verlesen. Aber sie wirkte. Das Urteil stützte sich überwiegend auf Beweise aus deutscher Hand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="c">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__kicker">Teil C · Die zwölf Folgeprozesse</div>
+      <h2 class="section__title">Nicht ein Prozess — sondern dreizehn</h2>
+      <p class="section__intro">Der Hauptprozess war nur der Anfang. Zwischen Dezember 1946 und April 1949 verhandelten amerikanische Militär&shy;tribunale im selben Saal 600 gegen 185 weitere Angeklagte. Hier wurden die zweite und dritte Reihe des NS-Regimes zur Rechenschaft gezogen — Ärzte, Juristen, Industrielle, Diplomaten, Generäle.</p>
+    </div>
+
+    <div class="prose">
+      <p class="lede">Während im Hauptprozess die vier Siegermächte gemeinsam verhandelten, führten die zwölf Folgeprozesse — auf Englisch <em>Nuremberg Military Tribunals</em> (NMT) — die USA allein. Der Kalte Krieg hatte begonnen, und die Zusammenarbeit der vier Mächte war zerbrochen. Rechtsgrundlage war nun das <em>Kontrollratsgesetz Nr. 10</em>, eine Verordnung der alliierten Besatzungsmacht.</p>
+
+      <p>Geleitet wurden die Folgeprozesse von Brigadegeneral <strong>Telford Taylor</strong>, der unter Jackson stellvertretender Hauptankläger gewesen war. Taylor hatte ein größeres Ziel als sein Vorgänger: Er wollte zeigen, dass das NS-Verbrechen nicht nur eine Sache von zwei Dutzend Spitzenleuten war, sondern dass das gesamte System aus Eliten getragen wurde.</p>
+
+      <p>Dass das nicht gelang — oder genauer: dass die USA es politisch nicht durchhielten —, ist Kim Christian Priemels zentrale These in <em>The Betrayal</em>. Mit dem Beginn des Kalten Krieges und der Westintegration der jungen Bundesrepublik wurden viele Urteile später reduziert oder Angeklagte vorzeitig entlassen.</p>
+    </div>
+
+    <p style="max-width: var(--readw); color: var(--bone-dim); margin: 1.5rem 0; font-size: 0.94rem;"><em>Zur Lesart:</em> Jede Karte zeigt: Wie viele waren angeklagt? Wie viele wurden verurteilt? Wie viele Todesurteile? Wie viele freigesprochen?</p>
+
+    <div class="nmt-grid" id="nmtGrid"></div>
+
+    <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--paper); margin: 3rem 0 1rem; font-weight: 600;">IMT vs. NMT — was ist der Unterschied?</h3>
+
+    <div class="compare">
+      <div class="compare__head"><div>Merkmal</div><div>IMT — Hauptprozess</div><div>NMT — Folgeprozesse</div></div>
+      <div class="compare__row"><div>Wer war Ankläger?</div><div>USA, UK, Frankreich, UdSSR gemeinsam</div><div>Nur USA (amerikanische Militär&shy;tribunale)</div></div>
+      <div class="compare__row"><div>Rechtsgrundlage</div><div>Londoner Statut (8. August 1945)</div><div>Kontrollratsgesetz Nr. 10 (1945)</div></div>
+      <div class="compare__row"><div>Zeitraum</div><div>20. Nov 1945 — 1. Okt 1946</div><div>Dez 1946 — Apr 1949</div></div>
+      <div class="compare__row"><div>Angeklagte</div><div>24 (oberste politisch-militärische Führung)</div><div>185 (zweite und dritte Reihe, Eliten)</div></div>
+      <div class="compare__row"><div>Urteile</div><div>12× Tod · 3× lebenslang · 4× Haft · 3× Freispruch</div><div>24× Tod · 20× lebenslang · ~98× Haft · ~35× Freispruch</div></div>
+      <div class="compare__row"><div>Bekanntheit</div><div>Sehr hoch — der "Nürnberger Prozess"</div><div>Vergleichsweise gering, obwohl rechtlich oft innovativer</div></div>
+    </div>
+
+    <div class="callout callout--controversy">
+      <div class="callout__label">Kontroverse · Was wurde aus den Urteilen?</div>
+      <div class="callout__title">Die "stille Revision" nach 1949</div>
+      <div class="callout__body">
+        <p>Nach Gründung der Bundesrepublik 1949 und mit Beginn der westdeutschen Wiederbewaffnung setzte ein politischer Druck ein, die Urteile der Folgeprozesse zu mildern. US-Hochkommissar John McCloy reduzierte 1951 zahlreiche Urteile drastisch. Bis Mitte der 1950er Jahre waren fast alle Verurteilten der Folgeprozesse wieder frei.</p>
+        <p>Alfried Krupp etwa, zu zwölf Jahren Haft verurteilt, wurde 1951 begnadigt und bekam sogar sein Vermögen zurück. Aus IG Farben, Krupp und Flick wurden wieder Säulen der bundes&shy;deutschen Wirtschaft. Genau diese Entwicklung meint Priemels Buchtitel <em>"The Betrayal"</em> — der Verrat an dem ursprünglich umfassenden Anspruch der Nürnberger Justiz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="d">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__kicker">Teil D · Recht und Streit</div>
+      <h2 class="section__title">Was an Nürnberg neu war — und was umstritten blieb</h2>
+      <p class="section__intro">Die Nürnberger Prozesse haben das Völkerrecht verändert. Sie haben aber auch Fragen aufgeworfen, die bis heute diskutiert werden. Sechs der wichtigsten Punkte.</p>
+    </div>
+
+    <div class="callout callout--principle">
+      <div class="callout__label">Rechtsprinzip 1</div>
+      <div class="callout__title">Individuelle Verantwortung — auch für Staatsoberhäupter</div>
+      <div class="callout__body">
+        <p>Vor Nürnberg galt: Was ein Staat tut, dafür haftet der Staat — nicht die einzelnen Personen, die für ihn handeln. Wer als Außenminister einen Vertrag brach, war völkerrechtlich nicht persönlich strafbar.</p>
+        <p>Nürnberg drehte das um. Das Urteil enthält den berühmten Satz: <em>"Verbrechen gegen das Völkerrecht werden von Menschen begangen, nicht von abstrakten Wesen."</em> Damit konnten erstmals einzelne Personen — auch Minister, Generäle, Staatschefs — direkt international angeklagt werden. Dieses Prinzip gilt bis heute am Internationalen Strafgerichtshof in Den Haag.</p>
+      </div>
+    </div>
+
+    <div class="callout callout--principle">
+      <div class="callout__label">Rechtsprinzip 2</div>
+      <div class="callout__title">Befehl ist keine Entschuldigung</div>
+      <div class="callout__body">
+        <p>Fast alle Angeklagten verteidigten sich mit demselben Argument: "Ich habe nur Befehle ausgeführt." Wilhelm Keitel, Chef des Oberkommandos der Wehrmacht, machte das ausdrücklich zur Strategie.</p>
+        <p>Das Statut von Nürnberg (Artikel 8) bestimmte: Ein Befehl von oben entschuldigt nicht. Er kann höchstens die Strafe mildern, wenn das Gericht es für gerecht hält. Wer einen offen verbrecherischen Befehl ausführt, macht sich selbst strafbar. Dieser Grundsatz wurde von allen späteren internationalen Gerichten übernommen.</p>
+      </div>
+    </div>
+
+    <div class="callout callout--controversy">
+      <div class="callout__label">Kontroverse 1</div>
+      <div class="callout__title">Strafe ohne vorheriges Gesetz?</div>
+      <div class="callout__body">
+        <p>Im Strafrecht gilt seit Jahrhunderten ein Grundsatz: <span class="term" data-def="Nullum crimen sine lege (lateinisch: 'Kein Verbrechen ohne Gesetz'). Man kann jemanden nur für eine Tat bestrafen, die zur Zeit der Tat bereits gesetzlich verboten war.">Keine Strafe ohne Gesetz</span>. Niemand darf für etwas verurteilt werden, was zur Zeit der Tat noch nicht verboten war.</p>
+        <p><strong>Das Problem:</strong> "Verbrechen gegen den Frieden" und "Verbrechen gegen die Menschlichkeit" wurden erst durch das Londoner Statut 1945 als Straftatbestände geschaffen — also nach den Taten. Die deutsche Verteidigung berief sich darauf.</p>
+        <p><strong>Die Antwort des Gerichts:</strong> Angriffskrieg war schon vorher völkerrechtlich verboten — etwa durch den Briand-Kellogg-Pakt von 1928, den auch das Deutsche Reich unterzeichnet hatte. Nürnberg schaffe also keine neuen Verbrechen, sondern nur ein neues Verfahren, sie zu bestrafen.</p>
+        <p><strong>Bis heute strittig:</strong> Diese Argumentation überzeugt nicht alle. Sie war die größte rechtsphilosophische Schwäche des Hauptprozesses.</p>
+      </div>
+    </div>
+
+    <div class="callout callout--controversy">
+      <div class="callout__label">Kontroverse 2</div>
+      <div class="callout__title">Siegerjustiz?</div>
+      <div class="callout__body">
+        <p>Der Vorwurf liegt nahe: Nur die Verlierer wurden angeklagt. Die Verbrechen der Sieger blieben unerwähnt. Die Bombardierung Dresdens, Hiroshima und Nagasaki, der sowjetische Massenmord an polnischen Offizieren in Katyn — nichts davon kam vor Gericht.</p>
+        <p>Besonders bitter: Im Katyn-Fall versuchten die Sowjets sogar, die Tat den Deutschen anzulasten. Das Gericht ließ den Punkt fallen, ohne zu urteilen. Heute weiß man: Es war der sowjetische Geheimdienst NKWD, der dort 1940 etwa 22.000 polnische Offiziere ermordet hatte.</p>
+        <p><strong>Heydecker und Leeb argumentieren in ihrem Buch dagegen:</strong> Trotz dieser Mängel sei Nürnberg kein bloßes Sieger&shy;tribunal gewesen. Die Verteidigung hatte echte Möglichkeiten. Drei Angeklagte wurden freigesprochen. Das wäre in einem Schauprozess nie passiert. Auch Telford Taylor räumt aber in seiner <em>Anatomy</em> ein, dass die Sowjets das Bild des Gerichts erheblich beschädigten.</p>
+      </div>
+    </div>
+
+    <div class="callout callout--controversy">
+      <div class="callout__label">Kontroverse 3 · Verteidigungsstrategien</div>
+      <div class="callout__title">"Tu quoque" — der Versuch, sich auf die anderen zu berufen</div>
+      <div class="callout__body">
+        <p><span class="term" data-def="Tu quoque (lateinisch: 'Du auch'). Eine Verteidigung, die sagt: Was ihr mir vorwerft, habt ihr selbst getan — also könnt ihr mich dafür nicht bestrafen.">Tu quoque</span> heißt: "Du auch." Wenn die Anklage uns Angriffskrieg vorwirft, schauen wir doch mal, was die Sowjets 1939 mit Polen und Finnland gemacht haben. Wenn ihr uns Versenkung von Handelsschiffen ohne Vorwarnung vorwerft, schauen wir mal, was die US-Marine im Pazifikkrieg gemacht hat.</p>
+        <p>Das Gericht ließ dieses Argument grundsätzlich nicht zu. Mit einer wichtigen Ausnahme: Bei Großadmiral <strong>Karl Dönitz</strong> hatte die Verteidigung schriftliche Aussagen des amerikanischen Admirals Chester Nimitz vorgelegt, der bestätigte, dass auch die US-Marine im Pazifik unbeschränkten U-Boot-Krieg geführt hatte. Das Gericht stellte zwar Dönitz' Schuld fest, verzichtete aber bei diesem Punkt auf eine Strafe.</p>
+      </div>
+    </div>
+
+    <div class="callout callout--deep">
+      <div class="callout__label">Vertiefung · Begriffsgeschichte</div>
+      <div class="callout__title">"Genozid" — ein Wort, das in Nürnberg geboren wurde</div>
+      <div class="callout__body">
+        <p>Das Wort <em>Genozid</em> (Völkermord) gab es 1945 noch nicht. Der polnisch-jüdische Jurist Raphael Lemkin hatte es 1944 in einem Buch geprägt. Die Nürnberger Anklage übernahm den Begriff und verwendete ihn — auch wenn er rechtlich noch keine eigene Anklage trug.</p>
+        <p>Drei Jahre nach Nürnberg, 1948, beschloss die UN-Generalversammlung die <em>Konvention über die Verhütung und Bestrafung des Völkermordes</em>. Sie verbietet die "Absicht, eine nationale, ethnische, rassische oder religiöse Gruppe als solche ganz oder teilweise zu zerstören". Die Bundesrepublik nahm den Tatbestand 1954 ins Strafgesetzbuch auf. Heute ist Genozid in fast allen Rechtsordnungen ein eigenes Verbrechen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="e">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__kicker">Teil E · Wirkung bis heute</div>
+      <h2 class="section__title">Von Nürnberg nach Den Haag</h2>
+      <p class="section__intro">Was als improvisierte Antwort auf ein konkretes Verbrechen begann, wurde zur Grundlage einer dauerhaften internationalen Strafjustiz. Nicht ohne Pause — und nicht ohne Rückschläge.</p>
+    </div>
+
+    <div class="prose">
+      <p class="lede">Nach Nürnberg passierte für vierzig Jahre erstmal wenig. Der Kalte Krieg blockierte jede Idee einer ständigen internationalen Strafjustiz. Erst nach 1990 wurden Nürnbergs Prinzipien wirklich aufgegriffen.</p>
+    </div>
+
+    <div class="flow">
+      <div class="flow__inner">
+        <div class="flow__node"><div class="flow__year">1945</div><div class="flow__name">Londoner Statut</div><div class="flow__desc">Erste Definition der vier Anklagepunkte</div></div>
+        <div class="flow__node"><div class="flow__year">1946–49</div><div class="flow__name">Nürnberg-Prozesse</div><div class="flow__desc">IMT + 12 Folge&shy;prozesse</div></div>
+        <div class="flow__node"><div class="flow__year">1948</div><div class="flow__name">Genozid-Konvention</div><div class="flow__desc">Völkermord wird eigener Straftatbestand</div></div>
+        <div class="flow__node"><div class="flow__year">1950</div><div class="flow__name">Nürnberger Prinzipien</div><div class="flow__desc">UN-Völkerrechts&shy;kommission kodifiziert</div></div>
+        <div class="flow__node"><div class="flow__year">1993</div><div class="flow__name">ICTY</div><div class="flow__desc">Tribunal für das ehemalige Jugoslawien</div></div>
+        <div class="flow__node"><div class="flow__year">1994</div><div class="flow__name">ICTR</div><div class="flow__desc">Tribunal für Ruanda</div></div>
+        <div class="flow__node"><div class="flow__year">1998</div><div class="flow__name">Rom-Statut</div><div class="flow__desc">Gründung des IStGH in Den Haag</div></div>
+        <div class="flow__node"><div class="flow__year">2002</div><div class="flow__name">IStGH nimmt Arbeit auf</div><div class="flow__desc">Permanenter internationaler Strafgerichtshof</div></div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Die Nürnberger Prinzipien</h3>
+      <p>1950 fasste die UN-Völkerrechtskommission die rechtlichen Kernsätze der Nürnberger Prozesse in sieben "Nürnberger Prinzipien" zusammen. Sie sind heute Bestandteil des allgemeinen Völkerrechts. Die wichtigsten in einfachen Worten:</p>
+
+      <ol style="margin: 1rem 0 1.5rem 1.5rem; line-height: 1.7;">
+        <li>Wer ein völkerrechtliches Verbrechen begeht, ist persönlich verantwortlich und strafbar.</li>
+        <li>Auch wenn das innerstaatliche Recht eine Tat erlaubt, schützt das nicht vor internationaler Bestrafung.</li>
+        <li>Auch ein Staatsoberhaupt oder Regierungsmitglied kann angeklagt werden.</li>
+        <li>Der Befehl eines Vorgesetzten entschuldigt nicht.</li>
+        <li>Jeder Angeklagte hat Anspruch auf ein faires Verfahren.</li>
+        <li>Verbrechen gegen den Frieden, Kriegsverbrechen und Verbrechen gegen die Menschlichkeit sind internationale Verbrechen.</li>
+        <li>Mittäterschaft an diesen Verbrechen ist ebenfalls strafbar.</li>
+      </ol>
+
+      <h3>Was war Nürnbergs größte Wirkung?</h3>
+      <p>Nürnberg hat nicht alle Naziverbrechen aufgeklärt. Es hat nicht jeden Schuldigen erfasst. Viele entkamen — manche in den Westen, manche durch die "Rattenlinien" nach Südamerika, manche schlüpften in die Bundes&shy;republik zurück. Adolf Eichmann musste erst 1960 in Argentinien gefunden werden, damit ein eigenes Verfahren möglich wurde.</p>
+
+      <p>Aber Nürnberg hat etwas Anderes erreicht. Es hat die Beweise gesichert. Tausende deutsche Akten wurden zusammen&shy;getragen, übersetzt, abgelegt. Diese Dokumente sind heute die wichtigste Grundlage der gesamten Holocaust-Forschung. Wer das Dritte Reich verstehen will, kommt an den Nürnberger Akten nicht vorbei.</p>
+
+      <p>Und Nürnberg hat den Begriff gesetzt. Seit 1946 weiß die Welt: Wer Angriffskrieg führt, wer Zivilisten systematisch tötet, wer Menschen wegen ihrer Herkunft oder Religion verfolgt, der kann sich nicht mehr darauf herausreden, "nur" für seinen Staat gehandelt zu haben. Das ist die kulturelle Hinterlassenschaft von Nürnberg — wichtiger vielleicht als jedes einzelne Urteil.</p>
+
+      <div class="callout callout--deep">
+        <div class="callout__label">These · Priemels Interpretation</div>
+        <div class="callout__title">"German Divergence"</div>
+        <div class="callout__body">
+          <p>Kim Christian Priemel argumentiert in <em>The Betrayal</em>: Nürnberg sollte ursprünglich auch eine bestimmte Erklärung des Nationalsozialismus liefern — als Sonderweg, der Deutschland vom Westen abgespalten hatte. Diese Erzählung von der <em>"German Divergence"</em> (deutscher Sonderweg) sollte begründen, warum gerade diese Eliten vor Gericht gehörten.</p>
+          <p>Mit dem Kalten Krieg und der Einbindung der Bundesrepublik in den Westen wurde diese Erzählung politisch unbequem. Sie wurde leise aufgegeben — und damit auch der ursprüngliche, breit angelegte Anspruch der Folgeprozesse. <em>"The Betrayal"</em>, der Verrat, meint dieses stille Zurückrudern.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closer">
+  <div class="container">
+    <p class="closer__quote">"Wir dürfen niemals vergessen, dass die Akte, an denen wir die Angeklagten heute messen, die Akte sind, an denen die Geschichte uns morgen messen wird. Einen vergifteten Kelch diesen Angeklagten zu reichen, heißt, ihn an unsere eigenen Lippen zu setzen."</p>
+    <div class="closer__source">Robert H. Jackson · Eröffnungsrede · 21. November 1945</div>
+  </div>
+</section>
+
+<section class="sources">
+  <div class="container">
+    <h2>Quellen dieser Darstellung</h2>
+    <div class="source-list">
+      <div>
+        <strong>Telford Taylor</strong>
+        <em>The Anatomy of the Nuremberg Trials: A Personal Memoir</em> (1992) — Insider&shy;darstellung des stellvertretenden US-Hauptanklägers im Hauptprozess und Chefankläger der Folgeprozesse. Maßgeblich für Verfahrensfragen und juristische Argumentation.
+      </div>
+      <div>
+        <strong>Kim Christian Priemel</strong>
+        <em>The Betrayal: The Nuremberg Trials and German Divergence</em> (Oxford UP, 2016) — Modernste akademische Gesamt&shy;darstellung mit dem Schwerpunkt auf den zwölf Folgeprozessen und ihrer politischen Erosion.
+      </div>
+      <div>
+        <strong>Joe J. Heydecker · Johannes Leeb</strong>
+        <em>Der Nürnberger Prozeß</em> (1958, Neuausgabe 2015) — Das deutschsprachige Standardwerk. Heydecker war einer der wenigen deutschen Reporter im Saal 600. Maßgeblich für die deutsche Perspektive und die Vorgeschichte.
+      </div>
+      <div>
+        <strong>Douglas M. Kelley</strong>
+        <em>22 Cells in Nuremberg</em> (1947/1961) — Psychologische Studien des US-Gefängnis&shy;psychiaters, der die Hauptangeklagten monatelang persönlich betreute. Maßgeblich für die Persönlichkeits&shy;porträts und Kelleys Typologie der Angeklagten.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  Diese Seite ist eine Lernressource. Keine kommerzielle Verwendung. Inhalte synthetisiert aus den oben genannten Werken.
+</footer>
+
+<div class="def-overlay" id="defOverlay">
+  <div class="def-overlay__inner">
+    <button class="def-overlay__close" onclick="closeDefendant()" aria-label="Schließen">×</button>
+    <div id="defOverlayContent"></div>
+  </div>
+</div>
+
+<script>
+const defendants = [
+  { id: 1, name: "Hermann Göring", role: "Reichsmarschall, Chef der Luftwaffe, designierter Hitler-Nachfolger", type: "policy", typeLabel: "Strippenzieher", counts: [1,2,3,4], guilty: [1,2,3,4], verdict: "death", verdictLabel: "Tod durch den Strang", bio: "Göring war der ranghöchste lebende Nazi. Hitler hatte ihn schon 1941 zum Nachfolger bestimmt. Er gründete die Gestapo, baute die Luftwaffe auf und plünderte als oberster Vierjahresplan-Beauftragter halb Europa aus.", trial: "Göring war der dominanteste Angeklagte. Im Kreuzverhör mit Robert Jackson zeigte er sich rhetorisch überlegen — er übernahm die volle politische Verantwortung, weigerte sich aber, Hitler zu kritisieren. Jackson war schlecht vorbereitet. Es war die einzige rhetorische Niederlage der amerikanischen Anklage.", kelley: "Kelley beschreibt Göring als hochintelligent (IQ-Test 138), charmant und narzisstisch. Er war drogenabhängig — bei seiner Verhaftung hatte er rund 20.000 Paracodein-Tabletten dabei. Im Gefängnis machte er einen Entzug durch und verlor 27 Kilo. Kelley nennt ihn einen 'liebenswerten Schurken' — ein Mann, der weder Reue noch Scham empfand.", end: "Göring nahm am 15. Oktober 1946, zwei Stunden vor seiner Hinrichtung, Zyankali. Wie er das Gift in die Zelle bekam, ist bis heute nicht ganz geklärt." },
+  { id: 2, name: "Rudolf Heß", role: "Stellvertreter des Führers (bis Mai 1941)", type: "policy", typeLabel: "Strippenzieher", counts: [1,2,3,4], guilty: [1,2], verdict: "life", verdictLabel: "Lebenslang", bio: "Heß war Hitlers Stellvertreter in der Partei. Er hatte 'Mein Kampf' mitformuliert. 1941 flog er allein nach Schottland, um angeblich Friedens&shy;verhandlungen mit Großbritannien anzubieten. Er wurde dort sofort gefangen genommen und blieb für den Rest des Krieges in britischem Gewahrsam.", trial: "Heß war der rätselhafteste Angeklagte. Er gab im Prozess teilweise Gedächtnis&shy;verlust vor, gestand dann, dass dieser simuliert war, und schwankte zwischen Schweigen und wirren Monologen. Mehrere Psychiater untersuchten ihn — auch Kelley.", kelley: "Kelley untersuchte Heß ausführlich und kam zu dem Schluss: Heß war wahrscheinlich nicht klinisch verrückt, sondern paranoid und histrionisch — ein Mensch, der mit gespielten Krankheiten und echten Wahnvorstellungen sein eigenes Selbstwertgefühl schützte. Sein IQ wurde mit 120 gemessen, also über dem Durchschnitt.", end: "Heß verbrachte die nächsten 41 Jahre in Spandau in Berlin. Er war der letzte Insasse des Gefängnisses. 1987 starb er dort durch Suizid im Alter von 93 Jahren." },
+  { id: 3, name: "Joachim von Ribbentrop", role: "Reichsaußenminister 1938–1945", type: "salesmen", typeLabel: "Diplomat", counts: [1,2,3,4], guilty: [1,2,3,4], verdict: "death", verdictLabel: "Tod durch den Strang", bio: "Ribbentrop war Hitlers wichtigster Diplomat. Er handelte 1939 den Hitler-Stalin-Pakt aus, der den Angriff auf Polen erst möglich machte. Er war an der Vorbereitung fast aller Angriffskriege beteiligt und an der Endlösung mitschuldig — sein Auswärtiges Amt half bei der Deportation der Juden aus den verbündeten Staaten.", trial: "Ribbentrop wirkte im Prozess gebrochen und unsicher. Seine Verteidigung lief auf 'Ich war nur ein Postbote Hitlers' hinaus — was die Richter nicht überzeugte. Vor dem Krieg war er als arrogant und überheblich verschrien gewesen; im Gefängnis war von dieser Selbstsicherheit nichts mehr übrig.", kelley: "Kelley fand Ribbentrop persönlich nahezu mitleiderregend. Er beschreibt einen Mann, dessen ganze Identität aus dem Spiegel seiner Position bestanden hatte und der ohne diese Rolle innerlich zerfiel. IQ-Test 129.", end: "Ribbentrop wurde am 16. Oktober 1946 als erster gehängt." },
+  { id: 4, name: "Wilhelm Keitel", role: "Chef des Oberkommandos der Wehrmacht (OKW)", type: "gunmen", typeLabel: "Militär", counts: [1,2,3,4], guilty: [1,2,3,4], verdict: "death", verdictLabel: "Tod durch den Strang", bio: "Keitel war als OKW-Chef formal der oberste Soldat der Wehrmacht. Faktisch war er Hitlers Befehlsempfänger. Er unterzeichnete zahllose verbrecherische Befehle — den Kommissarbefehl, den Kommandobefehl, den Nacht-und-Nebel-Erlass.", trial: "Keitels Verteidigung war 'soldatischer Gehorsam'. Er behauptete, er habe nur Befehle ausgeführt. Genau diese Strategie scheiterte vor Gericht — Nürnberg erklärte ausdrücklich, dass Gehorsam keine Entschuldigung sei.", kelley: "Kelley sieht in Keitel den prototypischen, beschränkten preußischen Militär — ohne politische Eigenständigkeit, ohne Vorstellung von dem, was 'menschlich' bedeutet. Im Generalstab nannte man ihn spöttisch 'Lakeitel' oder 'der nickende Esel'.", end: "Keitel bat ums Erschießen statt Hängen — als Soldat. Die Bitte wurde abgelehnt. Er wurde am 16. Oktober 1946 gehängt." },
+  { id: 5, name: "Ernst Kaltenbrunner", role: "Chef des Reichssicherheits&shy;hauptamtes (RSHA) seit 1943", type: "gunmen", typeLabel: "Polizei / SS", counts: [1,3,4], guilty: [3,4], verdict: "death", verdictLabel: "Tod durch den Strang", bio: "Kaltenbrunner war Heydrichs Nachfolger an der Spitze des RSHA — der Behörde, die Gestapo, Kripo und SD vereinigte und operativ für den Holocaust verantwortlich war. Er war der ranghöchste angeklagte SS-Mann.", trial: "Er bestritt fast alles. Dokumente mit seiner Unterschrift erkannte er nicht an. Im Saal 600 wirkte er finster und abweisend.", kelley: "Kelley beschreibt Kaltenbrunner als kühl, ungemein groß (1,93 m), narbig vom Mensurfechten — ein Mann, der mit seinem Aussehen Furcht erzeugte und das auch ausnutzte. Keine erkennbaren psychischen Auffälligkeiten, aber emotional verarmt.", end: "Hingerichtet am 16. Oktober 1946." },
+  { id: 6, name: "Alfred Rosenberg", role: "NS-Chefideologe, Reichsminister für die besetzten Ostgebiete", type: "policy", typeLabel: "Ideologe", counts: [1,2,3,4], guilty: [1,2,3,4], verdict: "death", verdictLabel: "Tod durch den Strang", bio: "Rosenberg war der Mann, der die NS-Rassenideologie in dicke Bücher schrieb — 'Der Mythus des 20. Jahrhunderts'. Als Ostminister organisierte er die Plünderung und Versklavung der eroberten sowjetischen Gebiete.", trial: "Er versuchte, zwischen 'Theorie' und 'Praxis' zu unterscheiden — er habe nur geschrieben, nicht gehandelt. Das Gericht sah das anders.", kelley: "Kelley fand Rosenberg langweilig und intellektuell überschätzt. Selbst andere Nazis hatten seine Bücher kaum gelesen. Hitler nannte ihn privat 'mein Philosoph', aber niemand nahm seine Theorien wirklich ernst — was Rosenberg verbittert.", end: "Hingerichtet am 16. Oktober 1946." },
+  { id: 7, name: "Hans Frank", role: "Generalgouverneur des besetzten Polen", type: "business", typeLabel: "Verwalter", counts: [1,3,4], guilty: [3,4], verdict: "death", verdictLabel: "Tod durch den Strang", bio: "Frank regierte das besetzte Polen ab 1939 als 'Generalgouvernement'. Hier wurden Millionen Menschen getötet — die meisten Vernichtungslager standen in seinem Verantwortungs&shy;bereich. Frank führte ein detailliertes Tagebuch in 43 Bänden, das in Nürnberg vorgelegt wurde und ihn selbst belastete.", trial: "Frank konvertierte im Gefängnis zum Katholizismus und sagte aus: 'Tausend Jahre werden vergehen und werden diese Schuld Deutschlands nicht auslöschen.' Später widerrief er diesen Satz teilweise.", kelley: "Kelley sieht in Frank einen labilen, theatralisch-emotionalen Charakter. Er hatte mehrere Suizidversuche hinter sich. Seine späte Reue wirkt bei Kelley nicht wie Heuchelei, sondern wie Ausdruck eines instabilen Selbst.", end: "Hingerichtet am 16. Oktober 1946." },
+  { id: 8, name: "Wilhelm Frick", role: "Reichsinnenminister 1933–1943", type: "business", typeLabel: "Verwalter", counts: [1,2,3,4], guilty: [2,3,4], verdict: "death", verdictLabel: "Tod durch den Strang", bio: "Frick war als Innenminister verantwortlich für die NS-Gesetzgebung — von den Nürnberger Rassen&shy;gesetzen 1935 bis zur 'Euthanasie' der Behinderten. Er war ein Bürokrat, kein Charismatiker.", trial: "Frick schwieg im Prozess fast völlig. Er ließ alles seinen Anwalt machen.", kelley: "Kelley fand Frick unauffällig. Ein typischer Schreibtischtäter, ohne sichtbare Reue, aber auch ohne Eifer.", end: "Hingerichtet am 16. Oktober 1946." },
+  { id: 9, name: "Julius Streicher", role: "Herausgeber der antisemitischen Hetzzeitung 'Der Stürmer'", type: "rabble", typeLabel: "Antreiber", counts: [1,4], guilty: [4], verdict: "death", verdictLabel: "Tod durch den Strang", bio: "Streicher war der widerwärtigste Antisemit unter den Angeklagten. Über zwei Jahrzehnte hatte er im 'Stürmer' Hass auf Juden gepredigt. Er hatte keine Regierungsfunktion mehr seit 1940, als ihn sogar die Nazis wegen Korruption entmachtet hatten.", trial: "Streicher war im Saal 600 grotesk. Er warf Hitler vor, schwul gewesen zu sein, beleidigte den Richter und seinen eigenen Anwalt. Sein Auftreten war so abstoßend, dass selbst andere Angeklagte sich von ihm distanzierten.", kelley: "Kelley untersuchte Streicher besonders gründlich. Sein Schluss: Streicher war wahrscheinlich klinisch verrückt — paranoid, sexuell obsessiv, intellektuell schwach (IQ 106, der niedrigste der Hauptangeklagten). Aber nicht so wahnhaft, dass er unzurechnungs&shy;fähig gewesen wäre.", end: "Streicher schrie auf dem Schafott 'Heil Hitler!' und 'Purimfest 1946!' — eine letzte antisemitische Anspielung. Hingerichtet am 16. Oktober 1946." },
+  { id: 10, name: "Walther Funk", role: "Reichswirtschafts&shy;minister, Reichsbankpräsident", type: "business", typeLabel: "Verwalter", counts: [1,2,3,4], guilty: [2,3,4], verdict: "life", verdictLabel: "Lebenslang", bio: "Funk übernahm 1937 das Wirtschaftsministerium von Hjalmar Schacht und 1939 die Reichsbank. Er war damit am Raub jüdischen Eigentums beteiligt — und besonders schrecklich: an der Verwertung des 'SS-Goldes', also des Zahngolds, der Eheringe und Brillen ermordeter KZ-Häftlinge, die in den Tresoren der Reichsbank gelagert wurden.", trial: "Funk weinte häufig im Saal und bestritt zentrale Vorwürfe.", kelley: "Kelley beschreibt Funk als weichlich und labil — ein 'kleiner, dicker Mann' mit großen Selbstmitleids&shy;ausbrüchen, aber ohne Bösartigkeit. Möglicherweise hatte Funk auch homosexuelle Neigungen, was ihn in der NS-Hierarchie zusätzlich erpressbar machte.", end: "Funk verbüßte seine Strafe in Spandau und wurde 1957 wegen Krankheit entlassen. Er starb 1960." },
+  { id: 11, name: "Hjalmar Schacht", role: "Reichsbankpräsident, Reichswirtschafts&shy;minister bis 1937", type: "business", typeLabel: "Bankier", counts: [1,2], guilty: [], verdict: "acquit", verdictLabel: "Freispruch", bio: "Schacht war der Finanzfachmann, der die deutsche Aufrüstung finanzierte. 1937 zerstritt er sich mit Hitler über das Tempo der Aufrüstung und verlor seine Posten. 1944 wurde er nach dem Attentat vom 20. Juli verhaftet und ins KZ gesperrt — eine kuriose Konstellation für einen späteren Angeklagten.", trial: "Schacht war stolz und intellektuell überlegen. Er ärgerte sich sichtbar darüber, überhaupt auf der Anklagebank zu sitzen. Sein Anwalt argumentierte: Wenn die KZ-Häftlinge Schacht von 1944 ein Held sei, könne er nicht gleichzeitig ein Kriegsverbrecher sein.", kelley: "Kelley registriert Schachts ungeheuren Stolz, seinen Hochmut gegenüber den anderen Angeklagten und seine offenkundige Verachtung für 'die Plebejer' Streicher und Frank. IQ 143 — der höchste aller Getesteten.", end: "Schacht wurde freigesprochen, kurz darauf von einem deutschen Spruchkammer&shy;verfahren erneut verurteilt und 1948 endgültig freigelassen. Er gründete später eine eigene Bank und beriet Entwicklungsländer." },
+  { id: 12, name: "Karl Dönitz", role: "Großadmiral, Hitlers Nachfolger als Reichspräsident", type: "gunmen", typeLabel: "Marine", counts: [1,2,3], guilty: [2,3], verdict: "prison", verdictLabel: "10 Jahre Haft", bio: "Dönitz war der Befehlshaber der deutschen U-Boote, ab 1943 Oberbefehlshaber der Marine. In Hitlers Testament wurde er zum Reichspräsidenten ernannt — er regierte Deutschland für die letzten Tage zwischen Hitlers Tod und der Kapitulation.", trial: "Dönitz' Verteidigung war professionell und teilweise erfolgreich. Sein Anwalt legte eine schriftliche Aussage des amerikanischen Admirals Chester Nimitz vor, der bestätigte, dass die US-Marine im Pazifik dieselbe Art von U-Boot-Krieg geführt hatte. Beim Punkt 'illegale Kriegführung zur See' wurde Dönitz daher nicht bestraft.", kelley: "Kelley sah in Dönitz einen disziplinierten, intelligenten Berufssoldaten — ohne sichtbare Reue, aber auch ohne politische Verstrickung in den Holocaust.", end: "Dönitz verbrachte zehn Jahre in Spandau und wurde 1956 entlassen. Er starb 1980." },
+  { id: 13, name: "Erich Raeder", role: "Großadmiral, Oberbefehlshaber der Marine bis 1943", type: "gunmen", typeLabel: "Marine", counts: [1,2,3], guilty: [1,2,3], verdict: "life", verdictLabel: "Lebenslang", bio: "Raeder war Dönitz' Vorgänger als Marinechef. Er hatte die Marine seit 1928 geleitet und alle Angriffspläne mitgetragen — von Norwegen bis zur Sowjetunion.", trial: "Raeder, schon 70 Jahre alt, wirkte alt und gebrochen. Die Sowjets hatten ihn gefangen genommen und beschuldigten ihn besonders der Aggression.", kelley: "Kelley untersuchte Raeder weniger ausführlich als die anderen — Raeder war stoisch, wenig auskunftsfreudig, ein Mann der alten preußischen Offizierstradition.", end: "Wegen Krankheit 1955 vorzeitig aus Spandau entlassen. Starb 1960." },
+  { id: 14, name: "Baldur von Schirach", role: "Reichsjugendführer, Gauleiter von Wien", type: "salesmen", typeLabel: "Propagandist", counts: [1,4], guilty: [4], verdict: "prison", verdictLabel: "20 Jahre Haft", bio: "Schirach baute die Hitlerjugend auf und führte Millionen junger Deutscher an die NS-Ideologie heran. Ab 1940 war er Gauleiter von Wien — verantwortlich für die Deportation von rund 60.000 Wiener Juden in die Vernichtungslager.", trial: "Schirach übernahm im Prozess eine ungewöhnliche Position: Er bekannte sich teilweise schuldig, sprach von 'der Schuld Hitlers' und der Verantwortung seiner Generation. Seine relative Reue wirkte sich strafmindernd aus.", kelley: "Kelley beschreibt Schirach als auffällig amerikanisiert — seine Mutter war Amerikanerin, er sprach fließend Englisch und schwärmte für amerikanische Literatur. Im Verhalten war er der 'feinste' der Angeklagten, aber für Kelley auch der hohlste — ein Mensch ohne wirkliche Substanz.", end: "Schirach saß 20 Jahre in Spandau und kam 1966 frei. Er schrieb Memoiren, in denen er sich als Verführter darstellte. Starb 1974." },
+  { id: 15, name: "Fritz Sauckel", role: "Generalbevollmächtigter für den Arbeitseinsatz", type: "business", typeLabel: "Verwalter", counts: [1,2,3,4], guilty: [3,4], verdict: "death", verdictLabel: "Tod durch den Strang", bio: "Sauckel organisierte die Zwangsarbeit in Nazi-Deutschland. Er war für die Verschleppung von rund fünf Millionen Männern und Frauen aus den besetzten Gebieten verantwortlich — die meisten unter brutalsten Bedingungen.", trial: "Sauckel bestritt die Zustände, unter denen die Arbeiter lebten und starben. Seine eigenen Akten widerlegten ihn.", kelley: "Kelley sieht in Sauckel einen typischen Aufsteiger aus kleinen Verhältnissen — Sohn eines Briefträgers, dem die Partei eine Karriere ermöglicht hatte und der sich daher verpflichtet fühlte. Wenig intellektueller Tiefgang, viel Loyalität.", end: "Hingerichtet am 16. Oktober 1946." },
+  { id: 16, name: "Alfred Jodl", role: "Chef des Wehrmachts&shy;führungsstabs", type: "gunmen", typeLabel: "Militär", counts: [1,2,3,4], guilty: [1,2,3,4], verdict: "death", verdictLabel: "Tod durch den Strang", bio: "Jodl war neben Keitel der zweite Top-Militär unter Hitler. Er plante die meisten Feldzüge mit und unterzeichnete am 7. Mai 1945 die Kapitulation in Reims.", trial: "Jodl verteidigte sich besser als Keitel. Sein juristischer Vertreter wies darauf hin, dass viele 'Verbrechen' militärisch übliche Praxis waren. Das Urteil galt manchen daher als zu hart — 1953 erklärte ein deutsches Spruchkammer&shy;verfahren ihn posthum sogar für 'entlastet', was wenig später wieder rückgängig gemacht wurde.", kelley: "Kelley sieht in Jodl den intelligenteren der beiden OKW-Spitzen. Keitel sei der Mann gewesen, Jodl der Kopf. Bei Tests sehr hohe Werte.", end: "Hingerichtet am 16. Oktober 1946." },
+  { id: 17, name: "Franz von Papen", role: "Reichskanzler 1932, Vizekanzler 1933–1934, Botschafter", type: "salesmen", typeLabel: "Diplomat", counts: [1,2], guilty: [], verdict: "acquit", verdictLabel: "Freispruch", bio: "Papen war der Mann, der Hitler 1933 an die Macht gebracht hatte. Als Reichskanzler vor Hitler hatte er das deutsche politische System destabilisiert. Als Vizekanzler unter Hitler überlebte er den Röhm-Putsch 1934 nur knapp. Danach war er Botschafter in Wien und Ankara.", trial: "Papen war 75 Jahre alt und wirkte wie ein Relikt aus einer anderen Epoche. Er gehörte nicht zum NS-Kernzirkel. Das Gericht entschied, dass seine politischen Manöver vor 1933 zwar verheerend, aber juristisch keine 'Verschwörung' im Sinne der Anklage waren.", kelley: "Kelley fand Papen aristokratisch, intelligent und zynisch — ein Berufsmanipulator, der nie wirklich Nazi gewesen war, aber Hitler benutzen wollte und am Ende selbst benutzt wurde.", end: "Freigesprochen, aber wenig später von einem deutschen Spruchkammer&shy;verfahren zu acht Jahren Arbeitslager verurteilt. 1949 entlassen. Starb 1969." },
+  { id: 18, name: "Arthur Seyß-Inquart", role: "Reichskommissar für die besetzten Niederlande", type: "business", typeLabel: "Verwalter", counts: [1,2,3,4], guilty: [2,3,4], verdict: "death", verdictLabel: "Tod durch den Strang", bio: "Seyß-Inquart hatte 1938 als österreichischer Innenminister den 'Anschluss' Österreichs mit organisiert. Ab 1940 regierte er die besetzten Niederlande — verantwortlich für die Deportation von rund 100.000 niederländischen Juden, von denen die meisten ermordet wurden.", trial: "Er erkannte einen Teil seiner Verantwortung an, bestritt aber persönliche Mitwirkung an Morden.", kelley: "Kelley findet Seyß-Inquart vergleichsweise würdig — ein gebildeter, juristisch geschulter Mann, der seine Rolle nicht zynisch spielte, sondern aus Überzeugung. Genau das macht ihn für Kelley umso gefährlicher.", end: "Hingerichtet am 16. Oktober 1946." },
+  { id: 19, name: "Albert Speer", role: "Reichsminister für Rüstung und Kriegsproduktion", type: "business", typeLabel: "Architekt / Rüstung", counts: [1,2,3,4], guilty: [3,4], verdict: "prison", verdictLabel: "20 Jahre Haft", bio: "Speer war Hitlers Lieblings&shy;architekt und ab 1942 Rüstungsminister. Er organisierte die Kriegswirtschaft und damit auch die Zwangsarbeit von Millionen — wofür sein Kollege Sauckel hängte. Speer überlebte, weil er eine andere Strategie wählte.", trial: "Speer war die rätselhafteste Figur. Als einziger der Angeklagten bekannte er sich umfassend zur 'Gesamtverantwortung' des NS-Regimes — auch für Dinge, die er angeblich nicht gewusst hatte. Diese Strategie war juristisch brillant: Sie wirkte wie Reue und schützte ihn gleichzeitig vor konkreten Tat&shy;vorwürfen.", kelley: "Kelley war von Speer fasziniert. IQ 128, kultiviert, reflektiert, sprach mit einer Distanz über das Regime, als sei er selbst nur Beobachter gewesen. Heute weiß man: Speer hat in seinen späteren Erinnerungen seine eigene Mitwisser&shy;schaft am Holocaust systematisch verharmlost.", end: "Speer verbrachte 20 Jahre in Spandau. Nach seiner Entlassung 1966 wurde er als 'guter Nazi' international berühmt — bis Historiker ab den 1980er Jahren seine Selbstdarstellung dekonstruierten. Starb 1981." },
+  { id: 20, name: "Konstantin von Neurath", role: "Reichsaußenminister bis 1938, Reichsprotektor Böhmen-Mähren", type: "salesmen", typeLabel: "Diplomat", counts: [1,2,3,4], guilty: [1,2,3,4], verdict: "prison", verdictLabel: "15 Jahre Haft", bio: "Neurath war Hitlers erster Außenminister — ein konservativer Diplomat der alten Schule. 1938 wurde er von Ribbentrop abgelöst. Als 'Reichsprotektor' Böhmen-Mähren regierte er die Tschechoslowakei bis 1941, als ihn Heydrich ablöste.", trial: "Neurath galt als 'milderer' Fall — der nicht aus Begeisterung mitgemacht hatte, sondern aus konservativem Pflichtgefühl. Aber er hatte mitgemacht.", kelley: "Kelley fand Neurath müde und gealtert. Ein Mann der alten Klasse, der nie Nazi gewesen war, aber zu schwach, um sich zu entziehen.", end: "Wegen Krankheit 1954 vorzeitig aus Spandau entlassen. Starb 1956." },
+  { id: 21, name: "Hans Fritzsche", role: "Chef der Rundfunkabteilung im Propagandaministerium", type: "salesmen", typeLabel: "Propagandist", counts: [1,3,4], guilty: [], verdict: "acquit", verdictLabel: "Freispruch", bio: "Fritzsche war ein Radio-Kommentator unter Joseph Goebbels. Er stand auf der Anklagebank, weil die Sowjets ihn unbedingt dort sehen wollten — sie hatten ihn gefangen genommen und brauchten einen Stellvertreter für den toten Goebbels.", trial: "Fritzsche war einer der drei Freisprüche. Die Richter sahen, dass er eine Funktion ausgeübt hatte, die unter dem Niveau der Hauptangeklagten lag.", kelley: "Kelley fand Fritzsche höflich, kooperativ, intelligent. Ein typischer 'kleiner Mittäter', der intellektuell genau wusste, in welchem System er arbeitete, sich aber selbst als bloßes Werkzeug sah.", end: "Freigesprochen, aber wenig später von einem deutschen Spruchkammer&shy;verfahren zu neun Jahren Arbeitslager verurteilt. Frei seit 1950. Starb 1953." },
+  { id: 22, name: "Martin Bormann", role: "Leiter der Parteikanzlei, Sekretär Hitlers", type: "policy", typeLabel: "Strippenzieher", counts: [1,3,4], guilty: [3,4], verdict: "death", verdictLabel: "Tod (in Abwesenheit)", bio: "Bormann war der Mann, der ab 1943 alles kontrollierte, was Hitler erreichte. Briefe, Memoranden, Personal&shy;entscheidungen — alles ging über seinen Schreibtisch. In den letzten Kriegsmonaten war er Hitlers mächtigster Berater.", trial: "Bormann saß nicht auf der Anklagebank — er war seit dem 2. Mai 1945 verschwunden. Niemand wusste, ob er lebte oder tot war. Das Gericht verurteilte ihn in Abwesenheit zum Tode.", kelley: "Kelley konnte Bormann nicht untersuchen. Er war abwesend.", end: "1972 wurden in Berlin Gebeine gefunden, die später als Bormanns identifiziert wurden. Er war am 2. Mai 1945 beim Ausbruch aus der Reichskanzlei umgekommen — vermutlich durch Suizid. 1998 durch DNA-Analyse bestätigt." },
+  { id: 23, name: "Robert Ley", role: "Chef der Deutschen Arbeitsfront", type: "rabble", typeLabel: "Antreiber", counts: [], guilty: [], verdict: "none", verdictLabel: "Suizid vor Prozessbeginn", bio: "Ley leitete seit 1933 die Deutsche Arbeitsfront (DAF) — die Zwangs&shy;organisation, die alle Gewerkschaften ersetzt hatte. Er war ein Alkoholiker, ein begeisterter Antisemit und in den letzten Kriegsjahren weitgehend funktionslos.", trial: "Ley wurde mit angeklagt. Aber wenige Tage nachdem ihm die Anklage übergeben worden war, erhängte er sich am 25. Oktober 1945 in seiner Nürnberger Zelle mit einem Handtuch&shy;streifen am Wasserrohr der Toilette.", kelley: "Kelley hatte Ley vor dem Suizid untersucht. Sein Schluss: ein psychisch labiler, paranoid-alkoholischer Charakter. Nach Leys Tod sezierte Kelley sein Gehirn und stellte sichtbare organische Schäden fest, möglicherweise als Folge eines früheren Flugzeug&shy;unfalls.", end: "Tot durch Suizid am 25. Oktober 1945. Kein Verfahren." },
+  { id: 24, name: "Gustav Krupp von Bohlen und Halbach", role: "Industrieller, Chef der Krupp-Werke", type: "business", typeLabel: "Industrie", counts: [], guilty: [], verdict: "none", verdictLabel: "Verhandlungs&shy;unfähig", bio: "Krupp war einer der größten Rüstungs&shy;industriellen Deutschlands. Die Anklage wollte ihn ursprünglich als Repräsentanten der deutschen Industrie verurteilen. Aber Krupp war zum Zeitpunkt der Anklageerhebung 75 Jahre alt und durch einen Schlaganfall so geschwächt, dass er für verhandlungsunfähig erklärt wurde.", trial: "Die amerikanische Anklage wollte stattdessen Krupps Sohn Alfried angeklagt sehen — was im Hauptprozess nicht ging, aber im 10. Folgeprozess geschah. Alfried Krupp wurde 1948 zu zwölf Jahren Haft verurteilt, 1951 begnadigt und bekam sein Vermögen zurück.", kelley: "Kelley untersuchte Gustav Krupp nicht — er war körperlich und geistig in einem Zustand jenseits aller Untersuchung.", end: "Krupp blieb in Familienpflege. Er starb 1950." }
+];
+
+const COUNT_LABELS = {1: "Verschwörung", 2: "Frieden", 3: "Krieg", 4: "Menschlichkeit"};
+
+const nmtTrials = [
+  { nr: 1, case: "Fall 1", title: "Ärzteprozess", official: "United States v. Karl Brandt et al.", period: "Dez 1946 – Aug 1947", defendants: 23, death: 7, convicted: 16, acquit: 7, desc: "Angeklagt waren 20 Ärzte und drei NS-Funktionäre. Es ging um medizinische Versuche an KZ-Häftlingen (Druckkammer-Versuche, Unterkühlung, Phosphor-Verbrennungen) und um das 'Euthanasie'-Programm T4, das mindestens 70.000 Behinderte ermordete.", sig: "<strong>Juristisches Ergebnis:</strong> Der 'Nürnberger Kodex' — zehn Prinzipien für medizinische Forschung am Menschen. Bis heute Grundlage jeder medizinischen Ethik." },
+  { nr: 2, case: "Fall 2", title: "Milch-Prozess", official: "United States v. Erhard Milch", period: "Jan – Apr 1947", defendants: 1, death: 0, convicted: 1, acquit: 0, desc: "Einzelangeklagter Erhard Milch, Generalfeldmarschall der Luftwaffe und stellvertretender Vorsitzender des Reichsluftfahrt&shy;ministeriums. Vorwürfe: Zwangsarbeit in der Luftrüstung und Beteiligung an medizinischen Versuchen.", sig: "<strong>Urteil:</strong> Lebenslang, später auf 15 Jahre reduziert, 1954 entlassen." },
+  { nr: 3, case: "Fall 3", title: "Juristenprozess", official: "United States v. Josef Altstötter et al.", period: "Feb – Dez 1947", defendants: 16, death: 0, convicted: 10, acquit: 4, desc: "Angeklagt waren Richter, Staatsanwälte und Beamte des Reichsjustizministeriums. Sie hatten an der Nazifizierung des Rechts mitgewirkt — etwa durch die Anwendung der Rassengesetze, der 'Volksschädlings&shy;verordnung' oder durch Todesurteile in offensichtlich politischen Prozessen.", sig: "<strong>Bedeutung:</strong> Erstmals wurde die Beteiligung von Juristen an staatlich organisiertem Unrecht international verurteilt. Das Verfahren ist Vorlage des Films 'Das Urteil von Nürnberg' (1961)." },
+  { nr: 4, case: "Fall 4", title: "Pohl-Prozess", official: "United States v. Oswald Pohl et al.", period: "Apr – Nov 1947", defendants: 18, death: 4, convicted: 15, acquit: 3, desc: "Angeklagt war das SS-Wirtschafts- und Verwaltungs&shy;hauptamt (WVHA) unter Oswald Pohl. Diese Behörde verwaltete die Konzentrationslager und das System der Sklavenarbeit. Pohl war damit operativ für Millionen Tote mitverantwortlich.", sig: "<strong>Pohl wurde 1951 gehängt</strong> — eine der letzten Hinrichtungen aus den Folgeprozessen. Drei weitere Todesurteile wurden ebenfalls vollstreckt." },
+  { nr: 5, case: "Fall 5", title: "Flick-Prozess", official: "United States v. Friedrich Flick et al.", period: "Apr – Dez 1947", defendants: 6, death: 0, convicted: 3, acquit: 3, desc: "Erster Industriellen-Prozess. Angeklagt waren Friedrich Flick und fünf seiner Manager. Vorwürfe: Ausbeutung von Zwangsarbeitern, Plünderung in den besetzten Gebieten, Beteiligung an SS-Verbrechen durch den 'Freundeskreis Himmler'.", sig: "<strong>Politisches Ergebnis:</strong> Flick erhielt 7 Jahre, wurde aber schon 1950 entlassen. Er baute den Konzern wieder auf und war Anfang der 1960er Jahre einer der reichsten Männer Europas." },
+  { nr: 6, case: "Fall 6", title: "IG-Farben-Prozess", official: "United States v. Carl Krauch et al.", period: "Aug 1947 – Jul 1948", defendants: 24, death: 0, convicted: 13, acquit: 10, desc: "Angeklagt waren 24 leitende Manager des IG-Farben-Konzerns — damals das größte Chemie&shy;unternehmen der Welt. Vorwürfe: Plünderung, Zwangsarbeit (das Werk in Auschwitz-Monowitz wurde von Häftlingen errichtet), Belieferung mit Zyklon B durch die Tochter Degesch.", sig: "<strong>Enttäuschend mildes Urteil:</strong> Höchststrafe 8 Jahre. Die Verteidigung erreichte, dass 'wirtschaftlicher Zwang' als Milderungsgrund anerkannt wurde. Die meisten Manager waren bis 1951 wieder frei." },
+  { nr: 7, case: "Fall 7", title: "Geiselmord-Prozess", official: "United States v. Wilhelm List et al.", period: "Jul 1947 – Feb 1948", defendants: 12, death: 0, convicted: 8, acquit: 2, desc: "Auch 'Südost-Generale-Prozess' genannt. Angeklagt waren deutsche Generäle, die in Griechenland, Jugoslawien, Albanien gegen Partisanen und Zivilisten gekämpft hatten — mit Massen&shy;erschießungen von Geiseln (manchmal 100 Zivilisten für einen toten deutschen Soldaten).", sig: "<strong>Rechtliche Klärung:</strong> Wie weit dürfen 'Repressalien' gegen Zivilisten gehen? Das Tribunal setzte enge Grenzen — bahnbrechend für das humanitäre Völkerrecht." },
+  { nr: 8, case: "Fall 8", title: "RuSHA-Prozess", official: "United States v. Ulrich Greifelt et al.", period: "Okt 1947 – Mär 1948", defendants: 14, death: 0, convicted: 13, acquit: 1, desc: "Angeklagt waren Funktionäre des SS-Rasse- und Siedlungs&shy;hauptamts und verwandter Stellen. Sie hatten 'Germanisierungs'-Politik betrieben — gewaltsame Umsiedlungen, Zwangs&shy;sterilisationen, Kinderraub aus eroberten Gebieten (Polen, Tschechien, Slowenien).", sig: "<strong>Pionierurteil:</strong> Erstmals wurde der Diebstahl von Kindern aus 'rassischen' Gründen als Verbrechen gegen die Menschlichkeit verurteilt. Eine Vorform des heutigen Genozid&shy;tatbestands." },
+  { nr: 9, case: "Fall 9", title: "Einsatzgruppen-Prozess", official: "United States v. Otto Ohlendorf et al.", period: "Sep 1947 – Apr 1948", defendants: 24, death: 14, convicted: 22, acquit: 0, desc: "Der wichtigste der Folgeprozesse. Angeklagt waren 24 Kommandeure der mobilen Mordeinheiten (Einsatzgruppen), die ab 1941 hinter den deutschen Linien in der Sowjetunion mindestens eine Million Juden, Roma, sowjetische Funktionäre erschossen hatten. Beweise: ihre eigenen, akribisch geführten Mordstatistiken.", sig: "<strong>Höchste Verurteilungs&shy;quote aller Nürnberger Prozesse:</strong> Von 24 nur ein Krankheitsausfall, sonst alle schuldig. 14 Todesurteile, davon vier vollstreckt — die anderen wurden durch McCloy 1951 in Haftstrafen umgewandelt." },
+  { nr: 10, case: "Fall 10", title: "Krupp-Prozess", official: "United States v. Alfried Krupp et al.", period: "Dez 1947 – Jul 1948", defendants: 12, death: 0, convicted: 11, acquit: 1, desc: "Zweiter Industriellen-Prozess. Angeklagt waren Alfried Krupp, der Sohn des verhandlungsunfähigen Gustav Krupp, und elf seiner Manager. Vorwürfe: Plünderung in den besetzten Gebieten, Zwangsarbeit unter brutalen Bedingungen.", sig: "<strong>Politisch brisantes Ergebnis:</strong> Alfried Krupp erhielt 12 Jahre und Vermögens&shy;einziehung. Beides wurde 1951 vom US-Hoch&shy;kommissar McCloy aufgehoben. Krupp baute den Konzern wieder auf — Symbol für die 'stille Revision'." },
+  { nr: 11, case: "Fall 11", title: "Wilhelmstraßen-Prozess", official: "United States v. Ernst von Weizsäcker et al.", period: "Nov 1947 – Apr 1949", defendants: 21, death: 0, convicted: 19, acquit: 2, desc: "Auch 'Ministerien-Prozess' — der längste und komplexeste der Folgeprozesse. Angeklagt waren hohe Beamte des Auswärtigen Amts (darunter Ernst von Weizsäcker, Vater des späteren Bundespräsidenten), des Innenministeriums, der Reichskanzlei und anderer Ministerien.", sig: "<strong>Bedeutung:</strong> Erster Versuch, die Mitverantwortung der hohen Ministerial&shy;bürokratie zu klären. Die meisten Strafen waren niedrig und wurden bald reduziert." },
+  { nr: 12, case: "Fall 12", title: "OKW-Prozess", official: "United States v. Wilhelm von Leeb et al.", period: "Dez 1947 – Okt 1948", defendants: 14, death: 0, convicted: 11, acquit: 2, desc: "Auch 'High Command Case'. Angeklagt waren 14 hochrangige Wehrmachtsoffiziere — Feldmarschälle und Generäle. Vorwürfe: Kriegsverbrechen im Osten, Befolgung verbrecherischer Befehle (Kommissarbefehl, Kommandobefehl).", sig: "<strong>Wichtige Klarstellung:</strong> Auch die Wehrmachtsführung — nicht nur SS und Partei — trug strafrechtliche Verantwortung. Damit endete die Legende von der 'sauberen Wehrmacht' rechtlich. Gesellschaftlich dauerte es Jahrzehnte länger." }
+];
+
+function renderDefendants(filter = "all") {
+  const grid = document.getElementById("defGrid");
+  let items = defendants;
+  if (filter === "death") items = items.filter(d => d.verdict === "death");
+  else if (filter === "acquit") items = items.filter(d => d.verdict === "acquit");
+  else if (filter !== "all") items = items.filter(d => d.type === filter);
+
+  grid.innerHTML = items.map(d => {
+    const counts = [1,2,3,4].map(c => {
+      if (!d.counts.includes(c)) return `<div class="def-card__count def-card__count--off" title="Nicht angeklagt auf Punkt ${c}">${c}</div>`;
+      const guilty = d.guilty.includes(c);
+      return `<div class="def-card__count def-card__count--${c}" style="${guilty ? '' : 'opacity:0.25'}" title="Punkt ${c}: ${guilty ? 'schuldig' : 'freigesprochen'}">${c}</div>`;
+    }).join("");
+    return `
+      <div class="def-card" data-verdict="${d.verdict}" data-id="${d.id}" tabindex="0" role="button" aria-label="Details zu ${d.name}">
+        <div class="def-card__verdict-stripe"></div>
+        <div class="def-card__num">№ ${String(d.id).padStart(2,'0')}</div>
+        <div class="def-card__type">${d.typeLabel}</div>
+        <div class="def-card__name">${d.name}</div>
+        <div class="def-card__role">${d.role}</div>
+        <div class="def-card__counts">${counts}</div>
+        <div class="def-card__verdict">${d.verdictLabel}</div>
+      </div>`;
+  }).join("");
+
+  grid.querySelectorAll(".def-card").forEach(card => {
+    card.addEventListener("click", () => openDefendant(parseInt(card.dataset.id)));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDefendant(parseInt(card.dataset.id)); }
+    });
+  });
+}
+
+function openDefendant(id) {
+  const d = defendants.find(x => x.id === id);
+  if (!d) return;
+  const content = document.getElementById("defOverlayContent");
+
+  let countSummary = "";
+  if (d.counts.length === 0) {
+    countSummary = "<p><em>Kein Verfahren — siehe oben.</em></p>";
+  } else {
+    countSummary = `<p>${d.counts.map(c => {
+      const guilty = d.guilty.includes(c);
+      const color = c === 1 ? "#6b8e9e" : c === 2 ? "#a87c3c" : c === 3 ? "#8b5e3c" : "#9b2c2c";
+      return `<span style="display:inline-block;padding:0.15rem 0.5rem;margin:0 0.3rem 0.3rem 0;background:${color}22;color:${color};font-family:Inter;font-size:0.78rem;font-weight:600;border-radius:2px;border:1px solid ${color}55">Punkt ${c} (${COUNT_LABELS[c]}): ${guilty ? "<strong>schuldig</strong>" : "freigesprochen"}</span>`;
+    }).join("")}</p>`;
+  }
+
+  content.innerHTML = `
+    <h2>${d.name}</h2>
+    <div class="def-overlay__role">${d.role}</div>
+    <div class="def-overlay__verdict-banner ${d.verdict}">Urteil: ${d.verdictLabel}</div>
+    <h3>Person und Funktion</h3>
+    <p>${d.bio}</p>
+    <h3>Im Prozess</h3>
+    <p>${d.trial}</p>
+    <h3>Anklagepunkte im Detail</h3>
+    ${countSummary}
+    <h3>Persönlichkeit · nach Kelley</h3>
+    <p class="kelley">${d.kelley}</p>
+    <h3>Was danach geschah</h3>
+    <p>${d.end}</p>
+  `;
+
+  document.getElementById("defOverlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeDefendant() {
+  document.getElementById("defOverlay").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.querySelectorAll(".def-filter").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".def-filter").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderDefendants(btn.dataset.filter);
+  });
+});
+
+document.getElementById("defOverlay").addEventListener("click", (e) => {
+  if (e.target.id === "defOverlay") closeDefendant();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeDefendant();
+});
+
+function renderMatrix() {
+  const tbody = document.getElementById("matrixBody");
+  const tried = defendants.filter(d => d.verdict !== "none");
+  tbody.innerHTML = tried.map(d => {
+    const cells = [1,2,3,4].map(c => {
+      if (!d.counts.includes(c)) return `<td><span class="mc-not-charged">—</span></td>`;
+      if (d.guilty.includes(c)) return `<td><span class="matrix__cell mc-c-${c}">${c}</span></td>`;
+      return `<td><span class="matrix__cell mc-acquit">F</span></td>`;
+    }).join("");
+    const verdictClass = `mvc-${d.verdict}`;
+    return `<tr><td>${d.name}</td>${cells}<td><span class="${verdictClass}">${d.verdictLabel.replace('&shy;', '').replace(/&shy;/g, '')}</span></td></tr>`;
+  }).join("");
+}
+
+function renderNMT() {
+  const grid = document.getElementById("nmtGrid");
+  grid.innerHTML = nmtTrials.map(t => `
+    <div class="nmt-card">
+      <div class="nmt-card__num">${t.nr}</div>
+      <div class="nmt-card__case">${t.case} · ${t.period}</div>
+      <div class="nmt-card__title">${t.title}</div>
+      <div class="nmt-card__official">${t.official}</div>
+      <div class="nmt-card__stats">
+        <div class="nmt-card__stat"><strong>${t.defendants}</strong><span>Angeklagte</span></div>
+        <div class="nmt-card__stat"><strong>${t.convicted}</strong><span>Verurteilt</span></div>
+        <div class="nmt-card__stat nmt-card__stat--death"><strong>${t.death}</strong><span>Todesurt.</span></div>
+        <div class="nmt-card__stat"><strong>${t.acquit}</strong><span>Freisprüche</span></div>
+      </div>
+      <div class="nmt-card__desc">${t.desc}</div>
+      <div class="nmt-card__sig">${t.sig}</div>
+    </div>
+  `).join("");
+}
+
+renderDefendants("all");
+renderMatrix();
+renderNMT();
+
+window.addEventListener("scroll", () => {
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = (window.scrollY / docH) * 100;
+  document.getElementById("progressFill").style.width = pct + "%";
+});
+</script>
+</body>
+</html>
