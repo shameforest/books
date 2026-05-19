@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dayway vs. Charaktermaske · Eine Analyse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --paper: #f7f3ec;
+    --paper-warm: #efe8dc;
+    --burgundy: #7a1f2b;
+    --burgundy-light: #a8364a;
+    --blue-deep: #1d3557;
+    --blue-mid: #3e5d80;
+    --gold: #c9a04e;
+    --gold-light: #e8c977;
+    --olive: #5d6c3e;
+    --rust: #b85c38;
+    --line: #d8cfbf;
+    --shadow: 0 1px 0 rgba(26,24,20,0.06), 0 8px 24px -8px rgba(26,24,20,0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter Tight', system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(122,31,43,0.025) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(29,53,87,0.025) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* MASTHEAD */
+  .masthead {
+    border-bottom: 2px solid var(--ink);
+    padding: 24px 0 18px;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .masthead-logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+  }
+  .masthead-logo span { color: var(--burgundy); }
+  .masthead-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.7;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .masthead-meta span::before {
+    content: '◆ ';
+    color: var(--gold);
+  }
+
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 36px;
+    margin-bottom: 80px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 36px;
+    height: 1px;
+    background: var(--burgundy);
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(44px, 6.5vw, 84px);
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    margin: 18px 0;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--burgundy);
+    font-weight: 400;
+  }
+  .hero-deck {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(20px, 2.4vw, 26px);
+    line-height: 1.35;
+    max-width: 800px;
+    color: var(--ink);
+    opacity: 0.85;
+    font-weight: 400;
+  }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .hero-meta-item .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 6px;
+  }
+  .hero-meta-item .value {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  /* SECTION HEADER */
+  .section {
+    margin-bottom: 100px;
+    position: relative;
+  }
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--burgundy);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-num::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--burgundy);
+    border-radius: 50%;
+  }
+  .section h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(32px, 4.5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 32px;
+    max-width: 900px;
+  }
+  .section h2 em {
+    font-style: italic;
+    color: var(--burgundy);
+  }
+  .section-lead {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink);
+    opacity: 0.82;
+    max-width: 760px;
+    margin-bottom: 48px;
+  }
+
+  /* VERSUS-CARD */
+  .versus-grid {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 0;
+    margin: 40px 0;
+    align-items: stretch;
+  }
+  .versus-card {
+    padding: 32px 28px;
+    border: 1px solid var(--line);
+    background: var(--paper-warm);
+    position: relative;
+  }
+  .versus-card.gsp {
+    border-color: var(--burgundy);
+    background: linear-gradient(180deg, rgba(122,31,43,0.04) 0%, rgba(122,31,43,0.08) 100%);
+  }
+  .versus-card.day {
+    border-color: var(--blue-deep);
+    background: linear-gradient(180deg, rgba(29,53,87,0.04) 0%, rgba(29,53,87,0.08) 100%);
+  }
+  .versus-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+  .versus-card.gsp .versus-tag {
+    background: var(--burgundy);
+    color: var(--paper);
+  }
+  .versus-card.day .versus-tag {
+    background: var(--blue-deep);
+    color: var(--paper);
+  }
+  .versus-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .versus-card.gsp h3 { color: var(--burgundy); }
+  .versus-card.day h3 { color: var(--blue-deep); }
+  .versus-card p {
+    font-size: 15.5px;
+    line-height: 1.55;
+  }
+  .versus-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--gold);
+    background: var(--paper);
+  }
+
+  /* GRUNDANNAHMEN TABLE */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 40px 0;
+    background: var(--paper-warm);
+    box-shadow: var(--shadow);
+  }
+  .compare-table thead th {
+    text-align: left;
+    padding: 18px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--ink);
+  }
+  .compare-table thead th:nth-child(1) { background: var(--ink); color: var(--paper); width: 22%; }
+  .compare-table thead th:nth-child(2) { background: var(--burgundy); color: var(--paper); width: 39%; }
+  .compare-table thead th:nth-child(3) { background: var(--blue-deep); color: var(--paper); width: 39%; }
+  .compare-table tbody td {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .compare-table tbody td:first-child {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+    background: rgba(26,24,20,0.04);
+  }
+  .compare-table tbody tr:hover td {
+    background: rgba(201,160,78,0.06);
+  }
+  .compare-table tbody tr:hover td:first-child {
+    background: rgba(201,160,78,0.12);
+  }
+
+  /* ARGUMENT BLOCK */
+  .arg-block {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .arg-block:last-child { border-bottom: none; }
+  .arg-number {
+    font-family: 'Fraunces', serif;
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--burgundy);
+    font-style: italic;
+  }
+  .arg-content h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    letter-spacing: -0.015em;
+  }
+  .arg-content p {
+    margin-bottom: 12px;
+  }
+  .arg-content p:last-child { margin-bottom: 0; }
+  .arg-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-right: 8px;
+    margin-bottom: 4px;
+  }
+  .tag-strong { background: var(--olive); color: var(--paper); }
+  .tag-weak { background: var(--rust); color: var(--paper); }
+  .tag-gap { background: var(--gold); color: var(--ink); }
+
+  /* PULLQUOTE */
+  .pullquote {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 3.2vw, 36px);
+    line-height: 1.25;
+    font-style: italic;
+    font-weight: 400;
+    padding: 40px 0 40px 32px;
+    border-left: 3px solid var(--gold);
+    margin: 48px 0;
+    position: relative;
+    color: var(--ink);
+  }
+  .pullquote::before {
+    content: '"';
+    position: absolute;
+    left: 20px;
+    top: -10px;
+    font-size: 100px;
+    color: var(--gold);
+    opacity: 0.2;
+    line-height: 1;
+    font-family: 'Fraunces', serif;
+  }
+  .pullquote-attribution {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-style: normal;
+    margin-top: 18px;
+    opacity: 0.7;
+  }
+
+  /* OPTIMIZATION CARDS */
+  .opt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin: 40px 0;
+  }
+  .opt-card {
+    padding: 32px 28px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--gold);
+    box-shadow: var(--shadow);
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .opt-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1px 0 rgba(26,24,20,0.06), 0 16px 32px -8px rgba(26,24,20,0.18);
+  }
+  .opt-card-num {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--gold);
+    opacity: 0.2;
+    line-height: 1;
+  }
+  .opt-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    padding-right: 50px;
+  }
+  .opt-card .opt-problem {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 10px;
+  }
+  .opt-card .opt-fix {
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .opt-card .opt-source {
+    font-size: 13px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+    color: var(--olive);
+    font-style: italic;
+  }
+
+  /* INSIGHTS / AHA */
+  .insight {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    padding: 36px 32px;
+    background: linear-gradient(135deg, rgba(201,160,78,0.08) 0%, rgba(201,160,78,0.02) 100%);
+    border-left: 4px solid var(--gold);
+    margin: 32px 0;
+  }
+  .insight-icon {
+    font-family: 'Fraunces', serif;
+    font-size: 64px;
+    line-height: 0.9;
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 900;
+  }
+  .insight-content h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .insight-content p { font-size: 15.5px; line-height: 1.6; }
+
+  /* FLOW DIAGRAM */
+  .flow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin: 40px auto;
+    max-width: 760px;
+  }
+  .flow-step {
+    padding: 22px 28px;
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    text-align: center;
+    position: relative;
+  }
+  .flow-step.start {
+    background: var(--burgundy);
+    color: var(--paper);
+    border-color: var(--burgundy);
+  }
+  .flow-step.end {
+    background: var(--blue-deep);
+    color: var(--paper);
+    border-color: var(--blue-deep);
+  }
+  .flow-step h5 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  .flow-step p {
+    font-size: 13.5px;
+    opacity: 0.85;
+  }
+  .flow-arrow {
+    text-align: center;
+    color: var(--gold);
+    font-size: 22px;
+    padding: 8px 0;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+  }
+
+  /* STRENGTH BARS */
+  .strength {
+    display: grid;
+    grid-template-columns: 240px 1fr 60px;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .strength-label {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .strength-bar-bg {
+    height: 24px;
+    background: rgba(26,24,20,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .strength-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--burgundy) 0%, var(--rust) 50%, var(--gold) 70%, var(--olive) 100%);
+  }
+  .strength-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  /* SCORECARD */
+  .scorecard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin: 32px 0;
+  }
+  .score {
+    padding: 28px 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .score-value {
+    font-family: 'Fraunces', serif;
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 0.9;
+    margin-bottom: 8px;
+  }
+  .score-value.burgundy { color: var(--burgundy); }
+  .score-value.blue { color: var(--blue-deep); }
+  .score-value.gold { color: var(--gold); }
+  .score-value.olive { color: var(--olive); }
+  .score-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* SYNTHESIS */
+  .synthesis {
+    padding: 60px 48px;
+    background: var(--ink);
+    color: var(--paper);
+    margin: 60px 0;
+    position: relative;
+  }
+  .synthesis::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--burgundy), var(--gold), var(--blue-deep));
+  }
+  .synthesis h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.05;
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+  }
+  .synthesis h2 em { color: var(--gold-light); font-style: italic; }
+  .synthesis p {
+    font-size: 17.5px;
+    line-height: 1.65;
+    margin-bottom: 16px;
+    max-width: 800px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 2px solid var(--ink);
+    padding: 40px 0 80px;
+    margin-top: 80px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* ANNOTATIONS / MARGINALIA */
+  .anno {
+    background: rgba(201,160,78,0.15);
+    padding: 1px 6px;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 760px) {
+    .container { padding: 0 20px; }
+    .versus-grid { grid-template-columns: 1fr; gap: 0; }
+    .versus-divider { padding: 12px 0; }
+    .compare-table thead th { display: none; }
+    .compare-table tbody td { display: block; padding: 12px 16px; }
+    .compare-table tbody td:first-child {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+    .arg-block { grid-template-columns: 1fr; gap: 12px; }
+    .insight { grid-template-columns: 1fr; gap: 16px; }
+    .strength { grid-template-columns: 1fr; }
+    .synthesis { padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-logo">DAYWAY <span>×</span> CHARAKTERMASKE</div>
+    <div class="masthead-meta">
+      <span>Argumentative Analyse</span>
+      <span>Nationalismus-Debatte</span>
+      <span>2026</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Sozialdemokratie kontra Ableitungsdogmatik</div>
+    <h1>Wenn jeder<br>zum Nationalisten<br><em>erklärt wird</em>,<br>verliert das Wort<br>seine Schärfe.</h1>
+    <p class="hero-deck">
+      Dayway antwortet mit einem sozialdemokratisch-pragmatischen Gegenentwurf auf das GSP-Video von Charaktermaske. Die folgende Analyse seziert beide Seiten – wo Dayway stark argumentiert, wo er rhetorische Geschenke macht, und welche empirischen Werkzeuge ihm fehlen, um den Schlag wirklich sitzen zu lassen.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">Skript</div>
+        <div class="value">~1.880 Wörter</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Position</div>
+        <div class="value">Demokratischer Pragmatismus</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Gegner</div>
+        <div class="value">GSP-Ableitungsdogmatik</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Kernkonflikt</div>
+        <div class="value">Begriff & Praxis</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: KERNTHESE -->
+  <section class="section">
+    <div class="section-num">01 · Die Kernfrage</div>
+    <h2>Zwei Welten,<br>die <em>denselben Begriff</em> benutzen<br>– und etwas völlig anderes meinen.</h2>
+    <p class="section-lead">
+      Karl/GSP dehnt den Nationalismus-Begriff so weit aus, dass jede Identifikation mit einem Staat darunter fällt. Dayway zieht eine Grenze: Nationalismus ist die Überhöhung der Nation – nicht die Forderung nach besseren Schulen. Das ist die Bruchstelle, an der die ganze Debatte hängt.
+    </p>
+
+    <div class="versus-grid">
+      <div class="versus-card gsp">
+        <span class="versus-tag">Charaktermaske / GSP</span>
+        <h3>Nationalismus beginnt da, wo Menschen sich mit dem Staat identifizieren.</h3>
+        <p>Wer sagt „Politik muss für unser Land da sein", ist schon Nationalist – weil er die Bedingung seines Daseins (den Staat) mit dem Inhalt seines Daseins verwechselt. Demokratie ist die perfekte Form bürgerlicher Herrschaft. Verfassungspatriotismus ist nur eine freundlichere Volksgemeinschaft.</p>
+      </div>
+      <div class="versus-divider">vs.</div>
+      <div class="versus-card day">
+        <span class="versus-tag">Dayway · Sozialdemokrat</span>
+        <h3>Nationalismus ist die Überhöhung der Nation zum höchsten Maßstab.</h3>
+        <p>Wer bessere Schulen will, ist kein Nationalist – das ist eine normale Erwartung an Politik. Verfassungspatriotismus heißt: Ich verteidige die demokratischen Werkzeuge (Grundrechte, Wahlen, Gerichte) – nicht eine mystische Nation. Das ist demokratischer Pragmatismus mit sozialem Anspruch.</p>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-icon">!</div>
+      <div class="insight-content">
+        <h4>Das ist kein Streit um Politik. Es ist ein Streit um Begriffsbreite.</h4>
+        <p>
+          Wer den Nationalismus-Begriff so weit aufmacht, dass darunter auch der Acht-Stunden-Tag, die Sozialversicherung und der Anspruch auf bezahlbaren Wohnraum fallen, hat keine schärfere Analyse – er hat einen <span class="anno">Staubsaugerbegriff</span>, der alles einsaugt, was in die eigene Theorie passt. Dayways stärkstes Wort. Trifft direkt ins methodische Zentrum der GSP.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: GRUNDANNAHMEN VERGLEICH -->
+  <section class="section">
+    <div class="section-num">02 · Gegenüberstellung</div>
+    <h2>Die <em>Grundannahmen</em><br>beider Seiten<br>– nebeneinandergelegt.</h2>
+    <p class="section-lead">
+      Jede politische Theorie steht auf einem Fundament von Grundannahmen. Wer die Grundannahmen nicht offenlegt, lässt sich nicht prüfen. Hier sind sie – beide Seiten, gleiches Format, ohne Versteck.
+    </p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Thema</th>
+          <th>Charaktermaske / GSP</th>
+          <th>Dayway</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Menschenbild</td>
+          <td>Menschen handeln aus Eigeninteresse. Das ist die anthropologische Voraussetzung der ganzen Ableitung.</td>
+          <td>Menschen haben konkrete Bedürfnisse (Wohnung, Schule, Pflege). Politik soll diesen dienen, nicht abstrakten Konzepten.</td>
+        </tr>
+        <tr>
+          <td>Staat</td>
+          <td>Idealer Gesamtkapitalist (Engels-Formel, weit überdehnt). Sichert nur die kapitalistische Ordnung, nichts anderes.</td>
+          <td>Werkzeug mit Spielräumen. Nicht neutral, nicht automatisch gut – aber veränderbar. Man kämpft drum, nicht dagegen.</td>
+        </tr>
+        <tr>
+          <td>Demokratie</td>
+          <td>Perfekte Form bürgerlicher Herrschaft. Wahlen ändern nichts Wesentliches.</td>
+          <td>Umkämpftes Terrain. Liefert Werkzeuge: Grundrechte, Wahlen, Parteien, Gerichte, Versammlungsfreiheit.</td>
+        </tr>
+        <tr>
+          <td>Sozialstaat</td>
+          <td>Standortpolitik. Sozialleistungen sichern Arbeitskraft fürs Kapital.</td>
+          <td>Erkämpft. Acht-Stunden-Tag, Kündigungsschutz, Sozialversicherung – nicht vom Himmel gefallen, sondern Resultat realer Klassenkämpfe.</td>
+        </tr>
+        <tr>
+          <td>Nation</td>
+          <td>Kollektive Form des Privateigentums.</td>
+          <td>Pragmatischer Handlungsrahmen. Hier leben Menschen, hier kann ich konkret eingreifen.</td>
+        </tr>
+        <tr>
+          <td>Nationalismus</td>
+          <td>Jede Identifikation mit Staat und Gemeinwesen.</td>
+          <td>Überhöhung der Nation zum höchsten Maßstab (bpb-Definition). Beginnt bei Pflicht, Opfer, Volk, Feindbild.</td>
+        </tr>
+        <tr>
+          <td>Reform</td>
+          <td>Verschleierung der Herrschaft. Stabilisiert das System.</td>
+          <td>Reale Verbesserung im Leben realer Menschen. Mehr Lohn, mehr Rechte, weniger Ausbeutung.</td>
+        </tr>
+        <tr>
+          <td>Praxis</td>
+          <td>Aufklärung. Begriffsableitung. Das System durchschauen.</td>
+          <td>Konkrete Politik. Gemeinden, Stadträte, Landtage, Bundestag. Druck machen, organisieren, gewinnen.</td>
+        </tr>
+        <tr>
+          <td>Erfolgsmaßstab</td>
+          <td>Theoretische Konsistenz. Das System ist erst dann richtig gedacht, wenn es zur Begriffsableitung passt.</td>
+          <td>Was nützt den Menschen? Was schützt ihre Würde? Was macht sie freier, sicherer, weniger abhängig?</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pullquote">
+      Reale Verbesserungen für reale Menschen sind mir mehr wert als perfekte Theorie, die niemandem die Miete bezahlt.
+      <div class="pullquote-attribution">— Dayway</div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: STÄRKEN UND SCHWÄCHEN -->
+  <section class="section">
+    <div class="section-num">03 · Argumentative Bilanz</div>
+    <h2>Wo Dayway <em>trifft</em><br>– und wo er ausweicht.</h2>
+    <p class="section-lead">
+      Acht zentrale Argumente. Bewertet nach Treffsicherheit, empirischer Deckung und rhetorischer Schlagkraft. Grün = robust. Gelb = unterfüttert ausbaufähig. Rot = schwach oder umschifft.
+    </p>
+
+    <div class="arg-block">
+      <div class="arg-number">01</div>
+      <div class="arg-content">
+        <h3>Der Staubsaugerbegriff-Vorwurf</h3>
+        <span class="arg-tag tag-strong">Robust</span>
+        <p>Dayway nennt das beim Namen: Wenn ein Begriff alles einschließt, was in die eigene Theorie passt, dann ist er kein Analyseinstrument mehr, sondern ein rhetorischer Staubsauger. Das trifft direkt ins methodische Zentrum der GSP – und ein GSPler kann dagegen wenig sagen, ohne zuzugeben, dass die Begriffsdehnung Teil der Methode ist.</p>
+        <p><strong>Was fehlt:</strong> Der wissenschaftstheoretische Begriff dafür heißt <em>Pars pro toto</em> – Teil für das Ganze. Wer das benennt, bekommt akademische Deckung.</p>
+      </div>
+    </div>
+
+    <div class="arg-block">
+      <div class="arg-number">02</div>
+      <div class="arg-content">
+        <h3>Die bpb-Definition als Anker</h3>
+        <span class="arg-tag tag-strong">Robust</span>
+        <p>Dayway holt die Definition der Bundeszentrale für politische Bildung herein: Nationalismus bedeutet Überhöhung der eigenen Nation. Damit setzt er einen <span class="anno">externen Anker</span> gegen die GSP-interne Begriffsbreite. Das ist der entscheidende Schachzug – weil die GSP keine externe Quelle akzeptiert, ist sie an dieser Stelle wehrlos.</p>
+        <p><strong>Was fehlt:</strong> Die akademische Nationalismusforschung selbst – Anderson, Gellner, Hobsbawm, Smith, Brubaker. Vier bis fünf Namen würden den Anker betonieren.</p>
+      </div>
+    </div>
+
+    <div class="arg-block">
+      <div class="arg-number">03</div>
+      <div class="arg-content">
+        <h3>Verfassungspatriotismus statt Nation</h3>
+        <span class="arg-tag tag-gap">Stark, aber unausgeschöpft</span>
+        <p>Dayway grenzt sich klar ab: Er verteidigt nicht die Nation, sondern die demokratischen Werkzeuge – Grundrechte, Wahlen, Gerichte. Das ist genau der Punkt, an dem Karls Video kollabiert: Verfassungspatriotismus IST die Alternative, die das Video als nicht existent behandelt.</p>
+        <p><strong>Was fehlt:</strong> Der Begriff <em>Verfassungspatriotismus</em> stammt von Dolf Sternberger (1979) und wurde von Jürgen Habermas systematisch ausgearbeitet. Mit diesen zwei Namen wird aus einem Bauchgefühl eine gut etablierte politische Theorie.</p>
+      </div>
+    </div>
+
+    <div class="arg-block">
+      <div class="arg-number">04</div>
+      <div class="arg-content">
+        <h3>Klassenkampf-Errungenschaften</h3>
+        <span class="arg-tag tag-strong">Robust und konkret</span>
+        <p>Acht-Stunden-Tag. Tarifverträge. Kündigungsschutz. Sozialversicherung. Mitbestimmung. Dayway zählt auf, was die GSP als "Systemstabilisierung" abtut – und macht damit sichtbar, wie absurd diese Reduktion ist. Wenn der Acht-Stunden-Tag eine kapitalistische Falle ist, was wäre dann die Befreiung?</p>
+        <p><strong>Was fehlt:</strong> Walter Korpis Machtressourcentheorie. Sie erklärt empirisch, warum manche Länder bessere Sozialstaaten haben – nämlich dort, wo Arbeiterbewegungen stark organisiert waren. Das ist marxistisch nahe und empirisch hart.</p>
+      </div>
+    </div>
+
+    <div class="arg-block">
+      <div class="arg-number">05</div>
+      <div class="arg-content">
+        <h3>AfD-Ursachenanalyse</h3>
+        <span class="arg-tag tag-strong">Robust</span>
+        <p>Dayway dreht den Spieß um: Die AfD wächst nicht, weil Schulen funktionieren – sie wächst, weil reale Probleme nicht gelöst werden. Aus Wohnungsnot wird "Die Ausländer nehmen euch die Wohnungen weg". Das ist eine bessere Analyse, weil sie die kausale Richtung richtig stellt.</p>
+        <p><strong>Was fehlt:</strong> Cas Mudde hat empirisch gezeigt, dass rechtspopulistische Parteien dort wachsen, wo Volksparteien soziale Versprechen brechen. Ein Name würde diese These untermauern.</p>
+      </div>
+    </div>
+
+    <div class="arg-block">
+      <div class="arg-number">06</div>
+      <div class="arg-content">
+        <h3>Politische Ebenen als Realität</h3>
+        <span class="arg-tag tag-gap">Pragmatisch stark, theoretisch unterausgebaut</span>
+        <p>Dayway erinnert daran, dass Politik in konkreten Strukturen stattfindet – Gemeinden, Landtage, Bundestag, Europaparlament. Wer Nationalstaaten ignoriert, weil er sie "doof" findet, überlässt die Institutionen denen, die sie gegen Menschen nutzen.</p>
+        <p><strong>Was fehlt:</strong> Erik Olin Wrights <em>Envisioning Real Utopias</em> liefert genau diesen Realismus marxistisch fundiert – Veränderung passiert über Interstitielles, Symbiotisches und Rupturales, nicht nur über Letzteres.</p>
+      </div>
+    </div>
+
+    <div class="arg-block">
+      <div class="arg-number">07</div>
+      <div class="arg-content">
+        <h3>Kapitalismus an die Leine</h3>
+        <span class="arg-tag tag-strong">Schlagkräftig</span>
+        <p>"Der Markt regelt vieles eben nicht. Der Markt baut keine bezahlbaren Wohnungen, wenn Luxuswohnungen mehr Rendite bringen." Dayway zeigt: Er ist kein Marktradikaler. Damit nimmt er der GSP den Vorwurf, demokratischer Pragmatismus sei nur verkappter Neoliberalismus.</p>
+        <p><strong>Was fehlt:</strong> Konkrete Zahlen. Schweden vs. USA: Kinderarmut 4% vs. 20%. Lebenserwartung 83 vs. 77. Das sind harte Daten, die Esping-Andersen geliefert hat.</p>
+      </div>
+    </div>
+
+    <div class="arg-block">
+      <div class="arg-number">08</div>
+      <div class="arg-content">
+        <h3>Persönlicher Spitzenangriff am Ende</h3>
+        <span class="arg-tag tag-weak">Rhetorisch riskant</span>
+        <p>"Wer weit weg lebt und viel Geld hat, der muss sich nicht mit realpolitischen Problemen auseinandersetzen." Das ist die einzige Stelle, an der Dayway persönlich wird. In einem ansonsten methodisch sauberen Beitrag schwächt das den Gesamteindruck – weil GSP-Anhänger genau hier einhaken werden: "Ad hominem".</p>
+        <p><strong>Empfehlung:</strong> Streichen oder durch eine sachliche Kritik der Praxislosigkeit ersetzen. 40 Jahre GSP-Tradition, null Bewegung, null Programm – das wirkt stärker als ein Seitenhieb auf Lebensumstände.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: ARGUMENTATIONS-FLOW -->
+  <section class="section">
+    <div class="section-num">04 · Argumentationsfluss</div>
+    <h2>Dayways <em>Argumentationskette</em>,<br>auf einer Seite.</h2>
+    <p class="section-lead">
+      Wie der Text aufgebaut ist – und warum die Reihenfolge funktioniert.
+    </p>
+
+    <div class="flow">
+      <div class="flow-step start">
+        <h5>EINSTIEG · Provokation</h5>
+        <p>"Du scheiß Nationalist" – die These des Karl-Videos auf eine Zeile gebracht. Reductio ad absurdum als Einstieg.</p>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <h5>BEGRIFFSARBEIT · bpb-Definition</h5>
+        <p>Externe Quelle als Anker gegen GSP-interne Begriffsbreite. Damit ist der Staubsaugerbegriff entlarvt.</p>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <h5>EIGENE POSITION · Verfassungspatriotismus</h5>
+        <p>Demokratische Werkzeuge statt mystische Nation. Differenzierung statt Kollaps.</p>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <h5>HISTORISCHER BELEG · Klassenkampf-Errungenschaften</h5>
+        <p>Acht-Stunden-Tag, Tarifverträge, Sozialversicherung – konkret, real, erkämpft.</p>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <h5>GEGENANALYSE · AfD-Ursachen</h5>
+        <p>Die AfD wächst nicht, weil Politik funktioniert, sondern weil sie versagt. Kausale Umkehrung.</p>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step end">
+        <h5>SCHLUSS · Demokratischer Pragmatismus</h5>
+        <p>Menschen zuerst. Demokratie als Werkzeug. Kapitalismus an die Leine. Das ist die Position.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: SCORECARD -->
+  <section class="section">
+    <div class="section-num">05 · Scorecard</div>
+    <h2>Wie stark steht das Skript<br>einer <em>harten Prüfung</em> stand?</h2>
+
+    <div class="scorecard">
+      <div class="score">
+        <div class="score-value blue">8/10</div>
+        <div class="score-label">Begriffsschärfe</div>
+      </div>
+      <div class="score">
+        <div class="score-value blue">7/10</div>
+        <div class="score-label">Argumentations-<br>struktur</div>
+      </div>
+      <div class="score">
+        <div class="score-value gold">5/10</div>
+        <div class="score-label">Empirische<br>Untermauerung</div>
+      </div>
+      <div class="score">
+        <div class="score-value gold">5/10</div>
+        <div class="score-label">Quellenarbeit</div>
+      </div>
+      <div class="score">
+        <div class="score-value blue">8/10</div>
+        <div class="score-label">Rhetorische<br>Schlagkraft</div>
+      </div>
+      <div class="score">
+        <div class="score-value olive">9/10</div>
+        <div class="score-label">Methodische<br>Eigenständigkeit</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <div class="strength">
+        <div class="strength-label">Begriffsschärfe</div>
+        <div class="strength-bar-bg"><div class="strength-bar-fill" style="width: 80%;"></div></div>
+        <div class="strength-value">80%</div>
+      </div>
+      <div class="strength">
+        <div class="strength-label">Empirische Deckung</div>
+        <div class="strength-bar-bg"><div class="strength-bar-fill" style="width: 50%;"></div></div>
+        <div class="strength-value">50%</div>
+      </div>
+      <div class="strength">
+        <div class="strength-label">Akademische Verankerung</div>
+        <div class="strength-bar-bg"><div class="strength-bar-fill" style="width: 30%;"></div></div>
+        <div class="strength-value">30%</div>
+      </div>
+      <div class="strength">
+        <div class="strength-label">Methodische Kritik</div>
+        <div class="strength-bar-bg"><div class="strength-bar-fill" style="width: 65%;"></div></div>
+        <div class="strength-value">65%</div>
+      </div>
+      <div class="strength">
+        <div class="strength-label">Rhetorischer Anschluss</div>
+        <div class="strength-bar-bg"><div class="strength-bar-fill" style="width: 85%;"></div></div>
+        <div class="strength-value">85%</div>
+      </div>
+      <div class="strength">
+        <div class="strength-label">Praktische Relevanz</div>
+        <div class="strength-bar-bg"><div class="strength-bar-fill" style="width: 90%;"></div></div>
+        <div class="strength-value">90%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: OPTIMIERUNGEN -->
+  <section class="section">
+    <div class="section-num">06 · Optimierungs-Vorschläge</div>
+    <h2>Zehn Schrauben,<br>an denen sich Dayways Skript<br><em>härter machen</em> lässt.</h2>
+    <p class="section-lead">
+      Das Skript ist rhetorisch stark. Was es weniger angreifbar macht, sind externe Anker – Forschungsnamen, Zahlen, Belege. Hier die zehn konkreten Stellen, an denen sich mit minimalem Aufwand maximale Härte gewinnen lässt.
+    </p>
+
+    <div class="opt-grid">
+
+      <div class="opt-card">
+        <div class="opt-card-num">01</div>
+        <h4>Nationalismus-Definition mit Fachforschung untermauern</h4>
+        <div class="opt-problem">Schwachstelle · Nur bpb als Quelle</div>
+        <p class="opt-fix">Die akademische Standarddefinition kommt von vier Namen: Benedict Anderson (Imagined Communities, 1983), Ernest Gellner (Nations and Nationalism, 1983), Eric Hobsbawm (Nations and Nationalism since 1780, 1990) und Anthony Smith (Ethnosymbolismus). Wer diese vier nennt, hat akademisches Beton unter den Füßen.</p>
+        <div class="opt-source">→ "Die Standarddefinition von Anderson bis Hobsbawm widerspricht der GSP-Begriffsbreite."</div>
+      </div>
+
+      <div class="opt-card">
+        <div class="opt-card-num">02</div>
+        <h4>Verfassungspatriotismus historisch verorten</h4>
+        <div class="opt-problem">Schwachstelle · Wirkt wie Bauchgefühl</div>
+        <p class="opt-fix">Dolf Sternberger hat den Begriff 1979 geprägt, Jürgen Habermas hat ihn systematisch ausgearbeitet – als Antwort auf die deutsche Vergangenheit. Damit hat man eine 45 Jahre alte, akademisch etablierte Tradition, nicht nur eine persönliche Position.</p>
+        <div class="opt-source">→ "Sternberger 1979, Habermas 1986 – das ist nicht meine Erfindung, das ist Standardtheorie."</div>
+      </div>
+
+      <div class="opt-card">
+        <div class="opt-card-num">03</div>
+        <h4>Sozialstaats-Differenz empirisch belegen</h4>
+        <div class="opt-problem">Schwachstelle · Behauptung ohne Zahlen</div>
+        <p class="opt-fix">Gøsta Esping-Andersen (1990) hat drei Sozialstaatswelten empirisch nachgewiesen. Konkrete Zahlen: Kinderarmut USA 20%, Schweden 4%. Lebenserwartung USA 77, Schweden 83. Wenn der Sozialstaat nur Standortpolitik wäre, dürften diese Unterschiede nicht existieren.</p>
+        <div class="opt-source">→ Esping-Andersen, Three Worlds of Welfare Capitalism, 1990</div>
+      </div>
+
+      <div class="opt-card">
+        <div class="opt-card-num">04</div>
+        <h4>Klassenkampf-Errungenschaften mit Korpi unterfüttern</h4>
+        <div class="opt-problem">Schwachstelle · Anekdotische Aufzählung</div>
+        <p class="opt-fix">Walter Korpi hat die Machtressourcentheorie entwickelt: Wo Arbeiterbewegungen organisatorisch stark sind, setzen sie bessere Rechte durch. Das erklärt, warum Schweden bessere Arbeitsbedingungen hat als die USA – nicht durch Zufall, sondern durch organisierte Klassenmacht.</p>
+        <div class="opt-source">→ Korpi, The Democratic Class Struggle, 1983</div>
+      </div>
+
+      <div class="opt-card">
+        <div class="opt-card-num">05</div>
+        <h4>GSP-Methode beim Namen nennen</h4>
+        <div class="opt-problem">Lücke · Methodenkritik nicht systematisch</div>
+        <p class="opt-fix">Das, was Karl macht, hat einen Namen: Ableitungsdogmatik. Aus wenigen axiomatischen Setzungen wird logisch deduktiv ein Totalsystem abgeleitet, das keine Empirie braucht und keine Falsifikation zulässt. Strukturell identisch mit Ayn Rands Objektivismus – nur mit umgekehrtem Vorzeichen.</p>
+        <div class="opt-source">→ "Methodisch identisch mit Ayn Rand: axiomatisch-deduktives Totalsystem ohne Empirie."</div>
+      </div>
+
+      <div class="opt-card">
+        <div class="opt-card-num">06</div>
+        <h4>Demokratischer Frieden als empirischer Hammer</h4>
+        <div class="opt-problem">Schwachstelle · Demokratie-These nur normativ</div>
+        <p class="opt-fix">Bruce Russett hat 1993 mit über 200 Jahren Daten gezeigt: Demokratien führen untereinander praktisch keinen Krieg. Das ist einer der robustesten Befunde der Politikwissenschaft. Wenn Demokratie nur Herrschaftsverhältnis wäre, dürfte dieser Befund nicht existieren.</p>
+        <div class="opt-source">→ Russett, Grasping the Democratic Peace, 1993</div>
+      </div>
+
+      <div class="opt-card">
+        <div class="opt-card-num">07</div>
+        <h4>Engels-Nebensatz aufdecken</h4>
+        <div class="opt-problem">Lücke · GSP-Staatstheorie nicht zerlegt</div>
+        <p class="opt-fix">"Der Staat ist idealer Gesamtkapitalist" – diese Formel stammt nicht von Marx, sondern von Engels (Anti-Dühring, 1878). Engels beobachtete Bismarcks Eisenbahnverstaatlichungen in Preußen. Aus einer Beobachtung an einem Land hat die GSP eine Universaltheorie für alle Staaten weltweit gemacht. Das ist methodisch nicht haltbar.</p>
+        <div class="opt-source">→ Poulantzas hat empirisch gezeigt: Der Staat ist relativ autonom, nicht reines Kapitalinstrument.</div>
+      </div>
+
+      <div class="opt-card">
+        <div class="opt-card-num">08</div>
+        <h4>Wright statt entweder/oder</h4>
+        <div class="opt-problem">Lücke · Theoretische Alternative ohne Namen</div>
+        <p class="opt-fix">Erik Olin Wright (Envisioning Real Utopias, 2010) hat als Marxist gezeigt: Transformation passiert über drei Wege – interstitiell (Nischen), symbiotisch (durch Institutionen) und rupturell (revolutionär). Wer nur den dritten Weg gelten lässt, ignoriert empirisch funktionierende Alternativen.</p>
+        <div class="opt-source">→ "Realistische Utopien existieren – siehe Genossenschaften, Commons, Mondragón."</div>
+      </div>
+
+      <div class="opt-card">
+        <div class="opt-card-num">09</div>
+        <h4>Persönlichen Spitzenangriff streichen</h4>
+        <div class="opt-problem">Schwachstelle · Ad-hominem-Einfallstor</div>
+        <p class="opt-fix">"Wer weit weg lebt und viel Geld hat..." ist die einzige Stelle, an der das Skript persönlich wird. Streichen oder durch einen sachlichen Befund ersetzen: "40 Jahre GSP-Tradition, null Bewegung, null Programm, keine Revision einer einzigen zentralen These." Das trifft härter, weil es nicht angreifbar ist.</p>
+        <div class="opt-source">→ Methode statt Person angreifen. Sicherer und schärfer.</div>
+      </div>
+
+      <div class="opt-card">
+        <div class="opt-card-num">10</div>
+        <h4>Pars pro toto beim Namen nennen</h4>
+        <div class="opt-problem">Lücke · Staubsaugerbegriff hat akademisches Gegenstück</div>
+        <p class="opt-fix">"Staubsaugerbegriff" ist rhetorisch brillant, aber der Fachbegriff dafür ist <em>Pars pro toto</em> – Teil für das Ganze. Wer das benennt, gewinnt akademische Deckung und kann sagen: "Die GSP-Methode ist ein klassischer Pars-pro-toto-Fehler. Eine Dimension wird zur einzigen erklärt." Das hält jeder Prüfung stand.</p>
+        <div class="opt-source">→ Wissenschaftstheoretisch belegt und unangreifbar.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 7: AHA-MOMENTE -->
+  <section class="section">
+    <div class="section-num">07 · Tiefere Einsichten</div>
+    <h2>Was bei genauerem Hinsehen<br><em>noch sichtbar</em> wird.</h2>
+    <p class="section-lead">
+      Über die direkte Argumentation hinaus – fünf strukturelle Beobachtungen, die das Bild kompletter machen.
+    </p>
+
+    <div class="insight">
+      <div class="insight-icon">α</div>
+      <div class="insight-content">
+        <h4>Dayway argumentiert wie ein Schreiner. Karl wie ein Architekt im Elfenbeinturm.</h4>
+        <p>Dayway redet ständig von konkreten Werkzeugen: Schulen, Mieten, Pflege, Acht-Stunden-Tag. Karl redet von Begriffen: Ableitung, Privatexistenz, ideeller Gesamtkapitalist. Das ist nicht nur stilistisch unterschiedlich – das ist die Methodendifferenz: <span class="anno">Handwerk gegen Geometrie</span>. Wer ein Haus bauen will, braucht beides. Wer Politik machen will, kommt mit reiner Geometrie nicht weit.</p>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-icon">β</div>
+      <div class="insight-content">
+        <h4>Die GSP kann das Skandinavien-Argument nicht erklären.</h4>
+        <p>Schweden, Dänemark, Norwegen, Finnland haben hohen demokratischen Stolz, starke Sozialstaaten und – was die GSP-These widerlegt – messbar bessere Lebensbedingungen als die USA. Wenn der Sozialstaat nur Standortpolitik wäre, dürften diese Unterschiede nicht existieren. Dayway hat diesen Punkt nicht explizit, aber die Argumentation läuft darauf hinaus: <span class="anno">Real existierende Sozialdemokratie</span> ist das stärkste Gegenargument zur GSP-Reduktion. Karl hat darauf keine Antwort.</p>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-icon">γ</div>
+      <div class="insight-content">
+        <h4>Karl moralisiert genau das, was er kritisiert.</h4>
+        <p>Das Karl-Video kritisiert moralisches Denken als nationalistische Denkform. Aber das Video selbst funktioniert moralisch: Wer sich identifiziert, ist Idiot der Herrschaft. Wer reformiert, stabilisiert. Wer wählt, ist Komplize. Das ist nicht Analyse, das ist <span class="anno">moralische Hierarchie mit umgekehrtem Vorzeichen</span>. Dayway erkennt das instinktiv – wenn er sagt "Aber davon wird keine Miete günstiger", entzieht er der moralischen Pose ihre Grundlage.</p>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-icon">δ</div>
+      <div class="insight-content">
+        <h4>Die Sozialdemokratie ist in einer komischen Position.</h4>
+        <p>Sie wird gleichzeitig von rechts und von links als das eigentliche Problem benannt. Rechts: "Ihr habt das Land verkauft." Links: "Ihr habt das System stabilisiert." Beide Anklagen funktionieren strukturell ähnlich – die Sozialdemokratie ist immer schuld an irgendwas. Dayways Antwort darauf ist überraschend stark: Sie hat <span class="anno">konkrete Verbesserungen erkämpft</span>. Acht-Stunden-Tag, Sozialversicherung, Mitbestimmung. Wer das wegredet, redet Millionen Lebensbiographien weg.</p>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-icon">ε</div>
+      <div class="insight-content">
+        <h4>Die größte Lücke ist nicht inhaltlich – sondern strukturell.</h4>
+        <p>Dayways Skript hat null externe Quellen. Keine Forschernamen, keine Studien, keine Daten. Das ist nicht schlimm für ein YouTube-Video, aber es ist ein offenes Tor für GSPler, die sagen können: "Wo sind deine Belege?" Drei Namen würden reichen, um dieses Tor zu schließen: Habermas (Verfassungspatriotismus), Esping-Andersen (Sozialstaat), Anderson (Nation). Mit diesen drei Namen wird aus einem persönlichen Statement eine <span class="anno">akademisch verankerte Position</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYNTHESIS -->
+  <section class="synthesis">
+    <h2>Die <em>eigentliche Trennlinie</em><br>verläuft nicht zwischen links und rechts.</h2>
+    <p>
+      Sie verläuft zwischen Theorien, die mit der Realität rechnen, und Theorien, die mit der Realität nichts mehr zu tun haben wollen, weil sie ihr eigenes inneres Begriffsspiel inzwischen für die Wirklichkeit halten.
+    </p>
+    <p>
+      Karl/GSP gehört zu Letzteren. Eine elegant gebaute Begriffsableitung, die jede empirische Widerlegung als bürgerlichen Einwand abwehren kann. Dayway gehört zu Ersteren. Eine vielleicht weniger elegante, aber an konkreten Lebenslagen orientierte Position, die im Zweifel die Theorie ändert, wenn die Wirklichkeit nicht passt.
+    </p>
+    <p>
+      Beides hat Stärken. Aber nur eines hat in den letzten 150 Jahren reale Verbesserungen für Millionen Menschen produziert. Das ist nicht zu wenig. Das ist das, was am Ende zählt.
+    </p>
+    <p style="margin-top: 36px; font-family: 'Fraunces', serif; font-size: 22px; font-style: italic; color: var(--gold-light);">
+      "Reale Verbesserungen für reale Menschen sind mir mehr wert als perfekte Theorie, die niemandem die Miete bezahlt."
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>Analyse · Dayway × Charaktermaske · 2026</div>
+    <div>Methodisch gestützt auf D22a–D22d</div>
+    <div>Keine Werbung · Keine Sekte · Keine Begriffsableitung</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
