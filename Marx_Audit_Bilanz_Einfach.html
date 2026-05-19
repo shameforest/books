@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Was hat der Marxismus wirklich geleistet? — Eine Bilanz von 117 Maßnahmen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ========== DESIGN TOKENS ========== */
+  :root {
+    /* Editorial paper palette */
+    --paper: #F5F0E6;
+    --paper-deep: #EAE2D2;
+    --ink: #1A1410;
+    --ink-soft: #3D3530;
+    --ink-muted: #6B5D52;
+    --rule: #C9BEA8;
+
+    /* Verdict semantics (kräftig, druckähnlich) */
+    --green: #2E6B3D;
+    --green-soft: #DDE9DC;
+    --yellow: #B58A1F;
+    --yellow-soft: #F4E9CB;
+    --red: #8B2A1F;
+    --red-soft: #F0DAD1;
+    --grey: #6B6660;
+    --grey-soft: #DAD4CA;
+
+    /* Accent (Cover red) */
+    --accent: #8B1A1A;
+    --accent-deep: #5C1212;
+
+    /* Type */
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'Source Sans 3', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+
+    /* Layout */
+    --maxw: 1180px;
+    --textw: 720px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(139,26,26,0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(46,107,61,0.02) 0%, transparent 50%);
+  }
+
+  /* Subtle paper grain */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ========== TYPOGRAPHY ========== */
+  h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; line-height: 1.15; color: var(--ink); margin: 0; }
+  h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.02em; }
+  h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 700; letter-spacing: -0.01em; }
+  h4 { font-size: 1.2rem; font-weight: 600; }
+  p { margin: 0 0 1em 0; }
+
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+  .text-col { max-width: var(--textw); margin: 0 auto; }
+
+  /* ========== HERO ========== */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(40px, 8vw, 100px) 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at top right, rgba(139,26,26,0.3) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero .container { position: relative; z-index: 2; }
+  .hero-kicker {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #D4A574;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-kicker::after { content: ""; flex: 1; height: 1px; background: rgba(212,165,116,0.3); }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(2.4rem, 6.5vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+    margin-bottom: 28px;
+    color: var(--paper);
+  }
+  .hero h1 em { font-style: italic; color: #E8C49E; font-weight: 500; }
+  .hero-lead {
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    line-height: 1.55;
+    color: rgba(245,240,230,0.85);
+    max-width: 720px;
+    font-weight: 300;
+  }
+  .hero-lead strong { color: var(--paper); font-weight: 600; }
+
+  .hero-meta {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 60px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(245,240,230,0.15);
+    font-family: var(--mono);
+    font-size: 0.82rem;
+  }
+  .hero-meta div { color: rgba(245,240,230,0.6); }
+  .hero-meta strong { display: block; color: var(--paper); font-size: 1.6rem; font-family: var(--display); font-weight: 700; margin-bottom: 4px; }
+
+  /* ========== TLDR BOX ========== */
+  .tldr {
+    background: var(--paper-deep);
+    border-left: 6px solid var(--accent);
+    padding: 32px 36px;
+    margin: 60px auto;
+    max-width: 920px;
+    position: relative;
+  }
+  .tldr-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .tldr h3 { margin-bottom: 14px; }
+  .tldr p { font-size: 1.05rem; color: var(--ink-soft); }
+  .tldr p:last-child { margin-bottom: 0; }
+
+  /* ========== SECTIONS ========== */
+  section { padding: 64px 0; position: relative; }
+  section.alt { background: var(--paper-deep); }
+  .section-kicker {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-kicker::before { content: "§"; font-family: var(--display); font-style: italic; font-size: 1.3em; color: var(--accent); }
+  .section-intro { max-width: var(--textw); margin: 0 auto 50px; }
+  .section-intro p { font-size: 1.1rem; color: var(--ink-soft); }
+
+  /* ========== BIG NUMBERS ========== */
+  .big-numbers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .big-num {
+    padding: 28px 24px;
+    background: var(--paper);
+    border: 2px solid var(--rule);
+    position: relative;
+  }
+  .big-num.green { border-color: var(--green); background: var(--green-soft); }
+  .big-num.yellow { border-color: var(--yellow); background: var(--yellow-soft); }
+  .big-num.red { border-color: var(--red); background: var(--red-soft); }
+  .big-num.grey { border-color: var(--grey); background: var(--grey-soft); }
+  .big-num .pct {
+    font-family: var(--display);
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+  }
+  .big-num.green .pct { color: var(--green); }
+  .big-num.yellow .pct { color: var(--yellow); }
+  .big-num.red .pct { color: var(--red); }
+  .big-num.grey .pct { color: var(--grey); }
+  .big-num .count {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    margin-top: 4px;
+  }
+  .big-num h4 {
+    margin-top: 12px;
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  .big-num p {
+    margin-top: 6px;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* ========== CLUSTER BARS ========== */
+  .cluster-chart {
+    background: var(--paper);
+    padding: 32px;
+    border: 1px solid var(--rule);
+  }
+  .cluster-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 120px;
+    gap: 20px;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .cluster-row:last-child { border-bottom: none; }
+  .cluster-name { font-weight: 600; font-size: 0.98rem; }
+  .cluster-name small { display: block; color: var(--ink-muted); font-weight: 400; font-size: 0.78rem; margin-top: 2px; }
+  .cluster-bar {
+    display: flex;
+    height: 28px;
+    border-radius: 2px;
+    overflow: hidden;
+    background: var(--paper-deep);
+  }
+  .cluster-bar span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: white;
+    transition: filter 0.2s;
+  }
+  .cluster-bar span:hover { filter: brightness(1.15); }
+  .cluster-bar .b-green { background: var(--green); }
+  .cluster-bar .b-yellow { background: var(--yellow); color: white; }
+  .cluster-bar .b-red { background: var(--red); }
+  .cluster-bar .b-grey { background: var(--grey); }
+  .cluster-totals {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    text-align: right;
+  }
+
+  /* ========== FINDING CARDS ========== */
+  .findings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .finding {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 28px;
+    position: relative;
+  }
+  .finding-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .finding h4 { margin-bottom: 10px; font-size: 1.25rem; line-height: 1.25; }
+  .finding p { font-size: 0.97rem; color: var(--ink-soft); line-height: 1.6; }
+
+  /* ========== PRO/CONTRA BOX ========== */
+  .pro-contra {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+  @media (max-width: 720px) { .pro-contra { grid-template-columns: 1fr; } }
+  .col-pro, .col-contra {
+    padding: 32px;
+    border: 2px solid;
+  }
+  .col-pro { border-color: var(--green); background: var(--green-soft); }
+  .col-contra { border-color: var(--red); background: var(--red-soft); }
+  .col-pro h3, .col-contra h3 { margin-bottom: 8px; }
+  .col-pro h3 { color: var(--green); }
+  .col-contra h3 { color: var(--red); }
+  .col-pro .sub, .col-contra .sub { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; opacity: 0.7; }
+  .col-pro ul, .col-contra ul { list-style: none; padding: 0; margin: 0; }
+  .col-pro li, .col-contra li {
+    padding: 14px 0;
+    border-bottom: 1px dashed currentColor;
+    border-bottom-color: rgba(0,0,0,0.15);
+    font-size: 0.98rem;
+  }
+  .col-pro li:last-child, .col-contra li:last-child { border-bottom: none; }
+  .col-pro li strong, .col-contra li strong { display: block; font-family: var(--display); font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+
+  /* ========== BERNSTEIN VS LENIN ========== */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 32px;
+    align-items: center;
+    margin: 40px 0;
+  }
+  @media (max-width: 720px) { .compare { grid-template-columns: 1fr; } .compare-vs { transform: rotate(90deg); } }
+  .compare-col {
+    padding: 32px;
+    background: var(--paper);
+    border-top: 6px solid;
+  }
+  .compare-col.evol { border-color: var(--green); }
+  .compare-col.revol { border-color: var(--red); }
+  .compare-col h3 { margin-bottom: 4px; }
+  .compare-col .country { font-family: var(--mono); font-size: 0.9rem; color: var(--ink-muted); margin-bottom: 20px; }
+  .compare-stat {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: baseline;
+    font-size: 0.93rem;
+  }
+  .compare-stat:last-child { border-bottom: none; }
+  .compare-stat .val { font-family: var(--mono); font-weight: 700; }
+  .compare-stat .val.good { color: var(--green); }
+  .compare-stat .val.bad { color: var(--red); }
+  .compare-vs {
+    font-family: var(--display);
+    font-size: 2.5rem;
+    font-style: italic;
+    font-weight: 900;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+
+  /* ========== GLOSSARY ========== */
+  .glossary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .gloss-term {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 22px;
+  }
+  .gloss-term dt {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .gloss-term dt small { display: block; font-family: var(--mono); font-size: 0.7rem; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; font-style: normal; font-weight: 500; }
+  .gloss-term dd { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.55; margin: 0; }
+  .gloss-term dd em { color: var(--ink-muted); font-style: italic; }
+
+  /* ========== METHOD/LIMITS ========== */
+  .limits {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 64px 0;
+  }
+  .limits h2 { color: var(--paper); }
+  .limits .section-kicker { color: #E8C49E; }
+  .limits .section-kicker::before { color: #E8C49E; }
+  .limits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 36px;
+  }
+  .limit-card {
+    padding: 24px;
+    background: rgba(245,240,230,0.05);
+    border-left: 3px solid #D4A574;
+  }
+  .limit-card h4 { color: var(--paper); margin-bottom: 8px; font-size: 1.05rem; }
+  .limit-card p { font-size: 0.92rem; color: rgba(245,240,230,0.75); line-height: 1.55; margin: 0; }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,230,0.7);
+    padding: 50px 0 36px;
+    font-size: 0.9rem;
+  }
+  footer h4 { color: var(--paper); margin-bottom: 12px; font-size: 1rem; }
+  footer p { line-height: 1.6; }
+  footer .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    margin-bottom: 36px;
+  }
+  footer .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid rgba(245,240,230,0.15);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: rgba(245,240,230,0.4);
+    text-align: center;
+  }
+
+  /* ========== TOC ========== */
+  .toc {
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    background: rgba(245,240,230,0.95);
+  }
+  .toc-inner {
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .toc a {
+    color: var(--ink-muted);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ========== INLINE GLOSS ========== */
+  .gloss {
+    border-bottom: 1px dashed var(--accent);
+    cursor: help;
+    color: var(--accent);
+    font-weight: 600;
+    position: relative;
+  }
+  .gloss:hover::after {
+    content: attr(data-def);
+    position: absolute;
+    bottom: 125%;
+    left: 0;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    font-weight: 400;
+    width: 280px;
+    z-index: 10;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+
+  /* Pull-quote */
+  .pullq {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.3;
+    color: var(--accent);
+    border-left: 4px solid var(--accent);
+    padding: 8px 24px;
+    margin: 40px 0;
+    max-width: 700px;
+  }
+  .pullq cite {
+    display: block;
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* small */
+  .small { font-size: 0.85rem; color: var(--ink-muted); }
+</style>
+</head>
+
+<body>
+
+<!-- ============================================ -->
+<!-- HERO -->
+<!-- ============================================ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-kicker">Sonder-Report · Bilanz · Mai 2026</div>
+    <h1>Was hat der Marxismus <em>wirklich</em><br>geleistet?</h1>
+    <p class="hero-lead">
+      Eine systematische Bilanz von <strong>117 politischen Maßnahmen und praktischen Ideen</strong>, die Marxisten vorgeschlagen oder in sozialistischen Staaten umgesetzt haben — geprüft daran, ob sie hielten, was sie versprachen.
+    </p>
+
+    <div class="hero-meta">
+      <div><strong>117</strong>Maßnahmen geprüft</div>
+      <div><strong>12</strong>Themen-Cluster</div>
+      <div><strong>5</strong>akademische Hauptquellen</div>
+      <div><strong>1917–2026</strong>Untersuchungs-Zeitraum</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================ -->
+<!-- TOC -->
+<!-- ============================================ -->
+<nav class="toc">
+  <div class="container">
+    <div class="toc-inner">
+      <a href="#bilanz">Die Bilanz</a>
+      <a href="#cluster">12 Themen</a>
+      <a href="#lehren">Sieben Lehren</a>
+      <a href="#was-klappt">Was klappt</a>
+      <a href="#was-nicht">Was scheitert</a>
+      <a href="#schweden-russland">Schweden vs. Russland</a>
+      <a href="#glossar">Begriffe erklärt</a>
+      <a href="#grenzen">Grenzen dieser Studie</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================ -->
+<!-- TL;DR -->
+<!-- ============================================ -->
+<div class="container">
+  <div class="tldr">
+    <div class="tldr-label">Das Wichtigste in 60 Sekunden</div>
+    <h3>Die Bilanz ist nicht einfach</h3>
+    <p>
+      Der Marxismus hat <strong>nicht generell versagt</strong>. Er war auch <strong>kein generaler Erfolg</strong>. Die Wahrheit liegt in den Details: <strong>Capability-Investitionen</strong> (Bildung, Gesundheit, Sozialleistungen) haben breit funktioniert. <strong>Autoritäre Macht-Konzentration</strong> (Geheimpolizei, Einparteienherrschaft, Zwangs-Kollektivierung) hat strukturell versagt — oft mit Millionen Toten.
+    </p>
+    <p>
+      Die wichtigste Einzelerkenntnis: <strong>Schweden hat ohne Bürgerkrieg erreicht, was Russland mit 7–12 Millionen Bürgerkriegs-Toten und vier weiteren Millionen in einer künstlichen Hungersnot zu erreichen versuchte.</strong> Die <span class="gloss" data-def="Eduard Bernstein (1850-1932), sozialdemokratischer Theoretiker. Vertrat: Sozialismus durch Wahlen und schrittweise Reform, nicht durch Revolution.">Bernstein-Linie</span> (friedlich, parlamentarisch) hat in der Empirie besser geliefert als die Lenin-Linie (revolutionär).
+    </p>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- BILANZ -->
+<!-- ============================================ -->
+<section id="bilanz">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Die Hauptbilanz</div>
+      <h2>117 Maßnahmen, vier Bewertungen</h2>
+      <p>
+        Jede der 117 Maßnahmen wurde anhand des gleichen Schemas geprüft: Was war das Versprechen? Was zeigt die Empirie? Wie groß ist die Lücke zwischen Versprechen und Realität?
+      </p>
+    </div>
+
+    <div class="big-numbers">
+      <div class="big-num green">
+        <div class="pct">15%</div>
+        <div class="count">17 von 117 Maßnahmen</div>
+        <h4>✓ Bestätigt</h4>
+        <p>Das Versprechen wurde substantiell eingelöst. Vor allem: Sozialleistungen, Bildung, Gesundheit, frühe Frauenrechte.</p>
+      </div>
+      <div class="big-num yellow">
+        <div class="pct">37%</div>
+        <div class="count">43 von 117 Maßnahmen</div>
+        <h4>◐ Gemischt</h4>
+        <p>Funktioniert je nach Kontext. Oder: zuerst Pionier-Erfolg, dann Rückwende — wie Frauenrechte in der Sowjetunion 1918 vs. 1936.</p>
+      </div>
+      <div class="big-num red">
+        <div class="pct">44%</div>
+        <div class="count">52 von 117 Maßnahmen</div>
+        <h4>✗ Widerlegt</h4>
+        <p>Strukturelles Versagen. Vor allem: Repressions-Apparate, gewaltsame Revolution, Plan-Wirtschaft als Vollversion.</p>
+      </div>
+      <div class="big-num grey">
+        <div class="pct">5%</div>
+        <div class="count">6 von 117 Maßnahmen</div>
+        <h4>? Offen</h4>
+        <p>Theoretisch interessant, aber empirisch nicht entschieden — weil nie ernsthaft umgesetzt. Z.B. Saitos „Degrowth-Kommunismus".</p>
+      </div>
+    </div>
+
+    <p class="small" style="margin-top: 24px; max-width: 720px;">
+      <em>Hinweis zu den Prozent-Zahlen:</em> Sie sind eine grobe Orientierung, keine Präzisionsangabe. Eine widerlegte Maßnahme mit Millionen Toten zählt in der Rechnung gleich wie eine widerlegte Maßnahme mit Wirtschafts-Stagnation. Eine ehrliche Bilanz muss diese Gewichtung mitdenken.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CLUSTER -->
+<!-- ============================================ -->
+<section id="cluster" class="alt">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Cluster-Bilanz</div>
+      <h2>Wo der Marxismus stark war — und wo nicht</h2>
+      <p>
+        Die 117 Maßnahmen wurden in 12 Themen-Cluster sortiert. Hier wird sichtbar: <strong>die Bilanz ist je nach Thema fundamental unterschiedlich</strong>. Soziale Maßnahmen funktionieren überwiegend. Repressions-Strukturen versagen vollständig.
+      </p>
+    </div>
+
+    <div class="cluster-chart">
+      <!-- Cluster 6 SOZIAL -->
+      <div class="cluster-row">
+        <div class="cluster-name">6. Sozial-Maßnahmen<small>Bildung, Gesundheit, Renten</small></div>
+        <div class="cluster-bar">
+          <span class="b-green" style="width: 57.1%">57%</span>
+          <span class="b-yellow" style="width: 35.7%">36%</span>
+          <span class="b-red" style="width: 7.2%">7%</span>
+        </div>
+        <div class="cluster-totals">14 Maßnahmen</div>
+      </div>
+      <!-- Cluster 7 GESCHLECHT -->
+      <div class="cluster-row">
+        <div class="cluster-name">7. Geschlecht & Familie<small>Frauenrechte, Familienpolitik</small></div>
+        <div class="cluster-bar">
+          <span class="b-green" style="width: 22.2%">22%</span>
+          <span class="b-yellow" style="width: 44.5%">45%</span>
+          <span class="b-red" style="width: 33.3%">33%</span>
+        </div>
+        <div class="cluster-totals">9 Maßnahmen</div>
+      </div>
+      <!-- Cluster 3 ARBEIT -->
+      <div class="cluster-row">
+        <div class="cluster-name">3. Arbeit & Anreize<small>Vollbeschäftigung, Löhne</small></div>
+        <div class="cluster-bar">
+          <span class="b-green" style="width: 22.2%">22%</span>
+          <span class="b-yellow" style="width: 55.6%">56%</span>
+          <span class="b-red" style="width: 22.2%">22%</span>
+        </div>
+        <div class="cluster-totals">9 Maßnahmen</div>
+      </div>
+      <!-- Cluster 1 EIGENTUM -->
+      <div class="cluster-row">
+        <div class="cluster-name">1. Eigentum<small>Verstaatlichung, Genossenschaften</small></div>
+        <div class="cluster-bar">
+          <span class="b-green" style="width: 18.2%">18%</span>
+          <span class="b-yellow" style="width: 27.3%">27%</span>
+          <span class="b-red" style="width: 54.5%">55%</span>
+        </div>
+        <div class="cluster-totals">11 Maßnahmen</div>
+      </div>
+      <!-- Cluster 12 KLIMA -->
+      <div class="cluster-row">
+        <div class="cluster-name">12. Klima & Ökologie<small>Eco-Sozialismus, Degrowth</small></div>
+        <div class="cluster-bar">
+          <span class="b-green" style="width: 14.3%">14%</span>
+          <span class="b-yellow" style="width: 28.6%">29%</span>
+          <span class="b-red" style="width: 14.3%">14%</span>
+          <span class="b-grey" style="width: 42.9%">43%</span>
+        </div>
+        <div class="cluster-totals">7 Maßnahmen</div>
+      </div>
+      <!-- Cluster 2 PLANUNG -->
+      <div class="cluster-row">
+        <div class="cluster-name">2. Wirtschaftsplanung<small>5-Jahres-Plan, Gosplan</small></div>
+        <div class="cluster-bar">
+          <span class="b-green" style="width: 9.1%">9%</span>
+          <span class="b-yellow" style="width: 45.5%">45%</span>
+          <span class="b-red" style="width: 36.4%">36%</span>
+          <span class="b-grey" style="width: 9.0%">9%</span>
+        </div>
+        <div class="cluster-totals">11 Maßnahmen</div>
+      </div>
+      <!-- Cluster 4 POLITIK -->
+      <div class="cluster-row">
+        <div class="cluster-name">4. Politische Form<small>Avantgarde-Partei, Räte</small></div>
+        <div class="cluster-bar">
+          <span class="b-green" style="width: 8.3%">8%</span>
+          <span class="b-yellow" style="width: 25.0%">25%</span>
+          <span class="b-red" style="width: 58.4%">58%</span>
+          <span class="b-grey" style="width: 8.3%">8%</span>
+        </div>
+        <div class="cluster-totals">12 Maßnahmen</div>
+      </div>
+      <!-- Cluster 9 NATIONALITÄTEN -->
+      <div class="cluster-row">
+        <div class="cluster-name">9. Nationalitäten<small>Selbstbestimmung, Föderation</small></div>
+        <div class="cluster-bar">
+          <span class="b-green" style="width: 0%"></span>
+          <span class="b-yellow" style="width: 57.1%">57%</span>
+          <span class="b-red" style="width: 42.9%">43%</span>
+        </div>
+        <div class="cluster-totals">7 Maßnahmen</div>
+      </div>
+      <!-- Cluster 10 INT -->
+      <div class="cluster-row">
+        <div class="cluster-name">10. International<small>Komintern, Anti-Imperialismus</small></div>
+        <div class="cluster-bar">
+          <span class="b-green" style="width: 0%"></span>
+          <span class="b-yellow" style="width: 50.0%">50%</span>
+          <span class="b-red" style="width: 50.0%">50%</span>
+        </div>
+        <div class="cluster-totals">8 Maßnahmen</div>
+      </div>
+      <!-- Cluster 8 KULTUR -->
+      <div class="cluster-row">
+        <div class="cluster-name">8. Kultur & Ideologie<small>Zensur, Sozial. Realismus</small></div>
+        <div class="cluster-bar">
+          <span class="b-green" style="width: 0%"></span>
+          <span class="b-yellow" style="width: 33.3%">33%</span>
+          <span class="b-red" style="width: 66.7%">67%</span>
+        </div>
+        <div class="cluster-totals">9 Maßnahmen</div>
+      </div>
+      <!-- Cluster 11 REVOLUTION -->
+      <div class="cluster-row">
+        <div class="cluster-name">11. Revolutions-Maßnahmen<small>Bürgerkrieg, Kollektivierung</small></div>
+        <div class="cluster-bar">
+          <span class="b-green" style="width: 0%"></span>
+          <span class="b-yellow" style="width: 25.0%">25%</span>
+          <span class="b-red" style="width: 75.0%">75%</span>
+        </div>
+        <div class="cluster-totals">8 Maßnahmen</div>
+      </div>
+      <!-- Cluster 5 REPRESSION -->
+      <div class="cluster-row">
+        <div class="cluster-name">5. Repression & Staatssicherheit<small>Geheimdienst, Gulag, Mauer</small></div>
+        <div class="cluster-bar">
+          <span class="b-green" style="width: 0%"></span>
+          <span class="b-yellow" style="width: 25.0%">25%</span>
+          <span class="b-red" style="width: 75.0%">75%</span>
+        </div>
+        <div class="cluster-totals">12 Maßnahmen</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px; font-family: var(--mono); font-size: 0.78rem; color: var(--ink-muted); display: flex; gap: 20px; flex-wrap: wrap;">
+      <span><span style="display: inline-block; width: 12px; height: 12px; background: var(--green); vertical-align: middle; margin-right: 6px;"></span>Bestätigt</span>
+      <span><span style="display: inline-block; width: 12px; height: 12px; background: var(--yellow); vertical-align: middle; margin-right: 6px;"></span>Gemischt</span>
+      <span><span style="display: inline-block; width: 12px; height: 12px; background: var(--red); vertical-align: middle; margin-right: 6px;"></span>Widerlegt</span>
+      <span><span style="display: inline-block; width: 12px; height: 12px; background: var(--grey); vertical-align: middle; margin-right: 6px;"></span>Offen / Ungeprüft</span>
+    </div>
+
+    <div class="pullq">
+      Die marxistische Tradition hat in einigen Bereichen welt-historisch substantielle Erfolge erreicht — in anderen Bereichen welt-historische Katastrophen produziert. Wer eines der beiden ignoriert, verfälscht die Bilanz.
+      <cite>Audit-Hauptbefund</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- LEHREN -->
+<!-- ============================================ -->
+<section id="lehren">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Methodische Lehren</div>
+      <h2>Sieben Befunde, die immer wiederkehrten</h2>
+      <p>
+        Über alle 12 Cluster hinweg zeigten sich strukturelle Muster — Erklärungs-Logiken, die in mehreren unabhängigen Themen-Bereichen sichtbar wurden. Hier die wichtigsten sieben.
+      </p>
+    </div>
+
+    <div class="findings">
+      <div class="finding">
+        <div class="finding-num">01</div>
+        <h4>Capability-vs-Demokratie-Schichtung</h4>
+        <p>
+          Wenn der Staat in <strong>Fähigkeiten der Menschen</strong> investiert (Schule, Krankenhaus, Wohnung), funktioniert es oft. Wenn der Staat <strong>Macht konzentriert</strong> (Geheimdienst, Plan-Wirtschaft, Einparteien-Herrschaft), versagt es strukturell. Der Nobelpreisträger <span class="gloss" data-def="Amartya Sen (geb. 1933), indischer Ökonom, Nobelpreis 1998. Hauptwerk: Development as Freedom (1999). Capability = die tatsächlichen Möglichkeiten eines Menschen, ein gelungenes Leben zu führen.">Amartya Sen</span> nannte das: „Capability ohne Demokratie ist unvollständige Entwicklung."
+        </p>
+      </div>
+
+      <div class="finding">
+        <div class="finding-num">02</div>
+        <h4>Pionier-vs-Rückwende-Spaltung</h4>
+        <p>
+          Viele marxistische Bewegungen begannen mit <strong>radikalen Pionier-Akten</strong> (Frauenwahlrecht UdSSR 1917, Abtreibung legal 1920, Minderheitenförderung 1923) — und kassierten diese in der Konsolidierungs-Phase wieder ein (Stalin-Wende 1936). Innerhalb desselben Regimes. Das ist eine strukturelle Eigenheit, kein Zufall.
+        </p>
+      </div>
+
+      <div class="finding">
+        <div class="finding-num">03</div>
+        <h4>Bernstein-Validierung</h4>
+        <p>
+          Der Streit von 1899 — <strong>Reform oder Revolution?</strong> — ist von der Empirie beantwortet. Schweden hat ohne Bürgerkrieg eine egalitäre Gesellschaft aufgebaut. Russland hat dasselbe mit Bürgerkrieg, Hungersnot und Lagern versucht — und am Ende nicht mehr erreicht. <span class="gloss" data-def="Eduard Bernstein (1850-1932), deutscher Sozialdemokrat, Marx-Vertrauter, später Reformist. Hauptthese 1899: Sozialismus durch Wahlen und schrittweise Reform statt durch gewaltsame Revolution.">Bernstein</span> hatte recht.
+        </p>
+      </div>
+
+      <div class="finding">
+        <div class="finding-num">04</div>
+        <h4>Strukturelle Selbst-Verkehrung</h4>
+        <p>
+          Die zentralen Versprechen der marxistischen Demokratie kippten in ihr Gegenteil: <span class="gloss" data-def="Räte-Demokratie: direkte Volksherrschaft durch Arbeiter- und Soldatenräte. Lenins Slogan 1917: 'Alle Macht den Räten!' Innerhalb weniger Monate von der Bolschewiki-Partei verdrängt.">Räte-Demokratie</span> wurde Einparteien-Diktatur. <span class="gloss" data-def="Diktatur des Proletariats: Marx-Begriff für eine Übergangs-Form, in der die Arbeiter herrschen, bevor der Staat 'absterbe'. In der Praxis: Diktatur über die Arbeiter (Streiks verboten, Polen 1981 Solidarność niedergeschlagen).">Diktatur des Proletariats</span> wurde Diktatur über das Proletariat. Lenins eigene anti-bürokratische Werkzeuge wurden zur Bürokratie.
+        </p>
+      </div>
+
+      <div class="finding">
+        <div class="finding-num">05</div>
+        <h4>Kornais Strukturpathologien</h4>
+        <p>
+          Die Plan-Wirtschaft hat <strong>strukturelle Krankheiten</strong>, die kein Reformversuch heilen kann: <span class="gloss" data-def="Mangelwirtschaft (Kornai): permanente Knappheiten in Plan-Wirtschaften. Schlange vor dem Schuh-Geschäft bei Größe 38, Lager voll mit Größe 44. Ursache: keine Preise als Signal, was wirklich gebraucht wird.">Mangelwirtschaft</span>, <span class="gloss" data-def="Weiche Budget-Grenze (Kornai): sozialistische Betriebe gehen nie pleite. Bei Verlusten zahlt der Staat. Folge: kein Anreiz zur Effizienz.">weiche Budget-Grenze</span>, <span class="gloss" data-def="Plan-Verhandlung: jede Fabrik lügt über ihre Kapazitäten ('wir können nur 100.000 produzieren!' - real 150.000), um den Plan leicht zu erfüllen. Ergebnis: Plan-Erfüllung ist Verhandlung, nicht Optimierung.">Plan-Verhandlung</span>. Der ungarische Ökonom <span class="gloss" data-def="János Kornai (1928-2021), ungarischer Ökonom, arbeitete selbst in der Planungsbehörde 1955-58. Hauptwerk: The Socialist System (1992) - die maßgebliche Innen-Analyse staatssozialistischer Wirtschaft.">János Kornai</span> hat das in jahrzehntelanger Empirie dokumentiert.
+        </p>
+      </div>
+
+      <div class="finding">
+        <div class="finding-num">06</div>
+        <h4>Theorie-vs-Empirie beim Klima</h4>
+        <p>
+          Marx selbst hatte 1894 substantielle ökologische Argumente (<span class="gloss" data-def="Stoffwechselbruch (Marx 1894): die kapitalistische Landwirtschaft produziert einen Bruch im Nährstoff-Kreislauf. Nährstoffe gehen vom Land in die Stadt und kehren nicht zurück - der Boden erschöpft sich.">Stoffwechselbruch</span>). Aber die Praxis 1917-91 hatte <strong>katastrophale</strong> Umwelt-Bilanz (Tschernobyl, Bitterfeld, Aralsee). Die heutige Klima-Marxistik (Saito, Foster) versucht die Theorie-Tradition gegen die historische Praxis zu retten.
+        </p>
+      </div>
+
+      <div class="finding">
+        <div class="finding-num">07</div>
+        <h4>Internationale Doppel-Bilanz</h4>
+        <p>
+          Die marxistische Außenpolitik war <strong>gleichzeitig</strong> anti-imperialistisch (substantielle Unterstützung der Dekolonisierung 1945-75) und imperialistisch (sowjetische Interventionen Ungarn 1956, CSSR 1968, Afghanistan 1979). Beide Seiten gehören in die Bilanz.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- WAS KLAPPT -->
+<!-- ============================================ -->
+<section id="was-klappt" class="alt">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Die Erfolge</div>
+      <h2>Was substantiell funktioniert hat</h2>
+      <p>
+        Diese Maßnahmen haben das Versprechen empirisch eingelöst — oft mit Daten, die in westlichen Industriestaaten erst Jahrzehnte später erreicht wurden.
+      </p>
+    </div>
+
+    <div class="pro-contra">
+      <div class="col-pro">
+        <div class="sub">17 bestätigte Maßnahmen</div>
+        <h3>✓ Das hat funktioniert</h3>
+        <ul>
+          <li><strong>Alphabetisierung der Massen</strong>UdSSR 1917: 28 % Alphabetisierung. 1939: 87 %. China 1949: 20 %. 2000: 91 %. Welt-historisch substantieller Bildungs-Sprung.</li>
+          <li><strong>Gesundheits-Mobilisierung</strong>Cuba: Lebenserwartung 1959 = 64 Jahre, 2020 = 78 Jahre. Säuglingssterblichkeit niedriger als in den USA. Trotz US-Embargo seit 60 Jahren.</li>
+          <li><strong>Frauen-Erwerbsquote DDR</strong>1989: 91 % der Frauen erwerbstätig (welthöchste Quote). BRD zum Vergleich: 55 %. Möglich durch flächendeckende Kinderbetreuung.</li>
+          <li><strong>Kinderbetreuung DDR</strong>94 % der 3–6-Jährigen in Kindergärten. 80 % der 0–3-Jährigen in Krippen. Welthöchste Quote. Westdeutschland erreicht 2025 noch nicht diese Werte.</li>
+          <li><strong>Frauenwahlrecht UdSSR 1917</strong>Vor Deutschland, vor Großbritannien, vor USA, vor Frankreich, vor der Schweiz. Welt-Pionier-Akt.</li>
+          <li><strong>Land-Reform (initiale Phase)</strong>China 1946–52: Großgrundbesitz aufgelöst, Land an Bauern. Substantielle Umverteilung — bevor die Zwangs-Kollektivierung kam.</li>
+          <li><strong>Bernstein-Linie (Schweden)</strong>Sozialdemokratisches Schweden 1932–90er: Ungleichheit halbiert, Vollbeschäftigung, umfassende Sozialversicherung — ohne Bürgerkrieg, ohne Geheimpolizei.</li>
+          <li><strong>NÖP 1921–28 (Lenin)</strong>Lenins Rückwende zu Markt-Elementen nach dem Kriegskommunismus-Versagen. Wirtschaft erholte sich substantiell.</li>
+        </ul>
+      </div>
+
+      <div class="col-contra">
+        <div class="sub">52 widerlegte Maßnahmen</div>
+        <h3>✗ Das hat strukturell versagt</h3>
+        <ul>
+          <li><strong>Zwangs-Kollektivierung</strong>Stalin 1928–32: <span class="gloss" data-def="Holodomor: Stalin's künstliche Hungersnot in der Ukraine 1932-33 durch erzwungene Kollektivierung der Landwirtschaft. 4-7 Millionen Tote. Heute international als Genozid anerkannt.">Holodomor</span> 4–7 Mio. Tote in der Ukraine. China Großer Sprung 1958–62: 17–55 Mio. Hungertote.</li>
+          <li><strong>Gulag-System</strong>UdSSR 1929–53: 18–25 Mio. Häftlinge insgesamt, 1,5–3 Mio. Tote. Wirtschaftlich ineffizient. Chruschtschow löste 1956 aus Effizienz-Gründen auf.</li>
+          <li><strong>Berliner Mauer</strong>1961–89: das System brauchte einen Schießbefehl, um seine Bürger einzusperren. Mindestens 140 Tote an der Berliner Mauer. Symbol des Versagens.</li>
+          <li><strong>Kulturrevolution China</strong>1966–76: 1,5–3 Mio. Tote, 100 Mio. „betroffen". Bildungs-System zerstört. KP-China hat 1981 selbst „70 % Mao positiv, 30 % Kulturrevolution negativ" beschlossen.</li>
+          <li><strong>Lyssenkoismus</strong>UdSSR 1928–65: Stalin-Patronage einer Pseudo-Genetik. Echte Genetiker (Wawilow) starben in Lagern. Sowjet-Landwirtschaft jahrzehntelang im Rückstand.</li>
+          <li><strong>Ein-Kind-Politik China</strong>1979–2015: 100+ Mio. Zwangs-Abtreibungen. Heute 30 Mio. „<span class="gloss" data-def="Missing Women: Demographische Lücke, weil Mädchen-Föten abgetrieben oder kleine Mädchen vernachlässigt wurden. Sens Begriff. China hat aktuell ca. 30 Mio. 'fehlende' Frauen durch Ein-Kind-Politik + Mädchen-Selektion.">missing women</span>" durch Mädchen-Selektion. Demographische Krise.</li>
+          <li><strong>Khmer Rouge Familien-Auflösung</strong>Kambodscha 1975–79: Pol Pot's „Angka ist Vater und Mutter". Familien zwangs-getrennt. 1,5–2 Mio. Tote in 4 Jahren = 25 % der Bevölkerung.</li>
+          <li><strong>Räte-Demokratie</strong>Versprechen 1917: „Alle Macht den Räten!" Realität ab 1918: Macht bei der Bolschewiki-Partei. In keinem marxistisch-leninistischen Land nachhaltig implementiert.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- WAS NICHT FUNKTIONIERT -->
+<!-- ============================================ -->
+<section id="was-nicht">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Die zentralen Pathologien</div>
+      <h2>Vier strukturelle Versagensmuster</h2>
+      <p>
+        Bestimmte Muster wiederholten sich in <strong>jedem</strong> staatssozialistischen System — UdSSR, China, DDR, Cuba, Kambodscha, Albanien, Rumänien, Vietnam, Nordkorea. Das deutet auf strukturelle Ursachen hin, nicht auf zufällige Implementierungs-Fehler.
+      </p>
+    </div>
+
+    <div class="findings">
+      <div class="finding" style="border-top: 4px solid var(--red);">
+        <h4>1. Plan-Wirtschaft produziert Knappheit</h4>
+        <p>
+          Ohne Markt-Preise als Signal weiß die Planungsbehörde nicht, was wirklich gebraucht wird. Folge: <strong>Schlange vor dem Schuh-Geschäft bei Größe 38, Lager voll mit Größe 44.</strong> Plus: Fabriken können nicht pleite gehen (der Staat zahlt), also kein Anreiz zur Effizienz. Plus: jede Fabrik lügt im Plan-Verhandlungsgespräch über ihre Kapazitäten. Kornai dokumentiert das in jahrzehntelanger Innen-Analyse.
+        </p>
+      </div>
+
+      <div class="finding" style="border-top: 4px solid var(--red);">
+        <h4>2. Avantgarde-Partei wird Funktionärs-Klasse</h4>
+        <p>
+          Lenins Idee einer disziplinierten Berufsrevolutionärs-Partei (1902) sollte revolutionären Erfolg garantieren. In der Praxis: nach der Konsolidierung wird die Partei zur <strong>privilegierten Funktionärs-Klasse</strong> mit eigenen Privilegien, Devisenläden, Sondersiedlungen. <span class="gloss" data-def="Milovan Djilas (1911-1995), jugoslawischer Politiker und Dissident. Hauptwerk 'Die neue Klasse' (1957) prägte den Begriff der Funktionärs-Klasse als 'neuer herrschender Klasse' in sozialistischen Staaten.">Djilas</span> nannte das 1957 die „neue Klasse".
+        </p>
+      </div>
+
+      <div class="finding" style="border-top: 4px solid var(--red);">
+        <h4>3. Revolution produziert Bürokratie statt Befreiung</h4>
+        <p>
+          Die US-Soziologin Theda Skocpol hat 1979 strukturell gezeigt: <strong>alle drei großen Revolutionen</strong> (Frankreich 1789, Russland 1917, China 1949) produzierten am Ende einen zentralisierten, bürokratischen Nationalstaat — egal welche Ideologie. Die Konsolidierung erfordert Macht-Konzentration. Egalitäre Befreiung war strukturell unmöglich.
+        </p>
+      </div>
+
+      <div class="finding" style="border-top: 4px solid var(--red);">
+        <h4>4. Geheimpolizei zersetzt das soziale Gewebe</h4>
+        <p>
+          DDR-Stasi 1989: 91.000 Hauptamtliche + 174.000 inoffizielle Mitarbeiter. <strong>Jeder 60. Erwachsene war IM.</strong> Die Logik der „Wachsamkeit gegen den Klassenfeind" produziert systematisch Misstrauen. In jedem ML-Staat dasselbe Muster: KGB, MfS, StB, Securitate, Sigurimi, DGI. Das Versprechen Sicherheit wird zur Bedrohung der eigenen Bevölkerung.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SCHWEDEN VS RUSSLAND -->
+<!-- ============================================ -->
+<section id="schweden-russland" class="alt">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Der zentrale Vergleich</div>
+      <h2>Bernstein vs. Lenin — ein historisches Experiment</h2>
+      <p>
+        Zwei Länder, zwei Wege. Beide hatten 1900 eine ähnliche Ausgangs-Situation: hohe Ungleichheit, autoritär-monarchistische Strukturen, frühe sozialistische Bewegung. Sie wählten <strong>verschiedene Wege zum Sozialstaat</strong>. Die Empirie ist eindeutig.
+      </p>
+    </div>
+
+    <div class="compare">
+      <div class="compare-col evol">
+        <h3>🟢 Schweden</h3>
+        <div class="country">Evolutionärer Weg · 1932–1990er</div>
+        <div class="compare-stat"><span>Ungleichheit 1900 (<span class="gloss" data-def="Gini-Koeffizient: Maß für Einkommens-Ungleichheit. 0 = alle haben gleich viel. 1 = einer hat alles. Skandinavien heute ca. 0,25, USA ca. 0,41.">Gini</span>)</span><span class="val">0,55</span></div>
+        <div class="compare-stat"><span>Ungleichheit 1980</span><span class="val good">0,21</span></div>
+        <div class="compare-stat"><span>Bürgerkriegs-Tote</span><span class="val good">0</span></div>
+        <div class="compare-stat"><span>Hungersnot-Tote</span><span class="val good">0</span></div>
+        <div class="compare-stat"><span>Lager-Häftlinge</span><span class="val good">0</span></div>
+        <div class="compare-stat"><span>Lebenserwartung 1980er</span><span class="val good">77 Jahre</span></div>
+        <div class="compare-stat"><span>HDI 1980er</span><span class="val good">0,92</span></div>
+        <div class="compare-stat"><span>Pol. Methode</span><span class="val">Wahlen, Reform</span></div>
+      </div>
+
+      <div class="compare-vs">vs.</div>
+
+      <div class="compare-col revol">
+        <h3>🔴 UdSSR</h3>
+        <div class="country">Revolutionärer Weg · 1917–1991</div>
+        <div class="compare-stat"><span>Ungleichheit 1900 (Gini)</span><span class="val">0,55</span></div>
+        <div class="compare-stat"><span>Ungleichheit 1980</span><span class="val">0,28</span></div>
+        <div class="compare-stat"><span>Bürgerkriegs-Tote</span><span class="val bad">7–12 Mio.</span></div>
+        <div class="compare-stat"><span>Hungersnot-Tote</span><span class="val bad">4–7 Mio. (Holodomor)</span></div>
+        <div class="compare-stat"><span>Lager-Häftlinge</span><span class="val bad">18–25 Mio. (Gulag)</span></div>
+        <div class="compare-stat"><span>Lebenserwartung 1980er</span><span class="val">69 Jahre</span></div>
+        <div class="compare-stat"><span>HDI 1980er</span><span class="val">0,80</span></div>
+        <div class="compare-stat"><span>Pol. Methode</span><span class="val">Revolution, Diktatur</span></div>
+      </div>
+    </div>
+
+    <p style="margin-top: 32px; max-width: 720px; font-size: 1.05rem;">
+      Schweden hat in jeder vergleichbaren Dimension <strong>bessere oder gleichwertige</strong> Ergebnisse erreicht — <strong>ohne Bürgerkriegs-Tote, ohne Hungersnot-Tote, ohne Lager</strong>. Die russische Ungleichheit nach 1980 zerfiel dann ab 1991 wieder zu 0,46. Schwedens Egalität blieb auch nach der Liberalisierung der 1990er weitgehend stabil.
+    </p>
+
+    <p style="margin-top: 16px; max-width: 720px;">
+      Methodische Pointe: Bernstein war <strong>kein Antimarxist</strong>. Er war ein Marx-Vertrauter und Sozialdemokrat. Schwedens SAP war marxistisch-inspiriert. Der Streit zwischen Lenin und Bernstein war ein <strong>inner-marxistischer Streit</strong>. Die Empirie hat ihn entschieden — zugunsten Bernsteins.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- GLOSSAR -->
+<!-- ============================================ -->
+<section id="glossar">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Begriffe erklärt</div>
+      <h2>Was bedeuten die Fremdwörter eigentlich?</h2>
+      <p>
+        Die marxistische Debatte ist voll von Fachbegriffen. Hier die wichtigsten in einfacher Sprache — alphabetisch sortiert.
+      </p>
+    </div>
+
+    <dl class="glossary">
+      <div class="gloss-term"><dt>Avantgardepartei<small>Lenin 1902</small></dt><dd>Eine Partei von <em>Berufsrevolutionären</em>, die der Arbeiterklasse „vorausgeht" und sie führt. Lenins Idee: Arbeiter allein erreichen nur „Gewerkschafts-Bewusstsein", die Revolution braucht eine disziplinierte Führungspartei. <strong>Praxis-Problem:</strong> die Avantgarde wurde zur privilegierten Funktionärs-Klasse.</dd></div>
+
+      <div class="gloss-term"><dt>Bernstein-Linie<small>Bernstein 1899</small></dt><dd>Sozialismus durch <em>Wahlen und schrittweise Reform</em>, nicht durch Revolution. Eduard Bernstein war Marx-Vertrauter und schrieb 1899, dass die Industrie-Arbeiter in Demokratien ihre Mehrheits-Macht nutzen sollten — anstatt auf den „großen Bruch" zu warten. Lenin nannte das „Verrat", die Empirie gab Bernstein recht.</dd></div>
+
+      <div class="gloss-term"><dt>Bifurcated State<small>Mamdani 1996</small></dt><dd>„Zwei-geteilter Staat". In ehemaligen Kolonien (Afrika, Indien) gibt es zwei Rechts-Welten: <em>bürgerliches Recht</em> in der Stadt, <em>Stammes-Recht</em> auf dem Land. Mahmood Mamdani zeigte, dass auch marxistische Befreiungs-Bewegungen diese Struktur nicht aufgelöst, sondern reproduziert haben.</dd></div>
+
+      <div class="gloss-term"><dt>Capability<small>Sen 1979ff.</small></dt><dd>Die <em>tatsächlichen Möglichkeiten</em> eines Menschen, etwas zu sein oder zu tun. Nicht nur „Einkommen", sondern: Kann ich lesen? Bin ich gesund? Kann ich frei reisen? Amartya Sen (Nobelpreis 1998) erweiterte den Entwicklungs-Begriff um diese Dimension.</dd></div>
+
+      <div class="gloss-term"><dt>Demokratischer Zentralismus<small>Lenin</small></dt><dd>Angeblich: <em>basis-demokratische Diskussion</em> vor Entscheidungen + <em>zentrale Disziplin</em> nach Entscheidungen. Realität: der Zentralismus dominiert. Die „Demokratie" findet nur in einem kleinen Politbüro statt, die „Disziplin" für alle Mitglieder.</dd></div>
+
+      <div class="gloss-term"><dt>Diktatur des Proletariats<small>Marx</small></dt><dd>Marx-Begriff für eine <em>Übergangsphase</em>, in der die Arbeiterklasse die Macht übernimmt — bevor der Staat „abstirbt". Sollte begrenzt und sich-selbst-aufhebend sein. <strong>Realität:</strong> wurde Diktatur <em>über</em> das Proletariat (Streiks verboten, freie Gewerkschaften unterdrückt).</dd></div>
+
+      <div class="gloss-term"><dt>Degrowth-Kommunismus<small>Saito 2020</small></dt><dd>Neue Theorie von Kohei Saito: bewusste <em>Reduktion des Wirtschaftswachstums</em> als marxistische Programmatik. Saito beruft sich auf Marx' späte Schriften zu Ökologie. <strong>Empirisch nicht geprüft</strong> — nirgendwo staatlich umgesetzt.</dd></div>
+
+      <div class="gloss-term"><dt>Gini-Koeffizient<small>Statistik</small></dt><dd>Maß für <em>Einkommens-Ungleichheit</em>. 0 = alle haben gleich viel. 1 = einer hat alles. Schweden 2020 ca. 0,30. USA 2020 ca. 0,41. Sowjetunion 1980 ca. 0,28. Russland 2020 ca. 0,46.</dd></div>
+
+      <div class="gloss-term"><dt>Gulag<small>UdSSR 1929–56</small></dt><dd>Sowjetisches <em>Zwangsarbeits-Lager-System</em>. 18–25 Mio. Häftlinge insgesamt, 1,5–3 Mio. Tote. Offiziell „Umerziehung durch Arbeit". Realität: ineffizient, ethisch verbrecherisch. Chruschtschow löste es 1953–56 sukzessive auf.</dd></div>
+
+      <div class="gloss-term"><dt>Holodomor<small>Ukraine 1932–33</small></dt><dd>„Tod durch Hunger". <em>Künstliche Hungersnot</em> in der Ukraine, ausgelöst durch Stalins Zwangs-Kollektivierung. 4–7 Mio. Tote. Heute international als Genozid am ukrainischen Volk anerkannt.</dd></div>
+
+      <div class="gloss-term"><dt>Internationalismus<small>Marx-Engels 1848</small></dt><dd>„Proletarier aller Länder, vereinigt euch!" Versprechen: <em>Klassen-Solidarität über nationale Grenzen</em>. Realität: 1914 stimmten fast alle sozialdemokratischen Parteien für Kriegskredite. 1969 Grenzkrieg UdSSR–China. Nationale Interessen dominierten strukturell.</dd></div>
+
+      <div class="gloss-term"><dt>Korenisazija<small>UdSSR 1923–32</small></dt><dd>Sowjetische <em>Indigenisierungs-Politik</em> in den 1920ern: Förderung der nicht-russischen Völker in Sprache, Bildung, Verwaltung. Welt-historisches Affirmative-Action-Programm. Stalin nahm es ab 1932 wieder zurück und russifizierte.</dd></div>
+
+      <div class="gloss-term"><dt>Mangelwirtschaft<small>Kornai 1980</small></dt><dd>Kornais Schlüssel-Begriff: <em>strukturelle Knappheiten</em> in Plan-Wirtschaften. Ohne Markt-Preise weiß niemand, was wirklich gebraucht wird. Folge: Warteschlangen vor Geschäften, Schwarzmarkt, „Vitamin B" (Beziehungen).</dd></div>
+
+      <div class="gloss-term"><dt>Missing Women<small>Sen 1990</small></dt><dd>Statistische Lücke: in vielen Gesellschaften gibt es <em>weniger Frauen als demographisch zu erwarten</em>. Ursachen: Mädchen-Föten abgetrieben, kleine Mädchen schlechter ernährt, weniger medizinische Versorgung. China hat aktuell ca. 30 Mio. „fehlende" Frauen durch Ein-Kind-Politik.</dd></div>
+
+      <div class="gloss-term"><dt>NÖP<small>UdSSR 1921–28</small></dt><dd>„Neue Ökonomische Politik". Lenin's <em>Wende zurück zu Markt-Elementen</em> nach dem Kriegskommunismus-Versagen. Bauern durften wieder verkaufen, Klein-Handwerk legal. Wirtschaft erholte sich substantiell. Stalin beendete es 1928.</dd></div>
+
+      <div class="gloss-term"><dt>Räte-Demokratie<small>Russland 1917</small></dt><dd>Direkte Demokratie der Arbeiter und Soldaten in <em>spontanen Versammlungen</em> (russisch: „Sowjet"). Lenins Slogan 1917: „Alle Macht den Räten!" Wurde innerhalb von Monaten von der Bolschewiki-Partei verdrängt. Spätere Räterepubliken (Bayern, Ungarn) kurzlebig.</dd></div>
+
+      <div class="gloss-term"><dt>Selbstbestimmungsrecht<small>Lenin 1914</small></dt><dd>Versprechen: <em>jedes Volk darf eigenständig entscheiden</em>, bis zur staatlichen Lostrennung. Lenins anti-imperialistische Doktrin. Realität: anwendbar gegen <em>westliche</em> Kolonialmächte, nicht gegen sowjetische Block-Interventionen (Ungarn 1956, CSSR 1968).</dd></div>
+
+      <div class="gloss-term"><dt>Soft Budget Constraint<small>Kornai 1980</small></dt><dd>„Weiche Budget-Grenze". Kornais Diagnose: sozialistische Betriebe können <em>nicht pleite gehen</em>, der Staat zahlt immer. Folge: kein Anreiz zur Effizienz. Unterminiert auch jeden Versuch eines „Markt-Sozialismus".</dd></div>
+
+      <div class="gloss-term"><dt>Stachanow-Bewegung<small>UdSSR 1935ff.</small></dt><dd>Sowjetische Vorzeige-Arbeiter-Bewegung. Alexei Stachanow erfüllte angeblich 1935 die 14-fache Schicht-Norm. Doppel-Charakter: <em>echte</em> Spitzen-Produktivität + <em>propagandistische</em> Inszenierung mit unsichtbaren Helfern (Wajdas Film „Der Mann aus Marmor" 1977).</dd></div>
+
+      <div class="gloss-term"><dt>Stoffwechselbruch<small>Marx 1894</small></dt><dd>Marx-Konzept aus „Kapital III": die kapitalistische Großgrund-Wirtschaft zerstört den natürlichen Kreislauf — Nährstoffe gehen vom Land in die Stadt und kehren nicht zurück. <em>Frühe ökologische Marx-Diagnose</em>. Foster (2000) und Saito (2020) bauen darauf auf.</dd></div>
+
+      <div class="gloss-term"><dt>Transmissionsriemen<small>Lenin</small></dt><dd>Lenins eigener Begriff für die <em>Massenorganisationen</em> (Gewerkschaften, Jugendverbände, Frauenrat): sie übersetzen Partei-Beschlüsse nach unten zu den Massen. Methodisch zentral: nicht basis-demokratische Vermittlung, sondern <em>einseitige Hierarchie</em>.</dd></div>
+
+      <div class="gloss-term"><dt>Volksfront-Strategie<small>Komintern 1935</small></dt><dd>Breites Bündnis von Kommunisten + Sozialdemokraten + Liberalen gegen Faschismus. Frankreich 1936 (Léon Blum). Spanien 1936-39. Chile 1970-73 (Allende, durch Putsch beendet). Substantielle Tradition mit gemischter Bilanz.</dd></div>
+
+      <div class="gloss-term"><dt>Zwangs-Kollektivierung<small>UdSSR 1928–32</small></dt><dd>Stalins Vereinigung aller Bauernhöfe zu <em>Kolchosen</em>. Etwa 25 Millionen Bauernhöfe in 4 Jahren. „Kulaken" (wohlhabendere Bauern) als Klasse „liquidiert". Vieh-Bestand auf 50 % reduziert. Hungersnot 1932–33 mit 4–7 Mio. Toten.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- GRENZEN (Methodische Selbstkritik) -->
+<!-- ============================================ -->
+<section id="grenzen" class="limits">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Was diese Studie nicht leisten kann</div>
+      <h2 style="color: var(--paper);">Die Grenzen dieser Bilanz</h2>
+      <p style="color: rgba(245,240,230,0.85);">
+        Eine ehrliche Studie muss ihre eigenen Limits transparent machen. Hier die sechs wichtigsten Einschränkungen, die das Ergebnis systematisch prägen.
+      </p>
+    </div>
+
+    <div class="limits-grid">
+      <div class="limit-card">
+        <h4>Das Inventar ist nicht vollständig</h4>
+        <p>117 Maßnahmen sind viel, aber nicht alles. Es fehlen: Genossenschaftswesen (Mondragón, Wiener Gemeindebau), Pariser Kommune 1871 als Modell, Befreiungstheologie, Open-Source / Commons-Bewegung, Räterepubliken im Detail. Ein Voll-Inventar wäre vermutlich 150–200 Maßnahmen.</p>
+      </div>
+      <div class="limit-card">
+        <h4>Versprechen-Definition ist eine Wahl</h4>
+        <p>Ich habe für jede Maßnahme das Versprechen formuliert. Aber: dasselbe Konzept hat oft mehrere Versprechen-Varianten. Wenn man das radikalste prüft, gibt es eher „widerlegt". Wenn man das minimalste prüft, eher „gemischt".</p>
+      </div>
+      <div class="limit-card">
+        <h4>Quellen-Asymmetrie</h4>
+        <p>Die fünf lokalen Hauptquellen (Kornai, Mamdani, Skocpol, Sen, A/R) sind eher staatssozialismus-kritisch. Pro-marxistische akademische Verteidiger (Foster, Saito, Wood, Harvey) waren nur über Trainingswissen vermittelt. Das zieht die Bilanz strukturell ins Negative.</p>
+      </div>
+      <div class="limit-card">
+        <h4>Vergleichsmaßstab fehlt</h4>
+        <p>„Versprechen nicht eingelöst" — verglichen mit welchem Maßstab? Mit dem marxistischen Ideal? Mit zeitgenössischen Vergleichsstaaten? Mit der historischen Trend-Linie? Die Studie hat keinen konsistenten Vergleich.</p>
+      </div>
+      <div class="limit-card">
+        <h4>Aggregation ist problematisch</h4>
+        <p>„15 % bestätigt" zählt Holodomor (Millionen Tote) gleich wie Lateinisierung der Schrift in Aserbaidschan. Die Prozente sind orientierend, nicht präzise. Eine schwere Pathologie kann eine ganze Bilanz dominieren.</p>
+      </div>
+      <div class="limit-card">
+        <h4>Skandinavien-Frage</h4>
+        <p>Ist Schweden 1932–90er noch „marxistische Tradition"? Die SAP gab 1959 das marxistische Programm auf. Wenn man Skandinavien aus der Tradition ausgliedert, verschwindet die einzige bestätigte politische Form-Maßnahme.</p>
+      </div>
+    </div>
+
+    <p style="margin-top: 40px; max-width: 720px; color: rgba(245,240,230,0.85); font-size: 1.05rem;">
+      <strong style="color: var(--paper);">Ehrliche Selbstbewertung:</strong> Das Resultat erfüllt seinen Anspruch zu etwa 65 %. Es ist eine <em>substantielle, methodisch konsistente Bilanz der staatssozialistischen Hauptpraxis</em> — aber keine vollständige Bilanz „aller marxistischen Ideen". Wer die Studie liest, sollte beides wissen.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FOOTER -->
+<!-- ============================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-cols">
+      <div>
+        <h4>Hauptquellen (lokal-belegt)</h4>
+        <p>
+          János Kornai, <em>The Socialist System</em> (1992)<br>
+          Theda Skocpol, <em>States and Social Revolutions</em> (1979)<br>
+          Mahmood Mamdani, <em>Citizen and Subject</em> (1996)<br>
+          Amartya Sen, <em>Development as Freedom</em> (1999)<br>
+          Acemoğlu/Robinson, <em>Warum Nationen scheitern</em> (2012)
+        </p>
+      </div>
+      <div>
+        <h4>Methode</h4>
+        <p>
+          Jede der 117 Maßnahmen wurde geprüft nach Schema: Versprechen → Empirie pro Hauptfall → Diskrepanz → Vier-Wert-Verdikt (bestätigt / gemischt / widerlegt / offen) → empirisches Fazit. Geschätzungs-Spannweiten transparent ausgewiesen.
+        </p>
+      </div>
+      <div>
+        <h4>Über das Audit</h4>
+        <p>
+          Diese Bilanz ist das Resultat einer 8-monatigen, systematischen Untersuchung in 14 Audit-Phasen. 122 lokal-belegte Zitate, 143 Glossar-Einträge, 127 Klartext-Übersetzungen. Methodische Selbst-Audits in Phase 2.1.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      Audit 3.0 · Stand: Mai 2026 · 117 Maßnahmen · 12 Cluster · Bilanz: 15% bestätigt / 37% gemischt / 44% widerlegt / 5% offen
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
