@@ -1,0 +1,1847 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schweden vs. Cuba — Die zwei Wege des Sozialismus im direkten Vergleich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ========== DESIGN TOKENS ========== */
+  :root {
+    --paper: #F5F0E6;
+    --paper-deep: #EAE2D2;
+    --paper-soft: #FAF6EC;
+    --ink: #1A1410;
+    --ink-soft: #3D3530;
+    --ink-muted: #6B5D52;
+    --rule: #C9BEA8;
+    --rule-soft: #DDD3BE;
+
+    /* Verdict semantics */
+    --green: #2E6B3D;
+    --green-soft: #DDE9DC;
+    --green-deep: #1F4A2A;
+    --yellow: #B58A1F;
+    --yellow-soft: #F4E9CB;
+    --yellow-deep: #7D5E12;
+    --red: #8B2A1F;
+    --red-soft: #F0DAD1;
+    --red-deep: #5C1A12;
+    --grey: #6B6660;
+    --grey-soft: #DAD4CA;
+
+    /* Schweden vs Cuba — Länderfarben */
+    --sweden: #006AA7;      /* Schwedisches Blau */
+    --sweden-soft: #D9E5F0;
+    --sweden-deep: #003A60;
+    --sweden-accent: #FECC02;  /* Schwedisches Gelb */
+
+    --cuba: #C8102E;        /* Cuban Rot */
+    --cuba-soft: #F5D5DA;
+    --cuba-deep: #7A0A1C;
+    --cuba-accent: #002A8F; /* Cuban Blau */
+
+    /* Accent */
+    --accent: #8B1A1A;
+    --accent-deep: #5C1212;
+    --gold: #D4A574;
+    --gold-deep: #A07A4E;
+
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'Source Sans 3', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+
+    --maxw: 1200px;
+    --textw: 720px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5 { font-family: var(--display); font-weight: 700; line-height: 1.15; color: var(--ink); margin: 0; }
+  h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 900; letter-spacing: -0.02em; }
+  h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 700; letter-spacing: -0.01em; }
+  h4 { font-size: 1.2rem; font-weight: 600; }
+  h5 { font-size: 1.05rem; font-weight: 600; }
+  p { margin: 0 0 1em 0; }
+
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+  .text-col { max-width: var(--textw); margin: 0 auto; }
+
+  /* ========== HERO ========== */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(40px, 8vw, 100px) 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 15% top, rgba(0,106,167,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% bottom, rgba(200,16,46,0.35) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .hero .container { position: relative; z-index: 2; }
+  .hero-kicker {
+    font-family: var(--mono); font-size: 0.78rem;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero-kicker::after { content: ""; flex: 1; height: 1px; background: rgba(212,165,116,0.3); }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(2.4rem, 7vw, 5.5rem);
+    font-weight: 900; letter-spacing: -0.03em; line-height: 1.0;
+    margin-bottom: 28px; color: var(--paper);
+  }
+  .hero h1 .sweden-c { color: #6BB6E8; font-style: italic; font-weight: 700; }
+  .hero h1 .cuba-c { color: #E8616B; font-style: italic; font-weight: 700; }
+  .hero h1 .vs { color: var(--gold); font-style: italic; font-weight: 400; padding: 0 0.3em; }
+
+  .hero-lead {
+    font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.55;
+    color: rgba(245,240,230,0.85); max-width: 800px; font-weight: 300;
+  }
+  .hero-lead strong { color: var(--paper); font-weight: 600; }
+
+  .hero-meta {
+    margin-top: 60px; display: flex; flex-wrap: wrap;
+    gap: 40px 60px; padding-top: 32px;
+    border-top: 1px solid rgba(245,240,230,0.15);
+    font-family: var(--mono); font-size: 0.82rem;
+  }
+  .hero-meta div { color: rgba(245,240,230,0.6); }
+  .hero-meta strong {
+    display: block; color: var(--paper);
+    font-size: 1.6rem; font-family: var(--display);
+    font-weight: 700; margin-bottom: 4px;
+  }
+
+  /* ========== TOC ========== */
+  .toc {
+    position: sticky; top: 0;
+    background: rgba(245,240,230,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0; z-index: 100;
+  }
+  .toc-inner {
+    display: flex; gap: 28px; overflow-x: auto;
+    font-family: var(--mono); font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .toc a {
+    color: var(--ink-muted); text-decoration: none;
+    white-space: nowrap; padding: 6px 0;
+    border-bottom: 2px solid transparent; transition: all 0.2s;
+  }
+  .toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ========== TLDR ========== */
+  .tldr {
+    background: var(--paper-deep);
+    border-left: 6px solid var(--accent);
+    padding: 36px 40px; margin: 60px auto;
+    max-width: 920px;
+  }
+  .tldr-label {
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 12px;
+  }
+  .tldr h3 { margin-bottom: 14px; font-size: 1.5rem; }
+  .tldr p { font-size: 1.05rem; color: var(--ink-soft); }
+  .tldr p:last-child { margin-bottom: 0; }
+
+  /* ========== SECTIONS ========== */
+  section { padding: 80px 0; position: relative; }
+  section.alt { background: var(--paper-deep); }
+  section.dark { background: var(--ink); color: var(--paper); }
+  section.dark h2, section.dark h3, section.dark h4 { color: var(--paper); }
+  section.crisis {
+    background: linear-gradient(180deg, var(--cuba-soft) 0%, var(--paper) 100%);
+    border-top: 4px solid var(--cuba);
+  }
+
+  .section-kicker {
+    font-family: var(--mono); font-size: 0.75rem;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700;
+    margin-bottom: 14px; display: flex; align-items: center; gap: 14px;
+  }
+  .section-kicker::before {
+    content: "§"; font-family: var(--display);
+    font-style: italic; font-size: 1.3em; color: var(--accent);
+  }
+  section.dark .section-kicker { color: var(--gold); }
+  section.dark .section-kicker::before { color: var(--gold); }
+  .section-intro { max-width: var(--textw); margin: 0 auto 50px; }
+  .section-intro p { font-size: 1.1rem; color: var(--ink-soft); }
+  section.dark .section-intro p { color: rgba(245,240,230,0.85); }
+
+  /* ========== LÄNDER-PROFIL ========== */
+  .country-profile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 2px solid var(--ink);
+    margin: 40px 0;
+  }
+  @media (max-width: 900px) { .country-profile { grid-template-columns: 1fr; } }
+  .country-col {
+    padding: 36px;
+    position: relative;
+  }
+  .country-col.sweden {
+    background: var(--sweden-soft);
+    border-right: 2px solid var(--ink);
+  }
+  @media (max-width: 900px) {
+    .country-col.sweden { border-right: none; border-bottom: 2px solid var(--ink); }
+  }
+  .country-col.cuba {
+    background: var(--cuba-soft);
+  }
+  .country-flag {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+  .country-col h3 {
+    font-size: 2rem;
+    margin-bottom: 6px;
+  }
+  .country-col.sweden h3 { color: var(--sweden-deep); }
+  .country-col.cuba h3 { color: var(--cuba-deep); }
+  .country-col .sub {
+    font-family: var(--mono); font-size: 0.85rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-muted); margin-bottom: 24px;
+  }
+  .country-col h4 {
+    font-family: var(--display); font-size: 1.15rem;
+    margin: 26px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1.5px solid;
+  }
+  .country-col.sweden h4 { border-color: var(--sweden); color: var(--sweden-deep); }
+  .country-col.cuba h4 { border-color: var(--cuba); color: var(--cuba-deep); }
+  .country-col ul { list-style: none; padding: 0; margin: 0; }
+  .country-col li {
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.12);
+    font-size: 0.93rem;
+    line-height: 1.55;
+  }
+  .country-col li:last-child { border-bottom: none; }
+  .country-col li strong {
+    display: block; font-family: var(--display);
+    font-weight: 700; margin-bottom: 4px;
+    font-size: 0.98rem;
+  }
+  .country-col.sweden li strong { color: var(--sweden-deep); }
+  .country-col.cuba li strong { color: var(--cuba-deep); }
+
+  /* ========== STAT-TABLE ========== */
+  .stat-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--paper);
+    margin: 24px 0;
+    font-size: 0.95rem;
+  }
+  .stat-table th, .stat-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--rule);
+    text-align: left;
+  }
+  .stat-table th {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .stat-table thead th:nth-child(2) { background: var(--sweden-deep); }
+  .stat-table thead th:nth-child(3) { background: var(--cuba-deep); }
+  .stat-table td:nth-child(1) {
+    font-weight: 600; color: var(--ink);
+    background: var(--paper-deep);
+    width: 28%;
+  }
+  .stat-table td.good { color: var(--green-deep); font-weight: 700; font-family: var(--mono); }
+  .stat-table td.bad { color: var(--red-deep); font-weight: 700; font-family: var(--mono); }
+  .stat-table td.neut { color: var(--ink-soft); font-family: var(--mono); }
+  .stat-table td.mixed { color: var(--yellow-deep); font-weight: 700; font-family: var(--mono); }
+  .stat-table tbody tr:hover { background: rgba(0,0,0,0.02); }
+  .stat-table caption {
+    text-align: left;
+    padding: 12px 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--ink);
+  }
+
+  /* ========== AUFKLAPP ========== */
+  details {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    margin-bottom: 14px;
+    transition: all 0.2s;
+  }
+  details[open] {
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  summary {
+    cursor: pointer; padding: 18px 24px;
+    font-weight: 600; font-size: 1.05rem;
+    display: flex; align-items: center; gap: 14px;
+    list-style: none;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: "+"; display: inline-block;
+    width: 24px; height: 24px;
+    background: var(--ink); color: var(--paper);
+    text-align: center; line-height: 22px;
+    font-family: var(--mono); font-weight: 700;
+    font-size: 0.9rem; flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  details[open] summary::before {
+    content: "–"; background: var(--accent);
+  }
+  summary:hover { background: var(--paper-deep); }
+  .detail-body {
+    padding: 0 24px 24px 24px;
+    font-size: 0.97rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .detail-body > *:first-child { margin-top: 0; }
+  .detail-body > *:last-child { margin-bottom: 0; }
+
+  /* ========== MERK-BOXEN ========== */
+  .callout {
+    padding: 22px 26px;
+    margin: 20px 0;
+    border-left: 5px solid;
+    background: var(--paper-soft);
+  }
+  .callout h5 {
+    font-family: var(--mono); font-size: 0.75rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 10px; font-weight: 700;
+  }
+  .callout p { margin: 0; font-size: 0.97rem; }
+  .callout p + p { margin-top: 0.8em; }
+  .callout.empirie { border-color: var(--accent); background: #FAF1E8; }
+  .callout.empirie h5 { color: var(--accent); }
+  .callout.pro { border-color: var(--green); background: var(--green-soft); }
+  .callout.pro h5 { color: var(--green-deep); }
+  .callout.contra { border-color: var(--red); background: var(--red-soft); }
+  .callout.contra h5 { color: var(--red-deep); }
+  .callout.caveat { border-color: var(--yellow); background: var(--yellow-soft); }
+  .callout.caveat h5 { color: var(--yellow-deep); }
+  .callout.sweden { border-color: var(--sweden); background: var(--sweden-soft); }
+  .callout.sweden h5 { color: var(--sweden-deep); }
+  .callout.cuba { border-color: var(--cuba); background: var(--cuba-soft); }
+  .callout.cuba h5 { color: var(--cuba-deep); }
+
+  /* ========== INLINE GLOSS / TOOLTIP ========== */
+  .gloss {
+    border-bottom: 1px dashed var(--accent);
+    cursor: help; color: var(--accent);
+    font-weight: 600; position: relative;
+    text-decoration: none;
+  }
+  .gloss:hover::after {
+    content: attr(data-def);
+    position: absolute;
+    bottom: calc(100% + 8px); left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink); color: var(--paper);
+    padding: 12px 16px; font-size: 0.85rem;
+    line-height: 1.45; font-weight: 400;
+    width: 320px; max-width: 90vw; z-index: 20;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    border-radius: 2px;
+    white-space: normal;
+  }
+  .gloss:hover::before {
+    content: "";
+    position: absolute;
+    bottom: calc(100% + 2px); left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--ink);
+    z-index: 21;
+  }
+
+  /* ========== PULLQUOTE ========== */
+  .pullq {
+    font-family: var(--display); font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.3; color: var(--accent);
+    border-left: 4px solid var(--accent);
+    padding: 12px 28px; margin: 50px 0;
+    max-width: 760px;
+  }
+  .pullq cite {
+    display: block; margin-top: 14px;
+    font-family: var(--mono); font-style: normal;
+    font-size: 0.75rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-muted);
+  }
+
+  /* ========== KLARTEXT ========== */
+  .klartext {
+    position: relative;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    padding: 22px 28px 22px 70px;
+    margin: 26px 0;
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    font-style: italic;
+  }
+  .klartext::before {
+    content: "💡";
+    position: absolute;
+    left: 22px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.6rem;
+    font-style: normal;
+  }
+  .klartext .label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-style: normal;
+    font-weight: 700;
+  }
+  .klartext.green { border-color: var(--green); background: var(--green-soft); }
+  .klartext.green::before { content: "✓"; color: var(--green); font-weight: 900; }
+  .klartext.green .label { color: var(--green-deep); }
+  .klartext.red { border-color: var(--red); background: var(--red-soft); }
+  .klartext.red::before { content: "✗"; color: var(--red); font-weight: 900; }
+  .klartext.red .label { color: var(--red-deep); }
+  .klartext.yellow { border-color: var(--yellow); background: var(--yellow-soft); }
+  .klartext.yellow::before { content: "◐"; color: var(--yellow); font-weight: 900; }
+  .klartext.yellow .label { color: var(--yellow-deep); }
+  .klartext.sweden { border-color: var(--sweden); background: var(--sweden-soft); }
+  .klartext.sweden::before { content: "🇸🇪"; }
+  .klartext.sweden .label { color: var(--sweden-deep); }
+  .klartext.cuba { border-color: var(--cuba); background: var(--cuba-soft); }
+  .klartext.cuba::before { content: "🇨🇺"; }
+  .klartext.cuba .label { color: var(--cuba-deep); }
+  .klartext.big {
+    font-size: 1.5rem;
+    padding: 32px 32px 32px 80px;
+  }
+  .klartext.big::before { font-size: 2.2rem; left: 24px; }
+
+  /* ========== CHART ========== */
+  .chart-wrap {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 32px;
+    margin: 32px 0;
+  }
+  .chart-title {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .chart-subtitle {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+  .chart-source {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--ink-muted);
+    margin-top: 16px;
+  }
+
+  /* ========== GLOSSARY ========== */
+  .glossary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; margin-top: 32px;
+  }
+  .gloss-term {
+    background: var(--paper); border: 1px solid var(--rule);
+    padding: 22px; transition: all 0.2s;
+  }
+  .gloss-term:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  }
+  .gloss-term dt {
+    font-family: var(--display); font-weight: 700;
+    font-size: 1.1rem; color: var(--accent); margin-bottom: 6px;
+  }
+  .gloss-term dt small {
+    display: block; font-family: var(--mono);
+    font-size: 0.7rem; color: var(--ink-muted);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-top: 2px; font-style: normal; font-weight: 500;
+  }
+  .gloss-term dd {
+    font-size: 0.95rem; color: var(--ink-soft);
+    line-height: 1.55; margin: 0;
+  }
+  .gloss-term dd em { color: var(--ink-muted); font-style: italic; }
+
+  /* ========== LIMITS GRID ========== */
+  .limits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; margin-top: 36px;
+  }
+  .limit-card {
+    padding: 24px; background: rgba(245,240,230,0.05);
+    border-left: 3px solid var(--gold);
+  }
+  .limit-card h4 { color: var(--paper); margin-bottom: 8px; font-size: 1.05rem; }
+  .limit-card p { font-size: 0.92rem; color: rgba(245,240,230,0.75); line-height: 1.55; margin: 0; }
+
+  /* ========== KRISE BOX ========== */
+  .crisis-box {
+    background: var(--cuba-soft);
+    border: 2px solid var(--cuba);
+    padding: 28px 32px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .crisis-box::before {
+    content: "⚠";
+    position: absolute;
+    top: 20px; left: 20px;
+    font-size: 2rem;
+    color: var(--cuba);
+  }
+  .crisis-box h4 {
+    padding-left: 48px;
+    color: var(--cuba-deep);
+    margin-bottom: 8px;
+  }
+  .crisis-box p {
+    padding-left: 48px;
+    color: var(--ink);
+    margin: 0;
+  }
+  .crisis-box .crisis-stats {
+    padding-left: 48px;
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+  }
+  .crisis-box .crisis-stats div {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+  }
+  .crisis-box .crisis-stats div b {
+    display: block;
+    font-family: var(--display);
+    font-size: 1.5rem;
+    color: var(--cuba-deep);
+    font-weight: 900;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--ink); color: rgba(245,240,230,0.7);
+    padding: 60px 0 36px; font-size: 0.9rem;
+  }
+  footer h4 { color: var(--paper); margin-bottom: 12px; font-size: 1rem; }
+  footer p { line-height: 1.6; }
+  footer .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px; margin-bottom: 36px;
+  }
+  footer .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid rgba(245,240,230,0.15);
+    font-family: var(--mono); font-size: 0.75rem;
+    color: rgba(245,240,230,0.4); text-align: center;
+  }
+
+  .small { font-size: 0.85rem; color: var(--ink-muted); }
+  .center { text-align: center; }
+
+  /* ========== AREA CARDS ========== */
+  .area-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 30px;
+    margin: 24px 0;
+  }
+  .area-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+  .area-card .area-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .area-twin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  @media (max-width: 720px) { .area-twin { grid-template-columns: 1fr; } }
+  .area-twin .sweden-side, .area-twin .cuba-side {
+    padding: 20px;
+  }
+  .area-twin .sweden-side {
+    background: var(--sweden-soft);
+    border-left: 4px solid var(--sweden);
+  }
+  .area-twin .cuba-side {
+    background: var(--cuba-soft);
+    border-left: 4px solid var(--cuba);
+  }
+  .area-twin h4 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+  .area-twin .sweden-side h4 { color: var(--sweden-deep); }
+  .area-twin .cuba-side h4 { color: var(--cuba-deep); }
+  .area-twin .numbers {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(0,0,0,0.15);
+  }
+  .area-twin .numbers b {
+    color: var(--ink);
+    font-weight: 700;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ============================================ -->
+<!-- HERO -->
+<!-- ============================================ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-kicker">Sonderkapitel · Schweden vs. Cuba · Mai 2026</div>
+    <h1><span class="sweden-c">Schweden</span> <span class="vs">vs.</span><br><span class="cuba-c">Cuba</span></h1>
+    <p class="hero-lead">
+      Wenn man die <strong>positive Referenz des heutigen Sozialismus</strong> sucht — den staatssozialistischen Staat, auf den sich Linke weltweit am häufigsten <em>noch heute</em> positiv beziehen — landet man bei <strong>Cuba</strong>. Universelles Gesundheitssystem, 99% Alphabetisierung, medizinische Brigaden in 60+ Ländern, trotz 65 Jahren US-Embargo. Aber: wie steht Cuba im direkten Vergleich zu <strong>Schweden</strong> da, der erfolgreichsten Reform-Sozialdemokratie der Welt? Dieser Report stellt beide Wege direkt gegenüber — in allen Bereichen, mit allen Schattenseiten.
+    </p>
+
+    <div class="hero-meta">
+      <div><strong>2 Staaten</strong>Schweden &amp; Cuba</div>
+      <div><strong>10 Bereiche</strong>im Detail-Vergleich</div>
+      <div><strong>1959–2025</strong>Empirie-Zeitraum</div>
+      <div><strong>Reform vs.</strong>Revolution-Bilanz</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================ -->
+<!-- TOC -->
+<!-- ============================================ -->
+<nav class="toc">
+  <div class="container">
+    <div class="toc-inner">
+      <a href="#warum-cuba">Warum Cuba</a>
+      <a href="#profile">Profile</a>
+      <a href="#vergleich">10 Bereiche</a>
+      <a href="#bilanz">Statistik-Bilanz</a>
+      <a href="#krise">Cuba-Krise 2020+</a>
+      <a href="#lehren">Lehren</a>
+      <a href="#glossar">Begriffe</a>
+      <a href="#grenzen">Grenzen</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================ -->
+<!-- TLDR -->
+<!-- ============================================ -->
+<div class="container">
+  <div class="tldr">
+    <div class="tldr-label">Das Wichtigste in 90 Sekunden</div>
+    <h3>Cuba — der unbestreitbar erfolgreichste staatssozialistische Staat</h3>
+    <p>
+      Wenn man Linke heute fragt: <em>„Nenne mir ein Beispiel von Sozialismus, das funktioniert hat"</em> — kommt fast immer dieselbe Antwort: <strong>Cuba</strong>. Welt-anerkanntes Gesundheitssystem (Säuglingssterblichkeit niedriger als USA), 99 % Alphabetisierung, 13 % des BIP für Bildung (mehr als USA und Kanada zusammen), medizinische Brigaden in 60 Ländern, substantieller Beitrag zur Befreiung Südafrikas. <strong>Cuba ist deutlich besser als die UdSSR.</strong> Keine Hungersnöte. Kein Gulag. Keine massive Tote-Bilanz.
+    </p>
+    <p>
+      Aber: stellt man Cuba neben <strong>Schweden</strong> — den erfolgreichsten Reform-Sozialstaat —, zeigt sich ein anderes Bild. Schweden hat <em>in fast jeder messbaren Dimension</em> noch bessere Werte erreicht. <strong>Höhere Lebenserwartung, niedrigere Säuglingssterblichkeit, höhere Frauenrechte, höheres BIP pro Kopf, freie Wahlen, freie Presse, freie Reisefreiheit.</strong> Und seit 2020 befindet sich Cuba in der schwersten Krise seiner Geschichte: <strong>1–1,8 Millionen Menschen sind seit 2021 ausgewandert</strong> (10–18 % der Bevölkerung), Stromausfälle bis 16 Stunden täglich, Lebensmittel- und Medikamenten-Knappheit.
+    </p>
+    <p>
+      Dieser Report stellt beide Wege detailliert gegenüber — mit allen Erfolgen, allen Schattenseiten und allen offenen Fragen.
+    </p>
+  </div>
+
+  <div class="klartext big">
+    <span class="label">In einem Satz</span>
+    Cuba ist der erfolgreichste sozialistische Staat — und Schweden ist trotzdem noch erfolgreicher.
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- WARUM CUBA -->
+<!-- ============================================ -->
+<section id="warum-cuba">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Die Recherche-Frage</div>
+      <h2>Warum gilt Cuba als „der beste" sozialistische Staat?</h2>
+      <p>
+        Wenn man die Frage stellt: <em>„Welcher staatssozialistische Staat hat am meisten geleistet — auf den sich heute noch positiv bezogen wird?"</em> — dann konvergieren mehrere unabhängige Quellen auf Cuba. Hier die Gründe.
+      </p>
+    </div>
+
+    <div class="callout empirie">
+      <h5>Quellen-Konvergenz</h5>
+      <p>
+        Die Recherche zeigt: <strong>Cuba wird von unterschiedlichsten Stimmen als positives Referenz-Modell genannt</strong>. Von linken US-Politikern (Bernie Sanders, Shaun Scott, Zohran Mamdani-Kreis) über internationale Marxisten (Kerala-Chef Pinarayi Vijayan), bis zu medizinischen Mainstream-Stimmen (WHO, PubMed-Studien zur Primary Health Care). Andere Kandidaten (Burkina Faso unter Sankara, Allende-Chile, Tito-Jugoslawien, Venezuela, Vietnam) werden seltener oder kontroverser referenziert.
+      </p>
+    </div>
+
+    <h3 style="margin-top: 40px;">Die fünf Gründe, warum Cuba</h3>
+
+    <details open>
+      <summary>1. Welt-anerkanntes Gesundheitssystem</summary>
+      <div class="detail-body">
+        <p>
+          Cuba erreicht Gesundheits-Indikatoren auf <strong>Niveau hochentwickelter Industriestaaten</strong> — bei einem BIP pro Kopf von etwa 1/5 der USA. Säuglingssterblichkeit 4,2 pro 1000 (USA 5,4). Lebenserwartung 78,8 (USA 77,5). Welt-höchste Ärztedichte pro Einwohner.
+        </p>
+        <p>
+          Die WHO selbst nennt Cuba als Modell für <span class="gloss" data-def="Primary Health Care: gemeindenahe Erst-Versorgung statt Krankenhaus-fixierte Medizin. WHO-Konzept seit Alma-Ata 1978. Cuba gilt als Pionier-Implementierer.">Primary Health Care</span>. Cubas Familienarzt-System wurde 2018 vom CPI(M)-geführten Kerala nachgebaut.
+        </p>
+        <p>
+          Internationaler Internationalismus: cubanische medizinische Brigaden in 60+ Ländern (Afrika, Lateinamerika, Asien). Allein 2020-22 Pandemie: ca. 5.000 cubanische Ärzte in 40 Ländern.
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>2. Bildungs-Pionier-Status</summary>
+      <div class="detail-body">
+        <p>
+          1961 startete Cuba die <em>Campaña Nacional de Alfabetización</em> — 100.000 Jugendliche wurden aufs Land geschickt, um Bauern lesen und schreiben beizubringen. Innerhalb von 12 Monaten sank die Analphabeten-Quote <strong>von 23% auf 4%</strong>. UNESCO-Auszeichnung. Welt-historisch eine der erfolgreichsten Alphabetisierungs-Kampagnen.
+        </p>
+        <p>
+          Heute: 99,8% Alphabetisierung (höher als USA mit 99%). Cuba investiert <strong>13% des BIP in Bildung</strong> — mehr als USA + Kanada zusammen (USA 5,4%). Durchschnittliche Schulbildung: 12,2 Jahre.
+        </p>
+        <p>
+          Cuba bildet <strong>kostenlos auch ausländische Studenten</strong> aus — vor allem aus dem Globalen Süden, mit der Verpflichtung, später in vulnerablen Communities zu arbeiten. ELAM (Lateinamerikanische medizinische Schule) hat seit 1999 über 30.000 ausländische Ärzte ausgebildet.
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>3. Resilienz trotz US-Embargo</summary>
+      <div class="detail-body">
+        <p>
+          <span class="gloss" data-def="US-Embargo gegen Cuba: seit 1960 (formal 1962). Verbietet US-Bürgern und -Firmen jeglichen Handel mit Cuba. Wurde mehrfach verschärft (Helms-Burton 1996, Trump 2017-21). Wirtschaftsschaden geschätzt 130+ Mrd. USD über 60 Jahre.">Das US-Embargo</span> existiert seit 1960 — über <strong>65 Jahre</strong>, das längste durchgängige Handelsembargo der Geschichte. Die UNO-Generalversammlung verurteilt es seit 1992 jährlich mit über 90% Mehrheit (zuletzt 2024: 187 für Aufhebung, 2 dagegen).
+        </p>
+        <p>
+          Trotz dieses Embargos hat Cuba substantielle Capability-Erfolge erreicht, die <strong>vergleichbare lateinamerikanische Länder mit US-Wirtschafts-Beziehungen nicht erreicht haben</strong> (Honduras, Nicaragua, Guatemala, Haiti).
+        </p>
+        <div class="callout empirie">
+          <h5>Wichtiges Caveat</h5>
+          <p>Aber auch dieses Argument hat Grenzen: Costa Rica hat <em>ohne</em> Sozialismus + ohne Embargo bessere Indikatoren erreicht als Cuba (Lebenserwartung 80,8, Demokratie-Index hoch). Der „Embargo erklärt alles"-Diskurs ist methodisch nicht haltbar.</p>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>4. Internationalistische Substanz (Angola, Apartheid-Befreiung)</summary>
+      <div class="detail-body">
+        <p>
+          Zwischen 1975 und 1991 entsandte Cuba <strong>40.000-50.000 Soldaten nach Angola</strong>, um die MPLA-Regierung gegen die südafrikanische Apartheid-Armee zu verteidigen. Höhepunkt: Schlacht von <em>Cuito Cuanavale</em> 1987-88, in der cubanisch-angolanische Truppen die südafrikanische Armee zurückdrängten.
+        </p>
+        <p>
+          Nelson Mandela 1991 in Havanna: <em>„Die Cubaner haben durch Schweiß und Blut die Freiheit Südafrikas erkauft. Sie haben dem Apartheid-Mythos den Schädel gespalten."</em> Substantieller Beitrag zur Unabhängigkeit Namibias 1990 und zum Ende der Apartheid 1994.
+        </p>
+        <p>
+          Das ist <strong>kein anderer staatssozialistischer Staat</strong> in vergleichbarer Größe geleistet — nicht UdSSR (eher militärische Versorgung als Frontkampf), nicht China, nicht DDR.
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>5. Ideologische Authentizität + Castro-Mythos</summary>
+      <div class="detail-body">
+        <p>
+          Cuba ist eines der wenigen ML-Regime, das <strong>nicht durch sowjet. Panzer eingeführt</strong> wurde (wie DDR, Polen, Tschechoslowakei, Bulgarien etc.), sondern aus eigener Kraft entstand. Castro/Guevara/Cienfuegos haben in der Sierra Maestra gegen ein US-gestütztes Diktator-Regime (Batista) gekämpft und gewonnen.
+        </p>
+        <p>
+          Das verleiht Cuba in der linken Diskussion eine <em>moralische Authentizität</em>, die anderen ML-Staaten fehlt. Hinzu kommt die Symbolik von Che Guevara als globale Ikone des anti-imperialistischen Widerstands.
+        </p>
+        <p>
+          Castro überlebte über 600 dokumentierte CIA-Mordversuche. Seine Reden in der UNO (1960, 4 Stunden 29 Minuten — bis heute Rekord) sind in der linken Tradition ikonisch.
+        </p>
+      </div>
+    </details>
+
+    <div class="klartext">
+      <span class="label">Warum Cuba in einem Satz</span>
+      Cuba liefert Gesundheit, Bildung und internationale Solidarität auf Welt-Spitzenniveau — trotz 65 Jahren US-Embargo. Das ist die linke Referenz-Erzählung.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- PROFILE -->
+<!-- ============================================ -->
+<section id="profile" class="alt">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Die zwei Profile</div>
+      <h2>Schweden und Cuba im Überblick</h2>
+      <p>
+        Bevor wir vergleichen — wer sind diese zwei Länder? Hier die wichtigsten Kennzahlen + die Grund-Charakteristik beider Modelle.
+      </p>
+    </div>
+
+    <div class="country-profile">
+      <div class="country-col sweden">
+        <div class="country-flag">🇸🇪</div>
+        <h3>Schweden</h3>
+        <div class="sub">Konstitutionelle Monarchie · Soziale Marktwirtschaft</div>
+
+        <h4>Grunddaten 2024</h4>
+        <ul>
+          <li><strong>Bevölkerung</strong>10,6 Millionen</li>
+          <li><strong>Fläche</strong>450.295 km² (große Landfläche, dünn besiedelt)</li>
+          <li><strong>BIP pro Kopf (PPP)</strong>~67.000 USD (Welt-Top-15)</li>
+          <li><strong>Staatsform</strong>Parlamentarische Demokratie + Monarchie</li>
+          <li><strong>Regierungsform aktuell</strong>Bürgerliche Koalition (seit 2022, davor SAP-geführt)</li>
+        </ul>
+
+        <h4>Grund-Charakteristik</h4>
+        <ul>
+          <li><strong>Reform-Sozialdemokratie</strong>SAP regierte 1932-2006 fast durchgehend (74 Jahre). Sozialstaat durch Wahlen + Tarifverhandlungen + Sozialgesetze. Kein Bürgerkrieg, keine Diktatur, keine Geheimpolizei.</li>
+          <li><strong>Saltsjöbaden-Modell 1938</strong>Klassenkompromiss zwischen Gewerkschaften und Arbeitgebern als institutionelle Grundlage. Funktioniert bis heute (mit Modifikationen).</li>
+          <li><strong>Rehn-Meidner-Modell</strong>Solidarische Lohnpolitik (gleicher Lohn für gleiche Arbeit branchenweit) + aktive Arbeitsmarktpolitik. Welt-paradigmatisch für sozialdemokratische Wirtschaftspolitik.</li>
+          <li><strong>Wohlfahrtsstaat als „versteckter Sozialismus"</strong>Staatsquote in den 1980ern bei 60% des BIP — höher als manche ML-Staaten. Massive De-facto-Vergesellschaftung über Steuern, ohne Enteignung.</li>
+          <li><strong>Aktuelle Verschiebung seit 1990</strong>Marktreformen, Privatisierungen (Post, Telekom, Schule-Voucher). Gini-Koeffizient von 0,21 (1980) auf 0,29 (2020) gestiegen. Sozialstaat noch substantiell, aber unter Druck.</li>
+        </ul>
+      </div>
+
+      <div class="country-col cuba">
+        <div class="country-flag">🇨🇺</div>
+        <h3>Cuba</h3>
+        <div class="sub">Sozialistische Republik · Einparteiensystem</div>
+
+        <h4>Grunddaten 2024-25</h4>
+        <ul>
+          <li><strong>Bevölkerung offiziell</strong>9,7 Millionen (ONEI 2024)</li>
+          <li><strong>Bevölkerung real geschätzt</strong>~8 Millionen (Albizu-Campos 2025) — 18% Verlust seit 2021</li>
+          <li><strong>Fläche</strong>109.884 km² (kompakte Insel, dicht besiedelt)</li>
+          <li><strong>BIP pro Kopf (PPP)</strong>~12.300 USD (mittleres Niveau, fallend)</li>
+          <li><strong>Staatsform</strong>Sozialistische Einparteienrepublik (PCC)</li>
+          <li><strong>Aktuelle Führung</strong>Miguel Díaz-Canel (seit 2018, post-Castro)</li>
+        </ul>
+
+        <h4>Grund-Charakteristik</h4>
+        <ul>
+          <li><strong>Revolution 1959</strong>Fidel Castro, Che Guevara, Camilo Cienfuegos stürzen das US-gestützte Batista-Regime. Anfänglich nicht-marxistisch; ML-Wende 1961 nach US-Embargo-Verschärfung.</li>
+          <li><strong>Periodo Especial 1990-95</strong>Nach Sowjet-Kollaps brach 80% des cubanischen Außenhandels weg. BIP fiel 35%. Hungerkrise. Massen-Exodus (35.000 Balseros 1994). Cuba überlebte, aber substantiell beschädigt.</li>
+          <li><strong>Castro-Dynastie</strong>Fidel Castro Premier 1959-76, Präsident 1976-2008. Sein Bruder Raúl Castro 2008-2018. Miguel Díaz-Canel seit 2018 (erster Nicht-Castro-Präsident). PCC bleibt einzige legale Partei.</li>
+          <li><strong>Wirtschafts-Modell</strong>Plan-Wirtschaft mit selektiven Markt-Elementen (Tourismus seit 1990er, kleine Privatwirtschaft <em>cuentapropistas</em> seit 2010, USD-Stores). Soft Budget Constraint strukturell.</li>
+          <li><strong>Aktuelle Systemkrise 2020-25</strong>Wirtschaft -10% seit 2018. Inflation 31-77%. Tägliche Stromausfälle bis 16 Stunden. Lebensmittel-Knappheit. <strong>1-1,8 Mio. Menschen ausgewandert seit 2021</strong> = 10-18% der Bevölkerung. Größter Exodus der cubanischen Geschichte.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="klartext">
+      <span class="label">Die zwei Profile in einem Satz</span>
+      Schweden ist eine stabile sozialdemokratische Demokratie. Cuba ist eine ML-Einparteienrepublik in tiefer Krise — mit historisch starken Capability-Erfolgen.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- VERGLEICH 10 BEREICHE -->
+<!-- ============================================ -->
+<section id="vergleich">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Detail-Vergleich</div>
+      <h2>Schweden und Cuba in zehn Bereichen</h2>
+      <p>
+        Hier der direkte Vergleich beider Modelle — in zehn substantiellen Bereichen. Jeweils mit konkreten Zahlen, kurzem Klartext-Verdikt und Caveats wo angebracht.
+      </p>
+    </div>
+
+    <!-- BEREICH 1 — WIRTSCHAFT -->
+    <div class="area-card">
+      <div class="area-label">Bereich 1 von 10</div>
+      <h3>Wirtschaft &amp; Lebensstandard</h3>
+      <p>
+        Wer ist materiell wohlhabender? Wer hat die produktivere Wirtschaft? Wer kann seinen Bürgern mehr bieten?
+      </p>
+
+      <div class="area-twin">
+        <div class="sweden-side">
+          <h4>🇸🇪 Schweden</h4>
+          <p>Eine der reichsten Volkswirtschaften der Welt. Hohe Produktivität, exportstarke Industrie (Volvo, Ericsson, IKEA, H&amp;M), substantielle Tech-Branche (Spotify, Skype, Klarna). Sozialstaat finanziert durch <span class="gloss" data-def="Sweden's tax-to-GDP-ratio: ca. 42-46% (OECD-Top-5). Im Vergleich: Deutschland 38%, USA 27%. Hohe Steuern, hohe Sozialleistungen.">eine der höchsten Steuerquoten der Welt</span>.</p>
+          <div class="numbers">
+            BIP/Kopf (PPP) 2024: <b>~67.000 USD</b><br>
+            Reallöhne 1980→2020: <b>+62%</b><br>
+            Staatsquote 1980er: <b>60%</b><br>
+            Aktuelle Steuerquote: <b>42-46%</b><br>
+            Inflation 2024: <b>2,7%</b><br>
+            Arbeitslosigkeit 2024: <b>8,3%</b>
+          </div>
+        </div>
+        <div class="cuba-side">
+          <h4>🇨🇺 Cuba</h4>
+          <p>Plan-Wirtschaft mit selektiven Markt-Elementen seit den 1990ern. Vier Devisen-Säulen: Tourismus, Auslandsüberweisungen, Biopharmazie, medizinischer Export. <span class="gloss" data-def="Mangelwirtschaft (Kornai): strukturelle Knappheiten in Plan-Wirtschaften. Schlange vor dem Schuh-Geschäft bei Größe 38, Lager voll mit Größe 44.">Mangelwirtschaft</span> strukturell. Aktuell schwerste Wirtschaftskrise seit 1959.</p>
+          <div class="numbers">
+            BIP/Kopf (PPP) 2024: <b>~12.300 USD</b><br>
+            BIP 2024 vs. 2018: <b>-10%</b><br>
+            Inflation 2021/22/23: <b>+77/+39/+31%</b><br>
+            Peso-Abwertung 2021-24: <b>-88%</b><br>
+            Fiscal-Defizit 2025 (proj.): <b>>10% BIP</b><br>
+            Stromausfälle 2024: <b>bis 16h/Tag</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="klartext sweden">
+        <span class="label">Wirtschaft — Verdikt</span>
+        Schweden ist 5× wohlhabender pro Kopf — und seine Wirtschaft schrumpft nicht.
+      </div>
+    </div>
+
+    <!-- BEREICH 2 — GESUNDHEIT -->
+    <div class="area-card">
+      <div class="area-label">Bereich 2 von 10</div>
+      <h3>Gesundheitssystem</h3>
+      <p>
+        Hier liegt Cubas größte Stärke. Wie sieht der direkte Vergleich aus?
+      </p>
+
+      <div class="area-twin">
+        <div class="sweden-side">
+          <h4>🇸🇪 Schweden</h4>
+          <p>Universelles öffentliches Gesundheitssystem (<em>Hälso- och sjukvård</em>), finanziert durch Steuern. Regionale Verwaltung. Lange Wartezeiten für elektive Eingriffe ein bekanntes Problem, aber Notfall- und Krebsversorgung Welt-Spitze.</p>
+          <div class="numbers">
+            Lebenserwartung 2024: <b>83,3 (F) / 81,2 (M)</b><br>
+            Säuglingssterblichkeit: <b>2,2/1000</b> (Welt-Top-5)<br>
+            Müttersterblichkeit: <b>4/100.000</b><br>
+            Ärzte pro 1000: <b>4,3</b><br>
+            Gesundheitsausgaben: <b>10,9% BIP</b><br>
+            Out-of-pocket-Anteil: <b>~14%</b>
+          </div>
+        </div>
+        <div class="cuba-side">
+          <h4>🇨🇺 Cuba</h4>
+          <p>Vollständig staatlich, kostenlos für alle. Welt-höchste Ärztedichte pro Einwohner. Familienarzt-Modell (medizinische Erst-Versorgung im Wohnviertel). Aber seit 2020 strukturelle Engpässe: Medikamentenmangel, brain-drain ins Ausland, Krankenhäuser ohne Gaze oder Desinfektionsmittel (HRW 2024).</p>
+          <div class="numbers">
+            Lebenserwartung 2024: <b>80 (F) / 76 (M)</b><br>
+            Säuglingssterblichkeit 2023: <b>4,9/1000</b><br>
+            (Höhepunkt 2017: 4,1 — besser als USA)<br>
+            Ärzte pro 1000: <b>8,4</b> (Welt-Spitze)<br>
+            Med. Brigaden im Ausland: <b>~28.000 Ärzte in 60 Ländern</b><br>
+            Aktuelle Medikamentenversorgung: <b>kritisch</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout caveat">
+        <h5>Wichtige Nuance</h5>
+        <p>
+          Cubas Gesundheits-Indikatoren sind beeindruckend — gemessen am BIP/Kopf-Niveau. <strong>Aber:</strong> Carmelo Mesa-Lago (Pittsburgh-Ökonom, Cuba-Spezialist) argumentiert, Cubas reale HDI-Peers seien China, Tunesien, Iran, Südafrika — nicht westliche Industriestaaten. Schweden hat <strong>bessere</strong> Gesundheits-Outcomes mit höherem Wohlstands-Level. Beides ist wahr.
+        </p>
+      </div>
+
+      <div class="klartext yellow">
+        <span class="label">Gesundheit — Verdikt</span>
+        Cuba leistet enorm viel mit wenig Geld. Aber Schweden leistet noch mehr mit mehr Geld — und das System bricht nicht zusammen.
+      </div>
+    </div>
+
+    <!-- BEREICH 3 — BILDUNG -->
+    <div class="area-card">
+      <div class="area-label">Bereich 3 von 10</div>
+      <h3>Bildung &amp; Alphabetisierung</h3>
+      <p>
+        Cubas zweite Vorzeige-Domäne. Schweden gilt als OECD-Bildungs-Spitze. Wie steht der direkte Vergleich?
+      </p>
+
+      <div class="area-twin">
+        <div class="sweden-side">
+          <h4>🇸🇪 Schweden</h4>
+          <p>Kostenloses öffentliches Bildungssystem von Vorschule bis Universität, einschließlich Doktorat. Substantielle Hochschul-Forschungsbasis (Karolinska, Lund, Uppsala). Studierende erhalten Studienzuschüsse + zinsgünstige Darlehen.</p>
+          <div class="numbers">
+            Alphabetisierung 2024: <b>99,8%</b><br>
+            Hochschulquote junge Erw.: <b>50%</b><br>
+            PISA 2022: <b>503 (Lesen)</b><br>
+            (Höhepunkt: 516 in 2009)<br>
+            Bildungsausgaben: <b>7,1% BIP</b><br>
+            OECD-Position 2024: <b>Top-15</b>
+          </div>
+        </div>
+        <div class="cuba-side">
+          <h4>🇨🇺 Cuba</h4>
+          <p>Kostenlos auf allen Ebenen. <em>Campaña de Alfabetización</em> 1961 senkte Analphabeten in 12 Monaten von 23% auf 4% (UNESCO-Auszeichnung). Cuba bildet auch ausländische Studenten kostenlos aus (vor allem aus Globalem Süden). Aber: Qualität sinkt seit 2010er durch Krise.</p>
+          <div class="numbers">
+            Alphabetisierung 2024: <b>99,8%</b><br>
+            Bildungsausgaben (Höhepunkt): <b>~13% BIP</b><br>
+            Aktuell 2024: <b>~7-8% BIP</b> (fallend)<br>
+            Durchschn. Schulbildung: <b>12,2 Jahre</b><br>
+            Universitäten: <b>50</b><br>
+            Ausländische Studenten ausgebildet seit 1959: <b>>30.000</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout caveat">
+        <h5>Methodischer Hinweis</h5>
+        <p>
+          Cubas Bildungs-Erfolge sind <strong>real und welt-historisch substantiell</strong>. Aber: <span class="gloss" data-def="Argumentation: andere lateinamerikanische Länder ohne Sozialismus haben ähnliche Alphabetisierungs-Sprünge geleistet (Costa Rica, Chile, Brasilien). El Salvador 1950: <40% → heute 88%. Die Differenz Cubas ist real aber nicht so einzigartig wie oft dargestellt.">andere lateinamerikanische Länder</span> (Costa Rica, Chile) haben ohne sozialistisches System ähnliche oder bessere Bildungs-Sprünge geschafft. Costa Rica heute: 98% Alphabetisierung, kein Embargo, demokratisch.
+        </p>
+      </div>
+
+      <div class="klartext green">
+        <span class="label">Bildung — Verdikt</span>
+        Beide Länder erreichen quasi 100% Alphabetisierung — Cuba mit weniger Geld, Schweden mit besserer Hochschulqualität.
+      </div>
+    </div>
+
+    <!-- BEREICH 4 — FRAUENRECHTE -->
+    <div class="area-card">
+      <div class="area-label">Bereich 4 von 10</div>
+      <h3>Frauenrechte &amp; Geschlechter-Gleichstellung</h3>
+      <p>
+        Cuba hat die <span class="gloss" data-def="Federación de Mujeres Cubanas: gegründet 1960 unter Vilma Espín. Frauen-Massenorganisation Cubas. Substantieller Beitrag zur Alphabetisierung und Frauen-Mobilisierung. Aber: auch Transmissions-Funktion (KP-loyale Massenorganisation).">Federación de Mujeres Cubanas</span> als Pionier-Organisation. Schweden gilt als Gender-Gleichstellungs-Vorreiter weltweit. Wer leistet mehr?
+      </p>
+
+      <div class="area-twin">
+        <div class="sweden-side">
+          <h4>🇸🇪 Schweden</h4>
+          <p>Welt-Vorreiter in Gender-Politik. Elterngeld 1974 als erstes Land. <em>Gender-mainstreaming</em> in Gesetzgebung. Anti-Diskriminierungs-Gesetzgebung umfassend. Frauen 47% des Parlaments (2024). Frauen 41% der Vorstände börsennotierter Firmen.</p>
+          <div class="numbers">
+            Frauenerwerbsquote: <b>~80%</b><br>
+            Gender Pay Gap: <b>~7%</b><br>
+            (Welt-niedrigster Wert)<br>
+            Frauen im Parlament: <b>47%</b><br>
+            Elterngeld pro Kind: <b>480 Tage</b><br>
+            (90 Tage exklusiv Vater)<br>
+            UN Gender Inequality Index 2023: <b>0,023</b> (Top-5)
+          </div>
+        </div>
+        <div class="cuba-side">
+          <h4>🇨🇺 Cuba</h4>
+          <p>Frauenwahlrecht 1934. Substantielle Beteiligung im öffentlichen Dienst. Verfassung 2019 anerkennt Geschlechter-Gleichstellung. <em>Código de las Familias</em> 2022 legalisierte gleichgeschlechtliche Ehe + Adoption + Leihmutterschaft. Aber: häusliche Gewalt strukturell schlecht bearbeitet.</p>
+          <div class="numbers">
+            Frauenerwerbsquote: <b>~46%</b><br>
+            (deutlich niedriger als Schweden)<br>
+            Frauen im Parlament: <b>53%</b><br>
+            (welt-höchste Quote)<br>
+            Gender Pay Gap: <b>~10%</b><br>
+            Abtreibung legal seit: <b>1965</b><br>
+            UN GII 2023: <b>0,303</b> (mittleres Niveau)
+          </div>
+        </div>
+      </div>
+
+      <div class="callout caveat">
+        <h5>Cubas Spannweite</h5>
+        <p>
+          Cuba ist in <em>formalen</em> Repräsentations-Daten exzellent (53% Frauen im Parlament — welt-höchster Wert). Aber: das Parlament ist eine Versammlung ohne echte Macht (Einparteiensystem). In <em>materiellen</em> Gleichstellungs-Indikatoren (Erwerbsquote, ökonomische Unabhängigkeit) ist Schweden voraus. Beide Realitäten stimmen.
+        </p>
+      </div>
+
+      <div class="klartext yellow">
+        <span class="label">Frauenrechte — Verdikt</span>
+        Cuba hat formal die meisten Frauen im Parlament, Schweden hat real die selbstständigsten Frauen.
+      </div>
+    </div>
+
+    <!-- BEREICH 5 — DEMOKRATIE -->
+    <div class="area-card">
+      <div class="area-label">Bereich 5 von 10</div>
+      <h3>Demokratie &amp; politische Freiheit</h3>
+      <p>
+        Hier ist die Differenz fundamental.
+      </p>
+
+      <div class="area-twin">
+        <div class="sweden-side">
+          <h4>🇸🇪 Schweden</h4>
+          <p>Etablierte parlamentarische Demokratie. Mehrparteiensystem (8 Parteien aktuell im Reichstag). Freie Wahlen seit 1921 (allgemeines Frauenwahlrecht). Hohe Wahlbeteiligung (~85%). Robuste Zivilgesellschaft. Eines der ältesten Pressefreiheits-Gesetze der Welt (1766!).</p>
+          <div class="numbers">
+            EIU Demokratie-Index 2024: <b>9,39 (Top-5)</b><br>
+            (Volle Demokratie)<br>
+            Pressefreiheit RSF 2024: <b>Rang 4 / 180</b><br>
+            Wahlbeteiligung 2022: <b>84,2%</b><br>
+            Parteien im Parlament: <b>8</b><br>
+            Politische Gefangene: <b>0</b><br>
+            Verfassung mit Gewaltenteilung: <b>Ja</b>
+          </div>
+        </div>
+        <div class="cuba-side">
+          <h4>🇨🇺 Cuba</h4>
+          <p>Einparteiensystem (PCC einzige legale Partei). Wahlen für Nationalversammlung, aber Kandidaten von Kommissionen vorausgewählt. <em>Asamblea Nacional del Poder Popular</em> tagt nur 2× jährlich. Versammlungs- und Pressefreiheit massiv eingeschränkt. Politische Gefangene dokumentiert.</p>
+          <div class="numbers">
+            EIU Demokratie-Index 2024: <b>2,65</b><br>
+            (Autoritäres Regime)<br>
+            Pressefreiheit RSF 2024: <b>Rang 168 / 180</b><br>
+            (eines der schlechtesten)<br>
+            Legale Parteien: <b>1 (PCC)</b><br>
+            Polit. Gefangene 2024: <b>~1.100</b> (Prisoners Defenders)<br>
+            Internet-Zugang: <b>Zensiert</b><br>
+            Auswanderungs-Verbot: <b>2013 gelockert</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout contra">
+        <h5>Die Repressions-Bilanz</h5>
+        <p>
+          Nach den <strong>11J-Protesten 2021</strong> (größte regimekritische Demonstration seit 1959) wurden über <strong>1.000 Personen verhaftet</strong>, viele zu mehrjährigen Haftstrafen verurteilt (bis 25 Jahre). Amnesty International, HRW, IACHR dokumentierten systematische Menschenrechtsverletzungen. <em>Patrullaje</em> (Überwachungs-Patrouillen) durchsuchen Wohnungen. <em>Acto de repudio</em> (Pöbel-Demonstrationen) vor den Häusern von Dissidenten — staatlich organisiert.
+        </p>
+      </div>
+
+      <div class="klartext red">
+        <span class="label">Demokratie — Verdikt</span>
+        Schweden ist eine der freisten Demokratien der Welt. Cuba ist eine Einparteien-Diktatur mit politischen Gefangenen.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- BILANZ-TABELLE -->
+<!-- ============================================ -->
+<section id="bilanz" class="alt">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Mehr Bereiche</div>
+      <h2>Bereiche 6 bis 10</h2>
+      <p>
+        Internationalismus, Migration, Klima, Repression und das Gesamt-Bild in Zahlen.
+      </p>
+    </div>
+
+    <!-- BEREICH 6 — INTERNATIONALISMUS -->
+    <div class="area-card">
+      <div class="area-label">Bereich 6 von 10</div>
+      <h3>Internationalismus &amp; Außenpolitik</h3>
+      <p>
+        Hier hat Cuba eine eigene starke Bilanz — Schweden ist weniger spektakulär, aber auch substantiell.
+      </p>
+
+      <div class="area-twin">
+        <div class="sweden-side">
+          <h4>🇸🇪 Schweden</h4>
+          <p>Neutralität-Tradition bis 2022 (NATO-Beitritt 2024). Substantielle Entwicklungshilfe (0,93% BNE — Welt-Top-3, übertrifft das UN-0,7%-Ziel deutlich). Asyl-Politik historisch eher offen (60.000 Geflüchtete jährlich in den 2010ern, seitdem restriktiver). Olof Palme als anti-imperialistische Symbolfigur 1970er-80er.</p>
+          <div class="numbers">
+            Entwicklungshilfe 2023: <b>0,93% BNE</b><br>
+            (Welt-Top-3)<br>
+            UNHCR-Beiträge: <b>~600 Mio. USD/Jahr</b><br>
+            Anti-Apartheid-Engagement: <b>Substantiell</b><br>
+            (Olof Palme Anti-Apartheid-Konferenz 1986)<br>
+            Vietnam-Krieg-Kritik 1970er: <b>international wahrgenommen</b><br>
+            NATO-Beitritt: <b>2024 (zuvor Neutralität)</b>
+          </div>
+        </div>
+        <div class="cuba-side">
+          <h4>🇨🇺 Cuba</h4>
+          <p>Welt-paradigmatischer Internationalismus für ein Land seiner Größe. Militärisch (Angola 1975-91), medizinisch (60+ Länder), bildungspolitisch (ELAM). Pan-Afrikanische + lateinamerikanische Solidarität. Aber: aktuell zunehmend reduziert wegen Wirtschaftskrise.</p>
+          <div class="numbers">
+            Angola-Mission 1975-91: <b>40.000-50.000 Soldaten</b><br>
+            Med. Brigaden total: <b>>400.000 Ärzte ausgesandt</b><br>
+            Aktuelle Brigaden 2024: <b>~28.000 in 60 Ländern</b><br>
+            ELAM ausgebildet seit 1999: <b>>30.000 Ärzte</b><br>
+            Mandela über Cuba 1991: <b>„Schweiß und Blut für Freiheit Südafrikas"</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout caveat">
+        <h5>Cubas Internationalismus-Doppelcharakter</h5>
+        <p>
+          Cubas medizinische Brigaden sind <strong>real substantiell</strong> — UN-anerkannt, lebensrettend. Aber: die Ärzte erhalten nur ~10-25% des Gehalts, das die Empfänger-Länder an Cuba zahlen (75-90% gehen an den cubanischen Staat). HRW und ehemalige Ärzte bezeichnen das als Form von <span class="gloss" data-def="UN-Definition Zwangsarbeit: Arbeit gegen den Willen, mit Strafdrohung. Cuba weist die Charakterisierung zurück. Aber: Pass-Konfiszierung, Familien als Geiseln im Heimatland, hohe Bestrafung bei Desertion - diese Praktiken erfüllen UN-Kriterien laut HRW 2020.">moderne Zwangsarbeit</span>. UN-Sonderberichterstatter haben 2019-22 Bedenken formuliert. Cuba bestreitet das.
+        </p>
+      </div>
+
+      <div class="klartext yellow">
+        <span class="label">Internationalismus — Verdikt</span>
+        Cuba hat substantiell mehr internationale Solidarität geleistet als Schweden — aber die eigenen Ärzte werden dabei finanziell ausgenutzt.
+      </div>
+    </div>
+
+    <!-- BEREICH 7 — MIGRATION -->
+    <div class="area-card">
+      <div class="area-label">Bereich 7 von 10</div>
+      <h3>Migration: Wer geht, wer kommt?</h3>
+      <p>
+        Vielleicht der aussagekräftigste Indikator: <em>Wohin gehen die Menschen freiwillig?</em>
+      </p>
+
+      <div class="area-twin">
+        <div class="sweden-side">
+          <h4>🇸🇪 Schweden</h4>
+          <p>Schweden ist seit den 1950ern <strong>Einwanderungsland</strong>. Aktuell 20% der Bevölkerung im Ausland geboren. Substantielle Asyl-Aufnahme (Höhepunkt 2015: 163.000 Asyl-Anträge). Seit 2022 deutlich restriktiver, aber immer noch positiv-Saldo.</p>
+          <div class="numbers">
+            Migrationssaldo 2023: <b>+47.000</b> (mehr Zuzug als Wegzug)<br>
+            Im Ausland geboren: <b>~20%</b> der Bevölkerung<br>
+            Asyl-Annahmequote 2023: <b>~37%</b><br>
+            Ausreise-Beschränkungen: <b>Keine</b><br>
+            Pass-Power Index 2024: <b>Rang 3</b><br>
+            (Visumfrei in 191 Länder)
+          </div>
+        </div>
+        <div class="cuba-side">
+          <h4>🇨🇺 Cuba</h4>
+          <p>Cuba ist seit 1959 <strong>Auswanderungsland</strong>. Massen-Exodus in Wellen: <em>Marielitos</em> 1980 (125.000), <em>Balseros</em> 1994 (35.000), aktuell 2021-25 (1-1,8 Mio.). Insgesamt: ca. <strong>3 Millionen Cubaner leben heute im Ausland</strong> (in 140 Ländern) — bei 8-10 Mio. Inland-Bevölkerung.</p>
+          <div class="numbers">
+            Migrationssaldo 2024: <b>-251.000</b> (offiziell) bis <b>-545.000</b> (Albizu-Campos)<br>
+            Bevölkerungs-Rückgang 2021-25: <b>-10% offiziell / -18% real</b><br>
+            Cubaner im Ausland: <b>~3 Mio.</b><br>
+            Grenz-Kontakte mit USA 2024: <b>>97.000</b><br>
+            Pass-Power Index 2024: <b>Rang 65</b><br>
+            (Visumfrei in 64 Länder)
+          </div>
+        </div>
+      </div>
+
+      <div class="callout contra">
+        <h5>Der historische Vergleich</h5>
+        <p>
+          Die Bevölkerungs-Schrumpfung Cubas 2021-2024 ist nach Albizu-Campos „nur in <strong>Kriegskontexten beobachtbar</strong>". 2024 allein 250.000-545.000 Emigranten (je nach Methodik). Die Geburtenrate fiel auf ein 65-Jahres-Tief. Cuba zählt aktuell 25,7% Senioren über 60 — Überalterung beschleunigt durch Jugend-Exodus.
+        </p>
+      </div>
+
+      <div class="klartext red">
+        <span class="label">Migration — Verdikt</span>
+        Schweden ist Magnet, Cuba ist Sender. Wer mit den Füßen abstimmt, geht weg von Cuba.
+      </div>
+    </div>
+
+    <!-- BEREICH 8 — KLIMA & UMWELT -->
+    <div class="area-card">
+      <div class="area-label">Bereich 8 von 10</div>
+      <h3>Klima &amp; Umweltbilanz</h3>
+      <p>
+        Hier liegt eine Überraschung: Cuba ist in einigen Klima-Indikatoren <strong>besser</strong> als Schweden.
+      </p>
+
+      <div class="area-twin">
+        <div class="sweden-side">
+          <h4>🇸🇪 Schweden</h4>
+          <p>Klimaneutralität 2045 als Ziel. Ca. 60% Strom aus Wasser+Wind+Solar+Biomasse. Substantielle Forst-Bewirtschaftung. Aber: pro Kopf hohe Emissionen wegen Wohlstand + Industrie. Volvo-Skandal 2015. Schwedisches Eisenerz bis 1944 substantiell an Nazi-Deutschland exportiert.</p>
+          <div class="numbers">
+            CO₂ pro Kopf 2022: <b>3,9 t</b><br>
+            (Industrie-Mittel)<br>
+            Klimaneutralität-Ziel: <b>2045</b><br>
+            Erneuerbare Energien: <b>~60%</b> Strommix<br>
+            Wald-Anteil: <b>~70%</b> der Landfläche<br>
+            Klima-Performance-Index 2024: <b>Rang 8</b>
+          </div>
+        </div>
+        <div class="cuba-side">
+          <h4>🇨🇺 Cuba</h4>
+          <p>Cuba ist <strong>eines der CO₂-ärmsten Länder pro Kopf</strong> — aber überwiegend wegen Armut + Wirtschaftskrise, nicht wegen ökologischer Politik. <em>Tarea Vida</em> 2017: 100-Jahres-Klimaanpassungs-Plan (substantiell, aber wenig Umsetzungs-Mittel). Aktuell Energiekrise: Stromausfälle bis 16h täglich.</p>
+          <div class="numbers">
+            CO₂ pro Kopf 2022: <b>2,1 t</b><br>
+            (besser als Schweden!)<br>
+            Erneuerbare Energien 2024: <b>~5%</b> Strommix<br>
+            (Großteil noch fossil)<br>
+            Bio-Landwirtschaft Anteil: <b>Substantiell</b><br>
+            (notwendig durch fehlende Chemie-Importe)<br>
+            Tarea Vida 2017: <b>UN-anerkanntes Klima-Programm</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout caveat">
+        <h5>Methodische Vorsicht</h5>
+        <p>
+          Cubas niedrige CO₂-Emissionen sind <strong>kein</strong> Indikator gelungener Klimapolitik — sie sind ein Indikator von Armut und Energiekrise. Wenn Cuba das Schweden-BIP/Kopf erreichen würde, wären die Emissionen vermutlich höher. <strong>Aber:</strong> Cuba hat aus der Not heraus substantielle Bio-Landwirtschafts-Methoden entwickelt (<em>organopónicos</em> Havanna) — seit den 1990ern, als die sowjet. Chemiedünger-Lieferungen wegbrachen. Das wird in der ökologischen Landwirtschafts-Literatur substantiell anerkannt.
+        </p>
+      </div>
+
+      <div class="klartext yellow">
+        <span class="label">Klima — Verdikt</span>
+        Cuba emittiert weniger CO₂ — aber aus Armut, nicht aus Tugend.
+      </div>
+    </div>
+
+    <!-- BEREICH 9 — REPRESSION & POLITISCHE GEFANGENE -->
+    <div class="area-card">
+      <div class="area-label">Bereich 9 von 10</div>
+      <h3>Repression &amp; politische Gefangene</h3>
+      <p>
+        Eine Dimension, in der Cuba strukturell schlecht dasteht.
+      </p>
+
+      <div class="area-twin">
+        <div class="sweden-side">
+          <h4>🇸🇪 Schweden</h4>
+          <p>Rechtsstaat mit umfassendem Grundrechtsschutz. Folter verboten. Inhaftierung nur durch Gericht. Versammlungs-, Vereinigungs- und Pressefreiheit geschützt. Niedrige Gefangenenquote im OECD-Vergleich. Polizeigewalt-Vorfälle dokumentiert aber strafrechtlich verfolgbar.</p>
+          <div class="numbers">
+            Politische Gefangene: <b>0</b><br>
+            Gefangenenquote: <b>74 /100.000</b><br>
+            (Welt-niedriges Niveau)<br>
+            Folter dokumentiert (Amnesty): <b>Nein</b><br>
+            Todesstrafe abgeschafft: <b>1972</b><br>
+            (für alle Verbrechen)<br>
+            Freedom House 2024: <b>100/100</b>
+          </div>
+        </div>
+        <div class="cuba-side">
+          <h4>🇨🇺 Cuba</h4>
+          <p>Einparteiensystem. Versammlung + Vereinigung + freie Presse gesetzlich eingeschränkt. Geheimpolizei (<em>Departamento de Seguridad del Estado</em>, DSE). Politische Strafgesetze: <em>peligrosidad social predelictiva</em> (Strafe für „präventive soziale Gefährlichkeit", ohne tatsächliche Straftat).</p>
+          <div class="numbers">
+            Politische Gefangene 2024: <b>~1.100</b> (Prisoners Defenders)<br>
+            Gefangenenquote: <b>510 /100.000</b><br>
+            (Welt-Top-5)<br>
+            Folter dokumentiert: <b>Ja</b> (Amnesty 2024)<br>
+            Todesstrafe: <b>Auf dem Papier ja, faktisch ausgesetzt</b><br>
+            (letzte Exekution 2003)<br>
+            Freedom House 2024: <b>11/100</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout contra">
+        <h5>11J-Proteste 2021 als Wendepunkt</h5>
+        <p>
+          Am 11. Juli 2021 brachen in Cuba die größten regimekritischen Proteste seit 1959 aus — landesweit, spontan, ohne Führung. Auslöser: COVID-Krise + Stromausfälle + Lebensmittel-Knappheit. Reaktion: Massenverhaftungen. Über 1.300 Personen vor Gericht, darunter Minderjährige (15+). Verurteilungen bis 25 Jahre Haft wegen „Aufruhr" und „Subversion". Internationale Verurteilung durch EU-Parlament, UN-Sonderberichterstatter, IACHR.
+        </p>
+      </div>
+
+      <div class="klartext red">
+        <span class="label">Repression — Verdikt</span>
+        Cuba sperrt seine Bürger ein. Schweden tut das nicht.
+      </div>
+    </div>
+
+    <!-- BEREICH 10 — LEBENSQUALITÄT INSGESAMT -->
+    <div class="area-card">
+      <div class="area-label">Bereich 10 von 10</div>
+      <h3>Lebensqualität insgesamt (HDI, WHR, ND)</h3>
+      <p>
+        Die zusammengesetzten Indizes — was sagen sie?
+      </p>
+
+      <div class="area-twin">
+        <div class="sweden-side">
+          <h4>🇸🇪 Schweden</h4>
+          <p>Konstant in den Top-10 aller Lebensqualitäts-Rankings. HDI seit 1990 immer Top-15. World Happiness Report durchgehend Top-10.</p>
+          <div class="numbers">
+            HDI 2023: <b>0,952</b> (Rang 5)<br>
+            World Happiness Report 2024: <b>Rang 4</b><br>
+            Numbeo Quality of Life 2024: <b>Rang 7</b><br>
+            OECD Better Life Index: <b>Top-10</b><br>
+            UN E-Government 2024: <b>Rang 13</b><br>
+            Sozialvertrauen (WVS): <b>~64%</b> (Top-5)
+          </div>
+        </div>
+        <div class="cuba-side">
+          <h4>🇨🇺 Cuba</h4>
+          <p>HDI 0,764 — „hoch", aber deutlich unter Schweden. World Happiness Report fehlt Cuba in den letzten Jahren (kein verlässliches Daten-Setup mehr). Geht in den Indikatoren seit 2018 spürbar zurück.</p>
+          <div class="numbers">
+            HDI 2023: <b>0,764</b> (Rang 85)<br>
+            HDI-Peers: <b>China, Tunesien, Iran, Südafrika</b><br>
+            (laut Mesa-Lago)<br>
+            World Happiness Report: <b>seit 2020 fehlend</b><br>
+            (kein Erhebungs-Setup)<br>
+            Numbeo Quality of Life 2024: <b>nicht gelistet</b><br>
+            Sozialvertrauen WVS: <b>~14%</b> (sehr niedrig)
+          </div>
+        </div>
+      </div>
+
+      <div class="klartext sweden">
+        <span class="label">Lebensqualität — Verdikt</span>
+        Schweden ist in jedem zusammengesetzten Ranking unter den Top-15. Cuba liegt im internationalen Mittelfeld.
+      </div>
+    </div>
+
+    <!-- GESAMT-STATISTIK-TABELLE -->
+    <h3 style="margin-top: 60px;">Die Statistik-Bilanz im Gesamt-Überblick</h3>
+    <p>Die wichtigsten Indikatoren zusammen — auf einen Blick.</p>
+
+    <table class="stat-table">
+      <thead>
+        <tr>
+          <th>Indikator</th>
+          <th>🇸🇪 Schweden</th>
+          <th>🇨🇺 Cuba</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Bevölkerung 2024</td><td class="neut">10,6 Mio.</td><td class="bad">~8-9,7 Mio. (schrumpft)</td></tr>
+        <tr><td>BIP/Kopf (PPP) 2024</td><td class="good">~67.000 USD</td><td class="bad">~12.300 USD</td></tr>
+        <tr><td>HDI 2023</td><td class="good">0,952 (Rang 5)</td><td class="neut">0,764 (Rang 85)</td></tr>
+        <tr><td>Lebenserwartung 2024</td><td class="good">82,3</td><td class="neut">78</td></tr>
+        <tr><td>Säuglingssterblichkeit</td><td class="good">2,2/1000</td><td class="neut">4,9/1000</td></tr>
+        <tr><td>Alphabetisierung</td><td class="good">99,8%</td><td class="good">99,8%</td></tr>
+        <tr><td>Bildungsausgaben (% BIP)</td><td class="neut">7,1%</td><td class="good">~7-13%</td></tr>
+        <tr><td>Gesundheitsausgaben (% BIP)</td><td class="good">10,9%</td><td class="neut">10,6%</td></tr>
+        <tr><td>Ärzte pro 1000</td><td class="neut">4,3</td><td class="good">8,4</td></tr>
+        <tr><td>Frauenerwerbsquote</td><td class="good">~80%</td><td class="bad">~46%</td></tr>
+        <tr><td>Gender Pay Gap</td><td class="good">~7%</td><td class="neut">~10%</td></tr>
+        <tr><td>Frauen im Parlament</td><td class="good">47%</td><td class="good">53%</td></tr>
+        <tr><td>Demokratie-Index 2024</td><td class="good">9,39 (Top-5)</td><td class="bad">2,65 (autoritär)</td></tr>
+        <tr><td>Pressefreiheit Rang 2024</td><td class="good">4 / 180</td><td class="bad">168 / 180</td></tr>
+        <tr><td>Politische Gefangene</td><td class="good">0</td><td class="bad">~1.100</td></tr>
+        <tr><td>Migrationssaldo 2024</td><td class="good">+47.000</td><td class="bad">-251.000 bis -545.000</td></tr>
+        <tr><td>CO₂ pro Kopf</td><td class="neut">3,9 t</td><td class="good">2,1 t</td></tr>
+        <tr><td>Internationalismus-Beiträge</td><td class="neut">EH 0,93% BNE</td><td class="good">28.000 Ärzte in 60 Ländern</td></tr>
+        <tr><td>US-Embargo-Belastung</td><td class="good">Keine</td><td class="bad">Seit 1960 / 65 Jahre</td></tr>
+        <tr><td>Aktuelle Wirtschaftskrise</td><td class="good">Nein</td><td class="bad">Schwerste seit 1959</td></tr>
+      </tbody>
+    </table>
+
+    <div class="klartext big">
+      <span class="label">Die Statistik-Bilanz in einem Satz</span>
+      In 17 von 20 Indikatoren ist Schweden besser oder gleich. In 3 Indikatoren ist Cuba besser — aber nicht aus Tugend, sondern oft aus Not.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CUBA-KRISE 2020-2025 -->
+<!-- ============================================ -->
+<section id="krise" class="crisis">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Die aktuelle Lage</div>
+      <h2>Cuba 2020–2025: die schwerste Krise seit 1959</h2>
+      <p>
+        Eine ehrliche Bilanz muss auch die aktuelle Lage zeigen. Cuba befindet sich seit 2020 in einer <strong>System-Krise</strong>, die laut unabhängigen Forschern „nur in Kriegskontexten beobachtbar" ist. Die historischen Capability-Erfolge sind real — und die aktuelle Erosion ist es auch.
+      </p>
+    </div>
+
+    <div class="crisis-box">
+      <h4>Massen-Exodus 2021–2025</h4>
+      <p>
+        Cuba erlebt den größten Bevölkerungs-Verlust seiner Geschichte. Offizielle ONEI-Daten zeigen seit 2021 einen Verlust von etwa 10% der Bevölkerung. Der unabhängige Demograph Juan Carlos Albizu-Campos schätzt den realen Verlust auf 18%. Das ist eine Größenordnung, die laut ihm „nur in Kontexten bewaffneten Konflikts beobachtbar ist".
+      </p>
+      <div class="crisis-stats">
+        <div><b>~1,8 Mio.</b>geschätzte Emigranten 2021-24</div>
+        <div><b>545.011</b>Emigranten allein 2024 (real)</div>
+        <div><b>-307.961</b>offiziell Bevölkerungs-Verlust 2024</div>
+        <div><b>~8 Mio.</b>geschätzte reale Bevölkerung 2025</div>
+        <div><b>25,7%</b>der Bevölkerung über 60 Jahre</div>
+        <div><b>71.358</b>Geburten 2024 (65-Jahres-Tief)</div>
+      </div>
+    </div>
+
+    <div class="crisis-box">
+      <h4>Wirtschaftliche Implosion</h4>
+      <p>
+        Cubas Wirtschaft fiel 2024 auf ein Niveau <strong>10% unter 2018</strong>. Die Inflation übersteigt die Realeinkommens-Steigerung um ein Vielfaches. Der cubanische Peso hat 88% seines Wertes verloren. Der staatliche Sektor ist nicht mehr in der Lage, grundlegende Güter zu liefern.
+      </p>
+      <div class="crisis-stats">
+        <div><b>-10%</b>BIP 2024 vs. 2018</div>
+        <div><b>+77%</b>Inflation 2021</div>
+        <div><b>+39%</b>Inflation 2022</div>
+        <div><b>+31%</b>Inflation 2023</div>
+        <div><b>-88%</b>Peso-Abwertung</div>
+        <div><b>>10%</b>Fiscal-Defizit 2025 (proj.)</div>
+      </div>
+    </div>
+
+    <div class="crisis-box">
+      <h4>Strom- und Versorgungs-Kollaps</h4>
+      <p>
+        Tägliche Stromausfälle bis zu 16 Stunden sind seit 2023 Normalität. Im Oktober 2024 ein landesweiter mehrtägiger Blackout. Treibstoffmangel. Drei der vier Hauptkraftwerke veraltet und reparaturbedürftig. Lebensmittel- und Medikamenten-Knappheit chronisch.
+      </p>
+      <div class="crisis-stats">
+        <div><b>16h</b>Stromausfälle/Tag</div>
+        <div><b>10/2024</b>Landesweiter Blackout</div>
+        <div><b>-19%</b>Inland-Frachtverkehr 2024</div>
+        <div><b>-50%+</b>Schrumpfung Industrie</div>
+        <div><b>4,6 Pkt.</b>Zucker-Sektor-Index<br>(von 100 auf 4,6)</div>
+        <div><b>38,6 Pkt.</b>Industrie-Index</div>
+      </div>
+    </div>
+
+    <div class="crisis-box">
+      <h4>Gesundheitssystem unter Druck</h4>
+      <p>
+        Die einstige Vorzeige-Domäne bröckelt. Krankenhäuser ohne Gaze, Desinfektionsmittel, Antibiotika. Familienärzte verlassen das Land. Brain-Drain massiv: junge Ärzte gehen lieber ins Ausland (oft als Touristen, dann Asyl). Säuglingssterblichkeit steigt erstmals seit Jahrzehnten.
+      </p>
+      <div class="crisis-stats">
+        <div><b>4,2 → 4,9</b>Säuglingssterblichkeit (2017→2023)</div>
+        <div><b>HRW 2024</b>„Krankenhäuser ohne Gaze"</div>
+        <div><b>Cholera-Fälle</b>erstmals seit Jahrzehnten 2023</div>
+        <div><b>Dengue</b>endemisch geworden</div>
+        <div><b>2024</b>akute Medikamentenkrise</div>
+        <div><b>Pamela Ruiz, Reuters</b>„Hospitalqualität kollabiert"</div>
+      </div>
+    </div>
+
+    <div class="crisis-box">
+      <h4>Politische Repression nach 11J</h4>
+      <p>
+        Die größten Proteste seit 1959 (11. Juli 2021) wurden mit massiver staatlicher Repression beantwortet. Internet temporär abgeschaltet. Zivile Internet-Aktivisten verhaftet. Verurteilungen bis 25 Jahre für „Aufruhr". Amnesty, HRW, IACHR dokumentierten 2022-24 systematische Menschenrechtsverletzungen.
+      </p>
+      <div class="crisis-stats">
+        <div><b>11.07.2021</b>Landesweite Proteste</div>
+        <div><b>>1.300</b>vor Gericht 2021-22</div>
+        <div><b>~1.100</b>politische Gefangene aktuell</div>
+        <div><b>Minderjährige</b>verurteilt (ab 15)</div>
+        <div><b>25 Jahre</b>höchste Strafen</div>
+        <div><b>Decreto-Ley 35</b>kriminalisiert Online-Kritik</div>
+      </div>
+    </div>
+
+    <div class="callout caveat">
+      <h5>Warum die Krise? Die Debatte</h5>
+      <p>
+        Die cubanische Regierung beschuldigt das US-Embargo. <strong>Das ist nicht falsch:</strong> die Trump-Verschärfung 2017-21 (243 zusätzliche Sanktionen) und der Verbleib auf der US-Terror-Liste seit Januar 2021 sind real und schädlich. <strong>Aber:</strong> Cuba-Forscher (Mesa-Lago, Albizu-Campos, Carmelo Mesa) zeigen, dass strukturelle interne Faktoren (Plan-Wirtschaft-Pathologien, fehlende Markt-Reformen, gescheiterte Währungsreform 2021) <em>mindestens gleichgewichtig</em> sind. Beides ist Teil der Erklärung.
+      </p>
+    </div>
+
+    <div class="klartext big red">
+      <span class="label">Cuba-Krise in einem Satz</span>
+      Das einstige Vorzeige-Modell des Sozialismus ist 2025 in seiner schlimmsten Krise — die Menschen flüchten in einer Größenordnung, die es nur in Kriegen gibt.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- LEHREN -->
+<!-- ============================================ -->
+<section id="lehren">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Sieben Befunde</div>
+      <h2>Was lehrt der Schweden-Cuba-Vergleich?</h2>
+      <p>
+        Über alle zehn Bereiche hinweg zeigen sich strukturelle Muster. Hier die sieben wichtigsten Befunde — jeweils mit einer Klartext-Schlussfolgerung.
+      </p>
+    </div>
+
+    <details open>
+      <summary>1. Cuba ist deutlich besser als die UdSSR — aber nicht so gut wie Schweden</summary>
+      <div class="detail-body">
+        <p>
+          Wenn man Cuba mit der UdSSR vergleicht (wie in der bisherigen Bilanz), schneidet Cuba <strong>substantiell besser</strong> ab: keine Hungersnöte, kein Gulag, kein Holodomor, höhere Lebenserwartung, bessere Säuglingssterblichkeit. Cuba ist <em>das beste Beispiel staatssozialistischer Capability-Politik</em>.
+        </p>
+        <p>
+          Aber: stellt man Cuba neben Schweden, kehrt sich das Bild. Schweden hat in fast jeder gemessenen Dimension bessere Werte. Höhere Lebenserwartung (+4 Jahre), niedrigere Säuglingssterblichkeit (unter der Hälfte), höhere Frauenerwerbsquote (+34%), 5× höheres BIP/Kopf, vollständige Demokratie, freie Presse.
+        </p>
+        <p style="font-family: var(--display); font-style: italic; font-weight: 600; color: var(--accent); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule);">→ <strong>Klartext:</strong> Cuba ist der beste Staatssozialismus. Schweden ist trotzdem besser.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>2. Capability-Investition ist nicht exklusiv sozialistisch</summary>
+      <div class="detail-body">
+        <p>
+          Cubas Gesundheits-, Bildungs- und Sozialerfolge sind real und substantiell. Aber: Costa Rica hat sie <em>ohne</em> Sozialismus und ohne Embargo erreicht oder übertroffen. Costa Rica heute: HDI 0,809 (höher als Cuba 0,764), Lebenserwartung 80,8 (höher als Cuba 78), 98% Alphabetisierung, demokratische Wahlen seit 1949, keine Armee (1948 abgeschafft).
+        </p>
+        <p>
+          Das stützt Amartya Sens These: <span class="gloss" data-def="Sens Capability-Befund: Investitionen in Bildung und Gesundheit funktionieren in verschiedenen politischen Systemen - solange politischer Wille vorhanden ist. Sozialismus ist nicht Voraussetzung.">Capability-Erfolge sind nicht systemspezifisch</span>. Sozialdemokratie kann sie ebenso erreichen wie Staatssozialismus — bei höherer Freiheit und ohne autoritäre Kosten.
+        </p>
+        <p style="font-family: var(--display); font-style: italic; font-weight: 600; color: var(--accent); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule);">→ <strong>Klartext:</strong> Gesundheit und Bildung kann man auch in einer Demokratie haben.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>3. Das US-Embargo erklärt nicht alles</summary>
+      <div class="detail-body">
+        <p>
+          Das US-Embargo ist real, lang und schädlich. UN-Generalversammlung verurteilt es seit 1992 jährlich. Substantiell Wirtschaftsschaden über 65 Jahre. <strong>Das ist nicht zu verharmlosen.</strong>
+        </p>
+        <p>
+          Aber: viele Cuba-spezifische Probleme (Plan-Wirtschaft-Pathologien, Mangelwirtschaft, Soft Budget Constraint, Bürokratisierung der Wirtschaftsentscheidungen) wären auch <em>ohne</em> Embargo strukturell vorhanden. Vietnam und China zeigen: ML-Staaten mit Markt-Reformen wachsen substantiell, ML-Staaten ohne stagnieren. Cuba hat die Reformen nicht durchgeführt — das ist eine interne Entscheidung.
+        </p>
+        <p style="font-family: var(--display); font-style: italic; font-weight: 600; color: var(--accent); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule);">→ <strong>Klartext:</strong> Das Embargo ist real, aber nicht die einzige Erklärung der Cuba-Krise.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>4. Die Frage „Wer wandert wohin freiwillig?" ist methodisch entscheidend</summary>
+      <div class="detail-body">
+        <p>
+          Wenn ein politisches System für seine Bürger gut ist, sollten Menschen <em>hineinwandern</em> wollen, nicht <em>hinaus</em>. Schweden hatte 2024 einen Migrationssaldo von +47.000. Cuba hatte einen von -251.000 bis -545.000.
+        </p>
+        <p>
+          Cubas Auswanderung ist nicht nur durch wirtschaftliche Not erklärbar. Vergleichbar arme Länder (Bolivien, Honduras, El Salvador) haben in Relation niedrigere Auswanderungs-Quoten. <strong>Cubas Exodus ist substantiell auch politisch motiviert</strong> — die Daten aus 2022-24 zeigen besonders hohe Auswanderung in der Altersgruppe 25-39 (politisch aktive Generation).
+        </p>
+        <p style="font-family: var(--display); font-style: italic; font-weight: 600; color: var(--accent); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule);">→ <strong>Klartext:</strong> Wer mit den Füßen abstimmt, geht weg von Cuba — nach Schweden.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>5. Internationalismus-Substanz vs. moralische Kosten</summary>
+      <div class="detail-body">
+        <p>
+          Cubas internationalistische Bilanz ist <strong>welt-historisch substantiell</strong>. Angola, medizinische Brigaden in 60+ Ländern, ELAM-Ausbildung. Schweden hat 0,93% BNE Entwicklungshilfe (Welt-Top-3) — aber nicht annähernd die <em>direkte</em> internationale Solidaritäts-Wirkung Cubas.
+        </p>
+        <p>
+          Aber: cubanische Brigaden-Ärzte erhalten nur 10-25% des Gehalts, das Cuba an die Empfänger-Länder berechnet. HRW + UN-Sonderberichterstatter bezeichnen das als „moderne Zwangsarbeit". Cuba bestreitet das. Wer recht hat, ist umstritten — aber die Praxis ist dokumentiert.
+        </p>
+        <p style="font-family: var(--display); font-style: italic; font-weight: 600; color: var(--accent); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule);">→ <strong>Klartext:</strong> Cubas Internationalismus ist real — aber er finanziert sich aus der Ausbeutung der eigenen Ärzte.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>6. Schweden hat eigene Schattenseiten, die nicht versteckt werden sollen</summary>
+      <div class="detail-body">
+        <p>
+          Schweden ist nicht perfekt. Die Sozialdemokratie hat eigene Probleme: Sozialstaat-Erosion seit 1990, gestiegene Ungleichheit (Gini 0,21 → 0,29), Integrations-Probleme mit Migrant:innen, Rechtspopulismus-Welle (Schwedendemokraten 2. stärkste Partei 2022), Wohnungs-Krise in Großstädten, marktbasierte Schul-Voucher mit segregativen Effekten.
+        </p>
+        <p>
+          Schwedens Wohlstand basierte (auch) auf Eisenerz-Exporten an Nazi-Deutschland 1939-45. Die schwedische „Neutralität" war pragmatisch-kommerziell, nicht prinzipiell anti-faschistisch. Das gehört in die ehrliche Bilanz.
+        </p>
+        <p style="font-family: var(--display); font-style: italic; font-weight: 600; color: var(--accent); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule);">→ <strong>Klartext:</strong> Schweden ist viel besser, aber nicht über jede Kritik erhaben.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>7. Die ehrliche Doppel-Bilanz</summary>
+      <div class="detail-body">
+        <p>
+          Cuba und Schweden sind <strong>nicht gleich gute Modelle</strong>. Schweden ist substantiell besser in fast allen messbaren Dimensionen — und das ohne den großen Anspruch einer „Revolution" oder „Diktatur des Proletariats", einfach durch demokratische sozialdemokratische Politik.
+        </p>
+        <p>
+          <strong>Aber:</strong> Cuba hat in spezifischen Kontexten (Niedrigeinkommens-Karibik, geopolitischer Druck durch USA) substantielle Erfolge erzielt, die nicht ignoriert werden dürfen. Die Gesundheits-Erfolge sind real. Die internationalistische Substanz ist real. Diese Erfolge sollten <em>vom System unabhängig</em> diskutiert werden — was an Cuba funktioniert, könnte auch in anderen Kontexten ohne Einparteiensystem implementiert werden.
+        </p>
+        <p style="font-family: var(--display); font-style: italic; font-weight: 600; color: var(--accent); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule);">→ <strong>Klartext:</strong> Lerne von Cubas Capability-Erfolgen — aber baue sie in einer Demokratie auf, nicht in einer Diktatur.</p>
+      </div>
+    </details>
+
+    <div class="klartext big">
+      <span class="label">Die sieben Lehren in einem Satz</span>
+      Cuba leistet enorm viel mit wenig — Schweden leistet noch mehr mit Freiheit. Das ist nicht das gleiche.
+    </div>
+
+    <div class="pullq">
+      Wer den heutigen Sozialismus verteidigen will, sollte Cuba nicht als Vorbild nehmen — sondern Schweden. Cuba ist die bessere Version des Falschen. Schweden ist die richtige Version des Richtigen.
+      <cite>Schluss-Befund</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- GLOSSAR -->
+<!-- ============================================ -->
+<section id="glossar" class="alt">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Begriffe erklärt</div>
+      <h2>Cuba-Spezifika und Vergleichs-Begriffe</h2>
+      <p>
+        Die wichtigsten Begriffe aus diesem Vergleich — in einfacher Sprache erklärt.
+      </p>
+    </div>
+
+    <dl class="glossary">
+      <div class="gloss-term"><dt>Acto de repudio<small>Cuba</small></dt><dd>„Akt der Verstoßung". Staatlich organisierte <em>Pöbel-Demonstrationen vor den Häusern von Dissidenten</em>. Nachbarn werden mobilisiert, beleidigen den Bewohner, schmeißen mit Eiern. Soll Dissidenz unterdrücken. Dokumentierte Praxis seit 1980 (Mariel-Krise).</dd></div>
+
+      <div class="gloss-term"><dt>Albizu-Campos<small>Demograph</small></dt><dd>Juan Carlos Albizu-Campos, cubanischer Ökonom und Demograph. Seine Studien (2023-25) zur cubanischen Bevölkerungs-Krise sind die <em>seriösesten unabhängigen Schätzungen</em>. Seine zentrale These: die reale Cuba-Bevölkerung ist 18% unter dem offiziellen Wert, der Exodus ist „nur in Kriegskontexten beobachtbar".</dd></div>
+
+      <div class="gloss-term"><dt>Balseros<small>Cuba 1994</small></dt><dd>„Flößer". Bezeichnung für die ca. 35.000 Cubaner, die im August 1994 mit improvisierten Flößen aus dem Land flohen, nach den Maleconazo-Protesten und der Wirtschaftskrise. Castro öffnete die Häfen kurzzeitig. Tausende ertranken auf der Überfahrt nach Florida.</dd></div>
+
+      <div class="gloss-term"><dt>Brain-Drain<small>Migration</small></dt><dd>Auswanderung der <em>qualifizierten Bevölkerung</em>. Cuba verliert seit 2020 substantiell Ärzte, Lehrer, Ingenieure, IT-Spezialisten — gerade die Berufsgruppen, die das System ausgebildet hat. Verschärft die Krise, weil Schlüssel-Funktionen unbesetzt bleiben.</dd></div>
+
+      <div class="gloss-term"><dt>Campaña de Alfabetización<small>Cuba 1961</small></dt><dd>Massive Alphabetisierungs-Kampagne 1961. <em>100.000 Jugendliche zogen aufs Land</em>, um Bauern Lesen und Schreiben beizubringen. In 12 Monaten Analphabeten-Quote von 23% auf 4% reduziert. UNESCO-Auszeichnung. Welt-paradigmatisches Beispiel.</dd></div>
+
+      <div class="gloss-term"><dt>Capability-Ansatz<small>Sen 1979ff.</small></dt><dd>Amartya Sens Konzept: die <em>tatsächlichen Möglichkeiten</em> eines Menschen, etwas zu sein oder zu tun (lesen, gesund sein, frei reisen). Nicht nur Einkommen, sondern reale Lebensspielräume. Cuba und Schweden investieren beide in Capability — aber Schweden mit Demokratie obendrauf.</dd></div>
+
+      <div class="gloss-term"><dt>Cuentapropistas<small>Cuba seit 2010</small></dt><dd>„Auf-eigene-Rechnung-Arbeiter". Cubanische Klein-Selbstständige (Friseure, Restaurant-Betreiber, Taxi-Fahrer). Seit 2010 zunehmend legalisiert. Zeigt: auch das ML-Cuba akzeptiert <em>schrittweise Markt-Elemente</em> — aber halbherzig.</dd></div>
+
+      <div class="gloss-term"><dt>ELAM<small>Cuba 1999</small></dt><dd>Escuela Latinoamericana de Medicina. Cubanische <em>Medizinhochschule für Studenten aus dem Globalen Süden</em>. Kostenlos. Verpflichtung: nach Studium in vulnerablen Communities arbeiten. Seit Gründung 1999 über 30.000 Ärzte ausgebildet. Substantielles internationalistisches Projekt.</dd></div>
+
+      <div class="gloss-term"><dt>Familienarzt-Modell<small>Cuba seit 1984</small></dt><dd>Cubanisches Gesundheits-System: <em>Erst-Versorgung im Wohnviertel</em>. Ein Arzt + eine Krankenschwester pro 120-150 Familien. WHO-Pioniermodell für Primary Health Care. Auch von Kerala (Indien) 2018 nachgebaut.</dd></div>
+
+      <div class="gloss-term"><dt>Marielitos<small>Cuba 1980</small></dt><dd>Massen-Exodus 1980: 125.000 Cubaner verließen das Land über den Hafen Mariel nach Florida. Castro hatte den Hafen kurzzeitig geöffnet. Reagan-Administration nahm sie auf. Wichtige Phase der cubanisch-US-amerikanischen Beziehungen.</dd></div>
+
+      <div class="gloss-term"><dt>Periodo Especial<small>Cuba 1990-95</small></dt><dd>„Sonderperiode in Friedenszeiten". Nach Kollaps der Sowjetunion verlor Cuba 80% seines Außenhandels. <em>BIP fiel 35%</em>. Hungerkrise. Ärzte fehlten an Medikamenten. Erinnerung in der cubanischen Gesellschaft bis heute traumatisch. Cuba überlebte, aber substantiell beschädigt.</dd></div>
+
+      <div class="gloss-term"><dt>Reform-Sozialdemokratie<small>Bernstein-Linie</small></dt><dd>Sozialismus durch <em>Wahlen + Tarifverhandlungen + Sozialgesetze</em>, nicht durch Revolution. Eduard Bernstein 1899. Vorbilder: Schweden SAP, BRD nach 1949, dänische Sozialdemokratie, österreichische SPÖ. Empirisch erfolgreicher als ML-Linie.</dd></div>
+
+      <div class="gloss-term"><dt>Rehn-Meidner-Modell<small>Schweden 1951</small></dt><dd>Schwedisches Wirtschaftsmodell von Gewerkschaftsökonomen Gösta Rehn und Rudolf Meidner: <em>solidarische Lohnpolitik</em> (gleicher Lohn für gleiche Arbeit branchenweit) + <em>aktive Arbeitsmarktpolitik</em> (Umschulung statt Arbeitslosengeld). Welt-paradigmatisches sozialdemokratisches Wirtschaftsmodell.</dd></div>
+
+      <div class="gloss-term"><dt>Saltsjöbaden-Abkommen<small>Schweden 1938</small></dt><dd>Klassenkompromiss zwischen schwedischer Gewerkschaftszentrale LO und Arbeitgeberverband SAF. <em>Akzeptanz der gegenseitigen Existenzberechtigung</em>: Arbeitgeber akzeptieren starke Gewerkschaften, Gewerkschaften verzichten auf radikalen Klassenkampf. Funktioniert in modifizierter Form bis heute.</dd></div>
+
+      <div class="gloss-term"><dt>Tarea Vida<small>Cuba 2017</small></dt><dd>„Aufgabe Leben". Cubas 100-Jahres-Klimaanpassungs-Plan, von der UN als vorbildlich anerkannt. Substantielle Inhalte (Küsten-Schutz, Wasser-Management, Landwirtschafts-Anpassung). Problem: Cuba hat aktuell kaum Mittel, den Plan umzusetzen.</dd></div>
+
+      <div class="gloss-term"><dt>US-Embargo<small>seit 1960</small></dt><dd>Längstes durchgängiges Handelsembargo der Geschichte. Verbietet US-Bürgern + Firmen jeglichen Handel mit Cuba. Helms-Burton 1996, Trump-Verschärfung 2017-21. UN-Generalversammlung verurteilt jährlich (2024: 187:2). Realer wirtschaftlicher Schaden über 65 Jahre — aber nicht alleinige Erklärung der Cuba-Krise.</dd></div>
+
+      <div class="gloss-term"><dt>11J (Once de Julio)<small>Cuba 2021</small></dt><dd>11. Juli 2021: <em>größte regimekritische Proteste seit 1959</em>. Landesweit, spontan, ohne Führung. Auslöser: COVID + Stromausfälle + Lebensmittel-Knappheit. Reaktion: 1.300+ verhaftet, Verurteilungen bis 25 Jahre. International verurteilt von EU-Parlament, UN-Sonderberichterstatter, IACHR.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- GRENZEN -->
+<!-- ============================================ -->
+<section id="grenzen" class="dark">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-kicker">Methodische Selbstkritik</div>
+      <h2 style="color: var(--paper);">Die Grenzen dieses Vergleichs</h2>
+      <p style="color: rgba(245,240,230,0.85);">
+        Eine ehrliche Studie muss ihre eigenen Einschränkungen transparent machen. Hier die wichtigsten methodischen Probleme dieser Schweden-Cuba-Gegenüberstellung.
+      </p>
+    </div>
+
+    <div class="limits-grid">
+      <div class="limit-card">
+        <h4>1. Vergleichbarkeits-Problem</h4>
+        <p>Schweden und Cuba sind nicht <em>per se</em> vergleichbar. Schweden ist seit 1900 ein wohlhabendes nordeuropäisches Land. Cuba war 1959 ein agrar-dominiertes Karibik-Land. Unterschiedliche Startbedingungen. Ein fairerer Vergleich wäre Cuba vs. Dominikanische Republik oder Costa Rica.</p>
+      </div>
+      <div class="limit-card">
+        <h4>2. US-Embargo-Faktor</h4>
+        <p>Cuba operiert unter dem längsten Handelsembargo der Geschichte. Schweden hat freien Zugang zum Weltmarkt. Das ist eine substantielle Verzerrung. Wie würde Cuba ohne Embargo aussehen? Wir wissen es nicht. Aber die strukturellen Probleme der Plan-Wirtschaft existierten auch <em>vor</em> der Embargo-Verschärfung.</p>
+      </div>
+      <div class="limit-card">
+        <h4>3. Daten-Verfügbarkeit asymmetrisch</h4>
+        <p>Schweden veröffentlicht transparente Statistik. Cuba's ONEI ist eingeschränkt verlässlich. Volkszählung seit 2012 ausstehend. Wichtige Daten (z.B. Säuglingssterblichkeit) werden zunehmend angezweifelt. Wir mussten teilweise auf unabhängige Schätzungen zurückgreifen.</p>
+      </div>
+      <div class="limit-card">
+        <h4>4. Zeitliche Inkonsistenz</h4>
+        <p>Wir vergleichen Schweden 2024 mit Cuba 2024. Aber Cubas Höhepunkt war in den 1980ern. Wenn wir Cuba 1985 mit Schweden 1985 vergleichen würden, fiele die Bilanz für Cuba günstiger aus. Der Vergleich ist zeitlich nicht ganz fair.</p>
+      </div>
+      <div class="limit-card">
+        <h4>5. Eindimensionalität von Lebensqualität</h4>
+        <p>Lebensqualität ist multidimensional. Kulturelle Lebensqualität (Musik, Tanz, Gemeinschaftssinn) ist in Cuba teils stärker entwickelt als in Schweden — schwer in Zahlen messbar. Skandinavische „Einsamkeits-Epidemie" ist real. Auch das gehört in die Bilanz.</p>
+      </div>
+      <div class="limit-card">
+        <h4>6. Quellen-Asymmetrie</h4>
+        <p>Westliche Datenbanken (WHO, World Bank, OECD) sind eher kapitalismus-freundlich kalibriert. Cubanische Daten (ONEI) sind eher regime-freundlich kalibriert. Wir haben versucht zu triangulieren — aber Bias bleibt.</p>
+      </div>
+    </div>
+
+    <div class="klartext">
+      <span class="label">Grenzen in einem Satz</span>
+      Dieser Vergleich ist seriös, aber nicht perfekt — die Hauptbefunde halten trotzdem.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SCHLUSS-RESÜMEE -->
+<!-- ============================================ -->
+<section style="background: linear-gradient(135deg, var(--sweden-soft) 0%, var(--paper-deep) 50%, var(--cuba-soft) 100%); padding: 80px 0;">
+  <div class="container">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div class="section-kicker">Die ganze Studie in fünf Sätzen</div>
+      <h2 style="margin-bottom: 36px;">Wenn du dir nur fünf Sätze merken willst</h2>
+
+      <div class="klartext big" style="margin-bottom: 16px;">
+        <span class="label">Satz 1 · Die Recherche-Antwort</span>
+        Cuba ist der unbestreitbar erfolgreichste staatssozialistische Referenz-Staat — von Bernie Sanders bis Kerala-CM positiv zitiert.
+      </div>
+
+      <div class="klartext big green" style="margin-bottom: 16px;">
+        <span class="label">Satz 2 · Was Cuba leistete</span>
+        Welt-anerkannte Gesundheit, 99% Alphabetisierung, internationale medizinische Brigaden, Anti-Apartheid-Hilfe in Angola.
+      </div>
+
+      <div class="klartext big sweden" style="margin-bottom: 16px;">
+        <span class="label">Satz 3 · Was Schweden besser macht</span>
+        5× wohlhabender, höhere Lebenserwartung, freie Wahlen, freie Presse, Migrationssaldo positiv statt negativ.
+      </div>
+
+      <div class="klartext big red" style="margin-bottom: 16px;">
+        <span class="label">Satz 4 · Die aktuelle Cuba-Krise</span>
+        Seit 2021 sind 1,8 Millionen Cubaner geflohen — in einer Größenordnung, die sonst nur in Kriegen vorkommt.
+      </div>
+
+      <div class="klartext big yellow" style="margin-bottom: 16px;">
+        <span class="label">Satz 5 · Die ehrliche Lehre</span>
+        Lerne von Cubas Capability-Erfolgen — aber baue sie in einer Demokratie auf, nicht in einer Einparteienherrschaft.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FOOTER -->
+<!-- ============================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-cols">
+      <div>
+        <h4>Hauptquellen</h4>
+        <p>
+          WHO Global Health Observatory (2024)<br>
+          World Bank Indicators (2024)<br>
+          UNDP HDI Report (2023)<br>
+          Reporters Without Borders (2024)<br>
+          Cuba ONEI National Statistics<br>
+          OECD Schweden Country Notes<br>
+          Albizu-Campos demographic studies<br>
+          Amnesty International (2024)
+        </p>
+      </div>
+      <div>
+        <h4>Methode</h4>
+        <p>
+          Direkter Vergleich beider Länder über 10 Dimensionen (Wirtschaft, Gesundheit, Bildung, Frauenrechte, Demokratie, Internationalismus, Klima, Migration, Repression, aktuelle Krise). Schätzungs-Spannweiten transparent ausgewiesen. Cuba-Höhepunkts-Phase (1980er) UND aktuelle Krise (2020-25) getrennt behandelt.
+        </p>
+      </div>
+      <div>
+        <h4>Über den Report</h4>
+        <p>
+          Sonderkapitel zur 117-Maßnahmen-Audit-Studie. Cuba wurde aufgrund unabhängiger Quellen-Konvergenz als „erfolgreichster staatssozialistischer Referenz-Staat" identifiziert. Ehrliche Doppel-Bilanz: Cuba-Höhepunkt vs. Cuba-Krise.
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Sonderkapitel · Schweden vs. Cuba · Mai 2026 · Audit 3.0 Erweiterung · Bilanz: 10 Bereiche detailliert verglichen
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
