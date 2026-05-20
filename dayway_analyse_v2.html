@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dayway · Skriptanatomie · Argument für Argument</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814; --ink-soft: #3a342c;
+    --paper: #f8f4ec; --paper-warm: #efe7d5; --paper-deep: #e8dec7;
+    --burgundy: #7a1f2b; --burgundy-light: #a8364a; --burgundy-pale: #f4e1e3;
+    --blue-deep: #1d3557; --blue-mid: #3e5d80; --blue-pale: #e0e7ef;
+    --gold: #c9a04e; --gold-light: #e8c977; --gold-pale: #f5ead0;
+    --olive: #5d6c3e; --olive-pale: #e3e7d1;
+    --rust: #b85c38; --rust-pale: #f3dccb;
+    --line: #d8cfbf; --line-strong: #a89977;
+    --shadow-sm: 0 1px 0 rgba(26,24,20,0.06), 0 4px 12px -4px rgba(26,24,20,0.08);
+    --shadow-md: 0 1px 0 rgba(26,24,20,0.06), 0 8px 24px -8px rgba(26,24,20,0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter Tight', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.55; font-size: 17px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle at 15% 25%, rgba(122,31,43,0.04) 0%, transparent 45%), radial-gradient(circle at 85% 75%, rgba(29,53,87,0.04) 0%, transparent 45%), radial-gradient(circle at 50% 50%, rgba(201,160,78,0.02) 0%, transparent 60%); pointer-events: none; z-index: 0; }
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+  .masthead { border-bottom: 2px solid var(--ink); padding: 28px 0 20px; margin-bottom: 80px; display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .masthead-logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 28px; letter-spacing: -0.02em; }
+  .masthead-logo span { color: var(--burgundy); font-style: italic; }
+  .masthead-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; display: flex; gap: 20px; flex-wrap: wrap; }
+  .masthead-meta span::before { content: '◆ '; color: var(--gold); }
+  .hero { margin-bottom: 100px; padding-bottom: 80px; border-bottom: 1px solid var(--line); position: relative; }
+  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--burgundy); display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+  .hero-eyebrow::before { content: ''; width: 48px; height: 1px; background: var(--burgundy); }
+  .hero h1 { font-family: 'Fraunces', serif; font-weight: 900; font-size: clamp(48px, 7vw, 96px); line-height: 0.94; letter-spacing: -0.035em; margin-bottom: 32px; }
+  .hero h1 em { font-style: italic; color: var(--burgundy); font-weight: 500; }
+  .hero-deck { font-family: 'Fraunces', serif; font-size: clamp(20px, 2.4vw, 28px); line-height: 1.4; max-width: 860px; opacity: 0.88; font-weight: 400; margin-bottom: 48px; }
+  .hero-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 28px; padding-top: 40px; border-top: 1px solid var(--line); }
+  .hero-stat .label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.6; margin-bottom: 8px; }
+  .hero-stat .value { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .hero-stat .desc { font-size: 13px; opacity: 0.75; line-height: 1.35; }
+  .hero-stat .value.burgundy { color: var(--burgundy); }
+  .hero-stat .value.blue { color: var(--blue-deep); }
+  .hero-stat .value.gold { color: var(--gold); }
+  .hero-stat .value.olive { color: var(--olive); }
+  .hero-stat .value.rust { color: var(--rust); }
+  .toc { background: var(--paper-warm); border: 1px solid var(--line); border-left: 4px solid var(--ink); padding: 36px 40px; margin: 60px 0 80px; box-shadow: var(--shadow-sm); }
+  .toc-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--burgundy); margin-bottom: 20px; }
+  .toc-list { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .toc-list li { counter-increment: toc; padding: 8px 0; border-bottom: 1px dashed var(--line); font-family: 'Fraunces', serif; font-size: 16px; break-inside: avoid; }
+  .toc-list li::before { content: counter(toc, decimal-leading-zero) " · "; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--burgundy); font-weight: 600; margin-right: 8px; }
+  .section { margin-bottom: 120px; position: relative; }
+  .section-num { font-family: 'Fraunces', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.25em; color: var(--burgundy); margin-bottom: 24px; display: flex; align-items: center; gap: 16px; }
+  .section-num::before { content: ''; display: inline-block; width: 10px; height: 10px; background: var(--burgundy); border-radius: 50%; }
+  .section-num::after { content: ''; flex: 1; height: 1px; background: var(--line); max-width: 120px; }
+  .section h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(34px, 4.8vw, 56px); line-height: 1.04; letter-spacing: -0.025em; margin-bottom: 32px; max-width: 950px; }
+  .section h2 em { font-style: italic; color: var(--burgundy); font-weight: 500; }
+  .section-lead { font-family: 'Fraunces', serif; font-size: clamp(19px, 2vw, 23px); line-height: 1.45; opacity: 0.84; max-width: 820px; margin-bottom: 56px; }
+  .anatomy-block { display: grid; grid-template-columns: 100px 1fr; gap: 40px; padding: 60px 0; border-bottom: 1px solid var(--line); position: relative; }
+  .anatomy-block:last-child { border-bottom: none; }
+  .anatomy-marker { text-align: right; position: sticky; top: 20px; align-self: start; }
+  .anatomy-marker-num { font-family: 'Fraunces', serif; font-size: 64px; font-weight: 900; line-height: 0.85; color: var(--burgundy); font-style: italic; letter-spacing: -0.04em; }
+  .anatomy-marker-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-top: 8px; font-weight: 600; }
+  .anatomy-content h3 { font-family: 'Fraunces', serif; font-size: clamp(24px, 2.8vw, 32px); font-weight: 700; line-height: 1.15; margin-bottom: 24px; letter-spacing: -0.02em; }
+  .anatomy-quote { background: var(--paper-warm); border-left: 3px solid var(--ink); padding: 24px 32px; margin: 24px 0; font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; line-height: 1.45; color: var(--ink-soft); position: relative; }
+  .anatomy-quote::before { content: 'O-Ton Skript'; position: absolute; top: -10px; left: 24px; font-family: 'JetBrains Mono', monospace; font-style: normal; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; background: var(--paper); padding: 0 8px; color: var(--burgundy); font-weight: 600; }
+  .anatomy-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .anatomy-meta-item .label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--burgundy); margin-bottom: 4px; font-weight: 600; }
+  .anatomy-meta-item .value { font-family: 'Fraunces', serif; font-size: 15px; line-height: 1.35; }
+  .anatomy-section { margin: 28px 0; }
+  .anatomy-section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .anatomy-section-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 14px; font-weight: 700; color: var(--paper); flex-shrink: 0; }
+  .anatomy-section-icon.rhet { background: var(--burgundy); }
+  .anatomy-section-icon.emp { background: var(--olive); }
+  .anatomy-section-icon.img { background: var(--blue-deep); }
+  .anatomy-section-icon.opt { background: var(--gold); color: var(--ink); }
+  .anatomy-section-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; }
+  .anatomy-section-body { padding-left: 40px; line-height: 1.6; }
+  .anatomy-section-body p { margin-bottom: 10px; }
+  .image-suggestion { background: linear-gradient(135deg, var(--blue-pale) 0%, rgba(224,231,239,0.5) 100%); border: 1px dashed var(--blue-mid); padding: 24px 28px; margin: 16px 0; border-radius: 2px; }
+  .image-suggestion-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-deep); margin-bottom: 12px; font-weight: 600; }
+  .image-suggestion-label::before { content: '◢ '; }
+  .image-suggestion-mock { background: var(--paper); border: 2px solid var(--blue-deep); padding: 28px 24px; margin: 14px 0; font-size: 13.5px; line-height: 1.55; position: relative; }
+  .image-suggestion-mock::before { content: ''; position: absolute; top: -10px; right: -10px; width: 18px; height: 18px; background: var(--gold); border-radius: 50%; }
+  .image-suggestion-caption { font-style: italic; opacity: 0.8; margin-top: 12px; font-size: 14px; }
+  .empirical-bridge { background: var(--olive-pale); border-left: 3px solid var(--olive); padding: 20px 24px; margin: 14px 0; border-radius: 2px; }
+  .empirical-bridge-head { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--olive); font-weight: 700; margin-bottom: 8px; }
+  .empirical-bridge-source { font-family: 'Fraunces', serif; font-weight: 600; font-size: 15px; color: var(--olive); margin-bottom: 8px; }
+  .empirical-bridge p { font-size: 14.5px; line-height: 1.55; }
+  .optimization { background: var(--gold-pale); border-left: 3px solid var(--gold); padding: 20px 24px; margin: 14px 0; border-radius: 2px; }
+  .optimization-head { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #8a6818; font-weight: 700; margin-bottom: 10px; }
+  .optimization-fix { font-family: 'Fraunces', serif; font-style: italic; font-size: 15px; line-height: 1.5; margin: 8px 0; padding: 12px 16px; background: rgba(255,255,255,0.6); border-radius: 2px; }
+  .anno { background: rgba(201,160,78,0.18); padding: 1px 6px; border-radius: 2px; font-weight: 600; }
+  .anno-burgundy { background: rgba(122,31,43,0.12); color: var(--burgundy); padding: 1px 6px; border-radius: 2px; font-weight: 600; }
+  .anno-blue { background: rgba(29,53,87,0.12); color: var(--blue-deep); padding: 1px 6px; border-radius: 2px; font-weight: 600; }
+  .background-box { background: linear-gradient(135deg, var(--paper-warm) 0%, var(--paper-deep) 100%); padding: 36px 40px; margin: 32px 0; border: 1px solid var(--line-strong); border-radius: 2px; position: relative; }
+  .background-box::before { content: 'Hintergrund'; position: absolute; top: -12px; left: 28px; background: var(--paper); padding: 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--burgundy); font-weight: 700; }
+  .background-box h4 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+  .background-box p { font-size: 15.5px; line-height: 1.65; margin-bottom: 12px; }
+  .background-box p:last-child { margin-bottom: 0; }
+  .compare-table { width: 100%; border-collapse: collapse; margin: 40px 0; background: var(--paper-warm); box-shadow: var(--shadow-md); }
+  .compare-table thead th { text-align: left; padding: 22px 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; border-bottom: 2px solid var(--ink); vertical-align: top; }
+  .compare-table thead th:nth-child(1) { background: var(--ink); color: var(--paper); width: 18%; }
+  .compare-table thead th:nth-child(2) { background: var(--burgundy); color: var(--paper); width: 27%; }
+  .compare-table thead th:nth-child(3) { background: var(--blue-deep); color: var(--paper); width: 27%; }
+  .compare-table thead th:nth-child(4) { background: var(--olive); color: var(--paper); width: 28%; }
+  .compare-table tbody td { padding: 18px 22px; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 14.5px; line-height: 1.5; }
+  .compare-table tbody td:first-child { font-family: 'Fraunces', serif; font-weight: 600; font-size: 15px; background: rgba(26,24,20,0.04); }
+  .rhet-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 32px 0; }
+  .rhet-tool { background: var(--paper); border: 1px solid var(--line); padding: 24px; border-radius: 2px; border-top: 3px solid var(--burgundy); }
+  .rhet-tool-name { font-family: 'Fraunces', serif; font-style: italic; font-size: 13px; color: var(--burgundy); letter-spacing: 0.05em; margin-bottom: 4px; }
+  .rhet-tool h4 { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 700; line-height: 1.25; margin-bottom: 14px; }
+  .rhet-tool p { font-size: 14px; line-height: 1.55; }
+  .rhet-tool-effect { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 13px; color: var(--olive); font-style: italic; }
+  .flow-h { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; margin: 40px 0; background: var(--paper-warm); padding: 24px; border: 1px solid var(--line); border-radius: 2px; overflow-x: auto; }
+  .flow-h-step { text-align: center; padding: 12px 8px; border-right: 1px dashed var(--line); font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+  .flow-h-step:last-child { border-right: none; }
+  .flow-h-step .num { display: inline-block; width: 28px; height: 28px; border-radius: 50%; background: var(--burgundy); color: var(--paper); line-height: 28px; font-weight: 700; margin-bottom: 8px; }
+  .flow-h-step .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; line-height: 1.3; }
+  .scorecard { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 20px; margin: 32px 0; }
+  .score { padding: 32px 24px; background: var(--paper); border: 1px solid var(--line); text-align: center; box-shadow: var(--shadow-sm); border-radius: 2px; }
+  .score-value { font-family: 'Fraunces', serif; font-size: 56px; font-weight: 900; line-height: 0.9; margin-bottom: 10px; letter-spacing: -0.04em; }
+  .score-value.burgundy { color: var(--burgundy); }
+  .score-value.blue { color: var(--blue-deep); }
+  .score-value.gold { color: var(--gold); }
+  .score-value.olive { color: var(--olive); }
+  .score-value.rust { color: var(--rust); }
+  .score-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; line-height: 1.3; }
+  .pullquote { font-family: 'Fraunces', serif; font-size: clamp(26px, 3.4vw, 40px); line-height: 1.2; font-style: italic; padding: 56px 0 56px 40px; border-left: 4px solid var(--gold); margin: 60px 0; position: relative; }
+  .pullquote::before { content: '"'; position: absolute; left: 16px; top: -20px; font-size: 140px; color: var(--gold); opacity: 0.2; line-height: 1; font-family: 'Fraunces', serif; }
+  .pullquote-attribution { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-style: normal; margin-top: 24px; opacity: 0.7; }
+  .insight { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 36px 32px; background: linear-gradient(135deg, rgba(201,160,78,0.08) 0%, rgba(201,160,78,0.02) 100%); border-left: 4px solid var(--gold); margin: 32px 0; }
+  .insight-icon { font-family: 'Fraunces', serif; font-size: 64px; line-height: 0.9; color: var(--gold); font-style: italic; font-weight: 900; }
+  .insight-content h4 { font-family: 'Fraunces', serif; font-size: 23px; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
+  .insight-content p { font-size: 15.5px; line-height: 1.6; }
+  .synthesis { padding: 80px 56px; background: var(--ink); color: var(--paper); margin: 80px 0; position: relative; border-radius: 2px; }
+  .synthesis::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--burgundy), var(--gold), var(--blue-deep)); }
+  .synthesis-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 24px; }
+  .synthesis h2 { font-family: 'Fraunces', serif; font-size: clamp(32px, 4.5vw, 50px); line-height: 1.05; margin-bottom: 32px; letter-spacing: -0.025em; color: var(--paper); }
+  .synthesis h2 em { color: var(--gold-light); font-style: italic; }
+  .synthesis p { font-size: 18px; line-height: 1.65; margin-bottom: 18px; max-width: 820px; color: rgba(248,244,236,0.92); }
+  .synthesis .signature { margin-top: 40px; font-family: 'Fraunces', serif; font-size: 22px; font-style: italic; color: var(--gold-light); line-height: 1.4; }
+  footer { border-top: 2px solid var(--ink); padding: 40px 0 80px; margin-top: 80px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; margin-right: 6px; margin-bottom: 4px; font-weight: 600; }
+  .tag-strong { background: var(--olive); color: var(--paper); }
+  .tag-weak { background: var(--rust); color: var(--paper); }
+  .tag-gap { background: var(--gold); color: var(--ink); }
+  @media (max-width: 820px) {
+    .container { padding: 0 20px; }
+    .anatomy-block { grid-template-columns: 1fr; gap: 16px; }
+    .anatomy-marker { position: static; text-align: left; display: flex; align-items: baseline; gap: 16px; }
+    .anatomy-marker-num { font-size: 48px; }
+    .anatomy-section-body { padding-left: 0; }
+    .toc-list { columns: 1; }
+    .compare-table thead th { display: none; }
+    .compare-table tbody td { display: block; padding: 12px 18px; }
+    .compare-table tbody td:first-child { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; background: var(--ink); color: var(--paper); font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+    .synthesis { padding: 40px 24px; }
+    .flow-h { grid-template-columns: repeat(7, minmax(80px, 1fr)); }
+    .insight { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="masthead">
+  <div class="masthead-logo">DAYWAY <span>×</span> CHARAKTERMASKE</div>
+  <div class="masthead-meta"><span>Skriptanatomie</span><span>Argument für Argument</span><span>2026</span><span>Vol. II</span></div>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">Eine umfassende rhetorische und empirische Sezierung</div>
+  <h1>Was passiert,<br>wenn ein <em>Sozialdemokrat</em><br>einer Sekte ins Wort fällt?</h1>
+  <p class="hero-deck">Dieses Dossier nimmt Dayways Antwort-Skript auf Charaktermaske auseinander. Nicht nur Argument für Argument — sondern Satz für Satz, Bild für Bild, rhetorisches Werkzeug für rhetorisches Werkzeug. Mit empirischen Brücken zur Forschung, konkreten Bildvorschlägen für die Visualisierung und Optimierungsempfehlungen, die das Skript härter machen, ohne seinen Charakter zu verändern.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="label">Skript-Wörter</div><div class="value burgundy">1.884</div><div class="desc">Kompakt, aber dicht</div></div>
+    <div class="hero-stat"><div class="label">Rhetorische Bausteine</div><div class="value blue">14</div><div class="desc">Identifizierte Argumenteinheiten</div></div>
+    <div class="hero-stat"><div class="label">Externe Quellen</div><div class="value rust">1</div><div class="desc">Nur die bpb. Das ist die Lücke.</div></div>
+    <div class="hero-stat"><div class="label">Forscher-Brücken</div><div class="value gold">+18</div><div class="desc">Anker, die sich anschließen lassen</div></div>
+    <div class="hero-stat"><div class="label">Bewertung</div><div class="value olive">7,3</div><div class="desc">/10 · Stark, unterfüttert ausbaufähig</div></div>
+  </div>
+</section>
+
+<nav class="toc">
+  <div class="toc-title">Inhalt dieser Analyse</div>
+  <ol class="toc-list">
+    <li>Die Kernfrage und der Grundkonflikt</li>
+    <li>Skriptanatomie: 14 Bausteine seziert</li>
+    <li>Rhetorischer Werkzeugkasten</li>
+    <li>Vier-Spalten-Vergleich der Grundannahmen</li>
+    <li>Argumentationsfluss-Diagramm</li>
+    <li>Gesamt-Bewertung mit Scorecard</li>
+    <li>Tiefere Einsichten und Aha-Momente</li>
+    <li>Synthese</li>
+  </ol>
+</nav>
+
+<section class="section">
+  <div class="section-num">01 · Worum es geht</div>
+  <h2>Zwei Welten,<br>die <em>denselben Begriff</em><br>benutzen.</h2>
+  <p class="section-lead">Bevor wir das Skript sezieren, muss klar sein, worüber gestritten wird. Karl behauptet: Nationalismus beginnt da, wo Menschen sich mit dem Staat identifizieren — also bei jedem, der eine bessere Schule will. Dayway sagt: Nationalismus beginnt da, wo die Nation zum höchsten Maßstab erhoben wird — bei Pflicht, Opfer, Volk, Feindbild.</p>
+  <div class="background-box">
+    <h4>Warum dieser Streit überhaupt relevant ist</h4>
+    <p>Die Definition von Nationalismus ist nicht akademisches Detail. Sie entscheidet, wer als <em>Bündnispartner</em> gegen Rechtsextremismus gelten darf und wer als <em>Gegner</em> abgestoßen wird. Wenn Karl recht hat, dann sind alle Sozialdemokraten, Grünen, Linken in Parlamenten, alle Gewerkschafter, alle kommunalen Aktivisten Teil des Problems — und der einzig saubere Standpunkt ist GSP-Aufklärung außerhalb des Systems.</p>
+    <p>Wenn Dayway recht hat, dann sind diese Leute Werkzeugträger einer demokratischen Tradition, die historisch reale Verbesserungen erkämpft hat — Acht-Stunden-Tag, Sozialversicherung, Streikrecht — und die jetzt gegen Rechtsextreme verteidigt werden muss, nicht abgestoßen.</p>
+    <p>Es geht um die Frage: <span class="anno">Wer steht auf wessen Seite, wenn es ernst wird?</span> Und an dieser Frage hängt am Ende, ob die AfD aufgehalten wird oder nicht.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-num">02 · Skriptanatomie</div>
+  <h2>Vierzehn <em>rhetorische Bausteine</em>,<br>Satz für Satz zerlegt.</h2>
+  <p class="section-lead">Jeder Baustein hat eine Funktion. Manche stützen die Argumentation, manche zünden rhetorisch, manche öffnen unnötige Flanken. Hier wird jeder einzeln zerlegt: was passiert da, warum funktioniert es (oder nicht), welche Forschung könnte ihn untermauern, welches Bild könnte ihn visualisieren — und wie man ihn schärfer machen könnte.</p>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">01</div><div class="anatomy-marker-tag">Cold Open</div></div>
+  <div class="anatomy-content">
+    <h3>Die Stimme aus dem Off</h3>
+    <div class="anatomy-quote">Du willst Menschen helfen? Du setzt dich im System der Bundesrepublik Deutschland für Verbesserungen ein? Du willst, dass es gerechter zugeht? Na herzlichen Glückwunsch. Du scheiß Nationalist.</div>
+    <div class="anatomy-meta">
+      <div class="anatomy-meta-item"><div class="label">Funktion</div><div class="value">Reductio ad absurdum als Eröffnung</div></div>
+      <div class="anatomy-meta-item"><div class="label">Wirkung</div><div class="value">Sofortiges Verständnis für Außenstehende</div></div>
+      <div class="anatomy-meta-item"><div class="label">Risiko</div><div class="value">Karl könnte sagen: Strohmann</div></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorische Analyse</div></div>
+      <div class="anatomy-section-body">
+        <p>Dayway eröffnet mit dem stärksten Werkzeug politischer Polemik: dem <em>reductio ad absurdum</em>. Er nimmt die Karl-These und führt sie an ihre logische Spitze — wer Verbesserung will, ist Nationalist. Punkt. Damit ist die These auf einer einzigen Zeile entlarvt, bevor irgendein Argument gemacht wurde.</p>
+        <p>Das funktioniert deshalb so gut, weil es <span class="anno-burgundy">kein direkter Angriff</span> ist. Dayway sagt nicht "Karl liegt falsch". Er lässt die Position einfach ausgesprochen werden — und der Absurditätscharakter wird durch die Vollständigkeit der Ausführung sichtbar.</p>
+        <p>Der Cut auf das eigene erschrockene Gesicht ist die zweite Stufe der Pointe. Es transportiert: "Das ist nicht meine Interpretation, das ist die Konsequenz seiner These." Der Zuschauer wird zum Mitdenkenden gemacht.</p>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bildvorschlag</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Visuelle Umsetzung — drei Frames</div>
+          <div class="image-suggestion-mock">
+            <strong>Frame 1:</strong> Schwarz-Weiß. Dayway am Schreibtisch. Kamera fährt langsam rein. Stimme aus dem Off mit Hall-Effekt.<br><br>
+            <strong>Frame 2:</strong> Bei "Du scheiß Nationalist" — abrupter Schnitt zu Farbe, Großaufnahme, irritiertes Gesicht.<br><br>
+            <strong>Frame 3:</strong> Schwarzes Bild, weiße Schrift in Fraktur oder strenger Serif: "BITTE WAS?"
+          </div>
+          <div class="image-suggestion-caption">Der Schwarz-Weiß-zu-Farbe-Schnitt verstärkt die Reductio. Das Bild bestätigt visuell, was der Text sagt: "Das ist absurd."</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirische Brücke</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Forschungsanker</div>
+          <div class="empirical-bridge-source">Cas Mudde · Populist Radical Right Parties in Europe (2007)</div>
+          <p>Mudde hat empirisch gezeigt: Die Eigenschaft, jeden Andersdenkenden als Teil eines totalen Systems zu betrachten, ist ein Kernmerkmal populistischer Logik — von rechts wie von links. Die GSP-Begriffsbreite folgt diesem Muster: Wer dazwischen liegt, gibt es nicht. Damit ist die Karl-These nicht analytisch, sondern populistisch strukturiert.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Vorschlag · Schlussatz hinzufügen</div>
+          <p>Der Cold Open ist stark, könnte aber einen methodischen Befund nachschieben:</p>
+          <div class="optimization-fix">"Bitte was? Wenn jeder, der politisch handeln will, Nationalist ist — dann ist Nationalismus kein Begriff mehr. Dann ist es ein Etikett."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">02</div><div class="anatomy-marker-tag">Dreifach-Reductio</div></div>
+  <div class="anatomy-content">
+    <h3>Schulen. Mieten. Pflege.</h3>
+    <div class="anatomy-quote">Wenn ich will, dass Kinder gute Schulen haben, bin ich Nationalist? Wenn ich will, dass Mieten bezahlbar sind, bin ich Nationalist? Wenn ich will, dass Pflegekräfte nicht komplett verheizt werden, bin ich Nationalist?</div>
+    <div class="anatomy-meta">
+      <div class="anatomy-meta-item"><div class="label">Funktion</div><div class="value">Dreiteilige rhetorische Frage (Trikolon)</div></div>
+      <div class="anatomy-meta-item"><div class="label">Wirkung</div><div class="value">Konkretisierung des abstrakten Vorwurfs</div></div>
+      <div class="anatomy-meta-item"><div class="label">Stärke</div><div class="value">9/10 — fast unangreifbar</div></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorische Analyse</div></div>
+      <div class="anatomy-section-body">
+        <p>Das <span class="anno-burgundy">Trikolon</span> — die dreifache Wiederholung mit Variation — ist seit Cicero das stärkste Werkzeug politischer Rede. Dayway nutzt es perfekt: drei konkrete Lebensrealitäten, drei rhetorische Fragen, eine Antwort, die sich von selbst aufdrängt.</p>
+        <p>Die Auswahl der drei Beispiele ist nicht zufällig. <span class="anno">Schule, Miete, Pflege</span> sind die drei sozialpolitischen Felder, die in deutschen Umfragen seit Jahren die höchste Priorität haben. Wer hier nicht zustimmt, hat sich vom Mainstream entkoppelt. Dayway zwingt Karl damit in eine extreme Position.</p>
+        <p>Was die Stelle besonders stark macht: Sie ist <span class="anno">positive Konkretisierung</span>. Statt zu sagen "Karl liegt falsch", sagt sie "Hier sind die Konsequenzen". Der Leser kann selbst entscheiden, ob die Konsequenzen tragbar sind.</p>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bildvorschlag</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Drei-Bild-Sequenz mit Schnitt-Tempo</div>
+          <div class="image-suggestion-mock">
+            <strong>Bild 1 — Schule:</strong> Marode Schultoilette, abblätternde Wände, schmutziges Waschbecken. Untertitel rot: "NATIONALISTISCH?"<br><br>
+            <strong>Bild 2 — Mieten:</strong> Schaufenster eines Maklers, Wohnungspreise sichtbar. Untertitel rot: "NATIONALISTISCH?"<br><br>
+            <strong>Bild 3 — Pflege:</strong> Erschöpfte Pflegekraft im Treppenhaus, Hand am Geländer. Untertitel rot: "NATIONALISTISCH?"<br><br>
+            Schnitt-Tempo: 1,5 Sekunden pro Bild, dann auf Dayways Gesicht.
+          </div>
+          <div class="image-suggestion-caption">Die Bildsprache zwingt zur Antwort. Wenn das alles Nationalismus ist — was bedeutet das Wort dann noch?</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirische Brücke</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Umfrageforschung</div>
+          <div class="empirical-bridge-source">ARD-DeutschlandTrend / DIW-Wochenbericht (laufend)</div>
+          <p>In repräsentativen Umfragen liegen Bildung, Wohnen und Gesundheit/Pflege seit Jahren auf den Plätzen 1–3 der wichtigsten politischen Themen — quer durch alle Parteibindungen. Dayway trifft nicht zufällig drei beliebige Beispiele, sondern den empirisch belegten Kern dessen, was Menschen politisch bewegt.</p>
+        </div>
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Sozialstaatsforschung</div>
+          <div class="empirical-bridge-source">Esping-Andersen · Three Worlds of Welfare Capitalism (1990)</div>
+          <p>Die drei Felder — Bildung, Wohnen, Pflege — sind exakt die, an denen sich die "drei Welten" zeigen. Skandinavische Sozialstaaten investieren massiv, liberale Staaten überlassen es dem Markt. Dayways Beispiele sind <em>strukturell</em> die richtigen.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Vorschlag · Zahlen einbauen</div>
+          <p>Rhetorische Stärke 9/10. Empirische Stärke wäre 10/10, wenn konkrete Zahlen folgten:</p>
+          <div class="optimization-fix">"Wenn ich will, dass Pflegekräfte nicht verheizt werden — und in Deutschland fehlen 200.000 Pflegekräfte — bin ich Nationalist?"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">03</div><div class="anatomy-marker-tag">Hyperbel-Witz</div></div>
+  <div class="anatomy-content">
+    <h3>Der Hausmeister im Bürgeramt</h3>
+    <div class="anatomy-quote">Also irgendwann wird der Begriff so breit, dass selbst der Hausmeister im Bürgeramt verdächtig wird, weil er das Gemeinwesen abschließt.</div>
+    <div class="anatomy-meta">
+      <div class="anatomy-meta-item"><div class="label">Funktion</div><div class="value">Hyperbel mit Wortspiel</div></div>
+      <div class="anatomy-meta-item"><div class="label">Stilebene</div><div class="value">Trockener Humor</div></div>
+      <div class="anatomy-meta-item"><div class="label">Trefferquote</div><div class="value">Hoch — sticht heraus</div></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorische Analyse</div></div>
+      <div class="anatomy-section-body">
+        <p>Das ist der einzige <span class="anno-burgundy">echte Witz</span> im Skript — und er funktioniert perfekt. Die Hyperbel wird mit einem Wortspiel kombiniert: "das Gemeinwesen abschließen" ist gleichzeitig konkret (Hausmeister sperrt abends das Bürgeramt zu) und abstrakt (Karl unterstellt jedem, sich mit dem Gemeinwesen zu identifizieren). Aus dieser Doppelbedeutung entsteht der Lacher.</p>
+        <p>Der Witz ist wirksam, weil er <span class="anno">das Lächerliche an Karls Methode</span> ohne direkten Vorwurf herauskitzelt. Er sagt nicht "deine Theorie ist lächerlich", er zeigt das Lächerliche in Aktion.</p>
+        <p>Funktional ist das ein <em>Steam Valve</em>: Nach zwei ernsten Argumenten lockert ein Witz die Anspannung — klassische rhetorische Architektur.</p>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bildvorschlag</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Comic-Panel oder Standbild</div>
+          <div class="image-suggestion-mock">
+            <strong>Variante A:</strong> Schwarz-Weiß-Zeichnung im Comic-Stil. Ein älterer Hausmeister mit Schlüsselbund schließt die Tür des Bürgeramts. Sprechblasen-Pfeil: "VERDÄCHTIG?" Im Hintergrund Plakat: "Wir kümmern uns ums Gemeinwesen".<br><br>
+            <strong>Variante B:</strong> Echtes Foto eines lachenden Hausmeisters mit eingeblendetem Text-Overlay in Rot: "Achtung! Standortnationalist!"
+          </div>
+          <div class="image-suggestion-caption">Visuelle Verstärkung des Witzes. Der Hausmeister als Symbol für das vermeintlich Bedrohliche, das offensichtlich harmlos ist.</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirische Brücke</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Wissenschaftstheoretischer Bezug</div>
+          <div class="empirical-bridge-source">Karl Popper · Logik der Forschung (1934)</div>
+          <p>Was Dayway hier rhetorisch macht, hat einen wissenschaftstheoretischen Namen: <em>Falsifikationsproblem</em>. Wenn eine Theorie alles erklären kann — auch den Hausmeister — dann erklärt sie nichts mehr. Sie hat keinen empirischen Gehalt. Popper hat das als Kriterium für Pseudowissenschaft identifiziert.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Vorschlag · Witz wissenschaftlich anschließen</div>
+          <p>Der Witz ist stark, aber er steht allein. Eine kurze Folge-Bemerkung macht aus dem Witz ein methodisches Argument:</p>
+          <div class="optimization-fix">"...weil er das Gemeinwesen abschließt. Karl Popper hat das so genannt: Eine Theorie, die alles erklärt, erklärt nichts."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">04</div><div class="anatomy-marker-tag">Konzession</div></div>
+  <div class="anatomy-content">
+    <h3>Die Anerkennung der Gegenseite</h3>
+    <div class="anatomy-quote">Denn ja: Nationalismus ist gefährlich. Nationalismus muss kritisiert werden. Wenn Menschen nach Pass sortiert werden, wenn soziale Probleme gegen Migranten gedreht werden, wenn aus Politik Pflicht, Opfer und Feindbild wird, dann muss man dagegenhalten.</div>
+    <div class="anatomy-meta">
+      <div class="anatomy-meta-item"><div class="label">Funktion</div><div class="value">Concessio · Anerkennung der Gegenseite</div></div>
+      <div class="anatomy-meta-item"><div class="label">Strategischer Wert</div><div class="value">Sehr hoch</div></div>
+      <div class="anatomy-meta-item"><div class="label">Effekt</div><div class="value">Glaubwürdigkeit als ehrlicher Kritiker</div></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorische Analyse</div></div>
+      <div class="anatomy-section-body">
+        <p>Das ist <span class="anno-burgundy">die strategisch wichtigste Stelle</span> des ganzen Skripts. Dayway konzediert: Ja, es gibt echten Nationalismus. Ja, er ist gefährlich. Ja, er muss bekämpft werden. Damit nimmt er Karl den Hauptangriffspunkt: "Du verteidigst doch keine Nationalisten."</p>
+        <p>Diese Stelle ist die <em>Concessio</em> — klassisches Mittel der antiken Rhetorik. Man räumt der Gegenseite das ein, was wahr ist, um mit umso mehr Autorität dort zu widersprechen, wo sie übertreibt. Dayway wird zum <span class="anno">ehrlichen Kritiker</span>, nicht zum Apologeten.</p>
+        <p>Die Konkretisierung — "Pass sortieren", "Migranten als Sündenböcke", "Pflicht, Opfer, Feindbild" — ist sorgfältig gewählt. Das sind genau die Marker, die in der Nationalismusforschung als Kernmerkmale identifiziert werden. Dayway zeigt: Ich weiß, was Nationalismus ist, ich habe nur eine genauere Definition als du.</p>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bildvorschlag</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Ernste Bildsprache als Tonwechsel</div>
+          <div class="image-suggestion-mock">
+            Wechsel zu ernster Bildsprache nach dem Hausmeister-Witz. Drei Schnitte parallel zur Aufzählung:<br><br>
+            <strong>"Pass sortieren":</strong> Detailaufnahme eines Reisepasses, daneben eine Hand, die zwischen zwei Stapeln sortiert.<br><br>
+            <strong>"Sündenböcke":</strong> Plakat einer AfD-Demo mit Migrationsslogan, leicht unscharf.<br><br>
+            <strong>"Pflicht, Opfer, Feindbild":</strong> Schwarz-Weiß-Archivbild einer Massenkundgebung, militärische Ordnung.
+          </div>
+          <div class="image-suggestion-caption">Der Tonwechsel zeigt: Hier wird nicht mehr gescherzt. Wer das verharmlost, wird unglaubwürdig.</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirische Brücke</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Forschungsanker · Nationalismustypologie</div>
+          <div class="empirical-bridge-source">Anthony Smith · Ethno-symbolism and Nationalism (2009)</div>
+          <p>Smith unterscheidet zwischen <em>civic nationalism</em> (staatsbürgerlich) und <em>ethnic nationalism</em> (völkisch). Die Merkmale, die Dayway nennt — Pass-Sortierung, Migranten als Feinde, Pflicht-Opfer-Feindbild — sind exakt die Kennzeichen des ethnischen Nationalismus. Dayway trifft die etablierte Forschungsdefinition, ohne sie zu zitieren.</p>
+        </div>
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Historischer Vergleich · ius soli vs. ius sanguinis</div>
+          <div class="empirical-bridge-source">Rogers Brubaker · Citizenship and Nationhood (1992)</div>
+          <p>Brubaker hat die historische Linie nachgezeichnet: Deutschland hatte traditionell ein <em>ius sanguinis</em> (Recht des Blutes), Frankreich ein <em>ius soli</em> (Recht des Bodens). Die "Pass-Sortierung" ist also nicht abstrakt, sondern ein historisch-konkretes Phänomen.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Vorschlag · Begriffslinie ziehen</div>
+          <p>Die Konzession ist stark, könnte aber explizit auf die etablierte Forschungsdefinition zeigen:</p>
+          <div class="optimization-fix">"Was du beschreibst, ist in der Nationalismusforschung gut definiert: ethnischer Nationalismus, mit Pass-Sortierung, Feindbild, Opferpathos. Anthony Smith, Rogers Brubaker — alle sagen dasselbe. Aber genau diese Forscher sagen auch: Es gibt einen Unterschied zu staatsbürgerlichem Engagement."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">05</div><div class="anatomy-marker-tag">Diagnose</div></div>
+  <div class="anatomy-content">
+    <h3>Selbstlähmung mit komplizierter Sprache</h3>
+    <div class="anatomy-quote">Aber wenn am Ende jede demokratische Verbesserung innerhalb der Bundesrepublik als Nationalismus gilt, dann ist das keine scharfe Analyse mehr. Dann ist das politische Selbstlähmung mit komplizierter Sprache.</div>
+    <div class="anatomy-meta">
+      <div class="anatomy-meta-item"><div class="label">Funktion</div><div class="value">Diagnose der Gegenposition</div></div>
+      <div class="anatomy-meta-item"><div class="label">Sprachliche Stärke</div><div class="value">Sehr hoch — prägnante Formel</div></div>
+      <div class="anatomy-meta-item"><div class="label">Zitierbarkeit</div><div class="value">Hoch — bleibt im Gedächtnis</div></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorische Analyse</div></div>
+      <div class="anatomy-section-body">
+        <p>"Selbstlähmung mit komplizierter Sprache" ist die <span class="anno-burgundy">prägnanteste Formulierung</span> des ganzen Skripts. Sie verdichtet die methodische Kritik an der GSP in fünf Wörter. Drei rhetorische Effekte gleichzeitig:</p>
+        <p><strong>Erstens:</strong> "Selbstlähmung" — das Subjekt verletzt sich selbst, nicht andere. Niemand wird beschuldigt, alle werden geschädigt, vor allem die eigene Seite.</p>
+        <p><strong>Zweitens:</strong> "Komplizierte Sprache" — Verweis auf die GSP-Sondersprache, ohne sie direkt zu zitieren. Wer das Karl-Video gesehen hat, weiß sofort, was gemeint ist.</p>
+        <p><strong>Drittens:</strong> Der Gegensatz "scharfe Analyse" vs. "komplizierte Sprache". Echte Analyse ist klar, Verkomplizierung ist Verschleierung — ein indirekter Angriff auf den GSP-Stil, der sich selbst als besonders präzise versteht.</p>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bildvorschlag</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Visualisierung der Selbstlähmung</div>
+          <div class="image-suggestion-mock">
+            <strong>Variante A (subtil):</strong> Schnitt auf Karls Original-Video bei einem besonders komplizierten Satz wie "ideeller Gesamtkapitalist" oder "Privatexistenz". Untertitel zeigen den Satz in Echtzeit. Dayway hebt nur die Augenbraue.<br><br>
+            <strong>Variante B (direkt):</strong> Zwei Sprechblasen nebeneinander.<br>
+            Links (klar): "Wir brauchen mehr Pflegekräfte."<br>
+            Rechts (vernebelnd): "Die ideelle Funktionalisierung der Reproduktionsarbeit unter dem Diktat der Verwertungslogik."
+          </div>
+          <div class="image-suggestion-caption">Die visuelle Gegenüberstellung macht den Unterschied zwischen klarer und vernebelnder Sprache greifbar.</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirische Brücke</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Sprachwissenschaftlicher Bezug</div>
+          <div class="empirical-bridge-source">Victor Klemperer · LTI · Lingua Tertii Imperii (1947)</div>
+          <p>Klemperer hat gezeigt: Sondersprachen totaler Theoriegebäude funktionieren als <em>Zugangsbarriere</em>. Wer die Sprache nicht beherrscht, kann nicht kritisieren — wer sie beherrscht, denkt schon in den Kategorien des Systems. Klemperer hat das für die Nazi-Sprache gezeigt, das Muster ist universell.</p>
+        </div>
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Soziologischer Bezug</div>
+          <div class="empirical-bridge-source">Pierre Bourdieu · Sprache und symbolische Macht (1982)</div>
+          <p>Bourdieu hat den Mechanismus theoretisch ausgearbeitet: Sondersprachen erzeugen <em>symbolische Macht</em>. Sie schaffen In-Groups und Out-Groups, ohne dass es benannt werden muss. Genau das identifiziert Dayway mit "komplizierte Sprache" — das Bourdieusche Phänomen ohne den Namen.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Vorschlag · Beispiel direkt einbauen</div>
+          <p>Die Diagnose wäre noch schärfer, wenn ein konkretes Beispiel folgte:</p>
+          <div class="optimization-fix">"...politische Selbstlähmung mit komplizierter Sprache. Wenn man 'der Staat ist idealer Gesamtkapitalist' sagt, statt 'der Staat sichert Eigentum', dann hat man eine Wahrheit verschleiert, keine entdeckt."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">06</div><div class="anatomy-marker-tag">Rote Linie</div></div>
+  <div class="anatomy-content">
+    <h3>"Bin ich raus"</h3>
+    <div class="anatomy-quote">Wenn jemand sagt: "Für Deutschland müssen wir alle Opfer bringen", bin ich raus. Wenn jemand sagt: "Die Nation ist wichtiger als der einzelne Mensch", bin ich raus. Wenn jemand soziale Probleme nimmt und daraus Hetze gegen Migranten macht, bin ich sowas von raus.</div>
+    <div class="anatomy-meta">
+      <div class="anatomy-meta-item"><div class="label">Funktion</div><div class="value">Eigene Grenzziehung</div></div>
+      <div class="anatomy-meta-item"><div class="label">Stilfigur</div><div class="value">Anaphora mit Steigerung</div></div>
+      <div class="anatomy-meta-item"><div class="label">Wirkung</div><div class="value">Glaubwürdigkeit plus Klarheit</div></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorische Analyse</div></div>
+      <div class="anatomy-section-body">
+        <p>Die <span class="anno-burgundy">Anaphora</span> — Wiederholung am Satzanfang — ist eines der ältesten und stärksten rhetorischen Mittel. Cicero benutzte sie, Martin Luther King ("I have a dream"), und Dayway hier: "bin ich raus, bin ich raus, bin ich sowas von raus". Die Steigerung im dritten Element verstärkt die Wirkung — der Triade-Effekt.</p>
+        <p>Funktional zieht Dayway eine <span class="anno">rote Linie</span>. Er sagt: Hier ist mein Limit. Damit zeigt er, dass er nicht alles akzeptiert — und nimmt jedem Vorwurf den Boden, er sei "auch nur ein Nationalist".</p>
+        <p>Der Wechsel von "raus" zu "sowas von raus" beim dritten Punkt — Hetze gegen Migranten — ist sprachlich präzise: die schärfste Form, die in der deutschen Umgangssprache verfügbar ist. Hier hört die Diskussion auf.</p>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bildvorschlag</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Visuelle Grenzziehung</div>
+          <div class="image-suggestion-mock">
+            Bei jedem "bin ich raus" zieht eine rote Linie quer durch das Bild — wie ein Strich, der etwas durchstreicht. Auf der jeweils gestrichenen Seite eine zugehörige Bildkachel:<br><br>
+            <strong>1.</strong> Plakat "Für Deutschland Opfer bringen" → rot durchgestrichen.<br>
+            <strong>2.</strong> Spruchband "Nation über allem" → rot durchgestrichen.<br>
+            <strong>3.</strong> Wahlplakat mit Migrationshetze → großflächig rot durchgestrichen.<br><br>
+            Beim dritten Mal: die Linie wird zur kompletten roten Fläche.
+          </div>
+          <div class="image-suggestion-caption">Die Steigerung im Bild spiegelt die Steigerung im Text. "Sowas von raus" wird visuell zur völligen Auslöschung.</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirische Brücke</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Politische Theorie</div>
+          <div class="empirical-bridge-source">Hannah Arendt · Elemente und Ursprünge totaler Herrschaft (1951)</div>
+          <p>Arendt hat genau die drei Punkte, die Dayway nennt, als Kennzeichen totaler Bewegungen identifiziert: Opferkult, Subordination des Individuums unter das Kollektiv, Sündenbock-Logik. Dayways drei roten Linien sind also strukturell exakt die Marker, die Arendt 1951 beschrieben hat.</p>
+        </div>
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Demokratietheorie · Toleranz-Paradoxon</div>
+          <div class="empirical-bridge-source">Karl Popper · Die offene Gesellschaft und ihre Feinde (1945)</div>
+          <p>Popper hat das Paradoxon der Toleranz formuliert: Eine offene Gesellschaft muss intolerant gegen Intoleranz sein, sonst hört sie auf zu existieren. Dayways "rote Linien" sind genau die Umsetzung dieses Prinzips — wo Menschenwürde abgewertet wird, hört Pluralismus auf.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Vorschlag · Vierte Linie als Pointe</div>
+          <p>Drei Anaphern sind klassisch. Eine vierte würde aus dem Skript einen Rückbezug zum Karl-Video machen:</p>
+          <div class="optimization-fix">"Und wenn jemand jeden, der politisch handeln will, zum Nationalisten erklärt — bin ich auch raus. Weil das den Begriff zerstört, mit dem wir die echten Nationalisten benennen müssen."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">07</div><div class="anatomy-marker-tag">Externer Anker</div></div>
+  <div class="anatomy-content">
+    <h3>Der Staubsaugerbegriff & die bpb-Definition</h3>
+    <div class="anatomy-quote">Und weil Dekarldent ja selbst sehr gerne betont, wie wichtig Definitionen sind, machen wir das doch einfach mal. [...] Nationalismus ist eine politische Vorstellung, in der die eigene Nation überhöht wird.</div>
+    <div class="anatomy-meta">
+      <div class="anatomy-meta-item"><div class="label">Funktion</div><div class="value">Externer Definitionsanker</div></div>
+      <div class="anatomy-meta-item"><div class="label">Wert</div><div class="value">Strategisch zentral</div></div>
+      <div class="anatomy-meta-item"><div class="label">Schwachstelle</div><div class="value">Nur eine Quelle (bpb)</div></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorische Analyse</div></div>
+      <div class="anatomy-section-body">
+        <p>Das ist <span class="anno-burgundy">der zentrale Schachzug</span> des Skripts. Dayway nutzt die GSP-Methode gegen die GSP: "Du sagst, Definitionen sind wichtig — gut, dann nehmen wir eine Definition." Damit ist Karl in einer Falle: Lehnt er die bpb ab, gibt er zu, dass er externe Quellen nicht akzeptiert. Akzeptiert er sie, fällt sein Begriff in sich zusammen.</p>
+        <p>Die <span class="anno">bpb als Quelle</span> ist klug gewählt: institutionell, überparteilich, nicht-akademisch in einer für YouTube-Zuschauer zugänglichen Sprache. Sie ist schwer als "bürgerlich" abzuweisen, ohne lächerlich zu wirken.</p>
+        <p>Was Dayway hier zerlegt, hat einen Namen, den er nicht benutzt: den <em>Staubsaugerbegriff</em>. Ein Begriff, der so weit gefasst wird, dass alles darunter passt, ist kein Analyseinstrument mehr.</p>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bildvorschlag</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Definition als Insert</div>
+          <div class="image-suggestion-mock">
+            Großformatiges Insert mit bpb-Logo. Auf weißem Hintergrund in serifer Schrift:<br><br>
+            <strong>"NATIONALISMUS"</strong><br>
+            "Politische Vorstellung, in der die eigene Nation überhöht wird. Sie wird zum höchsten Maßstab gemacht — vor Menschenwürde, vor Rechten, vor Vielfalt."<br><br>
+            <em>Quelle: Bundeszentrale für politische Bildung</em><br><br>
+            Visueller Trick: Die Worte "überhöht" und "höchsten Maßstab" werden mit gelbem Marker farblich hervorgehoben.
+          </div>
+          <div class="image-suggestion-caption">Das Insert legt die Definition fest, bevor Dayway sie kommentiert. Die Markierung lenkt den Blick auf das entscheidende Kriterium.</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirische Brücke</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Akademische Standarddefinitionen</div>
+          <div class="empirical-bridge-source">Anderson · Gellner · Hobsbawm · Smith (1983–2009)</div>
+          <p>Die bpb-Definition steht nicht allein. Benedict Andersons "imagined communities", Ernest Gellners Nation als Industrialisierungsprodukt, Eric Hobsbawms "invented traditions" und Anthony Smiths Ethnosymbolismus — alle vier Hauptströmungen der Nationalismusforschung definieren Nationalismus als <em>spezifische</em> politische Vorstellung, nicht als jede Identifikation mit einem Staat. Dayway hätte vier akademische Anker statt nur einen.</p>
+        </div>
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Wissenschaftstheoretischer Fachbegriff</div>
+          <div class="empirical-bridge-source">Pars pro toto · Logik</div>
+          <p>Was Dayway "Staubsaugerbegriff" nennt, heißt fachlich <em>Pars pro toto</em> — Teil für das Ganze. Eine Dimension wird zur einzigen erklärt, alles andere wird darunter subsumiert. In der Wissenschaftstheorie ein klassischer Reduktionsfehler.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Vorschlag · Anker verbreitern</div>
+          <p>Die bpb allein ist gut. Vier akademische Anker wären besser:</p>
+          <div class="optimization-fix">"Die bpb steht nicht allein. Anderson, Gellner, Hobsbawm, Smith — die vier Hauptforscher der Nationalismustheorie sagen alle dasselbe: Nationalismus ist eine spezifische Vorstellung, keine universale Diagnose."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">08</div><div class="anatomy-marker-tag">Eigene Position</div></div>
+  <div class="anatomy-content">
+    <h3>Verfassungspatriotismus</h3>
+    <div class="anatomy-quote">Wenn ich sage: Unsere Verfassung gibt uns Werkzeuge, um Grundrechte zu schützen — dann sage ich nicht: Deutschland ist mehr wert als andere Länder. Hier leben Menschen. Hier gibt es Institutionen. Hier kann ich politisch handeln.</div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorik</div></div>
+      <div class="anatomy-section-body"><p>Dayway beschreibt seine eigene Position positiv — nicht nur "ich bin kein Nationalist", sondern "ich bin etwas anderes". Die drei kurzen Sätze am Ende sind eine <span class="anno">Triade der Nüchternheit</span>: keine Pathosformeln, nur sachliche Feststellungen, die keine Überhöhung enthalten können. Schwachstelle: Der Begriff "Verfassungspatriotismus" fällt nie.</p></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bild</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Grundgesetz als Werkzeugkasten</div>
+          <div class="image-suggestion-mock">Aufnahme des gelben Reclam-Grundgesetzes. Daneben werden Symbole eingeblendet wie Werkzeuge: Hammer (Art. 1 Menschenwürde), Schraubenzieher (Art. 3 Gleichheit), Maßband (Art. 20 Sozialstaat), Wasserwaage (Art. 5 Meinungsfreiheit). Untertitel: "Werkzeuge. Keine Heilige Schrift."</div>
+          <div class="image-suggestion-caption">Die Werkzeug-Metapher entzaubert die Nation, ohne die Verfassung abzuwerten.</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirie</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Politische Theorie</div>
+          <div class="empirical-bridge-source">Dolf Sternberger (1979) · Jürgen Habermas (1986)</div>
+          <p>Sternberger hat den Begriff "Verfassungspatriotismus" 1979 geprägt, Habermas hat ihn ausgearbeitet: Loyalität nicht gegenüber einer ethnischen Nation, sondern gegenüber universellen Prinzipien einer demokratischen Verfassung. Dayway beschreibt exakt dieses Konzept, ohne den Namen zu nennen.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Den Begriff benennen</div>
+          <div class="optimization-fix">"Das hat einen Namen. Sternberger 1979, Habermas 1986: Verfassungspatriotismus. Eine 45 Jahre alte etablierte Tradition. Nicht meine Erfindung."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">09</div><div class="anatomy-marker-tag">Realismus-Anker</div></div>
+  <div class="anatomy-content">
+    <h3>Die politischen Ebenen</h3>
+    <div class="anatomy-quote">Politik findet in Strukturen statt: Gemeinden, Landtage, Bundestag, Europaparlament. Wer diese Institutionen ignoriert, weil er den Nationalstaat doof findet, überlässt die Institutionen denen, die sie gegen Menschen nutzen.</div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorik</div></div>
+      <div class="anatomy-section-body"><p>Eine <span class="anno-burgundy">Aufzählungs-Strategie</span>: Von der Gemeinde bis zur EU werden alle politischen Ebenen aufgezählt — das macht die Behauptung "Politik passiert ohne Staat" auf einen Schlag absurd. Der Schluss-Satz ist ein <em>Konsequentialismus-Argument</em>: Wer sich raushält, schadet denen, die er schützen will. Damit wird Karls Theorie nicht nur kritisiert, sondern als politisch verantwortungslos dargestellt.</p></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bild</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Pyramide der Ebenen</div>
+          <div class="image-suggestion-mock">Animierte Pyramide, die sich von unten nach oben aufbaut: Stadtrat → Landtag → Bundestag → Europaparlament. An jeder Ebene blinkt ein Foto: kommunale Initiative, Bürgerantrag, Bundestagsdebatte, EU-Abstimmung. Am Ende zoomt die Kamera auf eine leere Stelle: "Wo die Linke gerade nicht ist."</div>
+          <div class="image-suggestion-caption">Die Pyramide zeigt: Politik ist real, sie passiert hier. Wer sich raushält, hinterlässt eine Lücke.</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirie</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Marxistische Realpolitik</div>
+          <div class="empirical-bridge-source">Erik Olin Wright · Envisioning Real Utopias (2010)</div>
+          <p>Wright hat als Marxist gezeigt: Transformation passiert über drei Wege — <em>interstitiell</em> (Nischen), <em>symbiotisch</em> (durch Institutionen), <em>rupturell</em> (revolutionär). Wer nur den dritten Weg gelten lässt, ignoriert die beiden anderen empirisch wirksamen Pfade. Genau das ist die GSP-Position.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Wright als Anker</div>
+          <div class="optimization-fix">"Marxistisch fundiert hat das Erik Olin Wright in 'Envisioning Real Utopias' gezeigt: Veränderung passiert auch durch Institutionen, nicht nur gegen sie. Wer Institutionen verlässt, überlässt sie der Reaktion."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">10</div><div class="anatomy-marker-tag">Historischer Beleg</div></div>
+  <div class="anatomy-content">
+    <h3>Klassenkampf-Errungenschaften</h3>
+    <div class="anatomy-quote">Acht-Stunden-Tag. Tarifverträge. Kündigungsschutz. Sozialversicherung. Mitbestimmung. Das ist nicht vom Himmel gefallen. Das wurde erkämpft — und es passiert innerhalb der Bundesrepublik. Innerhalb des "nationalen Rahmens", den Karl so verachtet.</div>
+    <div class="anatomy-meta">
+      <div class="anatomy-meta-item"><div class="label">Funktion</div><div class="value">Historisches Gegenargument</div></div>
+      <div class="anatomy-meta-item"><div class="label">Stilfigur</div><div class="value">Asyndeton (Aufzählung ohne Konjunktion)</div></div>
+      <div class="anatomy-meta-item"><div class="label">Sprengkraft</div><div class="value">Sehr hoch — zwingt GSP zur Selbstverleugnung</div></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorische Analyse</div></div>
+      <div class="anatomy-section-body">
+        <p>Eine <span class="anno-burgundy">Aufzählung mit Sprengkraft</span>. Fünf konkrete Errungenschaften, die jeder kennt und nutzt. Die Stilfigur ist das <em>Asyndeton</em> — Aufzählung ohne Bindewort. Das wirkt hart, schnell, faktisch. Punkt nach jedem Begriff. Wie Hammerschläge.</p>
+        <p>Wenn die GSP behauptet, das alles sei "Stabilisierung der Herrschaft", dann ist Dayways implizite Frage: <em>Was wäre die Alternative? Zurück zum 12-Stunden-Tag?</em> Die Stelle funktioniert, weil sie die GSP zwingt, gegen ihre eigene historische Tradition zu argumentieren — gegen Bebel, gegen Liebknecht, gegen die ganze Arbeiterbewegung.</p>
+        <p>Der Nachsatz "innerhalb der Bundesrepublik" ist der Kunstgriff. Er dreht die Karl-Logik um: Wenn Karl recht hätte, dürfte es diese Errungenschaften nicht geben — und doch sind sie da, im "nationalen Rahmen", den er ablehnt.</p>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bildvorschlag</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Zeitleiste der Errungenschaften</div>
+          <div class="image-suggestion-mock">
+            Animierte horizontale Zeitleiste mit fünf Meilensteinen, jeweils mit Datum und historischem Foto:<br><br>
+            <strong>1918</strong> — Acht-Stunden-Tag (Stinnes-Legien-Abkommen, Foto streikender Arbeiter)<br>
+            <strong>1949</strong> — Tarifvertragsgesetz (Foto Verhandlungstisch)<br>
+            <strong>1951</strong> — Mitbestimmungsgesetz (Foto Betriebsversammlung)<br>
+            <strong>1957</strong> — Dynamische Rente (Foto Adenauer-Ära)<br>
+            <strong>1969</strong> — Kündigungsschutzgesetz (Foto Gewerkschaftsdemonstration)<br><br>
+            Untertitel: "Erkämpft. Nicht geschenkt."
+          </div>
+          <div class="image-suggestion-caption">Die Zeitleiste macht die Behauptung "wurde erkämpft" buchstäblich sichtbar. Jeder Meilenstein hat ein Datum, ein Foto, einen Kontext.</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirische Brücke</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Machtressourcentheorie</div>
+          <div class="empirical-bridge-source">Walter Korpi · The Democratic Class Struggle (1983)</div>
+          <p>Korpi hat empirisch nachgewiesen: Wo Arbeiterbewegungen organisatorisch stark sind, setzen sie bessere Rechte durch. Das erklärt, warum Schweden besseren Kündigungsschutz hat als die USA — nicht durch Zufall, sondern durch organisierte Klassenmacht. Genau das, was Dayway sagt, mit empirischer Untermauerung quer über 18 Industriestaaten.</p>
+        </div>
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Sozialstaatsregime</div>
+          <div class="empirical-bridge-source">Esping-Andersen · Three Worlds of Welfare Capitalism (1990)</div>
+          <p>In Esping-Andersens Drei-Welten-Typologie sind genau die fünf Felder, die Dayway nennt, die <em>Unterscheidungskriterien</em>: Arbeitszeitregulierung, Tarifautonomie, Kündigungsschutz, Sozialversicherungsdichte, Mitbestimmungsrechte. Das ist nicht beliebige Aufzählung, sondern empirisch belegter Kern dessen, was unterschiedliche Sozialstaaten ausmacht.</p>
+        </div>
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Historische Empirie</div>
+          <div class="empirical-bridge-source">Geoff Eley · Forging Democracy (2002)</div>
+          <p>Eley hat die Geschichte der europäischen Arbeiterbewegung von 1850 bis 2000 rekonstruiert. Sein Befund: Demokratie und Sozialstaat sind in Europa praktisch ausnahmslos durch organisierten Klassenkampf entstanden — nicht durch wohlwollende Eliten, nicht durch revolutionären Bruch, sondern durch jahrzehntelangen Druck innerhalb der Institutionen.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Vorschlag · Korpi als Forschungsanker</div>
+          <p>Die Aufzählung ist rhetorisch perfekt, könnte aber empirisch verankert werden:</p>
+          <div class="optimization-fix">"Walter Korpi hat das empirisch gezeigt: Wo Gewerkschaften stark organisiert sind, sind Arbeitsbedingungen besser. Über 18 Länder verglichen. Das ist nicht Zufall, das ist Klassenmacht — und sie wirkt im nationalen Rahmen."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">11</div><div class="anatomy-marker-tag">Kausalumkehrung</div></div>
+  <div class="anatomy-content">
+    <h3>Die AfD-Ursachenanalyse</h3>
+    <div class="anatomy-quote">Die AfD wächst nicht, weil Politik funktioniert. Sie wächst, weil reale Probleme nicht gelöst werden. Aus Wohnungsnot wird "Die Ausländer nehmen euch die Wohnungen weg". Wer da mit Theoriekritik antwortet, statt mit Wohnungen, hat verloren.</div>
+    <div class="anatomy-meta">
+      <div class="anatomy-meta-item"><div class="label">Funktion</div><div class="value">Kausale Gegenanalyse</div></div>
+      <div class="anatomy-meta-item"><div class="label">Stilfigur</div><div class="value">Antithese und Konsequentialismus</div></div>
+      <div class="anatomy-meta-item"><div class="label">Stärke</div><div class="value">Sehr hoch — politisch operativ</div></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorische Analyse</div></div>
+      <div class="anatomy-section-body">
+        <p>Hier dreht Dayway <span class="anno-burgundy">die kausale Richtung um</span>. Die GSP-Logik wäre: AfD wächst, weil das System funktioniert — die Massen sind verblendet. Dayways Logik: AfD wächst, weil das System NICHT funktioniert — die Menschen suchen Antworten und finden sie bei der falschen Adresse.</p>
+        <p>Das ist die <em>materialistischere</em> Analyse — was paradox ist, weil die GSP sich selbst als materialistisch versteht. Dayway macht hier die GSP-Methode gegen die GSP geltend: Wenn man die materiellen Verhältnisse ernst nimmt, dann erklärt sich die AfD aus konkreten Mangellagen, nicht aus theoretischer Verblendung.</p>
+        <p>Der Schluss-Satz — "wer mit Theoriekritik antwortet, statt mit Wohnungen, hat verloren" — ist <span class="anno">politisch operativ</span>. Er fragt nicht "Was ist richtig gedacht?", sondern "Was hält die AfD auf?" Damit wird die ganze GSP-Übung als folgenlose Akademie entlarvt.</p>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bildvorschlag</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Zwei-Stufen-Bild: Problem und Verdrehung</div>
+          <div class="image-suggestion-mock">
+            <strong>Schritt 1:</strong> Schaufenster eines Immobilienmaklers. Quadratmeterpreise in München, Berlin, Hamburg. Untertitel: "Wohnungsnot. Reales Problem."<br><br>
+            <strong>Schritt 2:</strong> Schnitt auf eine AfD-Wahlplakat-Wand. Slogan: "Deutsche Wohnungen für Deutsche zuerst!" Untertitel: "Verdrehung. Falsche Antwort auf reales Problem."<br><br>
+            <strong>Schritt 3:</strong> Schnitt auf Dayway. Untertitel: "Antwort: Wohnungen bauen. Nicht: Sündenböcke benennen."
+          </div>
+          <div class="image-suggestion-caption">Die Sequenz zeigt die kausale Kette: Reales Problem → Verdrehung → richtige Antwort. Karl springt direkt zur dritten Ebene und ignoriert die ersten beiden.</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirische Brücke</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Rechtspopulismus-Forschung</div>
+          <div class="empirical-bridge-source">Cas Mudde · Populist Radical Right Parties in Europe (2007)</div>
+          <p>Mudde hat in vergleichender Forschung gezeigt: Rechtspopulistische Parteien wachsen dort, wo etablierte Parteien soziale Versprechen brechen — nicht in stabilen Wohlfahrtsstaaten. Empirischer Befund über 24 europäische Länder. Genau das, was Dayway intuitiv sagt.</p>
+        </div>
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Sozialgeographie · AfD-Hochburgen</div>
+          <div class="empirical-bridge-source">Forschungsstand zur AfD-Wahlforschung (laufend)</div>
+          <p>Die AfD-Hochburgen in Deutschland liegen nicht in den reichsten oder ärmsten Regionen, sondern in Räumen mit <em>Statusangst</em>: ehemalige Industrieregionen, ländliche Räume mit Infrastrukturabbau, Gebiete mit schlechter Daseinsvorsorge. Nicht Wohlstand vs. Armut, sondern Stabilität vs. Erosion erklärt die Wahlmuster.</p>
+        </div>
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Konkurrenzhypothese</div>
+          <div class="empirical-bridge-source">Korpi-Tradition · Sozialstaat als Brandmauer</div>
+          <p>Länder mit starkem Sozialstaat (Skandinavien) haben historisch niedrigere Rechtspopulismus-Anteile — Schweden ist mit den Schwedendemokraten ein Ausnahmefall, und auch dort fällt der Aufstieg mit dem Abbau des Sozialstaats zusammen. Wer die AfD aufhalten will, muss den Sozialstaat stärken, nicht ignorieren.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Vorschlag · Mudde als Untermauerung</div>
+          <div class="optimization-fix">"Cas Mudde hat das empirisch über 24 europäische Länder verglichen: Rechtspopulismus wächst dort, wo Sozialstaat versagt. In Skandinavien lange Zeit niedrige Werte — bis dort der Wohlfahrtsstaat zurückgebaut wurde. Die Korrelation ist eindeutig."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">12</div><div class="anatomy-marker-tag">Pragmatismus</div></div>
+  <div class="anatomy-content">
+    <h3>Kapitalismus an die Leine</h3>
+    <div class="anatomy-quote">Der Markt regelt vieles eben nicht. Der Markt baut keine bezahlbaren Wohnungen, wenn Luxuswohnungen mehr Rendite bringen. Der Markt sorgt nicht für Pflege, wenn Pflege keine Rendite abwirft. Da muss Politik eingreifen — nicht den Kapitalismus abschaffen, aber ihn an die Leine legen.</div>
+    <div class="anatomy-meta">
+      <div class="anatomy-meta-item"><div class="label">Funktion</div><div class="value">Eigene ökonomische Position</div></div>
+      <div class="anatomy-meta-item"><div class="label">Stilfigur</div><div class="value">Anaphora plus Metapher (Leine)</div></div>
+      <div class="anatomy-meta-item"><div class="label">Effekt</div><div class="value">Abgrenzung von beiden Extremen</div></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorische Analyse</div></div>
+      <div class="anatomy-section-body">
+        <p>Hier macht Dayway etwas <span class="anno-burgundy">rhetorisch Anspruchsvolles</span>: Er grenzt sich gleichzeitig von zwei Seiten ab. Nach links: "nicht den Kapitalismus abschaffen". Nach rechts: "der Markt regelt nicht". Damit besetzt er die <em>sozialdemokratische Mitte</em>, die in beide Richtungen Distanz zeigt.</p>
+        <p>Die <span class="anno">Leinen-Metapher</span> ist brillant. Sie transportiert drei Botschaften gleichzeitig: Erstens, der Kapitalismus ist wie ein Tier — kraftvoll, nützlich, aber gefährlich, wenn ungebunden. Zweitens, eine Leine kontrolliert, ohne zu töten. Drittens, jemand hält die Leine — die Demokratie, der Staat, das Politische.</p>
+        <p>Die Anaphora "Der Markt regelt nicht / Der Markt baut nicht / Der Markt sorgt nicht" macht den Befund unwiderlegbar. Drei verschiedene Bereiche, drei Marktversagen, ein Schluss.</p>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bildvorschlag</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Die Leine als Symbol</div>
+          <div class="image-suggestion-mock">
+            <strong>Variante A (Symbol):</strong> Visualisierung eines Tieres an einer Leine. Das Tier ist mit "MARKT" beschriftet, die Hand am Leinen-Ende mit "DEMOKRATIE". Das Tier zieht, die Hand hält stand.<br><br>
+            <strong>Variante B (Konkretisierung):</strong> Drei Splitscreens nebeneinander —<br>
+            Links: Luxus-Hochhaus in Frankfurt-Bankenviertel.<br>
+            Mitte: Private Pflegeeinrichtung mit überforderter Belegschaft.<br>
+            Rechts: Stillgelegtes Werk, abgebaute Schienen.<br>
+            Untertitel: "Was der Markt nicht regelt — und nicht regeln wird."
+          </div>
+          <div class="image-suggestion-caption">Die Leinen-Metapher visualisiert den dritten Weg: weder Marktradikalismus noch Marktabschaffung, sondern demokratische Kontrolle.</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirische Brücke</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Marktversagen-Theorie</div>
+          <div class="empirical-bridge-source">Karl Polanyi · The Great Transformation (1944)</div>
+          <p>Polanyi hat genau das systematisch ausgearbeitet: Der Markt ist kein Naturzustand, sondern eine politische Konstruktion. Wenn er von der Gesellschaft entbunden wird, zerstört er sie. Die Lösung ist nicht Marktabschaffung, sondern <em>Einbettung</em> — der Markt in die Gesellschaft, nicht umgekehrt. Dayway formuliert das in Alltagssprache.</p>
+        </div>
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Empirie · Wohnungsmarkt</div>
+          <div class="empirical-bridge-source">DIW · Wohnungsmarktstudien</div>
+          <p>In allen deutschen Großstädten gilt: Wo der Markt allein regelt, entstehen primär Luxuswohnungen. Sozialer Wohnungsbau in Deutschland ist seit den 1990er Jahren von 4 Millionen auf knapp 1 Million Einheiten gefallen — exakt parallel zur Marktderegulierung. Empirisch eindeutig.</p>
+        </div>
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Skandinavien-Vergleich</div>
+          <div class="empirical-bridge-source">OECD-Vergleichsdaten · Sozialstaatsregimes</div>
+          <p>Schweden hat 4 Prozent Kinderarmut, USA hat 20 Prozent. Lebenserwartung Schweden 83, USA 77. Wenn der Markt alles regeln würde, dürften diese Unterschiede nicht existieren. Sie existieren, weil in Skandinavien die "Leine" gehalten wird, in den USA nicht.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Vorschlag · Konkrete Zahlen</div>
+          <div class="optimization-fix">"Wo Politik die Leine hält, lebt man messbar besser. Schweden: Kinderarmut 4 Prozent. USA: 20 Prozent. Lebenserwartung Schweden 83, USA 77. Das ist kein Zufall — das ist Sozialstaatsforschung von Esping-Andersen, hart belegt über 18 Länder."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">13</div><div class="anatomy-marker-tag">Schwachstelle</div></div>
+  <div class="anatomy-content">
+    <h3>Der persönliche Spitzenangriff</h3>
+    <div class="anatomy-quote">Wer weit weg lebt und viel Geld hat, der muss sich nicht mit realpolitischen Problemen auseinandersetzen.</div>
+    <div class="anatomy-meta">
+      <div class="anatomy-meta-item"><div class="label">Funktion</div><div class="value">Ad-hominem-Spitze</div></div>
+      <div class="anatomy-meta-item"><div class="label">Risiko</div><div class="value">Sehr hoch</div></div>
+      <div class="anatomy-meta-item"><div class="label">Bewertung</div><div class="value">Sollte gestrichen werden</div></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorische Analyse</div></div>
+      <div class="anatomy-section-body">
+        <p>Das ist die <span class="anno-burgundy">einzige Stelle</span> im Skript, an der Dayway persönlich wird. Und genau hier öffnet er Karl die größte Flanke. Das ist klassisches <em>ad hominem</em> — der Angriff auf die Person statt auf die Argumente. In einem ansonsten methodisch sauberen Skript wirkt das wie ein Fremdkörper.</p>
+        <p>Das Problem ist nicht moralisch, sondern strategisch: GSP-Anhänger werden genau hier einhaken. "Siehst du? Er hat keine Argumente, deshalb wird er persönlich." Damit kann die GSP-Verteidigung den ganzen Rest des Skripts diskreditieren — obwohl der Rest stark ist.</p>
+        <p>Zudem ist die Behauptung empirisch fragwürdig. Karls Lebensverhältnisse sind privat. Selbst wenn er privilegiert ist: Akademiker dürfen Theorie machen, das ist nicht das Problem. Das Problem ist die Theorie selbst, nicht ihr Träger.</p>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirische Brücke</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Argumentationstheorie</div>
+          <div class="empirical-bridge-source">Walton · Ad-Hominem-Argumente (1998)</div>
+          <p>Douglas Walton hat in der modernen Argumentationstheorie gezeigt: Ad-hominem-Argumente sind nicht immer fehlerhaft, aber in Sachdebatten fast immer kontraproduktiv. Sie verschieben die Beweislast von der eigenen Position zur Diskreditierung des Gegners — und das öffnet Tür und Tor für Gegenangriffe gleicher Art.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Vorschlag · Streichen und durch Methodenkritik ersetzen</div>
+          <p>Streich den Satz. Setze stattdessen einen sachlichen Befund über die Tradition, nicht über die Person:</p>
+          <div class="optimization-fix">"Vierzig Jahre GSP-Tradition. Null Massenbewegung. Null politisches Programm. Keine Revision einer einzigen zentralen These. Wer das als 'überlegene Analyse' verkauft, hat den Bezug zur Wirklichkeit verloren — nicht aus Boshaftigkeit, sondern weil die Methode keine Korrektur zulässt."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="anatomy-block">
+  <div class="anatomy-marker"><div class="anatomy-marker-num">14</div><div class="anatomy-marker-tag">Schlussformel</div></div>
+  <div class="anatomy-content">
+    <h3>Menschen zuerst. Demokratie als Werkzeug. Kapitalismus an die Leine.</h3>
+    <div class="anatomy-quote">Reale Verbesserungen für reale Menschen sind mir mehr wert als perfekte Theorie, die niemandem die Miete bezahlt. Menschen zuerst. Demokratie als Werkzeug. Kapitalismus an die Leine. Das ist meine Position.</div>
+    <div class="anatomy-meta">
+      <div class="anatomy-meta-item"><div class="label">Funktion</div><div class="value">Programmatischer Schluss</div></div>
+      <div class="anatomy-meta-item"><div class="label">Stilfigur</div><div class="value">Trikolon mit Punkten als Cäsur</div></div>
+      <div class="anatomy-meta-item"><div class="label">Zitierbarkeit</div><div class="value">Maximum</div></div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon rhet">R</div><div class="anatomy-section-title">Rhetorische Analyse</div></div>
+      <div class="anatomy-section-body">
+        <p>Das ist die <span class="anno-burgundy">stärkste Stelle</span> des ganzen Skripts. Drei Sätze, drei Programmpunkte, drei Cäsuren. Maximale Verdichtung. Maximale Merkbarkeit. So sehen Schlussformeln aus, die zitiert werden.</p>
+        <p>Der erste Satz — "Reale Verbesserungen für reale Menschen sind mir mehr wert als perfekte Theorie" — ist die <span class="anno">Anti-These zur GSP-Methode</span>. Karl produziert perfekte Theorie. Dayway will reale Verbesserung. Damit ist der ganze Streit auf eine Achse reduziert: Theorie versus Praxis. Wer auf der Praxis-Seite steht, hat gewonnen, weil Theorie ohne Praxis niemand verteidigen will.</p>
+        <p>Die drei Programmpunkte am Ende sind <em>nominale Sätze</em> ohne Verben. Das wirkt apodiktisch, wie ein Manifest. "Menschen zuerst." Punkt. Keine Verhandlung. Das ist die Sprache politischer Selbstgewissheit, die Dayway sich zu Recht erlaubt.</p>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon img">I</div><div class="anatomy-section-title">Bildvorschlag</div></div>
+      <div class="anatomy-section-body">
+        <div class="image-suggestion">
+          <div class="image-suggestion-label">Drei Tafeln als finales Statement</div>
+          <div class="image-suggestion-mock">
+            Bei jedem Programmpunkt erscheint eine eigene Bildtafel auf schwarzem Grund, weiße Serifenschrift, eine pro Sekunde:<br><br>
+            <strong>Tafel 1:</strong> "MENSCHEN ZUERST."<br>
+            <strong>Tafel 2:</strong> "DEMOKRATIE ALS WERKZEUG."<br>
+            <strong>Tafel 3:</strong> "KAPITALISMUS AN DIE LEINE."<br><br>
+            Tafel 4 (zusammen): Alle drei untereinander.<br><br>
+            Dayways Gesicht erscheint erst nach der letzten Tafel. Letzter Satz im O-Ton: "Das ist meine Position."
+          </div>
+          <div class="image-suggestion-caption">Die drei Tafeln machen das Programm zum Manifest. Die Tafel-Optik signalisiert: Hier ist Klarheit, hier hört die Diskussion auf.</div>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon emp">E</div><div class="anatomy-section-title">Empirische Brücke</div></div>
+      <div class="anatomy-section-body">
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Sozialdemokratische Programmatik</div>
+          <div class="empirical-bridge-source">Eduard Bernstein · Die Voraussetzungen des Sozialismus (1899)</div>
+          <p>Bernstein hat den evolutionären Sozialismus begründet: Reform statt Revolution, schrittweise Verbesserung statt utopischem Bruch. Genau das, was Dayway formuliert. Die Tradition ist 125 Jahre alt, hat in dieser Zeit unter anderem Acht-Stunden-Tag, Frauenwahlrecht, Sozialversicherung und Mitbestimmung erkämpft. Das ist keine Theorie ohne Wirkung — das ist die wirksamste linke Tradition Europas.</p>
+        </div>
+        <div class="empirical-bridge">
+          <div class="empirical-bridge-head">Realismus statt Utopie</div>
+          <div class="empirical-bridge-source">Erik Olin Wright · Real Utopias (2010)</div>
+          <p>Wright hat den Begriff "real utopias" geprägt: utopische Ziele, die in realen Institutionen erprobt werden können. Genossenschaften, Bürgerhaushalte, Grundeinkommens-Pilotprojekte, Commons-Strukturen. Dayways "Menschen zuerst, Demokratie als Werkzeug" ist die Übersetzung dieses Programms in Alltagssprache.</p>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy-section">
+      <div class="anatomy-section-head"><div class="anatomy-section-icon opt">O</div><div class="anatomy-section-title">Optimierung</div></div>
+      <div class="anatomy-section-body">
+        <div class="optimization">
+          <div class="optimization-head">Vorschlag · Tradition explizit machen</div>
+          <p>Die Schlussformel ist stark genug, um stehen zu bleiben. Wenn überhaupt etwas hinzugefügt wird, dann ein kurzer Verweis auf die Tradition:</p>
+          <div class="optimization-fix">"Das ist meine Position. Und es ist die einer 125 Jahre alten Tradition, die mehr für Arbeiter erreicht hat als jede Theorie der reinen Aufklärung."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+  <div class="section-num">03 · Rhetorischer Werkzeugkasten</div>
+  <h2>Die <em>Mittel</em>,<br>die Dayway einsetzt.</h2>
+  <p class="section-lead">Im Skript stecken acht klassische rhetorische Werkzeuge — manche bewusst, manche intuitiv. Wer sie kennt, sieht das Skript anders: nicht als spontane Reaktion, sondern als sauber komponiertes Stück Rede.</p>
+
+  <div class="rhet-tools-grid">
+    <div class="rhet-tool">
+      <div class="rhet-tool-name">Reductio ad absurdum</div>
+      <h4>Die Position bis zum Absurden zu Ende denken</h4>
+      <p>Dayway nimmt Karls These und führt sie an ihre logische Spitze: Wer Verbesserung will, ist Nationalist. Die Position widerlegt sich selbst, sobald sie vollständig ausgesprochen ist.</p>
+      <div class="rhet-tool-effect">Wirkung: Sofortige Verständlichkeit der Kritik, ohne direkten Angriff.</div>
+    </div>
+    <div class="rhet-tool">
+      <div class="rhet-tool-name">Trikolon</div>
+      <h4>Die Dreifach-Wiederholung</h4>
+      <p>Schulen, Mieten, Pflege. Bin ich raus, bin ich raus, bin ich sowas von raus. Menschen zuerst, Demokratie als Werkzeug, Kapitalismus an die Leine. Dreiergruppen sind seit Cicero das rhythmische Skelett politischer Rede.</p>
+      <div class="rhet-tool-effect">Wirkung: Hohe Merkbarkeit, rhythmischer Sog, Vollständigkeitsgefühl.</div>
+    </div>
+    <div class="rhet-tool">
+      <div class="rhet-tool-name">Concessio</div>
+      <h4>Zugeständnis an die Gegenseite</h4>
+      <p>"Denn ja: Nationalismus ist gefährlich." Dayway räumt der Gegenseite ein, was wahr ist, um mit umso mehr Autorität dort zu widersprechen, wo sie übertreibt.</p>
+      <div class="rhet-tool-effect">Wirkung: Glaubwürdigkeit als ehrlicher Kritiker, statt als Apologet.</div>
+    </div>
+    <div class="rhet-tool">
+      <div class="rhet-tool-name">Hyperbel</div>
+      <h4>Die ironische Übertreibung</h4>
+      <p>"Selbst der Hausmeister im Bürgeramt wird verdächtig." Die Übertreibung führt das Lächerliche der Gegenposition vor, ohne es benennen zu müssen.</p>
+      <div class="rhet-tool-effect">Wirkung: Humor lockert die Anspannung, macht den Befund unangreifbar.</div>
+    </div>
+    <div class="rhet-tool">
+      <div class="rhet-tool-name">Anaphora</div>
+      <h4>Die Wiederholung am Satzanfang</h4>
+      <p>"Wenn jemand sagt... bin ich raus. Wenn jemand sagt... bin ich raus." Die Wiederholung erzeugt rituellen Ernst und macht die Position kategorisch.</p>
+      <div class="rhet-tool-effect">Wirkung: Hörbare Entschiedenheit, Unverhandelbarkeit der Position.</div>
+    </div>
+    <div class="rhet-tool">
+      <div class="rhet-tool-name">Asyndeton</div>
+      <h4>Die unverbundene Aufzählung</h4>
+      <p>"Acht-Stunden-Tag. Tarifverträge. Kündigungsschutz. Sozialversicherung. Mitbestimmung." Punkte statt Kommas. Schnelle, harte Aufzählung — wie Hammerschläge.</p>
+      <div class="rhet-tool-effect">Wirkung: Faktischer Charakter, kein Diskussionsraum, keine Verhandlung.</div>
+    </div>
+    <div class="rhet-tool">
+      <div class="rhet-tool-name">Antithese</div>
+      <h4>Der scharfe Gegensatz</h4>
+      <p>"Keine scharfe Analyse — politische Selbstlähmung. Mit Wohnungen, nicht mit Theoriekritik." Polare Gegensätze schärfen die Position durch Abgrenzung.</p>
+      <div class="rhet-tool-effect">Wirkung: Klare Lager-Bildung, kein Dazwischen, kein Sowohl-als-auch.</div>
+    </div>
+    <div class="rhet-tool">
+      <div class="rhet-tool-name">Metapher</div>
+      <h4>Das Bild als Verdichtung</h4>
+      <p>"Kapitalismus an die Leine." "Werkzeuge der Verfassung." "Selbstlähmung." Metaphern verdichten politische Positionen zu erinnerbaren Bildern.</p>
+      <div class="rhet-tool-effect">Wirkung: Sofortige Anschaulichkeit, hohe Übertragbarkeit, Slogan-Tauglichkeit.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-num">04 · Grundannahmen-Vergleich</div>
+  <h2>Vier Spalten —<br><em>vier Welten</em>.</h2>
+  <p class="section-lead">Karls Grundannahmen, Dayways Grundannahmen, und daneben: Was die empirische Forschung dazu tatsächlich sagt. So wird sichtbar, wo Dayway nahe an der Forschung ist und wo Karl weit weg.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Thema</th>
+        <th>Charaktermaske / GSP</th>
+        <th>Dayway</th>
+        <th>Empirische Forschung</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Nationalismus</td>
+        <td>Jede Identifikation mit dem Staat. Auch der Wunsch nach besseren Schulen.</td>
+        <td>Überhöhung der Nation zum höchsten Maßstab. Pflicht, Opfer, Feindbild.</td>
+        <td>Anderson, Gellner, Hobsbawm, Smith: spezifische politische Vorstellung mit klaren Merkmalen — nicht jede Identifikation.</td>
+      </tr>
+      <tr>
+        <td>Staat</td>
+        <td>Idealer Gesamtkapitalist (Engels-Formel, weit überdehnt). Sichert nur Kapital.</td>
+        <td>Werkzeug mit Spielräumen. Veränderbar durch politischen Druck.</td>
+        <td>Poulantzas: relative Autonomie des Staates, empirisch über 4 Länder belegt.</td>
+      </tr>
+      <tr>
+        <td>Demokratie</td>
+        <td>Perfekte Form bürgerlicher Herrschaft. Wahlen ändern nichts.</td>
+        <td>Umkämpftes Terrain. Liefert Werkzeuge zur Verteidigung von Rechten.</td>
+        <td>Russett (1993): Demokratien führen untereinander praktisch keine Kriege. Empirie über 200 Jahre.</td>
+      </tr>
+      <tr>
+        <td>Sozialstaat</td>
+        <td>Standortpolitik. Sichert Arbeitskraft fürs Kapital.</td>
+        <td>Erkämpft. Reale Verbesserung im Leben realer Menschen.</td>
+        <td>Esping-Andersen (1990): drei Welten, messbare Unterschiede. Skandinavien hat 4 Prozent Kinderarmut, USA 20 Prozent.</td>
+      </tr>
+      <tr>
+        <td>Reform</td>
+        <td>Verschleierung der Herrschaft. Stabilisiert das System.</td>
+        <td>Acht-Stunden-Tag, Mitbestimmung, Sozialversicherung — reale Klassenkampfgewinne.</td>
+        <td>Korpi: Machtressourcentheorie über 18 Länder. Reform ist erkämpfter Klassenkompromiss.</td>
+      </tr>
+      <tr>
+        <td>Klassenkampf</td>
+        <td>Erst durch Aufklärung und Bruch möglich.</td>
+        <td>Findet täglich statt — in Gewerkschaften, Initiativen, Parlamenten.</td>
+        <td>Eley (2002): Europäische Demokratie und Sozialstaat sind durch organisierte Klassenkämpfe entstanden, nicht durch revolutionären Bruch.</td>
+      </tr>
+      <tr>
+        <td>AfD-Wachstum</td>
+        <td>Verblendung der Massen, falsches Bewusstsein.</td>
+        <td>Reale Mangellagen werden in Sündenbock-Logik gedreht.</td>
+        <td>Mudde (2007): Rechtspopulismus wächst, wo Sozialstaat versagt. Vergleich über 24 europäische Länder.</td>
+      </tr>
+      <tr>
+        <td>Praxis</td>
+        <td>Aufklärung. Begriffsableitung. System durchschauen.</td>
+        <td>Konkrete Politik. Wohnungen bauen, Pflege finanzieren, Rechte verteidigen.</td>
+        <td>Wright (2010): Real Utopias. Transformation passiert auch durch Institutionen, nicht nur gegen sie.</td>
+      </tr>
+      <tr>
+        <td>Erfolgsmaßstab</td>
+        <td>Theoretische Konsistenz.</td>
+        <td>Was nützt den Menschen? Was schützt ihre Würde?</td>
+        <td>Sen, Nussbaum: Capability Approach. Erfolg ist die Erweiterung realer Verwirklichungschancen.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pullquote">
+    Wenn man die ganze Reihe rechts liest, fällt auf: Dayway ist näher an der etablierten Forschung als Karl. Das ist die eigentliche Pointe — der vermeintlich "unwissenschaftliche" Sozialdemokrat hat die Empirie auf seiner Seite.
+    <div class="pullquote-attribution">— Bilanz der vierten Spalte</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-num">05 · Argumentationsfluss</div>
+  <h2>Sieben Stufen —<br><em>vom Schock zum Programm</em>.</h2>
+  <p class="section-lead">Das Skript folgt einer klaren Dramaturgie. Jede Stufe hat eine Funktion, und die Reihenfolge ist nicht zufällig. Wer hier zur falschen Zeit Konzession macht oder zu früh programmatisch wird, verliert den Zuschauer.</p>
+
+  <div class="flow-h">
+    <div class="flow-h-step"><div class="num">1</div><div class="label">Schock<br>Cold Open</div></div>
+    <div class="flow-h-step"><div class="num">2</div><div class="label">Konkretion<br>Schule, Miete, Pflege</div></div>
+    <div class="flow-h-step"><div class="num">3</div><div class="label">Befund<br>Staubsaugerbegriff</div></div>
+    <div class="flow-h-step"><div class="num">4</div><div class="label">Konzession<br>Echter Nationalismus existiert</div></div>
+    <div class="flow-h-step"><div class="num">5</div><div class="label">Definition<br>bpb als Anker</div></div>
+    <div class="flow-h-step"><div class="num">6</div><div class="label">Position<br>Verfassungspatriotismus</div></div>
+    <div class="flow-h-step"><div class="num">7</div><div class="label">Programm<br>Menschen, Demokratie, Leine</div></div>
+  </div>
+
+  <p class="section-lead" style="margin-top:48px;">Die Stufen 1 bis 3 dienen der <span class="anno-burgundy">Entlarvung</span> — sie zeigen, dass die GSP-These nicht funktioniert. Stufe 4 ist der <span class="anno">Wendepunkt</span> — Dayway zeigt, dass er das Problem ernst nimmt. Stufen 5 bis 7 bauen das <span class="anno-blue">eigene Programm</span> auf — zuerst durch Definition, dann durch Positionierung, am Ende durch programmatische Verdichtung. Diese Architektur ist nicht erfunden — sie folgt dem klassischen Aufbau einer politischen Rede seit Cicero: <em>exordium, narratio, partitio, confirmatio, refutatio, peroratio</em>.</p>
+</section>
+
+<section class="section">
+  <div class="section-num">06 · Gesamtbewertung</div>
+  <h2>Wie hält das Skript<br>der <em>harten Prüfung</em> stand?</h2>
+  <p class="section-lead">Sechs Bewertungsdimensionen. Jede wird hier einzeln benotet. Wer das Skript optimieren will, schaut zuerst auf die niedrigsten Werte — dort sind die größten Hebel.</p>
+
+  <div class="scorecard">
+    <div class="score"><div class="score-value blue">8</div><div class="score-label">Begriffsschärfe</div></div>
+    <div class="score"><div class="score-value blue">7</div><div class="score-label">Argumentations-<br>struktur</div></div>
+    <div class="score"><div class="score-value rust">5</div><div class="score-label">Empirische<br>Untermauerung</div></div>
+    <div class="score"><div class="score-value rust">5</div><div class="score-label">Quellenarbeit</div></div>
+    <div class="score"><div class="score-value blue">8</div><div class="score-label">Rhetorische<br>Schlagkraft</div></div>
+    <div class="score"><div class="score-value olive">9</div><div class="score-label">Methodische<br>Eigenständigkeit</div></div>
+  </div>
+
+  <div class="background-box">
+    <h4>Was die Zahlen bedeuten</h4>
+    <p><strong>Begriffsschärfe (8/10):</strong> Die Trennung Nationalismus / Verfassungspatriotismus ist sauber gezogen, die bpb-Definition trifft. Punktabzug, weil die akademische Forschung (Anderson bis Smith) nicht eingebunden ist.</p>
+    <p><strong>Argumentationsstruktur (7/10):</strong> Die sieben Stufen sind klassisch aufgebaut. Punktabzug für den persönlichen Spitzenangriff am Ende, der den sauberen Aufbau bricht.</p>
+    <p><strong>Empirische Untermauerung (5/10):</strong> Hier ist die größte Lücke. Keine Zahlen zu Kinderarmut, Lebenserwartung, Pflegekraftbedarf, AfD-Hochburgen. Alles vorhanden in der Forschung, nichts im Skript.</p>
+    <p><strong>Quellenarbeit (5/10):</strong> Eine einzige externe Quelle (bpb). Drei Forscher mehr — Habermas, Esping-Andersen, Anderson — und es wäre eine 9.</p>
+    <p><strong>Rhetorische Schlagkraft (8/10):</strong> Trikolon, Anaphora, Hyperbel, Konzession — alle Werkzeuge richtig eingesetzt. Punktabzug nur, weil "Selbstlähmung mit komplizierter Sprache" als prägnanteste Stelle nicht stärker ausgebaut wird.</p>
+    <p><strong>Methodische Eigenständigkeit (9/10):</strong> Die größte Stärke. Dayway argumentiert nicht in GSP-Sprache, nicht in akademischer Sprache, sondern in seiner eigenen. Das macht das Skript glaubwürdig und zugänglich.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-num">07 · Tiefere Einsichten</div>
+  <h2>Was bei genauerem Hinsehen<br><em>sichtbar</em> wird.</h2>
+  <p class="section-lead">Sieben strukturelle Beobachtungen jenseits der direkten Argumentation. Sie machen das Bild kompletter und erklären, warum der Streit zwischen Dayway und Karl mehr ist als ein YouTube-Disput.</p>
+
+  <div class="insight">
+    <div class="insight-icon">α</div>
+    <div class="insight-content">
+      <h4>Dayway argumentiert wie ein Schreiner. Karl wie ein Architekt im Elfenbeinturm.</h4>
+      <p>Dayway redet ständig von konkreten Werkzeugen: Schulen, Mieten, Pflege, Acht-Stunden-Tag. Karl redet von Begriffen: Ableitung, Privatexistenz, ideeller Gesamtkapitalist. Das ist nicht nur stilistisch verschieden — das ist die Methodendifferenz: <span class="anno">Handwerk gegen Geometrie</span>. Wer ein Haus bauen will, braucht beides. Wer Politik machen will, kommt mit reiner Geometrie nicht weit.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-icon">β</div>
+    <div class="insight-content">
+      <h4>Die GSP kann das Skandinavien-Argument nicht erklären.</h4>
+      <p>Schweden, Dänemark, Norwegen, Finnland haben hohen demokratischen Stolz, starke Sozialstaaten und — was die GSP-These widerlegt — messbar bessere Lebensbedingungen als die USA. Wenn der Sozialstaat nur Standortpolitik wäre, dürften diese Unterschiede nicht existieren. Dayway hat diesen Punkt nicht explizit, aber die Argumentation läuft darauf hinaus: <span class="anno">Real existierende Sozialdemokratie</span> ist das stärkste Gegenargument zur GSP-Reduktion.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-icon">γ</div>
+    <div class="insight-content">
+      <h4>Karl moralisiert genau das, was er kritisiert.</h4>
+      <p>Das Karl-Video kritisiert moralisches Denken als nationalistische Denkform. Aber das Video selbst funktioniert moralisch: Wer sich identifiziert, ist Idiot der Herrschaft. Wer reformiert, stabilisiert. Wer wählt, ist Komplize. Das ist nicht Analyse, das ist <span class="anno">moralische Hierarchie mit umgekehrtem Vorzeichen</span>. Dayway erkennt das instinktiv — wenn er sagt "Aber davon wird keine Miete günstiger", entzieht er der moralischen Pose ihre Grundlage.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-icon">δ</div>
+    <div class="insight-content">
+      <h4>Die Sozialdemokratie ist in einer komischen Position.</h4>
+      <p>Sie wird gleichzeitig von rechts und von links als das eigentliche Problem benannt. Rechts: "Ihr habt das Land verkauft." Links: "Ihr habt das System stabilisiert." Beide Anklagen funktionieren strukturell ähnlich. Dayways Antwort darauf ist überraschend stark: Sie hat <span class="anno">konkrete Verbesserungen erkämpft</span>. Acht-Stunden-Tag, Sozialversicherung, Mitbestimmung. Wer das wegredet, redet Millionen Lebensbiographien weg.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-icon">ε</div>
+    <div class="insight-content">
+      <h4>Die größte Lücke ist nicht inhaltlich — sondern strukturell.</h4>
+      <p>Dayways Skript hat null externe Forschernamen. Keine Studien, keine Daten. Das ist nicht schlimm für ein YouTube-Video, aber es ist ein offenes Tor für GSPler, die sagen können: "Wo sind deine Belege?" Drei Namen würden reichen, um dieses Tor zu schließen: Habermas (Verfassungspatriotismus), Esping-Andersen (Sozialstaat), Anderson (Nation). Mit diesen drei Namen wird aus einem persönlichen Statement eine <span class="anno">akademisch verankerte Position</span>.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-icon">ζ</div>
+    <div class="insight-content">
+      <h4>Die GSP ist strukturell mit Ayn Rand identisch — nur mit umgekehrter Flagge.</h4>
+      <p>Beide arbeiten axiomatisch-deduktiv: aus wenigen Grundannahmen wird logisch ein Totalsystem abgeleitet. Beide diskreditieren Methodenkritik als Denkfehler. Beide münden in geschlossener, totalisierender Theorie. Der einzige Unterschied: Rand will den Kapitalismus ungebremst, die GSP will ihn abgeschafft. Aber die Methode ist <span class="anno">strukturell identisch</span> — und genau diese Methode ist das Problem, nicht der Inhalt. Dayways instinktive Ablehnung ist deshalb berechtigt: Er spürt das Sektenartige, ohne es benennen zu müssen.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-icon">η</div>
+    <div class="insight-content">
+      <h4>Der eigentliche Kampf ist nicht zwischen links und rechts.</h4>
+      <p>Der eigentliche Kampf läuft zwischen <span class="anno">offenen und geschlossenen Theoriegebäuden</span>. Die GSP gehört zu den geschlossenen — wie der Objektivismus, wie der Stalinismus, wie der Marktradikalismus. Dayways Sozialdemokratie gehört zu den offenen — wie Popper, wie Habermas, wie die Pragmatisten. In dieser Achse verläuft die wahre Trennlinie der Moderne. Und auf dieser Achse hat Dayway die historische Mehrheit hinter sich.</p>
+    </div>
+  </div>
+</section>
+
+<section class="synthesis">
+  <div class="synthesis-eyebrow">08 · Synthese</div>
+  <h2>Die <em>eigentliche Trennlinie</em><br>verläuft nicht zwischen<br>links und rechts.</h2>
+  <p>Sie verläuft zwischen Theorien, die mit der Realität rechnen, und Theorien, die mit der Realität nichts mehr zu tun haben wollen, weil sie ihr eigenes inneres Begriffsspiel inzwischen für die Wirklichkeit halten.</p>
+  <p>Karl und die GSP gehören zu Letzteren. Eine elegant gebaute Begriffsableitung, die jede empirische Widerlegung als bürgerlichen Einwand abwehren kann. Strukturell verwandt mit Ayn Rands Objektivismus — gleiche Methode, andere Flagge. Beide enden in totalisierender Geschlossenheit, in der die eigene Sprache die Welt ersetzt hat.</p>
+  <p>Dayway gehört zu den Ersteren. Eine vielleicht weniger elegante, aber an konkreten Lebenslagen orientierte Position. Eine, die im Zweifel die Theorie ändert, wenn die Wirklichkeit nicht passt. Eine, die nach Habermas, Sternberger, Esping-Andersen, Korpi, Anderson und Wright klingt, ohne dass sie diese Namen explizit nennt — weil die Tradition in den Argumenten selbst lebendig ist.</p>
+  <p>Beides hat Stärken. Aber nur eines hat in den letzten 150 Jahren reale Verbesserungen für Millionen Menschen produziert. Acht-Stunden-Tag, Sozialversicherung, Mitbestimmung, Streikrecht, soziale Demokratie. Das ist nicht zu wenig. Das ist das, was am Ende zählt.</p>
+  <p>Wenn das Skript noch besser werden soll, braucht es eine einzige Veränderung: Die <span style="color:var(--gold-light);font-weight:600;">externe Verankerung</span>. Drei Forscher, fünf Zahlen, zwei historische Verweise — und aus einem starken Statement wird ein argumentatives Bollwerk, das auch der härtesten GSP-Verteidigung standhält. Die rhetorische Substanz dafür ist da. Sie muss nur das wissenschaftliche Skelett bekommen, das ihre Wirkung verzehnfacht.</p>
+  <div class="signature">"Reale Verbesserungen für reale Menschen sind mir mehr wert als perfekte Theorie, die niemandem die Miete bezahlt."</div>
+</section>
+
+<footer>
+  <div>Skriptanatomie · Dayway × Charaktermaske · Vol. II · 2026</div>
+  <div>Methodisch gestützt auf D22a–D22d und 14 rhetorische Bausteine</div>
+  <div>Keine Werbung · Keine Sekte · Keine Begriffsableitung</div>
+</footer>
+
+</div>
+</body>
+</html>
