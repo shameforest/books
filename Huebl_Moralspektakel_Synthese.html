@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moralspektakel — Philipp Hübl · Eine didaktische Synthese</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ede4cf;
+  --bg-warm:#e6dcc4;
+  --paper:#f3ecda;
+  --primary:#1d3a40;
+  --primary-soft:#2c4f56;
+  --accent:#b85c2f;
+  --accent-deep:#8f4420;
+  --text:#1f2a2c;
+  --text-soft:#4a5658;
+  --line:#cdbf9f;
+  --line-soft:#dbcfb2;
+  --display:'Newsreader',Georgia,serif;
+  --body:'Spectral',Georgia,serif;
+  --ui:'Inter Tight',system-ui,sans-serif;
+  --maxw:1180px;
+  --readw:680px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:72px;}
+body{
+  margin:0;
+  background-color:var(--bg);
+  background-image:radial-gradient(var(--line-soft) 0.5px,transparent 0.5px);
+  background-size:22px 22px;
+  color:var(--text);
+  font-family:var(--body);
+  font-size:1.18rem;
+  line-height:1.72;
+  font-feature-settings:"kern","liga","onum";
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+.read{max-width:var(--readw);margin-left:auto;margin-right:auto;}
+
+/* ---------- TOP NAV ---------- */
+.topnav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(237,228,207,0.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topnav-inner{
+  max-width:var(--maxw);margin:0 auto;padding:11px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+}
+.topnav .brand{
+  font-family:var(--ui);font-weight:700;font-size:0.82rem;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--primary);white-space:nowrap;
+}
+.topnav nav{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;}
+.topnav nav a{
+  font-family:var(--ui);font-weight:500;font-size:0.78rem;letter-spacing:0.02em;
+  color:var(--text-soft);text-decoration:none;padding:5px 9px;border-radius:5px;
+  transition:background .18s,color .18s;
+}
+.topnav nav a:hover{background:var(--primary);color:var(--paper);}
+
+/* ---------- HERO ---------- */
+.hero{
+  padding:78px 0 56px;border-bottom:2px solid var(--primary);
+  position:relative;overflow:hidden;
+}
+.hero .wrap{position:relative;z-index:2;}
+.hero-eyebrow{
+  font-family:var(--ui);font-weight:600;font-size:0.8rem;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--accent-deep);margin-bottom:24px;
+}
+.hero h1{
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(3.1rem,8.5vw,6.4rem);
+  line-height:0.96;letter-spacing:-0.02em;margin:0 0 8px;color:var(--primary);
+}
+.hero .sub{
+  font-family:var(--display);font-style:italic;font-weight:400;
+  font-size:clamp(1.25rem,3vw,1.85rem);
+  line-height:1.32;color:var(--primary-soft);max-width:760px;margin:18px 0 0;
+}
+.hero-meta{
+  margin-top:42px;display:flex;flex-wrap:wrap;gap:0;
+  border-top:1px solid var(--line);
+}
+.hero-meta div{
+  flex:1 1 140px;padding:16px 22px 16px 0;border-right:1px solid var(--line);
+}
+.hero-meta div:last-child{border-right:none;}
+.hero-meta .k{
+  font-family:var(--ui);font-weight:600;font-size:0.68rem;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--accent-deep);margin-bottom:6px;
+}
+.hero-meta .v{font-family:var(--body);font-size:1.02rem;color:var(--text);line-height:1.4;}
+.hero-glyph{
+  position:absolute;top:-40px;right:-30px;z-index:1;
+  font-family:var(--display);font-size:clamp(14rem,30vw,26rem);line-height:1;
+  color:var(--accent);opacity:0.07;font-style:italic;user-select:none;pointer-events:none;
+}
+
+/* ---------- SECTIONS ---------- */
+section{padding:62px 0;}
+.section-num{
+  font-family:var(--ui);font-weight:700;font-size:0.78rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--accent-deep);margin-bottom:14px;
+}
+h2.section-title{
+  font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.5vw,3.1rem);
+  line-height:1.06;letter-spacing:-0.015em;margin:0 0 10px;color:var(--primary);
+}
+.section-lead{
+  font-family:var(--display);font-style:italic;font-size:1.3rem;line-height:1.5;
+  color:var(--primary-soft);margin:0 0 36px;max-width:var(--readw);
+}
+h3.sub-head{
+  font-family:var(--display);font-weight:600;font-size:1.55rem;line-height:1.2;
+  color:var(--primary);margin:48px auto 16px;max-width:var(--readw);
+  letter-spacing:-0.01em;
+}
+h3.sub-head:first-of-type{margin-top:12px;}
+p{margin:0 0 22px;}
+.read p, .read ul, .read ol{max-width:var(--readw);margin-left:auto;margin-right:auto;}
+strong{font-weight:600;color:var(--primary);}
+em{font-style:italic;}
+a.intext{color:var(--accent-deep);text-decoration:none;border-bottom:1px solid var(--line);}
+
+.drop::first-letter{
+  font-family:var(--display);font-weight:600;float:left;font-size:5.4rem;
+  line-height:0.74;padding:6px 12px 0 0;color:var(--accent);
+}
+
+.cite-inline{color:var(--text-soft);font-style:italic;}
+
+/* ---------- DIVIDERS ---------- */
+.divider{
+  padding:88px 0;border-top:2px solid var(--primary);border-bottom:2px solid var(--primary);
+  text-align:center;background:var(--bg-warm);margin:0;
+}
+.divider .d-num{
+  font-family:var(--ui);font-weight:700;font-size:0.78rem;letter-spacing:0.28em;
+  text-transform:uppercase;color:var(--accent-deep);margin-bottom:18px;
+}
+.divider h2{
+  font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,6vw,4.2rem);
+  line-height:1;letter-spacing:-0.02em;color:var(--primary);margin:0 auto;max-width:880px;
+}
+.divider .d-sub{
+  font-family:var(--display);font-style:italic;font-size:1.25rem;color:var(--primary-soft);
+  margin:22px auto 0;max-width:600px;
+}
+
+/* ---------- BOXES ---------- */
+.box{
+  max-width:var(--readw);margin:34px auto;padding:26px 30px;border-radius:3px;
+  font-size:1.08rem;line-height:1.62;
+}
+.box-label{
+  font-family:var(--ui);font-weight:700;font-size:0.72rem;letter-spacing:0.15em;
+  text-transform:uppercase;margin-bottom:12px;display:block;
+}
+.box-body{margin:0;}
+.box-body p{margin:0 0 14px;max-width:none;}
+.box-body p:last-child{margin-bottom:0;}
+
+.box.def{
+  background:var(--paper);border-left:4px solid var(--accent);
+}
+.box.def .box-label{color:var(--accent-deep);}
+.box.def .term{
+  font-family:var(--display);font-weight:600;font-size:1.3rem;color:var(--primary);
+  display:block;margin-bottom:4px;
+}
+
+.box.thesis{
+  background:var(--primary);color:var(--paper);border:none;
+  padding:30px 34px;
+}
+.box.thesis .box-label{color:var(--accent);}
+.box.thesis strong{color:#fff;}
+.box.thesis .box-body{font-family:var(--display);font-size:1.32rem;line-height:1.4;}
+
+.box.memo{
+  background:transparent;border:1px dashed var(--primary-soft);
+}
+.box.memo .box-label{color:var(--primary-soft);}
+
+.box.example{
+  background:var(--bg-warm);border-left:3px solid var(--line);
+  margin-left:auto;margin-right:auto;
+}
+.box.example .box-label{color:var(--text-soft);}
+
+.box.warning{
+  background:#22171260;background:#1f2a2c;color:#e8dcc4;border:none;
+}
+.box.warning .box-label{color:var(--accent);}
+.box.warning strong{color:#fff;}
+
+.box.plain-translation{
+  background:#f6e9d8;border:1px solid var(--accent);border-left:5px solid var(--accent);
+}
+.box.plain-translation .box-label{
+  color:var(--accent-deep);font-size:0.82rem;letter-spacing:0.06em;
+}
+.box.plain-translation .box-label::before{content:"→ ";}
+
+/* ---------- QUOTE CARD ---------- */
+.quote-card{
+  max-width:var(--readw);margin:40px auto;padding:30px 34px 28px;
+  background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--primary);
+  border-radius:3px;position:relative;
+}
+.quote-card::before{
+  content:"\201E";position:absolute;top:6px;left:14px;
+  font-family:var(--display);font-size:5rem;line-height:1;color:var(--accent);opacity:0.18;
+}
+.quote-label{
+  font-family:var(--ui);font-weight:700;font-size:0.7rem;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--accent-deep);margin-bottom:14px;position:relative;
+}
+.quote-body{
+  font-family:var(--display);font-weight:500;font-size:1.5rem;line-height:1.36;
+  color:var(--primary);margin:0 0 14px;letter-spacing:-0.01em;position:relative;
+}
+.quote-citation{
+  font-family:var(--ui);font-weight:500;font-size:0.82rem;letter-spacing:0.02em;
+  color:var(--text-soft);margin-bottom:20px;padding-bottom:18px;
+  border-bottom:1px solid var(--line-soft);
+}
+.quote-translation,.quote-context{
+  font-size:1rem;line-height:1.55;margin-bottom:12px;color:var(--text);
+}
+.quote-translation strong,.quote-context strong{
+  font-family:var(--ui);font-weight:600;font-size:0.82rem;letter-spacing:0.04em;
+  color:var(--accent-deep);text-transform:uppercase;display:block;margin-bottom:3px;
+}
+.quote-context{margin-bottom:0;}
+
+/* ---------- PULL QUOTE ---------- */
+.pull{
+  max-width:880px;margin:54px auto;text-align:center;padding:0 12px;
+}
+.pull blockquote{
+  font-family:var(--display);font-style:italic;font-weight:400;
+  font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.18;letter-spacing:-0.015em;
+  color:var(--accent-deep);margin:0;
+}
+.pull .src{
+  font-family:var(--ui);font-weight:500;font-size:0.8rem;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--text-soft);margin-top:18px;
+}
+
+/* ---------- TRIADE ---------- */
+.triade{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  max-width:var(--maxw);margin:38px auto;
+}
+.triade .t-card{
+  background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);
+  padding:24px 22px;border-radius:3px;
+}
+.triade .t-card h4{
+  font-family:var(--display);font-weight:600;font-size:1.35rem;color:var(--primary);
+  margin:0 0 4px;
+}
+.triade .t-card .t-tag{
+  font-family:var(--ui);font-weight:600;font-size:0.68rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--accent-deep);margin-bottom:12px;
+}
+.triade .t-card p{font-size:0.98rem;line-height:1.5;margin:0;max-width:none;}
+
+/* ---------- SIDE BY SIDE ---------- */
+.sbs{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  max-width:var(--maxw);margin:38px auto;border:1px solid var(--line);border-radius:3px;
+  overflow:hidden;
+}
+.sbs .s-col{padding:26px 26px;}
+.sbs .s-col.left{background:var(--paper);border-right:1px solid var(--line);}
+.sbs .s-col.right{background:var(--bg-warm);}
+.sbs .s-head{
+  font-family:var(--ui);font-weight:700;font-size:0.74rem;letter-spacing:0.12em;
+  text-transform:uppercase;margin-bottom:14px;
+}
+.sbs .left .s-head{color:var(--primary);}
+.sbs .right .s-head{color:var(--accent-deep);}
+.sbs .s-col p{font-size:0.98rem;line-height:1.52;margin:0 0 10px;max-width:none;}
+.sbs .s-col p:last-child{margin-bottom:0;}
+
+/* ---------- TABLE ---------- */
+.tbl-wrap{max-width:var(--maxw);margin:38px auto;overflow-x:auto;}
+table.cmp{
+  width:100%;border-collapse:collapse;font-size:0.96rem;background:var(--paper);
+  border:1px solid var(--line);
+}
+table.cmp th,table.cmp td{
+  padding:13px 16px;text-align:left;border-bottom:1px solid var(--line-soft);
+  vertical-align:top;line-height:1.45;
+}
+table.cmp thead th{
+  font-family:var(--ui);font-weight:600;font-size:0.72rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--paper);background:var(--primary);
+}
+table.cmp tbody th{
+  font-family:var(--ui);font-weight:600;color:var(--accent-deep);font-size:0.9rem;
+  white-space:nowrap;background:var(--bg-warm);
+}
+table.cmp tbody tr:last-child td,table.cmp tbody tr:last-child th{border-bottom:none;}
+
+/* ---------- NUMBERED CHAIN ---------- */
+.chain{max-width:var(--readw);margin:34px auto;}
+.chain .step{
+  display:flex;gap:18px;margin-bottom:22px;align-items:flex-start;
+}
+.chain .step .n{
+  font-family:var(--display);font-weight:600;font-size:1.6rem;color:var(--accent);
+  line-height:1;min-width:38px;text-align:center;
+  border-right:2px solid var(--line);padding-right:14px;
+}
+.chain .step .c{font-size:1.05rem;line-height:1.55;}
+.chain .step .c strong{display:block;margin-bottom:2px;}
+
+/* ---------- DETAILS ---------- */
+details.deep{
+  max-width:var(--readw);margin:28px auto;background:var(--bg-warm);
+  border:1px solid var(--line);border-radius:3px;padding:0;
+}
+details.deep summary{
+  font-family:var(--ui);font-weight:600;font-size:0.92rem;letter-spacing:0.02em;
+  color:var(--primary);cursor:pointer;padding:16px 22px;list-style:none;
+  display:flex;align-items:center;gap:10px;
+}
+details.deep summary::-webkit-details-marker{display:none;}
+details.deep summary::before{
+  content:"+";font-family:var(--ui);font-weight:700;font-size:1.3rem;color:var(--accent);
+  line-height:1;
+}
+details.deep[open] summary::before{content:"–";}
+details.deep summary:hover{color:var(--accent-deep);}
+details.deep .d-body{padding:0 22px 20px;font-size:1rem;line-height:1.6;color:var(--text-soft);}
+details.deep .d-body p{margin:0 0 12px;max-width:none;}
+details.deep .d-body p:last-child{margin-bottom:0;}
+
+/* ---------- GLOSSARY ---------- */
+.glossary-entry{
+  max-width:var(--readw);margin:0 auto 26px;padding:24px 0;
+  border-bottom:1px solid var(--line);
+}
+.glossary-entry h4{
+  font-family:var(--display);font-weight:600;font-size:1.5rem;color:var(--primary);
+  margin:0 0 14px;letter-spacing:-0.01em;
+}
+.glossary-entry .g-plain,.glossary-entry .g-original,.glossary-entry .g-etymology{
+  font-size:1.01rem;line-height:1.56;margin-bottom:12px;
+}
+.glossary-entry .g-plain strong,.glossary-entry .g-original strong{
+  font-family:var(--ui);font-weight:600;font-size:0.74rem;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent-deep);
+}
+.glossary-entry .g-original{
+  font-style:italic;color:var(--text-soft);padding-left:16px;border-left:2px solid var(--line);
+}
+.glossary-entry .g-etymology{font-size:0.92rem;color:var(--text-soft);margin-bottom:0;}
+
+/* ---------- COLOPHON ---------- */
+.colophon{
+  background:var(--primary);color:#cdd8da;padding:64px 0 56px;border-top:none;
+}
+.colophon .wrap{max-width:var(--readw);}
+.colophon h2{
+  font-family:var(--display);font-weight:600;font-size:2rem;color:var(--paper);margin:0 0 8px;
+}
+.colophon .c-eyebrow{
+  font-family:var(--ui);font-weight:600;font-size:0.74rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:14px;
+}
+.colophon p{color:#b8c6c8;font-size:1rem;line-height:1.6;}
+.colophon .meta-row{
+  display:flex;flex-wrap:wrap;gap:0;margin:28px 0;border-top:1px solid #2c4f56;
+}
+.colophon .meta-row div{
+  flex:1 1 150px;padding:14px 20px 14px 0;border-right:1px solid #2c4f56;
+}
+.colophon .meta-row div:last-child{border-right:none;}
+.colophon .meta-row .k{
+  font-family:var(--ui);font-weight:600;font-size:0.66rem;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:5px;
+}
+.colophon .meta-row .v{color:var(--paper);font-size:0.98rem;}
+.colophon .fineprint{
+  font-size:0.84rem;color:#8ba0a3;border-top:1px solid #2c4f56;padding-top:22px;margin-top:8px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1024px){
+  :root{--readw:620px;}
+  .triade{grid-template-columns:1fr;}
+}
+@media(max-width:720px){
+  body{font-size:1.08rem;}
+  .wrap{padding:0 20px;}
+  .topnav nav{display:none;}
+  .hero{padding:54px 0 40px;}
+  .hero-meta div{flex:1 1 100%;border-right:none;border-bottom:1px solid var(--line);}
+  .hero-meta div:last-child{border-bottom:none;}
+  .sbs{grid-template-columns:1fr;}
+  .sbs .s-col.left{border-right:none;border-bottom:1px solid var(--line);}
+  .box,.quote-card{padding:22px 20px;}
+  .quote-body{font-size:1.28rem;}
+  .colophon .meta-row div{flex:1 1 100%;border-right:none;border-bottom:1px solid #2c4f56;}
+}
+
+/* ---------- PRINT ---------- */
+@media print{
+  .topnav{display:none;}
+  body{background:white;font-size:11pt;background-image:none;}
+  .hero-glyph{display:none;}
+  .box,.quote-card,.triade .t-card,details.deep{break-inside:avoid;page-break-inside:avoid;}
+  section{padding:24px 0;}
+  .divider{padding:36px 0;}
+  a.intext::after{content:" (" attr(href) ")";font-size:9pt;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP NAV ===== -->
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="brand">Hübl · Moralspektakel</span>
+    <nav>
+      <a href="#synopsis">Synopsis</a>
+      <a href="#fortschritt">Fortschritt</a>
+      <a href="#ursprung">Ursprung</a>
+      <a href="#kulturen">Moralkulturen</a>
+      <a href="#status">Status</a>
+      <a href="#spektakel">Spektakel</a>
+      <a href="#verteidigung">Verteidigung</a>
+      <a href="#glossar">Glossar</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-glyph">!</div>
+  <div class="wrap">
+    <div class="hero-eyebrow">Sachbuch · Moralphilosophie &amp; Sozialpsychologie · Eine didaktische Synthese</div>
+    <h1>Moral&shy;spektakel</h1>
+    <p class="sub">Wie die richtige Haltung zum Statussymbol wurde — und warum das die Welt nicht besser macht.</p>
+    <div class="hero-meta">
+      <div><div class="k">Autor</div><div class="v">Philipp Hübl</div></div>
+      <div><div class="k">Jahr</div><div class="v">2025</div></div>
+      <div><div class="k">Verlag</div><div class="v">Pantheon (Penguin Random House)</div></div>
+      <div><div class="k">Gattung</div><div class="v">Essayistisches Sachbuch</div></div>
+      <div><div class="k">Aufbau</div><div class="v">Einleitung · 2 Teile · 10 Kapitel · 8 Thesen</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SYNOPSIS ===== -->
+<section id="synopsis">
+  <div class="wrap read">
+    <div class="section-num">Worum es geht</div>
+    <h2 class="section-title">Die Kernidee in einem Satz</h2>
+    <div class="box thesis">
+      <span class="box-label">Die Formel des Buches</span>
+      <div class="box-body">Statusspiel + digitale Medien = Moralspektakel. Sobald sich mit Moral Ansehen gewinnen lässt und moralische Signale online fast kostenlos sind, rückt in öffentlichen Debatten die Selbstdarstellung in den Vordergrund — und der Kampf gegen reale Missstände in den Hintergrund.</div>
+    </div>
+
+    <p class="drop">Philipp Hübl ist Philosoph. In <em>Moralspektakel</em> stellt er eine einfache, aber unbequeme Frage: Warum streiten wir seit etwa zehn Jahren so erbittert über Dinge, die kaum jemandem schaden — über Straßennamen, Faschingskostüme, Sprechpausen beim Gendern —, während die großen Probleme oft liegen bleiben? Seine Antwort verbindet Moralphilosophie mit der aktuellen Forschung aus Psychologie, Evolutionsbiologie und Soziologie.</p>
+
+    <p>Hübls Diagnose: Ein <strong>Moralspektakel</strong> liegt vor, wenn es in der moralischen Auseinandersetzung nicht mehr um die Sache geht, sondern um die eigene Selbstdarstellung. Moral wird dann nicht eingesetzt, um Probleme zu lösen, sondern als <em>Symbol</em> für Status und Gruppenzugehörigkeit oder als <em>Waffe</em> im Kampf gegen andere. Das ist kein Phänomen einer einzelnen politischen Richtung — es betrifft Linke wie Rechte, Aktivisten wie religiöse Fundamentalisten, und selbst Unternehmen, die ihre Thunfischdosen mit Moral-Stickern bekleben.</p>
+
+    <p>Das Buch ist eine <strong>Einladung zur radikalen Selbstkritik</strong>. Hübl nimmt sich selbst nicht aus: An mehreren Stellen schildert er, wie er als progressiver Denker eigenen Urteilsverzerrungen aufsaß. Diese Synthese schlüsselt sein Argument Schritt für Schritt auf — von der Steinzeit-Herkunft unserer Moral über die drei großen Moralkulturen bis zu acht konkreten Vorschlägen, wie man dem Spektakel entkommt.</p>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body">
+        <p>Stell dir zwei Menschen vor. Der eine hilft seiner Nachbarin still beim Umzug. Der andere postet ein Foto mit dem Hashtag <em>#BeKind</em>, ohne irgendjemandem zu helfen. Beide wirken „moralisch" — aber nur einer tut etwas. Hübls Buch handelt davon, dass unsere digitale Öffentlichkeit den zweiten Typ belohnt: Wer laut die richtige Haltung zeigt, gewinnt Ansehen, auch ohne zu handeln.</p>
+        <p>Das Problem ist nicht, dass Menschen Moral wichtig finden. Das ist gut und normal. Das Problem ist, wenn die <em>Show</em> wichtiger wird als die <em>Tat</em> — und echte Probleme darüber liegen bleiben.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIVIDER: TEIL I ===== -->
+<div class="divider" id="teil1">
+  <div class="wrap">
+    <div class="d-num">Teil I · Deskriptive Ethik</div>
+    <h2>Das Statusspiel</h2>
+    <p class="d-sub">Wie konnte das Moralspektakel entstehen? Eine Reise von der Steinzeit-Moral bis ins digitale Dorf.</p>
+  </div>
+</div>
+
+<!-- ===== SECTION 1: FORTSCHRITT ===== -->
+<section id="fortschritt">
+  <div class="wrap read">
+    <div class="section-num">Kapitel 1 · Der Ausgangspunkt</div>
+    <h2 class="section-title">Unbemerkter Fortschritt</h2>
+    <p class="section-lead">Die Welt ist messbar besser geworden — warum nehmen wir das nicht wahr? Sechs Mechanismen verzerren unseren Blick.</p>
+
+    <p>Bevor Hübl das Spektakel erklärt, räumt er mit einer Wahrnehmung auf: Vielen Menschen kommt es vor, als werde alles schlechter. Tatsächlich hat sich der moralische Zustand der westlichen Gesellschaften über Jahrzehnte deutlich verbessert — weniger Gewalt, mehr Rechte, mehr Gleichberechtigung. Dass wir das oft nicht sehen, liegt an sechs Verzerrungen, die er kompakt benennt.</p>
+
+    <div class="chain">
+      <div class="step"><div class="n">1</div><div class="c"><strong>Selektive Medien</strong> Nachrichten zeigen das Außergewöhnliche, nicht das Normale. Ein Flugzeugabsturz ist eine Schlagzeile, eine sichere Landung nicht.</div></div>
+      <div class="step"><div class="n">2</div><div class="c"><strong>Negative Verzerrung</strong> Unser Gehirn gewichtet Schlechtes stärker als Gutes — ein Erbe der Steinzeit, als Wachsamkeit überlebenswichtig war.</div></div>
+      <div class="step"><div class="n">3</div><div class="c"><strong>Steigende Ansprüche</strong> Je besser es wird, desto höher legen wir die Messlatte. Was gestern akzeptabel war, gilt heute als Missstand.</div></div>
+      <div class="step"><div class="n">4</div><div class="c"><strong>Erweiterte Begriffe</strong> Worte wie „Gewalt" oder „Trauma" dehnen sich aus und erfassen heute Dinge, die früher nicht darunter fielen.</div></div>
+      <div class="step"><div class="n">5</div><div class="c"><strong>Erhöhte Frequenz</strong> Durch digitale Medien hören wir von mehr Missständen als je zuvor — das lässt sie häufiger erscheinen.</div></div>
+      <div class="step"><div class="n">6</div><div class="c"><strong>Eindeutige Signale</strong> Wir müssen klar Position beziehen, weil jede Äußerung beobachtet wird — Grautöne verschwinden.</div></div>
+    </div>
+
+    <div class="box memo">
+      <span class="box-label">Merksatz</span>
+      <div class="box-body">Der Fortschritt ist real, aber unsichtbar. Genau diese Lücke zwischen tatsächlicher Besserung und gefühlter Verschlechterung ist der Nährboden, auf dem das Moralspektakel gedeiht.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 2: URSPRUNG ===== -->
+<section id="ursprung">
+  <div class="wrap read">
+    <div class="section-num">Kapitel 2 · Das Fundament</div>
+    <h2 class="section-title">Der Ursprung der Moral</h2>
+    <p class="section-lead">Unsere Alltagsmoral ist kein Werk der Vernunft. Sie ist ein Steinzeit-Instinkt, der uns half, Partner zu finden und in Gruppen zu überleben.</p>
+
+    <p>Hübls zentrale Unterscheidung trägt das ganze Buch: Es gibt zwei verschiedene Dinge, die wir beide „Moral" nennen. Das eine ist die <strong>Alltagsmoral</strong> — unsere spontanen Bauchurteile. Das andere ist die <strong>Ethik der Menschenrechte</strong> — universelle Prinzipien, mühsam von Philosophen entwickelt. Beide folgen völlig unterschiedlichen Logiken, und ihre Verwechslung erzeugt viele der heutigen Konflikte.</p>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff</span>
+      <div class="box-body">
+        <span class="term">Moralillusion</span>
+        Die Selbsttäuschung, wir hätten gute, durchdachte Gründe für unsere Werturteile. Tatsächlich urteilen wir meist aus dem Bauch und liefern die „Begründung" erst hinterher nach. Parallel zur <em>Wissensillusion</em>: Fast jeder glaubt zu wissen, wie eine Toilettenspülung funktioniert — bis er es erklären soll.
+      </div>
+    </div>
+
+    <h3 class="sub-head">Wenn das Bauchgefühl sprachlos wird</h3>
+    <p>Der Psychologe Jonathan Haidt führte ein berühmtes Experiment durch. Er fragte Versuchspersonen, ob unfruchtbare erwachsene Geschwister einvernehmlichen Sex haben dürften, von dem niemand erfährt. Fast alle sagten „nein" — aber begründen konnten sie es nicht. Auf Nachfrage verstummten sie. Haidt nennt das <em>moralische Sprachlosigkeit</em>.</p>
+
+    <div class="quote-card">
+      <div class="quote-label">Beleg · Kapitel 2</div>
+      <blockquote class="quote-body">„Ich kann es nicht erklären, aber es fühlt sich falsch an."</blockquote>
+      <figcaption class="quote-citation">Typische Reaktion in Haidts Experimenten · zit. n. Hübl 2025, Kap. 2</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Menschen fällen ein klares moralisches Urteil, ohne einen Grund nennen zu können. Das Urteil kommt zuerst, die Erklärung — wenn überhaupt — danach.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Dieser Satz ist der empirische Kern von Hübls These: Unsere Moral ist primär Gefühl, nicht Vernunft. Das ist nicht peinlich, sondern evolutionär sinnvoll — aber es heißt, dass wir uns auf den Bauch nicht verlassen dürfen.</div>
+    </div>
+
+    <p>Tabuverletzungen, die nachweislich harmlos sind, aktivieren bei vielen Menschen die Inselrinde — das Hirnareal, das auch bei Ekel vor Schimmel oder Exkrementen anspringt. Wer eine höhere Ekelneigung hat, urteilt strenger über Themen wie Homosexualität oder Sterbehilfe. Moral und Körper sind enger verbunden, als uns lieb ist.</p>
+
+    <h3 class="sub-head">Zwei Seelen: Instinkt und Vernunft</h3>
+    <p>Hübl borgt sich ein Bild des Nobelpreisträgers <strong>Daniel Kahneman</strong> (1934–2024), eines israelisch-amerikanischen Psychologen. Kahneman unterschied <em>schnelles Denken</em> (emotional, automatisch) und <em>langsames Denken</em> (rational, anstrengend). Dieselben zwei Modi gibt es bei der Moral.</p>
+
+    <div class="sbs">
+      <div class="s-col left">
+        <div class="s-head">Moralinstinkt — der Bauch</div>
+        <p>Schnell, automatisch, emotional. In der Evolution gereift, um in der Gruppe zu bestehen. Urteilt parteiisch, tribalistisch und kurzsichtig.</p>
+        <p>Sagt sofort „nein" — oder gar nichts, wenn das Problem neu ist (Klonen, KI, Embryonalforschung).</p>
+      </div>
+      <div class="s-col right">
+        <div class="s-head">Vernunftmoral — der Kopf</div>
+        <p>Langsam, anstrengend, prinzipiengeleitet. Kann den Bauch überstimmen und korrigieren. Quelle der Menschenrechte und der Rechtsprechung.</p>
+        <p>Kostet Mühe — und weil wir zur <em>mentalen Faulheit</em> neigen, vermeiden wir diese Mühe gerne.</p>
+      </div>
+    </div>
+
+    <p>Dass Vernunft den Instinkt korrigieren <em>kann</em>, zeigt ein Experiment der Philosophen Eric Schwitzgebel und Peter Singer: Studenten, die ein dreimonatiges Seminar zur Tierethik besucht hatten, bestellten danach messbar weniger Fleisch in der Mensa. Argumente verändern Verhalten — wenn man sie zulässt.</p>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body">Dein erster moralischer Impuls ist oft richtig — aber nicht immer. Bei vertrauten Situationen (jemand schlägt ein Kind) trifft der Bauch ins Schwarze. Bei neuen oder fernen Fragen (Gentechnik, weltweite Armut) führt er dich leicht in die Irre. Die Lösung ist nicht, dem Bauch zu misstrauen, sondern bei wichtigen Fragen den Kopf einzuschalten — auch wenn das anstrengt.</div>
+    </div>
+
+    <h3 class="sub-head">Wir halten uns für besser, als wir sind</h3>
+    <p>Zur Moralillusion kommt die <em>Illusion moralischer Überlegenheit</em>. Wir überschätzen unseren eigenen Charakter maßlos — und zwar selbst bescheidene und unsichere Menschen. Das deutet darauf hin, dass diese Selbsttäuschung eine evolutionäre Funktion hat: Wer an sich selbst glaubt, überzeugt andere leichter.</p>
+
+    <div class="pull">
+      <blockquote>Unser Kopf sagt „Alle Menschen sind gleich", doch unser Bauch flüstert „Meine Gruppe ist besser".</blockquote>
+      <div class="src">Hübl 2025, Kapitel 2</div>
+    </div>
+
+    <p>Die Zahlen sind komisch und ernüchternd zugleich: Über 80 Prozent der Menschen halten sich für überdurchschnittlich gute Autofahrer. 87 Prozent von befragten US-Amerikanern hielten einen Platz im Paradies für sich selbst für wahrscheinlich — mehr als für Mutter Teresa (79 Prozent). Sogar Häftlinge in Hochsicherheitsgefängnissen halten sich für überdurchschnittlich moralisch. Spiegelbildlich beurteilen wir <em>andere</em> strenger, als sie es verdienen — weil wir nur ihre Taten sehen, nicht ihre Absichten, und weil unsere <em>Negativverzerrung</em> uns auf der Hut sein lässt.</p>
+
+    <div class="quote-card">
+      <div class="quote-label">Schlüsselstelle · Bibel-Bezug</div>
+      <blockquote class="quote-body">Warum sehen wir den Splitter im Auge unserer Gegner, aber nicht den Balken im eigenen?</blockquote>
+      <figcaption class="quote-citation">Hübl 2025, Kap. 2 (nach Matthäus 7,3)</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Wir bemerken kleinste Fehler bei anderen, übersehen aber große Fehler bei uns selbst. Das ist kein moralisches Versagen Einzelner, sondern eine eingebaute Verzerrung bei fast allen Menschen.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Diese Asymmetrie — milde zu sich, streng zu anderen — ist der psychologische Motor der späteren „Einschüchterungskultur". Wer sie kennt, durchschaut viele Empörungswellen.</div>
+    </div>
+
+    <h3 class="sub-head">Warum wir überhaupt Moral haben: Sex und Gruppe</h3>
+    <p>Hübl erklärt die Herkunft der Moral über Darwin. Neben der <em>natürlichen Selektion</em> (Anpassung an die Umwelt) wirken zwei weitere Kräfte. Erstens die <strong>sexuelle Selektion</strong>: Bei der Partnerwahl achten Menschen weltweit — in über 60 Kulturen untersucht — nicht nur auf Schönheit, sondern vor allem auf moralische Eigenschaften wie Ehrlichkeit, Treue, Großzügigkeit. Der Evolutionsbiologe Geoffrey Miller bringt es auf den Punkt.</p>
+
+    <div class="pull">
+      <blockquote>Körper wecken Lust in uns, aber erst Moral lässt Liebe entstehen.</blockquote>
+      <div class="src">Zusammenfassung von Geoffrey Millers These · Hübl 2025, Kap. 2</div>
+    </div>
+
+    <p>Zweitens die <strong>soziale Selektion</strong>: Wer in der Gruppe kooperierte, sich an Regeln hielt und Vertrauen genoss, überlebte und gab seine Gene weiter. So entstand ein Wettrüsten zwischen <em>Tarnung</em> (sich besser darstellen, als man ist) und <em>Enttarnung</em> (Betrüger entlarven). Beide Fähigkeiten tragen wir bis heute in uns — und beide sind im digitalen Raum wieder hochaktiv.</p>
+
+    <div class="box example">
+      <span class="box-label">Beispiel · Das Wettrüsten der Selbstdarstellung</span>
+      <div class="box-body">Unsere Vorfahren konnten ihren Charakter „aufhübschen", um in der Gruppe und bei der Partnerwahl Vorteile zu erlangen — durften es aber nicht übertreiben, weil schwerer Betrug in der kleinen Gruppe irgendwann aufflog. Genau diese Bremse fehlt im Internet: Dort kann man sich fast folgenlos besser darstellen, als man ist.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIVIDER ===== -->
+<div class="divider">
+  <div class="wrap">
+    <div class="d-num">Das krumme Holz</div>
+    <h2>„Aus so krummem Holze … kann nichts ganz Gerades gezimmert werden."</h2>
+    <p class="d-sub">Kants Wort über den Menschen — von der Forschung bestätigt. Unser Moralinstinkt ist nicht gebaut, um globale Gerechtigkeit zu schaffen.</p>
+  </div>
+</div>
+
+<!-- ===== SECTION 3: MORALKULTUREN ===== -->
+<section id="kulturen">
+  <div class="wrap read">
+    <div class="section-num">Kapitel 3 · Die große Typologie</div>
+    <h2 class="section-title">Ehre, Würde, Verletzlichkeit</h2>
+    <p class="section-lead">Derselbe Instinkt formt sich je nach Kultur völlig verschieden aus. Hübl beschreibt drei Moralkulturen — und damit die ganze Achse des heutigen Konflikts.</p>
+
+    <p>Warum haben sich Männer jahrhundertelang duelliert — wegen einer abfälligen Bemerkung über die Inneneinrichtung? Weil es davon abhängt, in welcher <strong>Moralkultur</strong> man lebt, wie man Konflikte löst. Die Soziologen Bradley Campbell und Jason Manning unterscheiden drei Typen. Hübl verallgemeinert sie zu drei existenziellen Lebensformen.</p>
+
+    <div class="triade">
+      <div class="t-card">
+        <div class="t-tag">Vergangenheit · männlich</div>
+        <h4>Ehrenkultur</h4>
+        <p>Die Reputation ist wichtiger als das Leben. Stärke und Tapferkeit zählen, Beleidigungen werden mit Gewalt beantwortet. Hübl nennt sie verallgemeinert <em>Autoritätskultur</em>: Wert auf Stärke, Respekt, Dominanz. „Opfer" ist die schlimmste Beleidigung.</p>
+      </div>
+      <div class="t-card">
+        <div class="t-tag">Gegenwart · egalitär</div>
+        <h4>Würdekultur</h4>
+        <p>Jeder Mensch hat einen unantastbaren inneren Wert. Man trainiert sich ein dickes Fell an, ignoriert Provokationen, überlässt schwere Konflikte den Gerichten. Verallgemeinert: <em>Autonomiekultur</em> — Wert auf Selbstbestimmung und Leistung. Hier entstanden die Menschenrechte.</p>
+      </div>
+      <div class="t-card">
+        <div class="t-tag">Mögliche Zukunft · weiblich</div>
+        <h4>Opferkultur</h4>
+        <p>Hohe Sensibilität für Verletzungen (wie die Ehrenkultur), kombiniert mit dem Melden an höhere Instanzen — aber nicht an Gerichte, sondern an die Öffentlichkeit. Verallgemeinert: <em>Fürsorgekultur</em> — Wert auf Empfindsamkeit und Mitgefühl. Ansehen genießt, wer als Opfer gilt.</p>
+      </div>
+    </div>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff · Das Herzstück der Typologie</span>
+      <div class="box-body">
+        <span class="term">Moralische Grundprinzipien</span>
+        Drei evolutionär gereifte Werte, die bei allen Menschen vorkommen, aber je nach Kultur unterschiedlich stark sind. <strong>Autorität</strong> (Gespür für Hierarchien), <strong>Autonomie</strong> (Wunsch nach Selbstbestimmung) und <strong>Fürsorge</strong> (Mitgefühl mit den Schwachen). Jede der drei Moralkulturen stellt eines dieser Prinzipien in den Mittelpunkt.
+      </div>
+    </div>
+
+    <h3 class="sub-head">Erziehungsstile als Spiegel</h3>
+    <p>Dass diese Kulturen real sind, zeigt eine Studie der Anthropologin Adrie Kusserow in New York. Sie fand drei Erziehungsstile in drei sozialen Schichten — und sie entsprechen exakt den drei Moralkulturen.</p>
+
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead>
+          <tr><th>Milieu (New York)</th><th>Moralkultur</th><th>Erziehungsideal</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Armes Arbeiterviertel (Queens)</th><td>Autoritätskultur</td><td>Härte und Respekt; Kinder dürfen nicht weich, aber auch nicht frech sein.</td></tr>
+          <tr><th>Untere Mittelschicht (Kelly)</th><td>Autonomiekultur</td><td>Respekt plus Aufstiegswille: fleißig sein, Träumen folgen, durch Leistung herausstechen.</td></tr>
+          <tr><th>Reiche Oberschicht (Upper East Side)</th><td>Fürsorgekultur</td><td>Helikoptereltern; Kinder als zarte Wesen, die „aufblühen"; kaum Bestrafung, Elite-Erwartung.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body">Die heutigen Kulturkämpfe sind im Kern ein Streit zwischen diesen drei Haltungen. Wenn jemand fordert, „starke" Männer sollten sich nicht beschweren — das ist Autoritätskultur. Wenn jemand sagt, jeder solle sein eigenes Glück durch Leistung schmieden — das ist Autonomiekultur. Wenn jemand betont, wie verletzlich eine Gruppe ist und Schutz braucht — das ist Fürsorgekultur. Keine ist „böse"; aber sie kollidieren, weil sie unterschiedliche Werte heilig sprechen.</div>
+    </div>
+
+    <h3 class="sub-head">Wie der Westen „sonderbar" wurde</h3>
+    <p>Hübl greift den Begriff <strong>WEIRD</strong> des Anthropologen Joseph Henrich auf: „Western, Educated, Industrialized, Rich, Democratic". Menschen aus solchen Ländern verhalten sich in Experimenten konsequent <em>anders</em> als der Rest der Welt — individualistischer, universalistischer, weniger tribalistisch. Überraschend ist Henrichs Erklärung, wie es dazu kam.</p>
+
+    <div class="quote-card">
+      <div class="quote-label">Schlüsselstelle · Kapitel 3</div>
+      <blockquote class="quote-body">Der westliche Individualismus ist sehr wahrscheinlich ein ungewollter Nebeneffekt der christlichen Obsession mit sexueller Reinheit.</blockquote>
+      <figcaption class="quote-citation">Sinngemäß nach Joseph Henrich · Hübl 2025, Kap. 3</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Die katholische Kirche verbot über Jahrhunderte die Heirat unter Verwandten und führte das persönliche Testament ein. Damit zerstörte sie — ohne es zu planen — die Macht der Clans. Aus der Großsippe wurde die Kernfamilie; Menschen mussten mit Fremden kooperieren.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Es zeigt Hübls Methode: Große moralische Entwicklungen haben oft banale, ungeplante Ursachen — nicht edle Ideen allein. Aus diesem Boden wuchsen Leistungsprinzip, Lesefähigkeit (Protestantismus: „sola scriptura") und schließlich die Aufklärung.</div>
+    </div>
+
+    <h3 class="sub-head">Die Rückkehr des Kollektivs</h3>
+    <p>Der Westen wurde immer individualistischer — bis vor wenigen Jahren das Kollektiv in neuer Form zurückkehrte. Die <strong>Fürsorgekultur</strong> entstand zwar <em>aus</em> dem Individualismus, trägt aber kollektivistische Züge: Sie verlangt Konformität und orientiert sich am Urteil der anderen. Nicht zufällig fällt ihr Aufstieg mit dem Erfolg der sozialen Medien zusammen, die die Welt in ein „digitales Dorf" verwandelt haben — mit allen Zwängen des Dorflebens.</p>
+
+    <div class="sbs">
+      <div class="s-col left">
+        <div class="s-head">Autoritätskultur — Hierarchie der Stärke</div>
+        <p>Wer ist oben, wer unten? Status durch Dominanz, Macht, demonstrative Symbole. „Opfer" gilt als Schwäche.</p>
+      </div>
+      <div class="s-col right">
+        <div class="s-head">Fürsorgekultur — Hierarchie der Verletzlichkeit</div>
+        <p>Je größer die Benachteiligung, desto höher das Ansehen. Status durch erlittenes oder bezeugtes Leid. Leistung steht unter Verdacht, „Privileg" zu sein.</p>
+      </div>
+    </div>
+
+    <p>Beide sind <em>tribalistisch</em>: Sie sehen die Gruppe als zentrale Einheit, nicht das Individuum. Und beide weichen vom universalistischen Ideal der Menschenrechte ab. Besonders folgenreich: Die Fürsorgekultur beurteilt eine Handlung nicht nach der <em>Absicht</em> des Handelnden, sondern nach dem <em>vermeintlichen Schaden</em> für Opfergruppen. Es zählt nur, wie ein Satz beim Hörer ankommt — nicht, ob er als Zitat, Witz oder Ironie gemeint war.</p>
+
+    <div class="box warning">
+      <span class="box-label">Vorsicht · Die selektive Empathie</span>
+      <div class="box-body">Mitgefühl wirkt warmherzig — aber es ist unzuverlässig. In Experimenten verteilen Menschen Geld <strong>ungerechter</strong>, sobald ihr Mitgefühl aktiviert ist: Sie bevorzugen das eine Kind mit der herzzerreißenden Geschichte gegenüber vielen ebenso bedürftigen anonymen Kindern. Eine Metastudie bestätigt: Empathie hängt zu stark von Zufall und Sympathie ab, um ein verlässliches Maß für Gerechtigkeit zu sein — besonders dann, wenn Menschen lernen, ihr Leid zum eigenen Vorteil zu inszenieren.</div>
+    </div>
+
+    <h3 class="sub-head">Moral als Identität — und als Sinnersatz</h3>
+    <p>Was macht uns eigentlich zu „uns selbst"? Die Psychologin Nina Strohminger und der Philosoph Shaun Nichols fanden eine überraschende Antwort. In ihrem Gedankenexperiment verliert eine Person namens Jim durch eine Operation verschiedene Eigenschaften. Nur in einem Fall sagten die Befragten mehrheitlich „das ist nicht mehr Jim".</p>
+
+    <div class="quote-card">
+      <div class="quote-label">Definition · Personale Identität</div>
+      <blockquote class="quote-body">Nur wenn sich Jims moralischer Charakter wesentlich geändert hatte, sagten die Versuchspersonen: „Das ist nicht mehr Jim."</blockquote>
+      <figcaption class="quote-citation">Strohminger &amp; Nichols, sinngemäß · Hübl 2025, Kap. 3</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Nicht unsere Erinnerungen, Fähigkeiten oder unser Aussehen machen uns im Kern aus, sondern unser <em>moralischer Charakter</em>. Ändert er sich grundlegend, halten wir jemanden für eine andere Person.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Das erklärt, warum moralische Kritik so weh tut: Sie trifft nicht eine Meinung, sondern unsere Identität. Deshalb verteidigen wir Werte leidenschaftlicher als Sachfragen — und deshalb wird Moral zum Statuskampf.</div>
+    </div>
+
+    <p>Im „sonderbaren" Westen ist zugleich eine Lücke entstanden: Arbeit stiftet selten Sinn (69 Prozent der deutschen Arbeitnehmer machen „Dienst nach Vorschrift"), die Religion schwindet, feste Gemeinschaften lösen sich auf. Diese Leerstelle füllen viele mit Moral. Hübl unterscheidet <em>politische Laien</em> (Politik ist ihnen gleichgültig), <em>politische Hobbyisten</em> (Engagement als erfüllendes Hobby, ohne langen Atem) und <em>politische Idealisten</em> (denen es wirklich um die Sache geht, die aber im Extremfall zu Fanatikern werden).</p>
+
+    <div class="pull">
+      <blockquote>Die digitale Öffentlichkeit ist der neue moralisierende Gott, der alles sieht.</blockquote>
+      <div class="src">Hübl 2025, Kapitel 3</div>
+    </div>
+
+    <p>Hübl schließt mit Jeremy Benthams Bild des <em>Panopticon</em> — des Gefängnisses, in dem ein einziger Wachturm alle Zellen überblickt. Kein Insasse weiß, ob er gerade beobachtet wird, also verhalten sich alle, als ob. Genauso fühlt sich das digitale Leben an: Jede Äußerung könnte aufgezeichnet und beurteilt werden. Das treibt uns zurück zum Stammesdenken.</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: STATUS ===== -->
+<section id="status">
+  <div class="wrap read">
+    <div class="section-num">Kapitel 4 · Der Motor</div>
+    <h2 class="section-title">Alle Menschen spielen Moraltheater</h2>
+    <p class="section-lead">Wir wollen nicht nur gut sein, sondern gut erscheinen. Status ist der unsichtbare Motor fast all unseres Verhaltens.</p>
+
+    <p>Hier liegt das Herz der Diagnose. Weil sich unser Moralinstinkt entwickelt hat, um Anerkennung zu gewinnen — nicht, um Gerechtigkeitsprobleme zu lösen —, geht es im Alltag nicht zuerst darum, moralisch zu <em>sein</em>, sondern moralisch zu <em>erscheinen</em>.</p>
+
+    <div class="box thesis">
+      <span class="box-label">Die zentrale Wendung</span>
+      <div class="box-body">Die Fassade zählt mindestens genauso viel wie das Fundament. Und manchmal geht es nur um die Fassade.</div>
+    </div>
+
+    <h3 class="sub-head">Zwei Wege nach oben: Dominanz und Prestige</h3>
+    <p>Status kann man auf zwei Arten gewinnen. <strong>Dominanz</strong> beruht auf Angst — man schüchtert ein, droht, wendet im Extremfall Gewalt an. <strong>Prestige</strong> beruht auf Bewunderung — andere ordnen sich freiwillig unter, weil jemand etwas kann, weiß oder leistet. Dominanz nutzen eher Männer; Prestige ist die universellere Strategie.</p>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff</span>
+      <div class="box-body">
+        <span class="term">Statusspiel</span>
+        Das universelle, oft unbewusste Verhaltensmuster, mit dem wir unsere Position in der Gruppe sichern und verbessern. Zwei Soziologen beschrieben seine zwei Seiten: Leon Festinger den <em>sozialen Vergleich</em> (wie wir uns ständig mit anderen messen) und Erving Goffman die <em>Selbstdarstellung</em> (sein Hauptwerk heißt auf Deutsch treffend „Wir alle spielen Theater").
+      </div>
+    </div>
+
+    <p>Prestige speist sich aus vier Quellen: <strong>Besitz</strong> (Geld, Immobilien, Kunst), <strong>Fähigkeiten</strong> (Wissen, Talent), <strong>Beziehungen</strong> (Netzwerk) und <strong>Attraktivität</strong> (Schönheit, Charme, Geschmack). Hübls Erweiterung: Es gibt eine fünfte, oft übersehene Kategorie — das <em>moralische Prestige</em>.</p>
+
+    <div class="box example">
+      <span class="box-label">Beispiel · Wie tief Status sitzt</span>
+      <div class="box-body">Status ist relativ, nicht absolut. In Experimenten wählen die meisten Menschen lieber 500 Euro mehr, wenn die Kollegen leer ausgehen, als 1000 Euro mehr, wenn die Kollegen 2000 Euro mehr bekommen. Und der Stress beim Beurteiltwerden — etwa Lampenfieber — schüttet dreimal mehr Cortisol aus als ein Horrorfilm. Über 50 Prozent der Befragten würden lieber sterben, als zu Unrecht als Kinderschänder zu gelten.</div>
+    </div>
+
+    <h3 class="sub-head">Die vier Prototypen der Selbstdarstellung</h3>
+    <p>Hübl spannt ein Koordinatensystem auf. Die eine Achse misst die <strong>Kosten</strong> (was man an Zeit, Geld, Mühe oder Gefahr auf sich nimmt), die andere die <strong>Kommunikation</strong> (wie laut man die eigene Moral verkündet). So entstehen vier Typen.</p>
+
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead>
+          <tr><th></th><th>Viel kommunizieren</th><th>Wenig kommunizieren</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Hohe Kosten (Taten)</th><td><strong>Geltungssüchtiger Wohltäter</strong> — engagiert sich echt, erzählt aber auch viel davon (Instagram-Helfer).</td><td><strong>Bescheidener Wohltäter</strong> — handelt still, spendet anonym (auf GoFundMe bleiben ~20 % anonym).</td></tr>
+          <tr><th>Niedrige Kosten (Worte)</th><td><strong>Moralischer Hochstapler</strong> — tut nichts, postet viel. Der Hashtag-Aktivist im Park.</td><td><strong>Stiller Unbeteiligter</strong> — setzt sich für nichts ein und erzählt auch nichts.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Die meisten von uns liegen im Mittelfeld — aber wir „führen doppelt Buch": In der Selbstdarstellungsbilanz stehen wir etwas besser da als in der Bilanz der echten Taten. Wir reden Fehltritte klein und achten darauf, dass gute Taten bemerkt werden.</p>
+
+    <h3 class="sub-head">Teure und billige Signale</h3>
+    <p>Der entscheidende Begriff für das ganze Buch: <strong>kostspielige</strong> versus <strong>billige Signale</strong>. Ein teures Signal ist schwer zu fälschen und daher glaubwürdig — wie der Pfau, dessen schwerer Federbausch beweist: „Ich bin so fit, ich kann mir das leisten."</p>
+
+    <div class="quote-card">
+      <div class="quote-label">Definition · Das Kernkonzept</div>
+      <blockquote class="quote-body">Ein Satz wie „Ich bin immer hilfsbereit" ist ein billiges Signal — der Aufwand ist äußerst gering.</blockquote>
+      <figcaption class="quote-citation">Hübl 2025, Einleitung</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Worte kosten fast nichts. Wer einer Freundin beim Renovieren hilft, investiert Zeit und Kraft (teures Signal). Wer nur sagt, er sei hilfsbereit, riskiert nichts (billiges Signal).</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Das Internet ist eine Maschine für billige Signale: Ein Posting kostet keine Mühe und bringt trotzdem Ansehen. Genau das macht das Moralspektakel so verlockend und so verbreitet.</div>
+    </div>
+
+    <p>Hübl unterscheidet außerdem den <strong>Nahbereich</strong> (das eigene Umfeld, wo man leicht überprüft und entlarvt wird) vom <strong>Fernbereich</strong> (Weltpolitik, „Systemwechsel", das Leben nach dem Tod — alles, was zu groß oder fern ist, um es zu überprüfen). Selbstdarstellung über den Fernbereich ist deshalb so beliebt: Man riskiert nichts.</p>
+
+    <div class="box example">
+      <span class="box-label">Beispiel · Gratismut</span>
+      <div class="box-body">Der Schriftsteller Hans Magnus Enzensberger prägte das Wort <em>Gratismut</em>: Mut, der nichts kostet. Wie der Intellektuelle, der im Radio mahnt, alle sollten nachhaltiger leben — während er in seinem Ferienhaus auf Fuerteventura den Kaffee aus der Alukapsel trinkt. Studien zeigen tatsächlich: Gerade die, die sich öffentlich für besonders tugendhaft halten, betrügen in unbeobachteten Experimenten überdurchschnittlich oft.</div>
+    </div>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body">Achte bei dir selbst und bei anderen auf das Verhältnis von Worten zu Taten. Es ist leicht, ein Land 5.000 Kilometer entfernt zu kritisieren oder ein „neues System" zu fordern — weil dich niemand fragt: „Zeig mal, was du kannst." Es ist schwer, im eigenen Alltag konkret zu helfen. Hübl sagt nicht, dass Reden wertlos ist. Er sagt: Wer nur redet und nichts tut, sammelt Ansehen, das er nicht verdient — auf Kosten derer, die wirklich handeln.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIVIDER: TEIL II ===== -->
+<div class="divider" id="spektakel">
+  <div class="wrap">
+    <div class="d-num">Teil II · Normative Ethik</div>
+    <h2>Wenn das Spektakel beginnt</h2>
+    <p class="d-sub">Was passiert, wenn man im hohen Ton über Moral redet, statt Konflikte zu lösen? Vom Statusspiel zum Statuskampf.</p>
+  </div>
+</div>
+
+<!-- ===== SECTION 5: PHÄNOMENE ===== -->
+<section id="phaenomene">
+  <div class="wrap read">
+    <div class="section-num">Kapitel 6–10 · Die Pathologien</div>
+    <h2 class="section-title">Vom Spiel zum Kampf</h2>
+    <p class="section-lead">Sobald der Status knapp wird, schlägt das Spiel in einen Kampf um. Hübl beschreibt die typischen Erscheinungsformen — von der Cancel Culture bis zur Sprachmagie.</p>
+
+    <p>Im zweiten Teil wird Hübl wertend. Der digitale Raum, schreibt er, ist eine „Sortiermaschine", die polarisiert. Wer in moralischen Diskussionen keine objektiven Gründe mehr einfordert, sondern subjektive Befindlichkeiten als Argumente gelten lässt, öffnet die Tür für alle: Wenn nur noch zählt, ob jemand sich „diskriminiert fühlt" — und nicht, ob er objektiv benachteiligt wurde —, kann jeder mitspielen, ohne sich anzustrengen.</p>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff</span>
+      <div class="box-body">
+        <span class="term">Moralische Effekthascherei</span>
+        Die Versuchung, es mit der moralischen Selbstdarstellung zu übertreiben — sich also besonders engagiert, sensibel und mitfühlend (oder besonders rein, ehrenhaft und unabhängig) zu geben. Sie tritt in allen politischen Lagern auf und ist im digitalen Raum besonders verlockend, weil moralische Signale dort kostenlos sind und sich rasant verbreiten.
+      </div>
+    </div>
+
+    <h3 class="sub-head">Cancel Culture als Einschüchterungskultur</h3>
+    <p>Hübl bevorzugt den präziseren Begriff <strong>Einschüchterungskultur</strong>: Man ignoriert oder widerlegt Andersdenkende nicht mit Argumenten, sondern setzt sie unter Druck — bis hin zum Versuch, ihre berufliche Existenz zu zerstören. Über tausend Fälle in allen politischen Lagern sind in den USA, England und Deutschland dokumentiert. Wichtig: Die meisten betreffen keine schweren Vergehen, sondern Irrtümer, Missverständnisse oder aus dem Kontext gerissene Aussagen — und die „soziale Strafe" (Jobverlust, öffentliche Stigmatisierung) steht in keinem Verhältnis dazu.</p>
+
+    <div class="box example">
+      <span class="box-label">Beispiel · Die wandernde Empörung</span>
+      <div class="box-body">Die Harry-Potter-Autorin J.K. Rowling wurde dreimal zum Ziel von Bücherverbrennungen: 2001 von religiösen Fundamentalisten (wegen der Hexen und Zauberer), 2017 von Trump-Anhängern (weil sie Trump kritisiert hatte) und 2020 von linken Aktivisten (wegen ihrer Äußerungen zum biologischen Geschlecht). Dasselbe Muster, drei verschiedene Lager — ein Beleg für Hübls These, dass das Spektakel keine Frage der politischen Richtung ist.</div>
+    </div>
+
+    <h3 class="sub-head">Magische Worte</h3>
+    <p>Ein eigenes Kapitel widmet Hübl der Sprache. Er spricht von <em>Sprachmagie</em>: dem Glauben, man könne die Welt verändern, indem man Wörter ändert. Das Gendern etwa ist für ihn vor allem ein <strong>Progressivitätsmarker</strong> — ein Erkennungssignal für die eigene Gruppe. Sein Befund: Fast alle Deutschen teilen das <em>Ziel</em> der Gleichberechtigung, aber nur eine Minderheit hält den Genderstern für ein geeignetes <em>Mittel</em>. Dazwischen liegt die schweigende Mehrheit, die weder Zwang noch Verbot will — und unter „Empörungserschöpfung" leidet.</p>
+
+    <div class="quote-card">
+      <div class="quote-label">Diagnose · Die schweigende Mehrheit</div>
+      <blockquote class="quote-body">Sie sind so überfordert damit, dass sich andere ständig über irgendetwas aufregen, dass sie mit ihrer eigenen Empörung gar nicht mehr hinterherkommen.</blockquote>
+      <figcaption class="quote-citation">Hübl 2025, Einleitung (zur Empörungserschöpfung)</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Viele Menschen sind von der Dauer-Aufregung der öffentlichen Debatte schlicht erschöpft. Sie ziehen sich zurück — nicht aus Gleichgültigkeit, sondern aus Überforderung.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Diese Erschöpfung ist eine der versteckten Kosten des Moralspektakels: Sie schwächt die Demokratie, weil sich konstruktive, moderate Stimmen aus dem Gespräch zurückziehen und das Feld den lautesten Lagern überlassen.</div>
+    </div>
+
+    <h3 class="sub-head">Die Opferhierarchie und die verzerrte Wissenschaft</h3>
+    <p>Im Statuskampf entsteht eine <em>Opferhierarchie</em>: Gruppen konkurrieren darum, wer am stärksten benachteiligt ist. Besonders heikel wird es, wenn dieser Kampf in die Wissenschaft eindringt. Hübl — selbst Akademiker — benennt schonungslos, dass Forschung verzerrt wird, wenn Ergebnisse nicht ins moralische Weltbild passen.</p>
+
+    <div class="box warning">
+      <span class="box-label">Vorsicht · Die unbequeme Selbsterkenntnis</span>
+      <div class="box-body">Hübls überraschendster Befund: Gerade <strong>überdurchschnittlich intelligente, gebildete und mathematisch versierte Menschen</strong> neigen dazu, Fakten zu leugnen, sobald sie ihrer Weltsicht widersprechen. Diese ideologische Verzerrung gibt es in allen Lagern — die Forschung deutet aber darauf hin, dass sie eher ein Merkmal des progressiven Denkens ist. Hübl gesteht, dass er selbst dieser Verzerrung aufsaß: Er hielt autoritäres Verhalten lange für typisch konservativ — bis die Daten ihm zeigten, dass es relativ gleichmäßig über das Spektrum verteilt ist.</div>
+    </div>
+
+    <div class="pull">
+      <blockquote>Statt die große Frage von Kant nach dem richtigen Handeln zu stellen — „Was soll ich tun?" —, fragen wir jetzt vor allem: „Wie soll ich darüber reden?"</blockquote>
+      <div class="src">Hübl 2025, Einleitung</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIVIDER: VERTEIDIGUNG ===== -->
+<div class="divider" id="verteidigung">
+  <div class="wrap">
+    <div class="d-num">Schlussteil · Was tun?</div>
+    <h2>Verteidigung der Moral</h2>
+    <p class="d-sub">Acht Vorschläge, wie man das Moralspektakel verhindert und zu einer universellen Ethik der Gerechtigkeit zurückfindet.</p>
+  </div>
+</div>
+
+<!-- ===== SECTION 6: DIE 8 THESEN ===== -->
+<section id="thesen">
+  <div class="wrap read">
+    <div class="section-num">Die acht Gegenvorschläge</div>
+    <h2 class="section-title">Wege aus dem Spektakel</h2>
+    <p class="section-lead">Kritik allein reicht nicht. Hübl schließt mit acht konkreten Prinzipien — jedes als Gegensatzpaar formuliert.</p>
+
+    <div class="chain">
+      <div class="step"><div class="n">1</div><div class="c"><strong>Gemeinsamkeiten statt Unterschiede</strong> Bewegungen siegen, indem sie Gemeinsamkeit betonen, nicht Anderssein. Die Suffragetten forderten nicht Sonderrechte, sondern gleiche Rechte. Wer Verschiedenheit betont, verstärkt laut der Forschung von Karen Stenner sogar die Intoleranz.</div></div>
+      <div class="step"><div class="n">2</div><div class="c"><strong>Universalismus statt Relativismus</strong> Menschenrechte sind keine „westlichen" Werte — so wenig wie Geometrie „griechisch" ist, nur weil Euklid sie formulierte. Wer sagt, es gebe keine Wahrheit, widerspricht sich selbst: Ohne Wahrheit gäbe es keinen Begriff von Irrtum oder Lüge.</div></div>
+      <div class="step"><div class="n">3</div><div class="c"><strong>Fakten statt Ideologie</strong> Gute Absichten genügen nicht — nur Daten zeigen, ob eine Maßnahme wirkt. Mikrokredite klangen revolutionär, hielten der Überprüfung aber nicht stand. Hübl plädiert für <em>evidenzbasierte Politik</em> und einen Sieben-Fragen-Katalog zur Prüfung jeder Maßnahme.</div></div>
+      <div class="step"><div class="n">4</div><div class="c"><strong>Taten statt Symbole</strong> Der Jutebeutel verursacht so viel CO₂ wie 170 Plastiktüten — ein perfektes Symbol ohne Wirkung. Echte Lösungen brauchen den Staat und verbindliche, überprüfbare <em>Moralsiegel</em>, nicht individuelle Schuldgefühle.</div></div>
+      <div class="step"><div class="n">5</div><div class="c"><strong>Gerechtigkeit statt Identität</strong> Das <em>Identitätsmodell</em> reduziert Benachteiligung auf Hautfarbe und Geschlecht — und übersieht soziale Herkunft, die laut Studien am stärksten wirkt (79 % der Akademikerkinder studieren, aber nur 27 % der Nicht-Akademikerkinder). Hübl schlägt ein umfassenderes <em>Statusmodell</em> vor.</div></div>
+      <div class="step"><div class="n">6</div><div class="c"><strong>Diskussionskultur statt Einschüchterungskultur</strong> Wer bei einem Shitstorm einknickt, belohnt antisoziales Verhalten. Bei echten Straftaten gilt das Recht; bei allem anderen braucht es <em>Shitstorm-Resilienz</em> und die Bereitschaft, die Beweislast umzukehren wie vor Gericht.</div></div>
+      <div class="step"><div class="n">7</div><div class="c"><strong>Vernunftmoral statt Moralinstinkt</strong> Man muss den eigenen Impuls zur Selbstdarstellung aktiv unterdrücken — fragen, wie man hinter dem „Schleier der Anonymität" urteilen würde. Das verlangt <em>intellektuelle und moralische Bescheidenheit</em>: das Wissen um die Grenzen des eigenen Wissens.</div></div>
+      <div class="step"><div class="n">8</div><div class="c"><strong>Demokratie statt Spektakel</strong> Das Spektakel schadet Politik, Wissenschaft und Gesellschaft. Es erzeugt den falschen Eindruck einer gespaltenen Gesellschaft, obwohl die Mehrheit moderat ist. Lebenszeit und Aufmerksamkeit sind endlich — man sollte sie nicht in Grabenkämpfen verschwenden.</div></div>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-label">Schlüsselstelle · John Stuart Mill</div>
+      <blockquote class="quote-body">„Eine Meinung zum Schweigen zu bringen … ist ein Raub an der Gemeinschaft aller."</blockquote>
+      <figcaption class="quote-citation">John Stuart Mill, zit. n. Hübl 2025, These 7</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Wenn man eine abweichende Meinung unterdrückt, verliert nicht nur der Sprecher etwas, sondern die ganze Gesellschaft — sogar diejenigen, die der Meinung widersprechen. Denn an Widerspruch schärft man die eigenen Argumente.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Mill (englischer Philosoph, 1806–1873) liefert Hübl die klassische Begründung für offene Debatte. Die „Kollision von Wahrheit und Irrtum" hilft allen — auch wenn Kritik unsere Identität bedroht und deshalb wehtut.</div>
+    </div>
+
+    <p>Hübl bleibt fair bis zum Schluss. Er räumt ein, dass das Moralspektakel in Einzelfällen <em>unbeabsichtigt</em> Gutes bewirken könnte — eine „List der Vernunft" im Sinne Hegels. Je mehr Unternehmen Greenwashing betreiben, desto eher könnte die Gesellschaft sie auf ihre Worte verpflichten. Doch insgesamt, schließt er, überwiegen die Schäden bei Weitem.</p>
+
+    <div class="box thesis">
+      <span class="box-label">Der Schlusssatz</span>
+      <div class="box-body">Im Leben hat nicht alles, was etwas kostet, einen Wert. Doch nichts, was einen Wert hat, gibt es umsonst.</div>
+    </div>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body">Der gute Weg ist der anstrengende: Daten lesen, Argumente abwägen, Widerspruch aushalten, eigene Fehler eingestehen, langfristig denken statt schnellen Applaus suchen. Das bringt wenig Anerkennung und kostet Mühe. Aber es ist der einzige Weg, der die Welt wirklich gerechter macht — nicht nur gerechter aussehen lässt.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SPANNUNGEN ===== -->
+<section id="spannungen">
+  <div class="wrap read">
+    <div class="section-num">Kritische Einordnung</div>
+    <h2 class="section-title">Spannungen im Buch selbst</h2>
+    <p class="section-lead">Ein ehrliches Buch trägt seine eigenen Reibungspunkte mit. Hübl benennt mehrere — und ein paar bleiben offen.</p>
+
+    <details class="deep">
+      <summary>Das Paradox des Autors: Ist dieses Buch selbst ein Spektakel?</summary>
+      <div class="d-body">
+        <p>Hübl stellt sich diese Frage selbst. Wer anderen „Moralismus" oder „Scheinheiligkeit" vorwirft, betreibt damit indirekt selbst Selbstdarstellung: Er signalisiert „Mir liegen die echten Probleme am Herzen, nicht die Außenwirkung". Das gilt, wie Hübl ausdrücklich schreibt, „natürlich auch für Autoren, die ganze Bücher über Selbstdarstellung schreiben". Die Synthese kann diese Spannung nicht auflösen — sie ist in das Thema eingebaut.</p>
+      </div>
+    </details>
+
+    <details class="deep">
+      <summary>Die Replizierungskrise: Wie sicher sind Hübls Belege?</summary>
+      <div class="d-body">
+        <p>Hübl stützt sich stark auf die Psychologie — ein Fach, das vor rund 15 Jahren von einer Replizierungskrise erschüttert wurde: Viele berühmte Experimente lieferten bei Wiederholung andere Ergebnisse. Hübl geht damit offen um und bevorzugt Metastudien und kulturvergleichende Forschung. Doch er räumt selbst ein: „Follow the Science" heißt auch, dass sich jede einzelne Annahme später als falsch herausstellen könnte. Wer das Buch liest, sollte seine empirischen Aussagen als starke Hinweise lesen, nicht als mathematische Beweise.</p>
+      </div>
+    </details>
+
+    <details class="deep">
+      <summary>Die Asymmetrie-These: Ist das Spektakel wirklich „eher progressiv"?</summary>
+      <div class="d-body">
+        <p>Hübls Grundthese ist symmetrisch: Das Spektakel betrifft alle Lager. Gleichzeitig argumentiert er, dass ideologische Verzerrung und Reinheitswettbewerbe „eher ein Merkmal des progressiven Denkens" seien. Diese beiden Aussagen stehen in einer gewissen Spannung. Hübl löst sie, indem er sagt, autoritäres Denken sei gleichmäßig verteilt — es hänge vom <em>Thema</em> ab, welches Lager besonders leidenschaftlich anspringt. Ob diese Balance überzeugt, muss jeder Leser selbst prüfen; hier liegt der politisch umstrittenste Punkt des Buches.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===== GLOSSAR ===== -->
+<section id="glossar">
+  <div class="wrap read">
+    <div class="section-num">Nachschlagewerk</div>
+    <h2 class="section-title">Glossar der Schlüsselbegriffe</h2>
+    <p class="section-lead">Jeder zentrale Begriff in Klartext, im Original und mit Herkunft.</p>
+
+    <div class="glossary-entry">
+      <h4>Moralspektakel</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Wenn es in einem moralischen Streit nicht mehr um die Sache geht, sondern darum, gut dazustehen. Moral wird zur Show — als Statussymbol oder als Waffe gegen andere.</div>
+      <div class="g-original"><strong>Original (Hübl):</strong> Ein Moralspektakel liegt vor, wenn moralische Begriffe und Urteile nicht eingesetzt werden, um Probleme zu lösen, sondern als Symbole für Status und Gruppenzugehörigkeit oder als Waffen.</div>
+      <div class="g-etymology"><em>Herkunft:</em> lateinisch <em>spectaculum</em> = Schauspiel, Schaustellung. Der Titelbegriff und die zentrale Diagnose des Buches.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Moralinstinkt</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Unser angeborenes Bauchgefühl für richtig und falsch. Es entstand in der Steinzeit, um in der Gruppe zu überleben und Partner zu finden — nicht, um große Gerechtigkeitsfragen zu lösen.</div>
+      <div class="g-original"><strong>Original (Hübl):</strong> Ein komplexer Mechanismus im Gehirn aus evolutionär gereiften und kulturell gelernten Regeln, die nicht immer zueinander passen und bisweilen in Konflikt geraten.</div>
+      <div class="g-etymology"><em>Herkunft:</em> lateinisch <em>instinctus</em> = Antrieb. Sein Gegenspieler ist die <em>Vernunftmoral</em>.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Vernunftmoral</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Moral, die man sich durch Nachdenken erarbeitet — nach Prinzipien, die für alle gelten. Sie kann den Bauch korrigieren, kostet aber Mühe. Quelle der Menschenrechte.</div>
+      <div class="g-original"><strong>Original (Hübl):</strong> Der Kontrollmechanismus des Moralinstinkts, mit dem wir automatische Impulse überdenken und unterdrücken können, um eine universelle Ethik zu formulieren.</div>
+      <div class="g-etymology"><em>Herkunft:</em> Knüpft an Kant an, der Moral aus der „Vernunft" ableiten wollte. Verwandt mit <em>Metakognition</em> — dem Nachdenken über das eigene Denken.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Statusspiel</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Das ständige, meist unbewusste Ringen um unsere Position in der Gruppe — wer oben steht, wer unten. Wir senden Statussignale und scannen zugleich die anderen.</div>
+      <div class="g-original"><strong>Original (Hübl):</strong> Ein universelles Verhaltensmuster, in dem wir Prestige durch Besitz, Wissen, Fähigkeiten, Beziehungen, Attraktivität und eben auch durch Moral erhalten können.</div>
+      <div class="g-etymology"><em>Herkunft:</em> lateinisch <em>status</em> = Zustand, Stellung. Beschrieben von Festinger (sozialer Vergleich) und Goffman (Selbstdarstellung).</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Kostspielige vs. billige Signale</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Ein teures Signal kostet Zeit, Geld oder Mühe (jemandem beim Umzug helfen) — und ist deshalb glaubwürdig. Ein billiges Signal kostet fast nichts (ein Posting) und ist deshalb leicht zu fälschen.</div>
+      <div class="g-original"><strong>Original (Hübl):</strong> Kostspielige Signale zeigen, dass man es ernst meint, weil sie nur schwer oder gar nicht zu fälschen sind. Als Kosten zählen Energie, Zeit, Geld, aber auch Ansehen, Leib und Leben.</div>
+      <div class="g-etymology"><em>Herkunft:</em> aus der <em>Signaltheorie</em> der Biologie und Ökonomie. Das klassische Beispiel: das Pfauenrad.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Moralkulturen: Autorität, Autonomie, Fürsorge</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Drei Grundhaltungen, wie man lebt und Konflikte löst. <em>Autorität:</em> Stärke und Respekt zählen (früher: Ehrenkultur). <em>Autonomie:</em> Selbstbestimmung und Leistung zählen (Würdekultur). <em>Fürsorge:</em> Mitgefühl und Verletzlichkeit zählen (Opferkultur).</div>
+      <div class="g-original"><strong>Original (Campbell &amp; Manning / Hübl):</strong> Drei moralische Grundprinzipien, die bei Verletzung Empörung oder Abscheu erzeugen, bei allen Menschen auftauchen, aber je nach Individuum und Kultur unterschiedlich stark ausgeprägt sind.</div>
+      <div class="g-etymology"><em>Herkunft:</em> Die drei Begriffspaare gehen auf die Soziologen Bradley Campbell und Jason Manning zurück; Hübl verallgemeinert sie existenziell.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>WEIRD</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Menschen aus westlichen, gebildeten, industrialisierten, reichen Demokratien. Sie verhalten sich in Studien „sonderbar" — individualistischer und universalistischer als der Rest der Welt.</div>
+      <div class="g-original"><strong>Original (Henrich):</strong> „Westerners from Educated Industrialized Rich Democracies" — eine Abkürzung, die zugleich „sonderbar" (englisch <em>weird</em>) bedeutet.</div>
+      <div class="g-etymology"><em>Herkunft:</em> geprägt vom Anthropologen Joseph Henrich. Ein doppeltes Wortspiel: Akronym und Bedeutung fallen zusammen.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Moralillusion</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Die irrige Überzeugung, wir hätten gute, durchdachte Gründe für unsere moralischen Urteile. Meist urteilen wir aus dem Bauch und erfinden die Begründung erst danach.</div>
+      <div class="g-original"><strong>Original (Hübl):</strong> Wir überschätzen unser Wissen über Moral, indem wir uns einbilden, wir hätten gute Gründe für unsere Werturteile — analog zur <em>Wissensillusion</em>.</div>
+      <div class="g-etymology"><em>Herkunft:</em> lateinisch <em>illusio</em> = Täuschung. Eng verwandt mit der <em>Illusion moralischer Überlegenheit</em>.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Identitätsmodell vs. Statusmodell</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Das <em>Identitätsmodell</em> erklärt Benachteiligung vor allem über Hautfarbe, Geschlecht und sexuelle Orientierung. Das <em>Statusmodell</em> (Hübls Vorschlag) berücksichtigt zusätzlich soziale Herkunft, Bildung, Aussehen, Kontakte und sogar die „genetische Lotterie".</div>
+      <div class="g-original"><strong>Original (Hübl):</strong> Das Statusmodell gewichtet alle Faktoren für Benachteiligung — Diskriminierung, sozioökonomischer Status, kognitive Fähigkeiten, Aussehen, soziale Kontakte und moralisches Prestige.</div>
+      <div class="g-etymology"><em>Herkunft:</em> Hübls eigene begriffliche Weiterentwicklung der Diskriminierungsdebatte im Schlussteil (These 5).</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Gratismut</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Mut, der nichts kostet und kein Risiko birgt — etwa eine populäre Meinung lautstark zu vertreten, ohne je dafür einstehen zu müssen.</div>
+      <div class="g-original"><strong>Original (Enzensberger):</strong> Bezeichnet das Verhalten des moralischen Hochstaplers, dessen Posting keine Mühe kostet und der sicher sein kann, dass ihm kein Schaden entsteht.</div>
+      <div class="g-etymology"><em>Herkunft:</em> geprägt vom Schriftsteller Hans Magnus Enzensberger (1929–2022). Zusammensetzung aus „gratis" + „Mut".</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COLOPHON ===== -->
+<footer class="colophon">
+  <div class="wrap">
+    <div class="c-eyebrow">Kolophon &amp; Quellenapparat</div>
+    <h2>Über diese Synthese</h2>
+    <p>Diese eigenständige HTML-Synthese schlüsselt das Argument von Philipp Hübls <em>Moralspektakel</em> didaktisch auf — sie fasst nicht nur zusammen, sondern übersetzt schwierige Begriffe in klare Sprache, ohne die Substanz zu verlieren. Die Direktzitate sind dem Werk entnommen und am Originaltext überprüfbar; alle Erklärungen und Einordnungen sind Eigenleistung.</p>
+
+    <div class="meta-row">
+      <div><div class="k">Werk</div><div class="v">Moralspektakel</div></div>
+      <div><div class="k">Autor</div><div class="v">Philipp Hübl</div></div>
+      <div><div class="k">Erscheinungsjahr</div><div class="v">2025</div></div>
+      <div><div class="k">Verlag</div><div class="v">Pantheon · Penguin Random House</div></div>
+    </div>
+
+    <div class="meta-row">
+      <div><div class="k">Schlüsselzitate</div><div class="v">6 (mit voller Kontextualisierung)</div></div>
+      <div><div class="k">Pull-Quotes</div><div class="v">5</div></div>
+      <div><div class="k">„Was bedeutet das konkret?"</div><div class="v">6 Übersetzungsboxen</div></div>
+      <div><div class="k">Glossareinträge</div><div class="v">10 (Klartext + Original + Herkunft)</div></div>
+    </div>
+
+    <p class="fineprint">Die Zitate folgen der wissenschaftlichen Zitierpraxis: kurz, in Anführungszeichen, mit Quellenangabe. Wo Hübl seinerseits andere Denker zitiert (Kant, Mill, Henrich, Miller, Campbell &amp; Manning, Festinger, Goffman, Kahneman, Enzensberger), ist dies kenntlich gemacht. Diese Synthese ersetzt nicht die Lektüre des Originals, sondern lädt dazu ein. Seitenangaben beziehen sich auf die im Quelltext markierten Kapitel; eine genaue Paginierung war in der vorliegenden Textfassung nicht durchgängig verfügbar, weshalb auf Kapitelebene referenziert wird.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Die Erzählgemeinschaft der Neuen Rechten — eine Synthese</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Palette: "Archiv-Schiefer" — nüchtern-analytisch, nicht alarmistisch */
+  --paper:#f4f0e8;
+  --paper-warm:#ece5d6;
+  --paper-card:#faf6ec;
+  --paper-cool:#e9ece9;
+  --ink:#1b1d22;
+  --ink-soft:#3b3f47;
+  --ink-faint:#6c6f78;
+  --rule:#cfc7b5;
+  --slate:#26323b;        /* Primärfarbe — dunkles Schiefergrün-blau */
+  --slate-deep:#172029;
+  --rust:#a8512b;         /* Akzent — Rost/Oxid */
+  --rust-soft:#c47a4f;
+  --ochre:#9a7d24;        /* sekundärer Akzent */
+  --teal:#3c5a5e;
+  --bruise:#3a2f44;       /* dunkles Violett für die Apokalypse-Sektion */
+  /* Narrativ-Farben */
+  --n-entzweiung:#3c5a5e;
+  --n-dekadenz:#9a7d24;
+  --n-apokalypse:#7a2f3a;
+  --maxw:1180px;
+  --textw:680px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:72px;}
+body{
+  margin:0;
+  background-color:var(--paper);
+  background-image:radial-gradient(var(--rule) 0.5px, transparent 0.5px);
+  background-size:22px 22px;
+  color:var(--ink);
+  font-family:"Spectral",Georgia,serif;
+  font-size:clamp(17px,1.05vw + 14px,19px);
+  line-height:1.72;
+  font-feature-settings:"kern","liga","onum";
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  /* warmer Schleier über dem Punkteraster */
+  content:"";position:fixed;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(244,240,232,.6),rgba(244,240,232,.96));
+  pointer-events:none;
+}
+
+/* ============ TYPO BASICS ============ */
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.12;color:var(--slate-deep);}
+p{margin:0 0 1.1em;}
+a{color:var(--rust);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;}
+a:hover{color:var(--slate);}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+sup{font-size:.7em;line-height:0;}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+.col{max-width:var(--textw);margin-left:auto;margin-right:auto;}
+.eyebrow{font-family:"Inter Tight",sans-serif;font-weight:600;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);}
+
+/* ============ TOPNAV ============ */
+.topnav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(38,50,59,.93);
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.topnav .inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;gap:18px;}
+.topnav .brand{font-family:"Inter Tight",sans-serif;font-weight:700;font-size:.86rem;letter-spacing:.04em;color:#f4f0e8;white-space:nowrap;}
+.topnav .brand span{color:var(--rust-soft);}
+.topnav nav{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;}
+.topnav nav a{
+  font-family:"Inter Tight",sans-serif;font-weight:500;font-size:.78rem;letter-spacing:.02em;
+  color:#cfd4d3;text-decoration:none;padding:6px 9px;border-radius:5px;transition:background .15s,color .15s;
+}
+.topnav nav a:hover{background:rgba(255,255,255,.1);color:#fff;}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--rust);width:0;z-index:60;transition:width .1s linear;}
+
+/* ============ HERO ============ */
+.hero{
+  background:var(--slate-deep);
+  color:#ece5d6;
+  position:relative;overflow:hidden;
+  padding:clamp(56px,9vw,120px) 0 clamp(48px,7vw,90px);
+  border-bottom:3px solid var(--rust);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;opacity:.10;pointer-events:none;
+  background:
+    repeating-linear-gradient(90deg,transparent 0 38px,rgba(168,81,43,.5) 38px 39px),
+    repeating-linear-gradient(0deg,transparent 0 38px,rgba(168,81,43,.3) 38px 39px);
+}
+.hero .wrap{position:relative;z-index:1;}
+.hero .kicker{font-family:"Inter Tight",sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust-soft);margin-bottom:24px;}
+.hero h1{
+  color:#f7f2e7;font-weight:600;
+  font-size:clamp(2.5rem,6.2vw,5.1rem);
+  letter-spacing:-.015em;line-height:1.02;margin:0 0 .35em;max-width:14ch;
+}
+.hero h1 em{font-style:italic;color:var(--rust-soft);font-weight:500;}
+.hero .sub{
+  font-family:"Spectral",serif;font-style:italic;font-size:clamp(1.15rem,2.1vw,1.6rem);
+  color:#d7cdbb;max-width:46ch;margin-bottom:38px;line-height:1.4;
+}
+.hero .meta{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:1px;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.13);
+  max-width:760px;border-radius:6px;overflow:hidden;
+}
+.hero .meta div{background:var(--slate-deep);padding:15px 18px;}
+.hero .meta dt{font-family:"Inter Tight",sans-serif;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--rust-soft);margin-bottom:5px;}
+.hero .meta dd{margin:0;font-size:.94rem;color:#ece5d6;line-height:1.3;}
+
+/* ============ SECTION SCAFFOLD ============ */
+section{padding:clamp(46px,6vw,84px) 0;}
+.section-head{max-width:var(--textw);margin:0 auto clamp(28px,4vw,46px);}
+.section-head .eyebrow{display:block;margin-bottom:14px;}
+.section-head h2{font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.01em;margin:0 0 .4em;}
+.section-head .lead{font-size:1.12rem;color:var(--ink-soft);font-style:italic;line-height:1.5;}
+.divline{max-width:var(--textw);margin:0 auto;height:1px;background:var(--rule);border:none;}
+
+/* ============ DROP CAP ============ */
+.dropcap::first-letter{
+  font-family:"Fraunces",serif;font-weight:600;
+  float:left;font-size:4.6em;line-height:.78;padding:.05em .12em 0 0;color:var(--rust);
+}
+
+/* ============ BIG DIVIDER ============ */
+.bigdiv{
+  background:var(--slate);color:#ece5d6;text-align:center;
+  padding:clamp(60px,9vw,120px) 0;position:relative;overflow:hidden;
+}
+.bigdiv.bruise{background:var(--bruise);}
+.bigdiv::before{
+  content:"";position:absolute;inset:0;opacity:.13;
+  background:radial-gradient(circle at 50% 30%,rgba(196,122,79,.7),transparent 60%);
+}
+.bigdiv .inner{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:0 28px;}
+.bigdiv .num{font-family:"Inter Tight",sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.3em;color:var(--rust-soft);text-transform:uppercase;margin-bottom:22px;}
+.bigdiv h2{color:#f7f2e7;font-size:clamp(2.1rem,5vw,3.7rem);line-height:1.06;letter-spacing:-.01em;margin:0 0 .5em;}
+.bigdiv p{font-size:1.18rem;color:#d7cdbb;font-style:italic;max-width:54ch;margin:0 auto;}
+
+/* ============ BOXES ============ */
+.box{border-radius:8px;padding:26px 28px;margin:30px auto;max-width:var(--textw);position:relative;}
+.box-label{font-family:"Inter Tight",sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;margin-bottom:11px;display:block;}
+.box-body{font-size:1rem;line-height:1.62;}
+.box-body :last-child{margin-bottom:0;}
+
+.box.def{background:var(--paper-card);border-left:4px solid var(--rust);box-shadow:0 1px 0 var(--rule);}
+.box.def .box-label{color:var(--rust);}
+.box.def h4{font-family:"Fraunces",serif;font-size:1.3rem;margin:.1em 0 .5em;color:var(--slate-deep);}
+
+.box.thesis{background:var(--slate);color:#ece5d6;border:none;box-shadow:0 6px 28px rgba(23,32,41,.22);}
+.box.thesis .box-label{color:var(--rust-soft);}
+.box.thesis .box-body{font-family:"Fraunces",serif;font-size:1.32rem;line-height:1.4;color:#f4efe4;}
+
+.box.memo{background:transparent;border:1.5px dashed var(--rule);}
+.box.memo .box-label{color:var(--ink-faint);}
+
+.box.example{background:var(--paper-cool);border-left:3px solid var(--teal);margin-left:0;}
+.box.example .box-label{color:var(--teal);}
+
+.box.warning{background:var(--slate-deep);color:#d7cdbb;border:none;}
+.box.warning .box-label{color:#d98a63;}
+.box.warning .box-body{color:#d7cdbb;}
+
+.box.plain-translation{background:linear-gradient(180deg,#f6ecd9,#f3e6cd);border:1px solid #e2cfa6;border-left:4px solid var(--ochre);}
+.box.plain-translation .box-label{color:#7d6418;}
+.box.plain-translation .box-label::before{content:"→ ";}
+
+/* parallel / contrast */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:var(--maxw);margin:34px auto;}
+.box.parallel{background:var(--paper-cool);border-top:4px solid var(--teal);margin:0;max-width:none;}
+.box.parallel .box-label{color:var(--teal);}
+.box.contrast{background:#f3e9e4;border-top:4px solid var(--rust);margin:0;max-width:none;}
+.box.contrast .box-label{color:var(--rust);}
+
+/* ============ QUOTE CARD ============ */
+.quote-card{
+  max-width:var(--textw);margin:38px auto;background:var(--paper-card);
+  border:1px solid var(--rule);border-radius:9px;padding:30px 32px 26px;position:relative;
+  box-shadow:0 4px 22px rgba(27,29,34,.07);
+}
+.quote-card::before{
+  content:"\201E";font-family:"Fraunces",serif;font-weight:700;
+  position:absolute;top:6px;left:18px;font-size:5.4rem;color:var(--rust);opacity:.16;line-height:1;
+}
+.quote-label{font-family:"Inter Tight",sans-serif;font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin-bottom:14px;position:relative;}
+.quote-body{
+  font-family:"Fraunces",serif;font-size:clamp(1.2rem,2.1vw,1.5rem);line-height:1.36;
+  color:var(--slate-deep);margin:0 0 14px;font-weight:500;position:relative;
+}
+.quote-citation{font-family:"Inter Tight",sans-serif;font-size:.82rem;color:var(--ink-faint);letter-spacing:.02em;margin-bottom:18px;}
+.quote-citation::before{content:"— ";}
+.quote-translation,.quote-context{font-family:"Spectral",serif;font-size:.96rem;line-height:1.55;padding:13px 16px;border-radius:6px;margin-top:10px;}
+.quote-translation{background:#f6ecd9;border-left:3px solid var(--ochre);}
+.quote-context{background:var(--paper-cool);border-left:3px solid var(--teal);}
+.quote-translation strong,.quote-context strong{display:inline;}
+
+/* ============ PULL QUOTE ============ */
+.pullquote{
+  max-width:840px;margin:46px auto;text-align:center;padding:0 24px;
+}
+.pullquote blockquote{
+  font-family:"Fraunces",serif;font-weight:500;font-style:italic;
+  font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.24;color:var(--rust);margin:0 0 .4em;letter-spacing:-.01em;
+}
+.pullquote cite{font-family:"Inter Tight",sans-serif;font-style:normal;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);}
+
+/* ============ INLINE QUOTE ============ */
+.iq{font-style:italic;color:var(--slate);}
+
+/* ============ TRIADE ============ */
+.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:var(--maxw);margin:36px auto;}
+.triad .cell{background:var(--paper-card);border:1px solid var(--rule);border-radius:8px;padding:24px 22px;border-top:5px solid var(--slate);}
+.triad .cell.c1{border-top-color:var(--n-entzweiung);}
+.triad .cell.c2{border-top-color:var(--n-dekadenz);}
+.triad .cell.c3{border-top-color:var(--n-apokalypse);}
+.triad .cell .t-num{font-family:"Fraunces",serif;font-size:2rem;font-weight:600;color:var(--ink-faint);line-height:1;}
+.triad .cell h4{font-size:1.18rem;margin:.3em 0 .5em;}
+.triad .cell p{font-size:.93rem;line-height:1.5;margin:0;color:var(--ink-soft);}
+
+/* ============ TABLE ============ */
+.tablewrap{max-width:var(--maxw);margin:36px auto;overflow-x:auto;border:1px solid var(--rule);border-radius:8px;}
+table{border-collapse:collapse;width:100%;font-size:.92rem;background:var(--paper-card);min-width:560px;}
+caption{caption-side:top;text-align:left;font-family:"Inter Tight",sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);padding:14px 16px 0;}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.4;}
+thead th{background:var(--slate);color:#ece5d6;font-family:"Inter Tight",sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;border-bottom:none;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:nth-child(even){background:rgba(38,50,59,.035);}
+td strong{color:var(--slate-deep);}
+.cell-mode{font-family:"Inter Tight",sans-serif;font-size:.78rem;font-weight:600;color:var(--rust);}
+
+/* ============ NUMBERED CHAIN ============ */
+.chain{max-width:var(--textw);margin:34px auto;counter-reset:step;list-style:none;padding:0;}
+.chain li{position:relative;padding:0 0 22px 56px;}
+.chain li::before{
+  counter-increment:step;content:counter(step);
+  position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;
+  background:var(--slate);color:#ece5d6;font-family:"Inter Tight",sans-serif;font-weight:700;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.chain li::after{content:"";position:absolute;left:18.5px;top:38px;bottom:0;width:1.5px;background:var(--rule);}
+.chain li:last-child::after{display:none;}
+.chain li h4{font-size:1.1rem;margin:.35em 0 .35em;}
+.chain li p{font-size:.96rem;margin:0;color:var(--ink-soft);}
+
+/* ============ TOC ============ */
+.toc{max-width:var(--textw);margin:0 auto;}
+.toc ol{list-style:none;counter-reset:toc;padding:0;margin:0;}
+.toc li{counter-increment:toc;border-bottom:1px solid var(--rule);}
+.toc a{display:flex;align-items:baseline;gap:14px;padding:13px 4px;text-decoration:none;color:var(--ink);transition:color .15s,padding .15s;}
+.toc a:hover{color:var(--rust);padding-left:10px;}
+.toc a .tn{font-family:"Inter Tight",sans-serif;font-weight:700;font-size:.82rem;color:var(--rust);min-width:28px;}
+.toc a .tt{font-family:"Fraunces",serif;font-size:1.12rem;flex:1;}
+.toc a .td{font-family:"Inter Tight",sans-serif;font-size:.74rem;color:var(--ink-faint);letter-spacing:.04em;text-align:right;}
+
+/* ============ DETAILS ============ */
+details{max-width:var(--textw);margin:24px auto;background:var(--paper-cool);border:1px solid var(--rule);border-radius:8px;padding:0;overflow:hidden;}
+details summary{cursor:pointer;padding:16px 22px;font-family:"Inter Tight",sans-serif;font-weight:600;font-size:.92rem;color:var(--slate-deep);list-style:none;display:flex;align-items:center;gap:10px;}
+details summary::-webkit-details-marker{display:none;}
+details summary::before{content:"+";font-size:1.3rem;color:var(--rust);font-weight:400;line-height:1;transition:transform .2s;}
+details[open] summary::before{transform:rotate(45deg);}
+details .det-body{padding:0 22px 20px;font-size:.95rem;line-height:1.6;color:var(--ink-soft);}
+details .det-body :last-child{margin-bottom:0;}
+
+/* ============ SIDENOTE ============ */
+.sidenote{max-width:var(--textw);margin:22px auto;font-size:.9rem;color:var(--ink-faint);font-style:italic;border-left:2px solid var(--rule);padding:4px 0 4px 18px;line-height:1.55;}
+
+/* ============ GLOSSARY ============ */
+.glossary{max-width:var(--textw);margin:0 auto;}
+.glossary-entry{background:var(--paper-card);border:1px solid var(--rule);border-radius:8px;padding:22px 24px;margin-bottom:16px;}
+.glossary-entry h4{font-size:1.32rem;margin:0 0 4px;color:var(--slate-deep);}
+.glossary-entry .g-etym-inline{font-family:"Inter Tight",sans-serif;font-size:.74rem;color:var(--ink-faint);letter-spacing:.03em;margin-bottom:12px;}
+.glossary-entry .g-plain,.glossary-entry .g-original,.glossary-entry .g-etymology{font-size:.95rem;line-height:1.55;margin-bottom:9px;}
+.glossary-entry .g-plain strong{color:var(--rust);}
+.glossary-entry .g-original{padding-left:14px;border-left:3px solid var(--rule);color:var(--ink-soft);font-style:italic;}
+.glossary-entry .g-original strong{font-style:normal;color:var(--slate);}
+.glossary-entry .g-etymology{font-size:.86rem;color:var(--ink-faint);}
+
+/* ============ COLOPHON ============ */
+.colophon{background:var(--slate-deep);color:#cfd4d3;padding:clamp(48px,7vw,90px) 0;}
+.colophon h2{color:#f4efe4;}
+.colophon .wrap{max-width:760px;}
+.colophon .ref-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:6px;overflow:hidden;margin:26px 0;}
+.colophon .ref-grid div{background:var(--slate-deep);padding:16px 18px;}
+.colophon .ref-grid dt{font-family:"Inter Tight",sans-serif;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rust-soft);margin-bottom:5px;}
+.colophon .ref-grid dd{margin:0;font-size:.9rem;color:#ece5d6;}
+.colophon a{color:var(--rust-soft);}
+.colophon .fineprint{font-size:.82rem;color:#9aa0a3;line-height:1.6;margin-top:24px;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;}
+
+/* ============ STAT STRIP ============ */
+.statstrip{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:18px;max-width:var(--maxw);margin:38px auto;}
+.statstrip .stat{text-align:center;padding:18px 12px;background:var(--paper-card);border:1px solid var(--rule);border-radius:8px;}
+.statstrip .stat .v{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--rust);line-height:1;}
+.statstrip .stat .l{font-family:"Inter Tight",sans-serif;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;}
+
+/* ============ SVG cycle ============ */
+.figure-svg{max-width:var(--maxw);margin:40px auto;text-align:center;}
+.figure-svg svg{max-width:100%;height:auto;}
+.figcap{font-family:"Inter Tight",sans-serif;font-size:.8rem;color:var(--ink-faint);margin-top:14px;letter-spacing:.02em;}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1024px){
+  .triad{grid-template-columns:1fr;}
+}
+@media(max-width:720px){
+  .compare{grid-template-columns:1fr;}
+  .topnav nav{display:none;}
+  .hero h1{font-size:clamp(2.1rem,9vw,3rem);}
+  .box,.quote-card{padding:22px 20px;}
+  .chain li{padding-left:48px;}
+}
+
+/* ============ PRINT ============ */
+@media print{
+  .topnav,.progress{display:none;}
+  body{background:white;color:#000;font-size:11pt;background-image:none;}
+  body::before{display:none;}
+  .hero{background:white;color:#000;border-bottom:2px solid #000;}
+  .hero h1,.hero .sub,.hero .meta dd{color:#000;}
+  .box,.quote-card,.triad .cell,.glossary-entry,details{break-inside:avoid;page-break-inside:avoid;}
+  .bigdiv,.box.thesis,.box.warning,.colophon{background:white;color:#000;}
+  .bigdiv h2,.box.thesis .box-body,.colophon h2{color:#000;}
+  section{padding:24px 0;}
+  a::after{content:" (" attr(href) ")";font-size:9pt;color:#555;}
+  a[href^="#"]::after{content:"";}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- ====================== TOPNAV ====================== -->
+<header class="topnav">
+  <div class="inner">
+    <div class="brand">SCHILK · <span>Erzählgemeinschaft</span></div>
+    <nav>
+      <a href="#synopsis">Worum geht's</a>
+      <a href="#takeaways">Kernsätze</a>
+      <a href="#konservatismus">Konservatismus</a>
+      <a href="#methode">Methode</a>
+      <a href="#zyklus">Erzählzyklus</a>
+      <a href="#narrative">Die drei Narrative</a>
+      <a href="#bricolage">Bricolage</a>
+      <a href="#kritik">Spannungen</a>
+      <a href="#glossar">Glossar</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ====================== HERO ====================== -->
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">Dissertation · Politische Soziologie · transcript 2024</div>
+    <h1>Die <em>Erzählgemeinschaft</em> der Neuen Rechten</h1>
+    <p class="sub">Wie aus immer derselben Krisengeschichte eine politische Bewegung entsteht — und warum man sie an ihrer Erzählform erkennt, nicht an ihren Themen.</p>
+    <dl class="meta">
+      <div><dt>Autor</dt><dd>Felix Schilk (geb. 1989)</dd></div>
+      <div><dt>Werk</dt><dd>Zur politischen Soziologie konservativer Krisennarrative</dd></div>
+      <div><dt>Erschienen</dt><dd>transcript, Bielefeld 2024</dd></div>
+      <div><dt>Gattung</dt><dd>Soziologische Dissertation (TU Dresden, 2023)</dd></div>
+      <div><dt>Umfang</dt><dd>ca. 400 Seiten · Open Access</dd></div>
+    </dl>
+  </div>
+</div>
+
+<!-- ====================== SYNOPSIS ====================== -->
+<section id="synopsis">
+  <div class="section-head">
+    <span class="eyebrow">Synopsis</span>
+    <h2>Worum es in diesem Buch geht</h2>
+    <p class="lead">Eine einzige Frage trägt das ganze Buch: Was bringt die Texte der Neuen Rechten zusammen — wenn nicht die Themen, die ständig wechseln?</p>
+  </div>
+  <div class="col">
+    <p class="dropcap">Felix Schilk hat über Jahre die Zeitschriften und Bücher der sogenannten Neuen Rechten gelesen — nicht hunderte Einzeltexte, sondern auf der Suche nach einem Muster darunter. Sein Befund: So verschieden die Themen auch sind, ob „Migration“, „Cancel Culture“, „Great Reset“ oder „Gender“ — darunter liegt immer dieselbe Geschichte. Sie wird nur jedes Mal neu eingekleidet. Die Neue Rechte ist für Schilk deshalb keine Sammlung von Meinungen, sondern eine <strong>Erzählgemeinschaft</strong>: eine Gruppe, die sich über ein gemeinsames Vorratslager an Erzählmustern zusammenhält.</p>
+
+    <p>Diese Mustergeschichte funktioniert wie ein Kreislauf in drei Schritten. Am Anfang steht ein Bruch — die Welt war einmal heil und ist es nicht mehr (das <strong>Entzweiungsnarrativ</strong>). Dann folgt der langsame Verfall — alles wird schlechter, schwächer, beliebiger (das <strong>Dekadenznarrativ</strong>). Und am Ende droht der große Knall, der reinigende Untergang, nach dem alles neu beginnt (das <strong>apokalyptische Narrativ</strong>). Diese drei Geschichten sind das eigentliche Thema des Buchs. Schilk geht es dabei um die „kulturellen Stellschrauben“ <span class="iq">(Schilk 2024, S. 30)</span>, an denen sich eine Gesellschaft fester oder lockerer drehen lässt — nicht um Tagespolitik.</p>
+
+    <p>Schilks zentrale These ist dabei kühl und entlarvend zugleich: Diese Krisenrhetorik ist nicht zufällig oder spontan. Hinter den thematischen Geschichten lasse sich „eine Tiefenstruktur von stereotypen Krisennarrativen rekonstruieren“ <span class="iq">(Schilk 2024, S. 26)</span> — ein über zweihundert Jahre eingespieltes Repertoire, das sich an jedes neue Ereignis anpasst und gerade dadurch lebendig bleibt. Wer dieses Muster einmal sieht, erkennt es überall wieder. Genau das macht die Lektüre, wie Schilk am Ende selbst zugibt, auf Dauer ermüdend: Alles scheint schon einmal dagewesen zu sein.</p>
+  </div>
+
+  <div class="box thesis">
+    <span class="box-label">Die Kernerkenntnis in einem Satz</span>
+    <div class="box-body">Die Neue Rechte hält nicht durch gemeinsame Themen zusammen, sondern durch eine immer gleiche Krisengeschichte in drei Akten — Bruch, Verfall, Untergang —, die der Konservatismus seit zweihundert Jahren erzählt und an jedes neue Ereignis neu anpasst.</div>
+  </div>
+
+  <div class="statstrip">
+    <div class="stat"><div class="v">3</div><div class="l">Krisennarrative</div></div>
+    <div class="stat"><div class="v">6</div><div class="l">Erzähl-Modi</div></div>
+    <div class="stat"><div class="v">3</div><div class="l">Zeitschriften analysiert</div></div>
+    <div class="stat"><div class="v">2</div><div class="l">Länder (DE · FR)</div></div>
+    <div class="stat"><div class="v">~200</div><div class="l">Jahre Vorlauf</div></div>
+  </div>
+</section>
+
+<!-- ====================== KEY TAKEAWAYS ====================== -->
+<section id="takeaways" style="background:var(--paper-warm);">
+  <div class="section-head">
+    <span class="eyebrow">Das Wichtigste in 60 Sekunden</span>
+    <h2>Sechs Sätze, die das Buch tragen</h2>
+    <p class="lead">Wer keine Zeit für 400 Seiten hat, kann hier einsteigen. Jeder Satz wird im Verlauf belegt und entfaltet.</p>
+  </div>
+  <ol class="chain">
+    <li>
+      <h4>Erzählform schlägt Thema</h4>
+      <p>Die Neue Rechte wechselt ständig die Themen, aber fast nie die Erzählweise. Genau diese Erzählweise — nicht der Inhalt — macht sie erkennbar und verbindet ihre Akteure zu einer Gruppe.</p>
+    </li>
+    <li>
+      <h4>Drei Geschichten, ein Kreislauf</h4>
+      <p>Unter allem liegt eine Mustergeschichte in drei Akten: Bruch (Entzweiung) → Verfall (Dekadenz) → drohender Untergang (Apokalypse). Danach beginnt der Kreislauf von vorn.</p>
+    </li>
+    <li>
+      <h4>Die Katastrophe kommt nie an</h4>
+      <p>Der Untergang wird immer angekündigt, aber nie eingelöst. Die ewig „kurz bevorstehende“ Katastrophe ist kein Versehen — sie ist das Mittel, mit dem die Erzählung sich am Laufen hält.</p>
+    </li>
+    <li>
+      <h4>Konservatismus ist ein Bauplan, kein Inhalt</h4>
+      <p>Schilk versteht den Konservatismus nicht über feste Werte, sondern als ein <em>metapolitisches Projekt</em>: als die Suche nach den kulturellen Stellschrauben, an denen man eine Gesellschaft stabilisieren oder destabilisieren kann.</p>
+    </li>
+    <li>
+      <h4>Die Neue Rechte ist eine Filiation des Konservatismus</h4>
+      <p>Sie ist kein Fremdkörper und keine völlig neue Erscheinung, sondern ein <em>Ableger</em> — eine zeitgenössische Verwandlung („Metamorphose“) des alten konservativen Denkens unter neuen Bedingungen.</p>
+    </li>
+    <li>
+      <h4>Das Muster erklärt die Bündnisse</h4>
+      <p>Weil dieselbe Krisengeschichte auch in Esoterik, Verschwörungserzählungen, Rechtspopulismus und Antisemitismus steckt, kann die Neue Rechte mühelos mit all diesen andocken. Schilk nennt das <em>postkonservative Bricolage</em> — eine Bastelei aus vorgefundenen Versatzstücken.</p>
+    </li>
+  </ol>
+</section>
+
+<hr class="divline">
+
+<!-- ====================== TOC ====================== -->
+<section id="toc">
+  <div class="section-head">
+    <span class="eyebrow">Wegweiser</span>
+    <h2>Inhalt dieser Synthese</h2>
+  </div>
+  <nav class="toc">
+    <ol>
+      <li><a href="#konservatismus"><span class="tn">01</span><span class="tt">Was ist Konservatismus? Zwei Gesichter eines Denkens</span><span class="td">Begriff</span></a></li>
+      <li><a href="#methode"><span class="tn">02</span><span class="tt">Das Werkzeug: Narration und Narrativ</span><span class="td">Methode</span></a></li>
+      <li><a href="#zyklus"><span class="tn">03</span><span class="tt">Der Erzählzyklus — eine Geschichte in drei Akten</span><span class="td">Modell</span></a></li>
+      <li><a href="#narrative"><span class="tn">04</span><span class="tt">Die drei Krisennarrative im Einzelnen</span><span class="td">Kern</span></a></li>
+      <li><a href="#bricolage"><span class="tn">05</span><span class="tt">Postkonservative Bricolage: die Anschlussstellen</span><span class="td">Folgen</span></a></li>
+      <li><a href="#kritik"><span class="tn">06</span><span class="tt">Spannungen, offene Fragen, Selbstkritik</span><span class="td">Prüfung</span></a></li>
+      <li><a href="#glossar"><span class="tn">07</span><span class="tt">Glossar der Schlüsselbegriffe</span><span class="td">Apparat</span></a></li>
+    </ol>
+  </nav>
+</section>
+
+<!-- ====================== BIG DIVIDER 1 ====================== -->
+<div class="bigdiv">
+  <div class="inner">
+    <div class="num">Teil I · Der Begriff</div>
+    <h2>Erst muss man wissen, was „konservativ“ überhaupt heißt</h2>
+    <p>Schilks Pointe: Konservatismus ist kein fester Satz von Überzeugungen, sondern eine bestimmte Art, auf die moderne Welt zu reagieren.</p>
+  </div>
+</div>
+
+<!-- ====================== KONSERVATISMUS ====================== -->
+<section id="konservatismus">
+  <div class="section-head">
+    <span class="eyebrow">01 · Begriff</span>
+    <h2>Was ist Konservatismus? Zwei Gesichter eines Denkens</h2>
+    <p class="lead">Bevor man die Neue Rechte verstehen kann, muss man den Konservatismus verstehen — und zwar anders, als man ihn üblicherweise versteht.</p>
+  </div>
+  <div class="col">
+    <p>Die meisten Menschen denken bei „konservativ“ an feste Inhalte: Familie, Nation, Tradition, Ordnung. Schilk dreht das um. Für ihn ist der Konservatismus <strong>kein Inhalt, sondern eine Haltung gegenüber der modernen Gesellschaft</strong> — eine Art, ständig auf sie zu reagieren und gegen sie anzuschreiben. Schon im 18. Jahrhundert beschrieben konservative Denker diese reaktive Bezogenheit mit einem eigenen Wort: <em>Metapolitik</em>.</p>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff</span>
+      <h4>Metapolitik</h4>
+      <div class="box-body"><p><em>Metapolitik</em> bedeutet bei Schilk: die Suche nach den <strong>kulturellen Stellschrauben</strong>, mit denen sich eine Gesellschaft stabilisieren oder ins Wanken bringen lässt. Es geht nicht um Wahlkampf oder Parlamente, sondern um die Ebene davor — um Werte, Stimmungen, Selbstverständlichkeiten. Wer die Kultur verändert, so der Gedanke, verändert irgendwann auch die Politik.</p></div>
+    </div>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body">Stell dir Politik wie ein Haus vor. Die meisten streiten darüber, welche Möbel hineinkommen — das sind Gesetze, Wahlen, Tagespolitik. Die Metapolitik interessiert sich für das Fundament und die Statik: für die Annahmen, die alle für selbstverständlich halten. Die Neue Rechte will nicht zuerst Wahlen gewinnen. Sie will zuerst verändern, was als normal und sagbar gilt. Dann, so die Hoffnung, kommen die Wahlsiege von allein.</div>
+    </div>
+
+    <p>Um den Konservatismus genauer zu fassen, greift Schilk auf den Soziologen <strong>Karl Mannheim</strong> (1893–1947) zurück, einen der Begründer der Wissenssoziologie. Aus dieser Tradition entwickelt er ein Schema mit zwei Seiten. Der Konservatismus hat demnach ein <strong>dogmatisches</strong> und ein <strong>reflexives</strong> Gesicht.</p>
+
+    <div class="compare">
+      <div class="box parallel">
+        <span class="box-label">Das starre Gesicht</span>
+        <div class="box-body"><p><strong>Dogmatischer Konservatismus.</strong> Das ist der Konservatismus als fester Denkstil — mit bestimmten Grundannahmen darüber, wie die Welt beschaffen ist (etwa: der Mensch ist von Natur aus schwach und braucht Ordnung). Diese Seite ändert sich kaum.</p></div>
+      </div>
+      <div class="box contrast">
+        <span class="box-label">Das wandelbare Gesicht</span>
+        <div class="box-body"><p><strong>Reflexiver Konservatismus.</strong> Das ist die Fähigkeit, sich an neue Zeiten anzupassen und neue Inhalte aufzunehmen, ohne den Kern aufzugeben. Diese Seite erklärt, warum der Konservatismus immer wieder „modern“ wirken kann, ohne sich grundlegend zu ändern.</p></div>
+      </div>
+    </div>
+
+    <p>Diese reflexive, wandelbare Seite zerlegt Schilk noch einmal in zwei Werkzeuge: in eine <strong>metapolitische</strong> Dimension (die Arbeit an der Kultur und an den Deutungen) und eine <strong>sozialtechnische</strong> Dimension (die Frage, wie man Menschen formt und regiert). Zusammen mit dem dogmatischen <strong>Denkstil</strong> ergibt das drei Dimensionen, in denen sich der Konservatismus untersuchen lässt.</p>
+
+    <div class="triad">
+      <div class="cell c1">
+        <div class="t-num">1</div>
+        <h4>Epistemischer Denkstil</h4>
+        <p>Wie der Konservatismus die Welt sieht — seine Grundannahmen über Mensch, Geschichte und Ordnung. <em>(„epistemisch“ = das Wissen und Erkennen betreffend)</em></p>
+      </div>
+      <div class="cell c2">
+        <div class="t-num">2</div>
+        <h4>Metapolitische Diskurstechnik</h4>
+        <p>Wie er an der Kultur arbeitet — durch Begriffe, Erzählungen und Deutungen, mit denen er das Sagbare verschiebt.</p>
+      </div>
+      <div class="cell c3">
+        <div class="t-num">3</div>
+        <h4>Gouvernementale Sozialtechnik</h4>
+        <p>Wie er Menschen formen und lenken will. <em>(„gouvernemental“ = das Regieren betreffend, nach Michel Foucault)</em></p>
+      </div>
+    </div>
+
+    <p>Der entscheidende Schritt kommt am Ende dieses Begriffsteils: Schilk argumentiert, dass auch die Neue Rechte zu diesem Konservatismus gehört — als <em>Filiation</em>, also als Ableger oder Seitenzweig. Wo die „haptischen Kräfte des Konservatismus versagen“ <span class="iq">(Schilk 2024, S. 30)</span>, so sein Bild, wollen die Akteure der Neuen Rechten „mit der Rohrzange nachhelfen“. Sie ist kein neues Phänomen, sondern eine neue Erscheinungsform eines alten Denkens.</p>
+
+    <div class="box memo">
+      <span class="box-label">Merksatz</span>
+      <div class="box-body">Konservatismus = nicht „diese Werte“, sondern „diese Reaktion auf die Moderne“. Die Neue Rechte ist die jüngste Gestalt dieser Reaktion.</div>
+    </div>
+
+    <div class="pullquote">
+      <blockquote>Da, wo die haptischen Kräfte des Konservatismus versagen, wollen die Akteure der Neuen Rechten mit der Rohrzange nachhelfen.</blockquote>
+      <cite>sinngemäß nach Schilk, Einleitung</cite>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-label">Definition · Einleitung</div>
+      <blockquote class="quote-body">„Metapolitik in diesem Sinne fragt nach den kulturellen Stellschrauben, an denen sich Gesellschaften de- und re-stabilisieren lassen.“</blockquote>
+      <figcaption class="quote-citation">Schilk 2024, S. 30 · transcript-Ausgabe</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Es gibt Punkte in einer Gesellschaft, an denen man drehen kann, damit sie fester oder lockerer wird — etwa, was als normal gilt oder welche Geschichte man über die eigene Herkunft erzählt. Metapolitik sucht genau diese Drehpunkte.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Dieser Satz definiert das ganze Vorhaben der Neuen Rechten. Sie zielt nicht zuerst auf Macht, sondern auf Kultur und Deutung. Das erklärt, warum Erzählungen für sie so zentral sind — und warum dieses Buch sie über ihre Erzählungen untersucht.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== BIG DIVIDER 2 ====================== -->
+<div class="bigdiv">
+  <div class="inner">
+    <div class="num">Teil II · Das Werkzeug</div>
+    <h2>Ein Begriffspaar, das den Unterschied macht</h2>
+    <p>Damit man hinter die ständig wechselnden Themen blicken kann, braucht man eine Unterscheidung: zwischen der konkreten Geschichte und dem Muster darunter.</p>
+  </div>
+</div>
+
+<!-- ====================== METHODE ====================== -->
+<section id="methode">
+  <div class="section-head">
+    <span class="eyebrow">02 · Methode</span>
+    <h2>Das Werkzeug: Narration und Narrativ</h2>
+    <p class="lead">Zwei Wörter, die fast gleich klingen, aber Verschiedenes meinen. Auf dieser Unterscheidung steht das ganze methodische Gebäude.</p>
+  </div>
+  <div class="col">
+    <p>Schilks Methode heißt <em>wissenssoziologische Narrations- und Diskursanalyse</em> — ein sperriger Name für eine einfache Grundidee: Man liest sehr viele Texte und sucht darin nach wiederkehrenden Mustern, die den Autoren selbst gar nicht bewusst sein müssen. Anregung dafür holt er sich bei zwei Erzählforschern. Der russische Märchenforscher <strong>Vladimir Propp</strong> (1895–1970) zeigte, dass sich hinter hunderten russischer Märchen eine kleine Zahl immer gleicher Grundbausteine verbirgt, die er <em>Funktionen</em> nannte. Der amerikanische Mythenforscher <strong>Joseph Campbell</strong> (1904–1987) fand in allen Mythen der Welt dieselbe „Heldenreise“. Beide gingen davon aus: Die vielen Geschichten sind nur Variationen <strong>einer einzigen</strong>.</p>
+
+    <p>Genau das behauptet Schilk auch über die Neue Rechte. Um es zu zeigen, braucht er ein Begriffspaar.</p>
+
+    <div class="compare">
+      <div class="box parallel">
+        <span class="box-label">Die Oberfläche</span>
+        <div class="box-body"><p><strong>Narration.</strong> Die konkrete, an ein Thema gebundene Geschichte in einem bestimmten Text — etwa ein Artikel über den „Great Reset“ oder über „Cancel Culture“. Narrationen wechseln ständig, je nach Tagesgeschehen.</p></div>
+      </div>
+      <div class="box contrast">
+        <span class="box-label">Die Tiefenstruktur</span>
+        <div class="box-body"><p><strong>Narrativ.</strong> Das wiederkehrende Muster <em>unter</em> den vielen Narrationen — ein „kulturelles Deutungsmuster“, das über viele Texte hinweg dasselbe bleibt. Narrative wechseln kaum. Sie sind das eigentliche Ziel der Analyse.</p></div>
+      </div>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-label">Definition · Methodenkapitel</div>
+      <blockquote class="quote-body">„Unter Narration verstehe ich die konkrete und thematisch gebundene Verknüpfung von Äußerungen in einem Text, als Narrativ bezeichne ich die intertextuelle Verknüpfung von typisierten Aussagen zu einem komplexen kulturellen Deutungsmuster.“</blockquote>
+      <figcaption class="quote-citation">Schilk 2024, S. 159 · transcript-Ausgabe</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Eine <em>Narration</em> ist die einzelne Geschichte zu einem konkreten Thema. Ein <em>Narrativ</em> ist das Grundmuster, das in vielen solchen Geschichten immer wiederkehrt — quer durch verschiedene Texte und Themen.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Das ist das schärfste Werkzeug des Buchs. Nur mit dieser Unterscheidung kann Schilk zeigen, dass die Neue Rechte zwar tausend verschiedene Sachen sagt, aber im Grunde immer dieselbe Geschichte erzählt.</div>
+    </div>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body">Denk an Popmusik. Jeder Song ist anders (das wären die <em>Narrationen</em>). Aber viele Songs benutzen dieselben vier Akkorde im Hintergrund (das wäre das <em>Narrativ</em>). Du hörst jedes Mal ein neues Lied — und tanzt doch immer zum selben Grundmuster. Schilk sucht nicht die einzelnen Lieder der Neuen Rechten, sondern die vier Akkorde darunter.</div>
+    </div>
+
+    <p>Ein weiterer Begriff verbindet das mit der Wirkung: die <strong>narrative Affordanz</strong>. Schilk interessiert sich weniger dafür, welche Gefühle eine Erzählung auslöst, als dafür, welche <em>Anschlussmöglichkeiten</em> sie bietet — an welche bereits vorhandenen kulturellen Wissensbestände sie andocken kann.</p>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff</span>
+      <h4>Narrative Affordanz</h4>
+      <div class="box-body"><p>„Affordanz“ stammt aus der Wahrnehmungspsychologie und meint das <strong>Handlungsangebot</strong> eines Dings: Eine Türklinke „lädt zum Drücken ein“, ein Stuhl „zum Sitzen“. Übertragen auf Erzählungen meint <em>narrative Affordanz</em>: Welche Anschlüsse, Deutungen und Fortsetzungen bietet eine Geschichte von sich aus an? Welche kulturellen Bestände kann sie aufgreifen — und dabei zugleich verändern?</p></div>
+    </div>
+
+    <p>Daraus ergibt sich der titelgebende Begriff. Wer dieselben Narrative teilt, bildet eine <strong>Erzählgemeinschaft</strong>. Schilk unterscheidet sie sorgfältig von einer bloßen <strong>Diskurskoalition</strong>.</p>
+
+    <div class="compare">
+      <div class="box parallel">
+        <span class="box-label">Dauerhaft</span>
+        <div class="box-body"><p><strong>Erzählgemeinschaft.</strong> Ein stabiles Kollektiv, das auf <em>gleiche Narrative</em> zurückgreift — also auf dieselben tiefen Muster. Das verbindet die Neue Rechte über Jahrzehnte und Ländergrenzen hinweg.</p></div>
+      </div>
+      <div class="box contrast">
+        <span class="box-label">Auf Zeit</span>
+        <div class="box-body"><p><strong>Diskurskoalition.</strong> Ein loses Zweckbündnis, das nur eine <em>situationsgebundene Narration</em> teilt — etwa eine kurzfristige Allianz zu einem Tagesthema. Sie zerfällt wieder, wenn das Thema vorbei ist.</p></div>
+      </div>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-label">Beleg · neurechte Selbstbeschreibung</div>
+      <blockquote class="quote-body">„[E]motionale Überzeugung durch Geschichten [ist] weit effizienter und erfolgreicher … als die pure Aufzählung von Daten und Fakten.“</blockquote>
+      <figcaption class="quote-citation">Martin Sellner 2017, zitiert bei Schilk 2024, S. 164</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Der neurechte Aktivist Martin Sellner sagt offen: Geschichten überzeugen besser als Argumente und Statistiken. Wer Menschen gewinnen will, soll erzählen, nicht belegen.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Das ist ein Geständnis aus dem Inneren der Bewegung. Es bestätigt Schilks Ausgangspunkt von der Gegenseite selbst: Die Neue Rechte setzt bewusst auf Erzählung statt auf Beweis. Genau deshalb ist eine Erzähl-Analyse der richtige Zugriff.</div>
+    </div>
+
+    <details>
+      <summary>Wenn du tiefer einsteigen willst: Warum „Wissenssoziologie“?</summary>
+      <div class="det-body">
+        <p>Die <em>Wissenssoziologie</em> fragt nicht, ob eine Aussage wahr ist, sondern wie bestimmtes Wissen in einer Gesellschaft entsteht, sich verfestigt und weitergegeben wird. Schilk knüpft an Karl Mannheim und an die <em>Wissenssoziologische Diskursanalyse</em> von Reiner Keller an. Sein methodischer Kern ist die Beobachtung, dass die Praxis der Metapolitik darauf zielt, <em>diskursive Elemente in epistemische zu überführen</em> — also: aus einer bloßen Behauptung mit der Zeit eine scheinbar selbstverständliche Tatsache zu machen. Erzählungen sind dafür das ideale Vehikel, weil sie Deutungen transportieren, ohne sie offen als Behauptung kenntlich zu machen.</p>
+        <p>Methodisch arbeitet Schilk mit der <em>Grounded Theory</em>: Theorie und Material werden nicht getrennt, sondern verschränkt. Die Forschungsfrage steht am Ende, nicht am Anfang — sie ergibt sich aus dem wiederholten Durchgang durch das Material.</p>
+      </div>
+    </details>
+
+    <p class="sidenote">Quellenbasis der Analyse sind drei neurechte Zeitschriften: das französische <em>Éléments</em>, das ältere bundesdeutsche <em>Criticón</em> und die von Götz Kubitschek herausgegebene <em>Sezession</em>. An ihnen verfolgt Schilk auch die deutsch-französischen Rezeptionswege — den Weg, auf dem Ideen zwischen beiden Ländern hin- und herwandern.</p>
+  </div>
+</section>
+
+<!-- ====================== BIG DIVIDER 3 ====================== -->
+<div class="bigdiv bruise">
+  <div class="inner">
+    <div class="num">Teil III · Das Modell</div>
+    <h2>Bruch. Verfall. Untergang. Und wieder von vorn.</h2>
+    <p>Jetzt kommt das Herzstück: die Mustergeschichte, die unter allem liegt — der neurechte Erzählzyklus.</p>
+  </div>
+</div>
+
+<!-- ====================== ZYKLUS ====================== -->
+<section id="zyklus">
+  <div class="section-head">
+    <span class="eyebrow">03 · Modell</span>
+    <h2>Der Erzählzyklus — eine Geschichte in drei Akten</h2>
+    <p class="lead">Wie das klassische Drama hat auch die neurechte Erzählung einen festen Bauplan. Nur fehlt ihr etwas Entscheidendes: handelnde Menschen.</p>
+  </div>
+  <div class="col">
+    <p>Schilks zentrale These zu diesem Teil lautet, dass die unzähligen neurechten Geschichten „Variationen einer einzigen“ <span class="iq">(Schilk 2024, S. 292)</span> sind, die zusammen einen <em>Erzählzyklus</em> bilden. Dieser Zyklus folgt dem Aufbau des klassischen Dramas: Exposition, erregendes Moment, Höhepunkt (Peripetie), Verzögerung und schließlich Katastrophe. Mit einem berühmten Unterschied.</p>
+
+    <div class="quote-card">
+      <div class="quote-label">Schlüsselstelle · Der Erzählzyklus</div>
+      <blockquote class="quote-body">„… und Katastrophe, die jedoch nicht eintritt, sondern nur angekündigt wird.“</blockquote>
+      <figcaption class="quote-citation">Schilk 2024, S. 292 · transcript-Ausgabe</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> In der neurechten Geschichte steht der große Untergang immer kurz bevor — aber er passiert nie wirklich. Die Katastrophe wird ewig angedroht und nie eingelöst.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Das ist der vielleicht klügste Befund des Buchs. Die nie eintretende Katastrophe ist kein Denkfehler der Neuen Rechten, sondern ihr Motor: Solange der Untergang droht, bleibt die Dringlichkeit erhalten, die Mobilisierung lohnt sich, der Kreislauf läuft weiter.</div>
+    </div>
+
+    <p>Anders als in der klassischen Heldenreise, in der ein Mensch wächst und sich verwandelt, regieren im neurechten Zyklus <strong>anonyme Mächte</strong> — „das Schicksal“, „der Verfall“, „die Geschichte“. Schilk fasst das in einen prägnanten Satz.</p>
+
+    <div class="pullquote">
+      <blockquote>Es gibt viele Aktanten, aber kaum Akteure.</blockquote>
+      <cite>Schilk 2024, S. 291</cite>
+    </div>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body">Ein <em>Akteur</em> ist jemand, der selbst entscheidet und handelt. Ein <em>Aktant</em> ist nur eine Figur, die von der Geschichte herumgeschoben wird — ein Rädchen im Schicksal. Schilks Beobachtung: In neurechten Erzählungen gibt es kaum Menschen, die wirklich frei handeln. Es gibt fast nur Opfer und Werkzeuge großer, unpersönlicher Kräfte. Selbst die „Helden“ verändern nicht die Welt — sie stellen sich nur tapfer in einen Sturm, der ohnehin kommt.</div>
+    </div>
+
+    <p>Der Zyklus läuft im Kreis: Nach dem ursprünglichen Bruch folgen Verfall und Widerstand, bis der apokalyptische Höhepunkt einen Neuanfang einleitet — und alles von vorn beginnt. Die folgende Grafik zeigt den vollständigen Kreislauf mit seinen drei Narrativen.</p>
+  </div>
+
+  <div class="figure-svg">
+    <svg viewBox="0 0 760 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kreislaufdiagramm des neurechten Erzählzyklus mit den drei Narrativen Entzweiung, Dekadenz und Apokalypse">
+      <defs>
+        <marker id="arrow" markerWidth="11" markerHeight="11" refX="8" refY="5.5" orient="auto">
+          <path d="M0,1 L9,5.5 L0,10 Z" fill="#a8512b"/>
+        </marker>
+      </defs>
+      <!-- Kreis-Hintergrund -->
+      <circle cx="380" cy="235" r="168" fill="none" stroke="#cfc7b5" stroke-width="1.5" stroke-dasharray="3 5"/>
+
+      <!-- bögen mit pfeilen -->
+      <path d="M 380 67 A 168 168 0 0 1 525 320" fill="none" stroke="#a8512b" stroke-width="2.5" marker-end="url(#arrow)" opacity="0.55"/>
+      <path d="M 525 320 A 168 168 0 0 1 235 320" fill="none" stroke="#a8512b" stroke-width="2.5" marker-end="url(#arrow)" opacity="0.55"/>
+      <path d="M 235 320 A 168 168 0 0 1 380 67" fill="none" stroke="#a8512b" stroke-width="2.5" marker-end="url(#arrow)" opacity="0.55"/>
+
+      <!-- Knoten 1: Entzweiung (oben) -->
+      <g>
+        <circle cx="380" cy="67" r="58" fill="#3c5a5e"/>
+        <text x="380" y="55" text-anchor="middle" fill="#f4efe4" font-family="Inter Tight, sans-serif" font-weight="700" font-size="13">1 · BRUCH</text>
+        <text x="380" y="74" text-anchor="middle" fill="#f4efe4" font-family="Fraunces, serif" font-weight="600" font-size="17">Entzweiung</text>
+        <text x="380" y="92" text-anchor="middle" fill="#cdd9d9" font-family="Spectral, serif" font-size="11">„Die Welt war heil“</text>
+      </g>
+
+      <!-- Knoten 2: Dekadenz (unten rechts) -->
+      <g>
+        <circle cx="525" cy="320" r="58" fill="#9a7d24"/>
+        <text x="525" y="308" text-anchor="middle" fill="#fff8e8" font-family="Inter Tight, sans-serif" font-weight="700" font-size="13">2 · VERFALL</text>
+        <text x="525" y="327" text-anchor="middle" fill="#fff8e8" font-family="Fraunces, serif" font-weight="600" font-size="17">Dekadenz</text>
+        <text x="525" y="345" text-anchor="middle" fill="#f1e6c4" font-family="Spectral, serif" font-size="11">„Alles wird schlechter“</text>
+      </g>
+
+      <!-- Knoten 3: Apokalypse (unten links) -->
+      <g>
+        <circle cx="235" cy="320" r="58" fill="#7a2f3a"/>
+        <text x="235" y="308" text-anchor="middle" fill="#f7e9ea" font-family="Inter Tight, sans-serif" font-weight="700" font-size="13">3 · UNTERGANG</text>
+        <text x="235" y="327" text-anchor="middle" fill="#f7e9ea" font-family="Fraunces, serif" font-weight="600" font-size="16">Apokalypse</text>
+        <text x="235" y="345" text-anchor="middle" fill="#eccdd1" font-family="Spectral, serif" font-size="11">„Der reinigende Knall“</text>
+      </g>
+
+      <!-- Zentrum -->
+      <text x="380" y="228" text-anchor="middle" fill="#26323b" font-family="Fraunces, serif" font-weight="600" font-size="15">Der Kreislauf</text>
+      <text x="380" y="248" text-anchor="middle" fill="#6c6f78" font-family="Spectral, serif" font-style="italic" font-size="12">… und wieder von vorn.</text>
+      <text x="380" y="268" text-anchor="middle" fill="#a8512b" font-family="Inter Tight, sans-serif" font-size="10.5" letter-spacing="1">KATASTROPHE = NIE EINGELÖST</text>
+    </svg>
+    <p class="figcap">Abb. 1 — Der neurechte Erzählzyklus nach Schilk: drei Narrative, ein Kreislauf, eine ewig aufgeschobene Katastrophe. (Eigene Darstellung nach dem Strukturmodell, Kap. V.2)</p>
+  </div>
+</section>
+
+<!-- ====================== BIG DIVIDER 4 ====================== -->
+<div class="bigdiv">
+  <div class="inner">
+    <div class="num">Teil IV · Der Kern</div>
+    <h2>Die drei Geschichten, einzeln betrachtet</h2>
+    <p>Jedes der drei Narrative hat eine eigene Funktion — und jeweils zwei Spielarten. Hier werden sie auseinandergefaltet.</p>
+  </div>
+</div>
+
+<!-- ====================== NARRATIVE ====================== -->
+<section id="narrative">
+  <div class="section-head">
+    <span class="eyebrow">04 · Kern</span>
+    <h2>Die drei Krisennarrative im Einzelnen</h2>
+    <p class="lead">Entzweiung, Dekadenz, Apokalypse — drei Bausteine, aus denen sich jede neurechte Krisenrhetorik zusammensetzen lässt.</p>
+  </div>
+
+  <!-- ENTZWEIUNG -->
+  <div class="col">
+    <h3 style="font-size:1.7rem;color:var(--n-entzweiung);border-bottom:3px solid var(--n-entzweiung);padding-bottom:8px;margin-bottom:18px;">① Das Entzweiungsnarrativ — „Es war einmal heil“</h3>
+    <p>Am Anfang steht immer ein <strong>Bruch</strong>. Es gab, so die Erzählung, einen Urzustand der Einheit, der Ganzheit, der heilen Ordnung — und dann kam etwas dazwischen und hat ihn zerrissen. Die Gegenwart ist deshalb ein Zustand der <em>Entzweiung</em>, der Entfremdung, des Auseinandergefallenseins. Was genau die Einheit zerstört hat, bleibt variabel: die Aufklärung, der Liberalismus, „die da oben“, „die Fremden“. Das Muster bleibt gleich.</p>
+
+    <div class="box def">
+      <span class="box-label">Das Narrativ</span>
+      <h4>Entzweiung</h4>
+      <div class="box-body"><p>Die Grunderzählung vom <strong>verlorenen Ganzen</strong>: Einst war die Gemeinschaft eins mit sich, dann kam der Bruch. Schilk unterscheidet zwei Spielarten — eine <em>traditionalistische</em> (die das verlorene Frühere betrauert) und eine <em>anti-utopische</em> (die sich gegen jeden Versuch wendet, das Ganze durch Revolution neu herzustellen).</p></div>
+    </div>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body">Das ist die Geschichte vom „verlorenen Paradies“, angewandt auf Gesellschaft. Früher — vor der Globalisierung, vor „1968“, vor der Einwanderung — sei alles geordnet und zusammenhängend gewesen. Heute sei alles zerrissen. Das Gefühl, das diese Erzählung bedient, kennt fast jeder: dass früher irgendwie alles klarer war. Die Neue Rechte gibt diesem diffusen Gefühl einen Schuldigen und eine Richtung.</div>
+    </div>
+    <p class="sidenote">Das Motto über dem ganzen Buch fasst dieses Narrativ in einem Satz: „Die wahren Paradiese sind die verlorenen Paradiese“ (Marcel Proust). Schilk stellt es bewusst an den Anfang — die Sehnsucht nach dem Verlorenen ist der Ausgangspunkt von allem.</p>
+  </div>
+
+  <!-- DEKADENZ -->
+  <div class="col">
+    <h3 style="font-size:1.7rem;color:var(--n-dekadenz);border-bottom:3px solid var(--n-dekadenz);padding-bottom:8px;margin:42px 0 18px;">② Das Dekadenznarrativ — „Alles wird schlechter“</h3>
+    <p>Auf den Bruch folgt der <strong>Verfall</strong>. Das Dekadenznarrativ erzählt die Gegenwart als unaufhaltsames Abgleiten: Die Kultur verflacht, die Menschen verweichlichen, alles wird beliebig, formlos, schwach. Dieses Narrativ ist im Kern ein <em>moralisches Deutungsmuster</em> — es teilt die Welt in stark/schwach, hoch/niedrig, geformt/formlos. Auch hier gibt es zwei Spielarten.</p>
+
+    <div class="compare">
+      <div class="box parallel">
+        <span class="box-label">Modus A</span>
+        <div class="box-body"><p><strong>Anti-transgressiv.</strong> Hier gilt Moral als <em>positiv</em>: Man beklagt den Verlust von Bindung, Anstand, Form, Disziplin. Das Schlechte ist die Grenzüberschreitung („Transgression“) — Hemmungslosigkeit, Maßlosigkeit, „hemmungsloser Narzissmus“.</p></div>
+      </div>
+      <div class="box contrast">
+        <span class="box-label">Modus B</span>
+        <div class="box-body"><p><strong>Anti-totalitär.</strong> Hier gilt Moral als <em>negativ</em>: Nicht zu wenig, sondern zu viel Ordnung wird beklagt — eine erstickende, gleichmacherische Macht. Das Schlechte ist die kontrollierende Vereinheitlichung von oben.</p></div>
+      </div>
+    </div>
+
+    <p>Schilk legt diese Doppelstruktur in einer eigenen typologischen Tabelle frei. Sie zeigt, mit welchen <em>Topoi</em> — wiederkehrenden sprachlichen Bausteinen — jeder Modus arbeitet. Auf der „negativen“ Seite häufen sich Wörter wie <em>Vermassung, Verrohung, Zerfall, Formverlust, hemmungsloser Narzissmus, sexuelle Exzesse, Dekonstruktion</em>. Es ist ein erstaunlich konstantes Vokabular des Niedergangs.</p>
+
+    <div class="box example">
+      <span class="box-label">Beispiel · typische Topoi</span>
+      <div class="box-body"><p>Auf der abgelehnten Seite des Dekadenznarrativs sammeln sich immer ähnliche Schlagworte: <em>Unterhaltungsindustrie, Masse, Vermassung, Hedonismus, Verrohung, formlose Lebenswelt, Polyamorie, Dekonstruktion, lähmende Mittelmäßigkeit.</em> Wer dieses Vokabular kennt, erkennt das Narrativ sofort wieder — egal, um welches Tagesthema es gerade geht.</p></div>
+    </div>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body">Das ist die „Früher war alles besser, heute geht alles den Bach runter“-Erzählung — aber systematisch. Mal richtet sie sich gegen zu viel Freiheit (Modus A: „alle lassen sich gehen“), mal gegen zu viel Kontrolle (Modus B: „der Staat / die Eliten gängeln uns“). Praktisch ist: Beide Spielarten lassen sich je nach Lage einsetzen. Mal ist der Feind die Auflösung, mal der Zwang — Hauptsache, es geht bergab.</div>
+    </div>
+
+    <p>Wo das Dekadenznarrativ aber nur noch beschreibt und beklagt, ist es erschöpft. Sobald stattdessen Dringlichkeit, Appell und Handlungsaufruf in den Vordergrund treten, schaltet die Erzählung in den dritten Gang.</p>
+  </div>
+
+  <!-- APOKALYPSE -->
+  <div class="col">
+    <h3 style="font-size:1.7rem;color:var(--n-apokalypse);border-bottom:3px solid var(--n-apokalypse);padding-bottom:8px;margin:42px 0 18px;">③ Das apokalyptische Narrativ — „Der große Knall“</h3>
+    <p>Am Ende steht der <strong>Untergang</strong> — und mit ihm der mögliche Neuanfang. „Apokalypse“ bedeutet, vom griechischen Wort her, gar nicht „Katastrophe“, sondern <em>Enthüllung</em> oder <em>Offenbarung</em>. Diese doppelte Bedeutung ist entscheidend: Der Untergang ist nicht nur Ende, sondern auch das Moment, in dem die Wahrheit endlich sichtbar wird und sich Freund und Feind scheiden.</p>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff · Etymologie</span>
+      <h4>Apokalypse</h4>
+      <div class="box-body"><p>Von griechisch <em>ἀποκάλυψις (apokálypsis)</em> = „Enthüllung, Offenbarung“. Im Alltag mit „Weltuntergang“ gleichgesetzt, meint der Begriff in der Forschung eine literarische Gattung (Vorbild: die „Offenbarung des Johannes“). Ihr typisches Merkmal nach dem Literaturwissenschaftler Klaus Vondung: eine <em>„Existenzspannung zwischen Defizienz und Fülle“</em> — die Spannung zwischen einem als mangelhaft erlebten Jetzt und einer ersehnten Erfüllung.</p></div>
+    </div>
+
+    <p>Auch dieses Narrativ hat zwei Spielarten — und sie sind politisch hochbrisant, weil sie gegensätzliche Handlungsaufforderungen enthalten.</p>
+
+    <div class="compare">
+      <div class="box parallel">
+        <span class="box-label">Modus A · bremsen</span>
+        <div class="box-body"><p><strong>Katechontisch.</strong> Vom griechischen <em>Katechon</em> = „das Aufhaltende“. Die Aufgabe lautet: den Untergang <em>hinauszögern</em>, das Ende aufhalten, die letzte Bastion halten. Eine zutiefst defensive, bewahrende Haltung.</p></div>
+      </div>
+      <div class="box contrast">
+        <span class="box-label">Modus B · beschleunigen</span>
+        <div class="box-body"><p><strong>Akzelerationistisch.</strong> Von „akzelerieren“ = beschleunigen. Die Aufgabe lautet umgekehrt: den Untergang <em>herbeiführen</em>, weil erst der Zusammenbruch den ersehnten Neuanfang ermöglicht. Eine gefährlich aktive, destruktive Haltung.</p></div>
+      </div>
+    </div>
+
+    <div class="box warning">
+      <span class="box-label">Vorsicht — hier wird es gefährlich</span>
+      <div class="box-body"><p>Der akzelerationistische Modus ist der Punkt, an dem aus Kulturkritik politische Gewalt werden kann. Wenn der reinigende Untergang als <em>wünschenswert</em> gilt, wird Zerstörung zur Strategie. Genau diese Figur taucht in der Selbstradikalisierung rechtsextremer Attentäter auf. Schilks nüchterne Begriffsarbeit macht sichtbar, wie nah die scheinbar harmlose Verfallsklage an dieser Schwelle liegt.</p></div>
+    </div>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body">Zwei Menschen können denselben „Untergang“ sehen und das genaue Gegenteil tun. Der eine wird zum Wächter: Er will halten, was noch zu halten ist, und das Ende aufschieben. Der andere wird zum Brandstifter: Er will das Ende beschleunigen, weil er glaubt, dass danach etwas Besseres kommt. Dieselbe Erzählung — gegensätzliche Konsequenzen. Das macht apokalyptische Rhetorik so unberechenbar.</div>
+    </div>
+  </div>
+
+  <!-- TYPOLOGIE-TABELLE -->
+  <div class="tablewrap">
+    <table>
+      <caption>Tabelle — Die drei Krisennarrative und ihre sechs Modi (nach Schilk, Kap. V)</caption>
+      <thead>
+        <tr><th>Narrativ</th><th>Modus</th><th>Deutungsfunktion</th><th>Bewertung</th><th>Kurzformel</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2"><strong style="color:var(--n-entzweiung)">① Entzweiung</strong><br><span style="font-size:.85em;color:var(--ink-faint)">Bruch / Entfremdung</span></td>
+          <td class="cell-mode">traditionalistisch</td><td>Entfremdung</td><td>negativ</td><td>„Wir haben das Heile verloren“</td>
+        </tr>
+        <tr><td class="cell-mode">anti-utopisch</td><td>ontologisch</td><td>positiv</td><td>„Lasst die Finger von der großen Neuordnung“</td></tr>
+        <tr>
+          <td rowspan="2"><strong style="color:var(--n-dekadenz)">② Dekadenz</strong><br><span style="font-size:.85em;color:var(--ink-faint)">Verfall / Moral</span></td>
+          <td class="cell-mode">anti-transgressiv</td><td>moralisch</td><td>Moral = positiv</td><td>„Zu viel Hemmungslosigkeit“</td>
+        </tr>
+        <tr><td class="cell-mode">anti-totalitär</td><td>moralisch</td><td>Moral = negativ</td><td>„Zu viel Zwang von oben“</td></tr>
+        <tr>
+          <td rowspan="2"><strong style="color:var(--n-apokalypse)">③ Apokalypse</strong><br><span style="font-size:.85em;color:var(--ink-faint)">Untergang / Neue Ordnung</span></td>
+          <td class="cell-mode">katechontisch</td><td>Neue Ordnung</td><td>negativ</td><td>„Das Ende aufhalten“</td>
+        </tr>
+        <tr><td class="cell-mode">akzelerationistisch</td><td>temporal</td><td>positiv</td><td>„Das Ende beschleunigen“</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col">
+    <div class="pullquote">
+      <blockquote>Drei Narrative, sechs Modi — und daraus lässt sich praktisch jede neurechte Krisengeschichte zusammensetzen.</blockquote>
+      <cite>Zusammenfassung der Typologie</cite>
+    </div>
+    <p>In der Praxis treten die drei Narrative selten rein auf. Sie verbinden sich zu <em>Narrationsclustern</em> — die Entzweiung liefert die Vorgeschichte, die Dekadenz die Gegenwartsdiagnose, die Apokalypse den Ausblick und den Handlungsdruck. Zusammen ergeben sie eine geschlossene, in sich stimmige Welterklärung, die kaum von außen angreifbar ist, weil jeder Einwand sich bereits in das Muster einordnen lässt.</p>
+  </div>
+</section>
+
+<!-- ====================== BIG DIVIDER 5 ====================== -->
+<div class="bigdiv">
+  <div class="inner">
+    <div class="num">Teil V · Die Folgen</div>
+    <h2>Warum die Neue Rechte mit fast jedem kann</h2>
+    <p>Wenn dasselbe Krisenmuster überall steckt, erklärt das die überraschenden Bündnisse — mit Esoterik, Populismus und Antisemitismus.</p>
+  </div>
+</div>
+
+<!-- ====================== BRICOLAGE ====================== -->
+<section id="bricolage">
+  <div class="section-head">
+    <span class="eyebrow">05 · Folgen</span>
+    <h2>Postkonservative Bricolage: die Anschlussstellen</h2>
+    <p class="lead">Das Krisenmuster ist anschlussfähig. Genau deshalb verbindet sich die Neue Rechte mühelos mit Milieus, die auf den ersten Blick gar nicht zu ihr passen.</p>
+  </div>
+  <div class="col">
+    <p>Im letzten Teil zieht Schilk die Konsequenz aus seiner Analyse. Wenn dieselbe Krisengeschichte auch in anderen Denkwelten steckt, dann kann die Neue Rechte dort andocken. Er nennt das <strong>postkonservative Bricolage</strong>.</p>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff</span>
+      <h4>Postkonservative Bricolage</h4>
+      <div class="box-body"><p><em>Bricolage</em> ist französisch für „Bastelei“ — ein Begriff des Anthropologen Claude Lévi-Strauss für das Zusammensetzen von etwas Neuem aus vorhandenen Versatzstücken. „Postkonservativ“ heißt: über den klassischen Konservatismus hinausgehend. Gemeint ist also eine <strong>Bastelei aus konservativen, esoterischen, verschwörungstheoretischen und populistischen Bruchstücken</strong> — zusammengehalten durch das gemeinsame Krisenmuster.</p></div>
+    </div>
+
+    <p>Schilk zeigt drei solcher Anschlussstellen:</p>
+
+    <div class="triad">
+      <div class="cell c1">
+        <div class="t-num">→</div>
+        <h4>Esoterik & Verschwörung</h4>
+        <p>Das Entzweiungsnarrativ passt zur harmoniesuchenden Esoterik („alles war einmal eins“), das apokalyptische Narrativ zu kämpferischen Verschwörungstheorien. Beide bieten ein Deutungsmuster für enttäuschte Erwartungen.</p>
+      </div>
+      <div class="cell c2">
+        <div class="t-num">→</div>
+        <h4>Rechtspopulismus</h4>
+        <p>Populismus und Verschwörungsdenken teilen dieselbe Grundfigur: eine einfache Geschichte mit zwei klar getrennten, moralisch aufgeladenen Seiten — Volk gegen Eliten, wir gegen die.</p>
+      </div>
+      <div class="cell c3">
+        <div class="t-num">→</div>
+        <h4>Antisemitismus</h4>
+        <p>Die gefährlichste Brücke: Das Entzweiungsnarrativ ist schon im modernen Antisemitismus angelegt, der „die Juden“ als Prinzip der Spaltung und als Agenten der abstrakten Moderne imaginiert. Das Verfalls- und Verschwörungsmuster lässt sich nahtlos darauf beziehen.</p>
+      </div>
+    </div>
+
+    <div class="box warning">
+      <span class="box-label">Der ernste Kern dieses Befunds</span>
+      <div class="box-body"><p>Schilk verharmlost nichts. Seine Pointe ist umgekehrt: Gerade weil die Krisenrhetorik so harmlos und „nur kulturkritisch“ klingt, ist ihre strukturelle Nähe zum Antisemitismus so wirksam. Das ambivalente antisemitische Bild „des Juden“ als zugleich minderwertig und übermächtig findet seine Entsprechung in den beiden Modi des Dekadenznarrativs. Die Erzählform selbst öffnet die Tür — auch dort, wo der einzelne Text sie nicht offen ausspricht.</p></div>
+    </div>
+
+    <p>Am Ende konvergieren die neueren neurechten Geschichten für Schilk in einer großen apokalyptischen Metanarration: dem <em>„Great Reset“</em>. Die Welt habe sich verändert — Brexit, Trump, die Proteste gegen die Corona-Maßnahmen, der russische Angriff auf die Ukraine —, und die Neue Rechte hat jede dieser Gelegenheiten in ihr Muster eingepasst.</p>
+
+    <div class="quote-card">
+      <div class="quote-label">Beleg · Schlussdiagnose</div>
+      <blockquote class="quote-body">„[I]m digitalen Zeitalter ist ein erfolgreicher Rechtsextremismus folglich vor allem ein guter Geschichtenerzähler.“</blockquote>
+      <figcaption class="quote-citation">Fielitz/Marcks, zitiert bei Schilk 2024, S. 371</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Im Internet gewinnt nicht, wer die besten Argumente hat, sondern wer die packendsten Geschichten erzählt. Erfolgreicher Rechtsextremismus ist vor allem gutes Geschichtenerzählen.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Der Satz bündelt die praktische Konsequenz des ganzen Buchs. Wenn die Stärke der Neuen Rechten in der Erzählung liegt, dann muss auch die Auseinandersetzung mit ihr auf der Ebene der Erzählung ansetzen — nicht nur mit Faktenchecks.</div>
+    </div>
+
+    <div class="box memo">
+      <span class="box-label">Merksatz</span>
+      <div class="box-body">Die Neue Rechte ist nach Schilk am Ende genau das: eine zeitgenössische Metamorphose des Konservatismus — zusammengehalten als Erzählgemeinschaft, anschlussfähig durch Bastelei.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divline">
+
+<!-- ====================== KRITIK / SPANNUNGEN ====================== -->
+<section id="kritik">
+  <div class="section-head">
+    <span class="eyebrow">06 · Prüfung</span>
+    <h2>Spannungen, offene Fragen, Selbstkritik</h2>
+    <p class="lead">Ein gutes Buch trägt seine Schwierigkeiten selbst aus. Schilk benennt mehrere — und ein paar bleiben für die Leserin offen.</p>
+  </div>
+  <div class="col">
+    <p>Schilks Analyse ist scharf, aber sie hat Reibungsflächen, die er teils selbst anspricht. Wer das Buch ernst nimmt, sollte sie kennen.</p>
+
+    <div class="chain">
+      <li>
+        <h4>Trifft die Methode auch sich selbst?</h4>
+        <p>Schilk wirft der Neuen Rechten vor, in einem Verfalls- und Krisenmuster gefangen zu sein. Doch auch die kritische Zeitdiagnose vom „Narzissmus“ der Moderne ist selbst eine Verfallserzählung. Schilk sieht das und gibt zu: Viele Narzissmus-Vorwürfe ließen sich „ebenso gut auf die Protagonisten der Neuen Rechten“ zurückwenden. Die Spannung bleibt: Wer über Verfallsgeschichten schreibt, steht in Gefahr, selbst eine zu erzählen.</p>
+      </li>
+      <li>
+        <h4>Qualitativ gegen Big Data</h4>
+        <p>Schilk arbeitet mit genauer Lektüre weniger Quellen, nicht mit großen Datenmengen. Er muss sich gegen den Einwand verteidigen, dass computergestützte Textanalysen heute „objektiver“ seien. Seine Antwort: Gerade weil das neurechte Muster so redundant ist, fügen Big-Data-Methoden wenig Neues hinzu. Überzeugend — aber eine bewusste methodische Setzung, keine zwingende Wahrheit.</p>
+      </li>
+      <li>
+        <h4>Erklärt das Muster zu viel?</h4>
+        <p>Wenn praktisch jede neurechte Äußerung in das Drei-Akt-Schema passt, stellt sich die klassische Frage an jede starke Theorie: Was würde sie <em>widerlegen</em>? Ein Modell, das alles erklärt, läuft Gefahr, nichts mehr auszuschließen. Schilk begegnet dem mit der typologischen Differenzierung in sechs Modi — aber die Sorge, dass das Raster zu fein über jeden Text passt, lässt sich nicht ganz ausräumen.</p>
+      </li>
+      <li>
+        <h4>Die ermüdete Lesehaltung</h4>
+        <p>Schilk gesteht offen ein, dass ihm beim Lesen neurechter Texte „eine zwischen Ermüdung, Abgeklärtheit und Langeweile oszillierende Lesehaltung“ zur Gewohnheit wurde — alles scheine schon dagewesen. Er deutet das als Beleg für die Redundanz des Materials. Man könnte es auch als Risiko lesen: Wer ein Muster sucht, findet es leicht überall.</p>
+      </li>
+    </div>
+
+    <div class="box thesis">
+      <span class="box-label">Der faire Schluss</span>
+      <div class="box-body">Schilks Stärke ist zugleich seine Grenze: Das Muster ist so überzeugend, weil es so flexibel ist — und so flexibel, dass man wachsam bleiben muss, es nicht zum Universalschlüssel zu machen. Das Buch liefert kein Werkzeug, um Einzelne zu verurteilen, sondern eine Brille, um eine Erzählform wiederzuerkennen.</div>
+    </div>
+
+    <p>Bei aller Kritik bleibt der Ertrag groß. Schilk verschiebt den Blick: weg von der Frage „Was glauben die?“ hin zur Frage „Wie erzählen die?“. Und er zeigt, dass diese zweite Frage oft mehr verrät als die erste.</p>
+  </div>
+</section>
+
+<!-- ====================== BIG DIVIDER 6 ====================== -->
+<div class="bigdiv bruise">
+  <div class="inner">
+    <div class="num">Apparat</div>
+    <h2>Die Begriffe auf einen Blick</h2>
+    <p>Zum Nachschlagen: jeder Schlüsselbegriff in Klartext, im Original und mit Herkunft.</p>
+  </div>
+</div>
+
+<!-- ====================== GLOSSAR ====================== -->
+<section id="glossar">
+  <div class="section-head">
+    <span class="eyebrow">07 · Apparat</span>
+    <h2>Glossar der Schlüsselbegriffe</h2>
+    <p class="lead">Klartext zuerst, dann die genauere Fassung und die Wortherkunft. So bleibt nichts hängen.</p>
+  </div>
+  <div class="glossary">
+
+    <div class="glossary-entry">
+      <h4>Erzählgemeinschaft</h4>
+      <div class="g-etym-inline">titelgebender Begriff · nach Ansgar Nünning / Wolfgang Müller-Funk</div>
+      <div class="g-plain"><strong>Klartext:</strong> Eine Gruppe, die nicht durch eine Organisation oder ein Parteiprogramm zusammenhält, sondern durch ein geteiltes Vorratslager an Erzählmustern. Man gehört dazu, weil man dieselben Geschichten erzählt.</div>
+      <div class="g-original"><strong>Original (nach Nünning):</strong> Kollektive, die über ein bestimmtes Repertoire an Erzählmustern bzw. „kulturelle Narrative“ verfügen, die durch soziale Akteure in gesellschaftlichen Kontexten aktualisiert werden.</div>
+      <div class="g-etymology">Verwandt mit der „epistemic community“ — einer Gemeinschaft mit geteilten Überzeugungen und Deutungsschemata.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Narration / Narrativ</h4>
+      <div class="g-etym-inline">das zentrale methodische Begriffspaar</div>
+      <div class="g-plain"><strong>Klartext:</strong> Eine <em>Narration</em> ist die einzelne Geschichte zu einem Thema (ein Artikel über „den Great Reset“). Ein <em>Narrativ</em> ist das wiederkehrende Muster darunter, das in vielen Geschichten gleich bleibt. Themen wechseln, das Muster bleibt.</div>
+      <div class="g-original"><strong>Original (Schilk, S. 159):</strong> Narration = „die konkrete und thematisch gebundene Verknüpfung von Äußerungen in einem Text“; Narrativ = „die intertextuelle Verknüpfung von typisierten Aussagen zu einem komplexen kulturellen Deutungsmuster“.</div>
+      <div class="g-etymology">lateinisch <em>narrare</em> = erzählen. „Intertextuell“ = über mehrere Texte hinweg.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Metapolitik</h4>
+      <div class="g-etym-inline">der Schlüssel zum Selbstverständnis der Neuen Rechten</div>
+      <div class="g-plain"><strong>Klartext:</strong> Der Versuch, nicht zuerst Wahlen oder Gesetze zu beeinflussen, sondern die Kultur davor — also das, was als normal, sagbar und selbstverständlich gilt. Erst die Kultur ändern, dann kommt die Politik nach.</div>
+      <div class="g-original"><strong>Original (Schilk, S. 30):</strong> „Metapolitik in diesem Sinne fragt nach den kulturellen Stellschrauben, an denen sich Gesellschaften de- und re-stabilisieren lassen.“</div>
+      <div class="g-etymology">griechisch <em>meta</em> = über/jenseits + Politik. Schon im 18. Jh. als Selbstbeschreibung konservativen Denkens belegt.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Narrative Affordanz</h4>
+      <div class="g-etym-inline">Schilks Begriff für die Anschlussfähigkeit von Geschichten</div>
+      <div class="g-plain"><strong>Klartext:</strong> Das „Andock-Angebot“ einer Erzählung — woran sie anknüpfen kann und welche Fortsetzungen sie nahelegt. Manche Geschichten laden geradezu dazu ein, auf bestimmte Weise weitergedacht zu werden.</div>
+      <div class="g-original"><strong>Original (sinngemäß, Schilk Kap. III.3):</strong> der Fokus auf die „narrativen Gelegenheitsstrukturen, die der Diskurspraxis der Diskursakteure zugrunde liegen“.</div>
+      <div class="g-etymology">englisch <em>to afford</em> = bieten, ermöglichen. Aus der Wahrnehmungspsychologie (James J. Gibson): das Handlungsangebot eines Gegenstands.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Entzweiung · Dekadenz · Apokalypse</h4>
+      <div class="g-etym-inline">die drei Krisennarrative</div>
+      <div class="g-plain"><strong>Klartext:</strong> Die drei Bausteine der neurechten Mustergeschichte. <em>Entzweiung</em> = der ursprüngliche Bruch („es war einmal heil“). <em>Dekadenz</em> = der Verfall („alles wird schlechter“). <em>Apokalypse</em> = der drohende Untergang, der zugleich Neuanfang verspricht.</div>
+      <div class="g-original"><strong>Original:</strong> drei „idealtypische“ Krisennarrative, in die „gleich einem Ozean alle Teilgeschichten einmünden“ (Schilk, Kap. V).</div>
+      <div class="g-etymology"><em>Dekadenz</em>: lat. <em>decadere</em> = herabfallen. <em>Apokalypse</em>: griech. <em>apokálypsis</em> = Enthüllung, Offenbarung — nicht ursprünglich „Untergang“.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Katechontisch / Akzelerationistisch</h4>
+      <div class="g-etym-inline">die beiden Spielarten der Apokalypse</div>
+      <div class="g-plain"><strong>Klartext:</strong> Zwei gegensätzliche Reaktionen auf den drohenden Untergang. <em>Katechontisch</em> = den Untergang aufhalten wollen (defensiv, bewahrend). <em>Akzelerationistisch</em> = den Untergang beschleunigen wollen, damit der Neuanfang kommt (aktiv, destruktiv).</div>
+      <div class="g-original"><strong>Original:</strong> Schilk leitet den „katechontischen Modus“ von der Katechon-Figur ab — einer Entität, „die die Welt vor der Offenbarung des Antichristen schützt“.</div>
+      <div class="g-etymology"><em>Katechon</em>: griech. <em>κατέχον</em> = „das Aufhaltende“ (2. Thessalonicherbrief). <em>Akzeleration</em>: lat. <em>accelerare</em> = beschleunigen.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Postkonservative Bricolage</h4>
+      <div class="g-etym-inline">Schilks Begriff für die heutige Gestalt der Neuen Rechten</div>
+      <div class="g-plain"><strong>Klartext:</strong> Eine Bastelei aus konservativen, esoterischen, verschwörungstheoretischen und populistischen Versatzstücken — zusammengehalten durch das gemeinsame Krisenmuster. „Post-“ heißt: über den klassischen Konservatismus hinaus.</div>
+      <div class="g-original"><strong>Original:</strong> Bezeichnung für die „Affinität des Konservatismus“ zu esoterischen, verschwörungstheoretischen, rechtspopulistischen und antisemitischen Diskurskoalitionen (Schilk, Kap. VI).</div>
+      <div class="g-etymology">französisch <em>bricolage</em> = Bastelei; Begriff von Claude Lévi-Strauss für das Neue-Schaffen aus Vorgefundenem.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Filiation</h4>
+      <div class="g-etym-inline">das Verhältnis von Neuer Rechte und Konservatismus</div>
+      <div class="g-plain"><strong>Klartext:</strong> Ein Ableger, ein Seitenzweig, eine Abstammungslinie. Schilk meint: Die Neue Rechte ist kein Fremdkörper, sondern ein Kind des Konservatismus — eine seiner Erscheinungsformen.</div>
+      <div class="g-original"><strong>Original:</strong> Die Neue Rechte bildet „einen Teil des Konservatismus, genauer eine Filiation“.</div>
+      <div class="g-etymology">lateinisch <em>filius</em> = Sohn. Filiation = Abstammung, Verzweigung aus einer gemeinsamen Wurzel.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====================== COLOPHON ====================== -->
+<div class="colophon">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--rust-soft)">Quellenapparat · Kolophon</span>
+    <h2 style="font-size:clamp(1.7rem,3.5vw,2.5rem);margin:14px 0 .5em;">Über diese Synthese</h2>
+    <p style="color:#cfd4d3;">Dies ist eine eigenständige, didaktisch aufschlüsselnde Darstellung — keine Wiedergabe des Originals. Alle direkten Zitate sind wörtlich aus dem Quelltext übernommen und mit Seitenzahl belegt; die Klartext-Erklärungen daneben sind Eigenleistung dieser Synthese. Im Zweifel gilt immer das Original.</p>
+
+    <dl class="ref-grid">
+      <div><dt>Autor</dt><dd>Felix Schilk</dd></div>
+      <div><dt>Titel</dt><dd>Die Erzählgemeinschaft der Neuen Rechten. Zur politischen Soziologie konservativer Krisennarrative</dd></div>
+      <div><dt>Verlag</dt><dd>transcript Verlag, Bielefeld</dd></div>
+      <div><dt>Jahr</dt><dd>2024</dd></div>
+      <div><dt>Reihe</dt><dd>Sozialtheorie</dd></div>
+      <div><dt>Lizenz</dt><dd>Open Access · CC BY-SA 4.0</dd></div>
+      <div><dt>Ursprung</dt><dd>Dissertation, TU Dresden (Disputation 18.12.2023)</dd></div>
+      <div><dt>DOI</dt><dd>10.14361/9783839474716</dd></div>
+    </dl>
+
+    <p style="color:#cfd4d3;"><strong style="color:#f4efe4">Zitierte Schlüsselstellen dieser Synthese:</strong> S. 30 (Metapolitik), S. 159 (Narration/Narrativ), S. 164 (Sellner zu Geschichten), S. 291 (Aktanten/Akteure), S. 292 (die nicht eintretende Katastrophe), S. 371 (Rechtsextremismus als Geschichtenerzähler). Weitere Begriffe aus den Kapiteln II (Konservatismus), III (Methode), V (Krisennarrative) und VI (Bricolage).</p>
+
+    <p class="fineprint">Diese Synthese folgt dem Prinzip „Profundität ≠ Obskurität“: Der Gedanke bleibt anspruchsvoll, die Sprache wird klar. Sie ersetzt nicht die Lektüre des frei verfügbaren Open-Access-Buchs, sondern lädt dazu ein. Das vollständige Werk steht unter der oben genannten DOI offen zur Verfügung. — Schriftarten: Fraunces, Spectral, Inter Tight (Google Fonts). Alle Diagramme als eingebettetes SVG.</p>
+  </div>
+</div>
+
+<script>
+// Lesefortschritts-Balken — minimales Vanilla-JS
+(function(){
+  var bar = document.getElementById('progress');
+  function update(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop;
+    var height = h.scrollHeight - h.clientHeight;
+    var pct = height > 0 ? (scrolled / height) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+
+</body>
+</html>
