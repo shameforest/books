@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verlust — Andreas Reckwitz · Eine Synthese</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   VERLUST — Editorial-Slate
+   Newsreader (Display) · Spectral (Body) · Inter Tight (UI)
+   ============================================================ */
+:root{
+  --bg:#ede4cf;          /* warmes Papier */
+  --bg-warm:#e6dcc2;
+  --paper-card:#f4ecd9;
+  --paper-cool:#e4e8e6;
+  --primary:#1d3a40;      /* Petrol */
+  --primary-soft:#2c5057;
+  --primary-deep:#142a2f;
+  --accent:#b85c2f;       /* Terrakotta */
+  --accent-deep:#8f441f;
+  --accent-glow:#d9763f;
+  --gold:#a07a1e;
+  --ink:#1a2530;
+  --ink-soft:#3a444c;
+  --ink-faint:#6a6f6b;
+  --rule:#cfc4a8;
+  --rule-soft:#dcd3ba;
+  --red:#a3242c;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:78px;}
+body{
+  margin:0;
+  background-color:var(--bg);
+  background-image:radial-gradient(var(--rule-soft) 0.9px, transparent 0.9px);
+  background-size:26px 26px;
+  color:var(--ink);
+  font-family:"Spectral",Georgia,serif;
+  font-size:19px;
+  line-height:1.72;
+  font-feature-settings:"kern","liga","onum";
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+
+/* ---- progress bar ---- */
+#progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--accent),var(--gold));
+  z-index:200;transition:width .08s linear;
+}
+
+/* ---- sticky nav ---- */
+.topnav{
+  position:sticky;top:0;z-index:150;
+  height:56px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(16px,4vw,46px);
+  background:rgba(237,228,207,0.86);
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+  border-bottom:1px solid var(--rule);
+}
+.topnav .brand{
+  font-family:"Inter Tight",sans-serif;font-weight:700;
+  letter-spacing:0.04em;color:var(--primary);font-size:15px;text-transform:uppercase;
+}
+.topnav .brand em{color:var(--accent);font-style:normal;}
+.topnav nav{display:flex;gap:22px;}
+.topnav nav a{
+  font-family:"Inter Tight",sans-serif;font-size:12.5px;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;
+  color:var(--ink-soft);transition:color .2s;
+}
+.topnav nav a:hover{color:var(--accent);}
+@media(max-width:860px){.topnav nav{display:none;}}
+
+/* ---- layout shell ---- */
+.wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+.wrap-wide{max-width:1080px;margin:0 auto;padding:0 24px;}
+section{padding:18px 0;}
+
+h1,h2,h3,h4{font-family:"Newsreader",Georgia,serif;font-weight:600;color:var(--primary);line-height:1.12;}
+p{margin:0 0 1.15em;}
+a{color:var(--accent-deep);}
+
+.eyebrow{
+  font-family:"Inter Tight",sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);
+  margin:0 0 12px;display:block;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  padding:clamp(46px,9vw,96px) 0 clamp(34px,6vw,60px);
+  border-bottom:3px double var(--rule);
+  overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse at 78% -10%, rgba(184,92,47,0.10), transparent 55%),
+    radial-gradient(ellipse at 12% 120%, rgba(29,58,64,0.10), transparent 50%);
+  pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:1;}
+.hero-kicker{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px;}
+.tag{
+  font-family:"Inter Tight",sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--primary-soft);background:var(--paper-card);
+  border:1px solid var(--rule);border-radius:2px;padding:5px 11px;
+}
+h1.title{
+  font-size:clamp(46px,9vw,96px);font-weight:700;letter-spacing:-0.015em;
+  margin:0 0 6px;color:var(--primary-deep);
+}
+h1.title em{font-style:italic;color:var(--accent-deep);font-weight:600;}
+.subtitle{
+  font-family:"Newsreader",serif;font-style:italic;font-weight:400;
+  font-size:clamp(20px,3.4vw,30px);color:var(--ink-soft);line-height:1.3;
+  margin:0 0 30px;max-width:30ch;
+}
+.metaline{
+  font-family:"Inter Tight",sans-serif;font-size:13.5px;letter-spacing:0.02em;
+  color:var(--ink-faint);border-top:1px solid var(--rule);
+  padding-top:18px;margin-bottom:34px;
+}
+.metaline strong{color:var(--primary);font-weight:600;}
+
+/* stat strip */
+.statstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;}
+.statstrip .stat{background:var(--bg-warm);padding:18px 14px;text-align:center;}
+.statstrip .num{font-family:"Newsreader",serif;font-weight:600;font-size:clamp(26px,4.5vw,40px);
+  color:var(--accent-deep);line-height:1;display:block;}
+.statstrip .lbl{font-family:"Inter Tight",sans-serif;font-size:10.5px;font-weight:500;
+  letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-soft);margin-top:7px;display:block;line-height:1.3;}
+@media(max-width:620px){.statstrip{grid-template-columns:repeat(2,1fr);}}
+
+/* ============================================================
+   SYNOPSIS / DROP CAP
+   ============================================================ */
+.synopsis{padding-top:42px;}
+.dropcap::first-letter{
+  font-family:"Newsreader",serif;font-weight:700;
+  float:left;font-size:5.4em;line-height:0.72;
+  padding:0.06em 0.1em 0 0;color:var(--accent-deep);
+}
+.lead{font-size:21px;line-height:1.7;}
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+.sec-head{margin:14px 0 26px;}
+.sec-head .num{font-family:"Inter Tight",sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:0.18em;color:var(--accent);}
+.sec-head h2{font-size:clamp(30px,5vw,46px);margin:6px 0 8px;letter-spacing:-0.01em;}
+.sec-head .dek{font-family:"Newsreader",serif;font-style:italic;font-size:clamp(18px,2.6vw,22px);
+  color:var(--ink-soft);line-height:1.34;margin:0;max-width:42ch;}
+
+/* ============================================================
+   BIG DIVIDER (Petrol full-bleed)
+   ============================================================ */
+.divider{
+  position:relative;margin:54px 0;padding:clamp(46px,8vw,82px) 0;
+  background:var(--primary);color:#f4ecd9;overflow:hidden;
+  border-top:1px solid var(--primary-deep);border-bottom:1px solid var(--primary-deep);
+}
+.divider::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(244,236,217,0.07) 1px, transparent 1px);
+  background-size:24px 24px;pointer-events:none;
+}
+.divider::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;
+  border-radius:50%;background:radial-gradient(circle,rgba(184,92,47,0.28),transparent 68%);
+  pointer-events:none;
+}
+.divider .wrap{position:relative;z-index:1;}
+.divider .phase{font-family:"Inter Tight",sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-glow);}
+.divider h2{font-size:clamp(34px,6.5vw,62px);color:#f7efdc;margin:10px 0 14px;line-height:1.06;}
+.divider .sub{font-family:"Newsreader",serif;font-style:italic;font-size:clamp(18px,2.8vw,24px);
+  color:rgba(244,236,217,0.82);line-height:1.4;max-width:46ch;margin:0;}
+
+/* ============================================================
+   BOX SYSTEM
+   ============================================================ */
+.box{border-radius:4px;padding:24px 26px;margin:30px 0;}
+.box-label{font-family:"Inter Tight",sans-serif;font-size:11.5px;font-weight:600;
+  letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;display:block;}
+.box-body{margin:0;}
+.box-body p:last-child{margin-bottom:0;}
+
+.box.def{background:var(--paper-card);border-left:4px solid var(--gold);}
+.box.def .box-label{color:var(--gold);}
+.box.def h4{font-size:22px;margin:0 0 4px;}
+
+.box.thesis{background:var(--primary);color:#f4ecd9;box-shadow:0 14px 34px -18px rgba(20,42,47,0.7);}
+.box.thesis .box-label{color:var(--accent-glow);}
+.box.thesis h4{color:#f7efdc;font-size:23px;margin:0 0 8px;}
+
+.box.memo{background:transparent;border:1.5px dashed var(--rule);}
+.box.memo .box-label{color:var(--ink-faint);}
+
+.box.plain-translation{background:var(--paper-card);border-left:4px solid var(--accent);}
+.box.plain-translation .box-label{color:var(--accent-deep);}
+.box.plain-translation .box-label::before{content:"\2192  ";}
+
+.box.warning{background:var(--primary-deep);color:#e8dcc2;}
+.box.warning .box-label{color:var(--accent-glow);}
+
+.box.parallel{background:var(--paper-cool);border-left:4px solid var(--primary-soft);}
+.box.parallel .box-label{color:var(--primary-soft);}
+
+/* side by side */
+.sbs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:32px 0;}
+.sbs .col{border-radius:4px;padding:22px 22px;}
+.sbs .col.a{background:var(--paper-cool);border-top:3px solid var(--primary-soft);}
+.sbs .col.b{background:var(--paper-card);border-top:3px solid var(--accent);}
+.sbs .col h4{font-size:19px;margin:0 0 8px;display:flex;align-items:center;gap:9px;}
+.sbs .col.a h4::before{content:"";width:11px;height:11px;border-radius:50%;background:var(--primary-soft);flex:none;}
+.sbs .col.b h4::before{content:"";width:11px;height:11px;border-radius:50%;background:var(--accent);flex:none;}
+.sbs .col p{font-size:17px;line-height:1.62;margin-bottom:0;}
+@media(max-width:680px){.sbs{grid-template-columns:1fr;}}
+
+/* triad */
+.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0;}
+.triad .card{background:var(--paper-card);border:1px solid var(--rule);border-radius:4px;padding:20px 18px;}
+.triad .card .k{font-family:"Inter Tight",sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:7px;}
+.triad .card h4{font-size:18px;margin:0 0 7px;}
+.triad .card p{font-size:15.5px;line-height:1.55;margin:0;color:var(--ink-soft);}
+@media(max-width:720px){.triad{grid-template-columns:1fr;}}
+
+/* comparison table */
+table.cmp{width:100%;border-collapse:collapse;margin:30px 0;font-size:16px;
+  background:var(--paper-card);border:1px solid var(--rule);border-radius:4px;overflow:hidden;}
+table.cmp th,table.cmp td{padding:13px 15px;text-align:left;border-bottom:1px solid var(--rule-soft);vertical-align:top;}
+table.cmp thead th{background:var(--primary);color:#f4ecd9;font-family:"Inter Tight",sans-serif;
+  font-size:12px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;}
+table.cmp tbody th{font-family:"Inter Tight",sans-serif;font-weight:600;color:var(--primary);font-size:14px;width:26%;}
+table.cmp tbody tr:last-child td,table.cmp tbody tr:last-child th{border-bottom:none;}
+table.cmp td{color:var(--ink-soft);line-height:1.5;}
+
+/* numbered chain */
+.chain{counter-reset:step;list-style:none;padding:0;margin:32px 0;}
+.chain li{position:relative;padding:4px 0 22px 58px;}
+.chain li::before{
+  counter-increment:step;content:counter(step);
+  position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;
+  background:var(--primary);color:#f4ecd9;font-family:"Newsreader",serif;font-weight:600;
+  font-size:19px;display:flex;align-items:center;justify-content:center;
+}
+.chain li::after{content:"";position:absolute;left:18.5px;top:38px;bottom:0;width:1.5px;background:var(--rule);}
+.chain li:last-child::after{display:none;}
+.chain li h4{font-size:19px;margin:0 0 4px;}
+.chain li p{font-size:16.5px;line-height:1.6;margin:0;color:var(--ink-soft);}
+
+/* ============================================================
+   QUOTES
+   ============================================================ */
+/* schlüsselzitatkarte */
+.quote-card{
+  position:relative;margin:38px 0;padding:30px 30px 26px;
+  background:var(--paper-card);border-radius:5px;
+  border-top:3px solid var(--accent);
+  box-shadow:0 18px 40px -26px rgba(26,37,48,0.45);
+}
+.quote-card::before{
+  content:"\201E";position:absolute;left:14px;top:-14px;
+  font-family:"Newsreader",serif;font-size:90px;line-height:1;color:var(--accent);opacity:0.26;
+}
+.quote-label{font-family:"Inter Tight",sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:0.14em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:14px;display:block;}
+.quote-body{font-family:"Newsreader",serif;font-size:clamp(21px,3vw,27px);font-weight:500;
+  line-height:1.34;color:var(--primary-deep);margin:0 0 12px;font-style:italic;text-indent:0;}
+.quote-citation{font-family:"Inter Tight",sans-serif;font-size:12.5px;letter-spacing:0.03em;
+  color:var(--ink-faint);margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--rule-soft);}
+.quote-translation,.quote-context{font-size:16px;line-height:1.62;margin-bottom:11px;color:var(--ink-soft);}
+.quote-translation strong,.quote-context strong{color:var(--accent-deep);font-weight:600;
+  font-family:"Inter Tight",sans-serif;font-size:13px;letter-spacing:0.02em;}
+.quote-context{margin-bottom:0;}
+
+/* glowing pull quote */
+.pull{
+  position:relative;margin:48px auto;max-width:30ch;text-align:center;padding:30px 26px;
+}
+.pull blockquote{
+  font-family:"Newsreader",serif;font-weight:600;font-style:italic;
+  font-size:clamp(26px,4.6vw,42px);line-height:1.22;color:var(--accent-deep);margin:0;
+  position:relative;z-index:1;
+  text-shadow:0 0 18px rgba(217,118,63,0.34), 0 0 42px rgba(184,92,47,0.18);
+}
+.pull::before{
+  content:"";position:absolute;inset:-6px;border-radius:14px;z-index:0;
+  border:1.5px solid var(--accent);
+  box-shadow:0 0 22px rgba(217,118,63,0.40), inset 0 0 22px rgba(217,118,63,0.10);
+  opacity:0.85;
+}
+.pull .src{position:relative;z-index:1;display:block;margin-top:16px;
+  font-family:"Inter Tight",sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--ink-faint);text-shadow:none;}
+
+/* inline quote */
+.iq{font-style:italic;color:var(--primary-deep);}
+.src-inline{font-family:"Inter Tight",sans-serif;font-size:0.74em;color:var(--ink-faint);
+  letter-spacing:0.02em;font-style:normal;}
+
+/* ============================================================
+   FIGURE / STIMMEN
+   ============================================================ */
+.figgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0;}
+.figcard{background:var(--paper-card);border:1px solid var(--rule);border-radius:4px;padding:18px 18px;}
+.figcard .name{font-family:"Newsreader",serif;font-weight:600;font-size:18px;color:var(--primary);margin:0 0 2px;}
+.figcard .dates{font-family:"Inter Tight",sans-serif;font-size:11px;letter-spacing:0.04em;color:var(--accent-deep);
+  text-transform:uppercase;margin:0 0 9px;}
+.figcard p{font-size:14.5px;line-height:1.5;margin:0;color:var(--ink-soft);}
+@media(max-width:760px){.figgrid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.figgrid{grid-template-columns:1fr;}}
+
+/* ============================================================
+   DETAILS (Vertiefung)
+   ============================================================ */
+details{background:var(--paper-cool);border:1px solid var(--rule);border-radius:4px;
+  margin:26px 0;padding:0;overflow:hidden;}
+details summary{cursor:pointer;list-style:none;padding:16px 22px;
+  font-family:"Inter Tight",sans-serif;font-weight:600;font-size:14.5px;letter-spacing:0.02em;
+  color:var(--primary);display:flex;align-items:center;gap:12px;}
+details summary::-webkit-details-marker{display:none;}
+details summary::before{content:"+";font-family:"Newsreader",serif;font-size:22px;color:var(--accent);
+  width:18px;display:inline-block;transition:transform .2s;}
+details[open] summary::before{content:"\2013";}
+details .det-body{padding:0 22px 20px;font-size:16px;line-height:1.64;color:var(--ink-soft);}
+details .det-body p:last-child{margin-bottom:0;}
+
+/* ============================================================
+   SVG FIGURES
+   ============================================================ */
+figure.diagram{margin:36px 0;padding:0;}
+figure.diagram svg{width:100%;height:auto;display:block;
+  background:var(--paper-card);border:1px solid var(--rule);border-radius:5px;}
+figure.diagram figcaption{font-family:"Inter Tight",sans-serif;font-size:12.5px;color:var(--ink-faint);
+  letter-spacing:0.02em;margin-top:10px;text-align:center;line-height:1.45;}
+.svg-eyebrow{font-family:"Inter Tight",sans-serif;font-weight:600;letter-spacing:0.16em;
+  text-transform:uppercase;}
+
+/* ============================================================
+   SYNTHESIS + GLOSSARY
+   ============================================================ */
+.synthesis{background:var(--paper-card);border-top:3px solid var(--accent);border-radius:5px;
+  padding:30px 30px;margin:36px 0;box-shadow:0 18px 40px -26px rgba(26,37,48,0.4);}
+.synthesis .box-label{color:var(--accent-deep);font-family:"Inter Tight",sans-serif;font-size:11.5px;
+  font-weight:600;letter-spacing:0.14em;text-transform:uppercase;display:block;margin-bottom:12px;}
+.synthesis h3{font-size:26px;margin:0 0 12px;}
+
+.glossary-entry{border-bottom:1px solid var(--rule);padding:22px 0;}
+.glossary-entry:last-child{border-bottom:none;}
+.glossary-entry h4{font-size:21px;margin:0 0 12px;color:var(--accent-deep);}
+.g-plain,.g-original,.g-etymology{font-size:16px;line-height:1.6;margin-bottom:10px;}
+.g-plain strong,.g-original strong{font-family:"Inter Tight",sans-serif;font-size:12.5px;font-weight:600;
+  letter-spacing:0.04em;text-transform:uppercase;color:var(--primary);}
+.g-original{background:var(--paper-cool);border-left:3px solid var(--rule);padding:12px 16px;
+  font-style:italic;color:var(--ink-soft);}
+.g-original strong{color:var(--accent-deep);font-style:normal;}
+.g-etymology{font-size:14px;color:var(--ink-faint);margin-bottom:0;}
+.g-etymology em{font-style:italic;}
+
+/* ============================================================
+   COLOPHON / FOOTER
+   ============================================================ */
+.colophon{background:var(--bg-warm);border-top:3px double var(--rule);
+  padding:40px 0;margin-top:54px;}
+.colophon h3{font-size:20px;margin:0 0 14px;}
+.colophon p{font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin-bottom:10px;}
+.colophon .src-inline{font-size:13px;}
+footer.foot{background:var(--primary-deep);color:rgba(244,236,217,0.72);
+  padding:34px 0;text-align:center;}
+footer.foot p{font-family:"Inter Tight",sans-serif;font-size:12.5px;letter-spacing:0.03em;margin:0 0 6px;line-height:1.6;}
+footer.foot .big{font-family:"Newsreader",serif;font-style:italic;font-size:20px;color:#f4ecd9;margin-bottom:14px;}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print{
+  .topnav,#progress{display:none;}
+  body{background:white;background-image:none;font-size:11pt;color:#000;}
+  .hero::before,.divider::before,.divider::after,.hero::after{display:none;}
+  .divider{background:#fff;color:#000;border:1px solid #999;}
+  .divider .phase,.divider h2,.divider .sub{color:#000;}
+  .box,.quote-card,.pull,figure.diagram,.synthesis,.sbs .col,.triad .card,.chain li,.figcard,details{
+    break-inside:avoid;page-break-inside:avoid;}
+  .pull blockquote{text-shadow:none;color:#000;}
+  .pull::before{box-shadow:none;border-color:#999;}
+  .box.thesis,.box.warning{background:#f0f0f0;color:#000;box-shadow:none;}
+  .box.thesis h4,.box.thesis .box-label,.box.warning .box-label{color:#000;}
+  section{padding:14px 0;}
+  a::after{content:" (" attr(href) ")";font-size:9pt;color:#555;}
+  a[href^="#"]::after{content:"";}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="topnav">
+  <div class="brand">Reckwitz · <em>Verlust</em></div>
+  <nav>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#was">Was ist Verlust</a>
+    <a href="#paradoxie">Die Paradoxie</a>
+    <a href="#spaetmoderne">Spätmoderne</a>
+    <a href="#reparatur">Reparatur</a>
+    <a href="#stimmen">Stimmen</a>
+    <a href="#glossar">Glossar</a>
+  </nav>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-kicker">
+      <span class="tag">Theoretische Monographie</span>
+      <span class="tag">Soziologie der Moderne</span>
+      <span class="tag">~430 Seiten · 9 Kapitel</span>
+      <span class="tag">Sprache: Deutsch</span>
+    </div>
+    <h1 class="title">Ver<em>lust</em></h1>
+    <p class="subtitle">Warum eine Gesellschaft, die an den Fortschritt glaubt, ausgerechnet am Verlieren zerbricht — und wie sie lernen könnte, damit zu leben.</p>
+    <div class="metaline">
+      <strong>Andreas Reckwitz</strong> · <em>Verlust. Ein Grundproblem der Moderne</em> · Suhrkamp Verlag, Berlin 2024 · Erstausgabe · Seitenangaben folgen der gedruckten Suhrkamp-Ausgabe.
+    </div>
+    <div class="statstrip">
+      <div class="stat"><span class="num">4</span><span class="lbl">Verlust&shy;effekte der Moderne</span></div>
+      <div class="stat"><span class="num">6</span><span class="lbl">spätmoderne Verlustschübe</span></div>
+      <div class="stat"><span class="num">3</span><span class="lbl">Zukunfts&shy;szenarien</span></div>
+      <div class="stat"><span class="num">~250</span><span class="lbl">Jahre westliche Moderne</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SYNOPSIS ===================== -->
+<section id="synopsis" class="synopsis">
+  <div class="wrap">
+    <span class="eyebrow">Worum es geht</span>
+    <p class="lead dropcap">Tuvalu versinkt im Meer. In Deutschland blicken 2022 rund 84 Prozent pessimistisch in die Zukunft. Vinylplatten erleben ein Revival, Trump verspricht, Amerika „wieder groß" zu machen, und das Wort Resilienz ist überall. Der Soziologe Andreas Reckwitz (geboren 1970, lehrt in Berlin) beginnt sein Buch mit acht solchen Momentaufnahmen aus der Gegenwart. So verschieden sie sind, haben sie eines gemeinsam: <span class="iq">Sie drehen sich um Verluste.</span> <span class="src-inline">(S. 14)</span> Daraus entwickelt er die Leitfrage des Buches.</p>
+
+    <p>Diese Frage lautet nicht „Was geht alles verloren?", sondern grundsätzlicher: In welchem Verhältnis steht die moderne Gesellschaft zu den Verlusten? Reckwitz' Antwort ist die Kernerkenntnis des ganzen Buches — und sie passt in einen Satz: Die Moderne hat ein eingebautes Problem mit dem Verlieren, weil jeder Verlust ihrem Glauben an den Fortschritt widerspricht. Verluste sind für sie eine Art Skandal, der eigentlich nicht vorkommen darf.</p>
+
+    <div class="box thesis">
+      <span class="box-label">Die Grundthese</span>
+      <h4>Verlust ist ein Grundproblem der Moderne.</h4>
+      <div class="box-body"><p>Die moderne Gesellschaft glaubt fest daran, dass die Zukunft besser sein wird als die Gegenwart. Verluste durchkreuzen genau dieses Versprechen — sie sind immer eine Verschlechterung. In einer Gesellschaft, die den Fortschritt zur Norm erklärt hat, müssen Verlusterfahrungen darum als Enttäuschung, im Extremfall als Skandal erscheinen.</p></div>
+    </div>
+
+    <p>Wichtig ist gleich zu Beginn, was das Buch <em>nicht</em> ist. Reckwitz schreibt keine Kulturkritik, keine Klage über den Niedergang des Abendlandes. <span class="iq">Wer eine solche kulturpessimistische Schrift fürchtet, den kann ich beruhigen. Wer sie erhofft, wird enttäuscht sein.</span> <span class="src-inline">(S. 15)</span> Sein Ziel ist eine nüchterne Analyse — er nennt es, mit dem Philosophen Jean-François Lyotard, den Versuch, „die Moderne zu redigieren". Also: nicht abzuschaffen, sondern den Text der Moderne zu überarbeiten und einen blinden Fleck sichtbar zu machen.</p>
+
+    <p>Das Buch beantwortet nacheinander drei Fragen, und nach ihnen ist es auch gegliedert. Erstens: Was ist überhaupt ein Verlust, soziologisch betrachtet? Zweitens: Warum hat die Moderne ein so widersprüchliches Verhältnis zu Verlusten? Drittens: Was ändert sich gerade jetzt, in der Spätmoderne des frühen 21. Jahrhunderts? Die folgende Synthese folgt diesem Dreischritt.</p>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body"><p>Stell dir die Moderne wie einen Menschen vor, der felsenfest überzeugt ist, dass es jedes Jahr ein bisschen besser wird — mehr Wohlstand, mehr Technik, mehr Freiheit. Solange das stimmt, ist alles gut. Aber sobald dieser Mensch etwas verliert — den Job, die Heimat, die Gesundheit, die Hoffnung —, gerät sein ganzes Weltbild ins Wanken. Denn in seinem Plan war Verlust gar nicht vorgesehen. Genau dieser eingebaute Widerspruch ist das Thema des Buches.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DIVIDER I ===================== -->
+<div class="divider">
+  <div class="wrap">
+    <span class="phase">Erster Teil</span>
+    <h2>Was ein Verlust ist</h2>
+    <p class="sub">Bevor man über die Moderne reden kann, muss man wissen, wovon man spricht. Verlust ist kein rein privates Gefühl — er entsteht im Sozialen.</p>
+  </div>
+</div>
+
+<!-- ===================== SECTION: WAS IST VERLUST ===================== -->
+<section id="was">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">01 — Verschwinden, Verlust, Welt</span>
+      <h2>Verlust ist ein Verschwinden, das wehtut</h2>
+      <p class="dek">Alles Soziale ist vergänglich. Ein Verlust ist der besondere Fall, in dem wir das Verschwinden negativ erleben — weil wir an das Verlorene gebunden waren.</p>
+    </div>
+
+    <p>Reckwitz beginnt überraschend grundsätzlich, nämlich mit der Zeit. Aus Sicht einer prozessorientierten Sozialtheorie — also einer Theorie, die Gesellschaft nicht als festes Gebäude, sondern als ständigen Fluss von Handlungen versteht — ist das Verschwinden völlig normal. Praktiken werden wiederholt, verändern sich, hören auf. Das meiste, was verschwindet, bemerken wir gar nicht. Ein Verlust ist erst dann gegeben, wenn ein Verschwinden negativ bewertet und negativ empfunden wird.</p>
+
+    <p>Der entscheidende Punkt: Verlieren kann man nur, woran man gebunden war. Etwas wird zum Verlust, weil es zuvor subjektiv oder kollektiv wertvoll erschien, weil es für die eigene Identität wichtig war. Ohne emotionale Bindung kein Verlust — nur ein Verschwinden, das uns kaltlässt. Damit hat ein Verlust immer zwei Seiten, die Reckwitz <em>Selbst- und Weltverlust</em> nennt: Wer etwas verliert, verliert ein Stück Welt und zugleich ein Stück von sich selbst.</p>
+
+    <figure class="quote-card">
+      <span class="quote-label">Definition · Einleitung</span>
+      <blockquote class="quote-body">„In der Erfahrung eines Verlusts wird die Tatsache, dass etwas verschwindet, negativ bewertet."</blockquote>
+      <figcaption class="quote-citation">Reckwitz 2024, S. 18 · Suhrkamp-Ausgabe</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Nicht jedes Ende ist ein Verlust. Wenn dein altes Handy kaputtgeht und du froh über das neue bist, hast du nichts „verloren". Erst wenn das Verschwinden für dich schlecht ist — wenn du es bedauerst —, wird es zum Verlust.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Mit dieser schlichten Definition macht Reckwitz den Verlust zu einem soziologischen Gegenstand. Verlust ist nichts Objektives, das einfach „da" ist, sondern hängt von Bewertung und Gefühl ab — und die sind kulturell geprägt.</div>
+    </figure>
+
+    <div class="pull">
+      <blockquote>Verlieren kann man nur, woran man gebunden war.</blockquote>
+      <span class="src">nach Reckwitz · S. 18</span>
+    </div>
+
+    <p>Zwei Merkmale machen den schweren Verlust aus, den Verlust „im starken Sinne". Er ist <em>irreversibel</em> — er lässt sich nicht rückgängig machen. Und er ist <em>unverfügbar</em> — man ist ihm ausgesetzt, man hat ihn nicht in der Hand. Der Tod eines geliebten Menschen ist der Prototyp: endgültig und nicht zu kontrollieren. Reckwitz interessiert sich ausdrücklich nicht für die Bagatellverluste des Alltags (den verlegten Schlüssel), sondern für die, die uns langfristig erschüttern: Tod, Heimatverlust, Statusverlust, Kontrollverlust, der Verlust einer Zukunft.</p>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff</span>
+      <h4>doing loss</h4>
+      <div class="box-body"><p>Verluste liegen nicht einfach vor — sie werden gemacht. Mit <em>doing loss</em> (englisch für „Verlust herstellen / bearbeiten") meint Reckwitz alle Handlungsweisen, mit denen eine Gesellschaft ein Verschwinden überhaupt erst zum Verlust erklärt und dann damit umgeht: Trauerrituale, Gerichtsprozesse, Denkmäler, Erzählungen. Das Gegenstück heißt <em>undoing loss</em> — Verluste unsichtbar machen, kleinreden, verschweigen.</p></div>
+    </div>
+
+    <p>Wie aus einem bloßen Verschwinden ein gesellschaftlich anerkannter Verlust wird, hängt an drei Dingen, die Reckwitz die Dimensionen der „Verlustgefüge" nennt. Sie bilden den analytischen Rahmen für das ganze erste Drittel des Buches.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramm der drei Dimensionen von Verlustgefügen">
+        <defs>
+          <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#b85c2f" stop-opacity="0.22"/>
+            <stop offset="100%" stop-color="#b85c2f" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <text x="360" y="34" text-anchor="middle" class="svg-eyebrow" font-size="13" fill="#b85c2f" letter-spacing="3">DER ANALYTISCHE RAHMEN</text>
+        <text x="360" y="62" text-anchor="middle" font-family="Newsreader, serif" font-size="24" font-weight="600" fill="#1d3a40">Drei Dimensionen jedes Verlusts</text>
+
+        <circle cx="360" cy="248" r="120" fill="url(#centerGlow)"/>
+        <circle cx="360" cy="248" r="58" fill="#1d3a40"/>
+        <text x="360" y="242" text-anchor="middle" font-family="Newsreader, serif" font-size="17" font-weight="600" fill="#f4ecd9">Verlust&shy;</text>
+        <text x="360" y="262" text-anchor="middle" font-family="Newsreader, serif" font-size="17" font-weight="600" fill="#f4ecd9">gefüge</text>
+
+        <!-- three nodes -->
+        <g>
+          <line x1="360" y1="190" x2="360" y2="150" stroke="#cfc4a8" stroke-width="2"/>
+          <rect x="232" y="92" width="256" height="58" rx="6" fill="#f4ecd9" stroke="#b85c2f" stroke-width="1.5"/>
+          <text x="360" y="116" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" font-weight="700" fill="#8f441f" letter-spacing="1">ZEITLICHKEIT</text>
+          <text x="360" y="137" text-anchor="middle" font-family="Spectral, serif" font-size="13" fill="#3a444c">Erinnerung an früher · Angst vor später</text>
+        </g>
+        <g>
+          <line x1="312" y1="290" x2="190" y2="338" stroke="#cfc4a8" stroke-width="2"/>
+          <rect x="40" y="330" width="270" height="58" rx="6" fill="#f4ecd9" stroke="#1d3a40" stroke-width="1.5"/>
+          <text x="175" y="354" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" font-weight="700" fill="#1d3a40" letter-spacing="1">NARRATIVITÄT</text>
+          <text x="175" y="375" text-anchor="middle" font-family="Spectral, serif" font-size="13" fill="#3a444c">Wir erzählen „Verlustgeschichten"</text>
+        </g>
+        <g>
+          <line x1="408" y1="290" x2="530" y2="338" stroke="#cfc4a8" stroke-width="2"/>
+          <rect x="410" y="330" width="270" height="58" rx="6" fill="#f4ecd9" stroke="#a07a1e" stroke-width="1.5"/>
+          <text x="545" y="354" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" font-weight="700" fill="#a07a1e" letter-spacing="1">AFFEKTIVITÄT</text>
+          <text x="545" y="375" text-anchor="middle" font-family="Spectral, serif" font-size="13" fill="#3a444c">Trauer, Angst, Wut, Scham</text>
+        </g>
+      </svg>
+      <figcaption>Nach Reckwitz, „Analytischer Bezugsrahmen einer Soziologie der Verluste" (vgl. Abb. 1, S. 36). Erst Zeit, Erzählung und Gefühl zusammen machen aus einem Verschwinden einen sozialen Verlust.</figcaption>
+    </figure>
+
+    <p>Die <strong>Affektivität</strong> verdient besondere Aufmerksamkeit, denn sie ist breiter, als man denkt. Verlust löst nicht nur Trauer aus. Reckwitz zeichnet eine ganze „Affektkartografie": Da ist die <em>Angst</em> vor dem kommenden Verlust, die <em>Wut</em> und <em>Empörung</em>, wenn man jemandem die Schuld gibt, die <em>Scham</em> über das eigene Scheitern und die <em>Verbitterung</em>, wenn die Wut sich festsetzt und chronisch wird. Diese Gefühle sind nicht nur privat — sie sind gesellschaftlich wirksam und treiben politische Bewegungen an.</p>
+
+    <div class="box memo">
+      <span class="box-label">Merksatz</span>
+      <div class="box-body"><p>Im Verlustgeschehen gibt es selten nur zwei Beteiligte — den Verlierer und das Verlorene. Fast immer kommt ein Dritter hinzu: ein Schuldiger, ein Täter, ein Gewinner. Reckwitz nennt das die „Figuren des Dritten". Genau hier entstehen <em>Verlustarenen</em> — öffentliche Kampfplätze, auf denen darum gerungen wird, wessen Verlust überhaupt zählt.</p></div>
+    </div>
+
+    <p>Damit ist die Bühne bereitet. Verluste sind erstens an Bindung geknüpft, zweitens irreversibel und unverfügbar, drittens werden sie in Zeit, Erzählung und Gefühl sozial geformt — und viertens in Arenen umkämpft. Die Frage „Wer ist Opfer? Welcher Verlust ist legitim?" wird uns im dritten Teil als zentrales Merkmal der Gegenwart wiederbegegnen.</p>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body"><p>Ob ein Verlust „zählt", entscheidet nicht der Verlust selbst, sondern die Gesellschaft. Ein Beispiel: Wenn eine ganze Industrieregion ihre Arbeitsplätze verliert, kann das jahrzehntelang als bloßer „Strukturwandel" abgetan werden — bis irgendwann jemand anfängt, es als echten Verlust zu erzählen, dem Trauer und Wut zustehen. Dann wird daraus ein politisches Thema. Der Verlust war die ganze Zeit da; sichtbar wurde er erst durch eine neue Erzählung.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DIVIDER II ===================== -->
+<div class="divider">
+  <div class="wrap">
+    <span class="phase">Zweiter Teil</span>
+    <h2>Die Verlustparadoxie</h2>
+    <p class="sub">Das Herzstück des Buches: Die Moderne bekämpft Verluste — und erzeugt sie zugleich. Sie macht sie unsichtbar — und kann gar nicht aufhören, über sie zu reden.</p>
+  </div>
+</div>
+
+<!-- ===================== SECTION: FORTSCHRITT ===================== -->
+<section id="paradoxie">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">02 — Der Fortschrittsimperativ</span>
+      <h2>Der Motor, der das Problem erzeugt</h2>
+      <p class="dek">Die Moderne läuft auf einem einzigen, grandios einfachen Versprechen: Morgen wird besser als heute. Genau dieses Versprechen macht Verluste unerträglich.</p>
+    </div>
+
+    <p>Was unterscheidet die moderne Gesellschaft von allem, was vorher war? Reckwitz' Antwort: der Fortschrittsglaube. Er ist <span class="iq">ganz ungewöhnlich und grandios einfach</span> <span class="src-inline">(S. 20)</span> — er besagt, dass die Zukunft für Gesellschaft und Individuum besser sein wird als die Gegenwart, so wie die Gegenwart schon besser ist als die Vergangenheit. Der deutsche Historiker Reinhart Koselleck (1923–2006) hat dafür ein Bild geprägt, das Reckwitz aufgreift: Die Moderne öffnet einen Bruch zwischen dem „Erfahrungsraum" der Vergangenheit und dem „Erwartungshorizont" der Zukunft.</p>
+
+    <p>Aus dem Glauben wird eine Norm. Der Fortschritt ist nicht bloß Hoffnung, sondern <em>Imperativ</em> — ein Befehl. Das „Vorwärts" und „Nach-oben" gilt als feste Erwartung und als Versprechen zugleich. Dieser Imperativ verankert sich in drei großen Institutionen, die Reckwitz die Säulen der Moderne nennt: Wissenschaft und Technik, Ökonomie, Staat. Alle drei arbeiten an der Verbesserung der Welt.</p>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff</span>
+      <h4>Fortschrittsimperativ</h4>
+      <div class="box-body"><p>Der gesellschaftliche Befehl, dass es immer weiter aufwärtsgehen <em>muss</em>. Aus der bloßen Beobachtung „die Dinge werden besser" wird in der Moderne eine Erwartung, eine Norm, ein Versprechen. Wer fleißig ist, hat ein Recht auf Aufstieg; wer gesund lebt, ein Recht auf ein langes Leben. Wird dieses Versprechen gebrochen, entsteht nicht nur Trauer, sondern das Gefühl, ungerecht behandelt worden zu sein.</p></div>
+    </div>
+
+    <p>Und genau hier liegt der Konflikt. Jeder Verlust ist, ganz gleich was verloren wird, in irgendeiner wichtigen Hinsicht eine Verschlechterung gegenüber dem Bisherigen. Damit widerspricht er dem Versprechen frontal. Die Negativität, die Trauer um das Verlorene und Gescheiterte hat im Fortschrittsdenken <span class="iq">keinen wirklichen Ort.</span> <span class="src-inline">(S. 21)</span> Reckwitz zitiert die fortschrittstrunkenen Saint-Simonisten des 19. Jahrhunderts mit einem Satz, der das ganze Programm der Moderne auf den Punkt bringt.</p>
+
+    <figure class="quote-card">
+      <span class="quote-label">Schlüsselstelle · Einleitung</span>
+      <blockquote class="quote-body">„Morgen werden wir ein neues Leben beginnen … und wir brauchen nicht mehr zu trauern."</blockquote>
+      <figcaption class="quote-citation">Saint-Simonisten, zit. n. Reckwitz 2024, S. 21</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Die frühen Fortschrittsbegeisterten träumten von einer Zukunft, in der es nichts mehr zu betrauern gibt — weil der Fortschritt alles Leid abgeschafft hat. Trauer galt als Überbleibsel einer rückständigen Vergangenheit.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Dieser Satz ist das Fundament von Reckwitz' Argument. Wenn eine Kultur sich vornimmt, die Trauer abzuschaffen, dann steht sie zwangsläufig sprachlos da, sobald doch etwas verloren geht. Genau das ist das „Grundproblem".</div>
+    </figure>
+
+    <p>Reckwitz vergleicht das mit Bruno Latours berühmtem Befund „Wir sind nie modern gewesen". Die Moderne behauptet von sich, sie strebe der Verlustfreiheit entgegen — aber das hat nie der Realität entsprochen. Hinter der offiziellen Fassade des reinen Fortschritts war der Widerspruch immer schon am Werk. Gemessen an ihrem eigenen Selbstbild, so Reckwitz, sind wir eigentlich nie modern gewesen.</p>
+
+    <div class="sec-head" style="margin-top:48px;">
+      <span class="num">03 — Die doppelte Verlustparadoxie</span>
+      <h2>Weniger <em>und</em> mehr Verluste, zugleich</h2>
+      <p class="dek">Der Widerspruch zwischen Fortschritt und Verlust ist nur der erste Schritt. Aus ihm entspringt eine produktive Paradoxie, die alles antreibt.</p>
+    </div>
+
+    <p>Hier kommt die zentrale Denkfigur des Buches. Über den logischen Widerspruch hinaus wirkt der Modernisierungsprozess ganz konkret auf die Verluste ein — und zwar in vier Richtungen, die Reckwitz die <em>vier Verlusteffekte</em> nennt. Stellt man sie einander gegenüber, ergibt sich ein Paradox, das auf zwei Ebenen läuft. Reckwitz fasst es in einer schlichten Vier-Felder-Tafel zusammen.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Die doppelte Verlustparadoxie als Vier-Felder-Matrix">
+        <text x="360" y="32" text-anchor="middle" class="svg-eyebrow" font-size="13" fill="#b85c2f" letter-spacing="3">DAS HERZSTÜCK DES BUCHES</text>
+        <text x="360" y="60" text-anchor="middle" font-family="Newsreader, serif" font-size="24" font-weight="600" fill="#1d3a40">Die doppelte Verlustparadoxie</text>
+
+        <!-- column headers -->
+        <text x="330" y="108" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" font-weight="700" fill="#1d3a40" letter-spacing="1">HEMMUNG</text>
+        <text x="330" y="126" text-anchor="middle" font-family="Spectral, serif" font-style="italic" font-size="12" fill="#6a6f6b">die Moderne dämpft</text>
+        <text x="545" y="108" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" font-weight="700" fill="#8f441f" letter-spacing="1">STEIGERUNG</text>
+        <text x="545" y="126" text-anchor="middle" font-family="Spectral, serif" font-style="italic" font-size="12" fill="#6a6f6b">die Moderne befeuert</text>
+
+        <!-- row labels -->
+        <text x="40" y="195" font-family="Inter Tight, sans-serif" font-size="13" font-weight="700" fill="#1d3a40" letter-spacing="1">UMFANG</text>
+        <text x="40" y="213" font-family="Spectral, serif" font-style="italic" font-size="11.5" fill="#6a6f6b">wie viel verschwindet</text>
+        <text x="40" y="330" font-family="Inter Tight, sans-serif" font-size="13" font-weight="700" fill="#1d3a40" letter-spacing="1">RELEVANZ</text>
+        <text x="40" y="348" font-family="Spectral, serif" font-style="italic" font-size="11.5" fill="#6a6f6b">wie sehr es zählt</text>
+
+        <!-- cells -->
+        <rect x="170" y="150" width="320" height="100" rx="6" fill="#e4e8e6" stroke="#1d3a40" stroke-width="1.5"/>
+        <text x="330" y="195" text-anchor="middle" font-family="Newsreader, serif" font-size="19" font-weight="600" fill="#1d3a40">Verlustreduktion</text>
+        <text x="330" y="222" text-anchor="middle" font-family="Spectral, serif" font-size="13" fill="#3a444c">Medizin, Technik, Sozialstaat</text>
+
+        <rect x="500" y="150" width="180" height="100" rx="6" fill="#f4ecd9" stroke="#b85c2f" stroke-width="1.5"/>
+        <text x="590" y="190" text-anchor="middle" font-family="Newsreader, serif" font-size="18" font-weight="600" fill="#8f441f">Verlust&shy;</text>
+        <text x="590" y="212" text-anchor="middle" font-family="Newsreader, serif" font-size="18" font-weight="600" fill="#8f441f">potenzierung</text>
+
+        <rect x="170" y="285" width="320" height="100" rx="6" fill="#e4e8e6" stroke="#1d3a40" stroke-width="1.5"/>
+        <text x="330" y="325" text-anchor="middle" font-family="Newsreader, serif" font-size="18" font-weight="600" fill="#1d3a40">Invisibilisierung</text>
+        <text x="330" y="350" text-anchor="middle" font-family="Spectral, serif" font-size="12.5" fill="#3a444c" font-style="italic">undoing loss — wegschauen</text>
+
+        <rect x="500" y="285" width="180" height="100" rx="6" fill="#f4ecd9" stroke="#b85c2f" stroke-width="1.5"/>
+        <text x="590" y="318" text-anchor="middle" font-family="Newsreader, serif" font-size="18" font-weight="600" fill="#8f441f">Bearbeitung</text>
+        <text x="590" y="343" text-anchor="middle" font-family="Spectral, serif" font-size="12.5" fill="#3a444c" font-style="italic">doing loss — hinsehen</text>
+
+        <text x="360" y="430" text-anchor="middle" font-family="Spectral, serif" font-style="italic" font-size="14" fill="#1d3a40">Man verliert in der Moderne <tspan font-weight="600" fill="#8f441f">weniger und mehr zugleich</tspan> —</text>
+        <text x="360" y="452" text-anchor="middle" font-family="Spectral, serif" font-style="italic" font-size="14" fill="#1d3a40">und Verluste werden <tspan font-weight="600" fill="#8f441f">unsichtbarer und sichtbarer zugleich.</tspan></text>
+      </svg>
+      <figcaption>Nach Reckwitz, „Die doppelte Verlustparadoxie der modernen Gesellschaft" (Abb. 3, S. 162). Vier Effekte, zwei Ebenen — Umfang und Relevanz der Verluste.</figcaption>
+    </figure>
+
+    <p>Lesen wir die Tafel. <strong>Erste Ebene — der Umfang:</strong> Auf der einen Seite betreibt die Moderne <em>Verlustreduktion</em>. Sie heilt Krankheiten, zähmt die Natur, bannt Hungersnöte, baut einen Sozialstaat. Hier war sie oft sehr erfolgreich, und das soll man nicht kleinreden. Auf der anderen Seite betreibt dieselbe Moderne <em>Verlustpotenzierung</em>: Sie erzeugt durch Märkte, durch Veralterung, durch Gewalt massenhaft neue Verluste. Ergebnis: weniger und mehr Verluste zugleich.</p>
+
+    <p><strong>Zweite Ebene — die Relevanz:</strong> Da Verluste laut Fortschrittslogik gar nicht vorkommen dürften, macht die Moderne sie unsichtbar (<em>undoing loss</em>) — sie deutet sie um, beschämt Opfer, sanktioniert Trauer. Aber das gelingt nie ganz. Also bildet sie zugleich hochspezialisierte Formen aus, um Verluste intensiv zu <em>bearbeiten</em> (<em>doing loss</em>) — von der Nostalgie über die Versicherung bis zur Psychotherapie. Ergebnis: Verluste werden unsichtbarer und sichtbarer zugleich.</p>
+
+    <div class="pull">
+      <blockquote>Modern sein heißt, Verluste anzuheizen.</blockquote>
+      <span class="src">Reckwitz · S. 170</span>
+    </div>
+
+    <p>Das ist keine Panne, sondern System. Reckwitz nennt es eine <span class="iq">„Dialektik der Aufklärung" eigener Art</span> <span class="src-inline">(S. 22)</span> — eine Anspielung auf Adorno und Horkheimer. Die Moderne träumt davon, ein für alle Mal mit den Verlusten fertig zu werden. Tatsächlich ist sie eine Gesellschaft, die unaufhörlich um ihr ungelöstes Verlustproblem kreist — und gerade daraus ihre enorme Energie bezieht.</p>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body"><p>Denk an die Medizin. Sie hat unzählige tödliche Krankheiten besiegt — eine riesige Verlustreduktion. Aber genau deshalb werden heute so viele Menschen sehr alt, dass eine neue Sorte Verlust entsteht: das gebrechliche hohe Alter mit Demenz, Pflege, Einsamkeit. Die Lösung des einen Verlustproblems erzeugt ein neues. Das meint Reckwitz mit „weniger und mehr zugleich".</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION: MECHANISMEN ===================== -->
+<section id="mechanismen">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">04 — Die zehn Verstärker</span>
+      <h2>Wie die Moderne Verluste erzeugt</h2>
+      <p class="dek">Verlustpotenzierung läuft über zwei Wege: Entweder verschwindet objektiv mehr — oder wir werden empfindlicher für das, was verschwindet. Reckwitz beschreibt fünf strukturelle und fünf kulturelle Mechanismen.</p>
+    </div>
+
+    <p>Warum nehmen Verluste zu? Zwei Möglichkeiten, sagt Reckwitz. Entweder steigt der <em>objektive</em> Umfang dessen, was verschwindet (Märkte, Crashs, Kriege). Oder die <em>subjektive</em> Wahrnehmung verfeinert sich, so dass wir Dinge als Verlust empfinden, die uns früher kaltgelassen hätten. Die strukturellen Mechanismen vergrößern die Anlässe; die kulturellen Mechanismen sensibilisieren uns.</p>
+
+    <div class="sbs">
+      <div class="col a">
+        <h4>Fünf strukturelle Mechanismen</h4>
+        <p><strong>Mehr verschwindet objektiv.</strong> Das Regime der Obsoleszenz (das Neue entwertet das Alte); die biografische Betroffenheit durch sozialen Wandel; die Vermarktlichung (Märkte produzieren Gewinner und Verlierer); Kaskadeneffekte komplexer Systeme (Crashs, Pandemien); und die staatliche Gewalt (von Kolonialismus bis Totalitarismus).</p>
+      </div>
+      <div class="col b">
+        <h4>Fünf kulturelle Mechanismen</h4>
+        <p><strong>Wir werden empfindlicher.</strong> Die Erwartungsexpansion (wer viel erwartet, hat viel zu verlieren); die emotionale Empfindsamkeit; die Singularisierung (das Einzigartige ist unersetzbar); die Geschichtskultur (mehr Vergangenheit = mehr Vergleichsmaterial für Verluste); und das Freiheitsparadox.</p>
+      </div>
+    </div>
+
+    <p>Zwei dieser Mechanismen lohnen ein genaueres Hinsehen, weil sie Reckwitz' eigenste Beiträge sind. Der erste ist das <strong>Regime der Obsoleszenz</strong> — das ständige Veralten. Weil in allen Bereichen der Gesellschaft das Neue prämiert wird, steht das Alte permanent auf dem Prüfstand. Neu gegen alt sei, so Reckwitz, der „binäre Supercode" der Moderne. Wer auf stabile Werthierarchien vertraut, wird zwangsläufig enttäuscht.</p>
+
+    <figure class="quote-card">
+      <span class="quote-label">Schlüsselstelle · Kapitel 4</span>
+      <blockquote class="quote-body">„Die Aufsteiger von gestern sind die Absteiger von morgen."</blockquote>
+      <figcaption class="quote-citation">Reckwitz 2024, S. 174 · Suhrkamp-Ausgabe</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Was heute als wertvoll, modern, gefragt gilt — ein Beruf, eine Technik, eine Lebensweise —, kann morgen schon als überholt gelten. Und mit der Sache verliert auch der Mensch an Status, der an ihr hängt.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Dieser Mechanismus erklärt, warum die Moderne ständig „Verlierer" produziert, ohne dass jemand sie absichtlich erzeugt. Es ist die eingebaute Logik des Neuen, die alte Gewissheiten entwertet — quer durch Wirtschaft, Politik, Kunst und Wissenschaft.</div>
+    </figure>
+
+    <p>Der zweite Schlüsselmechanismus ist das <strong>Freiheitsparadox</strong>. Die moderne Kultur feiert die Wahlfreiheit: Das Subjekt kann sein Leben selbst gestalten. Aber jede Entscheidung für etwas ist zugleich eine Entscheidung gegen alles andere. Die Verwirklichung der einen Möglichkeit vernichtet die anderen. Wer Beruf X wählt, verliert das Leben, das er mit Beruf Y geführt hätte.</p>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff</span>
+      <h4>Freiheitsparadox</h4>
+      <div class="box-body"><p>Die Freiheit, sich für etwas zu entscheiden, zwingt dazu, sich gegen vieles andere zu entscheiden. In der modernen „Kultur der Kontingenz" (also: alles könnte auch anders sein) bedeutet jede getroffene Wahl, dass mögliche andere Leben „ungelebt" bleiben. Diese nichtgelebten Leben kann man später als Verlust betrauern: „Was wäre gewesen, wenn …?"</p></div>
+    </div>
+
+    <p>Unter den strukturellen Mechanismen ragt die <strong>staatliche Gewalt</strong> heraus, weil sie die dunkelste Seite berührt. Reckwitz schließt hier an Zygmunt Bauman an: Der Holocaust ist kein „Rückfall in die Barbarei", kein Gegenteil der Moderne, sondern <span class="iq">das extreme Resultat des Potenzials moderner Staatlichkeit</span> <span class="src-inline">(S. 184)</span>. Der Traum von der „reinen Ordnung" schlägt um in die gewaltsame Ausgrenzung der „Anderen". Auch Kolonialismus, Sklaverei und die Weltkriege gehören zu dieser modernen Gewaltgeschichte.</p>
+
+    <div class="box warning">
+      <span class="box-label">Die unbequeme Pointe</span>
+      <div class="box-body"><p>Die größten Verlustkatastrophen der Moderne — Totalitarismus, Genozid, Kolonialismus — sind keine Unfälle, die der Moderne von außen zustoßen. Sie entspringen ihrem eigenen Streben nach rationaler, „perfekter" Ordnung. Die Gewalt steckt im Projekt selbst.</p></div>
+    </div>
+
+    <div class="sec-head" style="margin-top:48px;">
+      <span class="num">05 — Wegschauen und Hinsehen</span>
+      <h2>Unsichtbar machen — und doch nicht loskommen</h2>
+      <p class="dek">Die zweite Ebene der Paradoxie: Die Moderne entwickelt Techniken, Verluste zu verbergen — und zugleich ganze Industrien, um sie zu bearbeiten.</p>
+    </div>
+
+    <p>Weil Verluste laut Fortschrittslogik nicht sein dürfen, entstehen Strategien des <em>undoing loss</em>. Reckwitz beschreibt zwei Arten. Erstens narrative Umdeutungen: Der Verlust sei nur ein illegitimes Gefühl, oder der „Preis für den Fortschritt", oder bloß vorübergehend, oder eine Abweichung von der Regel. Zweitens soziale Mechanismen: Opfer werden stigmatisiert, Verluste privatisiert, negative Gefühle wie Trauer und Angst sanktioniert. So wird das „funktionierende" Weiterlaufen der Gesellschaft gegen die Last der Verluste abgeschirmt.</p>
+
+    <p>Aber das gelingt nie vollständig. Deshalb bildet die Moderne — das ist die Kehrseite — hochdifferenzierte Formate der aktiven Verlustbearbeitung aus. Reckwitz untersucht sechs davon ausführlich. Sie sind das lebendigste Kapitel des Buches.</p>
+
+    <table class="cmp">
+      <thead>
+        <tr><th>Format des doing loss</th><th>Was es mit dem Verlust macht</th><th>Zeitrichtung</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>Nostalgie</th><td>ästhetisiert ihn — verwandelt Vergangenes in eine schöne, betrachtbare Szene (Retro, Vintage, Ruinen)</td><td>Vergangenheit</td></tr>
+        <tr><th>Risiko</th><td>ökonomisiert ihn — macht ihn berechen- und versicherbar (Börse, Police, Wette)</td><td>Zukunft</td></tr>
+        <tr><th>Verlustpolitik</th><td>politisiert ihn — macht ihn zum Gegenstand öffentlicher Forderung (Konservatismus, Opferpolitik)</td><td>Gegenwart</td></tr>
+        <tr><th>Therapie</th><td>psychologisiert ihn — verwandelt ihn in Arbeit des Individuums am eigenen Selbst</td><td>Subjekt</td></tr>
+        <tr><th>Diaspora</th><td>vergemeinschaftet ihn — der Heimatverlust stiftet kollektive Identität</td><td>Herkunft</td></tr>
+        <tr><th>Religion</th><td>transzendiert ihn — bettet ihn in einen Trost jenseits dieser Welt</td><td>Ewigkeit</td></tr>
+      </tbody>
+    </table>
+
+    <p>Die ersten vier sind echt modern: Ästhetisierung, Ökonomisierung, Politisierung und Therapeutisierung sind treibende Kräfte des Modernisierungsprozesses selbst. Die letzten beiden — Diaspora und Religion — sind viel älter als die Moderne und werden von ihr lediglich „modernisiert", also in eine zeitgemäße Form gebracht.</p>
+
+    <details>
+      <summary>Vertiefung: Warum Nostalgie keine Schwäche ist</summary>
+      <div class="det-body">
+        <p>Nostalgie hat einen schlechten Ruf — als kitschig, rückwärtsgewandt, reaktionär. Reckwitz widerspricht. Dieses negative Bild sei selbst unkritisch, weil es von einem ungebrochenen Fortschrittsglauben motiviert ist, für den Vergangenes definitionsgemäß überholt ist. Versteht man Nostalgie dagegen als ästhetische Praxis des doing loss, wird sie zu einer ernstzunehmenden kulturellen Leistung.</p>
+        <p>Mit Svetlana Boym unterscheidet Reckwitz zwei Spielarten: eine <em>restaurative</em> Nostalgie, die das Vergangene politisch zurückholen will (gefährlich, wenn sie ins Politische kippt) — und eine <em>reflexive</em>, künstlerische Nostalgie, die ein selbstkritisches Potenzial enthält: Sie hält Möglichkeiten vergangenen Lebens präsent, die sich nicht durchsetzen konnten. Der Begriff der „Wehmut" trifft das ambivalente Gefühl: Schmerz über das Verschwundene und zugleich lustvolles Behagen beim Erinnern.</p>
+      </div>
+    </details>
+
+    <div class="box memo">
+      <span class="box-label">Merksatz</span>
+      <div class="box-body"><p>Die Verlustbearbeitung hat eine „antitraumatische Funktion". Wenn ein Verlust nicht sinnhaft verarbeitet wird, droht er zum Trauma zu werden — zu einer Erfahrung, die das Subjekt immer wieder heimsucht. Das doing loss arbeitet dagegen an: Es überführt den privaten Schmerz in das, was wir „Kultur" nennen — in Erzählungen, Rituale, Bilder, Forderungen.</p></div>
+    </div>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body"><p>Eine Versicherung und ein Trauerritual sehen völlig verschieden aus — aber beide tun dasselbe: Sie geben dem Verlust eine Form, mit der man leben kann. Die Versicherung macht den künftigen Verlust kalkulierbar und bezahlbar. Das Ritual macht den vergangenen Verlust besprechbar und teilbar. Beides verhindert, dass uns der Verlust formlos und allein überwältigt.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DIVIDER III ===================== -->
+<div class="divider">
+  <div class="wrap">
+    <span class="phase">Dritter Teil</span>
+    <h2>Verlusteskalation in der Spätmoderne</h2>
+    <p class="sub">Seit den 2010er Jahren gerät die alte Balance aus dem Gleichgewicht. Nicht weil es mehr Verluste gibt — sondern weil sie eine neue Qualität bekommen.</p>
+  </div>
+</div>
+
+<!-- ===================== SECTION: SPÄTMODERNE ===================== -->
+<section id="spaetmoderne">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">06 — Drei Versionen der Moderne</span>
+      <h2>Wo wir gerade stehen</h2>
+      <p class="dek">Die Moderne ist kein Monolith. Reckwitz unterscheidet drei aufeinanderfolgende Versionen — und wir leben in der dritten und bislang letzten.</p>
+    </div>
+
+    <p>Bevor Reckwitz die Gegenwart analysiert, ordnet er sie historisch ein. Die westliche Moderne durchläuft drei Phasen, getrennt durch gewaltsame Umbrüche. In jeder Umbruchsphase häufen sich Verlustschübe — denn wenn eine Gesellschaftsform endet und eine neue sich durchsetzt, gibt es immer Verlierer.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zeitleiste der drei Versionen der Moderne">
+        <text x="360" y="30" text-anchor="middle" class="svg-eyebrow" font-size="13" fill="#b85c2f" letter-spacing="3">DREI VERSIONEN DER MODERNE</text>
+
+        <!-- timeline base -->
+        <line x1="60" y1="150" x2="660" y2="150" stroke="#cfc4a8" stroke-width="3"/>
+
+        <!-- phase 1 -->
+        <circle cx="130" cy="150" r="9" fill="#1d3a40"/>
+        <text x="130" y="115" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="12.5" font-weight="700" fill="#1d3a40">~1800</text>
+        <rect x="60" y="180" width="170" height="92" rx="6" fill="#f4ecd9" stroke="#cfc4a8" stroke-width="1"/>
+        <text x="145" y="205" text-anchor="middle" font-family="Newsreader, serif" font-size="16" font-weight="600" fill="#1d3a40">Bürgerliche</text>
+        <text x="145" y="224" text-anchor="middle" font-family="Newsreader, serif" font-size="16" font-weight="600" fill="#1d3a40">Moderne</text>
+        <text x="145" y="248" text-anchor="middle" font-family="Spectral, serif" font-size="11.5" fill="#6a6f6b">Doppelrevolution,</text>
+        <text x="145" y="263" text-anchor="middle" font-family="Spectral, serif" font-size="11.5" fill="#6a6f6b">Fortschrittsoptimismus</text>
+
+        <!-- phase 2 -->
+        <circle cx="360" cy="150" r="9" fill="#1d3a40"/>
+        <text x="360" y="115" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="12.5" font-weight="700" fill="#1d3a40">~1920 / 1945</text>
+        <rect x="275" y="180" width="170" height="92" rx="6" fill="#f4ecd9" stroke="#cfc4a8" stroke-width="1"/>
+        <text x="360" y="205" text-anchor="middle" font-family="Newsreader, serif" font-size="16" font-weight="600" fill="#1d3a40">Industrielle</text>
+        <text x="360" y="224" text-anchor="middle" font-family="Newsreader, serif" font-size="16" font-weight="600" fill="#1d3a40">Moderne</text>
+        <text x="360" y="248" text-anchor="middle" font-family="Spectral, serif" font-size="11.5" fill="#6a6f6b">Sozialstaat, Massen&shy;</text>
+        <text x="360" y="263" text-anchor="middle" font-family="Spectral, serif" font-size="11.5" fill="#6a6f6b">konsum, „Trente Glorieuses"</text>
+
+        <!-- phase 3 -->
+        <circle cx="590" cy="150" r="11" fill="#b85c2f"/>
+        <text x="590" y="115" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="12.5" font-weight="700" fill="#8f441f">seit ~1970</text>
+        <rect x="505" y="180" width="170" height="92" rx="6" fill="#f4ecd9" stroke="#b85c2f" stroke-width="1.5"/>
+        <text x="590" y="205" text-anchor="middle" font-family="Newsreader, serif" font-size="16" font-weight="600" fill="#8f441f">Spätmoderne</text>
+        <text x="590" y="229" text-anchor="middle" font-family="Spectral, serif" font-size="11.5" fill="#6a6f6b">Postindustrie, Globali&shy;</text>
+        <text x="590" y="244" text-anchor="middle" font-family="Spectral, serif" font-size="11.5" fill="#6a6f6b">sierung, Singularisierung,</text>
+        <text x="590" y="259" text-anchor="middle" font-family="Spectral, serif" font-size="11.5" fill="#6a6f6b">Verlusteskalation</text>
+
+        <text x="360" y="312" text-anchor="middle" font-family="Spectral, serif" font-style="italic" font-size="13.5" fill="#6a6f6b">Jeder Übergang bringt seine eigenen Verlustschübe — die Verlierer des jeweiligen Strukturwandels.</text>
+      </svg>
+      <figcaption>Nach Reckwitz, Kapitel 8 (S. 289–293). Die Spätmoderne ist „immer noch" die Moderne und zugleich bereits eine „andere Moderne".</figcaption>
+    </figure>
+
+    <p>Entscheidend ist der Vergleichsmaßstab. Die <strong>industrielle Moderne</strong> der drei Jahrzehnte nach 1945 — vom französischen Ökonomen Jean Fourastié „Trente Glorieuses" (die dreißig glorreichen Jahre) genannt — gilt rückblickend als das Paradebeispiel einer verlustarmen Fortschrittsgesellschaft. Wirtschaftswachstum, sozialer Aufstieg als Massenerfahrung, ein verlässlicher Sozialstaat. Reckwitz nennt das jedoch ein <span class="iq">Phantasma einer Periode gesellschaftlicher Verlustfreiheit</span> <span class="src-inline">(S. 331)</span> — ein verzerrtes Idealbild.</p>
+
+    <p>Denn diese Phase ruhte auf unsichtbaren Verlusten. Die Traumata der Gewaltära 1914–1945 wurden verschwiegen (im deutschen Wirtschaftswunder die „Unfähigkeit zu trauern"), die Verbrechen des Kolonialismus blieben verborgen, die ökologischen Folgeschäden des Massenkonsums tauchten erst in den 1970ern auf. Es war die letzte Gesellschaft, die sich von ihren eigenen Kosten abschirmen konnte.</p>
+
+    <div class="box memo">
+      <span class="box-label">Merksatz</span>
+      <div class="box-body"><p>Die spätmoderne Verlusteskalation bedeutet nicht, dass es heute „mehr Verluste" gibt — angesichts der Katastrophen des 20. Jahrhunderts wäre das geschichtsvergessen und falsch. Es geht nicht um Quantität, sondern um Qualität: um eine veränderte Konstellation im Verhältnis der Gesellschaft zu ihren Verlusten.</p></div>
+    </div>
+
+    <div class="sec-head" style="margin-top:48px;">
+      <span class="num">07 — Der Fortschrittsverlust</span>
+      <h2>Wenn der Schutzschild verschwindet</h2>
+      <p class="dek">Der zentrale Faktor der Eskalation: Das Fortschrittsversprechen verliert seine Glaubwürdigkeit. Damit kommt den Verlusten ihr Schutz abhanden.</p>
+    </div>
+
+    <p>Seit den 1970er Jahren — markiert durch Donella und Dennis Meadows' Buch „Die Grenzen des Wachstums" (1972) — erodiert der gesellschaftliche Fortschrittsglaube. An seine Stelle treten wissenschaftlich gestützte Szenarien, die bis zur „Zukunft als Katastrophe" reichen. Das hat eine paradoxe Doppelwirkung: Auf der <em>kollektiven</em> Ebene schwindet die Zukunftshoffnung, während auf der <em>individuellen</em> Ebene die Erwartungen ans eigene Leben weiter steigen.</p>
+
+    <p>Reckwitz nennt diesen Schwund den <em>Fortschrittsverlust</em>, und seine Folge ist gravierend. Solange der Fortschrittsglaube intakt war, konnte man jeden Verlust als vorübergehend deuten: Wer heute verliert, gewinnt morgen wieder. Genau dieser geschichtsphilosophische Schutzschild fällt nun weg.</p>
+
+    <figure class="quote-card">
+      <span class="quote-label">Schlüsselstelle · Kapitel 8</span>
+      <blockquote class="quote-body">„Die Modernisierungsverlierer von heute können nicht mehr davon ausgehen, dass sie morgen automatisch wieder zu den Gewinnern gehören werden."</blockquote>
+      <figcaption class="quote-citation">Reckwitz 2024, S. 363 · Suhrkamp-Ausgabe</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Früher tröstete der Fortschrittsglaube: Eine Krise ist nur eine Delle, danach geht es wieder aufwärts. Dieser Trost funktioniert nicht mehr. Wer absteigt, muss damit rechnen, unten zu bleiben.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Ohne den Glauben an die bessere Zukunft schlägt die Irreversibilität der Verluste ungebremst durch. Verluste lassen sich nicht mehr als „Kollateralschaden des Fortschritts" entschärfen. Das ist der Kern der Eskalation.</div>
+    </figure>
+
+    <div class="sec-head" style="margin-top:48px;">
+      <span class="num">08 — Das Hexagon</span>
+      <h2>Sechs Verlustschübe der Gegenwart</h2>
+      <p class="dek">Seit den 2010er Jahren treten sechs Verlustschübe gleichzeitig auf und verstärken sich gegenseitig. Reckwitz nennt es ein „Hexagon" der Verluste.</p>
+    </div>
+
+    <p>Hier liegt das empirische Zentrum des dritten Teils. Sechs ganz verschiedene Verlustschübe treffen in der Gegenwart aufeinander, addieren sich und schaukeln sich hoch. Reckwitz spricht, mit dem Philosophen Louis Althusser, von einer „Überdeterminierung" — einer negativen diesmal.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hexagon der sechs spätmodernen Verlustschübe">
+        <defs>
+          <radialGradient id="hexGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#b85c2f" stop-opacity="0.20"/>
+            <stop offset="100%" stop-color="#b85c2f" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <text x="360" y="30" text-anchor="middle" class="svg-eyebrow" font-size="13" fill="#b85c2f" letter-spacing="3">DAS HEXAGON DER VERLUSTSCHÜBE</text>
+
+        <circle cx="360" cy="290" r="155" fill="url(#hexGlow)"/>
+
+        <!-- connecting hexagon lines -->
+        <polygon points="360,165 530,225 530,355 360,415 190,355 190,225" fill="none" stroke="#cfc4a8" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+        <!-- center -->
+        <circle cx="360" cy="290" r="60" fill="#1d3a40"/>
+        <text x="360" y="284" text-anchor="middle" font-family="Newsreader, serif" font-size="15" font-weight="600" fill="#f4ecd9">Verlust&shy;</text>
+        <text x="360" y="303" text-anchor="middle" font-family="Newsreader, serif" font-size="15" font-weight="600" fill="#f4ecd9">eskalation</text>
+
+        <!-- I top -->
+        <circle cx="360" cy="165" r="42" fill="#f4ecd9" stroke="#b85c2f" stroke-width="1.5"/>
+        <text x="360" y="160" text-anchor="middle" font-family="Newsreader, serif" font-size="15" font-weight="700" fill="#8f441f">I</text>
+        <text x="360" y="120" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="12.5" font-weight="700" fill="#1d3a40">Postindustrialismus</text>
+        <text x="360" y="180" text-anchor="middle" font-family="Spectral, serif" font-size="10.5" fill="#3a444c">die Verlierer</text>
+
+        <!-- II top-right -->
+        <circle cx="530" cy="225" r="42" fill="#f4ecd9" stroke="#b85c2f" stroke-width="1.5"/>
+        <text x="530" y="220" text-anchor="middle" font-family="Newsreader, serif" font-size="15" font-weight="700" fill="#8f441f">II</text>
+        <text x="618" y="218" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="12.5" font-weight="700" fill="#1d3a40">Klimawandel</text>
+        <text x="530" y="240" text-anchor="middle" font-family="Spectral, serif" font-size="10.5" fill="#3a444c">Solastalgie</text>
+
+        <!-- III bottom-right -->
+        <circle cx="530" cy="355" r="42" fill="#f4ecd9" stroke="#b85c2f" stroke-width="1.5"/>
+        <text x="530" y="350" text-anchor="middle" font-family="Newsreader, serif" font-size="15" font-weight="700" fill="#8f441f">III</text>
+        <text x="610" y="372" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="12.5" font-weight="700" fill="#1d3a40">Demokratie-</text>
+        <text x="610" y="388" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="12.5" font-weight="700" fill="#1d3a40">regression</text>
+
+        <!-- IV bottom -->
+        <circle cx="360" cy="415" r="42" fill="#f4ecd9" stroke="#b85c2f" stroke-width="1.5"/>
+        <text x="360" y="410" text-anchor="middle" font-family="Newsreader, serif" font-size="15" font-weight="700" fill="#8f441f">IV</text>
+        <text x="360" y="475" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="12.5" font-weight="700" fill="#1d3a40">Historische Wunden</text>
+        <text x="360" y="430" text-anchor="middle" font-family="Spectral, serif" font-size="10.5" fill="#3a444c">alte Verluste</text>
+
+        <!-- V bottom-left -->
+        <circle cx="190" cy="355" r="42" fill="#f4ecd9" stroke="#b85c2f" stroke-width="1.5"/>
+        <text x="190" y="350" text-anchor="middle" font-family="Newsreader, serif" font-size="15" font-weight="700" fill="#8f441f">V</text>
+        <text x="110" y="372" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="12.5" font-weight="700" fill="#1d3a40">Emotionales</text>
+        <text x="110" y="388" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="12.5" font-weight="700" fill="#1d3a40">Selbst</text>
+
+        <!-- VI top-left -->
+        <circle cx="190" cy="225" r="42" fill="#f4ecd9" stroke="#b85c2f" stroke-width="1.5"/>
+        <text x="190" y="220" text-anchor="middle" font-family="Newsreader, serif" font-size="15" font-weight="700" fill="#8f441f">VI</text>
+        <text x="103" y="218" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="12.5" font-weight="700" fill="#1d3a40">Alternde</text>
+        <text x="190" y="240" text-anchor="middle" font-family="Spectral, serif" font-size="10.5" fill="#3a444c">Gesellschaft</text>
+
+        <text x="360" y="528" text-anchor="middle" font-family="Spectral, serif" font-style="italic" font-size="13.5" fill="#6a6f6b">Sechs Schübe, ein Resonanzkörper: Sie verstärken sich gegenseitig.</text>
+      </svg>
+      <figcaption>Nach Reckwitz, Kapitel 8 (S. 334–361). Drei „neue" Verluste (I–III), zwei kulturelle Verstärker (IV–V) und ein demografischer Schub (VI) treffen aufeinander.</figcaption>
+    </figure>
+
+    <p>Die sechs Schübe im Überblick. <strong>I — Die Verlierer des liberalen Postindustrialismus:</strong> Mit dem Ende der Industriegesellschaft entstehen Status- und Identitätsverluste in der alten Arbeiterschaft und der traditionellen Mittelklasse. Die Soziologin Arlie Hochschild beschreibt das Gefühl, <span class="iq">„auf der Stelle"</span> zu treten, während andere „an einem vorbeiziehen" <span class="src-inline">(S. 337)</span> — die relative Deprivation.</p>
+
+    <p><strong>II — Klimawandel:</strong> Hitzewellen, Überschwemmungen, Artensterben, Heimatverlust. Für die Trauer um die Veränderung der eigenen Umgebung gibt es ein neues Wort: Solastalgie. <strong>III — Politische Regressionen:</strong> Die liberale Demokratie erodiert; Populismus, Polarisierung und „demokratisches backsliding" lassen Vertrauen verschwinden. <strong>IV — Artikulation historischer Wunden:</strong> Alte, lange verschwiegene Traumata — Kolonialismus, Sklaverei, der Holocaust, sexuelle Gewalt — werden öffentlich sichtbar gemacht.</p>
+
+    <p><strong>V — Emotionales Selbst und Verlustsensibilisierung:</strong> Die spätmoderne Kultur der Selbstverwirklichung steigert die Erwartungen ans eigene Leben enorm — und macht damit empfindlicher für Enttäuschung. <strong>VI — Alternde Gesellschaft:</strong> Immer mehr Menschen erreichen die „vierte Lebensphase" der Hochbetagten, eine Phase gesteigerter Verletzlichkeit.</p>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff</span>
+      <h4>relative Deprivation</h4>
+      <div class="box-body"><p>Ein Statusverlust, der nicht absolut, sondern <em>im Vergleich</em> entsteht. Man hat objektiv vielleicht gar nichts verloren — aber andere ziehen vorbei, oder man muss heute mehr leisten als die Elterngeneration für dasselbe Ergebnis. Vor der Kontrastfolie des rasanten Aufstiegs der Nachkriegszeit (Ulrich Becks „Fahrstuhleffekt") fühlt sich Stillstand wie Abstieg an.</p></div>
+    </div>
+
+    <p>Was diese sechs Schübe verbindet: Sie alle entspringen demselben Strukturwandel von der industriellen zur spätmodernen Gesellschaft — und sie alle waren in den 1990ern als Fortschritt gedeutet worden. Die liberale Postindustrialisierung brachte eben nicht nur die Gewinner der Wissensgesellschaft hervor, sondern auch ihre Verlierer. Der globale Massenkonsum hob den Lebensstandard — und heizte das Klima an.</p>
+
+    <div class="box plain-translation">
+      <span class="box-label">Was bedeutet das konkret?</span>
+      <div class="box-body"><p>Stell dir sechs Lautsprecher in einem Raum vor, die alle gleichzeitig spielen. Einzeln wäre jeder erträglich. Aber zusammen verstärken sie sich zu einem Dröhnen. So funktioniert das Hexagon: Die Angst vor dem Klimawandel, die Wut der Abgehängten, die Sorge um die Demokratie, das wache Gedächtnis für alte Verbrechen, die empfindlichere Psyche und die alternde Bevölkerung — jedes für sich wäre verkraftbar. Gemeinsam ergeben sie die Eskalation.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION: NEUE QUALITÄT ===================== -->
+<section id="qualitaet">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">09 — Die neue Qualität</span>
+      <h2>Was diesmal anders ist</h2>
+      <p class="dek">Es ist nicht bloß eine weitere „Verlustrunde". Reckwitz benennt fünf Eigenschaften, die den Verlusten der Gegenwart eine neue Qualität geben — und einen ganz neuen Verlusttyp.</p>
+    </div>
+
+    <p>Erstens die <strong>wechselseitige Steigerung von Negativität</strong>: Der schwindende Fortschrittsglaube und die einzelnen Verlustschübe schaukeln sich gegenseitig hoch. Zweitens die <strong>politische Entgrenzung</strong>: Verlustschmerz war klassischerweise bei den Konservativen beheimatet. Heute hat jedes Lager seine Verluste — die Rechte den Statusverlust, die Linke den Klimawandel und den Sozialstaatsabbau, die Liberalen die fragile Zukunft der Demokratie.</p>
+
+    <div class="pull">
+      <blockquote>Das liberale „Ende der Geschichte" ist offenbar seinerseits zu Ende.</blockquote>
+      <span class="src">Reckwitz · S. 365</span>
+    </div>
+
+    <p>Drittens die <strong>löchrige Verlustreduktion</strong>: Schutzschilde, die selbstverständlich schienen, bröckeln. Die Natur lässt sich durch Technik nicht mehr beherrschen (Klimawandel), die Medizin stößt an Grenzen (die Gebrechlichkeit des hohen Alters), der Sozialstaat schützt weniger zuverlässig. Viertens die <strong>Fortschrittssubjektivierung</strong>: Während die kollektive Zukunft fragil wird, erwarten die Individuen weiter persönlichen Aufstieg — eine Diskrepanz, die in Enttäuschung münden muss. Fünftens die <strong>Sichtbarmachung</strong>: Verluste, die früher verschwiegen wurden, treten ins öffentliche Licht.</p>
+
+    <p>Daraus entsteht ein neuer Verlusttyp, der Reckwitz' eigene Prägung ist: die <em>Erschöpfungsverluste</em>. Sie zeigen an, dass die Moderne in ihrer Dynamik an Grenzen stößt — sich erschöpft. Drei Bereiche, die sie 250 Jahre lang als passive, unerschöpfliche Ressource voraussetzen konnte, entziehen sich nun: die Erde, der menschliche Körper und die globale Vormacht des Westens.</p>
+
+    <div class="box def">
+      <span class="box-label">Schlüsselbegriff</span>
+      <h4>Erschöpfungsverluste</h4>
+      <div class="box-body"><p>Verluste, die entstehen, weil die Expansion der Moderne an natürliche und globale Grenzen stößt. Drei Ressourcen, die immer als unbegrenzt galten, erschöpfen sich: die <em>Erde</em> (der Klimawandel beendet das stabile Holozän), der <em>Körper</em> (die alternde Gesellschaft macht ihn als fragile Natur sichtbar) und die <em>Welt</em> (die globale Dominanz des Westens überschreitet ihren Zenit). Anders als früher lassen sich diese Verluste nicht mehr „nach außen" externalisieren — sie werden endogen, zu eigenen Verlusten.</p></div>
+    </div>
+
+    <div class="pull">
+      <blockquote>Es handelt sich nicht mehr um die Verluste der anderen, sondern um eigene Verluste.</blockquote>
+      <span class="src">Reckwitz · S. 372</span>
+    </div>
+
+    <p>Damit verschiebt sich auch die Logik von Gewinnen und Verlieren. In der Spätmoderne spaltet sich die Gesellschaft nicht mehr nur in absolute Gewinner und Verlierer, sondern in jene, die sich gegen die Verlustschübe <em>abschirmen</em> können, und jene, die es nicht können. Die Privilegierten entkoppeln ihr persönliches Fortschrittsprojekt von der kriselnden Gesellschaft. Reckwitz bringt es auf eine knappe Formel.</p>
+
+    <figure class="quote-card">
+      <span class="quote-label">Schlüsselstelle · Kapitel 8</span>
+      <blockquote class="quote-body">„Zu gewinnen heißt nun, nicht verlieren zu müssen — jedenfalls nicht so wie die anderen."</blockquote>
+      <figcaption class="quote-citation">Reckwitz 2024, S. 368 · Suhrkamp-Ausgabe</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Früher hieß „gewinnen", mehr zu bekommen — Aufstieg, Wohlstand, Zukunft. Heute heißt es vor allem: sich erfolgreich gegen Verluste schützen zu können, während andere ungeschützt bleiben.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Diese Verschiebung erklärt eine neue Form sozialer Ungleichheit — nicht mehr nur zwischen Arm und Reich, sondern zwischen den Abgeschirmten und den Schutzlosen. Und sie heizt die Wut zwischen den Gruppen weiter an.</div>
+    </figure>
+
+    <div class="sec-head" style="margin-top:48px;">
+      <span class="num">10 — Antworten der Gegenwart</span>
+      <h2>Die neuen Formate des doing loss</h2>
+      <p class="dek">Auf die Eskalation antwortet die Spätmoderne mit neuen Bearbeitungsformen — von der Resilienz bis zum Populismus. Sie alle schieben den Verlust ins Zentrum der Debatte.</p>
+    </div>
+
+    <p>Wenn die Frage „Wie sollen wir mit Verlusten umgehen?" zum Kernproblem wird, entstehen neue Antworten. Reckwitz beschreibt unter anderem das <em>Cultural Heritage</em> (der Schutz des Wertvollen gegen Zerstörung), die <em>Restorative Justice</em> (Anerkennung der Opfer), die <em>Resilienz</em> (sich gegen Negatives wappnen), den <em>Populismus</em> und einen neuen Ethos des <em>Verzichts</em> sowie eine neue Trauerkultur. Sein eindrücklichstes Beispiel: das 9/11-Memorial in New York, wo die Leerstelle der zerstörten Türme nicht überbaut, sondern bewusst ausgestellt wird — Politisierung, Ästhetisierung und Ökonomisierung des Verlusts in einem.</p>
+
+    <div class="triad">
+      <div class="card">
+        <span class="k">Verlustunternehmertum</span>
+        <h4>Populismus</h4>
+        <p>Verspricht, verlorene „bessere" Verhältnisse wiederherzustellen, und nährt die Verlustängste systematisch. „Im Populismus dreht sich alles um Verluste."</p>
+      </div>
+      <div class="card">
+        <span class="k">Antivulnerabilität</span>
+        <h4>Resilienz</h4>
+        <p>Das Steuerungsmodell des 21. Jahrhunderts. Nicht mehr Perfektionierung, sondern: das Schlimmste verhüten. Skepsis statt Optimismus.</p>
+      </div>
+      <div class="card">
+        <span class="k">Anerkennung</span>
+        <h4>Restorative Justice</h4>
+        <p>Statt Bestrafung geht es um die Anerkennung der Opfer und die Aufarbeitung erlittenen Leids — eine Politik der Wiedergutmachung.</p>
+      </div>
+    </div>
+
+    <p>So unterschiedlich diese Formate sind, haben sie eines gemeinsam: Die Verlustbearbeitung schiebt sich mit ihnen ins Zentrum der öffentlichen Debatte. Und genau das treibt die Eskalation weiter an. Die intensive Thematisierung der Verluste ist selbst ein Faktor ihrer Steigerung.</p>
+  </div>
+</section>
+
+<!-- ===================== DIVIDER IV ===================== -->
+<div class="divider">
+  <div class="wrap">
+    <span class="phase">Ausblick</span>
+    <h2>Die Moderne reparieren?</h2>
+    <p class="sub">Drei Zukünfte sind denkbar. In der dritten lernt die Moderne, mit dem Verlust zu leben — und wird, nach 250 Jahren, endlich erwachsen.</p>
+  </div>
+</div>
+
+<!-- ===================== SECTION: REPARATUR ===================== -->
+<section id="reparatur">
+  <div class="wrap">
+    <span class="eyebrow">Wohin führt die Verlustaffinität?</span>
+    <p>Reckwitz schließt mit einer Demutsgeste. Die westliche Moderne umfasst rund 250 Jahre — gerade einmal 0,1 Prozent der Menschheitsgeschichte. Was uns alternativlos erscheint, ist historisch eine extreme und außergewöhnliche Episode. Vor diesem Hintergrund skizziert er drei idealtypische Zukunftsszenarien.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drei Zukunftsszenarien der Moderne">
+        <text x="360" y="30" text-anchor="middle" class="svg-eyebrow" font-size="13" fill="#b85c2f" letter-spacing="3">DREI ZUKUNFTSSZENARIEN</text>
+
+        <!-- shared origin -->
+        <circle cx="80" cy="180" r="8" fill="#1d3a40"/>
+        <text x="80" y="210" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="11" font-weight="600" fill="#6a6f6b">heute</text>
+
+        <!-- path 1 -->
+        <path d="M88,180 C 230,150 360,110 600,90" fill="none" stroke="#cfc4a8" stroke-width="2.5"/>
+        <rect x="470" y="62" width="230" height="58" rx="6" fill="#e4e8e6" stroke="#1d3a40" stroke-width="1.2"/>
+        <text x="585" y="86" text-anchor="middle" font-family="Newsreader, serif" font-size="16" font-weight="600" fill="#1d3a40">1 · Weiterführung</text>
+        <text x="585" y="107" text-anchor="middle" font-family="Spectral, serif" font-size="12" fill="#3a444c">nur eine Unterbrechung</text>
+
+        <!-- path 2 -->
+        <path d="M88,180 C 230,210 360,260 600,300" fill="none" stroke="#a3242c" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <rect x="470" y="272" width="230" height="58" rx="6" fill="#f4ecd9" stroke="#a3242c" stroke-width="1.2"/>
+        <text x="585" y="296" text-anchor="middle" font-family="Newsreader, serif" font-size="16" font-weight="600" fill="#a3242c">2 · Zusammenbruch</text>
+        <text x="585" y="317" text-anchor="middle" font-family="Spectral, serif" font-size="12" fill="#3a444c">das Ende der Moderne</text>
+
+        <!-- path 3 -->
+        <path d="M88,180 C 260,182 380,184 600,185" fill="none" stroke="#b85c2f" stroke-width="3.5"/>
+        <rect x="470" y="158" width="230" height="58" rx="6" fill="#f4ecd9" stroke="#b85c2f" stroke-width="2"/>
+        <text x="585" y="182" text-anchor="middle" font-family="Newsreader, serif" font-size="16" font-weight="700" fill="#8f441f">3 · Reparatur</text>
+        <text x="585" y="203" text-anchor="middle" font-family="Spectral, serif" font-size="12" fill="#3a444c">erwachsen werden</text>
+
+        <text x="360" y="348" text-anchor="middle" font-family="Spectral, serif" font-style="italic" font-size="13.5" fill="#6a6f6b">In jedem Szenario steht die Moderne in einem anderen Verhältnis zu ihren Verlusten.</text>
+      </svg>
+      <figcaption>Nach Reckwitz, Ausblick (S. 414–424). Reckwitz plädiert — vorsichtig, ohne Prognose — für das dritte Szenario.</figcaption>
+    </figure>
+
+    <p><strong>Szenario 1 — Weiterführung:</strong> Die aktuelle Krise ist nur eine vorübergehende Unterbrechung; der Fortschrittsmotor stottert, läuft aber bald wieder. Eine Variante: Die Moderne wird weitergeführt, aber nicht im Westen, sondern in Ostasien — das Zentrum „wandert" über den Globus. <strong>Szenario 2 — Zusammenbruch:</strong> Was die Katastrophen-Diskurse imaginieren, wird real — durch ein einzelnes Ereignis (Atomkrieg, Pandemie) oder durch einen schleichenden Zerfall in Legitimations-, Motivations- und Systemkrise.</p>
+
+    <p><strong>Szenario 3 — Reparatur der Moderne:</strong> Hier liegt Reckwitz' eigenes, vorsichtiges Plädoyer. „Reparatur" heißt nicht Abriss und Neubau, und auch nicht bloßes „Weiter-so". Es heißt: mit den vorhandenen Institutionen arbeiten, sie aber so „ausbessern", dass sie sich der Verletzlichkeit offen stellen, statt die Augen davor zu verschließen.</p>
+
+    <div class="box thesis">
+      <span class="box-label">Das Plädoyer</span>
+      <h4>Den Fortschritt als Erbe bewahren</h4>
+      <div class="box-body"><p>Eine reparierte Moderne projiziert den Fortschritt nicht mehr in die Zukunft, sondern erkennt die bereits erreichten Fortschritte als wertvolles Erbe, das zu schützen ist. Sie hat realistischerweise nicht „immer mehr" zu gewinnen, sondern viel zu verlieren. Für sie wäre es ein Erfolg, das Erreichte zu halten. Damit, so Reckwitz' überraschende Pointe, mutieren die „Progressiven" zwangsläufig zu „Konservativen" — aber zu einer ganz neuen Sorte: Es geht nicht mehr um die Bewahrung des Vormodernen, sondern um die Bewahrung der Errungenschaften der Moderne selbst.</p></div>
+    </div>
+
+    <p>Das Schlüsselbild ist der Seiltänzer. In der Moderne ist die Zukunft radikal offen — offen für Großes, aber auch für den Absturz. Der Mensch <span class="iq">tanzt in der Moderne immer schon auf einem Seil über den Abgrund.</span> <span class="src-inline">(S. 420)</span> Diese Ungewissheit muss nicht lähmen; sie kann Ansporn sein, eine Haltung der Vorsicht und Umsicht zu entwickeln. Man muss lernen, auf dem Seil zu tanzen — nachdem man den Blick in den Abgrund getan hat.</p>
+
+    <p>Konkret nennt Reckwitz drei Reparaturaufgaben: den <strong>Schutz des Vulnerablen</strong> (von der Familie über die Demokratie bis zur Erde), die <strong>Resilienz</strong> als neuen Leitwert (nicht als technokratische Floskel, sondern als aktive Transformation) und einen <strong>fairen Ausgleich</strong> zwischen Gewinnern und Verlierern, damit die Gesellschaft nicht in Täter und Opfer zerfällt. Und schließlich eine neue Trauerkultur: die Anerkennung der Verluste, die Ritualisierung des Abschieds, die Integration des Verlorenen in die Gegenwart.</p>
+
+    <p>Den tiefsten Gedanken borgt Reckwitz von Sigmund Freud. Das Individuum, so Freud, ist im Kern seine Verlustgeschichte — sie verleiht ihm seinen Charakter. Dasselbe gilt für ganze Gesellschaften: Auch ihre Identität ist von Verlusten geprägt, mehr als sie wahrhaben wollen. Der Verlustgeschichte entkommt man nicht; sie sucht einen heim. Sich ihr zu stellen — statt sich in endlose Täter-Opfer-Dynamiken zu verirren — wäre der Kern einer selbstreflexiv gewordenen Moderne.</p>
+
+    <figure class="quote-card">
+      <span class="quote-label">Schlüsselstelle · Schlusssatz des Buches</span>
+      <blockquote class="quote-body">„Nach 250 Jahren wird es Zeit, dass sie erwachsen wird und lernt, klug mit den Verlusten umzugehen."</blockquote>
+      <figcaption class="quote-citation">Reckwitz 2024, S. 424 · Suhrkamp-Ausgabe</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Die Moderne war immer von einem Ideal der Jugendlichkeit geprägt — vom ewigen Neuanfang, vom Blick nach vorn. Erwachsen werden hieße: zu akzeptieren, dass nicht alles immer besser wird, und zu lernen, Verluste anzuerkennen, statt sie zu verdrängen.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Mit diesem Bild endet das Buch. Es ist kein pessimistischer und kein optimistischer Schluss, sondern ein reifer: Die Moderne kann an ihrer Verlustaffinität wachsen — oder an ihr scheitern. Welcher Weg es wird, ist offen.</div>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== STIMMEN ===================== -->
+<section id="stimmen">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">Stimmen im Text</span>
+      <h2>Die Denker, mit denen Reckwitz arbeitet</h2>
+      <p class="dek">Reckwitz' Soziologie der Verluste ist ein dichtes Geflecht von Bezügen. Diese Stimmen kehren immer wieder.</p>
+    </div>
+
+    <div class="figgrid">
+      <div class="figcard">
+        <p class="name">Reinhart Koselleck</p>
+        <p class="dates">1923–2006 · Historiker</p>
+        <p>Lieferte den Bruch zwischen „Erfahrungsraum" und „Erwartungshorizont" und den Begriff der „Sattelzeit" (1750–1850), in der das moderne Fortschrittsdenken entsteht.</p>
+      </div>
+      <div class="figcard">
+        <p class="name">Zygmunt Bauman</p>
+        <p class="dates">1925–2017 · Soziologe</p>
+        <p>Quelle für die These, dass Holocaust und Totalitarismus keine Rückfälle in die Barbarei sind, sondern dem modernen Streben nach „reiner Ordnung" entspringen.</p>
+      </div>
+      <div class="figcard">
+        <p class="name">Bruno Latour</p>
+        <p class="dates">1947–2022 · Soziologe</p>
+        <p>Sein „Wir sind nie modern gewesen" inspiriert Reckwitz' Pointe: Gemessen an ihrem Selbstbild der Verlustfreiheit ist die Moderne nie modern gewesen.</p>
+      </div>
+      <div class="figcard">
+        <p class="name">Theodor W. Adorno &amp; Max Horkheimer</p>
+        <p class="dates">1903–1969 / 1895–1973</p>
+        <p>Ihre „Dialektik der Aufklärung" ist das Vorbild für Reckwitz' Figur der Verlustparadoxie — die Vernunft, die in ihr Gegenteil umschlägt.</p>
+      </div>
+      <div class="figcard">
+        <p class="name">Sigmund Freud</p>
+        <p class="dates">1856–1939 · Psychoanalytiker</p>
+        <p>Liefert den Schlussgedanken: Das Individuum ist im Kern seine Verlustgeschichte — eine Einsicht, die Reckwitz auf ganze Gesellschaften überträgt.</p>
+      </div>
+      <div class="figcard">
+        <p class="name">Pierre Bourdieu</p>
+        <p class="dates">1930–2002 · Soziologe</p>
+        <p>Sein „Hysteresis-Effekt" erklärt, warum erworbene Kompetenzen veralten: Der Habitus wirkt weiter, auch wenn das soziale Feld sich längst gewandelt hat.</p>
+      </div>
+    </div>
+
+    <details>
+      <summary>Weitere aufgerufene Stimmen</summary>
+      <div class="det-body">
+        <p>Reckwitz beruft sich darüber hinaus auf <strong>Peter Marris</strong> („Loss and Change", 1974, der einzige Vorläufer einer Soziologie des Verlusts), <strong>Dipesh Chakrabarty</strong> (die „historischen Wunden"), <strong>Svetlana Boym</strong> (restaurative vs. reflexive Nostalgie), <strong>Alain Ehrenberg</strong> (die Depression als Krankheit der „Unzulänglichkeit"), <strong>Lauren Berlant</strong> (der „grausame Optimismus"), <strong>Arlie Hochschild</strong> („Fremd im eigenen Land"), <strong>Ulrich Beck</strong> (der „Fahrstuhleffekt"), <strong>Donella &amp; Dennis Meadows</strong> („Die Grenzen des Wachstums") und <strong>Shmuel Eisenstadt</strong> (die „multiplen Modernitäten").</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===================== WAS BLEIBT ===================== -->
+<section id="wasbleibt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">Was bleibt</span>
+      <h2>Das Argument in sechs Schritten</h2>
+      <p class="dek">Die ganze Beweisführung des Buches, von der Grundthese bis zur Reparatur.</p>
+    </div>
+
+    <ol class="chain">
+      <li>
+        <h4>Der Widerspruch</h4>
+        <p>Die Moderne läuft auf dem Fortschrittsimperativ — dem Versprechen, dass es immer besser wird. Jeder Verlust widerspricht diesem Versprechen. Verlust ist darum ein Grundproblem der Moderne.</p>
+      </li>
+      <li>
+        <h4>Die Paradoxie</h4>
+        <p>Aus dem Widerspruch entspringt eine doppelte Paradoxie: Die Moderne reduziert Verluste und potenziert sie zugleich; sie macht sie unsichtbar und bearbeitet sie zugleich intensiv.</p>
+      </li>
+      <li>
+        <h4>Die Verstärker</h4>
+        <p>Zehn Mechanismen treiben die Verlustpotenzierung an — fünf strukturelle (Obsoleszenz, Markt, Gewalt …) und fünf kulturelle (Erwartungsexpansion, Singularisierung, Freiheitsparadox …).</p>
+      </li>
+      <li>
+        <h4>Die Eskalation</h4>
+        <p>In der Spätmoderne gerät die Balance aus dem Gleichgewicht. Der zentrale Auslöser: Das Fortschrittsversprechen verliert seine Glaubwürdigkeit — der Schutzschild der Verluste fällt.</p>
+      </li>
+      <li>
+        <h4>Das Hexagon</h4>
+        <p>Sechs Verlustschübe treffen gleichzeitig aufeinander und verstärken sich: Postindustrialismus, Klima, Demokratieregression, historische Wunden, emotionales Selbst, alternde Gesellschaft. Hinzu treten die Erschöpfungsverluste.</p>
+      </li>
+      <li>
+        <h4>Die Reparatur</h4>
+        <p>Die Moderne muss erwachsen werden: den Fortschritt als Erbe bewahren statt in die Zukunft projizieren, das Vulnerable schützen, die Verluste anerkennen — und lernen, auf dem Seil über dem Abgrund zu tanzen.</p>
+      </li>
+    </ol>
+
+    <div class="synthesis">
+      <span class="box-label">Die Kernerkenntnis in einem Satz</span>
+      <h3>Verlust als Grundproblem der Moderne</h3>
+      <p>Die westliche Moderne hat ein eingebautes, unlösbares Problem mit dem Verlieren — weil Verluste ihrem konstitutiven Fortschrittsglauben widersprechen; in der Spätmoderne, in der dieser Glaube erodiert, eskaliert dieses Problem, und die einzige reife Antwort ist nicht, die Verluste weiter zu verdrängen, sondern zu lernen, sie anzuerkennen und in das individuelle und gesellschaftliche Leben zu integrieren.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GLOSSAR ===================== -->
+<section id="glossar">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">Glossar</span>
+      <h2>Die Begriffe, zweifach erklärt</h2>
+      <p class="dek">Jeder Schlüsselbegriff einmal in Klartext, einmal nah am Original — und mit Wortherkunft.</p>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Fortschrittsimperativ</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Der gesellschaftliche Befehl, dass es immer aufwärtsgehen muss. Aus der Beobachtung „die Dinge werden besser" wird in der Moderne eine feste Erwartung, eine Norm und ein Versprechen.</div>
+      <div class="g-original"><strong>Bei Reckwitz:</strong> Der Fortschritt bildet „das Zentrum eines gesellschaftlichen Imperativs, der von dem ›Vorwärts‹ und ›Nach-oben‹ als fester Erwartung, ja Norm und Versprechen ausgeht" (S. 21).</div>
+      <div class="g-etymology"><em>Etymologie:</em> lateinisch <em>imperare</em> = befehlen. Ein Imperativ ist eine Befehlsform.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Verlustparadoxie</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Der Widerspruch, dass die Moderne Verluste gleichzeitig bekämpft und erzeugt, gleichzeitig verbirgt und intensiv bearbeitet. Sie kommt von ihrem Verlustproblem nicht los.</div>
+      <div class="g-original"><strong>Bei Reckwitz:</strong> „Die fortschrittsorientierte Moderne hemmt den Umfang und die gesellschaftliche Bedeutung der Verluste und steigert sie zugleich" (S. 162).</div>
+      <div class="g-etymology"><em>Etymologie:</em> griechisch <em>parádoxon</em> = das wider die Erwartung Laufende (<em>para</em> = gegen, <em>doxa</em> = Meinung, Erwartung).</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>doing loss / undoing loss</h4>
+      <div class="g-plain"><strong>Klartext:</strong> <em>doing loss</em> = einen Verlust aktiv bearbeiten (durch Rituale, Erzählungen, Politik, Therapie). <em>undoing loss</em> = einen Verlust unsichtbar machen (durch Umdeutung, Beschämung, Verschweigen).</div>
+      <div class="g-original"><strong>Bei Reckwitz:</strong> Die Kultur überführt Verluste „in die Verarbeitungsform dessen, was man ›Kultur‹ nennt" und avanciert so zum „Motor einer Erzählmaschine" (S. 232).</div>
+      <div class="g-etymology"><em>Etymologie:</em> englisch <em>doing</em> = tun, machen; <em>loss</em> = Verlust. Begriffe aus der praxistheoretischen Soziologie (vgl. „doing gender").</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Obsoleszenz</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Das ständige Veralten. Weil in der Moderne überall das Neue prämiert wird, wird das Alte permanent entwertet — Berufe, Techniken, Lebensweisen, ganze soziale Gruppen.</div>
+      <div class="g-original"><strong>Bei Reckwitz:</strong> „Das Regime des Neuen ist also zwangsläufig ein Regime der Obsoleszenz, ein Regime der Veralterung" (S. 173).</div>
+      <div class="g-etymology"><em>Etymologie:</em> lateinisch <em>obsolescere</em> = sich abnutzen, veralten, außer Gebrauch kommen.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Singularisierung</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Der Prozess, durch den Dinge, Menschen und Orte als einzigartig und unersetzbar gelten. Das Einzigartige kann man nicht ersetzen — sein Verlust schmerzt darum besonders.</div>
+      <div class="g-original"><strong>Bei Reckwitz:</strong> „Singularitäten widersprechen der Logik der Ersetzbarkeit. … Das Unersetzbare hinterlässt eine Leerstelle, die sich nicht füllen lässt" (S. 193).</div>
+      <div class="g-etymology"><em>Etymologie:</em> lateinisch <em>singularis</em> = einzeln, einzigartig (von <em>singulus</em> = einzeln).</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Solastalgie</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Die Trauer darüber, dass die eigene vertraute Umgebung sich durch Umwelt- und Klimaveränderungen unkenntlich verändert — Heimweh, ohne den Ort verlassen zu haben.</div>
+      <div class="g-original"><strong>Bei Reckwitz:</strong> Landschaften verändern sich „bis zur Unkenntlichkeit, und die damit teilweise verbundene Trauer lässt sich unter dem Begriff der ›Solastalgie‹ zusammenfassen" (S. 342).</div>
+      <div class="g-etymology"><em>Etymologie:</em> Neologismus des Philosophen Glenn Albrecht aus lateinisch <em>solacium</em> = Trost und griechisch <em>algos</em> = Schmerz (analog zu Nostalgie).</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Erschöpfungsverluste</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Verluste, die entstehen, weil die Moderne an Grenzen stößt. Drei Ressourcen, die immer als unbegrenzt galten, erschöpfen sich: die Erde, der menschliche Körper und die Vormacht des Westens.</div>
+      <div class="g-original"><strong>Bei Reckwitz:</strong> Verluste, „die anzeigen, dass die westliche Moderne in Sachen Dynamik und Expansivität an ihre Grenzen stößt — sich erschöpft" (S. 370).</div>
+      <div class="g-etymology"><em>Etymologie:</em> deutsch „erschöpfen", ursprünglich „bis zum letzten Tropfen ausschöpfen" — eine Reckwitz-Prägung.</div>
+    </div>
+
+    <div class="glossary-entry">
+      <h4>Spätmoderne</h4>
+      <div class="g-plain"><strong>Klartext:</strong> Die jüngste Version der modernen Gesellschaft, die seit den 1970er Jahren entsteht: postindustriell, globalisiert, digital, von Singularität und Selbstverwirklichung geprägt. Noch Moderne — aber eine andere.</div>
+      <div class="g-original"><strong>Bei Reckwitz:</strong> „Die Spätmoderne ist ›immer noch‹ die Moderne und zugleich bereits eine ›andere Moderne‹" (S. 291).</div>
+      <div class="g-etymology"><em>Etymologie:</em> deutsch „spät" + „Moderne" (von lateinisch <em>modernus</em> = neu, gegenwärtig). Abgrenzung gegen den irreführenden Begriff „Postmoderne".</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COLOPHON ===================== -->
+<section class="colophon">
+  <div class="wrap">
+    <h3>Kolophon &amp; Quelle</h3>
+    <p>Diese Synthese beruht auf: Andreas Reckwitz, <em>Verlust. Ein Grundproblem der Moderne</em>, Suhrkamp Verlag, Berlin 2024 (Erstausgabe). Alle Seitenangaben in den Zitaten und Belegen folgen der Seitenzählung der gedruckten Suhrkamp-Ausgabe, die im zugrunde liegenden E-Book als grau gerahmte Ziffern den Anfang jeder Druckseite markiert.</p>
+    <p>Sämtliche Direktzitate sind wörtlich übernommen und stehen in Anführungszeichen mit Seitenbeleg. Die Klartext-Erklärungen, Diagramme und Strukturierungen sind eigene didaktische Aufbereitungen und geben Reckwitz' Argument in vereinfachter, aber inhaltlich treuer Form wieder. Die SVG-Diagramme visualisieren ausschließlich Strukturen, die der Text selbst benennt (die Vier-Felder-Tafel der Verlustparadoxie nach Abb. 3, das Hexagon der sechs Verlustschübe, die drei historischen Modernephasen, die drei Zukunftsszenarien); es wurden keine Daten erfunden.</p>
+    <p class="src-inline">Aufbereitung als Editorial-Synthese · Schriften: Newsreader, Spectral, Inter Tight (Google Fonts) · Palette „Editorial-Slate".</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="big">„Der Verlustgeschichte entkommt man nicht. Sie sucht einen heim."</p>
+    <p>Andreas Reckwitz · Verlust · Suhrkamp 2024 · S. 423</p>
+    <p>Synthese zu Studienzwecken — kein Ersatz für die Lektüre des Originals.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var bar = document.getElementById('progress');
+  function update(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop;
+    var height = h.scrollHeight - h.clientHeight;
+    var pct = height > 0 ? (scrolled / height) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update, {passive:true});
+  update();
+})();
+</script>
+</body>
+</html>
