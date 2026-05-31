@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Der Anstieg der Vergewaltigungen — Zahlen, Ursachen, Maßnahmen</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Spectral:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ EDITORIAL-SLATE TOKENS (sysB) ============ */
+.sysB{
+  --bg:#ede4cf; --bg-warm:#e6dcc2; --pcard:#f4ecd9; --pcool:#e4e8e6;
+  --primary:#1d3a40; --primary-soft:#2c5057;
+  --eaccent:#b85c2f; --accent-deep:#8f441f;
+  --egold:#a07a1e; --eink:#1a2530; --eink-soft:#3a444c; --eink-faint:#6a6f6b;
+  --erule:#cfc4a8; --erule-soft:#dcd3ba; --ered:#a3242c;
+}
+.sysB.plus{ --c-indigo:#3b4a82; --c-sage:#5e7355; --c-plum:#6e3a55; --c-amber:#b07d1c; }
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top:72px;}
+body{
+  margin:0; background:var(--bg); color:var(--eink);
+  font-family:'Spectral',Georgia,serif; line-height:1.72;
+  font-feature-settings:"kern","liga","onum";
+  background-image:radial-gradient(rgba(29,58,64,.07) 0.6px, transparent 0.6px);
+  background-size:24px 24px;
+}
+.sysB{font-family:'Spectral',Georgia,serif; color:var(--eink);}
+.wrap{max-width:680px; margin:0 auto; padding:0 22px 120px;}
+.wide{max-width:920px; margin:0 auto; padding:0 22px;}
+p{margin:0 0 1.15em; font-size:19px;}
+a{color:var(--accent-deep);}
+
+/* ============ PROGRESS BAR ============ */
+#progress{position:fixed; top:0; left:0; height:3px; width:0%;
+  background:linear-gradient(90deg,var(--eaccent),var(--egold)); z-index:120;}
+
+/* ============ STICKY NAV ============ */
+.topnav{position:sticky; top:0; z-index:90; height:56px;
+  background:rgba(237,228,207,.84); backdrop-filter:blur(9px);
+  border-bottom:1px solid var(--erule);}
+.topnav__in{max-width:920px; margin:0 auto; height:100%; padding:0 22px;
+  display:flex; align-items:center; justify-content:space-between;}
+.topnav__logo{font-family:'Newsreader',serif; font-weight:600; font-size:1.05rem; color:var(--primary);}
+.topnav__logo em{font-style:italic; color:var(--eaccent);}
+.topnav__links{display:flex; gap:18px; font-family:'Inter Tight',sans-serif;
+  font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;}
+.topnav__links a{color:var(--eink-soft); text-decoration:none;}
+.topnav__links a:hover{color:var(--eaccent);}
+@media(max-width:760px){ .topnav__links{display:none;} }
+
+/* ============ HERO ============ */
+.b-hero{background:var(--bg); padding:48px 0 30px;}
+.b-hero__tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px;}
+.b-tag{font-family:'Inter Tight',sans-serif; font-size:.64rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--primary); border:1px solid var(--erule); padding:4px 10px; border-radius:2px;}
+.b-hero__title{font-family:'Newsreader',serif; font-weight:500;
+  font-size:clamp(40px,7vw,80px); line-height:1.0; color:var(--primary); margin:0 0 16px;}
+.b-hero__title em{font-style:italic; color:var(--eaccent);}
+.b-hero__sub{font-family:'Newsreader',serif; font-style:italic; font-size:1.25rem;
+  color:var(--eink-soft); margin:0 0 22px; max-width:600px;}
+.b-hero__meta{font-family:'Inter Tight',sans-serif; font-size:.78rem; color:var(--eink-faint);
+  border-top:1px solid var(--erule); padding-top:14px; margin-bottom:26px;}
+.b-statstrip{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--erule); margin-bottom:8px;}
+.b-stat{background:var(--bg-warm); padding:18px 14px;}
+.b-stat__num{font-family:'Newsreader',serif; font-size:2.2rem; color:var(--primary); line-height:1;}
+.b-stat__lbl{font-family:'Inter Tight',sans-serif; font-size:.6rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--eink-faint); margin-top:6px;}
+@media(max-width:620px){ .b-statstrip{grid-template-columns:repeat(2,1fr);} }
+
+/* ============ DROP CAP ============ */
+.dropcap::first-letter{font-family:'Newsreader',serif; font-weight:600; float:left;
+  font-size:4.4rem; line-height:.82; padding:8px 12px 0 0; color:var(--accent-deep);}
+
+/* ============ BIG DIVIDER ============ */
+.b-divider{background:var(--primary); color:var(--bg); padding:50px 36px; position:relative;
+  overflow:hidden; margin:54px 0 40px; border-radius:2px;}
+.b-divider::after{content:""; position:absolute; inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px); background-size:18px 18px;}
+.b-divider__eyebrow{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--eaccent); margin:0 0 12px; position:relative;}
+.b-divider__h{font-family:'Newsreader',serif; font-weight:500; font-size:clamp(30px,5vw,50px);
+  line-height:1.05; margin:0 0 10px; position:relative;}
+.b-divider__dek{font-family:'Newsreader',serif; font-style:italic; font-size:1.1rem; opacity:.9;
+  margin:0; position:relative; max-width:560px;}
+.plus .b-divider--indigo{background:var(--c-indigo);}
+.plus .b-divider--sage{background:var(--c-sage);}
+.plus .b-divider--plum{background:var(--c-plum);}
+.plus .b-divider--amber{background:var(--c-amber);}
+
+/* section eyebrow + h2 */
+.sec-head{margin:0 0 18px;}
+.sec-head__eyebrow{font-family:'Inter Tight',sans-serif; font-size:.68rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--eaccent); margin:0 0 8px;}
+.sec-head__h{font-family:'Newsreader',serif; font-weight:600; font-size:clamp(28px,4.4vw,42px);
+  line-height:1.08; color:var(--primary); margin:0 0 6px;}
+.sec-head__dek{font-family:'Newsreader',serif; font-style:italic; font-size:1.12rem; color:var(--eink-soft); margin:0;}
+
+/* ============ BOXES ============ */
+.b-box{padding:18px 20px; border-radius:2px; margin:24px 0;}
+.b-box__lbl{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; margin:0 0 8px;}
+.b-box p{margin:0; font-family:'Spectral',serif; font-size:1rem;}
+.b-box.def{background:var(--pcard); border-left:4px solid var(--egold);}
+.b-box.def .b-box__lbl{color:var(--egold);}
+.b-box.def h4{font-family:'Newsreader',serif; font-size:1.2rem; color:var(--primary); margin:0 0 6px;}
+.b-box.thesis{background:var(--primary); color:var(--bg); box-shadow:0 14px 30px -20px rgba(0,0,0,.6);}
+.b-box.thesis .b-box__lbl{color:var(--eaccent);}
+.b-box.thesis p{font-family:'Newsreader',serif; font-size:1.18rem; line-height:1.4;}
+.b-box.memo{background:transparent; border:1px dashed var(--eink-faint);}
+.b-box.memo .b-box__lbl{color:var(--eink-faint);}
+.b-box.plain{background:var(--bg-warm); border-left:4px solid var(--eaccent);}
+.b-box.plain .b-box__lbl{color:var(--accent-deep);}
+.b-box.warning{background:var(--eink); color:var(--bg);}
+.b-box.warning .b-box__lbl{color:var(--eaccent);}
+.b-box.warning p{color:#e9e2d2;}
+
+/* ============ QUOTE CARD ============ */
+.b-qcard{background:var(--pcard); border-top:3px solid var(--eaccent); padding:28px 24px 20px;
+  position:relative; margin:26px 0;}
+.b-qcard::before{content:"\201E"; position:absolute; top:-6px; left:14px; font-family:'Newsreader',serif;
+  font-size:5rem; color:var(--eaccent); opacity:.26; line-height:1;}
+.b-qcard__lbl{font-family:'Inter Tight',sans-serif; font-size:.64rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent-deep); margin:0 0 10px; position:relative;}
+.b-qcard__body{font-family:'Newsreader',serif; font-size:1.4rem; line-height:1.35; color:var(--eink); margin:0 0 12px; position:relative;}
+.b-qcard__cite{font-family:'Inter Tight',sans-serif; font-size:.78rem; color:var(--eink-faint); margin:0 0 14px;}
+.b-qcard__t,.b-qcard__c{font-family:'Spectral',serif; font-size:.92rem; color:var(--eink-soft); margin:0 0 8px;}
+.b-qcard__t strong,.b-qcard__c strong{color:var(--primary);}
+
+/* ============ PULL QUOTE ============ */
+.b-pull{text-align:center; border-top:1px solid var(--eaccent); border-bottom:1px solid var(--eaccent);
+  padding:26px 10px; margin:34px 0;}
+.b-pull__t{font-family:'Newsreader',serif; font-size:clamp(24px,4vw,36px); line-height:1.2;
+  color:var(--eaccent); margin:0 0 10px; font-style:italic;}
+.b-pull__s{font-family:'Inter Tight',sans-serif; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--eink-faint);}
+
+/* ============ INLINE QUOTE ============ */
+.b-iq{font-style:italic; color:var(--eink);}
+.b-src{font-family:'Inter Tight',sans-serif; font-size:.78rem; color:var(--eink-faint);}
+
+/* ============ SIDE BY SIDE ============ */
+.b-sbs{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:26px 0;}
+.b-sbs__col{padding:18px 18px 18px 28px; border-radius:2px; position:relative;}
+.b-sbs__col::before{content:""; position:absolute; left:14px; top:22px; width:8px; height:8px; border-radius:50%;}
+.b-sbs__a{background:var(--pcool);} .b-sbs__a::before{background:var(--primary);}
+.b-sbs__b{background:var(--bg-warm);} .b-sbs__b::before{background:var(--eaccent);}
+.b-sbs h4{font-family:'Inter Tight',sans-serif; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; margin:0 0 8px; color:var(--primary);}
+.b-sbs p{font-family:'Spectral',serif; font-size:.94rem; margin:0; color:var(--eink-soft);}
+@media(max-width:760px){ .b-sbs{grid-template-columns:1fr;} }
+
+/* ============ CHAIN ============ */
+.b-chain{counter-reset:step; list-style:none; padding:0; margin:26px 0;}
+.b-chain li{counter-increment:step; display:flex; gap:16px; padding:0 0 22px; position:relative;}
+.b-chain li::before{content:counter(step); flex:0 0 auto; width:34px; height:34px; border-radius:50%;
+  background:var(--primary); color:var(--bg); font-family:'Inter Tight',sans-serif; font-weight:600;
+  font-size:.9rem; display:flex; align-items:center; justify-content:center;}
+.b-chain li:not(:last-child)::after{content:""; position:absolute; left:16px; top:34px; bottom:4px; width:2px; background:var(--erule);}
+.b-chain__txt{font-family:'Spectral',serif; font-size:1rem; color:var(--eink-soft); padding-top:5px;}
+.b-chain__txt strong{color:var(--primary); font-family:'Newsreader',serif;}
+
+/* ============ FIGCARDS ============ */
+.b-figgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin:26px 0;}
+.b-figcard{background:var(--pcard); border:1px solid var(--erule); padding:16px;}
+.b-figcard__name{font-family:'Newsreader',serif; font-size:1.15rem; color:var(--primary); margin:0;}
+.b-figcard__life{font-family:'Inter Tight',sans-serif; font-size:.72rem; color:var(--eink-faint); margin:2px 0 8px;}
+.b-figcard__role{font-family:'Spectral',serif; font-size:.9rem; color:var(--eink-soft); margin:0;}
+
+/* ============ COMPARISON TABLE ============ */
+.b-cmp{width:100%; border-collapse:collapse; font-family:'Spectral',serif; font-size:.92rem; margin:24px 0;}
+.b-cmp th{background:var(--primary); color:var(--bg); font-family:'Inter Tight',sans-serif; font-size:.74rem;
+  letter-spacing:.06em; text-transform:uppercase; text-align:left; padding:11px 12px; font-weight:600;}
+.b-cmp td{padding:11px 12px; border-bottom:1px solid var(--erule); color:var(--eink-soft); vertical-align:top;}
+.b-cmp tr:nth-child(even) td{background:var(--bg-warm);}
+.verd{font-family:'Inter Tight',sans-serif; font-weight:700; white-space:nowrap;}
+.verd--y{color:#3f5e3a;} .verd--m{color:#a07a1e;} .verd--n{color:var(--ered);}
+
+/* ============ SYNTHESIS ============ */
+.b-synth{background:var(--pcard); border-top:3px solid var(--eaccent); padding:26px; margin:30px 0;}
+.b-synth__lbl{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent-deep); margin:0 0 8px;}
+.b-synth p{font-family:'Newsreader',serif; font-size:1.22rem; line-height:1.42; color:var(--eink); margin:0 0 .6em;}
+.b-synth p:last-child{margin:0;}
+
+/* ============ DETAILS ============ */
+.b-details{background:var(--pcool); border:1px solid var(--erule); border-radius:2px; padding:0 18px; margin:24px 0;}
+.b-details summary{font-family:'Inter Tight',sans-serif; font-size:.84rem; font-weight:600; color:var(--primary);
+  padding:14px 0; cursor:pointer; list-style:none;}
+.b-details summary::before{content:"+ "; color:var(--eaccent);}
+.b-details[open] summary::before{content:"\2013 ";}
+.b-details__body{font-family:'Spectral',serif; font-size:.94rem; color:var(--eink-soft); padding:0 0 16px;}
+.b-details__body p{font-size:.94rem;}
+
+/* ============ GLOSSARY ============ */
+.b-gloss{border-bottom:1px solid var(--erule); padding:16px 0;}
+.b-gloss h4{font-family:'Newsreader',serif; font-size:1.2rem; color:var(--primary); margin:0 0 6px;}
+.b-gloss .g-plain{font-family:'Spectral',serif; font-size:.96rem; color:var(--eink-soft); margin:0 0 8px;}
+.b-gloss .g-original{font-family:'Newsreader',serif; font-style:italic; font-size:.92rem; background:var(--pcard);
+  border:1px solid var(--erule); padding:8px 12px; color:var(--eink); margin:0 0 6px;}
+.b-gloss .g-etym{font-family:'Inter Tight',sans-serif; font-size:.74rem; color:var(--eink-faint); margin:0;}
+
+/* ============ MEGA ============ */
+.b-mega{margin:46px 0; padding:38px 6px 34px; text-align:center;
+  border-top:1px solid var(--eaccent); border-bottom:1px solid var(--eaccent);}
+.b-mega__eyebrow{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--eaccent); margin:0 0 16px;}
+.b-mega__text{font-family:'Newsreader',serif; font-weight:500; font-size:clamp(28px,5vw,54px);
+  line-height:1.1; color:var(--primary); margin:0;}
+.b-mega__text em{font-style:italic; color:var(--eaccent);}
+.b-mega__sub{font-family:'Newsreader',serif; font-style:italic; font-size:1.05rem; color:var(--eink-soft); margin:16px auto 0; max-width:520px;}
+
+/* ============ MARGIN NOTE ============ */
+.b-margin{display:grid; grid-template-columns:1fr 200px; gap:26px; align-items:start; margin:24px 0;}
+.b-margin__body p{font-family:'Spectral',serif; font-size:1rem; color:var(--eink); margin:0 0 12px;}
+.b-margin__note{font-family:'Inter Tight',sans-serif; font-size:.8rem; line-height:1.55; color:var(--eink-faint);
+  border-left:2px solid var(--eaccent); padding-left:14px;}
+.b-margin__note b{color:var(--eaccent); display:block; font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:5px;}
+@media(max-width:760px){ .b-margin{grid-template-columns:1fr;} .b-margin__note{border-left:none; border-top:2px solid var(--eaccent); padding-left:0; padding-top:10px;} }
+
+/* ============ BILD-BÜHNE ============ */
+.b-bild{margin:30px 0; border:1px solid var(--erule); background:var(--pcard); overflow:hidden;}
+.b-bild__frame{position:relative; width:100%; aspect-ratio:16/7; background:var(--pcard); display:flex; align-items:center; justify-content:center;}
+.b-bild__frame svg{width:100%; height:100%; display:block;}
+.b-bild__cap{font-family:'Inter Tight',sans-serif; font-size:.76rem; color:var(--eink-soft); padding:12px 16px;
+  border-top:1px solid var(--erule); display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;}
+.b-bild__cap .src{font-size:.72rem; color:var(--eink-faint);}
+
+/* ============ DATA SVG SCENE ============ */
+.svg-scene{background:var(--pcard); border:1px solid var(--erule); border-radius:2px; padding:0; overflow:hidden; margin:28px 0;}
+.svg-scene svg{display:block; width:100%; height:auto;}
+.svg-scene__cap{font-family:'Inter Tight',sans-serif; font-size:.76rem; color:var(--eink-soft); padding:11px 16px; border-top:1px solid var(--erule);}
+.svg-scene__cap .src{color:var(--eink-faint);}
+
+/* ============ SECTION TINTS (plus) ============ */
+.sec-tint{padding:20px 22px; border-radius:2px; border-left:4px solid var(--primary);
+  background:color-mix(in srgb, var(--primary) 7%, var(--bg)); margin:24px 0;}
+.sec-tint h4{font-family:'Inter Tight',sans-serif; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--primary); margin:0 0 8px;}
+.sec-tint p{font-family:'Spectral',serif; font-size:.96rem; color:var(--eink-soft); margin:0;}
+.plus .sec-indigo{--primary:#3b4a82;}
+.plus .sec-sage{--primary:#5e7355;}
+.plus .sec-plum{--primary:#6e3a55;}
+.plus .sec-amber{--primary:#b07d1c;}
+
+/* ============ EMPHASIS HIERARCHY ============ */
+.em1{font-weight:500;}
+.em2{font-weight:600; color:var(--accent-deep);}
+.em3{font-weight:700; color:var(--eink); background:linear-gradient(transparent 62%, rgba(160,122,30,.30) 62%);}
+.em4{font-weight:700; color:var(--accent-deep); border-bottom:2px solid var(--egold); padding-bottom:1px;}
+
+/* ============ FOOTER ============ */
+.colophon{background:var(--primary); color:var(--bg); margin-top:60px; padding:48px 0 56px;}
+.colophon .wide{max-width:680px;}
+.colophon h3{font-family:'Newsreader',serif; font-weight:600; font-size:1.5rem; color:#fff; margin:0 0 16px;}
+.colophon p{font-family:'Spectral',serif; font-size:.92rem; color:#d7d0c0; margin:0 0 12px;}
+.colophon a{color:#e9b48f;}
+.colophon .src-list{font-family:'Inter Tight',sans-serif; font-size:.8rem; line-height:1.7; color:#c4bdac;}
+.colophon .src-list li{margin-bottom:7px; color:#c8c0ad;}
+
+/* ============ PRINT ============ */
+@media print{
+  #progress,.topnav{display:none !important;}
+  body{background:#fff;}
+  .b-divider,.b-box.thesis,.b-box.warning,.colophon{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  .b-qcard,.b-box,.b-figcard,.sec-tint,.svg-scene,.b-bild{break-inside:avoid;}
+  a::after{content:" (" attr(href) ")"; font-size:.7em; color:#666;}
+}
+</style>
+</head>
+<body class="sysB plus">
+<div id="progress"></div>
+
+<!-- ============================================================
+     HALLUZINATIONS-COVER (Apparat · eigenes Inline-CSS · VORRANG)
+     ============================================================ -->
+<section style="font-family:Georgia,'Times New Roman',serif;max-width:780px;margin:2.2rem auto 2.5rem;padding:2rem 2.25rem;border:1px solid #d8d2c4;border-top:4px solid #7a1f1f;background:#fbfaf7;color:#1c1a17;">
+  <p style="margin:0 0 .4rem;font:600 .7rem/1.2 'Helvetica Neue',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#7a1f1f;">Dokumentation · Halluzinationsminimierung</p>
+  <h1 style="margin:0 0 .8rem;font-size:1.7rem;line-height:1.15;">Der Anstieg der Vergewaltigungen — Zahlen, Ursachen, Maßnahmen</h1>
+
+  <!-- Banner: Faktor -->
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin:0 0 1.2rem;padding:1rem 1.1rem;background:#f1ede2;border-left:3px solid #7a1f1f;">
+    <div style="font-size:2.4rem;font-weight:700;line-height:1;color:#3a6b35;white-space:nowrap;">≈ 5×</div>
+    <div style="font-size:.98rem;line-height:1.4;">
+      <strong>geringeres Halluzinationsrisiko</strong> als der modellweite Closed-Book-Wert. Diese Aufarbeitung wurde vollständig <strong>aus den hochgeladenen Quellen</strong> (PKS&nbsp;2025, LeSuBiA, bpb, VisSa-Bericht, Lehrbücher Kunz/Singelnstein und Neubacher) erstellt; gesicherte Belegstellen sind nahezu fehlerfrei, prüfbedürftig bleiben nur exakte Zahlen, Seitenangaben und Zitatwortlaut.
+    </div>
+  </div>
+
+  <!-- Verlass-/Bezugssatz -->
+  <p style="margin:0 0 1.3rem;font-size:1rem;line-height:1.5;">
+    <strong>Worauf Verlass ist:</strong> die Richtung des Trends, die zentralen Befunde zur Täter-Opfer-Beziehung, die Mehr-Ursachen-Erklärung und die Bewertung der Maßnahmen geben den Forschungsstand der Quellen korrekt wieder. <strong>Vorher prüfen:</strong> jede einzelne Prozentzahl, jede Jahreszahl und jeden wörtlich gesetzten Satz.
+  </p>
+
+  <!-- Ampel-Strip -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:0 0 1.5rem;">
+    <div style="background:#eef4ec;border:1px solid #cfe0c8;padding:.7rem .85rem;font-size:.86rem;line-height:1.4;">
+      <strong style="color:#3a6b35;">✓ Verlässlich</strong><br>Trendrichtung · Beziehungsdelikt-Befund · Hell-/Dunkelfeld-Logik · Maßnahmen-Bewertung · Quellenzuordnung
+    </div>
+    <div style="background:#faf2ec;border:1px solid #e6cdb8;padding:.7rem .85rem;font-size:.86rem;line-height:1.4;">
+      <strong style="color:#a8500f;">⚠ Vorher prüfen</strong><br>Exakte %-Werte · Jahres-/Seitenangaben · Zitatwortlaut · Anteilswerte nichtdeutscher TV
+    </div>
+  </div>
+
+  <!-- Zone A: Benchmark-Grafik (zwei Modi) -->
+  <h2 style="font:600 .75rem/1.3 'Helvetica Neue',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#555;margin:0 0 .2rem;">Zone A · Modell-Benchmark vs. diese Arbeit</h2>
+  <p style="margin:.1rem 0 .9rem;font-size:.8rem;color:#777;">Halluzinationsrate · niedriger ist besser · Skala 0–60&nbsp;%</p>
+  <div style="font:.85rem/1 'Helvetica Neue',sans-serif;">
+    <div style="margin-bottom:.55rem;"><span style="display:inline-block;width:215px;">① Opus 4.8 ohne Quelle (gemessen)</span>
+      <span style="display:inline-block;width:calc(100% - 270px);background:#e6e0d2;vertical-align:middle;"><span style="display:block;width:59.8%;background:#9a9a9a;color:#fff;padding:.2rem .4rem;box-sizing:border-box;">35,9 %</span></span></div>
+    <div style="margin-bottom:.55rem;"><span style="display:inline-block;width:215px;">Gemini 3.1 Pro ohne Quelle</span>
+      <span style="display:inline-block;width:calc(100% - 270px);background:#e6e0d2;vertical-align:middle;"><span style="display:block;width:83.3%;background:#b0902f;color:#fff;padding:.2rem .4rem;box-sizing:border-box;">50 %</span></span></div>
+    <div style="margin-bottom:.55rem;"><span style="display:inline-block;width:215px;">OpenAI / Google (Peer) ohne Quelle</span>
+      <span style="display:inline-block;width:calc(100% - 270px);background:#e6e0d2;vertical-align:middle;"><span style="display:block;width:92%;background:#b3b3b3;color:#fff;padding:.2rem .4rem;box-sizing:border-box;">höher</span></span></div>
+    <div style="margin-bottom:.2rem;"><span style="display:inline-block;width:215px;color:#3a6b35;font-weight:700;">② Mit Quelle (grounded) — diese Arbeit</span>
+      <span style="display:inline-block;width:calc(100% - 270px);background:#e6e0d2;vertical-align:middle;"><span style="display:block;width:11.7%;background:#3a6b35;color:#fff;padding:.2rem .4rem;box-sizing:border-box;white-space:nowrap;">≈ 5–9 %</span></span></div>
+  </div>
+  <p style="margin:.35rem 0 0 0;font-size:.72rem;color:#3a6b35;font-style:italic;">② geschätzt, nicht gemessen — Selbsteinschätzung für diese quellenbasierte Arbeit (Spanne ≈ 5–9 %, Mittel ≈ 7 %).</p>
+  <p style="margin:.55rem 0 1.6rem;font-size:.74rem;line-height:1.45;color:#888;">
+    ① Modellweite Werte auf einem Closed-Book-Wissensbenchmark (AA-Omniscience), gemessen <strong>ohne</strong> beigelegte Quelle. Beschreibt das Modell allgemein, <strong>nicht</strong> diese Antwort. Quelle: Artificial Analysis, 28.05.2026.
+    <strong>Da diese Arbeit quellenbasiert (grounded) erstellt wurde, liegt das reale Risiko für Struktur und Thesen deutlich unter dem Closed-Book-Wert von 35,9 %; das Restrisiko konzentriert sich auf exakte Zahlen, Seitenangaben und den Zitatwortlaut.</strong>
+  </p>
+
+  <!-- Details-Klappbox -->
+  <details style="margin:0 0 1.4rem;border:1px solid #e0dacc;background:#f7f4ec;padding:0 1rem;">
+    <summary style="font:600 .8rem/1.3 'Helvetica Neue',sans-serif;color:#7a1f1f;padding:.75rem 0;cursor:pointer;">Angewandte Maßnahmen zur Halluzinationsminimierung</summary>
+    <ul style="margin:0 0 1rem;padding-left:1.2rem;font-size:.9rem;line-height:1.55;">
+      <li>Extraktives Arbeiten aus den beigelegten Quellen statt aus dem Gedächtnis.</li>
+      <li>Zu jeder Zahl und jeder These eine benannte Fundstelle (PKS&nbsp;2025, LeSuBiA, bpb-Dossier, VisSa-Bericht, Kunz/Singelnstein, Neubacher).</li>
+      <li>Direktzitate mit Locator (Seitenzahl bzw. Quelle) in prüfbaren Zitatkarten.</li>
+      <li>Trennung von Beleg, Schlussfolgerung und offener Frage; Forschungslücken benannt statt gefüllt.</li>
+      <li>Politisch heikle Punkte (Staatsangehörigkeit der Tatverdächtigen) nur mit den Relativierungen, die die kriminologische Literatur ausdrücklich macht.</li>
+      <li>Keine erfundenen Rasterbilder; Diagramme nur auf belegter Zahlengrundlage; sonst illustratives SVG.</li>
+    </ul>
+  </details>
+
+  <!-- Zone B -->
+  <div style="border:1px dashed #b9a; background:#faf4f4; padding:1rem 1.1rem;">
+    <p style="margin:0 0 .6rem;font:600 .72rem/1.3 'Helvetica Neue',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#7a1f1f;">Zone B · Selbsteinschätzung zur aktuellen Aufgabe — nicht gemessen</p>
+    <p style="margin:.2rem 0;font-size:.95rem;"><strong>Mit Originalquelle gearbeitet:</strong> Ja — PKS&nbsp;2025 / IMK-Bericht, BKA-Pressemitteilung &amp; SKiD, LeSuBiA-Ergebnisbericht, bpb-Dossier „Sexualkriminalität" (Pollich), VisSa-Bericht 2023, MKS-Aufsatz Biedermann/Volbert, Kunz/Singelnstein „Kriminologie", Neubacher „Kriminologie".</p>
+    <p style="margin:.2rem 0;font-size:.95rem;"><strong>Eingeschätzte Verlässlichkeit:</strong> hoch — Aussagen sind eng an die Quellen gebunden und überwiegend mehrfach belegt; das größte Restrisiko liegt in der exakten Wiedergabe einzelner Zahlen.</p>
+    <p style="margin:.2rem 0;font-size:.95rem;"><strong>Vor Weiterverwendung prüfen:</strong> die +72&nbsp;%- und +8,5/9,0&nbsp;%-Werte, der Anteil nichtdeutscher Tatverdächtiger (38,5&nbsp;%), die Köln-Zahlen (≈900 Sexualdelikte / 1.200 Opfer / 120 Tatverdächtige), Anzeigequoten (6,2&nbsp;%), Verurteilungs- und Rückfallspannen sowie alle Seiten-/Jahresangaben und Zitatwortlaute.</p>
+  </div>
+</section>
+<hr style="border:none;border-top:1px solid #d8d2c4;max-width:780px;margin:0 auto 2.5rem;">
+<!-- ============ ENDE COVER ============ -->
+
+
+<!-- ============ STICKY NAV ============ -->
+<nav class="topnav">
+  <div class="topnav__in">
+    <span class="topnav__logo">Anstieg &amp; <em>Ursachen</em></span>
+    <span class="topnav__links">
+      <a href="#synopsis">Überblick</a>
+      <a href="#zahlen">Zahlen</a>
+      <a href="#ursachen">Ursachen</a>
+      <a href="#gruppe">Gruppen</a>
+      <a href="#politik">Politik</a>
+      <a href="#bleibt">Was bleibt</a>
+      <a href="#glossar">Glossar</a>
+    </span>
+  </div>
+</nav>
+
+
+<!-- ============ HERO ============ -->
+<header class="b-hero">
+  <div class="wrap">
+    <div class="b-hero__tags">
+      <span class="b-tag">Synthese</span>
+      <span class="b-tag">Kriminologie</span>
+      <span class="b-tag">Deutschland</span>
+      <span class="b-tag">Quellenbasiert</span>
+      <span class="b-tag">Sprache: Deutsch</span>
+    </div>
+    <h1 class="b-hero__title">Warum die Zahlen <em>steigen</em> — und was wirklich hilft</h1>
+    <p class="b-hero__sub">Eine quellenbasierte Aufschlüsselung des registrierten Anstiegs der Vergewaltigungen in Deutschland: was er bedeutet, woher er kommt, und welche politischen Maßnahmen Wirkung versprechen — und welche nicht.</p>
+    <div class="b-hero__meta">Auf Basis von PKS&nbsp;2025, LeSuBiA-Dunkelfeldstudie, bpb-Dossier, VisSa-Bericht und kriminologischen Lehrbüchern · Stand der Quellen: 2025/2026 · Locator-Typ: Seitenzahl / Quellenname</div>
+    <div class="b-statstrip">
+      <div class="b-stat"><div class="b-stat__num">+72 %</div><div class="b-stat__lbl">registrierte Vergewaltigungen seit 2018</div></div>
+      <div class="b-stat"><div class="b-stat__num">≈ 6 %</div><div class="b-stat__lbl">Anzeigequote (SKiD 2023)</div></div>
+      <div class="b-stat"><div class="b-stat__num">~75 %</div><div class="b-stat__lbl">Täter aus dem Bekanntenkreis</div></div>
+      <div class="b-stat"><div class="b-stat__num">98,6 %</div><div class="b-stat__lbl">Tatverdächtige männlich</div></div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ============ SYNOPSIS ============ -->
+<section id="synopsis">
+  <div class="wrap">
+    <p class="dropcap">Seit 2018 ist die Zahl der polizeilich erfassten Vergewaltigungen in Deutschland um rund 72&nbsp;Prozent gestiegen — ein Befund, der zu Recht alarmiert und zugleich leicht missverstanden wird. Denn die Polizeiliche Kriminalstatistik zeigt nicht, wie viele Taten <em>geschehen</em>, sondern wie viele <em>angezeigt und erfasst</em> werden. Zwischen diesen beiden Größen liegt ein riesiges Dunkelfeld. Wer den Anstieg erklären will, muss deshalb zwei Fragen trennen, die in der öffentlichen Debatte fast immer vermischt werden: Steigt die <em>Gewalt</em> — oder steigt ihre <em>Sichtbarkeit</em>?</p>
+
+    <p>Die Quellen geben darauf eine vorsichtige, aber klare Antwort: Der Anstieg ist <span class="em2">mehrfach verursacht</span>. Gesetzesänderungen, ein verändertes Anzeigeverhalten, gesellschaftliche Sensibilisierung, die Digitalisierung und reale Tatgelegenheiten wirken zusammen. Keine einzelne Ursache trägt den Trend allein — und genau das hat Folgen dafür, welche politischen Maßnahmen etwas bewirken können.</p>
+
+    <div class="b-box thesis">
+      <p class="b-box__lbl">Die Hauptthese</p>
+      <p>Der registrierte Anstieg ist real, aber er misst zu einem erheblichen Teil eine Verschiebung vom Dunkel- ins Hellfeld. Wirksame Politik setzt deshalb bei Prävention, Strafverfolgung und Opferschutz an — nicht bei symbolischen Strafverschärfungen, die das eigentliche Problem, die schlechte Beweisbarkeit, kaum berühren.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ DIVIDER I ============ -->
+<div class="wide">
+  <div class="b-divider b-divider--indigo">
+    <p class="b-divider__eyebrow">Teil I · Der Befund</p>
+    <h2 class="b-divider__h">Was die Zahlen zeigen — und was nicht</h2>
+    <p class="b-divider__dek">Ein Anstieg von 72 Prozent ist erst dann aussagekräftig, wenn man weiß, was überhaupt gezählt wird.</p>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 1 · ZAHLEN ============ -->
+<section id="zahlen" class="sec-indigo">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-head__eyebrow">01 · Hellfeld</p>
+      <h2 class="sec-head__h">Der Trend in der Statistik</h2>
+      <p class="sec-head__dek">Hohe Fallzahlen, weiter steigend — aber auf einer Grundlage, die man kennen muss.</p>
+    </div>
+
+    <p>Die Sexualdelikte insgesamt bleiben in der Polizeilichen Kriminalstatistik (PKS) für 2025 <span class="em1">auf hohem Niveau</span>: rund 131.000 Fälle. Innerhalb dieser Gruppe sticht ein Bereich heraus. Bei <span class="em2">Vergewaltigung, sexueller Nötigung und schwerem sexuellem Übergriff</span> (dem statistischen Summenschlüssel 111000) verzeichnet die Polizei für 2025 einen Anstieg um 8,5&nbsp;Prozent gegenüber dem Vorjahr — und über den längeren Zeitraum einen dramatischen Sprung.</p>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Beleg · PKS 2025</div>
+      <blockquote class="b-qcard__body">„Seit 2018 ist die Anzahl der Vergewaltigungen (§177 Abs. 6-8 StGB) insgesamt um rund 71,7 % gestiegen."</blockquote>
+      <figcaption class="b-qcard__cite">BKA, Polizeiliche Kriminalstatistik 2025 · Bereich Sexualdelikte</figcaption>
+      <p class="b-qcard__t"><strong>Was heißt das?</strong> Innerhalb von sieben Jahren hat sich die Zahl der von der Polizei erfassten Vergewaltigungen fast verdoppelt. Die Pressemitteilung des BKA nennt für 2025 zusätzlich einen Jahreszuwachs von 9,0&nbsp;Prozent.</p>
+      <p class="b-qcard__c"><strong>Warum wichtig?</strong> Diese Zahl ist der Ausgangspunkt jeder Debatte. Sie beschreibt aber registrierte Fälle, nicht das Gesamtgeschehen — der entscheidende Vorbehalt für alles Folgende.</p>
+    </figure>
+
+    <div class="b-box def">
+      <p class="b-box__lbl">Begriff</p>
+      <h4>Hellfeld &amp; Dunkelfeld</h4>
+      <p>Das <em>Hellfeld</em> sind die der Polizei bekannten Taten — was in der PKS steht. Das <em>Dunkelfeld</em> sind alle übrigen: geschehen, aber nie angezeigt. Bei Sexualdelikten ist dieses Dunkelfeld besonders groß, weil viele Betroffene aus Scham, Angst oder Misstrauen keine Anzeige erstatten.</p>
+    </div>
+
+    <p>Wie groß der unsichtbare Teil ist, zeigt die Anzeigequote. Die Opferbefragung „Sicherheit und Kriminalität in Deutschland" (SKiD) des BKA fand für 2023 eine erschütternd niedrige Quote.</p>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Beleg · SKiD 2023</div>
+      <blockquote class="b-qcard__body">„Nach wie vor ist die Anzeigequote bei Sexualdelikten besonders gering – sie lag bei sexuellem Missbrauch und Vergewaltigung 2023 bei 6,2 Prozent."</blockquote>
+      <figcaption class="b-qcard__cite">BKA-Pressemitteilung zur PKS 2025 / SKiD 2024</figcaption>
+      <p class="b-qcard__t"><strong>Was heißt das?</strong> Von etwa sechzehn Vergewaltigungen erreicht nur eine die Statistik. Ältere Dunkelfeldstudien nennen ähnlich niedrige Werte: rund fünf Prozent angezeigte Taten in einer Studie von 2004, knapp sechzehn Prozent in einer von 2014.</p>
+      <p class="b-qcard__c"><strong>Warum wichtig?</strong> Wenn die Anzeigequote auch nur leicht steigt, schießt die Hellfeld-Zahl nach oben — ganz ohne dass mehr Taten geschehen. Genau das ist der Kern des Interpretationsproblems.</p>
+    </figure>
+
+    <div class="svg-scene">
+      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Liniendiagramm: Anstieg der erfassten Sexualdelikte insgesamt von etwa 48.000 Fällen 2016 auf etwa 131.000 Fälle 2025">
+        <rect width="700" height="300" fill="#f4ecd9"/>
+        <!-- axes -->
+        <line x1="70" y1="250" x2="660" y2="250" stroke="#cfc4a8" stroke-width="1.5"/>
+        <line x1="70" y1="40" x2="70" y2="250" stroke="#cfc4a8" stroke-width="1.5"/>
+        <!-- y labels -->
+        <g font-family="Inter Tight, sans-serif" font-size="11" fill="#6a6f6b">
+          <text x="60" y="250" text-anchor="end">30k</text>
+          <text x="60" y="180" text-anchor="end">70k</text>
+          <text x="60" y="110" text-anchor="end">110k</text>
+          <text x="60" y="55" text-anchor="end">140k</text>
+        </g>
+        <!-- gridlines -->
+        <g stroke="#e3dac2" stroke-width="1">
+          <line x1="70" y1="180" x2="660" y2="180"/>
+          <line x1="70" y1="110" x2="660" y2="110"/>
+          <line x1="70" y1="55" x2="660" y2="55"/>
+        </g>
+        <!-- data line: 2016..2025 (10 points), values approx from PKS chart -->
+        <polyline fill="none" stroke="#1d3a40" stroke-width="3"
+          points="100,232 162,210 224,192 286,178 348,160 410,118 472,98 534,82 596,72 640,66"/>
+        <g fill="#b85c2f">
+          <circle cx="100" cy="232" r="4"/><circle cx="162" cy="210" r="4"/><circle cx="224" cy="192" r="4"/>
+          <circle cx="286" cy="178" r="4"/><circle cx="348" cy="160" r="4"/><circle cx="410" cy="118" r="4"/>
+          <circle cx="472" cy="98" r="4"/><circle cx="534" cy="82" r="4"/><circle cx="596" cy="72" r="4"/><circle cx="640" cy="66" r="4"/>
+        </g>
+        <g font-family="Inter Tight, sans-serif" font-size="11" fill="#6a6f6b">
+          <text x="100" y="268" text-anchor="middle">2016</text>
+          <text x="348" y="268" text-anchor="middle">2020</text>
+          <text x="596" y="268" text-anchor="middle">2024</text>
+          <text x="640" y="268" text-anchor="middle">25</text>
+        </g>
+      </svg>
+      <div class="svg-scene__cap">Erfasste Sexualdelikte insgesamt, 2016–2025 — anhaltend steigend, besonders ab 2020/21. <span class="src">Werte aus der PKS-2025-Grafik „Anhaltend hoher Stand bei Sexualdelikten" (BKA), näherungsweise abgelesen.</span></div>
+    </div>
+
+    <p>Die Bundeszentrale für politische Bildung formuliert den entscheidenden Vorbehalt mit wünschenswerter Vorsicht: Niemand weiß bisher genau, wie viel des Anstiegs echte Zunahme und wie viel gestiegene Anzeigebereitschaft ist.</p>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Methodenhinweis · Offene Frage</div>
+      <blockquote class="b-qcard__body">„Inwiefern es sich hier um einen tatsächlichen Anstieg, um einen Anstieg der Anzeigebereitschaft, oder um eine Kombination … handelt, hat die Forschung bisher nicht umfassender untersucht."</blockquote>
+      <figcaption class="b-qcard__cite">Daniela Pollich, „Sexualkriminalität", bpb-Dossier Innere Sicherheit, 28.08.2025</figcaption>
+      <p class="b-qcard__t"><strong>Was heißt das?</strong> Die seriöse Forschung gibt sich hier bewusst keine Scheinsicherheit. Sie hält fest, dass mehrere Erklärungen gleichzeitig gelten können.</p>
+      <p class="b-qcard__c"><strong>Warum wichtig?</strong> Wer den Anstieg eindeutig als „mehr Verbrechen" <em>oder</em> eindeutig als „nur mehr Anzeigen" deutet, geht über den Forschungsstand hinaus. Beides ist im Spiel.</p>
+    </figure>
+
+    <div class="b-box plain">
+      <p class="b-box__lbl">→ Was bedeutet das konkret?</p>
+      <p>Die +72&nbsp;%-Zahl ist echt und ernst — aber sie ist <em>kein</em> direkter Gradmesser dafür, wie viel gefährlicher das Leben geworden ist. Sie mischt mehr Taten, mehr Anzeigen und mehr unter Strafe gestelltes Verhalten in einer einzigen Kurve.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ DIVIDER II ============ -->
+<div class="wide">
+  <div class="b-divider b-divider--sage">
+    <p class="b-divider__eyebrow">Teil II · Die Ursachen</p>
+    <h2 class="b-divider__h">Fünf Kräfte hinter der Kurve</h2>
+    <p class="b-divider__dek">Recht, Anzeigeverhalten, Sensibilisierung, Digitalisierung, Gelegenheit — sie wirken zusammen, nicht einzeln.</p>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 2 · URSACHEN ============ -->
+<section id="ursachen" class="sec-sage">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-head__eyebrow">02 · Erklärung</p>
+      <h2 class="sec-head__h">Warum die Zahlen steigen</h2>
+      <p class="sec-head__dek">Das BKA selbst nennt ein Bündel von Gründen — kein einzelner trägt den Trend.</p>
+    </div>
+
+    <p>Die wichtigste Erkenntnis vorweg: Der Anstieg ist <span class="em3">multikausal</span>. Das BKA listet in der PKS 2025 mehrere Erklärungsansätze nebeneinander auf, und genau diese Mehrdeutigkeit ist der Befund — nicht eine einzelne Schlagzeile.</p>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Schlüsselstelle · Erklärungsansatz</div>
+      <blockquote class="b-qcard__body">„Der deutliche Anstieg der Sexualdelikte … ist in Teilen auf Gesetzesänderungen … im Jahr 2016 und … 2021 zurückzuführen."</blockquote>
+      <figcaption class="b-qcard__cite">BKA, PKS 2025 · „Erklärungsansätze für den langfristigen Anstieg der Sexualdelikte"</figcaption>
+      <p class="b-qcard__t"><strong>Was heißt das?</strong> Ein Teil des Anstiegs ist juristisch erzeugt: Seit 2016 stehen mehr Handlungen unter Strafe als zuvor. Wo mehr strafbar ist, wird mehr erfasst.</p>
+      <p class="b-qcard__c"><strong>Warum wichtig?</strong> Dieser Mechanismus erhöht die Statistik, ohne dass sich das reale Verhalten geändert haben muss. Er ist die unspektakulärste, aber wichtigste Teilursache.</p>
+    </figure>
+
+    <h3 style="font-family:'Newsreader',serif;color:var(--primary);font-size:1.5rem;margin:34px 0 4px;">Die fünf Kräfte im Einzelnen</h3>
+
+    <div class="b-margin">
+      <div class="b-margin__body">
+        <p><strong>1. Das Recht wurde verschärft.</strong> Ende 2016 trat die „Nein heißt Nein"-Regel in Kraft (§&nbsp;177 StGB): Sexuelle Handlungen gegen den erkennbaren Willen sind seither strafbar, auch ohne Nötigung oder Gewalt. 2021 folgten Verschärfungen beim Schutz von Kindern. Beide Reformen erweitern, was überhaupt als Delikt zählt.</p>
+        <p><strong>2. Das Anzeigeverhalten ändert sich.</strong> Bewegungen wie #MeToo, mehr mediale Aufmerksamkeit und sinkende Tabus erhöhen die Bereitschaft, Taten zu melden — auch lange zurückliegende. Das BKA weist darauf hin, dass 2025 ein erheblicher Anteil der gemeldeten Taten aus früheren Jahren stammte.</p>
+        <p><strong>3. Gesellschaftliche Sensibilisierung.</strong> Was früher hingenommen wurde, wird heute als Übergriff erkannt und benannt. Das erzeugt mehr Anzeigen, ist aber zugleich ein Zeichen für Fortschritt, nicht für Verfall.</p>
+        <p><strong>4. Die Digitalisierung.</strong> Neue technische Möglichkeiten, verändertes Mediennutzungsverhalten und Delikte im digitalen Raum (etwa selbstgefertigte Inhalte Jugendlicher) lassen eigene Fallgruppen wachsen.</p>
+        <p><strong>5. Reale Tatgelegenheiten.</strong> Mehr Mobilität und mehr Menschen im öffentlichen Raum schaffen mehr Gelegenheiten für „hands-on"-Delikte. Hier kann auch ein echter Zuwachs an Taten stecken.</p>
+      </div>
+      <div class="b-margin__note">
+        <b>Lesehilfe</b>
+        Die ersten drei Kräfte verschieben vor allem die <em>Sichtbarkeit</em> (Dunkelfeld → Hellfeld). Die letzten beiden können auch die <em>tatsächliche</em> Zahl der Taten berühren. Beide Effekte addieren sich in derselben Kurve — deshalb lässt sich der Anstieg nicht sauber in „echt" und „statistisch" zerlegen.
+      </div>
+    </div>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Beleg · Verschiebung ins Hellfeld</div>
+      <blockquote class="b-qcard__body">„Damit könnte … der aktuelle Anstieg der Sexualdelikte auch auf eine Verschiebung vom Dunkel- ins Hellfeld zurückzuführen sein."</blockquote>
+      <figcaption class="b-qcard__cite">IMK-Bericht zur PKS 2025 (BKA), Abschnitt Sexualdelikte</figcaption>
+      <p class="b-qcard__t"><strong>Was heißt das?</strong> Der Bericht nennt als Stütze, dass 46,1&nbsp;Prozent der 2025 erfassten Fälle eine Tatzeit im Jahr 2024 oder davor hatten — die Taten wurden also oft erst später angezeigt.</p>
+      <p class="b-qcard__c"><strong>Warum wichtig?</strong> Das ist der stärkste empirische Hinweis darauf, dass ein großer Teil des Anstiegs „nachgeholte" Sichtbarkeit ist, nicht neue Gewalt.</p>
+    </figure>
+
+    <div class="b-mega">
+      <p class="b-mega__eyebrow">Die zentrale Einsicht</p>
+      <p class="b-mega__text">Ein steigendes Hellfeld kann <em>Fortschritt</em> bedeuten — wenn mehr Betroffene den Mut finden, anzuzeigen.</p>
+      <p class="b-mega__sub">Eine niedrige Statistik ist nicht automatisch gut, eine hohe nicht automatisch schlecht. Es kommt darauf an, was sich dahinter bewegt.</p>
+    </div>
+
+    <p>Ein zweiter Befund korrigiert das verbreitete Bild vom fremden Täter im Dunkeln. Die meisten schweren Sexualdelikte sind <span class="em2">Beziehungsdelikte</span>. Sie geschehen im sozialen Nahraum, meist in Wohnungen — nicht auf der Straße.</p>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Schlüsselstelle · Tatstruktur</div>
+      <blockquote class="b-qcard__body">„Nur ein knappes Drittel der Vergewaltigungen und schweren sexuellen Nötigungen wird auf Straßen und Plätzen, also im öffentlichen Raum begangen."</blockquote>
+      <figcaption class="b-qcard__cite">Frank Neubacher, Kriminologie, 4. Aufl. 2020, Nomos · 25. Kap.</figcaption>
+      <p class="b-qcard__t"><strong>Was heißt das?</strong> Über zwei Drittel der Taten ereignen sich aus Bekanntschaften, Partnerschaften oder dem familiären Umfeld heraus. Die VisSa-Befragung nennt (Ex-)Partner als häufigste Täter bei vollzogenen Vergewaltigungen (rund 48&nbsp;Prozent).</p>
+      <p class="b-qcard__c"><strong>Warum wichtig?</strong> Wer Sexualgewalt vor allem als Gefahr durch Fremde im öffentlichen Raum begreift, zielt mit Maßnahmen am häufigsten Tatort vorbei: der eigenen Wohnung.</p>
+    </figure>
+
+    <div class="b-box def">
+      <p class="b-box__lbl">Begriff</p>
+      <h4>Multikausalität</h4>
+      <p>Mehrere Ursachen wirken gleichzeitig, ohne dass eine allein ausreicht. Der Begriff stammt aus dem Lateinischen (<em>multus</em> = viel, <em>causa</em> = Ursache). Für Kriminalität gilt fast immer: nicht <em>der eine</em> Grund, sondern ein Bündel.</p>
+    </div>
+
+    <details class="b-details">
+      <summary>Vertiefung: Alkohol, Biografie und das kriminologische Risikoprofil</summary>
+      <div class="b-details__body">
+        <p>Neubachers Lehrbuch nennt weitere, individuell ansetzende Faktoren: Bei inhaftierten Sexualstraftätern finden sich häufiger schon in Kindheit und Jugend Auffälligkeiten (Schulschwierigkeiten, psychische Störungen), teils eigene Missbrauchserfahrungen. Alkohol spielt eine große Rolle — bei ungeplanten Sexualtaten werden laut der zitierten Daten rund 71&nbsp;Prozent unter Alkoholeinfluss begangen. Solche Befunde erklären <em>einzelne Taten</em>, nicht den statistischen Gesamttrend; beide Ebenen sind auseinanderzuhalten.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+
+<!-- ============ DIVIDER III ============ -->
+<div class="wide">
+  <div class="b-divider b-divider--plum">
+    <p class="b-divider__eyebrow">Teil III · Gruppen &amp; Debatte</p>
+    <h2 class="b-divider__h">Gruppentaten und die Herkunftsfrage</h2>
+    <p class="b-divider__dek">Zwei Themen, die die Debatte beherrschen — und die die Daten nüchterner zeichnen, als die Schlagzeilen.</p>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 3 · GRUPPE ============ -->
+<section id="gruppe" class="sec-plum">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-head__eyebrow">03 · Gruppentaten</p>
+      <h2 class="sec-head__h">Wie häufig sind Gruppenvergewaltigungen?</h2>
+      <p class="sec-head__dek">Im Regelfall selten — mit einem benennbaren Sonderfall, der die Wahrnehmung prägt.</p>
+    </div>
+
+    <p>Gruppenvergewaltigungen erhalten in der Öffentlichkeit große Aufmerksamkeit. In der Fläche der erfassten Sexualdelikte sind sie jedoch <span class="em2">die Ausnahme</span>. Eine detaillierte Auswertung aller 2018 in Brandenburg registrierten §-177-Fälle fand mehrere Tatverdächtige nur in einem kleinen Bruchteil der Fälle.</p>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Beleg · Häufigkeit</div>
+      <blockquote class="b-qcard__body">„Mehrere ermittelte Tatverdächtige: nein 96,9 % · ja 3,1 %."</blockquote>
+      <figcaption class="b-qcard__cite">Biedermann/Volbert, Monatsschrift für Kriminologie 2020 · Brandenburg, §&nbsp;177 StGB</figcaption>
+      <p class="b-qcard__t"><strong>Was heißt das?</strong> In gut 97 von 100 erfassten Fällen handelte eine einzelne Person. Mehrere Opfer in einem Fall waren mit 1,0&nbsp;Prozent noch seltener. Die Studie hält ausdrücklich fest, dass mehrere Tatverdächtige „nur selten" auftreten.</p>
+      <p class="b-qcard__c"><strong>Warum wichtig?</strong> Die statistische Realität widerspricht dem Eindruck, Gruppentaten seien typisch. Sie sind ein seltenes, wenn auch besonders schweres Phänomen.</p>
+    </figure>
+
+    <div class="b-box memo">
+      <p class="b-box__lbl">Befund in einem Satz</p>
+      <p>Gruppentaten sind selten — aber wenn sie vorkommen, ist ihre Aufklärung paradoxerweise oft <em>leichter</em>, weil sich die Aussagen mehrerer Verdächtiger vergleichen lassen.</p>
+    </div>
+
+    <p>Der Gesetzgeber hat 2016 dennoch reagiert und mit §&nbsp;184j StGB einen eigenen Tatbestand der „Straftaten aus Gruppen" geschaffen. Der Hintergrund ist ein konkretes Ereignis, das die Debatte bis heute prägt: die Silvesternacht 2015/16 in Köln.</p>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Schlüsselstelle · Köln 2015/16</div>
+      <blockquote class="b-qcard__body">„Verantwortlich hierfür waren Gruppen von Flüchtlingen, die die Opfer umringten, ihnen die Flucht abschnitten und sie zum Teil festhielten, damit andere aus der Gruppe attackieren konnten."</blockquote>
+      <figcaption class="b-qcard__cite">Frank Neubacher, Kriminologie, 4. Aufl. 2020 · 16. Kap.</figcaption>
+      <p class="b-qcard__t"><strong>Was heißt das?</strong> Das BKA gab später rund 900 Sexualdelikte mit etwa 1.200 Opfern an (ca. 650 in Köln, ca. 400 in Hamburg). Als Tatverdächtige ermittelt wurden mangels Spuren nur etwa 120 Personen, überwiegend aus Nordafrika.</p>
+      <p class="b-qcard__c"><strong>Warum wichtig?</strong> Neubacher ordnet Köln als <em>Sonderfall</em> ein, der vom Rest der Kriminalität zu unterscheiden sei — und nennt die situativen Treiber: Einsatzfehler der Polizei, Gruppenbildung junger Männer, Alkohol und die Gelegenheit, im Schutz der Masse unentdeckt zu handeln.</p>
+    </figure>
+
+    <p>Wichtig ist die analytische Trennung, die das Lehrbuch vornimmt: Köln war ein spezifisches Geschehen einer bestimmten Gruppe neu Eingereister — und gerade deshalb nicht repräsentativ für „Ausländerkriminalität" insgesamt oder für die typische Vergewaltigung im Land. Neubacher warnt zugleich vor hysterischen Reaktionen wie dem Ruf nach Bürgerwehren.</p>
+
+    <div class="b-mega">
+      <p class="b-mega__eyebrow">Zur Einordnung</p>
+      <p class="b-mega__text">Das Sichtbarste ist nicht das Häufigste.</p>
+      <p class="b-mega__sub">Die seltene Gruppentat im öffentlichen Raum prägt die Angst — die häufige Tat geschieht still, durch Bekannte, in Wohnungen.</p>
+    </div>
+
+    <div class="sec-head" style="margin-top:48px;">
+      <p class="sec-head__eyebrow">04 · Die Herkunftsfrage</p>
+      <h2 class="sec-head__h">Was sagen die Daten zur Staatsangehörigkeit?</h2>
+      <p class="sec-head__dek">Eine überrepräsentierte Gruppe in der Statistik — und eine Kette von Gründen, warum die Rohzahl in die Irre führt.</p>
+    </div>
+
+    <p>Die Frage lässt sich weder verschweigen noch unkritisch übernehmen. Die Rohdaten zeigen eine Überrepräsentation, die Forschung relativiert sie systematisch. Beides gehört zusammen.</p>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Beleg · PKS 2025</div>
+      <blockquote class="b-qcard__body">„Der Anteil der nichtdeutschen Tatverdächtigen beträgt 38,5 Prozent und ist im Vergleich zum Vorjahr konstant geblieben."</blockquote>
+      <figcaption class="b-qcard__cite">BKA-Pressemitteilung PKS 2025 · Vergewaltigung</figcaption>
+      <p class="b-qcard__t"><strong>Was heißt das?</strong> Gemessen am Bevölkerungsanteil sind Nichtdeutsche unter den Tatverdächtigen überrepräsentiert. Der Anteil nichtdeutscher Opfer von Vergewaltigung lag bei 22,3&nbsp;Prozent.</p>
+      <p class="b-qcard__c"><strong>Warum wichtig?</strong> Diese Zahl wird politisch oft als Beweis genommen. Die kriminologische Literatur zeigt jedoch, dass die Rohzahl als Erklärung kaum taugt.</p>
+    </figure>
+
+    <p>Das Standard-Lehrbuch von Kunz und Singelnstein nennt „Ausländerkriminalität" daher keinen kriminologischen Deliktsbereich, sondern eine Debatte — und benennt klar, woran die einfache Deutung scheitert.</p>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Gegenposition · Relativierung</div>
+      <blockquote class="b-qcard__body">„Kriminalität ist keine Frage der Herkunft oder ethnischer Zugehörigkeit, sondern hängt von der Lebenslage ab."</blockquote>
+      <figcaption class="b-qcard__cite">Kunz/Singelnstein, Kriminologie. Eine Grundlegung, 7. Aufl., UTB · Kap. „Ausländerkriminalität"</figcaption>
+      <p class="b-qcard__t"><strong>Was heißt das?</strong> Die Statistik erfasst Staatsangehörigkeit, nicht Lebenslage. Junge Männer, Großstadt, niedrige soziale Kontrolle, wenig Bildung, ungünstige Sozialisation — diese Risikomerkmale ballen sich in der nichtdeutschen Wohnbevölkerung, erklären Kriminalität aber unabhängig von der Herkunft.</p>
+      <p class="b-qcard__c"><strong>Warum wichtig?</strong> Vergleicht man Menschen in ähnlicher sozialer Lage und Altersstruktur, schrumpft der Unterschied stark. Selbstberichtsstudien finden bei Jugendlichen mit und ohne Migrationshintergrund keine signifikanten Unterschiede in der Gesamtdelinquenz.</p>
+    </figure>
+
+    <div class="b-box plain">
+      <p class="b-box__lbl">→ Was bedeutet das konkret?</p>
+      <p>Drei Verzerrungen erklären einen Teil der Überrepräsentation: <span class="em1">Ausländerspezifische Delikte</span> (illegale Einreise etc.), die nur Nichtdeutsche begehen können; <span class="em1">Erfassungslücken</span> (Touristen, Durchreisende zählen als Tatverdächtige, aber nicht in der Bevölkerungsstatistik); und eine <span class="em1">andere Sozialstruktur</span> (jünger, männlicher, großstädtischer, ärmer). Neubacher nennt die Verzerrung so stark, dass ein simpler Quotenvergleich „eigentlich unsinnig" sei.</p>
+    </div>
+
+    <p>Die Juristin Tatjana Hörnle hat speziell den Zusammenhang von §-177-Taten und Zuwanderung untersucht (KriPoZ 2018). Auch hier gilt: ein realer, aber kleiner und durch Lebenslage-Faktoren erklärbarer Effekt — kein Beleg für einen kulturellen Automatismus. Die ehrliche Antwort lautet, dass Nationalität und Religion <span class="em2">für sich genommen keine kriminogenen Faktoren</span> sind.</p>
+
+    <div class="b-box warning">
+      <p class="b-box__lbl">Unbequeme Wahrheit · für beide Lager</p>
+      <p>Für die einen: Die Überrepräsentation existiert und lässt sich nicht wegdiskutieren. Für die anderen: Sie ist überwiegend durch Alter, Geschlecht, soziale Lage und Statistik-Artefakte erklärt — nicht durch Herkunft als solche. Und der häufigste Täter bleibt, über alle Gruppen hinweg, der Bekannte oder Partner im Nahraum.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ DIVIDER IV ============ -->
+<div class="wide">
+  <div class="b-divider b-divider--amber">
+    <p class="b-divider__eyebrow">Teil IV · Die Politik</p>
+    <h2 class="b-divider__h">Was wirkt — und was wenig bringt</h2>
+    <p class="b-divider__dek">Maßnahmen messen sich daran, ob sie das eigentliche Problem treffen: Prävention, Beweisbarkeit, Opferschutz.</p>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 5 · POLITIK ============ -->
+<section id="politik" class="sec-amber">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-head__eyebrow">05 · Bewertung</p>
+      <h2 class="sec-head__h">Maßnahmen auf dem Prüfstand</h2>
+      <p class="sec-head__dek">Die Quellen erlauben eine vorsichtige Sortierung — nach dem, was die Evidenz stützt.</p>
+    </div>
+
+    <p>Eine Maßnahme ist nur so gut wie ihr Angriffspunkt. Drei Engstellen bestimmen, ob Politik wirkt: die <span class="em2">Prävention</span> (Taten verhindern), die <span class="em2">Beweisbarkeit</span> (Täter verurteilen) und der <span class="em2">Opferschutz</span> (Betroffene halten und schützen). Daran lassen sich die Vorschläge sortieren.</p>
+
+    <h3 style="font-family:'Newsreader',serif;color:var(--primary);font-size:1.5rem;margin:30px 0 4px;">Was die Evidenz stützt</h3>
+
+    <ol class="b-chain">
+      <li><span class="b-chain__txt"><strong>Frühe Prävention und sexuelle Bildung.</strong> Die bpb nennt als Grundansatz, „früh … allen Menschen Respekt vor der sexuellen Selbstbestimmung und den individuellen Grenzen anderer zu vermitteln". Der VisSa-Bericht empfiehlt Empowerment, Selbstbehauptung und Medienkompetenz an Schulen. Das setzt an der Wurzel an, statt nur zu reagieren.</span></li>
+      <li><span class="b-chain__txt"><strong>Bessere Strafverfolgung statt höherer Strafrahmen.</strong> Das Kernproblem ist die schlechte Beweisbarkeit (Aussage gegen Aussage), nicht die Höhe der Strafe. Maßnahmen, die Ermittlung, Beweissicherung und Vernehmungsqualität verbessern, treffen den wunden Punkt.</span></li>
+      <li><span class="b-chain__txt"><strong>Tertiärprävention: Rückfälle verhindern.</strong> Die bpb nennt die Rückfallverhinderung bei bereits auffälligen Tätern „einen wichtigen Baustein" — und verweist auf Behandlung im Strafvollzug als kriminalpräventives Erfolgsmodell.</span></li>
+      <li><span class="b-chain__txt"><strong>Ausbau von Fachberatung und Hilfesystem.</strong> Befragte bewerten das Hilfesystem überwiegend als unzureichend; der VisSa-Bericht fordert flächendeckende, gesicherte Beratungsstrukturen. Wo Betroffene Unterstützung erfahren, steigt auch die Anzeigebereitschaft.</span></li>
+      <li><span class="b-chain__txt"><strong>Evidenzbasis schaffen.</strong> Dunkelfeldstudien wie LeSuBiA liefern die Datengrundlage, um überhaupt zu wissen, was wirkt. Politik ohne diese Basis tappt im Dunkeln.</span></li>
+    </ol>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Schlüsselstelle · Grenzen der Strafverfolgung</div>
+      <blockquote class="b-qcard__body">„Am Problem der geringen Verurteilungsquoten, die auf Beweisschwierigkeiten … beruhen, werden diese Gesetzesänderungen jedoch vermutlich wenig ändern."</blockquote>
+      <figcaption class="b-qcard__cite">Frank Neubacher, Kriminologie, 4. Aufl. 2020 · 25. Kap. (zur „Nein heißt Nein"-Reform)</figcaption>
+      <p class="b-qcard__t"><strong>Was heißt das?</strong> Selbst eine wichtige, richtige Gesetzesreform löst das eigentliche Problem nicht: Viele Taten landen nie vor Gericht, weil Beweise fehlen. Die Verurteilungsquote liegt laut bpb nur zwischen etwa 15 und 30 Prozent.</p>
+      <p class="b-qcard__c"><strong>Warum wichtig?</strong> Das ist der zentrale Grund, warum reine Strafverschärfungen wenig bewegen — sie setzen an einem Hebel an, der gar nicht klemmt.</p>
+    </figure>
+
+    <h3 style="font-family:'Newsreader',serif;color:var(--primary);font-size:1.5rem;margin:34px 0 4px;">Was wenig bringt</h3>
+
+    <div class="b-sbs">
+      <div class="b-sbs__col b-sbs__a">
+        <h4>Symbolische Strafverschärfung</h4>
+        <p>Höhere Strafrahmen wirken entschlossen, ändern aber nichts an der Beweisbarkeit. Wenn 70&nbsp;Prozent der Taten im Nahraum geschehen und an „Aussage gegen Aussage" scheitern, hilft eine längere Höchststrafe den wenigen Verurteilten — nicht den vielen Fällen, die eingestellt werden.</p>
+      </div>
+      <div class="b-sbs__col b-sbs__b">
+        <h4>„Verhaltensregeln" für Frauen</h4>
+        <p>Ratschläge an potenziell Betroffene verschieben die Verantwortung auf die Opfer und schränken deren Freiheit ein. Die bpb warnt ausdrücklich davor — sie „zementieren ein Verständnis, das eine gewisse Verantwortung für Taten bei den Betroffenen sieht".</p>
+      </div>
+    </div>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Gegenposition · Was nicht hilft</div>
+      <blockquote class="b-qcard__body">„Vermeintlich wohlmeinende Hinweise an mögliche Betroffene … schränken Freiheiten eher ein, die jedem Menschen zustehen."</blockquote>
+      <figcaption class="b-qcard__cite">Daniela Pollich, „Sexualkriminalität", bpb-Dossier, 28.08.2025</figcaption>
+      <p class="b-qcard__t"><strong>Was heißt das?</strong> Appelle wie „nicht allein nachts unterwegs sein" zielen am Hauptproblem vorbei — die meisten Taten geschehen ohnehin im privaten Raum durch Bekannte. Einzelne situative Tipps (das eigene Getränk im Blick behalten) können punktuell schützen, ersetzen aber keine Politik.</p>
+      <p class="b-qcard__c"><strong>Warum wichtig?</strong> Solche Maßnahmen erzeugen das Gefühl von Sicherheit, ohne die Tatursachen zu berühren — und verlagern die Last auf die Falschen.</p>
+    </figure>
+
+    <p>Ein Wort zur Migrations-Debatte als Politikfeld: Maßnahmen, die allein auf Herkunft zielen, treffen laut Forschungsstand nicht die eigentlichen Treiber (Lebenslage, Alter, Geschlecht, soziale Kontrolle, Beweisbarkeit) und übersehen, dass der häufigste Täter der Bekannte im Nahraum ist. Integration, Bildung und Teilhabe wirken — als Maßnahmen gegen die <em>Lebenslage-Faktoren</em>, die kriminologisch zählen, nicht gegen „Herkunft".</p>
+
+    <!-- BEWERTUNGSTABELLE -->
+    <table class="b-cmp">
+      <thead>
+        <tr><th>Maßnahme</th><th>Setzt an bei</th><th>Bewertung (laut Quellen)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sexuelle Bildung &amp; frühe Prävention</td><td>Tatursachen, Respekt vor Grenzen</td><td><span class="verd verd--y">✓ wirksam</span></td></tr>
+        <tr><td>Bessere Beweissicherung &amp; Ermittlung</td><td>schlechte Beweisbarkeit</td><td><span class="verd verd--y">✓ wirksam</span></td></tr>
+        <tr><td>Täterbehandlung / Rückfallprävention</td><td>Wiederholungstaten</td><td><span class="verd verd--y">✓ wirksam</span></td></tr>
+        <tr><td>Ausbau Fachberatung &amp; Opferschutz</td><td>Anzeige, Schutz, Folgen</td><td><span class="verd verd--y">✓ wirksam</span></td></tr>
+        <tr><td>Dunkelfeldforschung (LeSuBiA)</td><td>Wissensgrundlage</td><td><span class="verd verd--y">✓ Voraussetzung</span></td></tr>
+        <tr><td>„Nein heißt Nein" (2016)</td><td>Strafbarkeit, Schutzlücke</td><td><span class="verd verd--m">⚠ richtig, aber kein Beweis-Hebel</span></td></tr>
+        <tr><td>Reine Strafrahmen-Erhöhung</td><td>Strafhöhe</td><td><span class="verd verd--n">✗ wenig Wirkung</span></td></tr>
+        <tr><td>„Verhaltensregeln" für Frauen</td><td>Opferverhalten</td><td><span class="verd verd--n">✗ kontraproduktiv</span></td></tr>
+        <tr><td>Herkunftsfokussierte Symbolpolitik</td><td>Staatsangehörigkeit</td><td><span class="verd verd--n">✗ verfehlt die Treiber</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.82rem;color:var(--eink-faint);font-family:'Inter Tight',sans-serif;">Bewertung als Synthese der zitierten Quellen (bpb, Neubacher, VisSa-Bericht, PKS). „⚠" heißt: inhaltlich richtige Reform, die aber das Beweisproblem nicht löst — nicht: überflüssig.</p>
+  </div>
+</section>
+
+
+<!-- ============ STIMMEN ============ -->
+<section id="stimmen">
+  <div class="wrap">
+    <div class="sec-head" style="margin-top:40px;">
+      <p class="sec-head__eyebrow">Apparat</p>
+      <h2 class="sec-head__h">Stimmen &amp; Quellen im Text</h2>
+      <p class="sec-head__dek">Wer hier zu Wort kommt — und mit welcher Funktion.</p>
+    </div>
+    <div class="b-figgrid">
+      <div class="b-figcard">
+        <p class="b-figcard__name">PKS / BKA</p>
+        <p class="b-figcard__life">Polizeiliche Kriminalstatistik 2025</p>
+        <p class="b-figcard__role">Liefert die Hellfeld-Zahlen: +72&nbsp;% seit 2018, Täterstruktur, Erklärungsansätze. Beschreibt Registriertes, nicht das Gesamtgeschehen.</p>
+      </div>
+      <div class="b-figcard">
+        <p class="b-figcard__name">Daniela Pollich</p>
+        <p class="b-figcard__life">Kriminologin · bpb-Dossier 2025</p>
+        <p class="b-figcard__role">Ordnet Strukturen, Anzeigeverhalten und Prävention ein; warnt vor „Verhaltensregeln" für Frauen.</p>
+      </div>
+      <div class="b-figcard">
+        <p class="b-figcard__name">Frank Neubacher</p>
+        <p class="b-figcard__life">Kriminologe · Lehrbuch 2020</p>
+        <p class="b-figcard__role">Beziehungsdelikt-Befund, Köln als Sonderfall, Skepsis gegenüber reiner Strafverschärfung.</p>
+      </div>
+      <div class="b-figcard">
+        <p class="b-figcard__name">Kunz &amp; Singelnstein</p>
+        <p class="b-figcard__life">Kriminologen · Grundlegung, 7. Aufl.</p>
+        <p class="b-figcard__role">Systematische Relativierung der „Ausländerkriminalität": Lebenslage statt Herkunft.</p>
+      </div>
+      <div class="b-figcard">
+        <p class="b-figcard__name">Biedermann &amp; Volbert</p>
+        <p class="b-figcard__life">MKS-Aufsatz 2020</p>
+        <p class="b-figcard__role">Datenbasis zur Seltenheit von Gruppentaten (3,1&nbsp;% mehrere Tatverdächtige).</p>
+      </div>
+      <div class="b-figcard">
+        <p class="b-figcard__name">LeSuBiA / VisSa</p>
+        <p class="b-figcard__life">Dunkelfeldstudien 2023–2025</p>
+        <p class="b-figcard__role">Liefern Prävalenzen, Anzeigeverhalten und Handlungsempfehlungen jenseits des Hellfelds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ WAS BLEIBT ============ -->
+<section id="bleibt">
+  <div class="wide">
+    <div class="b-divider">
+      <p class="b-divider__eyebrow">Bilanz</p>
+      <h2 class="b-divider__h">Was bleibt</h2>
+      <p class="b-divider__dek">Sechs Sätze, die der Forschungsstand trägt.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <ol class="b-chain">
+      <li><span class="b-chain__txt"><strong>Der Anstieg ist real, aber gemischt.</strong> +72&nbsp;% seit 2018 misst mehr Taten <em>und</em> mehr Anzeigen <em>und</em> mehr unter Strafe gestelltes Verhalten — die Forschung kann den Anteil bislang nicht sauber trennen.</span></li>
+      <li><span class="b-chain__txt"><strong>Die Ursachen sind multikausal.</strong> Recht, Anzeigeverhalten, Sensibilisierung, Digitalisierung und Tatgelegenheiten wirken zusammen.</span></li>
+      <li><span class="b-chain__txt"><strong>Die typische Tat ist nicht die sichtbarste.</strong> Über zwei Drittel geschehen im Nahraum, meist in Wohnungen, durch Bekannte und Partner.</span></li>
+      <li><span class="b-chain__txt"><strong>Gruppentaten sind selten.</strong> Rund 3&nbsp;% der Fälle; Köln 2015/16 ist ein benennbarer Sonderfall, kein Normalbild.</span></li>
+      <li><span class="b-chain__txt"><strong>Die Herkunftsfrage führt ohne Kontext in die Irre.</strong> Überrepräsentation ja — aber überwiegend durch Lebenslage, Alter, Geschlecht und Statistik-Artefakte erklärt, nicht durch Herkunft als solche.</span></li>
+      <li><span class="b-chain__txt"><strong>Wirksame Politik trifft die Engstellen.</strong> Prävention, bessere Beweisbarkeit und Opferschutz wirken; symbolische Strafverschärfung und „Verhaltensregeln" für Frauen kaum.</span></li>
+    </ol>
+
+    <div class="b-synth">
+      <p class="b-synth__lbl">Kernerkenntnis</p>
+      <p>Der Anstieg der Vergewaltigungen ist zu ernst, um ihn falsch zu deuten. Er ist weder reine Panikzahl noch bloßes Statistik-Artefakt — sondern beides zugleich, dazu ein Stück echter Zunahme.</p>
+      <p>Wer ihn senken will, muss dort ansetzen, wo die Taten wirklich geschehen und wo sie wirklich scheitern: bei früher Prävention, bei einer Strafverfolgung, die Beweise sichert statt nur Strafen anzudrohen, und bei einem Hilfesystem, das Betroffene trägt.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ GLOSSAR ============ -->
+<section id="glossar">
+  <div class="wrap">
+    <div class="sec-head" style="margin-top:40px;">
+      <p class="sec-head__eyebrow">Apparat</p>
+      <h2 class="sec-head__h">Glossar</h2>
+    </div>
+
+    <div class="b-gloss">
+      <h4>Hellfeld / Dunkelfeld</h4>
+      <p class="g-plain">Hellfeld = der Polizei bekannte, registrierte Taten. Dunkelfeld = geschehene, aber nie angezeigte Taten.</p>
+      <p class="g-original">„Da die PKS nur angezeigte Straftaten erfasst, bleibt ein großer Teil sexueller Gewalt im sogenannten Dunkelfeld verborgen." — bpb-Dossier</p>
+      <p class="g-etym">„Feld" als Metapher für den ausgeleuchteten bzw. dunklen Bereich des Kriminalitätsgeschehens.</p>
+    </div>
+
+    <div class="b-gloss">
+      <h4>Polizeiliche Kriminalstatistik (PKS)</h4>
+      <p class="g-plain">Die jährliche Zählung aller von der Polizei bearbeiteten Straftaten. Sie zeigt das Hellfeld — und sagt nichts über nicht angezeigte Taten.</p>
+      <p class="g-original">„Die Polizeiliche Kriminalstatistik macht Entwicklungen der Kriminalität im Hellfeld sichtbar." — PKS 2025</p>
+      <p class="g-etym">Statistik (griech. nach <em>statos</em>, „den Staat betreffend") — staatliche Zahlenerhebung.</p>
+    </div>
+
+    <div class="b-gloss">
+      <h4>§ 177 StGB · „Nein heißt Nein"</h4>
+      <p class="g-plain">Seit Ende 2016 sind sexuelle Handlungen strafbar, wenn sie gegen den erkennbaren Willen erfolgen — auch ohne Gewalt oder Drohung.</p>
+      <p class="g-original">„So stehen sexuelle Handlungen unter Strafe, wenn sie ‚gegen den erkennbaren Willen' der betroffenen Person ausgeführt werden." — bpb-Dossier</p>
+      <p class="g-etym">StGB = Strafgesetzbuch; § (Paragraf, aus lat. <em>paragraphus</em>) bezeichnet den einzelnen Rechtssatz.</p>
+    </div>
+
+    <div class="b-gloss">
+      <h4>Beziehungsdelikt</h4>
+      <p class="g-plain">Eine Tat, bei der Täter und Opfer einander zumindest flüchtig kennen — der Regelfall bei Sexualdelikten.</p>
+      <p class="g-original">„Sexualdelikte sind überwiegend Beziehungsdelikte, d.h. Täter und Opfer sind zumindest flüchtig miteinander bekannt." — Neubacher</p>
+      <p class="g-etym">Gegenbegriff zum „Fremdtäter"; betont die soziale Nähe als Tatkontext.</p>
+    </div>
+
+    <div class="b-gloss">
+      <h4>Anzeigequote</h4>
+      <p class="g-plain">Der Anteil der tatsächlichen Taten, der angezeigt wird. Bei Vergewaltigung extrem niedrig (rund 6&nbsp;% laut SKiD 2023).</p>
+      <p class="g-original">„… die Anzeigequote bei Sexualdelikten besonders gering – sie lag bei … Vergewaltigung 2023 bei 6,2 Prozent." — BKA/SKiD</p>
+      <p class="g-etym">Quote (lat. <em>quota pars</em>, „der wievielte Teil") — der Anteil am Ganzen.</p>
+    </div>
+
+    <div class="b-gloss">
+      <h4>Tertiärprävention</h4>
+      <p class="g-plain">Vorbeugung durch Behandlung bereits auffälliger Täter, um Rückfälle zu verhindern.</p>
+      <p class="g-original">„… die Rückfallverhinderung von bereits auffällig gewordenen Täterinnen und Tätern." — bpb-Dossier</p>
+      <p class="g-etym">Lat. <em>tertius</em> = der dritte; nach Primär- (Ursachen) und Sekundärprävention (Risikogruppen) die dritte Stufe.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ COLOPHON / FOOTER ============ -->
+<footer class="colophon">
+  <div class="wide">
+    <h3>Kolophon</h3>
+    <p>Diese Synthese fasst den Forschungsstand der hochgeladenen Quellen zusammen und schlüsselt ihn didaktisch auf. Sie ersetzt keine fachliche oder rechtliche Beratung. Alle Direktzitate sind aus den Quellen entnommen und mit Locator versehen; jede Prozentzahl sollte vor Weiterverwendung an der Originalquelle geprüft werden (siehe Cover, Zone B).</p>
+    <p>Wo die Forschung selbst keine eindeutige Antwort gibt — etwa beim Anteil von „echtem Anstieg" gegenüber „mehr Anzeigen" — ist dies im Text als offene Frage gekennzeichnet, statt sie mit einer Scheinzahl zu schließen.</p>
+    <p style="margin-top:18px;font-family:'Inter Tight',sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#e9b48f;">Verwendete Quellen</p>
+    <ul class="src-list">
+      <li>BKA, Polizeiliche Kriminalstatistik 2025 &amp; IMK-Bericht; BKA-Pressemitteilung zur PKS 2025 / SKiD 2024.</li>
+      <li>LeSuBiA — „Lebenssituation, Sicherheit und Belastung im Alltag", Ergebnisbericht (BKA/BMFSFJ/BMI), 2025.</li>
+      <li>Daniela Pollich, „Sexualkriminalität", bpb-Dossier Innere Sicherheit, 28.08.2025.</li>
+      <li>VisSa-Bericht, 12.04.2023 (Befragung zu sexualisierter Gewalt, Sachsen).</li>
+      <li>Biedermann/Volbert, Monatsschrift für Kriminologie und Strafrechtsreform, 2020 (Brandenburg, §§ 177/184i StGB).</li>
+      <li>Karl-Ludwig Kunz &amp; Tobias Singelnstein, Kriminologie. Eine Grundlegung, 7. Aufl., UTB/Haupt.</li>
+      <li>Frank Neubacher, Kriminologie, 4. Aufl., Baden-Baden 2020, Nomos.</li>
+      <li>Nationale Dunkelfeldstudie „Sexualisierte Gewalt gegen Kinder und Jugendliche" (BDK / Dt. Ärzteblatt), 2025.</li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var p=document.getElementById('progress');
+  function upd(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var pct=max>0?(h.scrollTop/max)*100:0;
+    p.style.width=pct+'%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd,{passive:true});
+  upd();
+})();
+</script>
+</body>
+</html>
