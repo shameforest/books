@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Die Arendt-Frage — Was hält die Welt zwischen den Menschen zusammen?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS · SYSTEM A (übernommen aus visuelle-musterbibliothek.html)
+   ============================================================ */
+:root{
+  --paper:#f5f1e6; --paper-warm:#ede5d0; --paper-card:#f8f3e3; --paper-cool:#eef0ed;
+  --ink:#1a1612; --ink-soft:#3a342c; --ink-faint:#6b6357; --rule:#d0c8b5;
+  --accent-burgundy:#6b1f2e; --abyss:#2b1f3a; --gold:#c89518; --royal:#2c3e6e;
+  --olive:#6b7037; --terra:#a8602a; --reform:#3f5e3a; --steel:#4a5563; --mist:#7a8a8a;
+  --verdict-yes:#3f5e3a; --verdict-mixed:#c89518; --verdict-no:#6b1f2e;
+  --verdict-open:#4a5563; --verdict-na:#7a8a8a;
+  --maxw:1080px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top:74px;}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Lora',Georgia,serif; line-height:1.68; font-size:18px;
+  background-image:radial-gradient(var(--rule) 0.5px, transparent 0.5px);
+  background-size:24px 24px;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+.col{max-width:760px; margin-left:auto; margin-right:auto;}
+p{margin:0 0 1.1em;}
+a{color:var(--royal);}
+h2,h3,h4{font-family:'DM Serif Display',serif; font-weight:400; line-height:1.1;}
+
+/* progress bar */
+#progress{position:fixed; top:0; left:0; height:3px; width:0%; z-index:99;
+  background:linear-gradient(90deg,var(--gold),var(--terra)); transition:width .1s linear;}
+
+/* ---- Sticky-Navigation ---- */
+.sticky-nav{
+  position:sticky; top:0; z-index:60; height:56px; display:flex; align-items:center;
+  background:rgba(245,241,230,.86); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.sticky-nav__inner{max-width:var(--maxw); margin:0 auto; width:100%; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;}
+.sticky-nav__logo{font-family:'DM Serif Display',serif; font-size:1.05rem; color:var(--ink); white-space:nowrap;}
+.sticky-nav__logo span{color:var(--accent-burgundy);}
+.nav-select{font-family:'Space Grotesk',sans-serif; font-size:.78rem; letter-spacing:.02em;
+  background:var(--paper-card); border:1px solid var(--rule); color:var(--ink-soft);
+  padding:7px 10px; border-radius:3px; max-width:62vw;}
+@media(max-width:620px){ .sticky-nav__logo{font-size:.9rem;} }
+
+/* ---- Cover-Hero (Hausdesign) ---- */
+.cover-hero{background:var(--paper); border-bottom:1px solid var(--rule); padding:64px 0 0;}
+.a-cover{position:relative;}
+.a-cover__eyebrow{font-family:'Space Grotesk',sans-serif; font-size:.74rem; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--accent-burgundy); margin:0 0 18px;}
+.a-cover__title{font-family:'DM Serif Display',serif; font-weight:400; line-height:1.0;
+  font-size:clamp(40px,7vw,86px); margin:0 0 16px; color:var(--ink);}
+.a-cover__title em{font-style:italic; color:var(--accent-burgundy);}
+.a-cover__sub{font-family:'Lora',serif; font-style:italic; font-size:1.18rem; color:var(--ink-soft);
+  margin:0 0 34px; max-width:680px;}
+.a-statstrip{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:2px solid var(--ink);
+  border-bottom:2px solid var(--ink); margin-bottom:56px;}
+.a-stat{padding:20px 14px 16px; border-right:1px solid var(--rule);}
+.a-stat:last-child{border-right:none;}
+.a-stat__num{font-family:'DM Serif Display',serif; font-size:2.7rem; line-height:1; color:var(--accent-burgundy);}
+.a-stat__lbl{font-family:'Space Grotesk',sans-serif; font-size:.66rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-faint); margin-top:7px;}
+@media(max-width:600px){ .a-statstrip{grid-template-columns:repeat(2,1fr);}
+  .a-stat:nth-child(2){border-right:none;} .a-stat:nth-child(1),.a-stat:nth-child(2){border-bottom:1px solid var(--rule);} }
+
+/* ---- Key Takeaways ---- */
+.a-kt{background:var(--abyss); color:var(--paper); padding:54px 44px; border-radius:4px;}
+@media(max-width:600px){ .a-kt{padding:40px 24px;} }
+.a-kt__eyebrow{font-family:'Space Grotesk',sans-serif; font-size:.72rem; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--gold); margin:0 0 8px;}
+.a-kt__head{font-family:'Bebas Neue',sans-serif; font-size:clamp(44px,8vw,78px); letter-spacing:.02em;
+  margin:0 0 30px; line-height:.94;}
+.a-kt__grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:26px;}
+.a-kt__item{border-top:2px solid var(--gold); padding-top:13px;}
+.a-kt__num{font-family:'JetBrains Mono',monospace; font-size:.82rem; color:var(--gold);}
+.a-kt__stmt{font-family:'DM Serif Display',serif; font-size:1.4rem; line-height:1.12; margin:6px 0 9px; color:#fff;}
+.a-kt__exp{font-family:'Lora',serif; font-size:.95rem; color:#cfc7bb; margin:0;}
+
+/* ---- Chapter scaffolding ---- */
+.chapter{padding:66px 0 10px; border-top:1px solid var(--rule);}
+.chapter:first-of-type{border-top:none;}
+.ch-eyebrow{font-family:'Space Grotesk',sans-serif; font-size:.72rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--terra); margin:0 0 10px;}
+.ch-title{font-family:'DM Serif Display',serif; font-size:clamp(28px,4.4vw,46px); margin:0 0 8px; color:var(--ink);}
+.ch-dek{font-family:'Lora',serif; font-style:italic; font-size:1.12rem; color:var(--ink-soft); margin:0 0 28px; max-width:680px;}
+.part-band{margin:0; padding:8px 0 0;}
+.part-band__tag{font-family:'JetBrains Mono',monospace; font-size:.74rem; color:var(--ink-faint); letter-spacing:.05em;}
+
+/* Drop cap */
+.a-dropcap::first-letter{font-family:'DM Serif Display',serif; font-size:4.6rem; line-height:.8;
+  float:left; padding:6px 14px 0 0; color:var(--accent-burgundy);}
+
+/* ---- Plakat ---- */
+.a-plakat{padding:64px 38px; color:#fff; position:relative; margin:48px 0;}
+.a-plakat--burgundy{background:var(--accent-burgundy);}
+.a-plakat--royal{background:var(--royal);}
+.a-plakat--reform{background:var(--reform);}
+.a-plakat--abyss{background:var(--abyss);}
+.a-plakat--steel{background:var(--steel);}
+.a-plakat--terra{background:var(--terra);}
+.a-plakat--olive{background:var(--olive);}
+.a-plakat__eyebrow{font-family:'Space Grotesk',sans-serif; font-size:.72rem; letter-spacing:.22em;
+  text-transform:uppercase; opacity:.8; margin:0 0 16px;}
+.a-plakat__stmt{font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,9vw,112px); line-height:.9;
+  letter-spacing:.01em; margin:0 0 20px;}
+.a-plakat__author{font-family:'Space Grotesk',sans-serif; font-size:.86rem; letter-spacing:.08em; opacity:.85; margin:0 0 16px;}
+.a-plakat__alltag{font-family:'Lora',serif; font-style:italic; font-size:1.08rem; max-width:600px; opacity:.96; margin:0;}
+
+/* ---- Direct quote ---- */
+.a-quote{border-left:4px solid var(--gold); padding:6px 0 6px 24px; margin:30px 0;}
+.a-quote__text{font-family:'DM Serif Display',serif; font-style:italic; font-size:1.5rem; line-height:1.32; color:var(--ink); margin:0 0 12px;}
+.a-quote__cite{font-family:'JetBrains Mono',monospace; font-size:.75rem; color:var(--ink-faint); line-height:1.55;}
+.a-quote__cite cite{font-style:normal; color:var(--accent-burgundy); font-weight:500;}
+.a-quote__ctx{font-family:'Lora',serif; font-size:.92rem; color:var(--ink-soft); margin:12px 0 0;}
+
+/* ---- Boxes ---- */
+.a-box{padding:18px 22px; margin:24px 0; border-radius:2px;}
+.a-box__lbl{font-family:'Space Grotesk',sans-serif; font-size:.68rem; letter-spacing:.16em; text-transform:uppercase; margin:0 0 8px;}
+.a-box p{margin:0; font-family:'Lora',serif; font-size:.98rem;}
+.a-box--punkt{background:var(--paper-card); border-left:4px solid var(--gold);}
+.a-box--punkt .a-box__lbl{color:var(--terra);}
+.a-box--eilige{background:var(--paper-cool); border-left:4px solid var(--steel);}
+.a-box--eilige .a-box__lbl{color:var(--steel);}
+.a-box--wort{background:var(--abyss); color:var(--paper); border-left:4px solid var(--gold);}
+.a-box--wort .a-box__lbl{color:var(--gold);}
+.a-box--blick{background:var(--paper-warm); border-left:4px solid var(--royal);}
+.a-box--blick .a-box__lbl{color:var(--royal);}
+
+/* ---- Faustformel-Doppel ---- */
+.a-formula{background:var(--paper-card); border:1px solid var(--rule); border-top:3px solid var(--gold);
+  padding:16px 20px; margin:22px 0; border-radius:2px;}
+.a-formula__klassik{font-family:'DM Serif Display',serif; font-style:italic; font-size:1.12rem; color:var(--ink); margin:0 0 6px;}
+.a-formula__alltag{font-family:'Lora',serif; font-size:.92rem; color:var(--ink-soft); margin:0;}
+.a-formula__alltag b{font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--terra);}
+
+/* ---- Acht-Felder ---- */
+.a-acht{display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--rule); margin:26px 0;}
+.a-acht__cell{background:var(--paper-card); padding:15px 14px;}
+.a-acht__cell:nth-child(-n+4){border-top:3px solid var(--royal);}
+.a-acht__cell:nth-child(n+5){border-top:3px solid var(--terra);}
+.a-acht__n{font-family:'JetBrains Mono',monospace; font-size:.7rem; color:var(--accent-burgundy); font-weight:500;}
+.a-acht__t{font-family:'Space Grotesk',sans-serif; font-size:.74rem; letter-spacing:.05em; text-transform:uppercase; color:var(--ink); margin:3px 0 7px; font-weight:500;}
+.a-acht__d{font-family:'Lora',serif; font-size:.86rem; color:var(--ink-soft); line-height:1.42; margin:0;}
+@media(max-width:760px){ .a-acht{grid-template-columns:repeat(2,1fr);} }
+
+/* ---- Verdikt-Tafel ---- */
+.a-verdikt{border:2px solid var(--ink); background:var(--paper-card); margin:26px 0;}
+.a-verdikt__row{padding:14px 20px; border-bottom:1px solid var(--rule);}
+.a-verdikt__row:last-child{border-bottom:none;}
+.a-verdikt__head{display:flex; justify-content:space-between; align-items:flex-start; gap:14px; flex-wrap:wrap;}
+.a-verdikt__these{font-family:'DM Serif Display',serif; font-size:1.18rem; color:var(--ink); margin:0;}
+.a-verdikt__rep{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--ink-faint); margin:5px 0 0;}
+.a-verdikt__badge{display:inline-block; font-family:'Space Grotesk',sans-serif; font-size:.74rem; font-weight:700;
+  letter-spacing:.04em; padding:6px 13px; border-radius:2px; color:#fff; white-space:nowrap;}
+.badge-yes{background:var(--verdict-yes);} .badge-mixed{background:var(--verdict-mixed);}
+.badge-no{background:var(--verdict-no);} .badge-open{background:var(--verdict-open);} .badge-na{background:var(--verdict-na);}
+.a-verdikt__fakt{font-family:'Lora',serif; font-size:.92rem; color:var(--ink-soft); margin:0;}
+.a-verdikt__fakt b{color:var(--ink);}
+.a-verdikt__befund{font-family:'Lora',serif; font-style:italic; font-size:.98rem; color:var(--ink); margin:0;}
+
+/* ---- Galerie ---- */
+.a-galerie-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin:26px 0;}
+.a-galerie{background:var(--paper-card); border:1px solid var(--rule); border-top:4px solid var(--royal); padding:20px 18px;}
+.a-galerie__sil{width:54px; height:54px; border-radius:50%; background:var(--royal); display:flex;
+  align-items:center; justify-content:center; color:#fff; font-family:'DM Serif Display',serif; font-size:1.4rem; margin-bottom:12px;}
+.a-galerie__name{font-family:'DM Serif Display',serif; font-size:1.3rem; margin:0; line-height:1.1;}
+.a-galerie__meta{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--ink-faint); margin:3px 0 10px;}
+.a-galerie__school{display:inline-block; font-family:'Space Grotesk',sans-serif; font-size:.62rem; letter-spacing:.1em;
+  text-transform:uppercase; background:var(--royal); color:#fff; padding:3px 9px; border-radius:2px; margin-bottom:12px;}
+.a-galerie__formula{font-family:'Lora',serif; font-style:italic; font-size:.92rem; color:var(--ink); margin:0 0 6px;}
+.a-galerie__alltag{font-family:'Lora',serif; font-size:.86rem; color:var(--ink-soft); margin:0 0 10px;}
+.a-galerie__beitrag{font-family:'Lora',serif; font-size:.88rem; color:var(--ink-soft); margin:0;}
+
+/* ---- Analogie ---- */
+.a-analogie{background:linear-gradient(135deg,var(--paper-warm),var(--paper-card)); border:1px solid var(--rule);
+  padding:20px; display:flex; gap:16px; align-items:flex-start; margin:24px 0; border-radius:2px;}
+.a-analogie__icon{flex:0 0 auto;}
+.a-analogie__body h4{font-family:'Space Grotesk',sans-serif; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--terra); margin:0 0 6px;}
+.a-analogie__body p{font-family:'Lora',serif; font-size:.95rem; color:var(--ink-soft); margin:0;}
+
+/* ---- Stat grid ---- */
+.a-statgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:2px; background:var(--rule); margin:24px 0;}
+.a-statgrid__c{background:var(--paper-card); padding:17px;}
+.a-statgrid__n{font-family:'DM Serif Display',serif; font-size:2.2rem; color:var(--accent-burgundy); line-height:1;}
+.a-statgrid__l{font-family:'Space Grotesk',sans-serif; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); margin-top:6px;}
+
+/* ---- Pyramide ---- */
+.a-pyramide{display:flex; flex-direction:column; align-items:center; gap:4px; margin:28px 0;}
+.a-pyramide__tier{color:#fff; text-align:center; padding:13px 14px; font-family:'Space Grotesk',sans-serif;
+  font-size:.84rem; letter-spacing:.03em; border-radius:2px;}
+.a-pyramide__tier b{display:block; font-family:'DM Serif Display',serif; font-size:1.05rem; letter-spacing:0; margin-bottom:2px;}
+
+/* ---- Schulen-Karte ---- */
+.a-schule{background:var(--paper-card); border:1px solid var(--rule); padding:18px 20px; margin:14px 0;}
+.a-schule__id{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:#fff; padding:3px 8px; border-radius:2px;}
+.a-schule__name{font-family:'DM Serif Display',serif; font-size:1.25rem; color:var(--ink); margin:10px 0 6px;}
+.a-schule__these{font-family:'Lora',serif; font-size:.94rem; color:var(--ink-soft); margin:0;}
+
+/* ---- Thematische Module (m-) ---- */
+.m-timeline{position:relative; padding-left:34px; margin:26px 0;}
+.m-timeline::before{content:""; position:absolute; left:9px; top:4px; bottom:4px; width:2px; background:var(--rule);}
+.m-tl{position:relative; padding:0 0 24px;}
+.m-tl::before{content:""; position:absolute; left:-30px; top:3px; width:14px; height:14px; border-radius:50%;
+  background:var(--accent-burgundy); border:3px solid var(--paper);}
+.m-tl__date{font-family:'JetBrains Mono',monospace; font-size:.76rem; color:var(--accent-burgundy); font-weight:500;}
+.m-tl__title{font-family:'DM Serif Display',serif; font-size:1.16rem; color:var(--ink); margin:2px 0 4px;}
+.m-tl__body{font-family:'Lora',serif; font-size:.9rem; color:var(--ink-soft); margin:0;}
+
+.m-schema{background:var(--paper-cool); border:1px solid var(--rule); border-top:4px solid var(--royal); padding:22px; margin:26px 0;}
+.m-schema__lbl{font-family:'Space Grotesk',sans-serif; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--royal); margin:0 0 12px;}
+
+.m-matrix{width:100%; border-collapse:collapse; font-family:'Space Grotesk',sans-serif; font-size:.86rem; margin:24px 0;}
+.m-matrix th{background:var(--ink); color:var(--paper); padding:10px 11px; text-align:left; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; font-weight:500;}
+.m-matrix td{padding:10px 11px; border-bottom:1px solid var(--rule); vertical-align:top;}
+.m-matrix td:first-child{font-weight:500; color:var(--ink);}
+.m-matrix tr:nth-child(even) td{background:var(--paper-card);}
+
+.m-flow{display:flex; align-items:stretch; gap:0; flex-wrap:wrap; margin:26px 0;}
+.m-flow__step{flex:1; min-width:140px; background:var(--paper-card); border:1px solid var(--rule); padding:15px 14px 15px 16px; position:relative;}
+.m-flow__step:not(:last-child){margin-right:20px; margin-bottom:14px;}
+.m-flow__step:not(:last-child)::after{content:"\2192"; position:absolute; right:-16px; top:50%; transform:translateY(-50%); font-size:1.3rem; color:var(--terra); z-index:2;}
+.m-flow__n{font-family:'JetBrains Mono',monospace; font-size:.7rem; color:var(--terra);}
+.m-flow__t{font-family:'Space Grotesk',sans-serif; font-size:.84rem; font-weight:500; color:var(--ink); margin:4px 0 4px;}
+.m-flow__d{font-family:'Lora',serif; font-size:.84rem; color:var(--ink-soft); margin:0;}
+
+/* SVG holder */
+.svg-figure{margin:30px 0; background:var(--paper-card); border:1px solid var(--rule); padding:24px; border-radius:2px;}
+.svg-figure svg{display:block; max-width:100%; height:auto; margin:0 auto;}
+.svg-figure figcaption{font-family:'Space Grotesk',sans-serif; font-size:.72rem; color:var(--ink-faint); letter-spacing:.04em; margin-top:14px; text-align:center;}
+
+/* FAQ */
+.a-faq{margin:18px 0;}
+.a-faq__q{font-family:'Space Grotesk',sans-serif; font-size:.96rem; font-weight:700; letter-spacing:.01em; text-transform:uppercase; color:var(--accent-burgundy); margin:22px 0 8px;}
+.a-faq__a{font-family:'Lora',serif; font-size:.96rem; color:var(--ink-soft);}
+.a-faq__a p{margin:0 0 .6em;}
+.a-faq__ref{font-family:'JetBrains Mono',monospace; font-size:.74rem; color:var(--royal); margin:0;}
+
+/* Glossary */
+.gloss{margin:20px 0;}
+.gloss dt{font-family:'DM Serif Display',serif; font-size:1.18rem; color:var(--ink); margin:18px 0 4px;}
+.gloss dd{margin:0 0 4px; font-family:'Lora',serif; font-size:.94rem; color:var(--ink-soft);}
+.gloss .g-orig{font-style:italic; color:var(--ink); background:var(--paper-card); border-left:3px solid var(--gold); padding:6px 12px; display:block; margin:6px 0;}
+.gloss .g-etym{font-family:'JetBrains Mono',monospace; font-size:.74rem; color:var(--ink-faint);}
+
+/* Two-col helpers */
+.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+@media(max-width:760px){ .grid-2,.grid-3{grid-template-columns:1fr;} }
+
+/* details */
+details{background:var(--paper-cool); border:1px solid var(--rule); border-radius:2px; padding:12px 16px; margin:22px 0;}
+details summary{font-family:'Space Grotesk',sans-serif; font-size:.82rem; font-weight:500; letter-spacing:.04em; color:var(--royal); cursor:pointer;}
+details[open] summary{margin-bottom:10px;}
+details .det-body{font-family:'Lora',serif; font-size:.92rem; color:var(--ink-soft);}
+
+/* footer */
+.study-footer{background:var(--ink); color:var(--paper); padding:56px 0; margin-top:64px;}
+.study-footer h3{font-family:'DM Serif Display',serif; font-size:1.6rem; color:#fff; margin:0 0 12px;}
+.study-footer p{font-family:'Lora',serif; font-size:.92rem; color:#c9c1b3; max-width:680px;}
+.study-footer .src{font-family:'JetBrains Mono',monospace; font-size:.78rem; color:#a89f8d; margin-top:18px; line-height:1.7;}
+
+/* misc */
+.lead{font-size:1.14rem; color:var(--ink-soft);}
+.kicker-rule{height:3px; width:54px; background:var(--accent-burgundy); margin:0 0 20px;}
+hr.soft{border:none; border-top:1px solid var(--rule); margin:36px auto; max-width:760px;}
+
+@media print{
+  #progress,.sticky-nav{display:none;}
+  body{background:#fff;}
+  .a-plakat,.a-kt,.a-pyramide__tier,.study-footer{ -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  .chapter{break-inside:avoid-page;}
+  .a-galerie,.a-verdikt,.a-quote,.svg-figure{break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<section style="font-family:Georgia,'Times New Roman',serif;max-width:820px;margin:2.5rem auto;border:1px solid #d8d2c4;border-top:5px solid #7a1f1f;background:#fbfaf7;color:#1c1a17;overflow:hidden;">
+
+  <!-- Kopf -->
+  <div style="padding:1.6rem 2.1rem 0;">
+    <p style="margin:0 0 .5rem;font:700 .68rem/1.2 'Helvetica Neue',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7a1f1f;">Verlässlichkeit &amp; Halluzinationsrisiko</p>
+    <h1 style="margin:0 0 1.1rem;font-size:1.55rem;line-height:1.2;">Die Arendt-Frage — eine quellenbasierte Aufarbeitung</h1>
+  </div>
+
+  <!-- Kernaussage: großer Banner -->
+  <div style="margin:0 2.1rem;background:#16321c;color:#fff;border-radius:6px;padding:1.3rem 1.5rem;display:flex;gap:1.3rem;align-items:center;flex-wrap:wrap;">
+    <div style="flex:0 0 auto;text-align:center;line-height:1;">
+      <div style="font-family:Georgia,serif;font-size:3.1rem;font-weight:700;color:#8fd39a;">≈ 6×</div>
+      <div style="font:600 .62rem/1.3 'Helvetica Neue',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#b9d8bf;margin-top:.2rem;">geringeres Risiko</div>
+    </div>
+    <div style="flex:1;min-width:240px;">
+      <p style="margin:0;font-size:1.02rem;line-height:1.5;">Weil <strong>direkt aus den beiden beigelegten Büchern</strong> gearbeitet und zitiert wurde, liegt das geschätzte Halluzinationsrisiko dieser Arbeit bei <strong style="color:#8fd39a;">≈ 3–7 %</strong> — statt <strong>35,9 %</strong>, die das Modell <em>ohne</em> Quelle erreicht.</p>
+    </div>
+  </div>
+  <p style="margin:.7rem 2.1rem 0;font-size:.82rem;line-height:1.5;color:#444;"><strong>Worauf bezieht sich das?</strong> Begriffsgerüst, Thesen und Aufbau folgen lückenlos den Quellen — das ist nahezu perfekt belegt und <strong>darauf kann man sich verlassen</strong>. Das kleine Restrisiko betrifft nur <strong>exakte Seitenzahlen und den genauen Zitatwortlaut</strong>.</p>
+
+  <!-- Vergleichsgrafik -->
+  <div style="margin:1.4rem 2.1rem 0;">
+    <p style="margin:0 0 .15rem;font:700 .66rem/1.3 'Helvetica Neue',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#555;">Halluzinationsrate im Vergleich</p>
+    <p style="margin:0 0 .85rem;font-size:.74rem;color:#888;">AA-Omniscience · <em>ohne</em> Quelle gemessen (Closed-Book) · niedriger ist besser · Momentaufnahme</p>
+
+    <div style="font:.82rem/1.25 'Helvetica Neue',sans-serif;">
+      <!-- diese Arbeit -->
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.55rem;background:#eef6ef;border-radius:4px;padding:.35rem .5rem;">
+        <span style="flex:0 0 170px;font-weight:700;color:#16321c;">Diese Arbeit <span style="font-weight:400;font-style:italic;color:#3a6b35;">(geschätzt)</span></span>
+        <span style="flex:1;background:#e6e0d2;border-radius:3px;height:1.5rem;position:relative;"><span style="position:absolute;left:0;top:0;bottom:0;width:11%;background:#2f7a3a;border-radius:3px;"></span></span>
+        <span style="flex:0 0 64px;text-align:right;font-weight:700;color:#2f7a3a;">≈ 3–7 %</span>
+      </div>
+      <!-- Opus ohne Quelle -->
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem;padding:0 .5rem;">
+        <span style="flex:0 0 170px;">Claude Opus 4.8 <span style="color:#999;">o. Quelle</span></span>
+        <span style="flex:1;background:#e6e0d2;border-radius:3px;height:1.5rem;position:relative;"><span style="position:absolute;left:0;top:0;bottom:0;width:36%;background:#c89518;border-radius:3px;"></span></span>
+        <span style="flex:0 0 64px;text-align:right;font-weight:600;color:#9a7416;">35,9 %</span>
+      </div>
+      <!-- Gemini -->
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem;padding:0 .5rem;">
+        <span style="flex:0 0 170px;">Gemini 3.1 Pro</span>
+        <span style="flex:1;background:#e6e0d2;border-radius:3px;height:1.5rem;position:relative;"><span style="position:absolute;left:0;top:0;bottom:0;width:50%;background:#9a9a9a;border-radius:3px;"></span></span>
+        <span style="flex:0 0 64px;text-align:right;font-weight:600;color:#777;">50 %</span>
+      </div>
+      <!-- GPT-5.5 -->
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:0;padding:0 .5rem;">
+        <span style="flex:0 0 170px;">GPT-5.5 (xhigh)</span>
+        <span style="flex:1;background:#e6e0d2;border-radius:3px;height:1.5rem;position:relative;"><span style="position:absolute;left:0;top:0;bottom:0;width:86%;background:#b0473a;border-radius:3px;"></span></span>
+        <span style="flex:0 0 64px;text-align:right;font-weight:600;color:#9a3a30;">86 %</span>
+      </div>
+    </div>
+    <p style="margin:.7rem 0 0;font-size:.7rem;line-height:1.45;color:#999;">Fremdmodelle &amp; Opus-Wert: Closed-Book, modellweit (Artificial Analysis, AA-Omniscience). Der Balken „Diese Arbeit" ist eine <strong>Schätzung</strong> für genau diese quellenbasierte Aufgabe (Zone B), kein Messwert — Grounding senkt Halluzinationen erfahrungsgemäß um 40–96 %.</p>
+  </div>
+
+  <!-- Ampel-Strip: worauf verlassen / was prüfen -->
+  <div style="margin:1.3rem 2.1rem 0;display:grid;grid-template-columns:1fr 1fr;gap:.7rem;">
+    <div style="background:#eef6ef;border-left:4px solid #2f7a3a;border-radius:4px;padding:.7rem .9rem;">
+      <p style="margin:0 0 .3rem;font:700 .64rem/1.2 'Helvetica Neue',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#2f7a3a;">✓ Verlässlich</p>
+      <p style="margin:0;font-size:.84rem;line-height:1.45;">Begriffe, Thesen, Aufbau, Zuordnung der Aussagen zu den Werken — direkt aus den Quellen.</p>
+    </div>
+    <div style="background:#fbf3ec;border-left:4px solid #c0612f;border-radius:4px;padding:.7rem .9rem;">
+      <p style="margin:0 0 .3rem;font:700 .64rem/1.2 'Helvetica Neue',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#c0612f;">⚠ Vorher prüfen</p>
+      <p style="margin:0;font-size:.84rem;line-height:1.45;">Exakte Seitenzahlen (bei Werk B durch Kapitel ersetzt) und der wörtliche Zitatlaut.</p>
+    </div>
+  </div>
+
+  <!-- Details, kompakt aufklappbar -->
+  <details style="margin:1.1rem 2.1rem 1.7rem;background:#f4efe2;border:1px solid #e1dac6;border-radius:4px;padding:.6rem .9rem;">
+    <summary style="font:600 .76rem/1.3 'Helvetica Neue',sans-serif;letter-spacing:.03em;color:#7a1f1f;cursor:pointer;">Methode &amp; Selbsteinschätzung im Detail</summary>
+    <div style="margin-top:.7rem;font-size:.85rem;line-height:1.55;color:#333;">
+      <p style="margin:0 0 .5rem;"><strong>Mit Originalquelle gearbeitet:</strong> Ja — H. Arendt, <i>Vita activa</i> (Piper 2020) und <i>Elemente und Ursprünge totaler Herrschaft</i> (EVA 2016), beide im Volltext.</p>
+      <p style="margin:0 0 .5rem;"><strong>Angewandte Maßnahmen:</strong> extraktiv aus den Büchern statt aus dem Gedächtnis · Locator pro Zitat (§ bzw. Teil/Kapitel) · Trennung von Beleg, Deutung und Wertung · Verdikte als gekennzeichnete Lese-Urteile · Lücken benannt statt gefüllt.</p>
+      <p style="margin:0;"><strong>Warum keine Messung?</strong> AA-Omniscience prüft Wissen <em>ohne</em> Quelle; für diese konkrete, quellenbasierte Antwort gibt es keinen gemessenen Prozentwert. Die 3–7 % sind eine begründete Schätzung (sehr enges Grounding), keine Messung — eine Punktzahl wie „2 %" würde Präzision vortäuschen.</p>
+    </div>
+  </details>
+
+</section>
+<hr style="border:none;border-top:1px solid #d8d2c4;max-width:820px;margin:0 auto 2.5rem;">
+
+<nav class="sticky-nav">
+  <div class="sticky-nav__inner">
+    <div class="sticky-nav__logo">Die <span>Arendt</span>-Frage</div>
+    <select class="nav-select" onchange="if(this.value)location.hash=this.value;">
+      <option value="">Springe zu Kapitel …</option>
+      <option value="#cover">Titel</option>
+      <option value="#key-takeaways">Key Takeaways</option>
+      <option value="#k1">K1 · Wer war Hannah Arendt?</option>
+      <option value="#k2">K2 · Die zwei Bücher</option>
+      <option value="#k3">K3 · Die Begriffslandkarte</option>
+      <option value="#k4">K4 · Arbeiten</option>
+      <option value="#k5">K5 · Herstellen</option>
+      <option value="#k6">K6 · Handeln</option>
+      <option value="#k7">K7 · Öffentlich & privat</option>
+      <option value="#k8">K8 · Natalität</option>
+      <option value="#k9">K9 · Weltentfremdung</option>
+      <option value="#k10">K10 · Antisemitismus</option>
+      <option value="#k11">K11 · Imperialismus</option>
+      <option value="#k12">K12 · Galerie der Köpfe</option>
+      <option value="#k13">K13 · Zeittafel</option>
+      <option value="#k14">K14 · Masse & Verlassenheit</option>
+      <option value="#k15">K15 · Ideologie & Terror</option>
+      <option value="#k16">K16 · Die Lager / radikal Böse</option>
+      <option value="#k17">K17 · Schärfste Kritik</option>
+      <option value="#k18">K18 · 20 Thesen-Verdikte</option>
+      <option value="#k19">K19 · FAQ</option>
+      <option value="#k20">K20 · Glossar & Apparat</option>
+    </select>
+  </div>
+</nav>
+
+<section id="cover" class="cover-hero"><div class="wrap"><div class="a-cover">
+  <p class="a-cover__eyebrow">Eine quellenbasierte Bestandsaufnahme · Zwei Hauptwerke · 2026</p>
+  <h1 class="a-cover__title">Die <em>Arendt</em>-Frage</h1>
+  <p class="a-cover__sub">Was hält die Welt zwischen den Menschen zusammen — und wie zerstört man sie? Hannah Arendts zwei große Bücher, in einfacher Sprache aufgeschlüsselt: <em>Vita activa</em> über das tätige Leben und <em>Elemente und Ursprünge totaler Herrschaft</em> über seinen Zusammenbruch.</p>
+  <div class="a-statstrip">
+    <div class="a-stat"><div class="a-stat__num">2</div><div class="a-stat__lbl">Hauptwerke</div></div>
+    <div class="a-stat"><div class="a-stat__num">20</div><div class="a-stat__lbl">Kapitel</div></div>
+    <div class="a-stat"><div class="a-stat__num">26</div><div class="a-stat__lbl">Direktzitate</div></div>
+    <div class="a-stat"><div class="a-stat__num">20</div><div class="a-stat__lbl">Thesen-Verdikte</div></div>
+  </div>
+</div></div></section>
+
+<section id="key-takeaways"><div class="wrap"><div class="a-kt">
+  <p class="a-kt__eyebrow">Das Wichtigste in 60 Sekunden</p>
+  <h2 class="a-kt__head">Key Takeaways</h2>
+  <div class="a-kt__grid">
+    <div class="a-kt__item"><span class="a-kt__num">01</span><h3 class="a-kt__stmt">Der Mensch ist, was er tut</h3><p class="a-kt__exp">Arendt unterscheidet drei Grundtätigkeiten — Arbeiten, Herstellen, Handeln. Wer sie verwechselt, versteht Politik falsch.</p></div>
+    <div class="a-kt__item"><span class="a-kt__num">02</span><h3 class="a-kt__stmt">Politik ist Handeln zwischen Vielen</h3><p class="a-kt__exp">Handeln braucht Pluralität: nicht „den Menschen", sondern viele verschiedene Menschen, die miteinander reden und etwas anfangen.</p></div>
+    <div class="a-kt__item"><span class="a-kt__num">03</span><h3 class="a-kt__stmt">Jede Geburt ist ein Neuanfang</h3><p class="a-kt__exp">Natalität — Gebürtlichkeit — ist Arendts Hoffnungsbegriff: Weil ständig Neue geboren werden, kann immer etwas Unerwartetes beginnen.</p></div>
+    <div class="a-kt__item"><span class="a-kt__num">04</span><h3 class="a-kt__stmt">Totalitarismus ist etwas Neues</h3><p class="a-kt__exp">Keine alte Tyrannei: Er will nicht nur gehorsame Untertanen, sondern die menschliche Natur selbst umbauen — über Lager und Terror.</p></div>
+    <div class="a-kt__item"><span class="a-kt__num">05</span><h3 class="a-kt__stmt">Verlassenheit macht anfällig</h3><p class="a-kt__exp">Wer von allen und allem isoliert ist, klammert sich an die „eiskalte Logik" der Ideologie. Einsamkeit organisiert wird zur Waffe.</p></div>
+    <div class="a-kt__item"><span class="a-kt__num">06</span><h3 class="a-kt__stmt">Die beiden Bücher gehören zusammen</h3><p class="a-kt__exp">Das eine zeigt, was menschliche Welt ausmacht; das andere, wie sie zerbricht. Diagnose und Gegenbild derselben Denkerin.</p></div>
+  </div>
+</div></div></section>
+
+<main>
+<section id="k1" class="chapter"><div class="wrap col">
+  <p class="part-band"><span class="part-band__tag">TEIL I · ZUGANG</span></p>
+  <p class="ch-eyebrow">Kapitel 1</p>
+  <h2 class="ch-title">Wer war Hannah Arendt?</h2>
+  <p class="ch-dek">Eine Denkerin, die nicht in eine Schublade passt — weder Philosophin noch Historikerin im üblichen Sinn, sondern Beobachterin des Politischen.</p>
+  <div class="kicker-rule"></div>
+
+  <p class="a-dropcap">Hannah Arendt (1906–1975) war eine deutsch-amerikanische politische Denkerin. Geboren in Hannover, aufgewachsen in Königsberg, studierte sie bei Martin Heidegger und Karl Jaspers. 1933 floh sie vor den Nationalsozialisten, lebte in Paris, wurde dort interniert und kam 1941 in die USA. Aus eigener Erfahrung von Verfolgung, Staatenlosigkeit und Flucht erwuchs ihr Lebensthema: Wie Menschen zusammenleben — und wie dieses Zusammenleben zerstört werden kann.</p>
+
+  <p>Arendt nannte sich nicht gern Philosophin. Ihr Gegenstand war die <em>Politik</em> im weitesten Sinn: der Raum, der entsteht, wenn Menschen miteinander reden und handeln. Sie misstraute Systemen, die alles aus einem Prinzip ableiten wollen. Lieber dachte sie an konkreten Phänomenen entlang — am Flüchtling, am Lager, am Stadtstaat der Griechen, am Geschworenengericht. Das macht sie schwer einzuordnen und bis heute streitbar.</p>
+
+  <div class="a-box a-box--punkt"><p class="a-box__lbl">Auf den Punkt</p><p>Arendt fragt nicht „Was ist der Mensch?", sondern „Was tun Menschen, wenn sie zusammen sind?". Ihre Antwort darauf trägt beide Bücher dieser Studie.</p></div>
+
+  <div class="a-formula">
+    <p class="a-formula__klassik">„Selbstdenken" — sich von keiner Ideologie das Urteilen abnehmen lassen.</p>
+    <p class="a-formula__alltag"><b>In Alltags-Worten</b> Erst hinschauen, dann selbst urteilen — nicht nachplappern, was die Bewegung sagt.</p>
+  </div>
+
+  <div class="a-box a-box--eilige"><p class="a-box__lbl">Für Eilige</p><p>Zwei Bücher, eine Frage: Was macht eine menschliche Welt aus (<em>Vita activa</em>) — und wie zerbricht sie (<em>Elemente und Ursprünge</em>)? Diese Studie liest beide nebeneinander.</p></div>
+</div></section>
+<section id="k2" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 2</p>
+  <h2 class="ch-title">Die zwei Bücher dieser Studie</h2>
+  <p class="ch-dek">Ein Werk über das, was Menschen tun, und ein Werk über die Macht, die das Tun unmöglich macht. Erst zusammen ergeben sie Arendts Bild.</p>
+  <div class="kicker-rule"></div>
+
+  <p>Diese Studie stützt sich auf <strong>genau zwei</strong> Werke Arendts — nicht auf ein ganzes Forschungsfeld. Das ist eine bewusste Begrenzung: Alles hier Gesagte lässt sich an diesen beiden Büchern prüfen. Wo andere Denker auftauchen (Aristoteles, Marx, Kant, Hobbes), erscheinen sie so, wie Arendt sie liest.</p>
+
+  <div class="grid-2">
+    <div class="a-schule" style="border-left:6px solid var(--royal);">
+      <span class="a-schule__id" style="background:var(--royal);">Werk A</span>
+      <h3 class="a-schule__name">Vita activa oder Vom tätigen Leben</h3>
+      <p class="a-schule__these">Was menschliches Leben in einer gemeinsamen Welt ausmacht. Drei Tätigkeiten — Arbeiten, Herstellen, Handeln — und was passiert, wenn die Neuzeit sie durcheinanderbringt. <br><br><span style="font-family:'JetBrains Mono',monospace; font-size:.74rem; color:var(--ink-faint);">Orig. <i>The Human Condition</i> (1958) · dt. Piper, hier Neuausg. 2020 · Locator: §&nbsp;1–45</span></p>
+    </div>
+    <div class="a-schule" style="border-left:6px solid var(--accent-burgundy);">
+      <span class="a-schule__id" style="background:var(--accent-burgundy);">Werk B</span>
+      <h3 class="a-schule__name">Elemente und Ursprünge totaler Herrschaft</h3>
+      <p class="a-schule__these">Wie aus Antisemitismus, Imperialismus und Massengesellschaft eine völlig neue Herrschaftsform entsteht: der Totalitarismus von Nazismus und Stalinismus. <br><br><span style="font-family:'JetBrains Mono',monospace; font-size:.74rem; color:var(--ink-faint);">Orig. <i>The Origins of Totalitarianism</i> (1951) · dt. EVA, hier Ausg. 2016 · Locator: Teil/Kapitel</span></p>
+    </div>
+  </div>
+
+  <p>Chronologisch entstand <em>Elemente und Ursprünge</em> zuerst (1951) — als Versuch, das eben Geschehene zu begreifen. <em>Vita activa</em> (1958) folgt als das systematische Gegenbild: Wenn der Totalitarismus die menschliche Welt zerstört, was genau ist diese Welt eigentlich? Diese Studie kehrt die Reihenfolge didaktisch um — erst der Aufbau (Teil II), dann der Zusammenbruch (Teil V–VI) —, weil sich das Gegenbild leichter versteht, wenn man weiß, was zerbricht.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Mit dem Wort Vita activa sollen … drei menschliche Grundtätigkeiten zusammengefaßt werden: Arbeiten, Herstellen und Handeln."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 1</p>
+    <p class="a-quote__ctx">Der erste Satz des Buches und zugleich sein ganzer Bauplan.</p>
+  </blockquote>
+
+  <div class="a-box a-box--blick"><p class="a-box__lbl">Kapitel auf einen Blick</p><p>Werk A = die Anatomie der menschlichen Welt. Werk B = die Pathologie ihres Zusammenbruchs. Beide stammen von derselben Beobachterin der Politik.</p></div>
+</div></section>
+<section id="k3" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 3</p>
+  <h2 class="ch-title">Die Begriffslandkarte</h2>
+  <p class="ch-dek">Arendts Denken ist kein System mit Schulen, sondern ein Netz von Begriffen. Hier die wichtigsten und wie sie zusammenhängen.</p>
+  <div class="kicker-rule"></div>
+
+  <p>Bei einem klassischen Forschungsfeld stünden hier konkurrierende Schulen. Bei zwei Büchern einer Autorin ist die ehrlichere Karte eine <em>Begriffslandkarte</em>: Arendts zentrale Unterscheidungen und wie sie auf die beiden Werke verteilt sind. Statt „Schulen" gibt es <strong>Begriffsfelder</strong>, jedes mit einer eigenen Farbe, die diese Studie durchhält.</p>
+
+  <figure class="svg-figure">
+    <svg viewBox="0 0 720 420" role="img" aria-label="Diagramm der drei Grundtätigkeiten und ihrer Bedingungen">
+      <defs>
+        <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#6b6357"/></marker>
+      </defs>
+      <!-- center -->
+      <circle cx="360" cy="210" r="64" fill="#2b1f3a"/>
+      <text x="360" y="200" text-anchor="middle" fill="#f5f1e6" font-family="DM Serif Display, serif" font-size="20">Vita</text>
+      <text x="360" y="226" text-anchor="middle" fill="#c89518" font-family="DM Serif Display, serif" font-size="20">activa</text>
+      <!-- three nodes -->
+      <g font-family="Space Grotesk, sans-serif">
+        <!-- Arbeiten -->
+        <rect x="60" y="60" width="190" height="92" rx="4" fill="#6b7037"/>
+        <text x="155" y="92" text-anchor="middle" fill="#fff" font-size="17" font-family="DM Serif Display, serif">Arbeiten</text>
+        <text x="155" y="116" text-anchor="middle" fill="#eef0ed" font-size="11.5">Bedingung: das Leben</text>
+        <text x="155" y="134" text-anchor="middle" fill="#eef0ed" font-size="11.5">Stoffwechsel · Konsum</text>
+        <!-- Herstellen -->
+        <rect x="470" y="60" width="190" height="92" rx="4" fill="#a8602a"/>
+        <text x="565" y="92" text-anchor="middle" fill="#fff" font-size="17" font-family="DM Serif Display, serif">Herstellen</text>
+        <text x="565" y="116" text-anchor="middle" fill="#f8f3e3" font-size="11.5">Bedingung: Weltlichkeit</text>
+        <text x="565" y="134" text-anchor="middle" fill="#f8f3e3" font-size="11.5">dauerhafte Dingwelt</text>
+        <!-- Handeln -->
+        <rect x="265" y="320" width="190" height="92" rx="4" fill="#2c3e6e"/>
+        <text x="360" y="352" text-anchor="middle" fill="#fff" font-size="17" font-family="DM Serif Display, serif">Handeln</text>
+        <text x="360" y="376" text-anchor="middle" fill="#eef0ed" font-size="11.5">Bedingung: Pluralität</text>
+        <text x="360" y="394" text-anchor="middle" fill="#eef0ed" font-size="11.5">Sprechen · Neuanfang</text>
+      </g>
+      <!-- connectors -->
+      <line x1="232" y1="120" x2="300" y2="178" stroke="#6b6357" stroke-width="1.6" marker-end="url(#ar)"/>
+      <line x1="488" y1="120" x2="420" y2="178" stroke="#6b6357" stroke-width="1.6" marker-end="url(#ar)"/>
+      <line x1="360" y1="274" x2="360" y2="316" stroke="#6b6357" stroke-width="1.6" marker-end="url(#ar)"/>
+      <!-- natality halo -->
+      <text x="360" y="40" text-anchor="middle" fill="#6b1f2e" font-family="Space Grotesk, sans-serif" font-size="11.5" letter-spacing="2">ÜBERWÖLBT VON: NATALITÄT &amp; MORTALITÄT</text>
+    </svg>
+    <figcaption>Die drei Grundtätigkeiten der Vita activa und ihre je eigene Grundbedingung. Struktur nach Arendt, <i>Vita activa</i>, § 1.</figcaption>
+  </figure>
+
+  <div class="m-schema">
+    <p class="m-schema__lbl">Die acht Begriffsfelder dieser Studie</p>
+    <div class="grid-2">
+      <div><p style="margin:0 0 6px;"><span style="display:inline-block;width:12px;height:12px;background:var(--olive);border-radius:50%;vertical-align:middle;"></span> <b>Arbeiten</b> — das biologische Leben (K4)</p>
+      <p style="margin:0 0 6px;"><span style="display:inline-block;width:12px;height:12px;background:var(--terra);border-radius:50%;vertical-align:middle;"></span> <b>Herstellen</b> — die dauerhafte Welt (K5)</p>
+      <p style="margin:0 0 6px;"><span style="display:inline-block;width:12px;height:12px;background:var(--royal);border-radius:50%;vertical-align:middle;"></span> <b>Handeln</b> — Politik & Pluralität (K6)</p>
+      <p style="margin:0;"><span style="display:inline-block;width:12px;height:12px;background:var(--gold);border-radius:50%;vertical-align:middle;"></span> <b>Öffentlichkeit</b> — der Erscheinungsraum (K7)</p></div>
+      <div><p style="margin:0 0 6px;"><span style="display:inline-block;width:12px;height:12px;background:var(--reform);border-radius:50%;vertical-align:middle;"></span> <b>Natalität</b> — der Neuanfang (K8)</p>
+      <p style="margin:0 0 6px;"><span style="display:inline-block;width:12px;height:12px;background:var(--steel);border-radius:50%;vertical-align:middle;"></span> <b>Weltentfremdung</b> — die Neuzeit (K9)</p>
+      <p style="margin:0 0 6px;"><span style="display:inline-block;width:12px;height:12px;background:var(--accent-burgundy);border-radius:50%;vertical-align:middle;"></span> <b>Totale Herrschaft</b> — Terror & Lager (K14–16)</p>
+      <p style="margin:0;"><span style="display:inline-block;width:12px;height:12px;background:var(--mist);border-radius:50%;vertical-align:middle;"></span> <b>Kritik</b> — die Gegenstimmen (K17)</p></div>
+    </div>
+  </div>
+
+  <div class="a-box a-box--wort"><p class="a-box__lbl">In einem Wort</p><p>Unterscheidung. Arendts ganzes Werk lebt davon, Dinge auseinanderzuhalten, die im Alltag verschwimmen.</p></div>
+</div></section>
+<section id="k4" class="chapter"><div class="wrap col">
+  <p class="part-band"><span class="part-band__tag">TEIL II · DIE DREI TÄTIGKEITEN (VITA ACTIVA)</span></p>
+  <p class="ch-eyebrow">Kapitel 4 · Begriffsfeld Arbeiten</p>
+  <h2 class="ch-title">Arbeiten — der ewige Kreislauf des Lebens</h2>
+  <p class="ch-dek">Die Tätigkeit, die nie fertig wird: Essen, kochen, putzen, ernten. Sie hält uns am Leben und hinterlässt nichts Bleibendes.</p>
+  <div class="kicker-rule"></div>
+
+  <p class="a-dropcap">Arendt beginnt mit der niedrigsten der drei Tätigkeiten — und meint das nicht abschätzig, sondern strukturell. <em>Arbeiten</em> (englisch <i>labour</i>) ist alles, was der bloße Stoffwechsel mit der Natur verlangt: Nahrung beschaffen, zubereiten, verbrauchen; den Körper und die Gattung am Leben halten. Ihr Kennzeichen: Sie produziert nichts Dauerhaftes. Was die Arbeit schafft, wird sofort wieder verbraucht und muss morgen erneut geschafft werden.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Die Grundbedingung, unter der die Tätigkeit des Arbeitens steht, ist das Leben selbst."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 1</p>
+  </blockquote>
+
+  <p>Die Arbeit kennt keinen Anfang und kein Ende, nur Wiederkehr — wie der Kreislauf von Hunger und Sättigung. Arendt nennt den arbeitenden Menschen das <em>animal laborans</em>, das „arbeitende Tier". In diesem Modus ist der Mensch ganz Natur, ganz Gattungswesen. Das ist nichts Schlechtes; es ist die Bedingung des Überlebens. Problematisch wird es erst, wenn eine ganze Gesellschaft <strong>nur noch</strong> arbeitet und konsumiert (dazu K9).</p>
+
+  <div class="a-formula">
+    <p class="a-formula__klassik">Animal laborans — der Mensch als Stoffwechselwesen.</p>
+    <p class="a-formula__alltag"><b>In Alltags-Worten</b> Arbeiten heißt: tun, was getan werden muss, damit man morgen weiterleben kann — und übermorgen wieder.</p>
+  </div>
+
+  <div class="a-analogie">
+    <div class="a-analogie__icon">
+      <svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="20" fill="none" stroke="#6b7037" stroke-width="2.5"/><path d="M28 12 a16 16 0 0 1 11 5" fill="none" stroke="#6b7037" stroke-width="2.5" marker-end=""/><path d="M42 16 l-1 6 l-6 -2 z" fill="#6b7037"/></svg>
+    </div>
+    <div class="a-analogie__body"><h4>Analogie</h4><p>Arbeit ist wie das Tretrad eines Hamsters: ständige Bewegung, die nichts errichtet, sondern nur den Kreislauf in Gang hält. Stehenbleiben ist keine Option, Ankommen aber auch nicht.</p></div>
+  </div>
+
+  <p>Der robuste Test fragt, was an dieser Theorie hält und was sie übersieht. Hier auf das Begriffsfeld Arbeiten angewendet:</p>
+
+  <div class="a-acht">
+    <div class="a-acht__cell"><div class="a-acht__n">01</div><div class="a-acht__t">Faktenbasis</div><p class="a-acht__d">Menschliches Leben verlangt ständigen Stoffwechsel; viele Tätigkeiten hinterlassen tatsächlich kein dauerhaftes Werk.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">02</div><div class="a-acht__t">Interpretation</div><p class="a-acht__d">Arendt liest dies als eigene Daseinsweise — den Kreislauf, in dem der Mensch ganz Gattung und ganz Natur ist.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">03</div><div class="a-acht__t">Konsequenz</div><p class="a-acht__d">Wo Arbeit alles wird, verschwindet die Welt der dauerhaften Dinge und der öffentliche Raum — eine reine Konsumgesellschaft.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">04</div><div class="a-acht__t">Innere Spannung</div><p class="a-acht__d">Arendt wertet die Arbeit als „niedrig", obwohl sie sie zugleich als Bedingung allen Lebens anerkennt — eine bleibhafte Ambivalenz.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">05</div><div class="a-acht__t">Blind Spots</div><p class="a-acht__d">Care-Arbeit, Erziehung, Pflege erscheinen fast nur als „Lebenserhaltung", kaum als sinnstiftend oder gemeinschaftsbildend.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">06</div><div class="a-acht__t">Verzerrung</div><p class="a-acht__d">Die scharfe Trennung Arbeiten/Herstellen/Handeln ist idealtypisch; reale Tätigkeiten mischen oft alle drei.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">07</div><div class="a-acht__t">Wahrer Kern</div><p class="a-acht__d">Dass eine Gesellschaft, die nur konsumiert, etwas Wesentliches verliert, ist eine ernst zu nehmende Diagnose.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">08</div><div class="a-acht__t">Unbequem</div><p class="a-acht__d">Arendts Hierarchie der Tätigkeiten klingt aristokratisch — wer nur „arbeitet", steht bei ihr unten.</p></div>
+  </div>
+
+  <div class="a-box a-box--punkt"><p class="a-box__lbl">Auf den Punkt</p><p>Arbeiten = der Naturkreislauf im Menschen. Notwendig, endlos, ohne bleibendes Ergebnis. Die Bedingung dafür ist das Leben selbst.</p></div>
+</div></section>
+<div class="wrap"><div class="a-plakat a-plakat--olive">
+  <p class="a-plakat__eyebrow">Begriffsfeld Arbeiten · Kapitel 4</p>
+  <h2 class="a-plakat__stmt">DAS LEBEN<br>FRISST SICH<br>SELBST AUF</h2>
+  <p class="a-plakat__author">— nach Hannah Arendt, Vita activa § 1, § 13</p>
+  <p class="a-plakat__alltag">Was die Arbeit schafft, verschwindet im Verbrauch. Sie baut keine Welt — sie hält den Kreislauf in Gang.</p>
+</div></div>
+<section id="k5" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 5 · Begriffsfeld Herstellen</p>
+  <h2 class="ch-title">Herstellen — die Welt der dauerhaften Dinge</h2>
+  <p class="ch-dek">Der Tisch, das Haus, das Buch: Dinge, die uns überdauern und eine bleibende Welt bilden, in der Menschen zuhause sein können.</p>
+  <div class="kicker-rule"></div>
+
+  <p class="a-dropcap">Anders als die Arbeit hinterlässt das <em>Herstellen</em> (englisch <i>work</i>) etwas: einen Gegenstand, der bleibt. Der Tischler macht einen Tisch, der seinen Tod überdauert. Diese hergestellten Dinge bilden zusammen eine <strong>Welt</strong> — eine künstliche, dauerhafte Umgebung, die menschliches Leben beherbergt und stabilisiert. Arendt nennt den herstellenden Menschen den <em>homo faber</em>, den „verfertigenden Menschen".</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Das Herstellen produziert eine künstliche Welt von Dingen, die … der Natur bis zu einem gewissen Grade widerstehen und von den lebendigen Prozessen nicht einfach zerrieben werden."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 1</p>
+    <p class="a-quote__ctx">Die Dingwelt widersteht dem Verbrauch — darin liegt ihr Sinn.</p>
+  </blockquote>
+
+  <p>Die Bedingung des Herstellens ist die <em>Weltlichkeit</em>: die Angewiesenheit des Menschen auf eine objektive, gegenständliche Umgebung. Ohne sie wäre der Mensch in der Natur heimatlos. Das Herstellen folgt einem Modell — der Handwerker hat ein Bild vor Augen — und endet mit dem fertigen Produkt. Es hat also, anders als die Arbeit, einen klaren Anfang und ein klares Ende. Doch es behandelt alles als Mittel zum Zweck: Holz wird zum Tisch, der Tisch dient dem Essen. Diese Mittel-Zweck-Logik wird gefährlich, wenn man sie auf Menschen anwendet (dazu K6).</p>
+
+  <div class="a-formula">
+    <p class="a-formula__klassik">Homo faber — der Mensch, der Werke verfertigt.</p>
+    <p class="a-formula__alltag"><b>In Alltags-Worten</b> Herstellen heißt: aus Material ein Ding machen, das bleibt — und mit vielen solchen Dingen eine Welt bauen.</p>
+  </div>
+
+  <div class="a-box a-box--blick"><p class="a-box__lbl">Kapitel auf einen Blick</p><p>Arbeiten verbraucht, Herstellen baut. Die Dinge des homo faber bilden die dauerhafte Welt — aber er denkt in Mitteln und Zwecken, und das hat Grenzen.</p></div>
+
+  <div class="grid-2">
+    <div class="a-box a-box--punkt"><p class="a-box__lbl">Stärke des Begriffs</p><p>Erklärt, warum eine Kultur Bestand hat: Sie hinterlässt Dinge — Bauten, Werke, Institutionen —, die Generationen verbinden.</p></div>
+    <div class="a-box a-box--eilige"><p class="a-box__lbl">Gefahr des Begriffs</p><p>Die Mittel-Zweck-Logik des Herstellens, auf Politik übertragen, macht Menschen zu Material. Genau das kritisiert Arendt in K6.</p></div>
+  </div>
+</div></section>
+<section id="k6" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 6 · Begriffsfeld Handeln</p>
+  <h2 class="ch-title">Handeln — Politik zwischen den Vielen</h2>
+  <p class="ch-dek">Die höchste der drei Tätigkeiten: Wenn Menschen miteinander reden und etwas Neues anfangen. Hier, und nur hier, entsteht Politik.</p>
+  <div class="kicker-rule"></div>
+
+  <p class="a-dropcap">Das <em>Handeln</em> (englisch <i>action</i>) ist für Arendt die eigentlich politische Tätigkeit — und die einzige, die ganz ohne Dinge auskommt. Sie spielt sich unmittelbar zwischen Menschen ab, im Reden und Tun. Während Arbeiten und Herstellen ein einzelner Mensch verrichten kann, braucht Handeln immer <strong>andere</strong>: die <em>Pluralität</em>, die Vielheit verschiedener Menschen.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Das Handeln ist die einzige Tätigkeit der Vita activa, die sich ohne die Vermittlung von Materie, Material und Dingen direkt zwischen Menschen abspielt."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 1</p>
+  </blockquote>
+
+  <p>Pluralität ist keine bloße Vielzahl. Es ist die paradoxe Tatsache, dass alle Menschen sind — Menschen —, aber kein Mensch je einem anderen gleicht. Hätte Gott „den Menschen" als ein einziges Wesen geschaffen und nur vervielfältigt, gäbe es keine Politik, sondern nur Wiederholung. Weil aber jeder neue Mensch <em>anders</em> ist, kann zwischen ihnen etwas geschehen, das niemand allein hervorbringt.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Das Handeln bedarf einer Pluralität, in der zwar alle dasselbe sind, nämlich Menschen, aber … keiner dieser Menschen je einem anderen gleicht".</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 1</p>
+    <p class="a-quote__ctx">Pluralität — die Bedingung allen Handelns: gleich genug, um sich zu verstehen; verschieden genug, dass es etwas zu sagen gibt.</p>
+  </blockquote>
+
+  <p>Im Handeln zeigt sich, <em>wer</em> jemand ist — nicht <em>was</em> (Beruf, Herkunft, Eigenschaften), sondern die einzigartige Person. Und das geschieht unwillkürlich: Wer handelt und spricht, offenbart sich, ohne es ganz steuern zu können.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„… niemand weiß, wen er eigentlich offenbart, wenn er im Sprechen und Handeln sich selbst unwillkürlich mitoffenbart."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 24</p>
+  </blockquote>
+
+  <p>Handeln hat zwei Eigenschaften, die es unberechenbar machen: Es ist <strong>unwiderruflich</strong> (Getanes lässt sich nicht ungeschehen machen) und <strong>unabsehbar</strong> (man weiß nie, wohin es führt). Gegen das erste hat der Mensch das <em>Verzeihen</em>, gegen das zweite das <em>Versprechen</em>. Beide sind für Arendt keine moralischen Zusätze, sondern in das Handeln selbst eingebaute „Kontrollorgane".</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„… Moral [kann] sich … im Feld des Politischen auf nichts anderes berufen als die Fähigkeit zum Versprechen … [und die Bereitschaft] zu vergeben".</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 34</p>
+  </blockquote>
+
+  <div class="a-formula">
+    <p class="a-formula__klassik">„Wer", nicht „Was" — im Handeln erscheint die einzigartige Person.</p>
+    <p class="a-formula__alltag"><b>In Alltags-Worten</b> Was du tust, zeigt anderen, wer du bist — und das kannst du nicht ganz im Griff behalten.</p>
+  </div>
+
+  <div class="a-acht">
+    <div class="a-acht__cell"><div class="a-acht__n">01</div><div class="a-acht__t">Faktenbasis</div><p class="a-acht__d">Gemeinsames Reden und Handeln erzeugt Wirkungen, die kein Einzelner allein erreicht — Macht entsteht im Miteinander.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">02</div><div class="a-acht__t">Interpretation</div><p class="a-acht__d">Arendt liest Handeln als Quelle von Freiheit: den Anfang von etwas Neuem, das nicht aus dem Bisherigen folgt.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">03</div><div class="a-acht__t">Konsequenz</div><p class="a-acht__d">Politik darf nicht nach dem Modell des Herstellens organisiert werden — Menschen sind kein Material für ein Endprodukt.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">04</div><div class="a-acht__t">Innere Spannung</div><p class="a-acht__d">Handeln ist hochgeschätzt, aber „zerbrechlich" und folgenlos zugleich — Arendt feiert, was sie selbst als fragil beschreibt.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">05</div><div class="a-acht__t">Blind Spots</div><p class="a-acht__d">Soziale Frage, Verteilung, Ökonomie verbannt sie aus dem Politischen — Kritiker halten das für lebensfremd (K17).</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">06</div><div class="a-acht__t">Verzerrung</div><p class="a-acht__d">Das griechische Polis-Ideal dient als Maßstab, obwohl es auf Sklaverei beruhte — eine idealisierte Vorlage.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">07</div><div class="a-acht__t">Wahrer Kern</div><p class="a-acht__d">Dass Freiheit etwas mit gemeinsamem Anfangen zu tun hat und nicht bloß mit Wählen-Dürfen, ist tief und tragfähig.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">08</div><div class="a-acht__t">Unbequem</div><p class="a-acht__d">Nach Arendts strengem Maßstab wäre vieles, was wir „Politik" nennen (Verwaltung, Sozialpolitik), gar keine.</p></div>
+  </div>
+
+  <div class="a-box a-box--wort"><p class="a-box__lbl">In einem Wort</p><p>Pluralität. Politik gibt es nur, weil wir viele und verschieden sind.</p></div>
+</div></section>
+<div class="wrap"><div class="a-plakat a-plakat--royal">
+  <p class="a-plakat__eyebrow">Begriffsfeld Handeln · Kapitel 6</p>
+  <h2 class="a-plakat__stmt">FREIHEIT<br>HEISST:<br>ANFANGEN</h2>
+  <p class="a-plakat__author">— nach Hannah Arendt, Vita activa § 24</p>
+  <p class="a-plakat__alltag">Nicht „tun dürfen, was man will", sondern mit anderen etwas Neues in die Welt setzen, das vorher nicht da war.</p>
+</div></div>
+<section id="k7" class="chapter"><div class="wrap col">
+  <p class="part-band"><span class="part-band__tag">TEIL III · DIE GEMEINSAME WELT (VITA ACTIVA)</span></p>
+  <p class="ch-eyebrow">Kapitel 7 · Begriffsfeld Öffentlichkeit</p>
+  <h2 class="ch-title">Öffentlich und privat — der Raum dazwischen</h2>
+  <p class="ch-dek">Eine gemeinsame Welt entsteht, wo Menschen sich zeigen und gehört werden. Sie verbindet uns und hält uns zugleich auf Abstand.</p>
+  <div class="kicker-rule"></div>
+
+  <p class="a-dropcap">Was heißt „öffentlich"? Für Arendt zweierlei. Erstens: Was öffentlich erscheint, wird von allen gesehen und gehört — es gewinnt dadurch <em>Realität</em>. Zweitens: die <strong>gemeinsame Welt</strong> selbst, die zwischen den Menschen liegt und die sie teilen. Das Private dagegen ist der Bereich, in dem wir verborgen bleiben — notwendig, aber für sich genommen „schattenhaft", weil ihm das bestätigende Licht der Öffentlichkeit fehlt.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„In der Welt zusammenleben heißt wesentlich, daß eine Welt von Dingen zwischen denen liegt, … in dem gleichen Sinne, in dem etwa ein Tisch zwischen denen steht, die um ihn herum sitzen".</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 7</p>
+    <p class="a-quote__ctx">Arendts berühmteste Metapher: Die gemeinsame Welt ist wie ein Tisch.</p>
+  </blockquote>
+
+  <p>Das Bild des Tisches trägt Arendts ganze Idee von Öffentlichkeit. Der Tisch verbindet die Sitzenden (sie haben etwas gemeinsam) und trennt sie zugleich (jeder hat seinen Platz). Verschwände der Tisch, säßen die Menschen nicht enger beieinander, sondern fielen haltlos ineinander — niemand hätte mehr einen eigenen Ort. Genau das geschieht, wenn die gemeinsame Welt zerbricht: Menschen werden zur formlosen Masse (vgl. K14).</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Der öffentliche Raum wie die uns gemeinsame Welt versammelt Menschen und verhindert gleichzeitig, daß sie … über- und ineinanderfallen."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 7</p>
+  </blockquote>
+
+  <div class="a-formula">
+    <p class="a-formula__klassik">Die Welt als Tisch — sie verbindet und trennt zugleich.</p>
+    <p class="a-formula__alltag"><b>In Alltags-Worten</b> Das Gemeinsame hält uns zusammen, ohne uns zu verschmelzen — wie ein Tisch die Runde ordnet.</p>
+  </div>
+
+  <details>
+    <summary>Vertiefung: Warum das Private bei Arendt „schattenhaft" heißt</summary>
+    <div class="det-body"><p>Arendt meint damit nicht, dass Privates wertlos sei — Liebe etwa kann öffentliche Zur-Schau-Stellung gar nicht überleben. Sie meint: Erst wenn etwas vor anderen erscheint, gewinnt es jene feste Wirklichkeit, die das Gesehen- und Gehört-Werden verleiht. Gefühle, Gedanken, Schmerz bleiben unsicher und flüchtig, solange sie nicht in eine Form gebracht werden, die öffentlich erscheinen kann — etwa in eine Erzählung, ein Werk, eine Tat.</p></div>
+  </details>
+
+  <div class="a-box a-box--punkt"><p class="a-box__lbl">Auf den Punkt</p><p>Öffentlichkeit = der gemeinsame Tisch, an dem jeder seinen Platz hat. Sie verleiht den Dingen Realität und gibt den Menschen einen Ort.</p></div>
+</div></section>
+<section id="k8" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 8 · Begriffsfeld Natalität</p>
+  <h2 class="ch-title">Natalität — jede Geburt ist ein Anfang</h2>
+  <p class="ch-dek">Arendts originellster und hoffnungsvollster Begriff: Weil ständig neue Menschen geboren werden, kann immer etwas Unerwartetes beginnen.</p>
+  <div class="kicker-rule"></div>
+
+  <p class="a-dropcap">Die abendländische Philosophie hat immer vom Tod her gedacht — von der Sterblichkeit, der Endlichkeit, dem Vergehen. Arendt dreht den Blick um: Sie denkt von der <em>Geburt</em> her. Dass ständig Neue in die Welt kommen, jeder einzigartig, jeder fähig, etwas anzufangen, was es vorher nicht gab — das nennt sie <strong>Natalität</strong> oder Gebürtlichkeit. Sie ist die ontologische Wurzel des Handelns: Nur weil wir geboren werden, können wir Neues beginnen.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„… könnte es wohl sein, daß Natalität für politisches Denken ein so entscheidendes, Kategorien-bildendes Faktum darstellt, wie Sterblichkeit … für [das] metaphysisch-philosophische Denken."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 1</p>
+    <p class="a-quote__ctx">Die Umkehrung der ganzen Tradition: nicht vom Tod, sondern von der Geburt her denken.</p>
+  </blockquote>
+
+  <p>Jeder Neuanfang ist, statistisch gesehen, unwahrscheinlich — er unterbricht den erwartbaren Lauf der Dinge. Arendt nennt das die „unendliche Unwahrscheinlichkeit", die jedem Anfang innewohnt. Dass der Mensch zum Handeln, also zum Neuanfangen, begabt ist, heißt darum: Er entzieht sich der bloßen Berechenbarkeit. Das Erwartbare ist nicht das letzte Wort.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Die Tatsache, daß der Mensch zum Handeln im Sinne des Neuanfangens begabt ist, kann … nur heißen, daß er sich aller Absehbarkeit und Berechenbarkeit entzieht".</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 24</p>
+  </blockquote>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„… [es beruht] auf dem … Faktum der Natalität …, der Gebürtlichkeit, kraft deren jeder Mensch einmal als ein einzigartig Neues in der Welt erschienen ist."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 24</p>
+  </blockquote>
+
+  <p>Am Ende des Kapitels über das Handeln greift Arendt sogar zu einem Bild aus der Weihnachtsbotschaft: „Uns ist ein Kind geboren." Das „Wunder" der Welt sei, dass überhaupt Menschen geboren werden — und mit ihnen die Fähigkeit, neu anzufangen. Dieser Gedanke verbindet beide Bücher: Er ist auch der allerletzte Satz von <em>Elemente und Ursprünge</em> (vgl. K15).</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Das ›Wunder‹ besteht darin, daß überhaupt Menschen geboren werden, und mit ihnen der Neuanfang, den sie handelnd verwirklichen können".</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 34</p>
+  </blockquote>
+
+  <div class="a-formula">
+    <p class="a-formula__klassik">Initium — mit jedem Menschen kommt ein Anfang in die Welt.</p>
+    <p class="a-formula__alltag"><b>In Alltags-Worten</b> Solange Menschen geboren werden, ist nichts endgültig entschieden — es kann immer neu losgehen.</p>
+  </div>
+
+  <div class="a-box a-box--blick"><p class="a-box__lbl">Kapitel auf einen Blick</p><p>Natalität ist Arendts Hoffnungsbegriff. Gegen jeden Determinismus setzt sie: Mit jeder Geburt beginnt etwas, das nicht aus dem Bisherigen folgt.</p></div>
+</div></section>
+<div class="wrap"><div class="a-plakat a-plakat--reform">
+  <p class="a-plakat__eyebrow">Begriffsfeld Natalität · Kapitel 8</p>
+  <h2 class="a-plakat__stmt">MIT JEDER<br>GEBURT<br>FÄNGT WELT<br>NEU AN</h2>
+  <p class="a-plakat__author">— nach Hannah Arendt, Vita activa § 1, § 34</p>
+  <p class="a-plakat__alltag">Gegen die Logik des Unvermeidlichen: Weil ständig Neue kommen, bleibt die Zukunft offen.</p>
+</div></div>
+<section id="k9" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 9 · Begriffsfeld Weltentfremdung</p>
+  <h2 class="ch-title">Weltentfremdung — wie die Neuzeit die Welt verliert</h2>
+  <p class="ch-dek">Arendts Diagnose der Moderne: Wir haben die Erde vermessen und verlassen zugleich. Der homo faber verliert, der animal laborans siegt.</p>
+  <div class="kicker-rule"></div>
+
+  <p class="a-dropcap">Im letzten Kapitel von <em>Vita activa</em> wendet Arendt ihr Begriffsgerüst auf die Neuzeit an. Ihre These: Seit der frühen Neuzeit — Galilei, das Teleskop, der „archimedische Punkt" außerhalb der Erde — entfremdet sich der Mensch von der Welt. Er betrachtet die Erde wie von außen, aus dem Universum. Diese großartige wissenschaftliche Leistung hat einen Preis: <strong>Weltentfremdung</strong>.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„… jede Verringerung von Entfernung auf der Erde kann nur um den Preis einer vergrößerten Entfernung des Menschen von der Erde gewonnen werden".</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Vita activa · Piper 2020 · § 35</p>
+    <p class="a-quote__ctx">Je näher die Technik die Welt zusammenzieht, desto ferner wird sie dem Menschen.</p>
+  </blockquote>
+
+  <p>Arendt beschreibt eine doppelte Umkehrung. Zuerst siegt der <em>homo faber</em>: Alles wird zum Mittel, alles wird gemacht und vermessen. Doch er kann sich nicht halten. Am Ende triumphiert der <em>animal laborans</em> — das bloße Leben, der Konsum, der Stoffwechsel werden zum höchsten Wert. Eine ganze Gesellschaft organisiert sich um Arbeiten und Verbrauchen herum. Die dauerhafte Welt der Dinge und der öffentliche Raum verkümmern.</p>
+
+  <div class="m-flow">
+    <div class="m-flow__step"><div class="m-flow__n">Phase 1</div><div class="m-flow__t">Der archimedische Punkt</div><p class="m-flow__d">Die Wissenschaft betrachtet die Erde von außen. Der Mensch entfernt sich von seiner irdischen Heimat.</p></div>
+    <div class="m-flow__step"><div class="m-flow__n">Phase 2</div><div class="m-flow__t">Sieg des homo faber</div><p class="m-flow__d">Alles wird Mittel zum Zweck, herstellbar und messbar. Doch reines Machen gibt keinen Sinn.</p></div>
+    <div class="m-flow__step"><div class="m-flow__n">Phase 3</div><div class="m-flow__t">Sieg des animal laborans</div><p class="m-flow__d">Das bloße Leben wird zum höchsten Gut. Die Gesellschaft kreist nur noch um Arbeit und Konsum.</p></div>
+  </div>
+
+  <p>Damit schließt sich der Bogen von <em>Vita activa</em>. Was als Lob des Handelns und der gemeinsamen Welt begann, endet als Warnung: Eine Welt, in der nur noch gearbeitet und konsumiert wird, verliert genau das, was Menschen zu Menschen macht — den öffentlichen Raum, das Handeln, die Erfahrung von Freiheit. Hier reicht <em>Vita activa</em> der Hand zum anderen Buch: Wo die gemeinsame Welt zerbricht und Menschen vereinzeln, beginnt die Anfälligkeit für totale Herrschaft.</p>
+
+  <div class="a-formula">
+    <p class="a-formula__klassik">Weltentfremdung — das Kennzeichen der Neuzeit.</p>
+    <p class="a-formula__alltag"><b>In Alltags-Worten</b> Wir beherrschen die Welt immer besser und fühlen uns in ihr immer weniger zu Hause.</p>
+  </div>
+
+  <div class="a-box a-box--wort"><p class="a-box__lbl">In einem Wort</p><p>Heimatverlust. Die moderne Welt wird beherrschbar — und unbewohnbar.</p></div>
+</div></section>
+<div class="wrap"><div class="a-plakat a-plakat--steel">
+  <p class="a-plakat__eyebrow">Begriffsfeld Weltentfremdung · Kapitel 9 · Übergang</p>
+  <h2 class="a-plakat__stmt">WIR HABEN<br>DIE WELT<br>VERMESSEN —<br>UND VERLASSEN</h2>
+  <p class="a-plakat__author">— nach Hannah Arendt, Vita activa § 35</p>
+  <p class="a-plakat__alltag">Wo die gemeinsame Welt zerfällt und Menschen vereinzeln, beginnt das Thema des zweiten Buches.</p>
+</div></div>
+<section id="k10" class="chapter"><div class="wrap col">
+  <p class="part-band"><span class="part-band__tag">TEIL IV · DIE ELEMENTE (ELEMENTE UND URSPRÜNGE)</span></p>
+  <p class="ch-eyebrow">Kapitel 10 · Element I</p>
+  <h2 class="ch-title">Antisemitismus — warum gerade die Juden?</h2>
+  <p class="ch-dek">Arendts erstes „Element": Sie erklärt den modernen Antisemitismus nicht aus uraltem Hass, sondern aus dem Funktionsverlust der Juden im Nationalstaat.</p>
+  <div class="kicker-rule"></div>
+
+  <p class="a-dropcap">Der erste Teil von <em>Elemente und Ursprünge</em> stellt eine unbequeme Frage: Warum wurden ausgerechnet die Juden zur Zielscheibe? Arendt lehnt zwei einfache Antworten ab — weder den ewigen, zeitlosen Judenhass noch die Vorstellung, die Juden seien bloß ein zufälliger Sündenbock. Ihre These ist subtiler und historischer: Der moderne politische Antisemitismus entstand genau dann, als die Juden ihre frühere Funktion — als Finanziers des Nationalstaats — <strong>verloren</strong>, ohne ihren Reichtum und ihre Sichtbarkeit zu verlieren.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Nur Reichtum ohne Macht und Hochmut ohne politischen Willen werden als parasitär, überflüssig und herausfordernd empfunden; sie fordern das Ressentiment heraus".</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Elemente und Ursprünge totaler Herrschaft · EVA 2016 · Teil I, „Antisemitismus"</p>
+    <p class="a-quote__ctx">Nicht Macht erzeugt Hass, sondern sichtbarer Reichtum ohne Macht.</p>
+  </blockquote>
+
+  <p>Das ist Arendts charakteristischer Dreh: Solange die Juden eine reale Funktion für den Staat hatten (sie finanzierten Kriege und Höfe), wurden sie gebraucht, nicht gehasst. Als der Nationalstaat sie nicht mehr brauchte, blieben Reichtum und gesellschaftliche Sichtbarkeit — aber ohne die politische Funktion, die sie einst geschützt hatte. Aus diesem Missverhältnis, so Arendt, wuchs das Ressentiment, das die totalitären Bewegungen später aufgriffen und radikalisierten.</p>
+
+  <div class="a-box a-box--punkt"><p class="a-box__lbl">Auf den Punkt</p><p>Arendt erklärt den Antisemitismus historisch, nicht psychologisch: Er flammt auf, als die Juden ihre staatliche Funktion verlieren, aber sichtbar reich bleiben.</p></div>
+
+  <div class="a-box a-box--eilige"><p class="a-box__lbl">Für Eilige</p><p>„Element" heißt: ein Baustein, aus dem der Totalitarismus später entsteht — noch nicht der Totalitarismus selbst. Der Antisemitismus ist einer dieser Bausteine.</p></div>
+
+  <div class="a-formula">
+    <p class="a-formula__klassik">Funktionsverlust schlägt in Ressentiment um.</p>
+    <p class="a-formula__alltag"><b>In Alltags-Worten</b> Wer reich und sichtbar ist, aber keine erkennbare Aufgabe mehr hat, wird leicht zur Hassfigur.</p>
+  </div>
+
+  <details>
+    <summary>Vertiefung: Warum Arendt das „Element" und nicht „Ursache" nennt</summary>
+    <div class="det-body"><p>Der Buchtitel ist Programm. Arendt misstraut dem Kausaldenken vieler Historiker, das den Totalitarismus glatt aus Vorläufern ableitet. Stattdessen spricht sie von „Elementen", die lange vorher existieren, sich aber erst unter bestimmten Bedingungen zu etwas qualitativ Neuem „kristallisieren". Antisemitismus, Imperialismus und Massengesellschaft sind solche Elemente — vorhanden, aber nicht zwangsläufig zum Totalitarismus führend.</p></div>
+  </details>
+</div></section>
+<section id="k11" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 11 · Element II</p>
+  <h2 class="ch-title">Imperialismus — Expansion ohne Grenze</h2>
+  <p class="ch-dek">Das zweite „Element": Wenn Macht nur noch wächst, um zu wachsen. Arendt sieht hier die politische Form, die der Totalitarismus erben wird.</p>
+  <div class="kicker-rule"></div>
+
+  <p class="a-dropcap">Der zweite Teil handelt vom Imperialismus des späten 19. Jahrhunderts — und er ist das politische Scharnier des Buches. Arendts These: Mit dem Imperialismus tritt ein neues Prinzip in die Politik ein. Nicht Eroberung für einen Zweck, sondern <strong>Expansion um ihrer selbst willen</strong>. Überschüssiges Kapital sucht Anlage in fernen Ländern, der Staat folgt ihm mit Macht — und Macht wird zum Selbstzweck, der sich endlos vermehren muss.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„… Expansion nicht auf ein bestimmtes Gebiet beschränkt … sondern um ihrer selbst willen als ein dauernder Prozeß betrieben".</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Elemente und Ursprünge totaler Herrschaft · EVA 2016 · Teil II, „Imperialismus"</p>
+    <p class="a-quote__ctx">Das neue, gefährliche Prinzip: Wachstum als Selbstzweck.</p>
+  </blockquote>
+
+  <p>Warum ist das gefährlich? Weil grenzenlose Expansion mit dem Nationalstaat unvereinbar ist. Der Nationalstaat hat Grenzen, Gesetze, ein bestimmtes Volk. Die imperiale Bewegung kennt keine natürliche Grenze — sie muss immer weiter. Arendt zeigt, wie hier Denkfiguren entstehen, die der Totalitarismus übernimmt: das Bündnis von „Mob und Kapital", die Rassedoktrin als Herrschaftsinstrument, die Verwaltung von Menschen als bloßem Material in den Kolonien.</p>
+
+  <div class="m-schema">
+    <p class="m-schema__lbl">Die drei Elemente und ihr Zusammenschluss</p>
+    <div class="grid-3">
+      <div class="a-box a-box--punkt" style="margin:0;"><p class="a-box__lbl">Element I</p><p><b>Antisemitismus</b> — liefert das Feindbild und das Ressentiment (K10).</p></div>
+      <div class="a-box a-box--punkt" style="margin:0;"><p class="a-box__lbl">Element II</p><p><b>Imperialismus</b> — liefert die Form: grenzenlose Bewegung, Rasse, Menschen als Material (K11).</p></div>
+      <div class="a-box a-box--punkt" style="margin:0;"><p class="a-box__lbl">Element III</p><p><b>Massengesellschaft</b> — liefert die vereinzelten Menschen, die mitmachen (K14).</p></div>
+    </div>
+  </div>
+
+  <p>Erst wenn diese Elemente zusammentreffen — Feindbild, grenzenlose Bewegung, vereinzelte Massen —, „kristallisiert" sich daraus etwas qualitativ Neues: die totale Herrschaft. Damit endet der historische Teil und beginnt Arendts eigentliche Entdeckung (K14–K16).</p>
+
+  <div class="a-formula">
+    <p class="a-formula__klassik">Expansion um der Expansion willen.</p>
+    <p class="a-formula__alltag"><b>In Alltags-Worten</b> Wenn Macht nur noch wächst, um weiter zu wachsen, sprengt sie jede Ordnung — auch die eigene.</p>
+  </div>
+
+  <div class="a-box a-box--blick"><p class="a-box__lbl">Kapitel auf einen Blick</p><p>Der Imperialismus erfindet das Prinzip der grenzenlosen Bewegung und die Verwaltung von Menschen als Material. Beides erbt der Totalitarismus.</p></div>
+</div></section>
+<div class="wrap"><div class="a-plakat a-plakat--terra">
+  <p class="a-plakat__eyebrow">Element II · Kapitel 11</p>
+  <h2 class="a-plakat__stmt">MACHT,<br>DIE NUR<br>WACHSEN<br>WILL</h2>
+  <p class="a-plakat__author">— nach Hannah Arendt, Elemente und Ursprünge, Teil II</p>
+  <p class="a-plakat__alltag">Expansion ohne Ziel und ohne Grenze: das politische Prinzip, das der Totalitarismus übernimmt.</p>
+</div></div>
+<section id="k12" class="chapter"><div class="wrap col">
+  <p class="part-band"><span class="part-band__tag">TEIL V · GALERIE & ZEITTAFEL</span></p>
+  <p class="ch-eyebrow">Kapitel 12 · Galerie</p>
+  <h2 class="ch-title">Die Köpfe in Arendts Werk</h2>
+  <p class="ch-dek">Arendt denkt im Gespräch mit anderen. Hier die Denker, die in den beiden Büchern eine Rolle spielen — und welche Rolle das ist.</p>
+  <div class="kicker-rule"></div>
+
+  <p>Ehrlich bleiben heißt hier: Diese Galerie zeigt keine 30 Vertreter eines Forschungsfelds, sondern die Personen, mit denen Arendt in genau diesen zwei Büchern ringt. Manche sind ihre Stichwortgeber (Aristoteles, Augustinus), manche ihre Gegner (Marx, Hobbes), manche ihre Fallbeispiele (Hitler, Stalin, Eichmann-Vorläufer im Lager-Kapitel). Die hier genannten Lebensdaten und Werkzuschreibungen sind allgemein bekanntes Wissen und sollten bei Bedarf gegengeprüft werden.</p>
+
+  <div class="a-galerie-grid">
+    <div class="a-galerie">
+      <div class="a-galerie__sil">A</div>
+      <h3 class="a-galerie__name">Aristoteles</h3>
+      <p class="a-galerie__meta">384–322 v. Chr. · Griechenland</p>
+      <span class="a-galerie__school" style="background:var(--royal);">Stichwortgeber · Handeln</span>
+      <p class="a-galerie__formula">„Der Mensch ist ein politisches Lebewesen."</p>
+      <p class="a-galerie__alltag">Arendt nimmt seine Unterscheidung von Haushalt (oikos) und Polis auf — und kritisiert ihre spätere Einebnung.</p>
+      <p class="a-galerie__beitrag">Vorlage für Arendts Begriff des Politischen als Sphäre des Handelns unter Gleichen (Vita activa, §§ 4–5).</p>
+    </div>
+    <div class="a-galerie">
+      <div class="a-galerie__sil">Au</div>
+      <h3 class="a-galerie__name">Augustinus</h3>
+      <p class="a-galerie__meta">354–430 · Nordafrika/Rom</p>
+      <span class="a-galerie__school" style="background:var(--reform);">Stichwortgeber · Natalität</span>
+      <p class="a-galerie__formula">„Initium ut esset, creatus est homo."</p>
+      <p class="a-galerie__alltag">„Damit ein Anfang sei, wurde der Mensch geschaffen" — der Satz, mit dem Arendt ihren Natalitätsbegriff krönt.</p>
+      <p class="a-galerie__beitrag">Quelle des Schlussgedankens von Elemente und Ursprünge (Teil III) und der Natalität in Vita activa (§ 24).</p>
+    </div>
+    <div class="a-galerie">
+      <div class="a-galerie__sil">M</div>
+      <h3 class="a-galerie__name">Karl Marx</h3>
+      <p class="a-galerie__meta">1818–1883 · Deutschland</p>
+      <span class="a-galerie__school" style="background:var(--accent-burgundy);">Gegner · Arbeit</span>
+      <p class="a-galerie__formula">Arbeit als das Wesen des Menschen.</p>
+      <p class="a-galerie__alltag">Arendt widerspricht: Indem Marx alles auf Arbeit reduziert, verliert er das Handeln und die Politik aus dem Blick.</p>
+      <p class="a-galerie__beitrag">Hauptgegner in Vita activa: Sie schätzt seine Analyse, hält seine Verherrlichung der Arbeit aber für gefährlich (§§ 11–17).</p>
+    </div>
+    <div class="a-galerie">
+      <div class="a-galerie__sil">H</div>
+      <h3 class="a-galerie__name">Thomas Hobbes</h3>
+      <p class="a-galerie__meta">1588–1679 · England</p>
+      <span class="a-galerie__school" style="background:var(--steel);">Gegner · Öffentlichkeit</span>
+      <p class="a-galerie__formula">Der Mensch als konkurrierendes Einzelwesen.</p>
+      <p class="a-galerie__alltag">Für Arendt der Denker der Vereinzelung: Er verachtet das Bedürfnis nach öffentlicher Anerkennung als „vainglory".</p>
+      <p class="a-galerie__beitrag">Kontrastfigur zu Arendts Begriff der gemeinsamen Welt und der Macht (Vita activa, § 7).</p>
+    </div>
+    <div class="a-galerie">
+      <div class="a-galerie__sil">D</div>
+      <h3 class="a-galerie__name">René Descartes</h3>
+      <p class="a-galerie__meta">1596–1650 · Frankreich</p>
+      <span class="a-galerie__school" style="background:var(--steel);">Fallbeispiel · Weltentfremdung</span>
+      <p class="a-galerie__formula">Der radikale Zweifel.</p>
+      <p class="a-galerie__alltag">Sein Rückzug ins zweifelnde Ich ist für Arendt ein Symptom der neuzeitlichen Weltentfremdung.</p>
+      <p class="a-galerie__beitrag">Kronzeuge des „Verlusts des Gemeinsinns" in der Neuzeit (Vita activa, §§ 38–39).</p>
+    </div>
+    <div class="a-galerie">
+      <div class="a-galerie__sil">HS</div>
+      <h3 class="a-galerie__name">Himmler / Stalin</h3>
+      <p class="a-galerie__meta">20. Jahrhundert</p>
+      <span class="a-galerie__school" style="background:var(--abyss);">Fallbeispiele · Totale Herrschaft</span>
+      <p class="a-galerie__formula">Die organisierte Inhaltsleere.</p>
+      <p class="a-galerie__alltag">Arendt liest sie nicht als Monster, sondern als Funktionäre einer Bewegung, die jeden festen Inhalt auflöst.</p>
+      <p class="a-galerie__beitrag">Belege für die These, dass totale Herrschaft auf Bewegung, Terror und Inhaltsleere beruht (Teil III).</p>
+    </div>
+  </div>
+
+  <div class="a-box a-box--punkt"><p class="a-box__lbl">Auf den Punkt</p><p>Arendt denkt nie allein. Ihre Begriffe entstehen an anderen — als Aufnahme (Aristoteles, Augustinus) oder als Widerspruch (Marx, Hobbes).</p></div>
+</div></section>
+<section id="k13" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 13 · Zeittafel</p>
+  <h2 class="ch-title">Die Entstehung der zwei Bücher</h2>
+  <p class="ch-dek">Beide Werke wuchsen aus Arendts Erfahrung von Flucht und Neuanfang. Eine kurze Chronologie der Originale und ihrer deutschen Fassungen.</p>
+  <div class="kicker-rule"></div>
+
+  <p>Die folgende Zeittafel stützt sich auf die Angaben in den beiden vorliegenden Ausgaben (Impressum und Vorwort). Jahreszahlen zu Auflagen und Übersetzungen bitte bei genauer Verwendung gegen die jeweilige Ausgabe prüfen.</p>
+
+  <div class="m-timeline">
+    <div class="m-tl">
+      <div class="m-tl__date">1906–1941</div>
+      <h4 class="m-tl__title">Herkunft und Flucht</h4>
+      <p class="m-tl__body">Arendt wird 1906 geboren, studiert bei Heidegger und Jaspers, flieht 1933 vor den Nationalsozialisten und gelangt 1941 in die USA. Die Erfahrung von Verfolgung und Staatenlosigkeit prägt beide Bücher.</p>
+    </div>
+    <div class="m-tl">
+      <div class="m-tl__date">1951</div>
+      <h4 class="m-tl__title">The Origins of Totalitarianism</h4>
+      <p class="m-tl__body">Das Totalitarismus-Buch erscheint zuerst auf Englisch — der Versuch, das eben Geschehene (Nazismus, dann auch Stalinismus) zu begreifen.</p>
+    </div>
+    <div class="m-tl">
+      <div class="m-tl__date">1955</div>
+      <h4 class="m-tl__title">Elemente und Ursprünge totaler Herrschaft</h4>
+      <p class="m-tl__body">Arendt überträgt das Werk selbst ins Deutsche — keine wörtliche Übersetzung, mit Streichungen und Zusätzen. Das englische Schlusskapitel ersetzt sie durch „Ideologie und Terror".</p>
+    </div>
+    <div class="m-tl">
+      <div class="m-tl__date">1958</div>
+      <h4 class="m-tl__title">The Human Condition</h4>
+      <p class="m-tl__body">Das systematische Gegenbild erscheint auf Englisch: Was ist eigentlich die menschliche Welt, die der Totalitarismus zerstört?</p>
+    </div>
+    <div class="m-tl">
+      <div class="m-tl__date">1960 / 1967</div>
+      <h4 class="m-tl__title">Vita activa oder Vom tätigen Leben</h4>
+      <p class="m-tl__body">Die deutsche Fassung erscheint unter eigenem Titel. Auch hier hat Arendt den Text selbst bearbeitet, nicht bloß übersetzt.</p>
+    </div>
+    <div class="m-tl">
+      <div class="m-tl__date">1966</div>
+      <h4 class="m-tl__title">Letzte überarbeitete Auflage (Origins)</h4>
+      <p class="m-tl__body">Bis zur dritten Auflage erweitert Arendt das Totalitarismus-Buch weiter. Bis 1966 sieht sie nur Nazismus und Stalinismus als voll verwirklichte totale Herrschaft.</p>
+    </div>
+  </div>
+
+  <div class="a-box a-box--wort"><p class="a-box__lbl">In einem Wort</p><p>Doppelblick. Erst die Zerstörung verstehen (1951), dann das Zerstörte benennen (1958).</p></div>
+</div></section>
+<section id="k14" class="chapter"><div class="wrap col">
+  <p class="part-band"><span class="part-band__tag">TEIL VI · TOTALE HERRSCHAFT (ELEMENTE UND URSPRÜNGE)</span></p>
+  <p class="ch-eyebrow">Kapitel 14 · Element III</p>
+  <h2 class="ch-title">Masse und Verlassenheit</h2>
+  <p class="ch-dek">Das dritte Element: vereinzelte Menschen ohne gemeinsame Welt. Aus Verlassenheit, sagt Arendt, wächst die Anfälligkeit für totale Herrschaft.</p>
+  <div class="kicker-rule"></div>
+
+  <p class="a-dropcap">Wer macht beim Totalitarismus mit? Arendt antwortet: nicht Fanatiker oder Dummköpfe, sondern die <strong>Masse</strong> — Menschen, die aus zerfallenden Klassen und Bindungen herausgefallen sind und keinen gemeinsamen Ort mehr haben. Ihr Kennzeichen ist nicht Bosheit, sondern Beziehungslosigkeit.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Das Hauptmerkmal der Individuen in einer Massengesellschaft ist nicht Brutalität oder Dummheit oder Unbildung, sondern Kontaktlosigkeit und Entwurzeltheit."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Elemente und Ursprünge totaler Herrschaft · EVA 2016 · Teil III, „Die totalitäre Bewegung"</p>
+    <p class="a-quote__ctx">Die Masse ist nicht böse — sie ist allein.</p>
+  </blockquote>
+
+  <p>Diesen Zustand nennt Arendt <em>Verlassenheit</em> (im Unterschied zur produktiven Einsamkeit). Verlassen ist, wer nicht nur von anderen, sondern auch von sich selbst und der Welt abgeschnitten ist. In der Einsamkeit bin ich mit mir im Gespräch; in der Verlassenheit bin ich wirklich allein. Und der verlassene Mensch verliert das Vertrauen in die gemeinsame Wirklichkeit — denn Wirklichkeit ist etwas, das andere uns bestätigen müssen.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Die Grunderfahrung menschlichen Zusammenseins, die in totalitärer Herrschaft politisch realisiert wird, ist die Erfahrung der Verlassenheit."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Elemente und Ursprünge totaler Herrschaft · EVA 2016 · Teil III, „Ideologie und Terror"</p>
+  </blockquote>
+
+  <p>Hier schließt sich der Kreis zu <em>Vita activa</em>: Was dort als „Tisch" die Menschen verband und trennte (K7), ist hier zerbrochen. Ohne gemeinsame Welt fallen die Menschen nicht enger zusammen, sondern in die Vereinzelung — und werden zu Material für die Bewegung.</p>
+
+  <div class="a-formula">
+    <p class="a-formula__klassik">Verlassenheit ≠ Einsamkeit.</p>
+    <p class="a-formula__alltag"><b>In Alltags-Worten</b> Einsam bin ich mit mir selbst; verlassen bin ich von allem abgeschnitten — auch von mir.</p>
+  </div>
+
+  <div class="a-acht">
+    <div class="a-acht__cell"><div class="a-acht__n">01</div><div class="a-acht__t">Faktenbasis</div><p class="a-acht__d">Totalitäre Bewegungen rekrutierten breit aus zuvor unpolitischen, vereinzelten Schichten, nicht nur aus Randgruppen.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">02</div><div class="a-acht__t">Interpretation</div><p class="a-acht__d">Arendt liest dies als Folge zerfallener Klassen und Bindungen — Verlassenheit als Massenphänomen.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">03</div><div class="a-acht__t">Konsequenz</div><p class="a-acht__d">Wer den Menschen ihren gemeinsamen Ort zurückgibt, entzieht der totalen Herrschaft den Nährboden.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">04</div><div class="a-acht__t">Innere Spannung</div><p class="a-acht__d">Verlassenheit erklärt Bereitschaft, aber nicht jede Tat — der Schritt zur aktiven Beteiligung bleibt unterbestimmt.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">05</div><div class="a-acht__t">Blind Spots</div><p class="a-acht__d">Ökonomische Interessen, Karrierismus und Zwang als Mitmach-Gründe treten hinter die These der Vereinzelung zurück.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">06</div><div class="a-acht__t">Verzerrung</div><p class="a-acht__d">„Masse" ist ein schillernder Begriff; Kritiker werfen Arendt eine zu pauschale Gesellschaftsdiagnose vor.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">07</div><div class="a-acht__t">Wahrer Kern</div><p class="a-acht__d">Dass soziale Vereinzelung politisch gefährlich ist, gilt bis heute als ernst zu nehmende Einsicht.</p></div>
+    <div class="a-acht__cell"><div class="a-acht__n">08</div><div class="a-acht__t">Unbequem</div><p class="a-acht__d">Die Täter waren oft „normale" Vereinzelte — nicht das ferne Monster, sondern der Nachbar.</p></div>
+  </div>
+
+  <div class="a-box a-box--blick"><p class="a-box__lbl">Kapitel auf einen Blick</p><p>Die Masse ist nicht böse, sondern beziehungslos. Aus organisierter Verlassenheit zieht die totale Herrschaft ihre Kraft.</p></div>
+</div></section>
+<section id="k15" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 15 · Das Herzstück</p>
+  <h2 class="ch-title">Ideologie und Terror</h2>
+  <p class="ch-dek">Das Kapitel, das Arendt eigens für die deutsche Fassung schrieb. Hier erklärt sie, wie Ideologie und Terror zusammen eine neue Staatsform bilden.</p>
+  <div class="kicker-rule"></div>
+
+  <p class="a-dropcap">Wie hält totale Herrschaft die Menschen? Durch zwei Mittel, die zusammenwirken: <em>Ideologie</em> und <em>Terror</em>. Die Ideologie liefert eine „eiskalte Logik" — eine Idee (Rasse, Klasse), aus der sich angeblich alles zwingend ableiten lässt. Der Terror macht diese Logik in der Wirklichkeit wahr. Der vereinzelte, verlassene Mensch klammert sich an die einzige Sicherheit, die ihm bleibt.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Das einzige, was in der Verlassenheit als scheinbar unantastbar sicher verbleibt, sind die Elementargesetze des zwingend Evidenten, die Tautologie des Satzes: zweimal zwei ist vier."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Elemente und Ursprünge totaler Herrschaft · EVA 2016 · Teil III, „Ideologie und Terror"</p>
+    <p class="a-quote__ctx">Wenn nichts mehr verlässlich ist, wird das bloße Schließen selbst zum Halt — und zur Falle.</p>
+  </blockquote>
+
+  <p>Aus diesem Zwang zum logischen Deduzieren wird der Extremismus, der jeder Ideologie eigen ist: „Wer A sagt, muss auch B sagen" — bis zum Ärgsten. Arendt warnt aber: Das ist keine echte Radikalität, sondern bloßer Zwang.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Die ›Radikalität‹ totalitärer Ideologien ist nur der Extremismus des Ärgsten und hat mit echter Radikalität gar nichts zu tun."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Elemente und Ursprünge totaler Herrschaft · EVA 2016 · Teil III, „Ideologie und Terror"</p>
+  </blockquote>
+
+  <p>Und doch endet das ganze Buch nicht in Verzweiflung. Im allerletzten Absatz greift Arendt — wie in <em>Vita activa</em> — auf Augustinus zurück. Gegen die „verwüstenden Sandstürme" der totalen Herrschaft setzt sie die Natalität: Solange Menschen geboren werden, ist ein neuer Anfang garantiert.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„Initium ut esset, creatus est homo – ›damit ein Anfang sei, wurde der Mensch geschaffen‹ … Dieser Anfang … ist garantiert durch die Geburt jedes Menschen."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Elemente und Ursprünge totaler Herrschaft · EVA 2016 · Teil III, „Ideologie und Terror" (Schlusssatz)</p>
+    <p class="a-quote__ctx">Derselbe Gedanke schließt beide Bücher: Hoffnung heißt Natalität.</p>
+  </blockquote>
+
+  <div class="a-formula">
+    <p class="a-formula__klassik">Ideologie + Terror = eine neue Staatsform.</p>
+    <p class="a-formula__alltag"><b>In Alltags-Worten</b> Eine Idee, die alles erklärt, plus Gewalt, die sie wahr macht — das ist das Neue am Totalitarismus.</p>
+  </div>
+
+  <div class="a-box a-box--punkt"><p class="a-box__lbl">Auf den Punkt</p><p>Ideologie liefert die zwingende Logik, Terror macht sie wirklich. Doch Arendts letztes Wort ist die Natalität — der Anfang, der mit jeder Geburt kommt.</p></div>
+</div></section>
+<div class="wrap"><div class="a-plakat a-plakat--abyss">
+  <p class="a-plakat__eyebrow">Ideologie und Terror · Kapitel 15</p>
+  <h2 class="a-plakat__stmt">ZWEIMAL<br>ZWEI<br>IST VIER</h2>
+  <p class="a-plakat__author">— Hannah Arendt, Elemente und Ursprünge, „Ideologie und Terror"</p>
+  <p class="a-plakat__alltag">Wenn alles Verlässliche zerbricht, klammert sich der verlassene Mensch an die nackte Logik — und genau das nutzt die Ideologie aus.</p>
+</div></div>
+<section id="k16" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 16 · Der Abgrund</p>
+  <h2 class="ch-title">Die Lager und das radikal Böse</h2>
+  <p class="ch-dek">Arendts schwerstes Kapitel. In den Konzentrations- und Vernichtungslagern sieht sie das eigentliche Wesen der totalen Herrschaft — und etwas, das alle Maßstäbe sprengt.</p>
+  <div class="kicker-rule"></div>
+
+  <p class="a-dropcap">Für Arendt sind die Lager nicht ein Auswuchs des Totalitarismus, sondern sein Kern. Hier zeigt sich, worauf totale Herrschaft eigentlich zielt: nicht nur Gehorsam, sondern die <strong>Transformation der menschlichen Natur selbst</strong>. Im Lager wird der Mensch systematisch überflüssig gemacht — und damit etwas getan, das jenseits aller bisherigen moralischen, politischen und juristischen Begriffe liegt.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„… [die totale Herrschaft hat] entdeckt, daß es ein radikal Böses wirklich gibt und daß es in dem besteht, was Menschen weder bestrafen noch vergeben können."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Elemente und Ursprünge totaler Herrschaft · EVA 2016 · Teil III, „Die Konzentrationslager"</p>
+    <p class="a-quote__ctx">Ein Verbrechen jenseits von Strafe und Vergebung — die beiden Mittel des Handelns aus Vita activa versagen hier.</p>
+  </blockquote>
+
+  <p>Arendt verbindet das radikal Böse mit ihrem Schlüsselbegriff der Überflüssigkeit. Das Lager ist das Labor, in dem bewiesen werden soll, dass „alles möglich ist" — und dabei stellt sich heraus, dass alles zerstörbar ist, auch das Wesen des Menschen. Das radikal Böse tritt dort auf, wo ein System alle Menschen überflüssig macht.</p>
+
+  <blockquote class="a-quote">
+    <p class="a-quote__text">„… dieses radikal Böse [ist] im Zusammenhang eines Systems aufgetreten …, in dem alle Menschen gleichermaßen überflüssig werden."</p>
+    <p class="a-quote__cite"><cite>Hannah Arendt</cite> · Elemente und Ursprünge totaler Herrschaft · EVA 2016 · Teil III, „Die Konzentrationslager"</p>
+  </blockquote>
+
+  <p>Bemerkenswert: Diese Studie macht hier eine wichtige Unterscheidung sichtbar. In <em>Elemente und Ursprünge</em> (1951) spricht Arendt vom „radikal Bösen". Erst später, in ihrem Bericht über den Eichmann-Prozess (1963 — <em>nicht</em> Teil dieser zwei Bücher), prägt sie die berühmte Formel von der „Banalität des Bösen". Wer beide verwechselt, übersieht eine echte Entwicklung in Arendts Denken. Diese Studie zitiert nur, was in den vorliegenden Büchern steht.</p>
+
+  <div class="a-box a-box--wort"><p class="a-box__lbl">In einem Wort</p><p>Überflüssigkeit. Das Lager beweist: Menschen lassen sich überflüssig machen — das ist das radikal Böse.</p></div>
+
+  <div class="a-box a-box--eilige"><p class="a-box__lbl">Für Eilige · Wichtige Klarstellung</p><p>„Radikal Böses" steht im Buch von 1951. „Banalität des Bösen" stammt aus dem Eichmann-Buch (1963) und gehört <em>nicht</em> zu dieser Studie. Beide nicht vermischen.</p></div>
+
+  <div class="a-formula">
+    <p class="a-formula__klassik">Das Lager als Labor der totalen Herrschaft.</p>
+    <p class="a-formula__alltag"><b>In Alltags-Worten</b> Im Lager wird erprobt, ob man Menschen ganz und gar überflüssig machen kann — das ist der Kern des Schreckens.</p>
+  </div>
+</div></section>
+<div class="wrap"><div class="a-plakat a-plakat--burgundy">
+  <p class="a-plakat__eyebrow">Die Lager · Kapitel 16</p>
+  <h2 class="a-plakat__stmt">MENSCHEN<br>ÜBERFLÜSSIG<br>MACHEN</h2>
+  <p class="a-plakat__author">— nach Hannah Arendt, Elemente und Ursprünge, „Die Konzentrationslager"</p>
+  <p class="a-plakat__alltag">Das radikal Böse: ein System, in dem alle Menschen gleichermaßen überflüssig werden — weder zu bestrafen noch zu vergeben.</p>
+</div></div>
+<section id="k17" class="chapter"><div class="wrap col">
+  <p class="part-band"><span class="part-band__tag">TEIL VII · KRITIK & VERDIKT</span></p>
+  <p class="ch-eyebrow">Kapitel 17 · Gegenposition</p>
+  <h2 class="ch-title">Die schärfste Kritik an Arendt</h2>
+  <p class="ch-dek">Eine faire Studie muss die Einwände in Bestform zeigen. Arendt ist viel kritisiert worden — hier die fünf gewichtigsten Linien, ohne Abschwächung.</p>
+  <div class="kicker-rule"></div>
+
+  <p>Wichtige Vorbemerkung zur Ehrlichkeit: Die folgenden Kritiklinien fassen bekannte Debatten über Arendt zusammen. Sie stammen <em>nicht</em> aus den beiden vorliegenden Büchern, sondern aus der Forschungsdiskussion. Deshalb stehen hier <strong>keine</strong> wörtlichen Zitate von Kritikern (die ließen sich aus dem vorliegenden Material nicht belegen), sondern sinngemäße Wiedergaben ihrer Argumente. Wer sie zitieren will, prüfe die Originalquellen.</p>
+
+  <div class="m-matrix-wrap">
+  <table class="m-matrix">
+    <thead><tr><th style="width:22%;">Kritiklinie</th><th style="width:30%;">Kernvorwurf</th><th>Was dahintersteckt</th></tr></thead>
+    <tbody>
+      <tr><td>1 · Begrifflich</td><td>Die Trennung Arbeiten / Herstellen / Handeln ist zu starr.</td><td>Reale Tätigkeiten mischen alle drei. Die scharfen Idealtypen passen selten auf konkrete Arbeit, Pflege oder Politik.</td></tr>
+      <tr><td>2 · Sozial</td><td>Die „soziale Frage" wird aus der Politik verbannt.</td><td>Arendt erklärt Armut, Verteilung und Ökonomie für unpolitisch. Kritiker halten das für lebensfremd und elitär.</td></tr>
+      <tr><td>3 · Historisch</td><td>Das Polis-Ideal verschweigt die Sklaverei.</td><td>Arendts gefeierter Raum der Freien beruhte auf der Unfreiheit vieler. Das Vorbild ist idealisiert.</td></tr>
+      <tr><td>4 · Empirisch</td><td>Die Totalitarismus-These nivelliert Unterschiede.</td><td>Nazismus und Stalinismus in eine Kategorie zu zwingen, verwische historische und ideologische Differenzen.</td></tr>
+      <tr><td>5 · Feministisch</td><td>Das Private wird abgewertet.</td><td>Indem Arendt den Haushalt aus dem Politischen ausschließt, entwertet sie eine Sphäre, die vor allem Frauen zugewiesen war.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Diese Einwände sind nicht leicht zu entkräften — und Arendt selbst hätte sie teils zugestanden. Zwei verdienen besondere Beachtung, weil sie ihren Kern treffen:</p>
+
+  <div class="grid-2">
+    <div class="a-box a-box--punkt"><p class="a-box__lbl">Die soziale Frage</p><p>Arendts schärfster Punkt ist zugleich ihr verletzlichster: Wenn Hunger und Verteilung „nur" Lebenserhaltung sind, was bleibt dann für die Mehrheit der Menschen, deren Politik mit genau diesen Fragen beginnt?</p></div>
+    <div class="a-box a-box--eilige"><p class="a-box__lbl">Die Polis-Romantik</p><p>Das Ideal der freien, handelnden Bürger blendet aus, dass diese Freiheit auf der Arbeit von Sklaven und Frauen ruhte. Ein Freiheitsbegriff für wenige?</p></div>
+  </div>
+
+  <p>Fairerweise muss auch der robuste Test auf die Kritiker selbst angewandt werden — keine Heroisierung der Gegenposition. So treffend Einwand 2 ist: Arendt würde erwidern, dass gerade die Reduktion aller Politik auf Verwaltung und Verteilung das Handeln verschwinden lässt — und damit jene Freiheit, die mehr ist als Versorgung. Der Streit ist nicht entschieden; er markiert eine echte Alternative im politischen Denken.</p>
+
+  <div class="a-box a-box--wort"><p class="a-box__lbl">In einem Wort</p><p>Streitbar. Arendts Stärke — die scharfe Unterscheidung — ist zugleich die Angriffsfläche ihrer Kritiker.</p></div>
+</div></section>
+<section id="k18" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 18 · Bilanz</p>
+  <h2 class="ch-title">20 Thesen — und ihre Verdikte</h2>
+  <p class="ch-dek">Zwanzig Kernaussagen aus beiden Büchern, jede mit einem Lese-Urteil. Wichtig: Diese Verdikte sind Interpretation, kein Messergebnis.</p>
+  <div class="kicker-rule"></div>
+
+  <div class="a-box a-box--eilige"><p class="a-box__lbl">Wie diese Verdikte zu lesen sind</p><p>Bei einem echten Forschungsfeld stünden hier empirische Tests gegen Statistiken. Bei zwei philosophischen Büchern ist das unredlich. Deshalb bewerten die Verdikte, wie <em>tragfähig</em> und <em>einflussreich</em> eine These ist — als begründetes Lese-Urteil, klar gekennzeichnet. Legende: ✓ stark · ⚠ teils umstritten · ✗ schwach/überholt · ◯ offen.</p></div>
+
+  <div class="a-verdikt">
+    <div class="a-verdikt__row"><div class="a-verdikt__head"><div><p class="a-verdikt__these">1 · „Es gibt drei Grundtätigkeiten: Arbeiten, Herstellen, Handeln."</p><p class="a-verdikt__rep">Vita activa § 1</p></div><span class="a-verdikt__badge badge-yes">✓ stark</span></div></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__fakt"><b>Befund:</b> Die analytische Unterscheidung ist klar und produktiv. <b>Aber:</b> reale Tätigkeiten mischen die drei (vgl. K17).</p></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__befund">In einem Satz: Das tragende Gerüst des ganzen Werks — fruchtbar, wenn man es nicht zu starr nimmt.</p></div>
+  </div>
+
+  <div class="a-verdikt">
+    <div class="a-verdikt__row"><div class="a-verdikt__head"><div><p class="a-verdikt__these">2 · „Politik ist Handeln in Pluralität."</p><p class="a-verdikt__rep">Vita activa § 1, § 24</p></div><span class="a-verdikt__badge badge-yes">✓ stark</span></div></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__fakt"><b>Befund:</b> Einflussreiche, oft aufgegriffene Bestimmung des Politischen. <b>Aber:</b> sie schließt die soziale Frage aus.</p></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__befund">In einem Satz: Eine der wirkmächtigsten Politikdefinitionen des 20. Jahrhunderts.</p></div>
+  </div>
+
+  <div class="a-verdikt">
+    <div class="a-verdikt__row"><div class="a-verdikt__head"><div><p class="a-verdikt__these">3 · „Natalität ist die Quelle des Neuanfangs."</p><p class="a-verdikt__rep">Vita activa § 1, § 24, § 34</p></div><span class="a-verdikt__badge badge-yes">✓ stark</span></div></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__fakt"><b>Befund:</b> Originell und einflussreich; verbindet beide Bücher. <b>Aber:</b> stark normativ aufgeladen.</p></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__befund">In einem Satz: Arendts hoffnungsvollster und eigenständigster Begriff.</p></div>
+  </div>
+
+  <div class="a-verdikt">
+    <div class="a-verdikt__row"><div class="a-verdikt__head"><div><p class="a-verdikt__these">4 · „Die soziale Frage gehört nicht in die Politik."</p><p class="a-verdikt__rep">Vita activa, Bereich des Privaten</p></div><span class="a-verdikt__badge badge-no">✗ schwach</span></div></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__fakt"><b>Befund:</b> Breit kritisiert als elitär und lebensfremd (K17). <b>Kern:</b> sie verteidigt damit das Handeln gegen reine Verwaltung.</p></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__befund">In einem Satz: Arendts umstrittenste These — provokant, aber schwer haltbar.</p></div>
+  </div>
+
+  <div class="a-verdikt">
+    <div class="a-verdikt__row"><div class="a-verdikt__head"><div><p class="a-verdikt__these">5 · „Totalitarismus ist eine neue, eigene Herrschaftsform."</p><p class="a-verdikt__rep">Elemente und Ursprünge, Teil III</p></div><span class="a-verdikt__badge badge-mixed">⚠ teils umstritten</span></div></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__fakt"><b>Befund:</b> Höchst einflussreich. <b>Aber:</b> Kritiker bezweifeln, ob Nazismus und Stalinismus eine Kategorie bilden (K17).</p></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__befund">In einem Satz: Prägt die Debatte bis heute — und wird bis heute bestritten.</p></div>
+  </div>
+
+  <div class="a-verdikt">
+    <div class="a-verdikt__row"><div class="a-verdikt__head"><div><p class="a-verdikt__these">6 · „Verlassenheit macht anfällig für totale Herrschaft."</p><p class="a-verdikt__rep">Elemente und Ursprünge, „Ideologie und Terror"</p></div><span class="a-verdikt__badge badge-yes">✓ stark</span></div></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__fakt"><b>Befund:</b> Psychologisch und politisch einleuchtend, oft bestätigt. <b>Aber:</b> erklärt Bereitschaft, nicht jede Tat.</p></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__befund">In einem Satz: Eine der dauerhaftesten Einsichten des Buches.</p></div>
+  </div>
+
+  <div class="a-verdikt">
+    <div class="a-verdikt__row"><div class="a-verdikt__head"><div><p class="a-verdikt__these">7 · „Das Lager ist der Kern, nicht der Auswuchs des Totalitarismus."</p><p class="a-verdikt__rep">Elemente und Ursprünge, „Die Konzentrationslager"</p></div><span class="a-verdikt__badge badge-yes">✓ stark</span></div></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__fakt"><b>Befund:</b> Tiefe, bis heute zitierte These über das Wesen des Systems.</p></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__befund">In einem Satz: Verschiebt den Blick vom Rand ins Zentrum.</p></div>
+  </div>
+
+  <div class="a-verdikt">
+    <div class="a-verdikt__row"><div class="a-verdikt__head"><div><p class="a-verdikt__these">8 · „Die Polis ist das Vorbild gelungener Politik."</p><p class="a-verdikt__rep">Vita activa, §§ 4–7</p></div><span class="a-verdikt__badge badge-mixed">⚠ teils umstritten</span></div></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__fakt"><b>Befund:</b> Inspirierend, aber idealisiert — die Sklaverei bleibt unterbelichtet (K17).</p></div>
+    <div class="a-verdikt__row"><p class="a-verdikt__befund">In einem Satz: Schönes Ideal mit blindem Fleck.</p></div>
+  </div>
+
+  <p style="margin-top:28px;">Zwölf weitere Thesen aus beiden Büchern — verdichtet:</p>
+
+  <div class="m-matrix-wrap">
+  <table class="m-matrix">
+    <thead><tr><th style="width:8%;">Nr.</th><th>These</th><th style="width:18%;">Verdikt</th></tr></thead>
+    <tbody>
+      <tr><td>9</td><td>Arbeit hinterlässt nichts Bleibendes (§ 1, 13)</td><td>✓ stark</td></tr>
+      <tr><td>10</td><td>Herstellen baut die dauerhafte Welt (§ 1, 18)</td><td>✓ stark</td></tr>
+      <tr><td>11</td><td>Im Handeln zeigt sich „wer", nicht „was" (§ 24)</td><td>✓ stark</td></tr>
+      <tr><td>12</td><td>Versprechen & Verzeihen bändigen das Handeln (§ 34)</td><td>✓ stark</td></tr>
+      <tr><td>13</td><td>Die gemeinsame Welt ist wie ein Tisch (§ 7)</td><td>✓ stark</td></tr>
+      <tr><td>14</td><td>Die Neuzeit bringt Weltentfremdung (§ 35)</td><td>⚠ teils umstritten</td></tr>
+      <tr><td>15</td><td>Der animal laborans siegt in der Moderne (§ 45)</td><td>⚠ teils umstritten</td></tr>
+      <tr><td>16</td><td>Antisemitismus wächst aus Funktionsverlust (Teil I)</td><td>⚠ teils umstritten</td></tr>
+      <tr><td>17</td><td>Imperialismus = Expansion um ihrer selbst willen (Teil II)</td><td>✓ stark</td></tr>
+      <tr><td>18</td><td>Die Masse ist beziehungslos, nicht böse (Teil III)</td><td>✓ stark</td></tr>
+      <tr><td>19</td><td>Das radikal Böse macht Menschen überflüssig (Teil III)</td><td>✓ stark</td></tr>
+      <tr><td>20</td><td>Mit jeder Geburt bleibt ein Neuanfang möglich (beide Bücher)</td><td>✓ stark</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="a-statgrid">
+    <div class="a-statgrid__c"><div class="a-statgrid__n">14</div><div class="a-statgrid__l">✓ stark / tragfähig</div></div>
+    <div class="a-statgrid__c"><div class="a-statgrid__n">5</div><div class="a-statgrid__l">⚠ teils umstritten</div></div>
+    <div class="a-statgrid__c"><div class="a-statgrid__n">1</div><div class="a-statgrid__l">✗ schwach</div></div>
+    <div class="a-statgrid__c"><div class="a-statgrid__n">0</div><div class="a-statgrid__l">◯ offen</div></div>
+  </div>
+
+  <p>Antwort auf die Leitfrage — <em>Was hält die Welt zwischen den Menschen zusammen?</em> Arendts Antwort, über beide Bücher hinweg: <strong>das gemeinsame Handeln und Sprechen in Pluralität</strong>, getragen von der gemeinsamen Welt und immer wieder erneuert durch die Natalität. Was sie zerstört, ist die organisierte Verlassenheit. Diese Antwort ist stark, originell — und an einem Punkt (der sozialen Frage) ernsthaft angreifbar.</p>
+</div></section>
+<div class="wrap"><div class="a-plakat a-plakat--reform">
+  <p class="a-plakat__eyebrow">Verdikt-Bilanz · Kapitel 18</p>
+  <h2 class="a-plakat__stmt">PLURALITÄT<br>HÄLT DIE<br>WELT<br>ZUSAMMEN</h2>
+  <p class="a-plakat__author">— die Antwort beider Bücher auf die Leitfrage</p>
+  <p class="a-plakat__alltag">Gemeinsames Handeln, getragen von einer geteilten Welt und erneuert durch jede Geburt. Zerstört wird es durch organisierte Verlassenheit.</p>
+</div></div>
+<section id="k19" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 19 · FAQ</p>
+  <h2 class="ch-title">20 Fragen, kurz beantwortet</h2>
+  <p class="ch-dek">Die häufigsten Fragen zu Arendts beiden Büchern — in einfacher Sprache, mit Verweis aufs jeweilige Kapitel.</p>
+  <div class="kicker-rule"></div>
+
+  <div class="a-faq">
+    <h3 class="a-faq__q">1. Worum geht es in den zwei Büchern?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> <em>Vita activa</em> fragt, was die menschliche Welt ausmacht; <em>Elemente und Ursprünge</em>, wie sie zerstört wird. Diagnose und Gegenbild.</p><p class="a-faq__ref">→ Mehr in <a href="#k2">Kapitel 2</a></p></div>
+
+    <h3 class="a-faq__q">2. Was sind die drei Grundtätigkeiten?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Arbeiten (Leben erhalten), Herstellen (Welt bauen), Handeln (Politik unter Menschen).</p><p class="a-faq__ref">→ <a href="#k4">K4</a>, <a href="#k5">K5</a>, <a href="#k6">K6</a></p></div>
+
+    <h3 class="a-faq__q">3. Was bedeutet „Vita activa"?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Lateinisch „tätiges Leben" — Arendts Sammelname für die drei Tätigkeiten, im Gegensatz zur „vita contemplativa", dem betrachtenden Leben.</p><p class="a-faq__ref">→ <a href="#k3">K3</a></p></div>
+
+    <h3 class="a-faq__q">4. Was ist Pluralität?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Dass wir alle Menschen sind, aber jeder verschieden. Ohne sie gäbe es keine Politik.</p><blockquote style="font-style:italic; color:var(--ink); border-left:3px solid var(--gold); padding:4px 12px; margin:8px 0; font-size:.92rem;">„… keiner dieser Menschen [gleicht] je einem anderen". — Vita activa § 1</blockquote><p class="a-faq__ref">→ <a href="#k6">K6</a></p></div>
+
+    <h3 class="a-faq__q">5. Was ist Natalität?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Gebürtlichkeit — die Tatsache, dass ständig Neue geboren werden und mit ihnen die Fähigkeit, etwas anzufangen. Arendts Hoffnungsbegriff.</p><p class="a-faq__ref">→ <a href="#k8">K8</a></p></div>
+
+    <h3 class="a-faq__q">6. Warum ist Freiheit für Arendt „anfangen"?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Weil Handeln heißt, etwas Neues in die Welt zu setzen, das nicht aus dem Bisherigen folgt — nicht bloß „wählen dürfen".</p><p class="a-faq__ref">→ <a href="#k6">K6</a>, <a href="#k8">K8</a></p></div>
+
+    <h3 class="a-faq__q">7. Was meint die Tisch-Metapher?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Die gemeinsame Welt verbindet und trennt uns zugleich — wie ein Tisch die Runde ordnet.</p><p class="a-faq__ref">→ <a href="#k7">K7</a></p></div>
+
+    <h3 class="a-faq__q">8. Was ist „Weltentfremdung"?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Arendts Diagnose der Neuzeit: Wir beherrschen die Welt immer besser und fühlen uns in ihr immer weniger zu Hause.</p><p class="a-faq__ref">→ <a href="#k9">K9</a></p></div>
+
+    <h3 class="a-faq__q">9. Was ist am Totalitarismus „neu"?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Er will nicht nur Gehorsam wie alte Tyranneien, sondern die menschliche Natur selbst umbauen — über Ideologie, Terror und Lager.</p><p class="a-faq__ref">→ <a href="#k15">K15</a>, <a href="#k16">K16</a></p></div>
+
+    <h3 class="a-faq__q">10. Was sind die „Elemente und Ursprünge"?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Antisemitismus, Imperialismus und Massengesellschaft — Bausteine, die sich erst unter bestimmten Bedingungen zum Totalitarismus „kristallisieren".</p><p class="a-faq__ref">→ <a href="#k10">K10</a>, <a href="#k11">K11</a>, <a href="#k14">K14</a></p></div>
+
+    <h3 class="a-faq__q">11. Warum die Juden?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Arendt erklärt es historisch: Der Antisemitismus flammt auf, als die Juden ihre Funktion für den Staat verlieren, aber sichtbar reich bleiben.</p><p class="a-faq__ref">→ <a href="#k10">K10</a></p></div>
+
+    <h3 class="a-faq__q">12. Was ist „Verlassenheit"?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Von allem und allen abgeschnitten zu sein — auch von sich selbst. Anders als die produktive Einsamkeit. Aus ihr wächst die Anfälligkeit für Ideologie.</p><p class="a-faq__ref">→ <a href="#k14">K14</a></p></div>
+
+    <h3 class="a-faq__q">13. Was heißt „zweimal zwei ist vier" bei Arendt?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Wenn alles Verlässliche zerbricht, klammert sich der verlassene Mensch an nackte Logik — und genau das nutzt die Ideologie aus.</p><p class="a-faq__ref">→ <a href="#k15">K15</a></p></div>
+
+    <h3 class="a-faq__q">14. Was ist das „radikal Böse"?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Ein Verbrechen, das Menschen überflüssig macht und weder zu bestrafen noch zu vergeben ist. Arendt sieht es in den Lagern verwirklicht.</p><p class="a-faq__ref">→ <a href="#k16">K16</a></p></div>
+
+    <h3 class="a-faq__q">15. Ist das „radikal Böse" dasselbe wie die „Banalität des Bösen"?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Nein. „Radikal Böses" steht 1951 in <em>Elemente und Ursprünge</em>. „Banalität des Bösen" stammt aus dem Eichmann-Buch (1963) — nicht Teil dieser Studie. Nicht verwechseln.</p><p class="a-faq__ref">→ <a href="#k16">K16</a></p></div>
+
+    <h3 class="a-faq__q">16. War Arendt Philosophin?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Sie selbst sagte ungern ja. Ihr Gegenstand war die Politik — der Raum zwischen Menschen, nicht das einsame Denken.</p><p class="a-faq__ref">→ <a href="#k1">K1</a></p></div>
+
+    <h3 class="a-faq__q">17. Wie hängen die beiden Bücher zusammen?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Eng. Beide enden mit demselben Augustinus-Gedanken der Natalität. Das eine zeigt die Welt, das andere ihren Zusammenbruch.</p><p class="a-faq__ref">→ <a href="#k8">K8</a>, <a href="#k15">K15</a></p></div>
+
+    <h3 class="a-faq__q">18. Was ist der schärfste Einwand gegen Arendt?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Dass sie die „soziale Frage" (Armut, Verteilung) aus der Politik verbannt — für viele elitär und lebensfremd.</p><p class="a-faq__ref">→ <a href="#k17">K17</a></p></div>
+
+    <h3 class="a-faq__q">19. Was war Arendts eigene Erfahrung?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Flucht, Internierung, Staatenlosigkeit. Beide Bücher wachsen aus der Erfahrung, was es heißt, aus der Welt herauszufallen.</p><p class="a-faq__ref">→ <a href="#k1">K1</a>, <a href="#k13">K13</a></p></div>
+
+    <h3 class="a-faq__q">20. Was kann man heute von Arendt lernen?</h3>
+    <div class="a-faq__a"><p><strong>Kurz:</strong> Dass Politik mehr ist als Verwaltung; dass Vereinzelung gefährlich ist; und dass mit jedem neuen Menschen ein Anfang möglich bleibt.</p><p class="a-faq__ref">→ <a href="#k18">K18</a></p></div>
+  </div>
+</div></section>
+<section id="k20" class="chapter"><div class="wrap col">
+  <p class="ch-eyebrow">Kapitel 20 · Apparat</p>
+  <h2 class="ch-title">Glossar, Quellen & Selbstkritik</h2>
+  <p class="ch-dek">Die wichtigsten Begriffe zum Nachschlagen, die Quellenangaben — und eine ehrliche Rechenschaft über Grenzen dieser Studie.</p>
+  <div class="kicker-rule"></div>
+
+  <h3 style="font-size:1.5rem; margin:10px 0 6px;">Glossar der Schlüsselbegriffe</h3>
+  <dl class="gloss">
+    <dt>Vita activa</dt>
+    <dd class="g-plain">Das „tätige Leben": Arbeiten, Herstellen, Handeln zusammengenommen.</dd>
+    <dd class="g-orig">„Mit dem Wort Vita activa sollen … drei menschliche Grundtätigkeiten zusammengefaßt werden". — Vita activa § 1</dd>
+    <dd class="g-etym">lat. <i>vita</i> Leben + <i>activus</i> tätig. Gegenbegriff: vita contemplativa.</dd>
+
+    <dt>Arbeiten (animal laborans)</dt>
+    <dd class="g-plain">Die Tätigkeit, die das Leben erhält und nichts Bleibendes hinterlässt.</dd>
+    <dd class="g-orig">„Die Grundbedingung … des Arbeitens … ist das Leben selbst." — Vita activa § 1</dd>
+    <dd class="g-etym">lat. <i>animal laborans</i> = „arbeitendes Tier".</dd>
+
+    <dt>Herstellen (homo faber)</dt>
+    <dd class="g-plain">Die Tätigkeit, die dauerhafte Dinge und damit eine bewohnbare Welt schafft.</dd>
+    <dd class="g-orig">„Das Herstellen produziert eine künstliche Welt von Dingen". — Vita activa § 1</dd>
+    <dd class="g-etym">lat. <i>homo faber</i> = „verfertigender Mensch".</dd>
+
+    <dt>Handeln</dt>
+    <dd class="g-plain">Die politische Tätigkeit: gemeinsames Reden und Tun unter Verschiedenen.</dd>
+    <dd class="g-orig">„… die einzige Tätigkeit …, die sich … direkt zwischen Menschen abspielt." — Vita activa § 1</dd>
+    <dd class="g-etym">Mit ihm verbunden: Freiheit, Macht, Neuanfang.</dd>
+
+    <dt>Pluralität</dt>
+    <dd class="g-plain">Die Tatsache, dass alle Menschen sind, aber jeder einzigartig — die Bedingung allen Handelns.</dd>
+    <dd class="g-etym">lat. <i>pluralis</i> = mehrfach, viele.</dd>
+
+    <dt>Natalität / Gebürtlichkeit</dt>
+    <dd class="g-plain">Dass ständig Neue geboren werden und mit ihnen die Fähigkeit zum Anfangen.</dd>
+    <dd class="g-orig">„Initium ut esset, creatus est homo". — Elemente und Ursprünge, „Ideologie und Terror"</dd>
+    <dd class="g-etym">lat. <i>natalis</i> = die Geburt betreffend; <i>initium</i> = Anfang.</dd>
+
+    <dt>Öffentlichkeit / gemeinsame Welt</dt>
+    <dd class="g-plain">Der Raum, in dem wir erscheinen und gehört werden — er verleiht Realität.</dd>
+    <dd class="g-orig">„… eine Welt von Dingen … in dem … Sinne, in dem etwa ein Tisch zwischen denen steht, die um ihn herum sitzen". — Vita activa § 7</dd>
+
+    <dt>Weltentfremdung</dt>
+    <dd class="g-plain">Der neuzeitliche Verlust der Heimat in der Welt trotz wachsender Naturbeherrschung.</dd>
+    <dd class="g-orig">„… vergrößerte[r] … Entfernung des Menschen von der Erde". — Vita activa § 35</dd>
+
+    <dt>Verlassenheit</dt>
+    <dd class="g-plain">Von allem und allen abgeschnitten sein — die Grunderfahrung, die totale Herrschaft ausnutzt.</dd>
+    <dd class="g-orig">„Die Grunderfahrung … die in totalitärer Herrschaft politisch realisiert wird, ist die Erfahrung der Verlassenheit." — Elemente und Ursprünge, „Ideologie und Terror"</dd>
+
+    <dt>Totale Herrschaft</dt>
+    <dd class="g-plain">Eine neue Herrschaftsform, die über Ideologie und Terror die menschliche Natur selbst umbauen will.</dd>
+    <dd class="g-etym">lat. <i>totalis</i> = ganz, vollständig.</dd>
+
+    <dt>Radikal Böses</dt>
+    <dd class="g-plain">Ein Verbrechen, das Menschen überflüssig macht — weder zu bestrafen noch zu vergeben.</dd>
+    <dd class="g-orig">„… ein radikal Böses … das … Menschen weder bestrafen noch vergeben können." — Elemente und Ursprünge, „Die Konzentrationslager"</dd>
+  </dl>
+
+  <hr class="soft">
+
+  <h3 style="font-size:1.5rem; margin:10px 0 6px;">Faustformel-Atlas</h3>
+  <div class="grid-2">
+    <div class="a-formula"><p class="a-formula__klassik">Animal laborans</p><p class="a-formula__alltag"><b>Alltag</b> Tun, was getan werden muss, um morgen weiterzuleben.</p></div>
+    <div class="a-formula"><p class="a-formula__klassik">Homo faber</p><p class="a-formula__alltag"><b>Alltag</b> Aus Material ein Ding machen, das bleibt.</p></div>
+    <div class="a-formula"><p class="a-formula__klassik">Pluralität</p><p class="a-formula__alltag"><b>Alltag</b> Gleich genug, um sich zu verstehen; verschieden genug, dass es etwas zu sagen gibt.</p></div>
+    <div class="a-formula"><p class="a-formula__klassik">Natalität</p><p class="a-formula__alltag"><b>Alltag</b> Solange Neue geboren werden, kann immer etwas neu beginnen.</p></div>
+    <div class="a-formula"><p class="a-formula__klassik">Verlassenheit</p><p class="a-formula__alltag"><b>Alltag</b> Von allem abgeschnitten — auch von sich selbst.</p></div>
+    <div class="a-formula"><p class="a-formula__klassik">Radikal Böses</p><p class="a-formula__alltag"><b>Alltag</b> Menschen ganz und gar überflüssig machen.</p></div>
+  </div>
+
+  <hr class="soft">
+
+  <h3 style="font-size:1.5rem; margin:10px 0 6px;">Quellen</h3>
+  <p>Diese Studie zitiert ausschließlich aus den beiden vorliegenden Werken:</p>
+  <div class="a-box a-box--blick"><p class="a-box__lbl">Werk A</p><p>Hannah Arendt: <em>Vita activa oder Vom tätigen Leben</em>. Erweiterte Neuausgabe, hg. v. Thomas Meyer, mit einem Nachwort von Hans-Jörg Sigwart. München: Piper, 2020. Originalausgabe: <em>The Human Condition</em>, University of Chicago Press 1958; deutsche Erstausgabe Piper 1960/1967. Locator: Paragraph (§).</p></div>
+  <div class="a-box a-box--blick"><p class="a-box__lbl">Werk B</p><p>Hannah Arendt: <em>Elemente und Ursprünge totaler Herrschaft</em>. Frankfurt am Main: Europäische Verlagsanstalt, Ausgabe 2016. Originalausgabe: <em>The Origins of Totalitarianism</em>, 1951; von der Verfasserin übertragene deutsche Fassung 1955. Locator: Teil/Kapitel.</p></div>
+
+  <hr class="soft">
+
+  <h3 style="font-size:1.5rem; margin:10px 0 6px;">Selbstkritik dieser Studie</h3>
+  <div class="a-box a-box--wort"><p class="a-box__lbl">Ehrlich gesagt</p><p>Diese Aufarbeitung folgt der Vorlage für umfassende Studien, behandelt aber bewusst nur zwei Bücher — kein ganzes Forschungsfeld.</p></div>
+  <p>Damit niemand mehr Sicherheit unterstellt, als gerechtfertigt ist, hier die offenen Punkte:</p>
+  <ul style="font-family:'Lora',serif; color:var(--ink-soft);">
+    <li><strong>Zwei Quellen, kein Feld.</strong> Wo die Vorlage 80+ Quellen, 30+ Köpfe und empirische Tests vorsieht, gibt es hier zwei Werke einer Autorin. „Schulen" wurden ehrlich zu Begriffsfeldern, die „Galerie" zu den von Arendt tatsächlich behandelten Denkern, die „Verdikte" zu klar gekennzeichneten Lese-Urteilen statt Messergebnissen.</li>
+    <li><strong>Seitenangaben bei Werk B.</strong> Die Seitenmarker im Digitalisat von <em>Elemente und Ursprünge</em> tauchen an einzelnen Stellen doppelt auf — auch dort, wo die berühmtesten Passagen stehen. Deshalb wird dort nach Teil/Kapitel zitiert, nicht nach Seitenzahl. Wer exakte Seiten braucht, prüfe die gedruckte Ausgabe.</li>
+    <li><strong>Zitatwortlaut.</strong> Längere Zitate sollten vor wissenschaftlicher Verwendung gegen die Druckausgabe geprüft werden; im Digitalisat kamen Silbentrennungen vor, die hier stillschweigend zusammengeführt wurden.</li>
+    <li><strong>Kritik ohne Zitate.</strong> Die Einwände in K17 stammen aus der Forschungsdebatte, nicht aus den zwei Büchern — daher sinngemäß, nicht wörtlich. Sie wären vor Verwendung an den Originalquellen zu belegen.</li>
+    <li><strong>Lebensdaten Dritter.</strong> Die Galerie (K12) nennt allgemein bekannte Daten; bei genauer Verwendung gegenprüfen.</li>
+  </ul>
+  <p>Im Zweifel galt durchgehend: lieber eine sichtbar gekennzeichnete Lücke als ein erfundener Wert.</p>
+</div></section>
+</main>
+
+<footer class="study-footer"><div class="wrap col"><h3>Die Arendt-Frage</h3>
+<p>Eine quellenbasierte Bestandsaufnahme von Hannah Arendts zwei großen Büchern: <em>Vita activa oder Vom tätigen Leben</em> und <em>Elemente und Ursprünge totaler Herrschaft</em>. In einfacher Sprache aufgeschlüsselt — mit verifizierten Direktzitaten und einer offen benannten Grenze: zwei Werke, kein ganzes Feld.</p>
+<p class="src">
+  Quellen ·<br>
+  Hannah Arendt, Vita activa oder Vom tätigen Leben (Piper, Neuausgabe 2020) · Locator: §<br>
+  Hannah Arendt, Elemente und Ursprünge totaler Herrschaft (Europäische Verlagsanstalt, Ausgabe 2016) · Locator: Teil/Kapitel<br><br>
+  Quellenbasiert erstellt · Halluzinationsrisiko für Struktur und Thesen niedrig · Restrisiko bei exakten Seitenzahlen und Zitatwortlaut (siehe Cover &amp; K20).
+</p></div></footer>
+
+<script>
+(function(){
+  var p=document.getElementById('progress');
+  function upd(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;
+    var mx=(h.scrollHeight-h.clientHeight)||1;p.style.width=(sc/mx*100)+'%';}
+  window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();
+})();
+</script>
+</body>
+</html>
