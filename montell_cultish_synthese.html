@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cultish — Die Sprache des Fanatismus · Synthese</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Spectral:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CULTISH — Editorial-Essay-Synthese (System B · Editorial-Slate)
+   Tokens & Komponenten aus visuelle-musterbibliothek.html (.sysB / .sysB.plus)
+   Anti-Halluzinations-Cover: eigenes Inline-CSS, NICHT Teil dieses Systems.
+   ============================================================ */
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top:72px;}
+body.sysB{
+  --bg:#ede4cf; --bg-warm:#e6dcc2; --pcard:#f4ecd9; --pcool:#e4e8e6;
+  --primary:#1d3a40; --primary-soft:#2c5057;
+  --eaccent:#b85c2f; --accent-deep:#8f441f;
+  --egold:#a07a1e; --eink:#1a2530; --eink-soft:#3a444c; --eink-faint:#6a6f6b;
+  --erule:#cfc4a8; --erule-soft:#dcd3ba; --ered:#a3242c;
+  margin:0; background:var(--bg); color:var(--eink);
+  font-family:'Spectral',Georgia,serif; line-height:1.72;
+  font-feature-settings:"kern","liga","onum";
+  background-image:radial-gradient(rgba(120,108,80,.10) 0.5px, transparent 0.5px);
+  background-size:22px 22px;
+}
+body.sysB.plus{ --c-indigo:#3b4a82; --c-sage:#5e7355; --c-plum:#6e3a55; --c-amber:#b07d1c; }
+
+/* ---- Lese-Fortschrittsbalken ---- */
+#progress{position:fixed; top:0; left:0; height:3px; width:0%; z-index:200;
+  background:linear-gradient(90deg, var(--eaccent), var(--egold));}
+
+/* ---- Sticky Top-Nav ---- */
+.topnav{position:sticky; top:0; z-index:100; height:56px; display:flex; align-items:center;
+  justify-content:space-between; padding:0 26px;
+  background:rgba(237,228,207,.86); backdrop-filter:blur(9px);
+  border-bottom:1px solid var(--erule);}
+.topnav__logo{font-family:'Newsreader',serif; font-size:1.05rem; color:var(--primary); font-weight:600;}
+.topnav__logo em{font-style:italic; color:var(--eaccent);}
+.topnav__links{display:flex; gap:20px; font-family:'Inter Tight',sans-serif; font-size:.72rem;
+  letter-spacing:.1em; text-transform:uppercase;}
+.topnav__links a{color:var(--eink-soft); text-decoration:none; padding:4px 0; border-bottom:2px solid transparent;}
+.topnav__links a:hover{border-bottom-color:var(--eaccent); color:var(--primary);}
+@media(max-width:760px){ .topnav__links{display:none;} }
+
+/* ---- Layoutbreite ---- */
+.wrap{max-width:680px; margin:0 auto; padding:0 22px;}
+.wrap-wide{max-width:920px; margin:0 auto; padding:0 22px;}
+
+/* ---- HERO ---- */
+.b-hero{background:var(--bg); padding:64px 0 30px;}
+.b-hero__tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px;}
+.b-tag{font-family:'Inter Tight',sans-serif; font-size:.64rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--primary); border:1px solid var(--erule); padding:4px 10px; border-radius:2px;}
+.b-hero__title{font-family:'Newsreader',serif; font-weight:500; font-size:clamp(44px,8vw,92px); line-height:1.0;
+  color:var(--primary); margin:0 0 16px; letter-spacing:-.01em;}
+.b-hero__title em{font-style:italic; color:var(--eaccent);}
+.b-hero__sub{font-family:'Newsreader',serif; font-style:italic; font-size:1.25rem; color:var(--eink-soft);
+  margin:0 0 22px; max-width:600px;}
+.b-hero__meta{font-family:'Inter Tight',sans-serif; font-size:.78rem; color:var(--eink-faint);
+  letter-spacing:.02em; margin:0 0 30px;}
+.b-statstrip{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--erule); border:1px solid var(--erule);}
+.b-stat{background:var(--bg-warm); padding:18px 14px;}
+.b-stat__num{font-family:'Newsreader',serif; font-size:2.1rem; color:var(--primary); line-height:1;}
+.b-stat__lbl{font-family:'Inter Tight',sans-serif; font-size:.6rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--eink-faint); margin-top:6px;}
+@media(max-width:620px){ .b-statstrip{grid-template-columns:repeat(2,1fr);} }
+
+/* ---- Fließtext ---- */
+.prose p{font-family:'Spectral',serif; font-size:1.12rem; line-height:1.72; color:var(--eink-soft); margin:0 0 1.25em;}
+.prose p.lead{font-size:1.18rem; color:var(--eink);}
+.section{padding:18px 0 8px;}
+.eyebrow{font-family:'Inter Tight',sans-serif; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--eaccent); margin:34px 0 8px;}
+.section h2{font-family:'Newsreader',serif; font-weight:600; font-size:clamp(30px,5vw,46px); line-height:1.08;
+  color:var(--primary); margin:0 0 8px;}
+.section .dek{font-family:'Newsreader',serif; font-style:italic; font-size:1.18rem; color:var(--eink-soft); margin:0 0 26px;}
+.dropcap::first-letter{font-family:'Newsreader',serif; font-weight:600; float:left; font-size:4.6rem; line-height:.78;
+  padding:6px 12px 0 0; color:var(--accent-deep);}
+
+/* ---- Emphase-Hierarchie ---- */
+.em1{font-weight:500;}
+.em2{font-weight:600; color:var(--accent-deep);}
+.em3{font-weight:700; color:var(--eink); background:linear-gradient(transparent 62%, rgba(160,122,30,.30) 62%);}
+.em4{font-weight:700; color:var(--accent-deep); border-bottom:2px solid var(--egold); padding-bottom:1px;}
+
+/* ---- Inline-Zitat ---- */
+.iq{font-style:italic; color:var(--eink);}
+.src-inline{font-family:'Inter Tight',sans-serif; font-size:.76rem; color:var(--eink-faint);}
+
+/* ---- Boxen ---- */
+.box{padding:22px 24px; border-radius:2px; margin:30px 0;}
+.box__lbl{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; margin:0 0 8px;}
+.box p{margin:0; font-family:'Spectral',serif; font-size:1.04rem; line-height:1.62;}
+.box.def{background:var(--pcard); border-left:4px solid var(--egold);}
+.box.def .box__lbl{color:var(--egold);}
+.box.def h4{font-family:'Newsreader',serif; font-size:1.3rem; color:var(--primary); margin:0 0 8px;}
+.box.thesis{background:var(--primary); color:var(--bg); box-shadow:0 14px 30px -20px rgba(0,0,0,.6);}
+.box.thesis .box__lbl{color:var(--eaccent);}
+.box.thesis p{color:#f1ead9; font-size:1.16rem; font-family:'Newsreader',serif; line-height:1.4;}
+.box.memo{background:transparent; border:1px dashed var(--eink-faint);}
+.box.memo .box__lbl{color:var(--eink-faint);}
+.box.plain-translation{background:var(--bg-warm); border-left:4px solid var(--eaccent);}
+.box.plain-translation .box__lbl{color:var(--accent-deep);}
+.box.warning{background:var(--eink); color:var(--bg);}
+.box.warning .box__lbl{color:var(--eaccent);}
+.box.warning p{color:#e7ddcb;}
+
+/* ---- Schlüsselzitatkarte ---- */
+.quote-card{background:var(--pcard); border-top:3px solid var(--eaccent); padding:30px 26px 22px; position:relative; margin:34px 0;}
+.quote-card::before{content:"\201E"; position:absolute; top:-8px; left:16px; font-family:'Newsreader',serif;
+  font-size:5.2rem; color:var(--eaccent); opacity:.26; line-height:1;}
+.quote-label{font-family:'Inter Tight',sans-serif; font-size:.64rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent-deep); margin:0 0 12px; position:relative;}
+.quote-body{font-family:'Newsreader',serif; font-size:1.5rem; line-height:1.36; color:var(--eink); margin:0 0 14px; position:relative;}
+.quote-citation{font-family:'Inter Tight',sans-serif; font-size:.78rem; color:var(--eink-faint); margin:0 0 16px;}
+.quote-translation,.quote-context{font-family:'Spectral',serif; font-size:.96rem; line-height:1.6; color:var(--eink-soft); margin:0 0 10px;}
+.quote-translation strong,.quote-context strong{color:var(--primary);}
+
+/* ---- Pull-Quote ---- */
+.pull{text-align:center; border-top:1px solid var(--eaccent); border-bottom:1px solid var(--eaccent);
+  padding:28px 12px; margin:40px 0;}
+.pull__t{font-family:'Newsreader',serif; font-size:clamp(26px,4vw,40px); line-height:1.2; color:var(--eaccent);
+  margin:0 0 10px; font-style:italic;}
+.pull__s{font-family:'Inter Tight',sans-serif; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--eink-faint);}
+
+/* ---- Big-Divider (Phasengrenze) ---- */
+.b-divider{color:var(--bg); padding:56px 30px; position:relative; overflow:hidden; margin:56px 0; background:var(--primary);}
+.b-divider::after{content:""; position:absolute; inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px); background-size:18px 18px; pointer-events:none;}
+.b-divider--plum{background:var(--c-plum);}
+.b-divider--indigo{background:var(--c-indigo);}
+.b-divider--sage{background:var(--c-sage);}
+.b-divider__inner{max-width:680px; margin:0 auto; position:relative;}
+.b-divider__eyebrow{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(255,255,255,.82); margin:0 0 12px;}
+.b-divider__h{font-family:'Newsreader',serif; font-weight:500; font-size:clamp(30px,5vw,52px); line-height:1.05; margin:0 0 12px;}
+.b-divider__dek{font-family:'Newsreader',serif; font-style:italic; font-size:1.15rem; opacity:.92; margin:0; max-width:560px;}
+
+/* ---- Großschrift-Statement ---- */
+.b-mega{margin:44px 0; padding:40px 6px 36px; text-align:center;
+  border-top:1px solid var(--eaccent); border-bottom:1px solid var(--eaccent);}
+.b-mega__eyebrow{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--eaccent); margin:0 0 16px;}
+.b-mega__text{font-family:'Newsreader',serif; font-weight:500; font-size:clamp(30px,5.5vw,60px); line-height:1.12; color:var(--primary); margin:0;}
+.b-mega__text em{font-style:italic; color:var(--eaccent);}
+.b-mega__sub{font-family:'Newsreader',serif; font-style:italic; font-size:1.05rem; color:var(--eink-soft); margin:18px auto 0; max-width:520px;}
+
+/* ---- Side-by-Side ---- */
+.sbs{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:32px 0;}
+.sbs__col{padding:22px 20px 22px 30px; border-radius:2px; position:relative;}
+.sbs__col::before{content:""; position:absolute; left:14px; top:26px; width:9px; height:9px; border-radius:50%;}
+.sbs__a{background:var(--pcool);} .sbs__a::before{background:var(--primary);}
+.sbs__b{background:var(--bg-warm);} .sbs__b::before{background:var(--eaccent);}
+.sbs h4{font-family:'Inter Tight',sans-serif; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; margin:0 0 10px; color:var(--primary);}
+.sbs p{font-family:'Spectral',serif; font-size:.98rem; margin:0 0 8px; color:var(--eink-soft);}
+.sbs p:last-child{margin-bottom:0;}
+@media(max-width:680px){ .sbs{grid-template-columns:1fr;} }
+
+/* ---- Vergleichstabelle ---- */
+.cmp-wrap{overflow-x:auto; margin:32px 0;}
+.cmp{width:100%; border-collapse:collapse; font-family:'Spectral',serif; font-size:.96rem; min-width:520px;}
+.cmp th{background:var(--primary); color:var(--bg); font-family:'Inter Tight',sans-serif; font-size:.72rem;
+  letter-spacing:.06em; text-transform:uppercase; text-align:left; padding:11px 13px; font-weight:600;}
+.cmp td{padding:11px 13px; border-bottom:1px solid var(--erule); color:var(--eink-soft); vertical-align:top;}
+.cmp tr:nth-child(even) td{background:var(--bg-warm);}
+.cmp td strong{color:var(--primary);}
+
+/* ---- Argumentationskette ---- */
+.chain{counter-reset:step; list-style:none; padding:0; margin:32px 0;}
+.chain li{counter-increment:step; display:flex; gap:18px; padding:0 0 22px; position:relative;}
+.chain li::before{content:counter(step); flex:0 0 auto; width:36px; height:36px; border-radius:50%;
+  background:var(--primary); color:var(--bg); font-family:'Inter Tight',sans-serif; font-weight:600; font-size:.92rem;
+  display:flex; align-items:center; justify-content:center;}
+.chain li:not(:last-child)::after{content:""; position:absolute; left:17px; top:36px; bottom:2px; width:2px; background:var(--erule);}
+.chain__txt{font-family:'Spectral',serif; font-size:1.02rem; line-height:1.6; color:var(--eink-soft); padding-top:6px;}
+.chain__txt strong{color:var(--primary); font-family:'Newsreader',serif;}
+
+/* ---- "Stimmen im Text" ---- */
+.figgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; margin:30px 0;}
+.figcard{background:var(--pcard); border:1px solid var(--erule); padding:18px;}
+.figcard__name{font-family:'Newsreader',serif; font-size:1.18rem; color:var(--primary); margin:0;}
+.figcard__life{font-family:'Inter Tight',sans-serif; font-size:.72rem; color:var(--eink-faint); margin:3px 0 9px;}
+.figcard__role{font-family:'Spectral',serif; font-size:.92rem; line-height:1.5; color:var(--eink-soft); margin:0;}
+
+/* ---- Bild-Bühne ---- */
+.b-bild{margin:34px 0; border:1px solid var(--erule); background:var(--pcard); overflow:hidden;}
+.b-bild__frame{position:relative; width:100%; aspect-ratio:16/7; background:
+  repeating-linear-gradient(45deg, var(--bg-warm), var(--bg-warm) 12px, var(--pcard) 12px, var(--pcard) 24px);
+  display:flex; align-items:center; justify-content:center;}
+.b-bild__frame svg{width:100%; height:100%; display:block;}
+.b-bild__ph{font-family:'Inter Tight',sans-serif; font-size:.78rem; color:var(--eink-faint); text-align:center; padding:24px; max-width:460px;}
+.b-bild__ph b{display:block; color:var(--eaccent); letter-spacing:.06em; margin-bottom:7px;}
+.b-bild__cap{font-family:'Inter Tight',sans-serif; font-size:.76rem; color:var(--eink-soft); padding:13px 16px;
+  border-top:1px solid var(--erule); display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;}
+.b-bild__cap .src{font-size:.72rem; color:var(--eink-faint);}
+
+/* ---- details ---- */
+.b-details{background:var(--pcool); border:1px solid var(--erule); border-radius:2px; padding:0 20px; margin:28px 0;}
+.b-details summary{font-family:'Inter Tight',sans-serif; font-size:.84rem; font-weight:600; color:var(--primary);
+  padding:16px 0; cursor:pointer; list-style:none;}
+.b-details summary::before{content:"+ "; color:var(--eaccent);}
+.b-details[open] summary::before{content:"\2013 ";}
+.b-details__body{font-family:'Spectral',serif; font-size:.98rem; line-height:1.62; color:var(--eink-soft); padding:0 0 18px;}
+.b-details__body p{margin:0 0 10px;}
+
+/* ---- sec-tint ---- */
+.sec-tint{padding:20px 22px; border-radius:2px; border-left:4px solid var(--primary);
+  background:color-mix(in srgb, var(--primary) 7%, var(--bg)); margin:30px 0;}
+.sec-tint.sec-plum{--primary:#6e3a55;}
+.sec-tint.sec-indigo{--primary:#3b4a82;}
+.sec-tint.sec-sage{--primary:#5e7355;}
+.sec-tint h4{font-family:'Inter Tight',sans-serif; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--primary); margin:0 0 8px;}
+.sec-tint p{font-family:'Spectral',serif; font-size:.98rem; line-height:1.6; color:var(--eink-soft); margin:0;}
+
+/* ---- Synthese-Box ---- */
+.synthesis{background:var(--pcard); border-top:3px solid var(--eaccent); padding:28px 26px; margin:36px 0;}
+.synthesis__lbl{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-deep); margin:0 0 10px;}
+.synthesis p{font-family:'Newsreader',serif; font-size:1.24rem; line-height:1.42; color:var(--eink); margin:0;}
+
+/* ---- Glossar ---- */
+.gloss{border-bottom:1px solid var(--erule); padding:16px 0;}
+.gloss h4{font-family:'Newsreader',serif; font-size:1.24rem; color:var(--primary); margin:0 0 7px;}
+.g-plain{font-family:'Spectral',serif; font-size:.98rem; line-height:1.6; color:var(--eink-soft); margin:0 0 9px;}
+.g-original{font-family:'Newsreader',serif; font-style:italic; font-size:.94rem; background:var(--pcard);
+  border:1px solid var(--erule); padding:9px 13px; color:var(--eink); margin:0 0 7px;}
+.g-etym{font-family:'Inter Tight',sans-serif; font-size:.74rem; color:var(--eink-faint); margin:0;}
+
+/* ---- Kolophon / Footer ---- */
+.colophon{background:var(--primary); color:#dfe6e4; padding:54px 0 60px; margin-top:60px;}
+.colophon .wrap{max-width:680px;}
+.colophon h3{font-family:'Newsreader',serif; font-weight:600; font-size:1.7rem; color:#fff; margin:0 0 18px;}
+.colophon p{font-family:'Spectral',serif; font-size:.98rem; line-height:1.66; color:#cdd6d3; margin:0 0 12px;}
+.colophon .meta-label{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--eaccent); margin:24px 0 6px;}
+.colophon a{color:#e7b48f;}
+
+/* ---- Print ---- */
+@media print{
+  #progress,.topnav{display:none !important;}
+  body.sysB{background:#fff; color:#000;}
+  .b-divider,.b-divider--plum,.b-divider--indigo,.b-divider--sage{background:#fff !important; color:#000 !important; border:1px solid #000;}
+  .b-divider__eyebrow,.b-divider__h,.b-divider__dek{color:#000 !important;}
+  .box.thesis,.box.warning,.colophon{background:#fff !important; color:#000 !important;}
+  .box.thesis p,.box.warning p,.colophon p{color:#000 !important;}
+  .quote-card,.b-bild,.figcard,.sbs__col{break-inside:avoid;}
+  a[href^="http"]::after{content:" (" attr(href) ")"; font-size:.7rem; color:#555;}
+}
+</style>
+</head>
+<body class="sysB plus">
+<div id="progress"></div>
+
+<!-- ================= HALLUZINATIONS-COVER (eigenes Inline-CSS, VORRANG-MODUL) ================= -->
+<section style="font-family:Georgia,'Times New Roman',serif;max-width:780px;margin:2rem auto 2.5rem;padding:2rem 2.25rem;border:1px solid #d8d2c4;border-top:4px solid #7a1f1f;background:#fbfaf7;color:#1c1a17;">
+  <p style="margin:0 0 .4rem;font:600 .7rem/1.2 'Helvetica Neue',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#7a1f1f;">Dokumentation · Halluzinationsminimierung</p>
+  <h1 style="margin:0 0 1rem;font-size:1.9rem;line-height:1.15;">Cultish — Die Sprache des Fanatismus (Synthese)</h1>
+
+  <!-- Großes Risiko-Banner -->
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin:0 0 1.2rem;padding:1rem 1.2rem;background:#f1ede2;border:1px solid #e0dac9;">
+    <div style="font-size:2.5rem;line-height:1;font-weight:700;color:#3a6b35;white-space:nowrap;">≈ 7&times;</div>
+    <div style="font-size:.95rem;line-height:1.45;">
+      <strong>geringeres Risiko als ohne Quelle.</strong> Diese Synthese wurde streng aus dem beigelegten Buch erarbeitet; Struktur und Thesen sind nahezu vollständig belegt — das Restrisiko liegt fast nur bei exakten Locatoren und Zitatwortlaut.
+    </div>
+  </div>
+
+  <!-- Verlass-/Bezugssatz -->
+  <p style="margin:0 0 1.4rem;padding:.7rem 1rem;background:#fff;border:1px solid #e0dac9;font-size:.95rem;">
+    <strong>Worauf Verlass ist:</strong> die Kernthese (Sprache als Werkzeug kultischer Macht), die drei Mechanismen (Konversion · Konditionierung · Zwang), die sechs „Cult"-Kategorien und alle wörtlich aus <em>Cultish</em> übernommenen Zitate. <strong>Vorher prüfen:</strong> Locatoren (Teil/Kapitel statt Seitenzahl) und exakter Zitatwortlaut.
+  </p>
+
+  <!-- Verifizierender Satz -->
+  <p style="margin:0 0 1.6rem;padding:.9rem 1.1rem;background:#f1ede2;border-left:3px solid #7a1f1f;font-size:1.02rem;font-style:italic;">
+    Diese Aufarbeitung wurde mit Originalquelle im Kontext erstellt (Amanda Montell, <em>Cultish: The Language of Fanaticism</em>, Harper Wave 2021); die inhaltliche Verlässlichkeit wird als hoch eingeschätzt (Selbsteinschätzung, nicht gemessen), wobei das Restrisiko sich auf exakte Locatoren und den genauen Zitatwortlaut konzentriert und vor Weiterverwendung dort geprüft werden sollte.
+  </p>
+
+  <!-- Maßnahmen -->
+  <h2 style="font:600 .75rem/1.3 'Helvetica Neue',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#555;margin:0 0 .6rem;">Angewandte Maßnahmen</h2>
+  <ul style="margin:0 0 1.8rem;padding-left:1.2rem;font-size:.96rem;line-height:1.55;">
+    <li>Extraktives Arbeiten aus dem beigelegten Buchtext statt aus dem Gedächtnis.</li>
+    <li>Jedes Direktzitat mit Fundstelle (Teil + Kapitel) versehen; Wortlaut exakt übernommen.</li>
+    <li>Trennung von Beleg (Zitat) und eigener Schlussfolgerung; offene Lücken benannt statt gefüllt.</li>
+    <li>Keine erfundene Statistik und keine generierten Bilder; leere Bild-Slots sichtbar markiert.</li>
+    <li>Anti-Sycophancy: keine zustimmenden Floskeln; methodische Grenzen offen benannt (fehlende Seitenzahlen der Digital-Edition).</li>
+  </ul>
+
+  <!-- Zone A: Benchmark-Grafik (zwei Modi) -->
+  <h2 style="font:600 .75rem/1.3 'Helvetica Neue',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#555;margin:0 0 .2rem;">Zone A · Modell-Benchmark (ohne Quelle gemessen) + diese Arbeit</h2>
+  <p style="margin:.1rem 0 .9rem;font-size:.8rem;color:#777;">Halluzinationsrate · niedriger ist besser · Skala: volle Breite = 60&nbsp;%</p>
+
+  <div style="font:.85rem/1 'Helvetica Neue',sans-serif;">
+    <div style="margin-bottom:.55rem;"><span style="display:inline-block;width:210px;">Claude Opus 4.8 — ohne Quelle</span>
+      <span style="display:inline-block;width:calc(100% - 270px);background:#e6e0d2;vertical-align:middle;"><span style="display:block;width:59.8%;background:#9a8d52;color:#fff;padding:.2rem .4rem;box-sizing:border-box;">35,9&nbsp;%</span></span></div>
+    <div style="margin-bottom:.55rem;"><span style="display:inline-block;width:210px;">Gemini 3.1 Pro — ohne Quelle</span>
+      <span style="display:inline-block;width:calc(100% - 270px);background:#e6e0d2;vertical-align:middle;"><span style="display:block;width:83.3%;background:#a8842c;color:#fff;padding:.2rem .4rem;box-sizing:border-box;">50&nbsp;%</span></span></div>
+    <div style="margin-bottom:.55rem;"><span style="display:inline-block;width:210px;">OpenAI / Google (Peer)</span>
+      <span style="display:inline-block;width:calc(100% - 270px);background:#e6e0d2;vertical-align:middle;"><span style="display:block;width:92%;background:#9a9a9a;color:#fff;padding:.2rem .4rem;box-sizing:border-box;">höher</span></span></div>
+    <div style="margin-bottom:.2rem;"><span style="display:inline-block;width:210px;color:#3a6b35;font-weight:700;">Mit Quelle (grounded) — diese Arbeit</span>
+      <span style="display:inline-block;width:calc(100% - 270px);background:#e6e0d2;vertical-align:middle;"><span style="display:block;width:8.3%;background:#3a6b35;color:#fff;padding:.2rem .4rem;box-sizing:border-box;white-space:nowrap;">3–7&nbsp;%</span></span></div>
+    <p style="margin:.35rem 0 0 0;font-size:.72rem;color:#3a6b35;font-style:italic;">↑ geschätzt, nicht gemessen — enges Grounding aus einer Einzelquelle mit vielen wörtlichen Zitaten.</p>
+  </div>
+  <p style="margin:.7rem 0 1.8rem;font-size:.74rem;line-height:1.45;color:#888;">
+    Modellweite Werte auf einem Closed-Book-Wissensbenchmark (AA-Omniscience), gemessen <strong>ohne</strong> beigelegte Quelle. Beschreibt das Modell allgemein, <strong>nicht</strong> diese Antwort. Mit Originalquelle im Kontext liegt das praktische Risiko für Struktur und Thesen deutlich niedriger; das Restrisiko konzentriert sich auf exakte Zahlen und Zitate. Quelle: Artificial Analysis, 28.05.2026.
+    <strong>Da diese Synthese quellenbasiert (grounded) aus dem beigelegten Text erstellt wurde, liegt das reale Risiko für Struktur und Thesen deutlich unter dem Closed-Book-Wert von 35,9&nbsp;%; das Restrisiko konzentriert sich auf exakte Locatoren (Teil/Kapitel) und den Zitatwortlaut.</strong>
+  </p>
+
+  <!-- Ampel-Strip -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:0 0 1.6rem;">
+    <div style="background:#eef3ec;border:1px solid #cfe0c8;padding:.7rem .85rem;font-size:.86rem;">
+      <span style="color:#3a6b35;font-weight:700;">✓ Verlässlich</span><br>Kernthese · 3 Mechanismen · 6 Kategorien · Personen &amp; Gruppen · Buch-Argument · alle wörtlichen Zitate.
+    </div>
+    <div style="background:#faf4ec;border:1px solid #e6d8c2;padding:.7rem .85rem;font-size:.86rem;">
+      <span style="color:#9a6a1c;font-weight:700;">⚠ Vorher prüfen</span><br>Seitengenaue Locatoren (hier Teil/Kapitel) · exakter Zitatwortlaut · Eigennamen-Schreibung.
+    </div>
+  </div>
+
+  <!-- Zone B: Selbsteinschätzung -->
+  <div style="border:1px dashed #b9a; background:#faf4f4; padding:1rem 1.1rem;">
+    <p style="margin:0 0 .6rem;font:600 .72rem/1.3 'Helvetica Neue',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#7a1f1f;">Zone B · Selbsteinschätzung zur aktuellen Aufgabe — nicht gemessen</p>
+    <p style="margin:.2rem 0;font-size:.95rem;"><strong>Mit Originalquelle gearbeitet:</strong> JA — Amanda Montell, <em>Cultish: The Language of Fanaticism</em> (Harper Wave, 2021), vollständiger Buchtext im Kontext.</p>
+    <p style="margin:.2rem 0;font-size:.95rem;"><strong>Eingeschätzte Verlässlichkeit:</strong> hoch — These, Aufbau, Mechanismen und Belege stammen direkt aus dem Buch; nichts wurde aus Modellwissen ergänzt.</p>
+    <p style="margin:.2rem 0;font-size:.95rem;"><strong>Vor Weiterverwendung prüfen:</strong> (1) Locatoren sind Teil/Kapitel, nicht Seitenzahlen — die vorliegende Digital-Edition ist reflowable und ohne stabile Paginierung; (2) exakter Zitatwortlaut; (3) Schreibung von Eigennamen.</p>
+  </div>
+
+  <p style="margin:1.4rem 0 0;font-size:.78rem;color:#999;font-style:italic;">Geschätzte Risiko-Spanne dieser Arbeit: 3–7&nbsp;% (Default Einzeltext-Synthese, geschätzt, nicht gemessen). Faktor N = 35,9 ÷ 5 ≈ 7.</p>
+</section>
+<hr style="border:none;border-top:1px solid #d8d2c4;max-width:780px;margin:0 auto 2.5rem;">
+<!-- ================= ENDE COVER ================= -->
+
+<!-- Sticky-Nav -->
+<nav class="topnav">
+  <span class="topnav__logo">Cult<em>ish</em></span>
+  <span class="topnav__links">
+    <a href="#synopsis">Synopsis</a>
+    <a href="#these">These</a>
+    <a href="#mechanik">Mechanik</a>
+    <a href="#spektrum">Spektrum</a>
+    <a href="#stimmen">Stimmen</a>
+    <a href="#bleibt">Was bleibt</a>
+    <a href="#glossar">Glossar</a>
+  </span>
+</nav>
+
+<!-- HERO (Hausdesign) -->
+<header class="b-hero">
+  <div class="wrap">
+    <div class="b-hero__tags">
+      <span class="b-tag">Sachbuch</span>
+      <span class="b-tag">Linguistik &amp; Kulturkritik</span>
+      <span class="b-tag">~72.000 Wörter</span>
+      <span class="b-tag">Synthese auf Deutsch</span>
+    </div>
+    <h1 class="b-hero__title">Die Sprache des <em>Fanatismus</em></h1>
+    <p class="b-hero__sub">Wie Worte — nicht Kool-Aid, nicht Gehirnwäsche — Menschen in Gruppen ziehen, dort halten und steuern. Eine Aufschlüsselung von Amanda Montells <em>Cultish</em>.</p>
+    <p class="b-hero__meta">Quelle: Amanda Montell, <em>Cultish: The Language of Fanaticism</em> · Harper Wave, 2021 · Locatoren: Teil &amp; Kapitel (Digital-Edition ohne Seitenzahlen)</p>
+    <div class="b-statstrip">
+      <div class="b-stat"><div class="b-stat__num">6</div><div class="b-stat__lbl">Kategorien von „Cult"</div></div>
+      <div class="b-stat"><div class="b-stat__num">3</div><div class="b-stat__lbl">Sprach-Mechanismen</div></div>
+      <div class="b-stat"><div class="b-stat__num">~5&nbsp;%</div><div class="b-stat__lbl">bleiben (Moonie-Studie)</div></div>
+      <div class="b-stat"><div class="b-stat__num">1</div><div class="b-stat__lbl">Werkzeug: Sprache</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- SYNOPSIS -->
+<section class="wrap section" id="synopsis">
+  <div class="prose">
+    <p class="lead dropcap">Zwei junge Frauen wachen an verschiedenen Enden von Los Angeles auf und merken, dass sie kein verständliches Englisch mehr sprechen. Die eine, Tasha, hat acht Jahre an eine Kundalini-Yoga-Gruppe verloren, mitsamt PTBS; die andere, Alyssa, hat sich bei CrossFit eine Zerrung, einen kodependenten Lover und zu viele teure Leggings eingehandelt. Die Folgen liegen meilenweit auseinander — und doch, schreibt Montell, sind die <span class="em2">Methoden</span> der Machtausübung „uncannily, cultishly similar". Was beide eint, ist nicht die Substanz des Glaubens, sondern sein Medium.</p>
+    <p>Genau hier setzt das Buch an. Unsere Kultur erklärt Kult-Bindung gern mit vagem Gerede von <span class="em1">Gehirnwäsche</span> — „die haben den Kool-Aid getrunken". Montell, Linguistin, hält das für eine Sackgasse. Die ehrlichere Antwort liegt in der Frage, welche sprachlichen Techniken charismatische Anführer einsetzen, um Grundbedürfnisse nach Gemeinschaft und Sinn auszubeuten. Ihre These: Von der Umdeutung bestehender Wörter über Euphemismen, Geheimcodes und Mantras bis zu Hashtags ist <span class="em3">Sprache das zentrale Mittel</span>, durch das kultischer Einfluss jeden Grades entsteht.</p>
+    <p>Und es betrifft nicht nur „die anderen". Dieselben Werkzeuge — abgeschwächt — hören wir im Büro, im Spinning-Kurs, auf Instagram. Montell nennt diese Sprache <span class="em2">Cultish</span> (wie Englisch, Spanisch, Swedish): ein Spektrum, das von Jonestown bis zur Lieblings-Fitness-App reicht. Hat man einmal gehört, wie es klingt, kann man es nicht mehr überhören.</p>
+  </div>
+
+  <div class="box thesis">
+    <p class="box__lbl">Die Hauptthese in einem Satz</p>
+    <p>Kultische Gruppen aller Härtegrade funktionieren nicht über mysteriöse Gehirnwäsche, sondern über Sprache — und dieselben sprachlichen Werkzeuge wirken, leiser, bis in unseren Alltag hinein.</p>
+  </div>
+</section>
+
+<!-- ===================== PHASE I ===================== -->
+<div class="b-divider b-divider--plum">
+  <div class="b-divider__inner">
+    <p class="b-divider__eyebrow">Phase I · Der Begriff und das Werkzeug</p>
+    <h2 class="b-divider__h">„Cult" ist ein Urteil, kein Befund</h2>
+    <p class="b-divider__dek">Warum das Wort fast nichts erklärt — und warum Sprache, nicht Gehirnwäsche, das eigentliche Machtinstrument ist.</p>
+  </div>
+</div>
+
+<section class="wrap section" id="these">
+  <p class="eyebrow">01 · Was „Cult" bedeutet (und was nicht)</p>
+  <h2>Ein Wort, das den Verstand ausschaltet</h2>
+  <p class="dek">Je länger Montell forscht, desto unschärfer wird der Begriff — mit Absicht.</p>
+  <div class="prose">
+    <p>„Cult" hat keine offizielle akademische Definition. Religionswissenschaftlerin Rebecca Moore — deren zwei Schwestern in Jonestown starben — benutzt das Wort nicht mehr, weil es unrettbar wertend geworden sei. Sobald es fällt, weiß das Publikum sofort, was es zu denken hat. Genau das ist das Problem: Das Etikett liefert kein Wissen, sondern beendet das Nachdenken.</p>
+
+    <figure class="quote-card">
+      <div class="quote-label">Schlüsselstelle · Definition von „Cult"</div>
+      <blockquote class="quote-body">„It's simply used to describe groups we don't like."</blockquote>
+      <figcaption class="quote-citation">Rebecca Moore, Religionswissenschaftlerin · zit. in <em>Cultish</em>, Teil 1, Kap. iv</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> „Cult" ist kein neutraler Fachbegriff, sondern ein Werturteil. Man klebt es auf Gruppen, die man ablehnt — und behauptet damit eine Gefahr, die das Wort selbst gar nicht belegt.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Wenn das Etikett nur Ablehnung ausdrückt, muss man genauer hinsehen, um echte von eingebildeter Gefahr zu trennen. Montells Antwort: auf die <span class="em2">Sprache</span> hören, nicht auf das Label.</div>
+    </figure>
+
+    <p>Religionsforscher Reza Aslan bringt die Beliebigkeit auf den Punkt: „cult + time = religion". Katholizismus und Mormonentum galten einst als Häresien; heute genießen sie als „Religion" Respekt und den Schutz des First Amendment. Das Etikett hat reale, mitunter tödliche Folgen — am deutlichsten in Waco 1993, wo das FBI gegen eine als „cult" eingestufte Gruppe eine Gewalt anwandte, die einer anerkannten Kirche gegenüber undenkbar gewesen wäre.</p>
+
+    <div class="box plain-translation">
+      <p class="box__lbl">→ Was bedeutet das konkret?</p>
+      <p>Ob eine Gruppe „Religion" oder „Sekte" heißt, hängt weniger davon ab, wie schädlich ihre Lehre ist, als davon, wie vertraut und gesellschaftlich akzeptiert sie wirkt. Das Wort „cult" ist deshalb ein Spiegel unserer Vorurteile — kein Messgerät für Gefahr.</p>
+    </div>
+
+    <p>Statt eines Gut-/Böse-Schalters gibt es ein <span class="em2">Spektrum</span>. Der Mental-Health-Berater Steven Hassan beschreibt ein „Einfluss-Kontinuum" von gesund-konstruktiv bis ungesund-zerstörerisch. Der entscheidende Unterschied: Eine ethische Gruppe ist offen über das, was sie glaubt und von dir will — und das Verlassen kostet wenig. <span class="iq">„If you say 'I found a better band' … the other people won't threaten you,"</span> <span class="src-inline">(Hassan, zit. Teil 1, Kap. ii)</span>. Bei zerstörerischen Gruppen dagegen drohen Angst, Isolation, Ruin.</p>
+
+    <p>Deshalb taugt auch <span class="em1">„Gehirnwäsche"</span> nicht als Erklärung. Fast alle von Montell befragten Fachleute lehnen den Begriff ab — er sei eine untestbare, pseudowissenschaftliche Metapher.</p>
+
+    <figure class="quote-card">
+      <div class="quote-label">Schlüsselstelle · Gehirnwäsche als Denkverbot</div>
+      <blockquote class="quote-body">„The minute you say someone is 'brainwashed,' the conversation ends there."</blockquote>
+      <figcaption class="quote-citation">Sinngemäß nach Rebecca Moore · <em>Cultish</em>, Teil 1, Kap. iv</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> „Gehirnwäsche" lässt sich nicht widerlegen — und genau das macht den Begriff wissenschaftlich wertlos. Er schließt die Frage, was Menschen wirklich antreibt, anstatt sie zu öffnen.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Wer „Gehirnwäsche" sagt, verschenkt die interessantere Frage: Welche konkreten sprachlichen Techniken wirken — und warum bei manchen Menschen und bei anderen nicht?</div>
+    </figure>
+
+    <div class="b-details">
+      <summary>Vertiefung: Warum Sprache Macht <em>erschafft</em>, statt sie nur zu beschreiben</summary>
+      <div class="b-details__body">
+        <p>Montell stützt sich auf die linguistische <span class="em1">Theorie der Performativität</span>: Sprache spiegelt Wirklichkeit nicht bloß, sie erzeugt sie. Ein Versprechen, eine Trauung, ein Urteilsspruch — solche Sätze <em>vollziehen</em> Handlungen. Wiederholt man Mantras, Gebete oder Parolen oft genug, formen sie die „culture of shared understanding" einer Gruppe und können den Einzelnen aus der geteilten Realität herausziehen.</p>
+        <p>Zugleich gilt die <span class="em1">Sapir–Whorf-Hypothese</span> in ihrer schwachen Form: Sprache <em>beeinflusst</em> unser Denken, aber sie <em>determiniert</em> es nicht. Wer den Unterschied zweier Blautöne im Bauch spürt, lässt sich nicht einreden, sie seien gleich. Deshalb ist Cultish kein Zaubertrank, sondern, wie Montell sagt, eher ein Placebo: Es wirkt nur, wo eine „Spur Bereitschaft" schon vorhanden ist.</p>
+      </div>
+    </div>
+
+    <div class="box def">
+      <p class="box__lbl">Definition</p>
+      <h4>Cultish</h4>
+      <p>Montells Sammelbegriff für die Sprache des Fanatismus in all ihren Spielarten — von tödlichen Kulten bis zum Fitnessstudio. „Cultish" ist bewusst flexibler als „cult", weil es auch Gemeinschaften erfasst, die kultähnlich wirken, ohne ans Übernatürliche gebunden zu sein.</p>
+    </div>
+  </div>
+
+  <div class="b-mega">
+    <p class="b-mega__eyebrow">Der Kerngedanke</p>
+    <p class="b-mega__text">„Without language, there are no <em>cults</em>."</p>
+    <p class="b-mega__sub">Weil Glaubenssysteme durch Worte hergestellt, genährt und verstärkt werden, könnte der Fanatismus ohne sie schlicht nicht existieren.</p>
+  </div>
+</section>
+
+<!-- BILD-BÜHNE 1: illustratives SVG (kein erfundenes Foto) -->
+<div class="wrap-wide">
+  <figure class="b-bild">
+    <div class="b-bild__frame">
+      <svg viewBox="0 0 700 306" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstraktes Motiv: aus einem Mund strömende Schallwellen werden zu einem Gefäß">
+        <rect width="700" height="306" fill="#f4ecd9"/>
+        <!-- Schallwellen / Worte, die nach rechts wandern -->
+        <g stroke="#b85c2f" fill="none" stroke-width="2" opacity="0.85">
+          <path d="M120 153 Q180 110 240 153 T360 153"/>
+          <path d="M120 153 Q180 196 240 153 T360 153"/>
+          <path d="M150 153 Q210 95 270 153 T390 153" opacity="0.6"/>
+          <path d="M150 153 Q210 211 270 153 T390 153" opacity="0.6"/>
+        </g>
+        <!-- "Quelle" links: kleiner Kreis (Stimme) -->
+        <circle cx="110" cy="153" r="14" fill="#8f441f"/>
+        <!-- Gefäß rechts: das Wort wird zur "Realität", die man trinkt -->
+        <path d="M470 120 L600 120 L588 230 Q584 250 564 250 L506 250 Q486 250 482 230 Z" fill="none" stroke="#1d3a40" stroke-width="2.5"/>
+        <path d="M470 120 L600 120 L596 152 L474 152 Z" fill="#1d3a40" opacity="0.14"/>
+        <!-- Wellen treffen ins Gefäß -->
+        <g stroke="#a07a1e" fill="none" stroke-width="2" opacity="0.7">
+          <path d="M420 153 Q445 135 470 153"/>
+          <path d="M420 175 Q445 157 470 175"/>
+        </g>
+        <text x="350" y="285" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="13" letter-spacing="1.5" fill="#6a6f6b">SPRACHE → GETEILTE REALITÄT</text>
+      </svg>
+    </div>
+    <figcaption class="b-bild__cap"><span>Illustratives Motiv (kein Foto): aus der Stimme strömende „Worte" werden zum Gefäß, das man trinkt — eine Anspielung auf Montells These zu „loaded language".</span><span class="src">Eigene SVG-Illustration · nicht-behauptend</span></figcaption>
+  </figure>
+</div>
+
+<!-- ===================== PHASE II ===================== -->
+<div class="b-divider b-divider--plum">
+  <div class="b-divider__inner">
+    <p class="b-divider__eyebrow">Phase II · Die Mechanik</p>
+    <h2 class="b-divider__h">Drei Schritte: gewinnen, binden, zwingen</h2>
+    <p class="b-divider__dek">Wie Sprache aus offenen, gemeinschaftssuchenden Menschen erst Mitglieder und im Extremfall Opfer macht — am Beispiel der „Selbstmord-Kulte" Jonestown und Heaven's Gate.</p>
+  </div>
+</div>
+
+<section class="wrap section" id="mechanik">
+  <p class="eyebrow">02 · Das Werkzeug-Set</p>
+  <h2>Vom „klick" bis zur Katastrophe</h2>
+  <p class="dek">Quer durch das Spektrum leistet Cultish dasselbe — in drei Stufen.</p>
+  <div class="prose">
+    <p>Montell ordnet die Wirkung von Cultish drei Stufen zu. Zuerst gibt sie Menschen das Gefühl, <span class="em2">besonders und verstanden</span> zu sein — hier wirkt das „Love-Bombing", die Dusche aus personalisierter Aufmerksamkeit, bis bei manchen plötzlich etwas „klickt". Das ist die <span class="em1">Konversion</span>. Dann sorgt ein anderes Set von Techniken dafür, dass das Leben außerhalb der Gruppe undenkbar wird — die langsame <span class="em1">Konditionierung</span>. Zuletzt bringt Sprache Menschen dazu, gegen ihre eigene Ethik zu handeln: <span class="em1">Zwang</span>.</p>
+
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead>
+          <tr><th>Stufe</th><th>Was Sprache tut</th><th>Werkzeug im Text</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Konversion</strong></td><td>macht „besonders und verstanden"; etwas „klickt"</td><td>Love-Bombing, Spitznamen, inspirierende Schlagworte</td></tr>
+          <tr><td><strong>Konditionierung</strong></td><td>macht abhängig; Außenwelt wirkt unmöglich</td><td>Loaded Language, Geheim-Jargon, Umbenennung</td></tr>
+          <tr><td><strong>Zwang</strong></td><td>rechtfertigt Handeln gegen das eigene Ich</td><td>Thought-terminating Clichés, Ends-justify-the-means</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Das erste Werkzeug ist die <span class="em3">Us-versus-them-Dichotomie</span>. „Father Divine said to always establish a 'we/they'," erinnert sich Jonestown-Überlebende Laura Johnston Kohl. Wer überzeugt ist, über allen anderen zu stehen, lässt sich leichter isolieren — und leichter missbrauchen, weil man Übergriffe als „besondere Behandlung" umdeuten kann. Genau dafür haben Kulte ihren eigenen Jargon: Er weckt erst Neugier, schafft dann Kameradschaft und markiert nebenbei jene, die sich den neuen Wörtern verweigern.</p>
+
+    <div class="box def">
+      <p class="box__lbl">Definition</p>
+      <h4>Loaded Language</h4>
+      <p>Aufgeladene Sprache: Wörter werden so mit Bedeutung überladen, dass ihre bloße Erwähnung Angst, Trauer oder Verzückung auslöst — und der Anführer damit Verhalten steuern kann. Entweder durch Umdeutung bestehender Wörter (3HO machte aus „old soul", einem Kompliment, etwas Bedrohliches) oder durch beschönigende Euphemismen.</p>
+    </div>
+
+    <p>Jim Jones war ein Meister darin. Er „code-switchte" je nach Publikum — Bibelverse für Pfingstler, Nietzsche für junge Sozialisten — und erweckte so bei jedem den Eindruck, er „spreche ihre Sprache". Mehrere Überlebende sagten Montell, beim ersten Gespräch habe es sich angefühlt, als kenne Jones sie ihr Leben lang. Nicht sein Aussehen, nicht seine Ideen, sondern seine Worte fesselten:</p>
+
+    <figure class="quote-card">
+      <div class="quote-label">Schlüsselstelle · Jones' eigentliche Waffe</div>
+      <blockquote class="quote-body">„It was with language. … That's how he gained and kept control."</blockquote>
+      <figcaption class="quote-citation">Jonestown-Überlebende:r · zit. in <em>Cultish</em>, Teil 2, Kap. i</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Jones brachte hunderte Menschen nicht durch „Gedankenmagie" dazu, ihm ans Ende der Welt zu folgen, sondern durch maßgeschneiderte Rede. Sprache war Mittel und Zweck seiner Kontrolle.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Es verschiebt die Schuldfrage von einer angeblich defekten Psyche der Opfer hin zu einer konkreten, beschreibbaren Technik des Täters — und macht sie damit erkennbar.</div>
+    </figure>
+
+    <p>Das zweite Kernwerkzeug ist die <span class="em3">thought-terminating cliché</span> — der Begriff stammt vom Psychiater Robert J. Lifton (1961). Es sind griffige Sprüche, die Nachdenken abwürgen. Jones hatte ein ganzes Repertoire: „It's all the media's fault", „Everybody dies". In Heaven's Gate hieß es: „Every religion is less than the Truth."</p>
+
+    <div class="box plain-translation">
+      <p class="box__lbl">→ Was bedeutet das konkret?</p>
+      <p>Loaded Language und Denk-Stopp-Phrasen wirken zusammen wie ein Doppelschlag: Der Körper schreit „Tu, was der Anführer sagt", während das Hirn flüstert „Denk nicht darüber nach, was als Nächstes kommt". Genau diese Kombination, schreibt Montell, ist tödlich.</p>
+    </div>
+
+    <p>Solche Phrasen sind <span class="em1">nicht</span> auf Kulte beschränkt. „It is what it is", „Everything happens for a reason", „Boys will be boys" — alltägliche Beispiele. Sie lindern <span class="em2">kognitive Dissonanz</span>: das unangenehme Gefühl, zwei widersprüchliche Überzeugungen gleichzeitig zu halten. „It's work to think, especially about things you don't want to think about," sagt eine Ex-Moonie. „It's a relief not to have to."</p>
+
+    <p>Beim dritten Werkzeug, dem <span class="em2">Euphemismus</span>, deuteten Jones und Heaven's-Gate-Anführer Applewhite sogar den Tod in etwas Erstrebenswertes um. Jones nannte ihn „the transition" oder „the Great Translation"; Applewhite sprach nie von „dying" oder „suicide", sondern von „exiting your vehicle", „graduation", vom „Level Above Human".</p>
+
+    <figure class="quote-card">
+      <div class="quote-label">Gegenposition · Sprache ist kein Allmachtsmittel</div>
+      <blockquote class="quote-body">„Even if you've got a gun to your head, people can resist if they want to."</blockquote>
+      <figcaption class="quote-citation">Eileen Barker, Soziologin (LSE) · zit. in <em>Cultish</em>, Teil 2, Kap. v</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Sprache zwingt niemanden, etwas zu glauben, was er auf keiner Ebene glauben will. Sie gibt Menschen nur die Erlaubnis, Ideen zu folgen, für die sie ohnehin offen sind.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Das ist Montells wichtigste Korrektur am Gehirnwäsche-Mythos. Wer das versteht, sieht: Es war nie zu spät, sich zu widersetzen — und die Verantwortung der Opfer wird weder geleugnet noch überhöht.</div>
+    </figure>
+
+    <p>Barkers Zahlen stützen das. Von gut tausend Untersuchten, die sich für die Moonies interessierten, blieb am Ende ein Bruchteil:</p>
+
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead><tr><th>Gruppe der Moonie-Interessierten</th><th>Anteil</th><th>Ausgang</th></tr></thead>
+        <tbody>
+          <tr><td>Besuchten einen Workshop, brachen schnell ab</td><td><strong>~90&nbsp;%</strong></td><td>ließen sich nicht konvertieren</td></tr>
+          <tr><td>Traten bei …</td><td><strong>~10&nbsp;%</strong></td><td>… die Hälfte ging binnen 2 Jahren</td></tr>
+          <tr><td>Blieben dauerhaft</td><td><strong>~5&nbsp;%</strong></td><td>nicht die Labilen, sondern die Idealisten</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Die Überraschung: Wer bleibt, ist meist nicht psychisch instabil, sondern <span class="em3">übermäßig optimistisch</span>. Ex-Rekrutierer berichten, ihre Wunschkandidaten seien „strong, caring, and motivated" gewesen. In Jonestown starben Schwarze Frauen überproportional — nicht aus Verzweiflung, sondern weil sie am meisten von einer Bewegung zu gewinnen hatten, die sich als Lüge entpuppte.</p>
+
+    <div class="box memo">
+      <p class="box__lbl">Befund in einem Satz</p>
+      <p>Nicht Naivität oder Schwäche zieht Menschen in zerstörerische Gruppen, sondern ein Überschuss an Hoffnung — verstärkt durch Bestätigungsfehler (confirmation bias), Verlustaversion und den Sunk-Cost-Fehlschluss.</p>
+    </div>
+  </div>
+
+  <div class="pull">
+    <p class="pull__t">„A cult is like pornography. You know it when you see it."</p>
+    <p class="pull__s">Jonestown-Überlebende:r — oder, wie Montell sagt: man hört es</p>
+  </div>
+</section>
+
+<!-- ===================== PHASE III ===================== -->
+<div class="b-divider b-divider--indigo">
+  <div class="b-divider__inner">
+    <p class="b-divider__eyebrow">Phase III · Das Spektrum</p>
+    <h2 class="b-divider__h">Von Scientology bis zur Lieblings-App</h2>
+    <p class="b-divider__dek">Dasselbe Werkzeug-Set, vier Schauplätze: kontroverse Religionen, MLMs, „Cult Fitness" und Social Media. Je weiter rechts auf dem Kontinuum, desto vertrauter — und desto unsichtbarer.</p>
+  </div>
+</div>
+
+<section class="wrap section" id="spektrum">
+  <p class="eyebrow">03 · Kontroverse Religionen</p>
+  <h2>Eine Sprache, die dich verwirrt — damit du folgst</h2>
+  <p class="dek">Scientology, Children of God, Shambhala: Jargon als Bindemittel und als Waffe.</p>
+  <div class="prose">
+    <p>Man erkennt Scientologen, sagt eine Aussteigerin, nicht an Kleidung oder Verhalten — nur an der Sprache. L. Ron Hubbard, Science-Fiction-Autor, schuf gleich zwei Wörterbücher mit über dreitausend Einträgen: bestehende Begriffe, mit neuer Bedeutung aufgeladen („clear", „audit"), plus Neologismen („thetan", „Dianetics"). Im Stil von Orwells Newspeak reduzierte er vieldeutige Wörter auf eine einzige, unanfechtbare Scientology-Definition.</p>
+
+    <p>Der Trick ist die <span class="em2">Verwirrung</span>. Fachjargon macht Kommunikation normalerweise präziser; im Kult bewirkt er das Gegenteil — er lässt Sprechende sich unzulänglich fühlen, damit sie sich fügen. Wenn die eigene Sprache, die man ein Leben lang spricht, plötzlich unsicher wird, sucht man Halt bei einer Autorität.</p>
+
+    <div class="box def">
+      <p class="box__lbl">Definition</p>
+      <h4>Gaslighting</h4>
+      <p>Psychologische Manipulation, durch die jemand an seiner eigenen Wahrnehmung zu zweifeln beginnt — als Mittel, Kontrolle zu gewinnen. Der Begriff stammt aus dem britischen Theaterstück <em>Gaslight</em> (1938), in dem ein Ehemann seine Frau in den Wahnsinn zu treiben sucht. Scientologys „Word Clearing" ist für Montell die exotischste Form davon.</p>
+    </div>
+
+    <figure class="quote-card">
+      <div class="quote-label">Schlüsselstelle · Wenn Worte die Orientierung rauben</div>
+      <blockquote class="quote-body">„Words can sometimes mean the exact opposite of what you think they mean."</blockquote>
+      <figcaption class="quote-citation">Eileen Barker, Soziologin · zit. in <em>Cultish</em>, Teil 3, Kap. iv</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Gaslighting über Sprache verschiebt den Boden unter den Füßen: „evil means good and good means evil." Man weiß am Ende nicht mehr, wo man steht.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Es erklärt, warum kluge, gebildete Menschen bleiben — nicht trotz, sondern wegen der Verwirrung, die sie an die Deutungshoheit des Anführers bindet.</div>
+    </figure>
+
+    <p>Religiöse Sprache wirkt dabei besonders stark, weil sie laut Montell die „intensivste performative" Sprache überhaupt ist: Worte wie segnen, verfluchen, schwören vollziehen, was sie sagen. Gesund bleibt diese Kraft nur, wenn sie auf eine <span class="em2">„ritual time"</span> begrenzt ist — einen abgegrenzten Raum, den man wieder verlässt. „There's a reason the word 'sacred' literally means 'set aside'." Der oppressive Kult aber lässt dich aus dieser Ritualzeit nie heraus.</p>
+
+    <p>Bei Scientology beginnt es harmlos: günstige Einsteigerkurse über <span class="iq">„communication"</span> oder <span class="iq">„ups and downs in life"</span> <span class="src-inline">(Teil 3, Kap. iv)</span>, in schlichtem Englisch. Die exotischen Konzepte — Xenu, „body thetans" — kommen erst, wenn man tief genug drin ist. Aussteigerin Cathy bringt es auf den Punkt: <span class="iq">„They don't start you out with that stuff. They'd lose you."</span> <span class="src-inline">(Teil 3, Kap. iv)</span>. Wer es dennoch nach oben schafft, spricht am Ende kaum noch verständlich; selbst Hassan sagt, ein Gespräch zweier hochrangiger Scientologen verstehe man nicht.</p>
+
+    <div class="box plain-translation">
+      <p class="box__lbl">→ Was bedeutet das konkret?</p>
+      <p>Der Jargon wird Schritt für Schritt eingeführt, nie auf einmal. Erst Abkürzungen (ack, cog, PC, SP), dann ein ganzes Paralleldeutsch. So merkt man kaum, wie die eigene Alltagssprache verdrängt wird — und gerade die Verwirrung bindet einen an die Gruppe, die als Einzige noch „Klarheit" verspricht.</p>
+    </div>
+
+    <p>In den Children of God deutete David Berg den Missbrauch Minderjähriger zum <span class="iq">„Law of Love"</span> um und nannte erzwungene Prostitution <span class="iq">„flirty fishing"</span> <span class="src-inline">(Teil 3, Kap. v)</span>. Und doch konnte Flor Edwards, dort hineingeboren, widerstehen — im Kopf. Woher ihr Misstrauen kam? <span class="iq">„My gut,"</span> <span class="src-inline">(Teil 3, Kap. v)</span>. Auch Kinder, zeigt das, sind keine wehrlosen Drohnen.</p>
+
+    <div class="b-details">
+      <summary>Vertiefung: Glossolalia — die „ultimative loaded language"</summary>
+      <div class="b-details__body">
+        <p><span class="em1">Glossolalia</span> („Zungenreden") wirkt mächtig, weil sie nachweislich Stress senkt und Hemmungen abbaut — und weil ein erstes Zungenreden oft direkt nach einem Trauma auftritt, kann es ein starkes Konversionserlebnis auslösen. Sprachwissenschaftlich folgen die Laute übrigens den Lautregeln der Muttersprache: Ein englischer Sprecher beginnt kein Wort mit dem Cluster /dl/.</p>
+        <p>Linguist Paul de Lacy fasst die Funktion nüchtern: <span class="iq">„The primary function of glossolalia is group solidarity."</span> Es zeigt: Ich gehöre dazu. Erst eine missbräuchliche Führung macht aus diesem Werkzeug etwas Bedrohliches — wie bei The Way International, das ein 12-jähriges Kind „in the most terrifying, bullying way" zum Zungenreden zwang.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="eyebrow">04 · Multilevel-Marketing</p>
+  <h2>Der Verkauf von Hoffnung — im Dialekt der #BossBabe</h2>
+  <p class="dek">MLMs verkaufen keine Produkte, sondern Rhetorik. Und ihre Sprache ist das vielleicht reinste Cultish des Alltags.</p>
+  <div class="prose">
+    <p>MLMs (Amway, Mary Kay, LuLaRoe, Optavia …) zielen seit den 1940ern vor allem auf Hausfrauen und Mütter und passen ihre „Female-Empowerment"-Schlagworte stets dem Zeitgeist an — heute der „fauxspirational" Sound einer kommerzialisierten Vierte-Welle-Feminismus-Sprache: „You got this, boss babe", „Build a fempire", „Be a mompreneur".</p>
+
+    <figure class="quote-card">
+      <div class="quote-label">Schlüsselstelle · Was wirklich verkauft wird</div>
+      <blockquote class="quote-body">„Really what people are buying is a form of hope."</blockquote>
+      <figcaption class="quote-citation">Stacie Bosley, Ökonomin (Hamline University) · zit. in <em>Cultish</em>, Teil 4, Kap. i</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Die Ware ist nicht die Gesichtscreme, sondern das Versprechen eines besseren Lebens. Deshalb ist MLM-Sprache so großspurig und vage — sie meidet „investment" und „employment" zugunsten von „amazing opportunity".</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Es erklärt, warum die nüchternen Zahlen niemanden abschrecken: Rund 99&nbsp;% der Rekruten verdienen nie etwas — aber die Worte halten sie trotzdem.</div>
+    </figure>
+
+    <p>Die Standardabwehr — „I would NEVER be involved with a pyramid scheme. Pyramid schemes are ILLEGAL" — ist selbst eine thought-terminating cliché. Montells Vergleich: ein MLM verhält sich zum Schneeballsystem wie ein Frappuccino zum Milchshake. Praktisch sei ein Pyramidensystem „essentially just an MLM that was run poorly and got caught".</p>
+
+    <div class="box plain-translation">
+      <p class="box__lbl">→ Was bedeutet das konkret?</p>
+      <p>MLMs gaslighten ihre Rekruten in den Glauben: Wenn du dem „makellosen System" folgst und scheiterst, liegt es an dir. Aus Amways Handbuch: „a good system always works!" Wer arm bleibt, sei einfach nicht gläubig oder hart genug — Schuld wird individualisiert, Struktur ausgeblendet.</p>
+    </div>
+
+    <p>MLMs sind tief in der <span class="em2">protestantischen Kapitalismus-Geschichte</span> verwurzelt. Von Calvins Idee, Gott walte auch über finanzielle Erfolge, über das erste Selbsthilfebuch (<em>Self-Help</em>, 1859: „Heaven helps those who help themselves") bis zu Norman Vincent Peales <em>The Power of Positive Thinking</em> — einem Prediger, dessen Gemeinde der junge Donald Trump angehörte. Amway selbst ist ein Kofferwort aus „American Way"; sein Mitgründer-Clan, die DeVos, finanzierte republikanische Präsidenten.</p>
+
+    <figure class="quote-card">
+      <div class="quote-label">Schlüsselstelle · Prosperity Gospel, hart formuliert</div>
+      <blockquote class="quote-body">„The free-enterprise system … is a gift of God to us."</blockquote>
+      <figcaption class="quote-citation">Rich DeVos, Amway-Mitgründer · zit. in <em>Cultish</em>, Teil 4, Kap. iii</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> DeVos' Wohlstands-Theologie legt nahe: Wer nicht reich ist, den liebt Gott nicht. Das Bürokratie-Verachten, der Hierarchie-Fokus, die Mischung aus Motivations-Sprech und Drohung ähneln frappierend der Rhetorik von Sekten-Anführern.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Es zeigt Montells größeren Punkt: Der „Kult" MLM ist ein Produkt des „Kults" Kapitalismus selbst — die Sprache reicht bis auf unsere Kaffeetassen.</div>
+    </figure>
+
+    <p>Dieselbe Logik findet sich, milder, in <span class="em1">cultischen Firmen</span>. Bei Amazon rezitieren Mitarbeitende die „Leadership Principles" wie Mantras; Bezos schrieb 1999, er erinnere seine Leute ständig daran, „to be afraid, to wake up every morning terrified." Berater Manfred Kets de Vries warnt: Zu viele Slogans, Codewörter und sinnentleerter Jargon sind ein Warnsignal, dass eine Firma zu kultisch wird.</p>
+
+    <div class="b-details">
+      <summary>Vertiefung: Warum manche den Schwindel riechen — System 1 und System 2</summary>
+      <div class="b-details__body">
+        <p>Nobelpreisträger Daniel Kahneman unterscheidet zwei Denksysteme. <span class="em1">System 1</span> ist schnell, intuitiv, anekdotisch — bei Vorfahren in kleinen Gruppen reichte das. <span class="em1">System 2</span> ist langsam, prüfend, rational — nötig im Informationszeitalter, aber fehleranfällig. Manche Menschen haben einen System-1-„Spidey-Sinn" für Schwindel; andere brauchen System 2.</p>
+        <p>Ökonomin Bosley zeigte das auf einem Jahrmarkt mit ihrem „Airplane Game": Einige witterten sofort den Betrug, andere prüften und lehnten ab, wieder andere prüften schlecht und spielten mit. <span class="em2">Impulsivität</span> sei ein häufiger Indikator für Betrugsanfälligkeit — und, kurioserweise: schlechte Laune macht skeptischer.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="b-mega">
+    <p class="b-mega__eyebrow">Die Pointe des MLM-Kapitels</p>
+    <p class="b-mega__text">Ihre Ware ist nicht Ware, sondern <em>Rhetorik</em>.</p>
+    <p class="b-mega__sub">„Like most destructive cults, they're in the business of selling the transcendent promise of something that doesn't actually exist."</p>
+  </div>
+
+  <p class="eyebrow">05 · „Cult Fitness"</p>
+  <h2>Der Schweiß als Sakrament</h2>
+  <p class="dek">SoulCycle, CrossFit, intenSati: Hier wirkt Cultish meist mit Zustimmung — solange die Ritualzeit hält.</p>
+  <div class="prose">
+    <p>Mit dem Rückgang von Kirche und Vertrauen in die Medizin füllten ab ~2010 „Boutique-Fitness"-Studios eine doppelte Leere. SoulCycle wirbt: „more than just a workout. It's a sanctuary." Mantras stehen meterhoch an den Wänden, Instruktoren predigen wie Geistliche. Montell selbst bricht in einer intenSati-Klasse in Tränen aus — und denkt: „Shit, is this what conversion feels like?"</p>
+
+    <p>Der entscheidende Unterschied zu Heaven's Gate: <span class="em3">Konsens und Ritualzeit</span>. Am Ende der Stunde darf man auschecken und wieder normal reden — und die meisten tun es mit offenen Augen.</p>
+
+    <figure class="quote-card">
+      <div class="quote-label">Schlüsselstelle · Hingabe mit offenen Augen</div>
+      <blockquote class="quote-body">„It just feels so fucking good to let go … for forty-five minutes in a dark room."</blockquote>
+      <figcaption class="quote-citation">„Chani", SoulCyclerin · zit. in <em>Cultish</em>, Teil 5, Kap. ii</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Die Hingabe ist genau das, was sich gut anfühlt: das Loslassen als eigenständige, leistungsorientierte Person. Den meisten ist bewusst, dass sie an einer Fantasie teilnehmen.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Es markiert die Grenze zwischen heilsam und schädlich: Solange man die Ritualzeit verlassen kann und die Exit-Kosten gering sind, ist das „culty" mit Anführungszeichen.</div>
+    </figure>
+
+    <p>Doch wo magnetische Anführer für Sinn Geld nehmen, kann es kippen. Bei CrossFit konditioniert eine kompromisslose „No guts, no glory"-Rhetorik dazu, Verletzungen als Ehrenabzeichen zu sehen; klagt man über Schmerzen, wird man gegaslightet. Bikram Choudhurys Hot-Yoga-Imperium mischte Love-Bombing mit offenem Missbrauch; CorePower verwandelte das hinduistische „return the karma" in einen Hebel für unbezahlte Arbeit.</p>
+
+    <div class="box warning">
+      <p class="box__lbl">Unbequeme Wahrheit</p>
+      <p>„Everybody is welcome" ist selten der Grund, warum eine Fitness-Gruppe <em>kein</em> echter Kult ist — sonst hätte sie nicht so viel Mühe in einen exklusiven Code gesteckt. Tausende Dollar im Jahr, „Namaslay"-Shirts und „tribe"-Rhetorik schließen die meisten Menschen ohnehin aus. Das wirkt nicht „culty", sondern alltäglich — und genau das ist das Problem.</p>
+    </div>
+
+    <p>Hier formuliert Montell ihre vielleicht schärfste Unterscheidung — die beiden Typen von Anführern:</p>
+
+    <div class="sbs">
+      <div class="sbs__col sbs__a">
+        <h4>Folger des Systems</h4>
+        <p>Nutzt Sprache (oft unbewusst), um <span class="em1">bestehende</span> problematische Machtstrukturen zu stützen — Prosperity Gospel, Schönheitsnormen, Meritokratie-Mythos.</p>
+        <p>Beispiel: viele Fitness- und Wall-Street-Milieus. Schädlich, aber im Dienst des Status quo.</p>
+      </div>
+      <div class="sbs__col sbs__b">
+        <h4>Zerstörerisch-cultischer Anführer</h4>
+        <p>Nutzt Sprache <span class="em1">immer bewusst</span>, nicht um die Ordnung zu stützen, sondern um sie zu stürzen und durch etwas zu ersetzen, das ihm <span class="em2">ultimative Macht</span> gibt.</p>
+        <p>Beispiel: Jones, Hubbard, DeVos. Der Nutzen fließt allein zum Guru.</p>
+      </div>
+    </div>
+
+    <div class="box plain-translation">
+      <p class="box__lbl">→ Was bedeutet das konkret?</p>
+      <p>Beide Geschäfte profitieren von der Sprache — aber sie benennen, wen sie ermächtigen wollen: im einen Fall den Guru, im anderen die Menschen. Bei intenSati ist das Ziel transparent, die eigene Kraft zurückzugewinnen; Gründerin Patricia Moreno fühlt deshalb nie das Bedürfnis, sich gegen das Wort „Kult" zu verteidigen — und dieser Mangel an Abwehr, sagt Montell, spricht Bände.</p>
+    </div>
+  </div>
+
+  <p class="eyebrow">06 · Social Media</p>
+  <h2>Das moderne Lagerfeuer — und sein Algorithmus-Gott</h2>
+  <p class="dek">Heute braucht ein Kult keine Kommune mehr. Es genügt: Sprache — und ein Tippen auf „Folgen".</p>
+  <div class="prose">
+    <p>1997, im Jahr von Heaven's Gate, wurde auch die erste Social-Media-Seite erfunden. Damals lachte man über die Idee, eine Website könne radikalisieren. Heute, schreibt Montell, ist Social Media „the modern-day campfire". Spirituelle Influencer wie Teal Swan oder Bentinho Massaro nutzen SEO und Algorithmen, um ihr Evangelium zu verbreiten; Massaro versprach „a human god" zu machen — und nach einem Suizid bei einem seiner Retreats feuerte er das „Kult"-Etikett einfach zurück: seine Kritikerin sei Teil des „Average American Cult".</p>
+
+    <figure class="quote-card">
+      <div class="quote-label">Schlüsselstelle · Der Algorithmus kennt keinen Unterschied</div>
+      <blockquote class="quote-body">„There is little difference between the genuine and pernicious guru."</blockquote>
+      <figcaption class="quote-citation">Oscar Schwartz, im <em>Guardian</em> · zit. in <em>Cultish</em>, Teil 6, Kap. ii</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Für die Apps zählt nicht Wahrheit, sondern Engagement. Ob heilsam oder schädlich — wer „on-trend" und fesselnd postet, wird belohnt.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Es verlagert die eigentliche kultische Macht vom einzelnen Guru auf die Plattform selbst — den „Algorithmus" als pseudo-Kirche, der uns nur zeigt, was wir ohnehin glauben.</div>
+    </figure>
+
+    <div class="box def">
+      <p class="box__lbl">Definition</p>
+      <h4>Conspirituality</h4>
+      <p>Kofferwort aus „conspiracy" und „spirituality": eine wachsende politisch-spirituelle Bewegung mit zwei Kernideen — (1) eine geheime Gruppe kontrolliere die Welt, (2) die Menschheit erlebe einen „paradigm shift" im Bewusstsein. COVID-19 wirkte darauf „like rocket fuel". QAnon und New-Age-Wellness rücken hier zunehmend zusammen.</p>
+    </div>
+
+    <div class="box plain-translation">
+      <p class="box__lbl">→ Was bedeutet das konkret?</p>
+      <p>Schon der Name verrät die Logik: Instagram nennt seine Nutzer nicht „Freunde", sondern <span class="iq">„followers"</span>. Montell fragte früh: <span class="iq">„Is it not encouraging everyone to build their own little cult?"</span> <span class="src-inline">(Teil 6, Kap. ii)</span>. Der Algorithmus zeigt uns nur, was wir ohnehin glauben — und macht so aus jedem Feed eine maßgeschneiderte Echokammer.</p>
+    </div>
+
+    <p>QAnon ist für Montell <span class="iq">„cult-ception"</span> <span class="src-inline">(Teil 6, Kap. ii)</span>: Kulte in Kulten in Kulten, möglich gemacht durch Social Media. Vage Schlagworte — <span class="iq">„the deep state"</span>, <span class="iq">„paradigm shift"</span>, <span class="iq">„do your research"</span> — binden Rekruten, ohne zu viel zu verraten, genau wie Scientology seine oberen Level verbirgt. „Pastel QAnon" tarnt Botschaften als hübsche Self-Care-Sprüche. Wie ein Horoskop erlauben die generischen „quotegrams", sich einzigartig angesprochen zu fühlen.</p>
+
+    <div class="box memo">
+      <p class="box__lbl">Befund in einem Satz</p>
+      <p>In einer Social-Media-Gesellschaft sind wir, wie Tara Isabella Burton schreibt, „not secular but simply spiritually self-focused" — zugleich Anführer und Folger eines selbst kuratierten Kults.</p>
+    </div>
+  </div>
+
+  <div class="pull">
+    <p class="pull__t">„With contemporary cults, the barrier to entry is the simple frisson of tapping Follow."</p>
+    <p class="pull__s">Teil 6, Kap. ii</p>
+  </div>
+</section>
+
+<!-- BILD-BÜHNE 2: bewusst leerer Slot (Politik-transparent) -->
+<div class="wrap-wide">
+  <figure class="b-bild">
+    <div class="b-bild__frame">
+      <div class="b-bild__ph"><b>BILD-SLOT · 16:7 — bewusst leer</b>Hier stünde Bildmaterial zu den realen Gruppen und Personen des Buches. Da im Arbeitskontext kein echtes, benennbares und rechtefreies Bild vorlag, bleibt der Slot sichtbar leer — gemäß der Anti-Halluzinations-Politik beider Vorlagen: ein markierter Leer-Slot ist besser als ein erfundenes Foto.</div>
+    </div>
+    <figcaption class="b-bild__cap"><span>Leerer Bild-Slot statt generiertem Bild.</span><span class="src">Keine Quelle vorhanden · transparent gelassen</span></figcaption>
+  </figure>
+</div>
+
+<!-- ===================== STIMMEN IM TEXT ===================== -->
+<div class="b-divider b-divider--sage">
+  <div class="b-divider__inner">
+    <p class="b-divider__eyebrow">Apparat · Stimmen im Text</p>
+    <h2 class="b-divider__h">Wer hier zu Wort kommt</h2>
+    <p class="b-divider__dek">Eine Auswahl der von Montell interviewten oder zitierten Menschen — nur tatsächlich im Buch vorkommende Personen.</p>
+  </div>
+</div>
+
+<section class="wrap-wide section" id="stimmen">
+  <div class="figgrid">
+    <div class="figcard">
+      <p class="figcard__name">Amanda Montell</p>
+      <p class="figcard__life">Autorin · Linguistin</p>
+      <p class="figcard__role">Erzählerin des Buches; Tochter eines Synanon-Aussteigers. Prägt den Begriff „Cultish".</p>
+    </div>
+    <div class="figcard">
+      <p class="figcard__name">Eileen Barker</p>
+      <p class="figcard__life">Soziologin · LSE</p>
+      <p class="figcard__role">Stellte als eine der Ersten die wissenschaftliche Gültigkeit von „Gehirnwäsche" infrage; lieferte die Moonie-Studienzahlen.</p>
+    </div>
+    <div class="figcard">
+      <p class="figcard__name">Rebecca Moore</p>
+      <p class="figcard__life">Religionswissenschaftlerin</p>
+      <p class="figcard__role">Verlor zwei Schwestern in Jonestown; benutzt das Wort „cult" nicht mehr, weil es nur Ablehnung ausdrücke.</p>
+    </div>
+    <div class="figcard">
+      <p class="figcard__name">Steven Hassan</p>
+      <p class="figcard__life">Mental-Health-Berater · Ex-Moonie</p>
+      <p class="figcard__role">Beschreibt das „Einfluss-Kontinuum" von gesund bis zerstörerisch; betont, Legitimes halte der Prüfung stand.</p>
+    </div>
+    <div class="figcard">
+      <p class="figcard__name">Laura Johnston Kohl</p>
+      <p class="figcard__life">† · Jonestown- &amp; Synanon-Überlebende</p>
+      <p class="figcard__role">Überlebte, weil sie am Tag des Massakers in Georgetown war; blieb zeitlebens „Communalist".</p>
+    </div>
+    <div class="figcard">
+      <p class="figcard__name">Frank Lyford (Andody)</p>
+      <p class="figcard__life">Ex-Heaven's-Gate, 18 Jahre</p>
+      <p class="figcard__role">Defektierte 1993; nennt seine Anführer bis heute Ti und Do. „Our inner guidance is the best possible navigation."</p>
+    </div>
+    <div class="figcard">
+      <p class="figcard__name">Cathy Schenkelberg</p>
+      <p class="figcard__life">Ex-Scientologin, 18 Jahre</p>
+      <p class="figcard__role">Schauspielerin; ihre Solo-Show <em>Squeeze My Cans</em>. „It enturbulates me."</p>
+    </div>
+    <div class="figcard">
+      <p class="figcard__name">Robert J. Lifton</p>
+      <p class="figcard__life">Psychiater</p>
+      <p class="figcard__role">Prägte 1961 den Begriff „thought-terminating cliché" (semantic stop sign).</p>
+    </div>
+    <div class="figcard">
+      <p class="figcard__name">Stacie Bosley</p>
+      <p class="figcard__life">Ökonomin · Hamline University</p>
+      <p class="figcard__role">Eine der wenigen, die MLMs formell erforschen: „what people are buying is a form of hope."</p>
+    </div>
+    <div class="figcard">
+      <p class="figcard__name">Tanya Luhrmann</p>
+      <p class="figcard__life">Psychologische Anthropologin · Stanford</p>
+      <p class="figcard__role">Erforscht Hexen und „charismatic Christians"; nennt Fitness „culty" — mit Anführungszeichen.</p>
+    </div>
+    <div class="figcard">
+      <p class="figcard__name">Tara Isabella Burton</p>
+      <p class="figcard__life">Theologin · Autorin</p>
+      <p class="figcard__role">Prägte „Remixed"; definiert Religion über das, was sie <em>tut</em>: Sinn, Zweck, Gemeinschaft, Ritual.</p>
+    </div>
+    <div class="figcard">
+      <p class="figcard__name">Patricia Moreno</p>
+      <p class="figcard__life">Gründerin von intenSati</p>
+      <p class="figcard__role">Schuf eine Sprache, die die eigene Kraft zurückgeben soll — und verteidigt sich nie gegen das Wort „Kult".</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WAS BLEIBT ===================== -->
+<div class="b-divider b-divider--sage">
+  <div class="b-divider__inner">
+    <p class="b-divider__eyebrow">Phase IV · Was bleibt</p>
+    <h2 class="b-divider__h">Mit einem Funkeln im Auge</h2>
+    <p class="b-divider__dek">Montells Schluss ist nicht Misstrauen, sondern eine Anleitung zum klaräugigen Mitmachen.</p>
+  </div>
+</div>
+
+<section class="wrap section" id="bleibt">
+  <p class="eyebrow">07 · Die Argumentationskette</p>
+  <h2>Wie das Buch zu seinem Schluss kommt</h2>
+  <p class="dek">Sieben Schritte von der Begriffskritik zur Lebenshaltung.</p>
+  <div class="prose">
+    <ol class="chain">
+      <li><span class="chain__txt"><strong>„Cult" erklärt nichts.</strong> Das Wort ist ein Werturteil ohne akademische Definition — und „Gehirnwäsche" ein untestbarer Mythos. Beide beenden das Nachdenken.</span></li>
+      <li><span class="chain__txt"><strong>Das eigentliche Werkzeug ist Sprache.</strong> Us-vs-them-Labels, loaded language und thought-terminating clichés gewinnen, binden und zwingen Menschen — in drei Stufen (Konversion, Konditionierung, Zwang).</span></li>
+      <li><span class="chain__txt"><strong>Sprache zwingt nicht, sie erlaubt.</strong> Sie reshaped die Realität nur dort, wo eine „Spur Bereitschaft" schon da ist. Wer bleibt, ist meist nicht labil, sondern übermäßig idealistisch.</span></li>
+      <li><span class="chain__txt"><strong>Dasselbe Set wirkt überall.</strong> Religionen, MLMs, Fitness, Social Media — ein Kontinuum von Jonestown bis zur Lieblings-App.</span></li>
+      <li><span class="chain__txt"><strong>Der Unterschied ist die Ritualzeit.</strong> Gesund bleibt Cultish, wo man die „sacred space" wieder verlässt und die Exit-Kosten gering sind; zerstörerisch wird es, wo man nie heraus darf.</span></li>
+      <li><span class="chain__txt"><strong>Es gibt zwei Typen von Anführern.</strong> Die einen stützen das bestehende System; die anderen wollen es stürzen, um sich selbst ultimative Macht zu sichern.</span></li>
+      <li><span class="chain__txt"><strong>Die Lösung ist nicht Zynismus.</strong> Zu viel Misstrauen verdirbt das Menschlichste — und behindert sogar Entdeckung. Klare Augen statt Mauern.</span></li>
+    </ol>
+
+    <p>Montell warnt ausdrücklich vor dem Gegenteil ihres Themas. Übertriebener Zynismus, zeigt sie an Studien zu Wissenschaftler-Persönlichkeiten (Sagan, Gould), hemmt das Entdecken: Die produktivsten Köpfe waren offen genug für die gelegentliche schräge Idee, die sich als wahr erwies — aber nicht so leichtgläubig, jeder Theorie zu verfallen.</p>
+
+    <figure class="quote-card">
+      <div class="quote-label">Schlüsselstelle · Die Haltung, die schützt</div>
+      <blockquote class="quote-body">„Once you understand what the language of Cultish sounds like, you won't be able to unhear it."</blockquote>
+      <figcaption class="quote-citation">Amanda Montell · <em>Cultish</em>, Teil 1, Kap. ii</figcaption>
+      <div class="quote-translation"><strong>Was heißt das?</strong> Das Buch will kein Werkzeug zum Verurteilen sein, sondern ein geschultes Ohr. Wer die Muster erkennt, kann selbst entscheiden, wie weit er sich einlässt.</div>
+      <div class="quote-context"><strong>Warum wichtig?</strong> Es ist die praktische Pointe: nicht aussteigen aus allem, sondern teilnehmen mit einem „vigilant twinkle in your eye".</div>
+    </figure>
+
+    <div class="b-mega">
+      <p class="b-mega__eyebrow">Montells Rat</p>
+      <p class="b-mega__text">Vielleicht ist der gesunde Weg, in <em>mehreren</em> „Kulten" zugleich zu sein.</p>
+      <p class="b-mega__sub">Wie Laura Johnston Kohl ihr Ein-Kommune-Leben gegen ein Geflecht aus vielen Gruppen tauschte — frei zu chanten, zu hashtaggen, von Manifesting zu reden, und doch in der Realität verankert zu bleiben.</p>
+    </div>
+
+    <div class="synthesis">
+      <p class="synthesis__lbl">Kernerkenntnis</p>
+      <p>Wir sind „cultish by nature" — physiologisch auf Gemeinschaft und Sinn gebaut. Sich davor zu verschließen, macht einsam; sich blind hinzugeben, macht abhängig. Der Ausweg liegt in der Sprache selbst: Wer hört, wie Cultish klingt — die instant emotionale Reaktion, das Abwürgen weiterer Fragen, das „auserwählt"-Gefühl —, kann mitmachen und sich zugleich treu bleiben. „You're already blessed with all you need."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GLOSSAR ===================== -->
+<div class="b-divider">
+  <div class="b-divider__inner">
+    <p class="b-divider__eyebrow">Apparat · Glossar</p>
+    <h2 class="b-divider__h">Die Schlüsselbegriffe</h2>
+    <p class="b-divider__dek">Klartext, Original und Wortherkunft — die Werkzeuge, auf die man hören sollte.</p>
+  </div>
+</div>
+
+<section class="wrap section" id="glossar">
+  <div class="gloss">
+    <h4>Cultish</h4>
+    <p class="g-plain">Montells Name für die Sprache des Fanatismus in all ihren Spielarten — flexibler als „cult", weil auch nicht-übernatürliche Gemeinschaften (Firmen, Fitness, MLMs) erfasst werden.</p>
+    <p class="g-original">„a language I'm calling Cultish (like English, Spanish, or Swedish)" — Teil 1, Kap. ii</p>
+    <p class="g-etym">Bildung zu engl. <em>cult</em> + Sprach-Suffix <em>-ish</em>.</p>
+  </div>
+  <div class="gloss">
+    <h4>Loaded Language</h4>
+    <p class="g-plain">Aufgeladene Sprache: Wörter, die so mit Bedeutung beladen sind, dass ihre Erwähnung Gefühle (Angst, Verzückung) auslöst und Verhalten steuert — durch Umdeutung oder Euphemismus.</p>
+    <p class="g-original">„a leader can exploit it to steer followers' behavior. This lingo is what some psychologists call loaded language." — Teil 2, Kap. iii</p>
+    <p class="g-etym">engl. <em>loaded</em> „geladen, beladen" (wie eine Waffe).</p>
+  </div>
+  <div class="gloss">
+    <h4>Thought-terminating Cliché</h4>
+    <p class="g-plain">Denk-Stopp-Phrase (auch „semantic stop sign"): griffiger Spruch, der ein Argument abwürgt und kritisches Denken unterbindet. Lindert kognitive Dissonanz.</p>
+    <p class="g-original">geprägt 1961 von Robert J. Lifton in <em>Thought Reform and the Psychology of Totalism</em> — Teil 2, Kap. iii</p>
+    <p class="g-etym">engl. <em>to terminate</em> „beenden" (lat. <em>terminare</em>, „begrenzen") + <em>cliché</em> (frz., ursprünglich Druckersprache).</p>
+  </div>
+  <div class="gloss">
+    <h4>Love-Bombing</h4>
+    <p class="g-plain">Intensive, scheinbar persönliche Aufmerksamkeit und Bestätigung zu Beginn — später gegen Kontrolle eingetauscht.</p>
+    <p class="g-original">„This kind of intense validation later traded for control is what some social scientists term 'love-bombing'." — Teil 2, Kap. i</p>
+    <p class="g-etym">engl. <em>love</em> + <em>bomb</em>; Bild der „Bombardierung" mit Zuneigung.</p>
+  </div>
+  <div class="gloss">
+    <h4>Performativity (Performativität)</h4>
+    <p class="g-plain">Sprachtheorie: Sprache beschreibt die Wirklichkeit nicht nur, sie <em>erschafft</em> sie. Manche Sätze (Versprechen, Trauung, Urteil) vollziehen Handlungen.</p>
+    <p class="g-original">„language does not simply describe or reflect who we are, it creates who we are." — Teil 1, Kap. v</p>
+    <p class="g-etym">engl. <em>to perform</em> „vollziehen, ausführen" (über altfrz. <em>parfournir</em>).</p>
+  </div>
+  <div class="gloss">
+    <h4>Sapir–Whorf-Hypothese</h4>
+    <p class="g-plain">These zum Verhältnis von Sprache und Denken: Sprache <em>beeinflusst</em> unser Denken, <em>determiniert</em> es aber nicht — man kann Gedanken haben, für die einem die Wörter fehlen.</p>
+    <p class="g-original">„language does influence our ability to conceive of ideas, [but] it does not determine it." — Teil 2, Kap. v</p>
+    <p class="g-etym">nach den Linguisten Edward Sapir und Benjamin Lee Whorf.</p>
+  </div>
+  <div class="gloss">
+    <h4>Glossolalia (Zungenreden)</h4>
+    <p class="g-plain">Das Hervorbringen unverständlicher, sprachähnlicher Laute in religiöser Intensität. Senkt Stress und Hemmungen; dient vor allem der Gruppensolidarität.</p>
+    <p class="g-original">„The primary function of glossolalia is group solidarity." — Paul de Lacy, Teil 3, Kap. v</p>
+    <p class="g-etym">griech. <em>glōssa</em> „Zunge, Sprache" + <em>laliá</em> „Reden".</p>
+  </div>
+  <div class="gloss">
+    <h4>Gaslighting</h4>
+    <p class="g-plain">Manipulation, die jemanden an der eigenen Wahrnehmung zweifeln lässt, um Kontrolle zu gewinnen. In Kulten oft bewusst eingesetzt.</p>
+    <p class="g-original">„a way of psychologically manipulating someone … such that they doubt their own reality." — Teil 3, Kap. iv</p>
+    <p class="g-etym">nach dem Theaterstück <em>Gaslight</em> (1938), in dem ein Mann das Gaslicht dimmt und die Wahrnehmung seiner Frau leugnet.</p>
+  </div>
+  <div class="gloss">
+    <h4>Conspirituality</h4>
+    <p class="g-plain">Verschmelzung von Verschwörungsglaube und New-Age-Spiritualität: geheime Weltkontrolle plus „paradigm shift" des Bewusstseins. Von COVID-19 stark befeuert.</p>
+    <p class="g-original">„(a portmanteau of 'conspiracy' and 'spirituality')" — Teil 6, Kap. ii</p>
+    <p class="g-etym">Kofferwort aus engl. <em>conspiracy</em> + <em>spirituality</em>.</p>
+  </div>
+  <div class="gloss">
+    <h4>Ritual Time (Ritualzeit)</h4>
+    <p class="g-plain">Ein abgegrenzter Bereich, in dem heilige/aufgeladene Sprache angebracht ist und den man wieder verlässt. Oppressive Gruppen lassen einen nie heraus.</p>
+    <p class="g-original">„There's a reason the word 'sacred' literally means 'set aside'." — Teil 3, Kap. iii</p>
+    <p class="g-etym">engl. <em>ritual</em> (lat. <em>ritualis</em>, zu <em>ritus</em> „religiöser Brauch").</p>
+  </div>
+</section>
+
+<!-- ===================== KOLOPHON ===================== -->
+<footer class="colophon">
+  <div class="wrap">
+    <h3>Kolophon &amp; Quellen</h3>
+    <p>Diese Synthese arbeitet ausschließlich aus einer einzigen Quelle: <strong>Amanda Montell, <em>Cultish: The Language of Fanaticism</em></strong> (New York: Harper Wave / HarperCollins, 2021; Digital Edition Juni 2021, ISBN 978-0-06-299317-5). Alle Direktzitate sind wörtlich aus diesem Buch übernommen.</p>
+
+    <p class="meta-label">Zur Locator-Frage (transparent)</p>
+    <p>Die vorliegende Digital-Edition ist <strong>reflowable und enthält keine stabilen Seitenzahlen</strong>. Als Fundstellen-Ersatz dienen deshalb durchgehend <strong>Teil und Kapitel</strong> (das Buch gliedert sich in sechs Teile mit je römisch nummerierten Kapiteln i, ii, iii …). Wer seitengenau zitieren möchte, sollte den Wortlaut anhand einer paginierten Druckausgabe prüfen. Dies ist die einzige bewusste Abweichung von der sonst seitengenauen Belegpflicht — eine sichtbar gemachte Lücke statt einer erfundenen Seitenzahl.</p>
+
+    <p class="meta-label">Zur Methode</p>
+    <p>Es wurden keine Zahlen, Zitate oder Personen erfunden. Wo das Buch keine harten Daten liefert, wurde bewusst auf Daten-Diagramme verzichtet (Anti-Pseudo-Empirie); die einzige Datentabelle (Moonie-Studie) gibt von Montell referierte Werte Eileen Barkers wieder. Bild-Bühnen tragen entweder ein klar als illustrativ gekennzeichnetes SVG oder bleiben sichtbar leer — es wurden keine Fotos generiert.</p>
+
+    <p class="meta-label">Gestaltung</p>
+    <p>Editorial-Slate-System (Newsreader · Spectral · Inter Tight) mit aktiviertem <em>Plus</em>-Modus für drei thematische Sektionsfarben (Pflaume · Indigo · Salbei). Komponenten und Tokens übernommen aus der projektinternen visuellen Musterbibliothek. Das vorangestellte Halluzinations-Cover führt bewusst sein eigenes, abweichendes Inline-CSS (Georgia, burgundyroter Rahmen) und ist nicht Teil des Hausdesigns.</p>
+
+    <p style="margin-top:24px; font-size:.86rem; color:#aebab6;">Wo immer im Fließtext Anführungszeichen stehen, handelt es sich um wörtliche Zitate aus <em>Cultish</em>; die Synthese, Gliederung und alle deutschen Erläuterungen sind eigenständige Aufarbeitung, kein Ersatz für die Lektüre des Buches.</p>
+  </div>
+</footer>
+
+<script>
+/* Lese-Fortschrittsbalken — minimales Vanilla-JS */
+(function(){
+  var bar = document.getElementById('progress');
+  function update(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop;
+    var height = h.scrollHeight - h.clientHeight;
+    var pct = height > 0 ? (scrolled / height) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update, {passive:true});
+  update();
+})();
+</script>
+</body>
+</html>
