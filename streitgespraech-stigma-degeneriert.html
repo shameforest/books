@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>„Degeneriert?“ — Ein rechtsinternes Streitgespräch über Stigma, Monogamie und das Lager</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Spectral:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+.sysB{
+  --bg:#ede4cf; --bg-warm:#e6dcc2; --pcard:#f4ecd9; --pcool:#e4e8e6;
+  --primary:#1d3a40; --primary-soft:#2c5057;
+  --eaccent:#b85c2f; --accent-deep:#8f441f;
+  --egold:#a07a1e; --eink:#1a2530; --eink-soft:#3a444c; --eink-faint:#6a6f6b;
+  --erule:#cfc4a8; --erule-soft:#dcd3ba; --ered:#a3242c;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top:72px;}
+body{margin:0; background:var(--bg); color:var(--eink);
+  font-family:'Spectral',Georgia,serif; font-size:19px; line-height:1.72;
+  font-feature-settings:"kern","liga","onum";
+  background-image:radial-gradient(var(--erule) 0.5px, transparent 0.5px); background-size:24px 24px;}
+.wrap{max-width:720px; margin:0 auto; padding:0 22px;}
+.wrap--wide{max-width:980px;}
+p{margin:0 0 1.1em;}
+a{color:var(--accent-deep);}
+
+/* progress */
+#progress{position:fixed; top:0; left:0; height:3px; width:0%; z-index:200;
+  background:linear-gradient(90deg,var(--eaccent),var(--egold));}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:100; height:56px; display:flex; align-items:center;
+  background:rgba(237,228,207,.82); backdrop-filter:blur(9px); border-bottom:1px solid var(--erule);}
+.nav__in{max-width:980px; margin:0 auto; padding:0 22px; width:100%; display:flex; align-items:center; justify-content:space-between;}
+.nav__logo{font-family:'Newsreader',serif; font-size:1.15rem; color:var(--primary);}
+.nav__logo em{font-style:italic; color:var(--eaccent);}
+.nav__links{display:flex; gap:18px;}
+.nav__links a{font-family:'Inter Tight',sans-serif; font-size:.74rem; letter-spacing:.06em; text-transform:uppercase; color:var(--eink-soft); text-decoration:none;}
+.nav__links a:hover{color:var(--eaccent);}
+@media(max-width:760px){ .nav__links{display:none;} }
+
+/* hero */
+.b-hero{padding:48px 0 30px;}
+.b-hero__tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px;}
+.b-tag{font-family:'Inter Tight',sans-serif; font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--primary); border:1px solid var(--erule); padding:4px 10px; border-radius:2px;}
+.b-hero__title{font-family:'Newsreader',serif; font-weight:500; font-size:clamp(40px,8vw,82px); line-height:1.02; color:var(--primary); margin:0 0 16px;}
+.b-hero__title em{font-style:italic; color:var(--eaccent);}
+.b-hero__sub{font-family:'Newsreader',serif; font-style:italic; font-size:1.22rem; color:var(--eink-soft); margin:0 0 22px; max-width:620px;}
+.b-meta{font-family:'Inter Tight',sans-serif; font-size:.78rem; color:var(--eink-faint); margin:0 0 26px;}
+.b-statstrip{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--erule); border:1px solid var(--erule);}
+.b-stat{background:var(--bg-warm); padding:16px 14px;}
+.b-stat__num{font-family:'Newsreader',serif; font-size:2.15rem; color:var(--primary); line-height:1;}
+.b-stat__lbl{font-family:'Inter Tight',sans-serif; font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--eink-faint); margin-top:5px;}
+@media(max-width:560px){ .b-statstrip{grid-template-columns:repeat(2,1fr);} }
+
+/* sections */
+.sec{padding:30px 0;}
+.sec__eyebrow{font-family:'Inter Tight',sans-serif; font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--eaccent); margin:0 0 8px;}
+.sec h2{font-family:'Newsreader',serif; font-weight:500; font-size:clamp(28px,5vw,44px); line-height:1.08; color:var(--primary); margin:0 0 6px;}
+.sec__dek{font-family:'Newsreader',serif; font-style:italic; font-size:1.1rem; color:var(--eink-soft); margin:0 0 22px;}
+h3{font-family:'Newsreader',serif; font-weight:600; font-size:1.4rem; color:var(--primary); margin:1.6em 0 .5em;}
+
+/* drop cap */
+.dropcap::first-letter{font-family:'Newsreader',serif; font-weight:600; float:left; font-size:4.4rem; line-height:.82; padding:6px 10px 0 0; color:var(--accent-deep);}
+
+/* divider */
+.b-divider{background:var(--primary); color:var(--bg); padding:48px 0; position:relative; overflow:hidden; margin:18px 0;}
+.b-divider::after{content:""; position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px); background-size:18px 18px; pointer-events:none;}
+.b-divider--add{background:#3a2230;}
+.b-divider .wrap{position:relative;}
+.b-divider__eyebrow{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--eaccent); margin:0 0 12px;}
+.b-divider__h{font-family:'Newsreader',serif; font-weight:500; font-size:clamp(30px,5vw,52px); line-height:1.05; margin:0 0 10px;}
+.b-divider__dek{font-family:'Newsreader',serif; font-style:italic; font-size:1.1rem; opacity:.92; margin:0; max-width:600px;}
+
+/* boxes */
+.b-box{padding:18px 20px; border-radius:2px; margin:1.4em 0;}
+.b-box__lbl{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; margin:0 0 8px;}
+.b-box p{margin:0; font-family:'Spectral',serif; font-size:1rem;}
+.b-box.def{background:var(--pcard); border-left:4px solid var(--egold);}
+.b-box.def .b-box__lbl{color:var(--egold);}
+.b-box.def h4{font-family:'Newsreader',serif; font-size:1.2rem; color:var(--primary); margin:0 0 6px;}
+.b-box.thesis{background:var(--primary); color:var(--bg); box-shadow:0 14px 30px -20px rgba(0,0,0,.6);}
+.b-box.thesis .b-box__lbl{color:var(--eaccent);}
+.b-box.memo{background:transparent; border:1px dashed var(--eink-faint);}
+.b-box.memo .b-box__lbl{color:var(--eink-faint);}
+.b-box.plain{background:var(--bg-warm); border-left:4px solid var(--eaccent);}
+.b-box.plain .b-box__lbl{color:var(--accent-deep);}
+.b-box.warning{background:var(--eink); color:var(--bg);}
+.b-box.warning .b-box__lbl{color:var(--eaccent);}
+
+/* quote card */
+.b-qcard{background:var(--pcard); border-top:3px solid var(--eaccent); padding:28px 24px 20px; position:relative; margin:1.6em 0;}
+.b-qcard::before{content:"\201E"; position:absolute; top:-4px; left:14px; font-family:'Newsreader',serif; font-size:5rem; color:var(--eaccent); opacity:.26; line-height:1;}
+.b-qcard__lbl{font-family:'Inter Tight',sans-serif; font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-deep); margin:0 0 10px; position:relative;}
+.b-qcard__body{font-family:'Newsreader',serif; font-size:1.4rem; line-height:1.36; color:var(--eink); margin:0 0 12px; position:relative;}
+.b-qcard__cite{font-family:'Inter Tight',sans-serif; font-size:.78rem; color:var(--eink-faint); margin:0 0 14px;}
+.b-qcard__t,.b-qcard__c{font-family:'Spectral',serif; font-size:.95rem; color:var(--eink-soft); margin:0 0 8px;}
+.b-qcard__t strong,.b-qcard__c strong{color:var(--primary);}
+
+/* pull + inline */
+.b-pull{text-align:center; border-top:1px solid var(--eaccent); border-bottom:1px solid var(--eaccent); padding:26px 10px; margin:1.8em 0;}
+.b-pull__t{font-family:'Newsreader',serif; font-size:clamp(24px,4vw,38px); line-height:1.2; color:var(--eaccent); margin:0 0 10px; font-style:italic;}
+.b-pull__s{font-family:'Inter Tight',sans-serif; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--eink-faint);}
+.b-iq{font-style:italic; color:var(--eink);}
+.b-src{font-family:'Inter Tight',sans-serif; font-size:.78rem; color:var(--eink-faint);}
+
+/* mega */
+.b-mega{margin:1.8em 0; padding:40px 6px 36px; text-align:center; border-top:1px solid var(--eaccent); border-bottom:1px solid var(--eaccent);}
+.b-mega__eyebrow{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--eaccent); margin:0 0 16px;}
+.b-mega__text{font-family:'Newsreader',serif; font-weight:500; font-size:clamp(28px,5.5vw,56px); line-height:1.12; color:var(--primary); margin:0;}
+.b-mega__text em{font-style:italic; color:var(--eaccent);}
+.b-mega__sub{font-family:'Newsreader',serif; font-style:italic; font-size:1.05rem; color:var(--eink-soft); margin:16px auto 0; max-width:540px;}
+
+/* side by side */
+.b-sbs{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:1.6em 0;}
+.b-sbs__col{padding:20px 18px 20px 30px; border-radius:2px; position:relative;}
+.b-sbs__col::before{content:""; position:absolute; left:14px; top:24px; width:8px; height:8px; border-radius:50%;}
+.b-sbs__a{background:var(--pcool);} .b-sbs__a::before{background:var(--primary);}
+.b-sbs__b{background:var(--bg-warm);} .b-sbs__b::before{background:var(--eaccent);}
+.b-sbs h4{font-family:'Inter Tight',sans-serif; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; margin:0 0 10px; color:var(--primary);}
+.b-sbs p{font-family:'Spectral',serif; font-size:.95rem; margin:0 0 .8em; color:var(--eink-soft);}
+.b-sbs p:last-child{margin-bottom:0;}
+@media(max-width:760px){ .b-sbs{grid-template-columns:1fr;} }
+
+/* chain */
+.b-chain{counter-reset:step; list-style:none; padding:0; margin:1.4em 0;}
+.b-chain li{counter-increment:step; display:flex; gap:16px; padding:0 0 22px; position:relative;}
+.b-chain li::before{content:counter(step); flex:0 0 auto; width:34px; height:34px; border-radius:50%; background:var(--primary); color:var(--bg); font-family:'Inter Tight',sans-serif; font-weight:600; font-size:.9rem; display:flex; align-items:center; justify-content:center;}
+.b-chain li:not(:last-child)::after{content:""; position:absolute; left:16px; top:34px; bottom:4px; width:2px; background:var(--erule);}
+.b-chain__txt{font-family:'Spectral',serif; font-size:1rem; color:var(--eink-soft); padding-top:5px;}
+.b-chain__txt strong{color:var(--primary); font-family:'Newsreader',serif;}
+
+/* figcards */
+.figgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:1.4em 0;}
+.b-figcard{background:var(--pcard); border:1px solid var(--erule); padding:16px 18px;}
+.b-figcard__name{font-family:'Newsreader',serif; font-size:1.18rem; color:var(--primary); margin:0;}
+.b-figcard__life{font-family:'Inter Tight',sans-serif; font-size:.72rem; color:var(--eink-faint); margin:2px 0 8px;}
+.b-figcard__role{font-family:'Spectral',serif; font-size:.92rem; color:var(--eink-soft); margin:0;}
+@media(max-width:560px){ .figgrid{grid-template-columns:1fr;} }
+
+/* table */
+.b-cmp{width:100%; border-collapse:collapse; font-family:'Spectral',serif; font-size:.92rem; margin:1.4em 0;}
+.b-cmp th{background:var(--primary); color:var(--bg); font-family:'Inter Tight',sans-serif; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; text-align:left; padding:11px 12px; font-weight:600; vertical-align:bottom;}
+.b-cmp td{padding:11px 12px; border-bottom:1px solid var(--erule); color:var(--eink-soft); vertical-align:top;}
+.b-cmp tr:nth-child(even) td{background:var(--bg-warm);}
+.b-cmp .score{font-family:'Newsreader',serif; font-size:1.5rem; color:var(--accent-deep); font-weight:600; white-space:nowrap;}
+
+/* synth */
+.b-synth{background:var(--pcard); border-top:3px solid var(--eaccent); padding:26px 24px; margin:1.6em 0;}
+.b-synth__lbl{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-deep); margin:0 0 8px;}
+.b-synth p{font-family:'Newsreader',serif; font-size:1.22rem; line-height:1.42; color:var(--eink); margin:0;}
+
+/* details */
+.b-details{background:var(--pcool); border:1px solid var(--erule); border-radius:2px; padding:0 18px; margin:1.4em 0;}
+.b-details summary{font-family:'Inter Tight',sans-serif; font-size:.84rem; font-weight:600; color:var(--primary); padding:14px 0; cursor:pointer; list-style:none;}
+.b-details summary::before{content:"+ "; color:var(--eaccent);}
+.b-details[open] summary::before{content:"\2013 ";}
+.b-details__body{font-family:'Spectral',serif; font-size:.95rem; color:var(--eink-soft); padding:0 0 16px;}
+
+/* glossary */
+.b-gloss{border-bottom:1px solid var(--erule); padding:16px 0;}
+.b-gloss h4{font-family:'Newsreader',serif; font-size:1.2rem; color:var(--primary); margin:0 0 6px;}
+.b-gloss .g-plain{font-family:'Spectral',serif; font-size:.96rem; color:var(--eink-soft); margin:0 0 8px;}
+.b-gloss .g-original{font-family:'Newsreader',serif; font-style:italic; font-size:.92rem; background:var(--pcard); border:1px solid var(--erule); padding:8px 12px; color:var(--eink); margin:0 0 6px;}
+.b-gloss .g-etym{font-family:'Inter Tight',sans-serif; font-size:.74rem; color:var(--eink-faint); margin:0;}
+
+/* bild-bühne */
+.b-bild{margin:1.6em 0; border:1px solid var(--erule); background:var(--pcard); overflow:hidden;}
+.b-bild__frame{position:relative; width:100%; background:var(--bg-warm); display:block;}
+.b-bild__frame svg{width:100%; height:auto; display:block;}
+.b-bild__cap{font-family:'Inter Tight',sans-serif; font-size:.76rem; color:var(--eink-soft); padding:12px 16px; border-top:1px solid var(--erule); display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;}
+.b-bild__cap .src{font-size:.72rem; color:var(--eink-faint);}
+
+/* footer */
+.foot{background:var(--primary); color:var(--bg); padding:42px 0 36px; margin-top:30px;}
+.foot .wrap{max-width:720px;}
+.foot__lbl{font-family:'Inter Tight',sans-serif; font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--eaccent); margin:0 0 12px;}
+.foot p{font-family:'Spectral',serif; font-size:.92rem; color:#cdd6d3; margin:0 0 .7em;}
+
+@media print{
+  #progress,.nav{display:none!important;}
+  body{background:#fff;}
+  .b-divider{background:#eee!important; color:#000!important;}
+  .b-box,.b-qcard,.b-figcard,.b-bild{break-inside:avoid;}
+  a::after{content:" (" attr(href) ")"; font-size:.7em; color:#666;}
+}
+</style>
+</head>
+<body class="sysB">
+<div id="progress"></div>
+
+<!-- ============================================================ -->
+<!-- HALLUZINATIONS-COVER (eigenes Inline-CSS, Pflicht, zuerst)    -->
+<!-- ============================================================ -->
+<section style="font-family:Georgia,'Times New Roman',serif;max-width:780px;margin:2.2rem auto 2.5rem;padding:2rem 2.25rem;border:1px solid #d8d2c4;border-top:4px solid #7a1f1f;background:#fbfaf7;color:#1c1a17;">
+  <p style="margin:0 0 .4rem;font:600 .7rem/1.2 'Helvetica Neue',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#7a1f1f;">Dokumentation · Halluzinationsminimierung</p>
+  <h1 style="margin:0 0 1rem;font-size:1.7rem;line-height:1.18;">„Degeneriert?“ — Ein rechtsinternes Streitgespräch über Stigma, Monogamie und die Frage, wer das Lager spaltet</h1>
+
+  <!-- Banner -->
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:0 0 1.2rem;padding:1rem 1.1rem;background:#f1ede2;border:1px solid #e0d9c8;">
+    <div style="font-size:2.1rem;font-weight:700;color:#3a6b35;line-height:1;white-space:nowrap;">≈ 7× geringeres&nbsp;Risiko</div>
+    <div style="font-size:.95rem;line-height:1.4;flex:1;min-width:220px;">Quellenbasiert aus dem vollständigen Transkript gearbeitet — das praktische Halluzinationsrisiko für Struktur und Thesen liegt daher weit unter dem modellweiten Closed-Book-Wert; das Restrisiko sitzt in Zeitmarken, Zitatwortlaut und Sprecher-Zuordnung.</div>
+  </div>
+
+  <!-- Verifizierender Satz -->
+  <p style="margin:0 0 1.4rem;padding:.9rem 1.1rem;background:#f1ede2;border-left:3px solid #7a1f1f;font-size:1.0rem;font-style:italic;">
+    Diese Aufarbeitung wurde <strong>mit Originalquelle im Kontext</strong> (dem vollständigen Transkript des Streitgesprächs) erstellt; die inhaltliche Verlässlichkeit wird als <strong>hoch</strong> eingeschätzt (Selbsteinschätzung, nicht gemessen), wobei das Restrisiko sich auf die exakten Zeitmarken, den Zitatwortlaut und die Sprecher-Zuordnung (das Transkript trägt keine Sprecher-Labels) konzentriert und vor Weiterverwendung dort geprüft werden sollte.
+  </p>
+
+  <!-- Maßnahmen -->
+  <h2 style="font:600 .75rem/1.3 'Helvetica Neue',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#555;margin:0 0 .6rem;">Angewandte Maßnahmen</h2>
+  <ul style="margin:0 0 1.6rem;padding-left:1.2rem;font-size:.95rem;line-height:1.55;">
+    <li>Extraktives Arbeiten aus dem beigelegten Transkript statt aus dem Gedächtnis.</li>
+    <li>Jedes Direktzitat mit <strong>Zeitmarke (M:SS)</strong> als Locator; Wortlaut vorab geprüft, jedes Zitat &lt; 25 Wörter.</li>
+    <li>Sprecher anhand inhaltlicher Rolle zugeordnet (das Transkript hat keine Labels); unsichere Stellen <strong>paraphrasiert statt zitiert</strong>.</li>
+    <li>Trennung von Beleg / Schlussfolgerung / Eigen-Analyse: die progressive Replik und die 0–10-Ratings sind sichtbar als <strong>Zugabe des Bearbeiters</strong> markiert, nicht als Aussage des Transkripts.</li>
+    <li>Verstümmelte Eigennamen still berichtigt (z.&nbsp;B. „Stickma“ → Stigma im Fließtext erläutert); Zitatwortlaut gesprochen belassen.</li>
+    <li>Anti-Sycophancy: keine zustimmenden Floskeln, Schwächen beider Positionen offen benannt.</li>
+  </ul>
+
+  <!-- Zone A -->
+  <h2 style="font:600 .75rem/1.3 'Helvetica Neue',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#555;margin:0 0 .2rem;">Zone A · Modell-Benchmark (ohne Quelle gemessen) + diese Arbeit (geschätzt)</h2>
+  <p style="margin:.1rem 0 .9rem;font-size:.8rem;color:#777;">Halluzinationsrate · niedriger ist besser</p>
+  <div style="font:.85rem/1 'Helvetica Neue',sans-serif;">
+    <div style="margin-bottom:.55rem;"><span style="display:inline-block;width:200px;">Opus 4.8 · ohne Quelle</span>
+      <span style="display:inline-block;width:calc(100% - 260px);background:#e6e0d2;vertical-align:middle;"><span style="display:block;width:59.8%;background:#9a9a9a;color:#fff;padding:.2rem .4rem;box-sizing:border-box;">35,9 %</span></span></div>
+    <div style="margin-bottom:.55rem;"><span style="display:inline-block;width:200px;">Gemini 3.1 Pro · ohne Quelle</span>
+      <span style="display:inline-block;width:calc(100% - 260px);background:#e6e0d2;vertical-align:middle;"><span style="display:block;width:83.3%;background:#a8842c;color:#fff;padding:.2rem .4rem;box-sizing:border-box;">50 %</span></span></div>
+    <div style="margin-bottom:.55rem;"><span style="display:inline-block;width:200px;">OpenAI / Google (Peer)</span>
+      <span style="display:inline-block;width:calc(100% - 260px);background:#e6e0d2;vertical-align:middle;"><span style="display:block;width:92%;background:#b0b0b0;color:#fff;padding:.2rem .4rem;box-sizing:border-box;">höher</span></span></div>
+    <div style="margin-bottom:.2rem;"><span style="display:inline-block;width:200px;color:#3a6b35;font-weight:600;">Diese Arbeit · mit Quelle</span>
+      <span style="display:inline-block;width:calc(100% - 260px);background:#e6e0d2;vertical-align:middle;"><span style="display:block;width:8.3%;background:#3a6b35;color:#fff;padding:.2rem .4rem;box-sizing:border-box;min-width:74px;">≈ 3–7 %</span></span></div>
+    <p style="margin:.35rem 0 0 200px;font-size:.72rem;color:#3a6b35;font-style:italic;">↑ geschätzte Spanne, nicht gemessen</p>
+  </div>
+  <p style="margin:.8rem 0 1.6rem;font-size:.74rem;line-height:1.45;color:#888;">
+    Die oberen drei Balken sind modellweite Werte auf einem Closed-Book-Wissensbenchmark (AA-Omniscience), gemessen <strong>ohne</strong> beigelegte Quelle. Sie beschreiben das Modell allgemein, <strong>nicht</strong> diese Antwort. Quelle: Artificial Analysis, 28.05.2026. <strong>Da diese Arbeit quellenbasiert (grounded) aus dem beigelegten Transkript erstellt wurde, liegt das reale Risiko für Struktur und Thesen deutlich unter dem Closed-Book-Wert von 35,9 %; das Restrisiko konzentriert sich auf exakte Zeitmarken und den Zitatwortlaut.</strong> Der grüne Balken ist eine Selbsteinschätzung, kein Messwert.
+  </p>
+
+  <!-- Ampel -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 1.6rem;">
+    <div style="background:#eef4ec;border:1px solid #cfe0c8;padding:.8rem 1rem;">
+      <p style="margin:0 0 .4rem;font:600 .72rem/1.2 'Helvetica Neue',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#3a6b35;">✓ Verlässlich</p>
+      <p style="margin:0;font-size:.86rem;line-height:1.45;">Aufbau des Streits, die Hauptpositionen beider Seiten, die paraphrasierten Argumente, die als Analyse markierte progressive Replik.</p>
+    </div>
+    <div style="background:#fbf3ee;border:1px solid #e8cdbb;padding:.8rem 1rem;">
+      <p style="margin:0 0 .4rem;font:600 .72rem/1.2 'Helvetica Neue',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#9a4a1e;">⚠ Vorher prüfen</p>
+      <p style="margin:0;font-size:.86rem;line-height:1.45;">Exakte Zeitmarken, Zitatwortlaut, Sprecher-Zuordnung (kein Label in der Quelle), die 0–10-Ratings (Eigen-Urteil, kein Messwert).</p>
+    </div>
+  </div>
+
+  <!-- Zone B -->
+  <div style="border:1px dashed #b9a; background:#faf4f4; padding:1rem 1.1rem;">
+    <p style="margin:0 0 .6rem;font:600 .72rem/1.3 'Helvetica Neue',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#7a1f1f;">Zone B · Selbsteinschätzung zur aktuellen Aufgabe — nicht gemessen</p>
+    <p style="margin:.2rem 0;font-size:.95rem;"><strong>Mit Originalquelle gearbeitet:</strong> Ja — das vollständige Transkript des Streitgesprächs (auto-transkribierter YouTube-Doppelstream, 0:00–1:02:56).</p>
+    <p style="margin:.2rem 0;font-size:.95rem;"><strong>Eingeschätzte Verlässlichkeit:</strong> hoch — extraktiv aus dem Transkript, Zitate kurz und wörtlich, Argumente quellennah; die Schwäche liegt nicht im Inhalt, sondern in der Zeitmarken-Präzision und der fehlenden Sprecher-Kennzeichnung der Quelle.</p>
+    <p style="margin:.2rem 0;font-size:.95rem;"><strong>Vor Weiterverwendung prüfen:</strong> Zeitmarken (M:SS), Zitatwortlaut, Sprecher-Zuordnung; die progressive Replik und die 0–10-Ratings sind argumentative Eigenleistung (Selbsteinschätzung), kein Befund aus dem Transkript.</p>
+  </div>
+
+  <details style="margin-top:1.2rem;">
+    <summary style="cursor:pointer;font:600 .82rem 'Helvetica Neue',sans-serif;color:#7a1f1f;">Details zur Methode anzeigen</summary>
+    <div style="font-size:.9rem;line-height:1.55;margin-top:.6rem;color:#333;">
+      <p style="margin:.3rem 0;">Das Transkript ist eine automatische Untertitel-Spur ohne Sprecherkennung. Sprecher wurden über inhaltliche Rolle zugeordnet: der <em>Gastgeber</em> (libertär-anarchistischer Flirt-/Männlichkeitscoach, im Transkript namentlich nicht genannt) argumentiert gegen das Wort „degeneriert“ als Abwertung; <em>Schlomo Finkelstein</em> (nennt sich bei Min.&nbsp;29:47 selbst) verteidigt das moralische Stigma. Wo die Zuordnung im Schlagabtausch unklar war, wurde paraphrasiert statt zitiert.</p>
+      <p style="margin:.3rem 0;">Das auto-transkribierte „Stickma/Stickmat“ steht durchgehend für <em>Stigma</em>; es wird im Fließtext korrekt geschrieben, in keinem Direktzitat aber als garbeltes Wort wiedergegeben. Es gibt im Quelltext keine belastbaren Zahlen — daher bewusst <em>kein</em> Daten-Diagramm und keine geschätzte Statistik (Anti-Pseudo-Empirie). Die Bild-Bühnen tragen rein illustrative, nicht-behauptende SVG-Motive.</p>
+    </div>
+  </details>
+</section>
+<hr style="border:none;border-top:1px solid #d8d2c4;max-width:780px;margin:0 auto 2.5rem;">
+
+<!-- ============================================================ -->
+<!-- AB HIER: EDITORIAL-ESSAY (Hausdesign)                        -->
+<!-- ============================================================ -->
+<nav class="nav">
+  <div class="nav__in">
+    <span class="nav__logo">Wer spaltet das <em>Lager</em>?</span>
+    <span class="nav__links">
+      <a href="#synopsis">Worum es geht</a>
+      <a href="#ausloeser">Auslöser</a>
+      <a href="#form">Die Form</a>
+      <a href="#korrelation">Korrelation</a>
+      <a href="#replik">Progressive Replik</a>
+      <a href="#glossar">Glossar</a>
+    </span>
+  </div>
+</nav>
+
+<header class="b-hero">
+  <div class="wrap">
+    <div class="b-hero__tags">
+      <span class="b-tag">Streitgespräch</span>
+      <span class="b-tag">YouTube-Doppelstream</span>
+      <span class="b-tag">Rechte Szene</span>
+      <span class="b-tag">Deutsch</span>
+    </div>
+    <h1 class="b-hero__title">Wer spaltet das <em>Lager</em>?</h1>
+    <p class="b-hero__sub">Ein rechtsinternes Gespräch über Swingerclubs, das Wort „degeneriert“ und die Frage, ob man ein moralisches Stigma verteidigen darf — und die stärkste Gegenrede von links.</p>
+    <p class="b-meta">Quelle: Live-Streitgespräch zweier Akteure der rechten Szene · Gastgeber (libertär-anarchistischer Flirt-/Männlichkeitscoach) vs. Schlomo Finkelstein · Locatoren: Zeitmarken (M:SS) · Länge 1:02:56</p>
+    <div class="b-statstrip">
+      <div class="b-stat"><div class="b-stat__num">63′</div><div class="b-stat__lbl">Gesprächslänge</div></div>
+      <div class="b-stat"><div class="b-stat__num">2</div><div class="b-stat__lbl">Sprecher</div></div>
+      <div class="b-stat"><div class="b-stat__num">14</div><div class="b-stat__lbl">belegte Zitate</div></div>
+      <div class="b-stat"><div class="b-stat__num">4</div><div class="b-stat__lbl">Streitachsen</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- SYNOPSIS -->
+<section class="sec" id="synopsis">
+  <div class="wrap">
+    <p class="dropcap">Zwei Männer der politischen Rechten reden miteinander, statt übereinander — das ist der erklärte Anlass. Den Funken hatte ein früheres Gespräch des Gastgebers mit einem Dritten gegeben, in dem das Thema Swingerclubs aufkam. Der Gastgeber, ein libertär-anarchistischer Coach um die fünfzig, hatte beiläufig erwähnt, er kenne Paare, die so leben, und das sei <em>nicht</em> „degeneriert“. Daraufhin, sagt er, sei „das ganze Internet abgebrannt“.</p>
+    <p>Was wie ein Streit über Sexpraktiken aussieht, ist in Wahrheit ein Streit über eine <span class="b-iq">Meta-Regel</span>: Darf man ein moralisches Stigma — eine kollektive Abwertung bestimmten Verhaltens — überhaupt verteidigen, ohne sofort als „spalterisch“ oder „beleidigend“ zu gelten? Der Gastgeber sagt: Wer Menschen „degeneriert“ nennt, wertet sie maximal ab und spaltet das Lager. Schlomo Finkelstein sagt: Wer dem Stigma das Verteidigungsrecht abspricht, übernimmt die Methode der Linken.</p>
+
+    <div class="b-box thesis">
+      <p class="b-box__lbl">Hauptthese dieser Aufarbeitung</p>
+      <p>Der eigentliche Konflikt ist nicht „Swingerclub ja oder nein“, sondern: Wer einen moralischen Standard angreift, gilt als mutig — wer ihn verteidigt, gilt als Aggressor. Genau diese Asymmetrie ist der Streitkern. Und unter dem lauten Gegensatz teilen beide Seiten unbemerkt denselben Rahmen — sie streiten darüber, <em>wie</em> man (vor allem weibliche) Sexualität ordnet, nicht darüber, <em>ob</em> man das tun sollte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER I -->
+<div class="b-divider"><div class="wrap">
+  <p class="b-divider__eyebrow">Teil I · Der Auslöser</p>
+  <h2 class="b-divider__h">Wer hat „degeneriert“ auf den Tisch gelegt?</h2>
+  <p class="b-divider__dek">Bevor man streiten kann, ob etwas degeneriert ist, muss geklärt sein, wer die Frage eröffnet hat.</p>
+</div></div>
+
+<!-- SECTION 1 -->
+<section class="sec" id="ausloeser">
+  <div class="wrap">
+    <p class="sec__eyebrow">01 · Die Vorgeschichte</p>
+    <h2>Ein Nebensatz, dann der Flächenbrand</h2>
+    <p class="sec__dek">Beide erzählen den Anfang verschieden — und das ist schon Teil des Streits.</p>
+
+    <figure class="b-bild" style="margin:2.2em 0;">
+<svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Meisterbild: Ein einziger Funke entzündet den Saal — der Nebensatz, der den Streit eröffnet" style="display:block;width:100%;height:auto;background:#f4ecd9;">
+  <defs>
+    <!-- halftone / engraving textures -->
+    <pattern id="mb1-halftone" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
+      <circle cx="3" cy="3" r="1.15" fill="#1d3a40" opacity="0.5"/>
+    </pattern>
+    <pattern id="mb1-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="7" stroke="#1d3a40" stroke-width="0.8" opacity="0.35"/>
+    </pattern>
+    <pattern id="mb1-floor" width="40" height="22" patternUnits="userSpaceOnUse" patternTransform="skewX(-26)">
+      <rect width="40" height="22" fill="none"/>
+      <path d="M0 0 H40 M0 0 V22" stroke="#a07a1e" stroke-width="0.7" opacity="0.4"/>
+    </pattern>
+    <radialGradient id="mb1-blaze" cx="50%" cy="62%" r="60%">
+      <stop offset="0%" stop-color="#b85c2f" stop-opacity="0.9"/>
+      <stop offset="45%" stop-color="#b85c2f" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#b85c2f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mb1-smoke" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#1d3a40" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#1d3a40" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="mb1-rough"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.4"/></filter>
+  </defs>
+
+  <!-- paper -->
+  <rect x="0" y="0" width="1200" height="760" fill="#f4ecd9"/>
+  <rect x="0" y="0" width="1200" height="760" fill="url(#mb1-halftone)" opacity="0.06"/>
+
+  <!-- double ornamental frame -->
+  <rect x="22" y="22" width="1156" height="716" fill="none" stroke="#1d3a40" stroke-width="3"/>
+  <rect x="33" y="33" width="1134" height="694" fill="none" stroke="#1d3a40" stroke-width="1"/>
+  <!-- corner ornaments -->
+  <g stroke="#a07a1e" stroke-width="2.4" fill="none">
+    <path d="M48 78 q0 -30 30 -30 M78 48 h26 M48 78 v26"/>
+    <path d="M1152 78 q0 -30 -30 -30 M1122 48 h-26 M1152 78 v26"/>
+    <path d="M48 682 q0 30 30 30 M78 712 h26 M48 682 v-26"/>
+    <path d="M1152 682 q0 30 -30 30 M1122 712 h-26 M1152 682 v-26"/>
+  </g>
+  <g fill="#b85c2f"><circle cx="78" cy="78" r="3.4"/><circle cx="1122" cy="78" r="3.4"/><circle cx="78" cy="682" r="3.4"/><circle cx="1122" cy="682" r="3.4"/></g>
+
+  <!-- ground / debate floor -->
+  <rect x="34" y="560" width="1132" height="166" fill="url(#mb1-floor)" opacity="0.5"/>
+  <line x1="34" y1="560" x2="1166" y2="560" stroke="#1d3a40" stroke-width="1.4" opacity="0.6"/>
+
+  <!-- blaze glow rising from centre of the floor -->
+  <ellipse cx="600" cy="560" rx="430" ry="220" fill="url(#mb1-blaze)"/>
+
+  <!-- smoke columns -->
+  <g opacity="0.7" filter="url(#mb1-rough)">
+    <path d="M470 560 C 440 470 520 430 480 340 C 450 270 520 240 500 170" stroke="url(#mb1-smoke)" stroke-width="26" fill="none" stroke-linecap="round"/>
+    <path d="M610 560 C 650 460 580 410 640 320 C 680 260 620 220 660 150" stroke="url(#mb1-smoke)" stroke-width="34" fill="none" stroke-linecap="round"/>
+    <path d="M740 560 C 700 480 770 440 730 360 C 700 300 760 270 740 210" stroke="url(#mb1-smoke)" stroke-width="22" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- spreading flames along the floor (engraved tongues) -->
+  <g>
+    <path d="M380 560 q12 -54 30 -22 q6 -38 26 -8 q10 -44 26 -6 q14 -40 22 6 q16 -28 18 30 Z" fill="#b85c2f" opacity="0.92"/>
+    <path d="M520 560 q16 -78 34 -30 q8 -52 30 -10 q12 -60 30 -6 q18 -52 26 10 q20 -36 22 42 Z" fill="#b85c2f"/>
+    <path d="M520 560 q14 -50 26 -20 q8 -34 22 -6 q10 -40 22 -2 q12 -30 16 26 Z" fill="#a07a1e" opacity="0.85"/>
+    <path d="M700 560 q14 -64 32 -24 q8 -44 28 -8 q12 -50 26 -4 q16 -44 24 8 q18 -30 20 36 Z" fill="#b85c2f" opacity="0.92"/>
+    <path d="M300 560 q8 -34 20 -14 q6 -24 16 -4 q8 -26 16 0 q8 -18 12 18 Z" fill="#a07a1e" opacity="0.7"/>
+    <path d="M820 560 q9 -38 22 -16 q6 -26 16 -4 q8 -28 16 0 q9 -20 12 20 Z" fill="#a07a1e" opacity="0.7"/>
+  </g>
+
+  <!-- THE MATCH: small, top-left, a single struck spark above the line — the offhand "Nebensatz" -->
+  <g transform="translate(250 300) rotate(34)">
+    <rect x="0" y="0" width="120" height="7" rx="3" fill="#1d3a40"/>
+    <rect x="0" y="0" width="120" height="7" rx="3" fill="url(#mb1-hatch)"/>
+    <circle cx="120" cy="3.5" r="11" fill="#a3242c"/>
+    <circle cx="120" cy="3.5" r="11" fill="url(#mb1-halftone)" opacity="0.4"/>
+  </g>
+  <!-- the single spark falling from match to floor -->
+  <g stroke="#b85c2f" stroke-width="2.2" fill="none" opacity="0.9">
+    <path d="M348 330 q40 90 150 215" stroke-dasharray="2 9"/>
+  </g>
+  <circle cx="497" cy="548" r="5.5" fill="#b85c2f"/>
+  <g stroke="#b85c2f" stroke-width="2" opacity="0.9">
+    <line x1="497" y1="536" x2="497" y2="528"/><line x1="486" y1="548" x2="478" y2="548"/>
+    <line x1="508" y1="548" x2="516" y2="548"/><line x1="489" y1="540" x2="483" y2="534"/><line x1="505" y1="540" x2="511" y2="534"/>
+  </g>
+
+  <!-- two facing silhouettes at the edges of the blaze (no faces, monograms) -->
+  <!-- left figure: the host (G) -->
+  <g transform="translate(180 360)">
+    <path d="M70 200 C 70 120 30 120 30 70 a40 40 0 0 1 80 0 C 110 120 70 120 70 200 Z" fill="#1d3a40"/>
+    <path d="M70 200 C 70 120 30 120 30 70 a40 40 0 0 1 80 0 C 110 120 70 120 70 200 Z" fill="url(#mb1-hatch)" opacity="0.5"/>
+    <circle cx="70" cy="55" r="9" fill="none" stroke="#f4ecd9" stroke-width="1.5"/>
+    <text x="70" y="60" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="13" fill="#f4ecd9" font-style="italic">G</text>
+  </g>
+  <!-- right figure: Schlomo (S) -->
+  <g transform="translate(940 360)">
+    <path d="M70 200 C 70 120 110 120 110 70 a40 40 0 0 0 -80 0 C 30 120 70 120 70 200 Z" fill="#1d3a40"/>
+    <path d="M70 200 C 70 120 110 120 110 70 a40 40 0 0 0 -80 0 C 30 120 70 120 70 200 Z" fill="url(#mb1-hatch)" opacity="0.5"/>
+    <circle cx="70" cy="55" r="9" fill="none" stroke="#f4ecd9" stroke-width="1.5"/>
+    <text x="70" y="60" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="13" fill="#f4ecd9" font-style="italic">S</text>
+  </g>
+
+  <!-- the contested WORD hovering in the smoke -->
+  <g transform="translate(600 250)">
+    <rect x="-150" y="-34" width="300" height="60" rx="3" fill="#f4ecd9" stroke="#a3242c" stroke-width="1.5" opacity="0.95"/>
+    <text x="0" y="7" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic" font-size="30" fill="#a3242c">»degeneriert«</text>
+  </g>
+
+  <!-- TITLE CARTOUCHE bottom -->
+  <g transform="translate(600 660)">
+    <rect x="-360" y="-34" width="720" height="62" fill="#1d3a40"/>
+    <rect x="-352" y="-26" width="704" height="46" fill="none" stroke="#a07a1e" stroke-width="1"/>
+    <text x="0" y="-4" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="26" letter-spacing="1" fill="#f4ecd9">Ein Nebensatz, dann der Flächenbrand</text>
+    <text x="0" y="16" text-anchor="middle" font-family="'Inter Tight', Helvetica, sans-serif" font-size="11" letter-spacing="3" fill="#a07a1e" text-transform="uppercase">TEIL I · DIE VORGESCHICHTE</text>
+  </g>
+</svg>
+<figcaption class="b-bild__cap" style="font-family:'Inter Tight',Helvetica,sans-serif;font-size:.8rem;color:var(--primary);padding:.7em 1em;border-top:1px solid var(--erule);background:var(--pcard);">
+  <strong>Meisterbild I.</strong> Illustratives Vintage-SVG (kein Foto, keine Daten): Ein einzelner geworfener Funke — der beiläufige Nebensatz, es sei „nicht degeneriert“ — entzündet den ganzen Saal. Die Bildmetapher zur Eröffnungsdynamik des Streits; die Silhouetten (G · S) tragen Monogramme statt Gesichter.
+</figcaption>
+</figure>
+
+    <p>Der Gastgeber schildert es so: In einem Gespräch über Untreue habe er nur in einem Nebensatz erwähnt, er kenne Paare, die offen leben und denen es gutgehe. Schlomo hält dagegen: Mit dem Satz, das sei „nicht degeneriert“, habe der Gastgeber selbst die <em>Degenerationsfrage</em> eröffnet — und sobald die auf dem Tisch liege, müssten auch die, die das Stigma für sinnvoll halten, es verteidigen dürfen.</p>
+
+    <div class="b-box def">
+      <h4>Stigma</h4>
+      <p class="b-box__lbl">Definition</p>
+      <p>Ein Stigma ist ein gesellschaftliches Brandmal: eine geteilte Abwertung, die ein Verhalten (oder eine Gruppe) mit einem schlechten Ruf belegt und so unter Druck setzt. Im Gespräch erscheint es durchgehend als „Stickma“ — ein Hörfehler der automatischen Untertitel.</p>
+    </div>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Schlüsselstelle · Schlomos Kernanliegen</div>
+      <blockquote class="b-qcard__body">„Es geht darum, ob du überhaupt eine Kategorie dafür hast.“</blockquote>
+      <figcaption class="b-qcard__cite">Schlomo Finkelstein · Min. 9:31</figcaption>
+      <div class="b-qcard__t"><strong>Was heißt das?</strong> Schlomo will, dass es ein Wort und eine Schublade dafür gibt, wenn jemand die sexuelle Norm in für die Gesellschaft schädlicher Weise verlässt — eine Kategorie „mit einem gewissen Geruch“.</div>
+      <div class="b-qcard__c"><strong>Warum wichtig?</strong> Damit verschiebt er den Streit weg vom konkreten Paar hin zur grundsätzlichen Frage: Darf eine Gesellschaft solche Urteile überhaupt fällen?</div>
+    </figure>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Gegenposition · der Gastgeber</div>
+      <blockquote class="b-qcard__body">„degeneriert, das ist ja schon wirklich die Maximalstufe der Abwertung“</blockquote>
+      <figcaption class="b-qcard__cite">Gastgeber · Min. 6:05</figcaption>
+      <div class="b-qcard__t"><strong>Was heißt das?</strong> Man dürfe sagen, ein Lebensmodell sei moralisch fragwürdig oder schade der Gesellschaft. Aber „degeneriert“ sei die höchste Eskalationsstufe — eine Beleidigung, kein Argument.</div>
+      <div class="b-qcard__c"><strong>Warum wichtig?</strong> Hier liegt der affektive Kern: Der Gastgeber trennt eine sachliche Wertung von einer abwertenden, und nur Letztere will er verbieten.</div>
+    </figure>
+
+    <p class="sec__eyebrow" style="margin-top:2em;">02 · Die Asymmetrie</p>
+    <h3>Angreifen darf man, verteidigen nicht</h3>
+    <p>Schlomos stärkster Zug ist ein Vorwurf der Ungleichbehandlung. Niemand, sagt er, gehe in der rechten Szene herum und suche Anstoß; das Stigma werde gezielt <em>angegriffen</em>. Sobald aber jemand es verteidigt, heiße es: Du beleidigst Leute, du spaltest das Lager. Wer den Standard abräumen will, gelte als cool; wer ihn hält, als Aggressor. Diese Schieflage nennt er ein „Totschlagargument“ — etwas, das die Diskussion beenden soll.</p>
+
+    <div class="b-box plain">
+      <p class="b-box__lbl">→ Was bedeutet das konkret?</p>
+      <p>Stell dir eine Talkrunde vor, in der einer sagen darf „Dein Standard ist Quatsch“, der andere aber nicht „Dein Standard ist mir wichtig“ — weil die Verteidigung als „verletzend“ gilt. Schlomo sagt: So eine Regel macht jede Debatte über Sexualität einseitig. Der Gastgeber bestreitet, eine solche Regel aufzustellen.</p>
+    </div>
+
+    <div class="b-mega">
+      <p class="b-mega__eyebrow">Der Vorwurf der Asymmetrie</p>
+      <p class="b-mega__text">Das Stigma darf <em>angegriffen</em> werden — verteidigt werden darf es nicht.</p>
+      <p class="b-mega__sub">So liest Schlomo die Dynamik. Der Gastgeber sieht sich dagegen nicht als Zensor, sondern als jemand, der nur vor der maximalen Abwertung warnt.</p>
+    </div>
+
+    <p>Der Gastgeber dreht den Spieß um: Wenn hier jemand spalte, dann Schlomo — weil <em>er</em> eine Trennlinie ziehe, indem er Anderslebende als „pervers“ bezeichne. Er selbst werte ja keine Monogamen ab. Damit ist der Schlagabtausch in einer Schleife: Jeder wirft dem anderen vor, das Lager zu spalten.</p>
+  </div>
+</section>
+
+<!-- DIVIDER II -->
+<div class="b-divider"><div class="wrap">
+  <p class="b-divider__eyebrow">Teil II · Verhalten, Person, Eierschalen</p>
+  <h2 class="b-divider__h">Sitzen beide im selben Boot?</h2>
+  <p class="b-divider__dek">Der Gastgeber lehnt das Wort „degeneriert“ ab — benutzt aber selbst „Perversion“. Schlomo bemerkt es.</p>
+</div></div>
+
+<!-- SECTION 3 -->
+<section class="sec" id="boot">
+  <div class="wrap">
+    <p class="sec__eyebrow">03 · Der entlarvte Moralist</p>
+    <h2>„Du sitzt nur hundert Meter weiter im Fluss“</h2>
+    <p class="sec__dek">Die schärfste Pointe des Gesprächs kommt von Schlomo — gegen die Selbstbeschreibung des Gastgebers.</p>
+
+    <figure class="b-bild" style="margin:2.2em 0;">
+<svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Meisterbild: Zwei Boote auf demselben Fluss — eines hundert Meter weiter stromab" style="display:block;width:100%;height:auto;background:#f4ecd9;">
+  <defs>
+    <pattern id="mb2-halftone" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
+      <circle cx="3" cy="3" r="1.15" fill="#1d3a40" opacity="0.5"/>
+    </pattern>
+    <pattern id="mb2-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="7" stroke="#1d3a40" stroke-width="0.8" opacity="0.35"/>
+    </pattern>
+    <linearGradient id="mb2-water" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1d3a40" stop-opacity="0.16"/>
+      <stop offset="55%" stop-color="#1d3a40" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#1d3a40" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="mb2-cliff" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b85c2f" stop-opacity="0.0"/>
+      <stop offset="100%" stop-color="#a3242c" stop-opacity="0.55"/>
+    </linearGradient>
+    <filter id="mb2-rough"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.06" numOctaves="2" seed="11" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6"/></filter>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="760" fill="#f4ecd9"/>
+  <rect x="0" y="0" width="1200" height="760" fill="url(#mb2-halftone)" opacity="0.06"/>
+
+  <!-- frame + corners -->
+  <rect x="22" y="22" width="1156" height="716" fill="none" stroke="#1d3a40" stroke-width="3"/>
+  <rect x="33" y="33" width="1134" height="694" fill="none" stroke="#1d3a40" stroke-width="1"/>
+  <g stroke="#a07a1e" stroke-width="2.4" fill="none">
+    <path d="M48 78 q0 -30 30 -30 M78 48 h26 M48 78 v26"/>
+    <path d="M1152 78 q0 -30 -30 -30 M1122 48 h-26 M1152 78 v26"/>
+    <path d="M48 682 q0 30 30 30 M78 712 h26 M48 682 v-26"/>
+    <path d="M1152 682 q0 30 -30 30 M1122 712 h-26 M1152 682 v-26"/>
+  </g>
+  <g fill="#b85c2f"><circle cx="78" cy="78" r="3.4"/><circle cx="1122" cy="78" r="3.4"/><circle cx="78" cy="682" r="3.4"/><circle cx="1122" cy="682" r="3.4"/></g>
+
+  <!-- the RIVER: a broad band sweeping from upper-left (the norm) to lower-right (the "degeneration" they fear), narrowing downstream into a cataract -->
+  <path d="M70 250 C 360 250 360 360 600 380 C 860 402 980 470 1130 560 L 1130 660 C 980 580 860 512 600 492 C 360 470 360 360 70 360 Z"
+        fill="url(#mb2-water)"/>
+  <!-- current streamlines -->
+  <g stroke="#1d3a40" stroke-width="1.3" fill="none" opacity="0.4" filter="url(#mb2-rough)">
+    <path d="M120 300 C 380 300 380 405 600 425 C 840 447 960 510 1110 600"/>
+    <path d="M120 330 C 380 330 380 432 600 452 C 840 474 960 530 1110 622"/>
+    <path d="M120 275 C 380 275 380 385 600 405 C 840 427 960 492 1110 582"/>
+  </g>
+
+  <!-- riverbanks (hatched land) -->
+  <path d="M70 250 C 360 250 360 360 600 380 C 360 360 360 250 70 250 Z" fill="none"/>
+  <rect x="34" y="80" width="1132" height="172" fill="url(#mb2-hatch)" opacity="0.22"/>
+
+  <!-- downstream cataract / drop the host denies he is heading toward -->
+  <path d="M1060 560 L 1130 560 L 1130 700 L 1040 700 Z" fill="url(#mb2-cliff)"/>
+  <g stroke="#a3242c" stroke-width="1.6" opacity="0.6">
+    <line x1="1070" y1="585" x2="1066" y2="690"/><line x1="1092" y1="585" x2="1090" y2="690"/><line x1="1112" y1="588" x2="1112" y2="690"/>
+  </g>
+
+  <!-- distance bracket: "100 m" between the two boats -->
+  <g stroke="#a07a1e" stroke-width="1.6" fill="none">
+    <path d="M430 200 H 760"/>
+    <path d="M430 192 V 208 M760 192 V 208"/>
+  </g>
+  <g transform="translate(595 196)">
+    <rect x="-58" y="-20" width="116" height="34" rx="3" fill="#f4ecd9" stroke="#a07a1e" stroke-width="1.2"/>
+    <text x="0" y="3" text-anchor="middle" font-family="'Inter Tight', Helvetica, sans-serif" font-size="15" letter-spacing="2" fill="#a07a1e">≈ 100 m</text>
+  </g>
+
+  <!-- BOAT 1: the host (G) — upstream, thinks he is moored at the safe norm -->
+  <g transform="translate(360 372)">
+    <!-- hull -->
+    <path d="M-70 0 q70 46 140 0 q-12 26 -70 26 q-58 0 -70 -26 Z" fill="#1d3a40"/>
+    <path d="M-70 0 q70 46 140 0 q-12 26 -70 26 q-58 0 -70 -26 Z" fill="url(#mb2-hatch)" opacity="0.5"/>
+    <!-- mast + small sail -->
+    <line x1="6" y1="0" x2="6" y2="-78" stroke="#1d3a40" stroke-width="3"/>
+    <path d="M6 -74 L 60 -20 L 6 -20 Z" fill="#b85c2f" opacity="0.9"/>
+    <path d="M6 -74 L 60 -20 L 6 -20 Z" fill="url(#mb2-halftone)" opacity="0.3"/>
+    <!-- silhouette figure with monogram -->
+    <g transform="translate(-22 -40)">
+      <path d="M14 30 C 14 6 0 6 0 -6 a14 14 0 0 1 28 0 C 28 6 14 6 14 30 Z" fill="#1d3a40"/>
+      <circle cx="14" cy="-9" r="6" fill="none" stroke="#f4ecd9" stroke-width="1.2"/>
+      <text x="14" y="-5.5" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="9" font-style="italic" fill="#f4ecd9">G</text>
+    </g>
+    <!-- a useless anchor line: he believes he is moored, but it trails free -->
+    <path d="M-60 14 q-30 30 -10 60" stroke="#a3242c" stroke-width="2" fill="none" stroke-dasharray="3 6"/>
+  </g>
+
+  <!-- BOAT 2: Schlomo (S) — downstream, openly riding the same current -->
+  <g transform="translate(700 432)">
+    <path d="M-64 0 q64 42 128 0 q-11 24 -64 24 q-53 0 -64 -24 Z" fill="#1d3a40"/>
+    <path d="M-64 0 q64 42 128 0 q-11 24 -64 24 q-53 0 -64 -24 Z" fill="url(#mb2-hatch)" opacity="0.5"/>
+    <line x1="4" y1="0" x2="4" y2="-72" stroke="#1d3a40" stroke-width="3"/>
+    <path d="M4 -68 L 52 -18 L 4 -18 Z" fill="#a07a1e" opacity="0.9"/>
+    <g transform="translate(-20 -36)">
+      <path d="M14 28 C 14 6 0 6 0 -5 a13 13 0 0 1 26 0 C 26 6 14 6 14 28 Z" fill="#1d3a40"/>
+      <circle cx="13" cy="-8" r="5.5" fill="none" stroke="#f4ecd9" stroke-width="1.2"/>
+      <text x="13" y="-4.5" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="8.5" font-style="italic" fill="#f4ecd9">S</text>
+    </g>
+  </g>
+
+  <!-- flag markers on the banks: where each plants the line. Same river, different flags. -->
+  <g transform="translate(300 250)"><line x1="0" y1="0" x2="0" y2="-46" stroke="#1d3a40" stroke-width="2.5"/><path d="M0 -46 h34 l-9 9 l9 9 h-34 Z" fill="#b85c2f"/></g>
+  <g transform="translate(820 480)"><line x1="0" y1="0" x2="0" y2="-46" stroke="#1d3a40" stroke-width="2.5"/><path d="M0 -46 h34 l-9 9 l9 9 h-34 Z" fill="#a07a1e"/></g>
+
+  <!-- the pointe as a banner in the current -->
+  <g transform="translate(600 300)">
+    <rect x="-250" y="-26" width="500" height="48" rx="3" fill="#f4ecd9" stroke="#1d3a40" stroke-width="1.4" opacity="0.95"/>
+    <text x="0" y="6" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic" font-size="22" fill="#1d3a40">Derselbe Strom — nur weiter unten</text>
+  </g>
+
+  <!-- title cartouche -->
+  <g transform="translate(600 660)">
+    <rect x="-380" y="-34" width="760" height="62" fill="#1d3a40"/>
+    <rect x="-372" y="-26" width="744" height="46" fill="none" stroke="#a07a1e" stroke-width="1"/>
+    <text x="0" y="-4" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="24" letter-spacing="0.5" fill="#f4ecd9">»Du sitzt nur hundert Meter weiter im Fluss«</text>
+    <text x="0" y="16" text-anchor="middle" font-family="'Inter Tight', Helvetica, sans-serif" font-size="11" letter-spacing="3" fill="#a07a1e">TEIL II · DER ENTLARVTE MORALIST</text>
+  </g>
+</svg>
+<figcaption class="b-bild__cap" style="font-family:'Inter Tight',Helvetica,sans-serif;font-size:.8rem;color:var(--primary);padding:.7em 1em;border-top:1px solid var(--erule);background:var(--pcard);">
+  <strong>Meisterbild II.</strong> Illustratives Vintage-SVG (kein Foto, keine Daten): Beide Boote treiben auf <em>demselben</em> Strom Richtung Katarakt — der Gastgeber (G) glaubt sich verankert, seine Leine läuft jedoch frei; Schlomo (S) sitzt sichtbar hundert Meter weiter stromab. Bildmetapher zu Schlomos Vorwurf, der Gastgeber sei ein verdeckter Moralist.
+</figcaption>
+</figure>
+
+    <p>Der Gastgeber will als der Entspannte erscheinen: Jeder solle privat leben dürfen, wie er will. Doch im selben Atemzug verurteilt er anderes scharf. Über Frauen mit sehr vielen Sexualpartnern und über OnlyFans sagt er: <span class="b-iq">„Frau bumst mit 100 Typen und sowas. Das ist eine Perversion.“</span> <span class="b-src">(Min. 21:13)</span> — und über den fremdgehenden Mann: <span class="b-iq">„dann sind wir nicht beim Extrem, dann sind wir in der absoluten Normalität“</span> <span class="b-src">(Min. 26:58)</span>.</p>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Schlüsselstelle · Schlomos Pointe</div>
+      <blockquote class="b-qcard__body">„du sitzt im selben Boot. Du sitzt nur 100 m weiter runter den Fluss“</blockquote>
+      <figcaption class="b-qcard__cite">Schlomo Finkelstein · Min. 26:20</figcaption>
+      <div class="b-qcard__t"><strong>Was heißt das?</strong> Wer eine Praktik „Perversion“ nennt, vertritt selbst ein moralisches Stigma — nur an einer anderen Stelle der Skala. Der Unterschied zu Schlomo sei graduell, nicht grundsätzlich.</div>
+      <div class="b-qcard__c"><strong>Warum wichtig?</strong> Das ist der stärkste logische Treffer des Gesprächs: Es entlarvt die Selbstbeschreibung des Gastgebers als „der, der keine Stigmata hat“, als unhaltbar.</div>
+    </figure>
+
+    <p>Der Gastgeber rettet sich in eine feinere Unterscheidung: Nicht die Frau sei pervers, sondern dass die Gesellschaft sie überhaupt so weit gebracht habe. Schlomo kontert, das sei nur eine verklausulierte Variante derselben Abwertung — wie der Christ, der nicht „du bist sündig“, sondern „die Gesellschaft ist sündig“ sage. Dann wird der Streit zur Suche nach einer <em>Grenze</em>: Ab welchem Grad von Abweichung darf man „degeneriert“ sagen, ohne das Lager zu spalten?</p>
+
+    <div class="b-box plain">
+      <p class="b-box__lbl">→ Was bedeutet das konkret?</p>
+      <p>„In eine Form gießen“ heißt bei Schlomo: Eine Gesellschaft kanalisiert Sexualität durch Regeln und Erwartungen. Der Gastgeber sagt, das passiere ohnehin von selbst und in jeder Beziehung verschieden; man brauche dafür keine Abwertung. Schlomo sagt, ohne eine solche Form zerbreche die Ordnung.</p>
+    </div>
+
+    <p>Der Gastgeber beklagt, eine solche Regel zwinge dazu, „auf Eierschalen“ zu laufen, sobald man über Sex rede. Schlomo bestreitet, das zu fordern. Eine klare Grenze nennt keiner: Schlomo sagt, die Grenze sei „individuell verschieden“ — womit die gesuchte allgemeine Regel im Sand verläuft.</p>
+
+    <figure class="b-bild">
+      <div class="b-bild__frame">
+        <svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration: zwei Boote auf demselben Fluss an verschiedenen Punkten">
+          <rect width="700" height="240" fill="#f4ecd9"/>
+          <!-- river -->
+          <path d="M0 150 C 120 120, 240 180, 360 150 S 600 120, 700 150 L 700 240 L 0 240 Z" fill="#2c5057" opacity="0.92"/>
+          <path d="M0 150 C 120 120, 240 180, 360 150 S 600 120, 700 150" fill="none" stroke="#1d3a40" stroke-width="2"/>
+          <!-- current dots -->
+          <g fill="#a8c0bf" opacity="0.6">
+            <circle cx="90" cy="178" r="2.5"/><circle cx="170" cy="196" r="2.5"/><circle cx="260" cy="186" r="2.5"/><circle cx="360" cy="200" r="2.5"/><circle cx="470" cy="184" r="2.5"/><circle cx="560" cy="196" r="2.5"/><circle cx="640" cy="186" r="2.5"/>
+          </g>
+          <!-- boat A (host) -->
+          <g transform="translate(210,150)">
+            <path d="M-34 0 Q0 26 34 0 Z" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2"/>
+            <line x1="0" y1="0" x2="0" y2="-34" stroke="#1d3a40" stroke-width="2"/>
+            <path d="M0 -34 L20 -16 L0 -16 Z" fill="#1d3a40"/>
+            <text x="0" y="34" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="13" fill="#1d3a40">Gastgeber</text>
+          </g>
+          <!-- boat B (schlomo) further downstream -->
+          <g transform="translate(520,150)">
+            <path d="M-34 0 Q0 26 34 0 Z" fill="#f4ecd9" stroke="#b85c2f" stroke-width="2"/>
+            <line x1="0" y1="0" x2="0" y2="-34" stroke="#b85c2f" stroke-width="2"/>
+            <path d="M0 -34 L20 -16 L0 -16 Z" fill="#b85c2f"/>
+            <text x="0" y="34" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="13" fill="#8f441f">Schlomo</text>
+          </g>
+          <text x="350" y="42" text-anchor="middle" font-family="'Newsreader',serif" font-style="italic" font-size="20" fill="#3a444c">derselbe Fluss — nur ein Stück weiter</text>
+        </svg>
+      </div>
+      <figcaption class="b-bild__cap"><span>Illustrative Motiv-Bühne zur Fluss-Metapher des Gesprächs (Min. 22:29 / 26:20).</span><span class="src">SVG · kein Foto, kein Datendiagramm</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- DIVIDER III -->
+<div class="b-divider"><div class="wrap">
+  <p class="b-divider__eyebrow">Teil III · Braucht Gesellschaft eine Form?</p>
+  <h2 class="b-divider__h">Geschichte als Beweismittel</h2>
+  <p class="b-divider__dek">Schlomo führt die ganze Menschheitsgeschichte ins Feld. Der Gastgeber bestreitet die Lesart.</p>
+</div></div>
+
+<!-- SECTION 4 -->
+<section class="sec" id="form">
+  <div class="wrap">
+    <p class="sec__eyebrow">04 · Das historistische Argument</p>
+    <h2>„Hätte es funktioniert, hätte es das schon gegeben“</h2>
+    <p class="sec__dek">Schlomos stärkster Baustein ist ein Verweis auf alle bekannten Kulturen.</p>
+
+    <figure class="b-bild" style="margin:2.2em 0;">
+<svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Meisterbild: Eine Reihe historischer Gefäße gibt der Sexualität Form — am Ende ein leeres Postament, in das nichts gegossen wurde" style="display:block;width:100%;height:auto;background:#f4ecd9;">
+  <defs>
+    <pattern id="mb3-halftone" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><circle cx="3" cy="3" r="1.15" fill="#1d3a40" opacity="0.5"/></pattern>
+    <pattern id="mb3-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#1d3a40" stroke-width="0.8" opacity="0.35"/></pattern>
+    <linearGradient id="mb3-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b85c2f" stop-opacity="0.85"/><stop offset="100%" stop-color="#a07a1e" stop-opacity="0.9"/></linearGradient>
+    <linearGradient id="mb3-spill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b85c2f" stop-opacity="0.85"/><stop offset="100%" stop-color="#b85c2f" stop-opacity="0.05"/></linearGradient>
+    <filter id="mb3-rough"><feTurbulence type="fractalNoise" baseFrequency="0.02 0.05" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5"/></filter>
+  </defs>
+
+  <rect width="1200" height="760" fill="#f4ecd9"/>
+  <rect width="1200" height="760" fill="url(#mb3-halftone)" opacity="0.06"/>
+  <rect x="22" y="22" width="1156" height="716" fill="none" stroke="#1d3a40" stroke-width="3"/>
+  <rect x="33" y="33" width="1134" height="694" fill="none" stroke="#1d3a40" stroke-width="1"/>
+  <g stroke="#a07a1e" stroke-width="2.4" fill="none">
+    <path d="M48 78 q0 -30 30 -30 M78 48 h26 M48 78 v26"/><path d="M1152 78 q0 -30 -30 -30 M1122 48 h-26 M1152 78 v26"/>
+    <path d="M48 682 q0 30 30 30 M78 712 h26 M48 682 v-26"/><path d="M1152 682 q0 30 -30 30 M1122 712 h-26 M1152 682 v-26"/>
+  </g>
+  <g fill="#b85c2f"><circle cx="78" cy="78" r="3.4"/><circle cx="1122" cy="78" r="3.4"/><circle cx="78" cy="682" r="3.4"/><circle cx="1122" cy="682" r="3.4"/></g>
+
+  <!-- museum shelf / frieze line -->
+  <rect x="60" y="548" width="1080" height="16" fill="#1d3a40"/>
+  <rect x="60" y="548" width="1080" height="16" fill="url(#mb3-hatch)" opacity="0.4"/>
+  <line x1="60" y1="540" x2="1140" y2="540" stroke="#a07a1e" stroke-width="1.4" opacity="0.7"/>
+
+  <!-- FOUR HISTORICAL VESSELS, each shaping the same material into a held form. Abstract stamps (I–IV), no real religious symbols. -->
+  <!-- vessel template via reuse: drawn inline 4× with shifts -->
+  <g transform="translate(150 548)">
+    <!-- amphora body -->
+    <path d="M-58 -200 q-30 60 -10 120 q12 40 68 40 q56 0 68 -40 q20 -60 -10 -120 q-22 14 -58 14 q-36 0 -58 -14 Z" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.4"/>
+    <path d="M-58 -200 q-30 60 -10 120 q12 40 68 40 q56 0 68 -40 q20 -60 -10 -120 q-22 14 -58 14 q-36 0 -58 -14 Z" fill="url(#mb3-hatch)" opacity="0.18"/>
+    <!-- neck + handles -->
+    <path d="M-30 -210 q30 18 60 0 l-6 -34 q-24 12 -48 0 Z" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.4"/>
+    <path d="M-30 -236 q-34 6 -28 50" fill="none" stroke="#1d3a40" stroke-width="3"/><path d="M30 -236 q34 6 28 50" fill="none" stroke="#1d3a40" stroke-width="3"/>
+    <!-- the contained material, in a defined level -->
+    <path d="M-50 -120 q10 30 60 30 q50 0 60 -30 q4 -28 -4 -52 q-22 12 -56 12 q-34 0 -56 -12 q-8 24 -4 52 Z" fill="url(#mb3-fill)"/>
+    <!-- stamp -->
+    <circle cx="0" cy="-150" r="18" fill="none" stroke="#1d3a40" stroke-width="1.6"/>
+    <text x="0" y="-144" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic" font-size="18" fill="#1d3a40">I</text>
+    <text x="0" y="26" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="11" letter-spacing="1.5" fill="#1d3a40">KULTUR</text>
+  </g>
+  <g transform="translate(390 548)">
+    <path d="M-58 -200 q-30 60 -10 120 q12 40 68 40 q56 0 68 -40 q20 -60 -10 -120 q-22 14 -58 14 q-36 0 -58 -14 Z" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.4"/>
+    <path d="M-58 -200 q-30 60 -10 120 q12 40 68 40 q56 0 68 -40 q20 -60 -10 -120 q-22 14 -58 14 q-36 0 -58 -14 Z" fill="url(#mb3-hatch)" opacity="0.18"/>
+    <path d="M-30 -210 q30 18 60 0 l-6 -34 q-24 12 -48 0 Z" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.4"/>
+    <path d="M-30 -236 q-34 6 -28 50" fill="none" stroke="#1d3a40" stroke-width="3"/><path d="M30 -236 q34 6 28 50" fill="none" stroke="#1d3a40" stroke-width="3"/>
+    <path d="M-50 -120 q10 30 60 30 q50 0 60 -30 q4 -28 -4 -52 q-22 12 -56 12 q-34 0 -56 -12 q-8 24 -4 52 Z" fill="url(#mb3-fill)"/>
+    <circle cx="0" cy="-150" r="18" fill="none" stroke="#1d3a40" stroke-width="1.6"/>
+    <text x="0" y="-144" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic" font-size="18" fill="#1d3a40">II</text>
+    <text x="0" y="26" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="11" letter-spacing="1.5" fill="#1d3a40">RELIGION</text>
+  </g>
+  <g transform="translate(630 548)">
+    <path d="M-58 -200 q-30 60 -10 120 q12 40 68 40 q56 0 68 -40 q20 -60 -10 -120 q-22 14 -58 14 q-36 0 -58 -14 Z" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.4"/>
+    <path d="M-58 -200 q-30 60 -10 120 q12 40 68 40 q56 0 68 -40 q20 -60 -10 -120 q-22 14 -58 14 q-36 0 -58 -14 Z" fill="url(#mb3-hatch)" opacity="0.18"/>
+    <path d="M-30 -210 q30 18 60 0 l-6 -34 q-24 12 -48 0 Z" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.4"/>
+    <path d="M-30 -236 q-34 6 -28 50" fill="none" stroke="#1d3a40" stroke-width="3"/><path d="M30 -236 q34 6 28 50" fill="none" stroke="#1d3a40" stroke-width="3"/>
+    <path d="M-50 -120 q10 30 60 30 q50 0 60 -30 q4 -28 -4 -52 q-22 12 -56 12 q-34 0 -56 -12 q-8 24 -4 52 Z" fill="url(#mb3-fill)"/>
+    <circle cx="0" cy="-150" r="18" fill="none" stroke="#1d3a40" stroke-width="1.6"/>
+    <text x="0" y="-144" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic" font-size="18" fill="#1d3a40">III</text>
+    <text x="0" y="26" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="11" letter-spacing="1.5" fill="#1d3a40">ZIVILISATION</text>
+  </g>
+
+  <!-- VESSEL IV: subtly cracked, but still holding — the present order under strain -->
+  <g transform="translate(850 548)">
+    <path d="M-58 -200 q-30 60 -10 120 q12 40 68 40 q56 0 68 -40 q20 -60 -10 -120 q-22 14 -58 14 q-36 0 -58 -14 Z" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.4"/>
+    <path d="M-58 -200 q-30 60 -10 120 q12 40 68 40 q56 0 68 -40 q20 -60 -10 -120 q-22 14 -58 14 q-36 0 -58 -14 Z" fill="url(#mb3-hatch)" opacity="0.18"/>
+    <path d="M-30 -210 q30 18 60 0 l-6 -34 q-24 12 -48 0 Z" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.4"/>
+    <path d="M-30 -236 q-34 6 -28 50" fill="none" stroke="#1d3a40" stroke-width="3"/><path d="M30 -236 q34 6 28 50" fill="none" stroke="#1d3a40" stroke-width="3"/>
+    <path d="M-50 -120 q10 30 60 30 q50 0 60 -30 q4 -28 -4 -52 q-22 12 -56 12 q-34 0 -56 -12 q-8 24 -4 52 Z" fill="url(#mb3-fill)"/>
+    <!-- hairline crack -->
+    <path d="M18 -196 l-10 40 l14 22 l-8 34" fill="none" stroke="#a3242c" stroke-width="1.6" opacity="0.8"/>
+    <circle cx="0" cy="-150" r="18" fill="none" stroke="#1d3a40" stroke-width="1.6"/>
+    <text x="0" y="-144" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic" font-size="18" fill="#1d3a40">IV</text>
+    <text x="0" y="26" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="11" letter-spacing="1.5" fill="#1d3a40">HEUTE</text>
+  </g>
+
+  <!-- THE LIBERTARIAN POSITION: an empty pedestal, no vessel; material poured from above runs off formless -->
+  <g transform="translate(1060 548)">
+    <!-- empty plinth -->
+    <rect x="-46" y="-70" width="92" height="70" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.4"/>
+    <rect x="-46" y="-70" width="92" height="70" fill="url(#mb3-hatch)" opacity="0.12"/>
+    <!-- pour from above, no container, spreading thin on the plinth top and dripping off -->
+    <path d="M0 -210 q-4 60 -2 120 q-2 14 -2 22" stroke="url(#mb3-spill)" stroke-width="14" fill="none" stroke-linecap="round" filter="url(#mb3-rough)"/>
+    <path d="M-44 -70 q44 -14 88 0 q-10 10 -44 10 q-34 0 -44 -10 Z" fill="#b85c2f" opacity="0.55"/>
+    <path d="M-40 -62 q-14 26 -30 60" stroke="url(#mb3-spill)" stroke-width="6" fill="none" filter="url(#mb3-rough)"/>
+    <path d="M40 -62 q14 26 30 60" stroke="url(#mb3-spill)" stroke-width="6" fill="none" filter="url(#mb3-rough)"/>
+    <!-- question stamp where a vessel-mark would be -->
+    <circle cx="0" cy="-118" r="20" fill="#f4ecd9" stroke="#a3242c" stroke-width="1.8"/>
+    <text x="0" y="-110" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic" font-size="26" fill="#a3242c">?</text>
+    <text x="0" y="26" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="11" letter-spacing="1.2" fill="#a3242c">KEINE FORM</text>
+  </g>
+
+  <!-- speaker tag (Schlomo's argument) -->
+  <g transform="translate(150 120)">
+    <path d="M14 30 C 14 6 0 6 0 -6 a14 14 0 0 1 28 0 C 28 6 14 6 14 30 Z" fill="#1d3a40"/>
+    <circle cx="14" cy="-9" r="6" fill="none" stroke="#f4ecd9" stroke-width="1.2"/>
+    <text x="14" y="-5.5" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="9" font-style="italic" fill="#f4ecd9">S</text>
+    <text x="42" y="2" font-family="'Inter Tight',Helvetica,sans-serif" font-size="12" letter-spacing="2" fill="#1d3a40">DAS ARGUMENT VON SCHLOMO</text>
+  </g>
+
+  <!-- Leitsatz banner -->
+  <g transform="translate(600 270)">
+    <rect x="-300" y="-28" width="600" height="52" rx="3" fill="#f4ecd9" stroke="#1d3a40" stroke-width="1.4" opacity="0.96"/>
+    <text x="0" y="7" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic" font-size="24" fill="#1d3a40">Jede Kultur goss es in eine Form — der libertäre Weg in keine</text>
+  </g>
+
+  <!-- title cartouche -->
+  <g transform="translate(600 665)">
+    <rect x="-400" y="-32" width="800" height="60" fill="#1d3a40"/>
+    <rect x="-392" y="-24" width="784" height="44" fill="none" stroke="#a07a1e" stroke-width="1"/>
+    <text x="0" y="-3" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="23" letter-spacing="0.4" fill="#f4ecd9">»Hätte es funktioniert, hätte es das schon gegeben«</text>
+    <text x="0" y="16" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="11" letter-spacing="3" fill="#a07a1e">TEIL III · DAS HISTORISTISCHE ARGUMENT</text>
+  </g>
+</svg>
+<figcaption class="b-bild__cap" style="font-family:'Inter Tight',Helvetica,sans-serif;font-size:.8rem;color:var(--primary);padding:.7em 1em;border-top:1px solid var(--erule);background:var(--pcard);">
+  <strong>Meisterbild III.</strong> Illustratives Vintage-SVG (kein Foto, keine Daten): Eine Reihe historischer Gefäße (Kultur · Religion · Zivilisation · Heute) hält dieselbe Substanz jeweils in fester Form — am Ende ein leeres Postament mit „?“, in das nichts gegossen wurde und das die Flüssigkeit formlos ablaufen lässt. Die Stempel I–IV sind abstrakte Marken, keine realen Symbole. Bildmetapher zu Schlomos Historizismus-Argument.
+</figcaption>
+</figure>
+
+    <p>Schlomos These: Jede Zivilisation habe Sexualnormen durch Stigmata durchgesetzt; der libertäre Weg, gar keine Form vorzugeben, habe nie existiert — und Gruppen, die so lebten, seien im Wettbewerb mit anderen untergegangen.</p>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Beleg · der historistische Kern</div>
+      <blockquote class="b-qcard__body">„der libertäre Weg, wir gießen es in gar keine Form.“</blockquote>
+      <figcaption class="b-qcard__cite">Schlomo Finkelstein · Min. 15:31</figcaption>
+      <div class="b-qcard__t"><strong>Was heißt das?</strong> Der Gastgeber wolle Sexualität in keine verbindliche Form zwingen. Schlomo hält das für eine Utopie, die sich nirgends bewährt habe.</div>
+      <div class="b-qcard__c"><strong>Warum wichtig?</strong> Er macht aus einer Wertfrage eine scheinbare Tatsachenfrage: Was sich nie durchgesetzt habe, könne nicht funktionieren.</div>
+    </figure>
+
+    <p>Direkt im Anschluss fügt er den Schluss an: <span class="b-iq">„Wenn das funktionieren würde, dann hätte es das schon mal gegeben.“</span> <span class="b-src">(Min. 15:31)</span> Und er fordert den Gastgeber heraus, ihm eine Kultur zu nennen, die ohne solche Urteile auskam: <span class="b-iq">„keine Religion, keine Zivilisation nennen, die es jemals gab, in der das nicht der Fall war“</span> <span class="b-src">(Min. 15:14)</span>.</p>
+
+    <p>Der Gastgeber widerspricht der Geschichtsdeutung: Monogamie sei eine relativ junge Erfindung. Kaiser, Könige und Mächtige hätten nie monogam gelebt; das Modell habe man erst eingeführt, um Männer einzubinden und Frauen „gerechter“ zu verteilen. Erst die Moderne gebe der Bevölkerung überhaupt die Wahl — vorher hätten Machthaber entschieden.</p>
+
+    <figure class="b-bild">
+      <div class="b-bild__frame">
+        <svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration: ein Gefäß, in das Formen fallen, einige bleiben außen">
+          <rect width="700" height="240" fill="#f4ecd9"/>
+          <!-- vessel -->
+          <g transform="translate(350,128)">
+            <path d="M-70 -40 L70 -40 L58 70 Q0 90 -58 70 Z" fill="none" stroke="#1d3a40" stroke-width="3"/>
+            <path d="M-70 -40 Q0 -22 70 -40" fill="none" stroke="#1d3a40" stroke-width="2"/>
+            <!-- shapes inside -->
+            <circle cx="-22" cy="20" r="11" fill="#2c5057"/>
+            <rect x="6" y="6" width="22" height="22" rx="3" fill="#b85c2f"/>
+            <path d="M-6 50 l12 0 l-6 -12 z" fill="#a07a1e"/>
+          </g>
+          <!-- shapes outside (do not fit) -->
+          <g opacity="0.85">
+            <path d="M120 70 l16 0 l-8 -16 z" fill="none" stroke="#8f441f" stroke-width="2.5"/>
+            <rect x="540" y="60" width="22" height="22" rx="3" fill="none" stroke="#8f441f" stroke-width="2.5" transform="rotate(18 551 71)"/>
+            <circle cx="600" cy="150" r="11" fill="none" stroke="#8f441f" stroke-width="2.5"/>
+          </g>
+          <text x="350" y="42" text-anchor="middle" font-family="'Newsreader',serif" font-style="italic" font-size="20" fill="#3a444c">„in eine Form gießen“ — und was außen bleibt</text>
+        </svg>
+      </div>
+      <figcaption class="b-bild__cap"><span>Illustratives Motiv zur „Form“-Metapher (Min. 13:36–15:31).</span><span class="src">SVG · kein Foto, kein Datendiagramm</span></figcaption>
+    </figure>
+
+    <p class="sec__eyebrow" style="margin-top:2em;">05 · Das Social-Engineering-Paradox</p>
+    <h3>Beides gleichzeitig wahr?</h3>
+    <p>Hier landet der Gastgeber seinen besten Treffer gegen Schlomo. Schlomo glaubt einerseits, der heutige „Transtrend“ sei von außen gesteuert worden (Social Engineering); andererseits glaube er, ein Steuern in die Gegenrichtung — weg von der Ausartung — bringe nichts, weil Menschen sich ihre Bahn ohnehin suchten. Der Gastgeber fragt: Wie kann gesellschaftliches Umformen in die eine Richtung funktionieren, in die andere aber wirkungslos sein? Das ergebe keinen Sinn.</p>
+
+    <div class="b-box plain">
+      <p class="b-box__lbl">→ Was bedeutet das konkret?</p>
+      <p>„Social Engineering“ heißt: gezielt das Verhalten einer ganzen Gesellschaft umbauen. Der Gastgeber sagt zu Schlomo: Du kannst nicht behaupten, dass Propaganda Menschen ins Extrem treiben kann, aber gleichzeitig, dass Erziehung zur Mäßigung folgenlos bleibt. Entweder Gesellschaft ist formbar — oder nicht.</p>
+    </div>
+
+    <p>Schlomo gibt teilweise nach: Natürlich könne man Strömungen verstärken (Beispiel: die Veränderung der Frauenrolle seit den 1970ern). Sein Punkt sei nur, dass starke <em>Unterdrückung</em> einer Neigung sie nicht beseitige, sondern sie sich „ihre Bahn“ suche. Der Gastgeber hält dagegen, dass damit Schlomos eigene Logik (alle Gesellschaften <em>mussten</em> Stigmata haben) untergraben werde.</p>
+  </div>
+</section>
+
+<!-- DIVIDER IV -->
+<div class="b-divider"><div class="wrap">
+  <p class="b-divider__eyebrow">Teil IV · Korrelation, Remigration, Staat</p>
+  <h2 class="b-divider__h">Sagt Sex etwas über Politik?</h2>
+  <p class="b-divider__dek">Der Gastgeber bestreitet jeden Zusammenhang. Schlomo sieht einen Trend Richtung Hedonismus.</p>
+</div></div>
+
+<!-- SECTION 6 -->
+<section class="sec" id="korrelation">
+  <div class="wrap">
+    <p class="sec__eyebrow">06 · Die Korrelationsfrage</p>
+    <h2>„Da gibt's überhaupt gar keine Korrelation“</h2>
+    <p class="sec__dek">Aus zwanzig Jahren Coaching zieht der Gastgeber ein empirisches Urteil — Schlomo zieht ein gegenteiliges.</p>
+
+    <figure class="b-bild" style="margin:2.2em 0;">
+<svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Meisterbild: Die durchtrennte Verbindung zwischen Privatleben und gesellschaftlichem Verfall; daneben der sich abschottende libertäre Einzelne" style="display:block;width:100%;height:auto;background:#f4ecd9;">
+  <defs>
+    <pattern id="mb4-halftone" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><circle cx="3" cy="3" r="1.15" fill="#1d3a40" opacity="0.5"/></pattern>
+    <pattern id="mb4-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#1d3a40" stroke-width="0.8" opacity="0.35"/></pattern>
+    <filter id="mb4-rough"><feTurbulence type="fractalNoise" baseFrequency="0.02 0.06" numOctaves="2" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter>
+  </defs>
+
+  <rect width="1200" height="760" fill="#f4ecd9"/>
+  <rect width="1200" height="760" fill="url(#mb4-halftone)" opacity="0.06"/>
+  <rect x="22" y="22" width="1156" height="716" fill="none" stroke="#1d3a40" stroke-width="3"/>
+  <rect x="33" y="33" width="1134" height="694" fill="none" stroke="#1d3a40" stroke-width="1"/>
+  <g stroke="#a07a1e" stroke-width="2.4" fill="none">
+    <path d="M48 78 q0 -30 30 -30 M78 48 h26 M48 78 v26"/><path d="M1152 78 q0 -30 -30 -30 M1122 48 h-26 M1152 78 v26"/>
+    <path d="M48 682 q0 30 30 30 M78 712 h26 M48 682 v-26"/><path d="M1152 682 q0 30 -30 30 M1122 712 h-26 M1152 682 v-26"/>
+  </g>
+  <g fill="#b85c2f"><circle cx="78" cy="78" r="3.4"/><circle cx="1122" cy="78" r="3.4"/><circle cx="78" cy="682" r="3.4"/><circle cx="1122" cy="682" r="3.4"/></g>
+
+  <!-- vertical divider between the two halves of the plate -->
+  <line x1="600" y1="120" x2="600" y2="600" stroke="#cfc4a8" stroke-width="1.4" stroke-dasharray="2 7"/>
+
+  <!-- LEFT HALF: the correlation question — two phenomena, link cut -->
+  <text x="300" y="118" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="12" letter-spacing="2.5" fill="#1d3a40">06 · DIE KORRELATIONSFRAGE</text>
+
+  <!-- phenomenon A: private life (a curtained alcove) -->
+  <g transform="translate(150 250)">
+    <rect x="0" y="0" width="170" height="200" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.2"/>
+    <rect x="0" y="0" width="170" height="200" fill="url(#mb4-hatch)" opacity="0.15"/>
+    <!-- arch + drawn curtains -->
+    <path d="M14 40 q71 -46 142 0" fill="none" stroke="#1d3a40" stroke-width="2"/>
+    <path d="M22 40 q22 80 4 152 q26 8 40 0 q-10 -78 0 -152 Z" fill="#b85c2f" opacity="0.55"/>
+    <path d="M148 40 q-22 80 -4 152 q-26 8 -40 0 q10 -78 0 -152 Z" fill="#b85c2f" opacity="0.55"/>
+    <text x="85" y="232" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="13" letter-spacing="1" fill="#1d3a40">PRIVATLEBEN</text>
+  </g>
+
+  <!-- phenomenon B: societal decline (a crumbling column) -->
+  <g transform="translate(420 250)">
+    <rect x="0" y="180" width="120" height="20" fill="#1d3a40"/>
+    <!-- broken column shaft -->
+    <path d="M20 180 L 24 70 L 96 70 L 100 180 Z" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.2"/>
+    <path d="M20 180 L 24 70 L 96 70 L 100 180 Z" fill="url(#mb4-hatch)" opacity="0.15"/>
+    <!-- flutes -->
+    <g stroke="#1d3a40" stroke-width="1" opacity="0.5"><line x1="40" y1="74" x2="38" y2="178"/><line x1="60" y1="72" x2="60" y2="178"/><line x1="80" y1="74" x2="82" y2="178"/></g>
+    <!-- sheared top + falling fragments -->
+    <path d="M22 70 l16 -22 l20 14 l18 -16 l22 18 l-4 6 L 24 70 Z" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.2"/>
+    <g fill="#a3242c" opacity="0.7"><path d="M104 40 l16 8 l-6 16 l-16 -6 Z"/><path d="M120 70 l14 10 l-8 14 l-14 -8 Z"/></g>
+    <text x="60" y="232" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="13" letter-spacing="1" fill="#a3242c">VERFALL</text>
+  </g>
+
+  <!-- the cord the right wants to draw between them — but it is cut -->
+  <path d="M322 320 q40 -30 96 0" fill="none" stroke="#1d3a40" stroke-width="3" filter="url(#mb4-rough)"/>
+  <!-- cut gap + frayed ends -->
+  <g stroke="#1d3a40" stroke-width="3" filter="url(#mb4-rough)">
+    <path d="M360 305 l-8 8 M364 309 l-6 9"/><path d="M380 305 l8 8 M376 309 l6 9"/>
+  </g>
+  <!-- scissors over the cut -->
+  <g transform="translate(370 296) rotate(20)" stroke="#a3242c" stroke-width="2.4" fill="none">
+    <circle cx="-10" cy="14" r="6"/><circle cx="10" cy="14" r="6"/>
+    <path d="M-10 8 L 8 -16"/><path d="M10 8 L -8 -16"/>
+  </g>
+  <!-- label -->
+  <g transform="translate(370 220)">
+    <rect x="-92" y="-20" width="184" height="34" rx="3" fill="#f4ecd9" stroke="#a3242c" stroke-width="1.4"/>
+    <text x="0" y="3" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="13" letter-spacing="1.5" fill="#a3242c">KEINE KORRELATION</text>
+  </g>
+
+  <!-- RIGHT HALF: the libertarian core — the bounded self rejecting the state's threads -->
+  <text x="900" y="118" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="12" letter-spacing="2.5" fill="#1d3a40">07 · DER LIBERTÄRE KERN</text>
+
+  <!-- the distant State edifice (a faltering institutional block) -->
+  <g transform="translate(1040 250)">
+    <rect x="0" y="40" width="120" height="150" fill="#e4e8e6" stroke="#1d3a40" stroke-width="2.2"/>
+    <rect x="0" y="40" width="120" height="150" fill="url(#mb4-hatch)" opacity="0.18"/>
+    <path d="M-6 40 L 60 4 L 126 40 Z" fill="#1d3a40"/>
+    <g stroke="#1d3a40" stroke-width="2"><line x1="22" y1="40" x2="22" y2="190"/><line x1="60" y1="40" x2="60" y2="190"/><line x1="98" y1="40" x2="98" y2="190"/></g>
+    <text x="60" y="214" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="13" letter-spacing="1" fill="#1d3a40">DER STAAT</text>
+  </g>
+
+  <!-- the bounded individual inside a drawn circle -->
+  <circle cx="760" cy="350" r="92" fill="none" stroke="#1d3a40" stroke-width="2.4" stroke-dasharray="1 0"/>
+  <circle cx="760" cy="350" r="100" fill="none" stroke="#a07a1e" stroke-width="1" stroke-dasharray="3 6"/>
+  <g transform="translate(742 300)">
+    <path d="M18 86 C 18 36 0 36 0 6 a18 18 0 0 1 36 0 C 36 36 18 36 18 86 Z" fill="#1d3a40"/>
+    <path d="M18 86 C 18 36 0 36 0 6 a18 18 0 0 1 36 0 C 36 36 18 36 18 86 Z" fill="url(#mb4-hatch)" opacity="0.5"/>
+    <circle cx="18" cy="-1" r="8" fill="none" stroke="#f4ecd9" stroke-width="1.4"/>
+    <text x="18" y="4" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="12" font-style="italic" fill="#f4ecd9">G</text>
+  </g>
+
+  <!-- threads from the State reaching the boundary, all severed at the circle -->
+  <g stroke="#a3242c" stroke-width="2" fill="none" stroke-dasharray="4 5" opacity="0.85">
+    <path d="M1040 300 q-100 -10 -185 18"/>
+    <path d="M1040 340 q-120 0 -190 6"/>
+    <path d="M1040 380 q-110 24 -188 -10"/>
+  </g>
+  <!-- cut marks at boundary -->
+  <g stroke="#a3242c" stroke-width="2.2">
+    <path d="M862 314 l10 -8 M866 320 l10 -8"/>
+    <path d="M858 346 l12 0 M858 352 l12 0"/>
+    <path d="M860 376 l10 8 M864 370 l10 8"/>
+  </g>
+  <!-- thread labels -->
+  <text x="950" y="296" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="11" fill="#a3242c">Steuern</text>
+  <text x="958" y="362" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="11" fill="#a3242c">Gesundheitssystem</text>
+
+  <!-- the libertarian motto inside the boundary -->
+  <text x="760" y="470" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic" font-size="17" fill="#1d3a40">»Ich will von niemandem etwas.«</text>
+
+  <!-- title cartouche -->
+  <g transform="translate(600 665)">
+    <rect x="-390" y="-32" width="780" height="60" fill="#1d3a40"/>
+    <rect x="-382" y="-24" width="764" height="44" fill="none" stroke="#a07a1e" stroke-width="1"/>
+    <text x="0" y="-3" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="23" letter-spacing="0.4" fill="#f4ecd9">»Da gibt's überhaupt gar keine Korrelation«</text>
+    <text x="0" y="16" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="11" letter-spacing="3" fill="#a07a1e">TEIL IV · KORRELATION & LIBERTÄRER KERN</text>
+  </g>
+</svg>
+<figcaption class="b-bild__cap" style="font-family:'Inter Tight',Helvetica,sans-serif;font-size:.8rem;color:var(--primary);padding:.7em 1em;border-top:1px solid var(--erule);background:var(--pcard);">
+  <strong>Meisterbild IV.</strong> Illustratives Vintage-SVG (kein Foto, <em>kein</em> Daten-Streudiagramm — es liegen keine Zahlen vor): Links durchtrennt eine Schere die Schnur, die der Gastgeber zwischen <em>Privatleben</em> und gesellschaftlichem <em>Verfall</em> bestreitet („keine Korrelation“). Rechts der libertäre Einzelne (G) in gezogener Grenze, der die Fäden des Staats — Steuern, Gesundheitssystem — an der eigenen Linie kappt. Reine Relations-Metapher, keine empirische Behauptung.
+</figcaption>
+</figure>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Schlüsselstelle · die Nicht-Korrelations-These</div>
+      <blockquote class="b-qcard__body">„da gibt's überhaupt gar keine Korrelation“</blockquote>
+      <figcaption class="b-qcard__cite">Gastgeber · Min. 44:15</figcaption>
+      <div class="b-qcard__t"><strong>Was heißt das?</strong> Ob jemand sexuell „offen“ lebt, sage nichts darüber aus, wie verlässlich rechts er sei — man könne Swingerclubs besuchen und trotzdem „super hardcore konservativ“ sein.</div>
+      <div class="b-qcard__c"><strong>Warum wichtig?</strong> Damit greift der Gastgeber Schlomos eigentliche politische Sorge an: dass sexuelle Lockerung politische Weichheit bedeute.</div>
+    </figure>
+
+    <p>Schlomos Sorge ist konkret: Wer hedonistisch lebe, wolle schnellen Genuss — und neige deshalb dazu, sich der CDU anzuschmiegen und Remigration aufzugeben, statt jahrelang um eine echte Wende zu kämpfen.</p>
+    <p>Er definiert den Begriff sogar selbst: <span class="b-iq">„Hedonismus bedeutet ja, es geht mir um meine eigene Maximierung von Wohlgefühl“</span> <span class="b-src">(Min. 39:16)</span>. Der Gastgeber nennt die Grundannahme falsch: Nicht jeder, der nicht streng monogam lebe, sei aus reinem Luststreben so — manche täten es, um eine lange Beziehung zu retten.</p>
+
+    <p>An dieser Stelle ruft Schlomo den Soziologen Theodor W. Adorno auf: Der „autoritäre Charakter“ erkläre, warum die lautesten Sittenwächter oft selbst „eigene Dämonen austreiben“. Aber, schränkt Schlomo ein, das gelte nur für die ersten Ausläufer — heute seien die Kritiker normale Leute.</p>
+
+    <figure class="b-qcard">
+      <div class="b-qcard__lbl">Gegenposition · Schlomos Konter zu Adorno</div>
+      <blockquote class="b-qcard__body">„in der Regel sind das normale Leute, die einem kulturellen Gesamtkonzept folgen“</blockquote>
+      <figcaption class="b-qcard__cite">Schlomo Finkelstein · Min. 46:33</figcaption>
+      <div class="b-qcard__t"><strong>Was heißt das?</strong> Wer das Stigma verteidige, sei meist kein verklemmter Heuchler, sondern jemand, der ein Weltbild teilt, das die „moderne Auflösungsideologie“ ablehnt.</div>
+      <div class="b-qcard__c"><strong>Warum wichtig?</strong> Schlomo nimmt dem Gastgeber den psychologischen Verdacht aus der Hand und rahmt die Sittenstrenge als kulturelle, nicht neurotische Haltung.</div>
+    </figure>
+
+    <p>Der Gastgeber illustriert seine Nicht-Korrelations-These mit Anekdoten — ein hochseriöser Wiener Anwalt, der zugleich große Sexpartys organisiere; das Privatleben prominenter Köpfe wie Björn Höcke oder Martin Sellner sei dagegen unverdächtig, weil es sonst längst geleakt wäre. Sexualität und öffentliches Auftreten, sagt er, seien „so krasse Paar Schuhe“.</p>
+
+    <p class="sec__eyebrow" style="margin-top:2em;">07 · Der libertäre Kern</p>
+    <h3>Misstrauen gegen jede Macht</h3>
+    <p>Hinter allem liegt die Grundhaltung des Gastgebers: ein tiefes Misstrauen gegen den Staat. Auch eine rechte Machtübernahme werde korrumpiert; er wähle die AfD nur als „geringeres Übel“.</p>
+
+    <blockquote class="b-pull">
+      <p class="b-pull__t">„Der Staat ist halt in sich ein faules System, das immer korrumpiert wird durch Menschen.“</p>
+      <span class="b-pull__s">Gastgeber · Min. 59:53</span>
+    </blockquote>
+
+    <p>Seine Utopie formuliert er privat und unpolitisch: <span class="b-iq">„Keine Steuern, ich will auch kein Gesundheitssystem, ich will von niemanden etwas“</span> <span class="b-src">(Min. 1:01:14)</span> — die Ranch, die Familie, in Ruhe gelassen werden. Schlomo hält dem eine düstere Prognose entgegen: Eine zu schnelle Regierungsbeteiligung führe zu einem bloßen „Bremsungskurs“ bei der Migration — für ihn „das Giftigste von allem“.</p>
+
+    <blockquote class="b-pull">
+      <p class="b-pull__t">„Im Grunde genommen stimmst du mir die ganze Zeit zu, aber framest es vorher etwas um.“</p>
+      <span class="b-pull__s">Schlomo Finkelstein · Min. 10:46</span>
+    </blockquote>
+  </div>
+</section>
+
+<!-- DIVIDER ADD: PROGRESSIVE -->
+<div class="b-divider b-divider--add"><div class="wrap">
+  <p class="b-divider__eyebrow">Zusatz des Bearbeiters · nicht im Transkript</p>
+  <h2 class="b-divider__h">Die progressive Replik</h2>
+  <p class="b-divider__dek">Wie würde man beiden Lagern aus sozialdemokratischer / linksliberaler Sicht am stärksten begegnen — und wie viel Logikfehler und Moralismus steckt jeweils drin?</p>
+</div></div>
+
+<!-- SECTION 8 -->
+<section class="sec" id="replik">
+  <div class="wrap">
+    <div class="b-box memo">
+      <p class="b-box__lbl">Hinweis · Eigenleistung, kein Quellenbefund</p>
+      <p>Alles ab hier steht <strong>nicht</strong> im Transkript. Es ist eine analytische Zugabe: die stärkste Gegenrede aus sozialdemokratisch / linksliberal-progressiver Sicht und ein begründetes 0–10-Urteil zu Logikfehlern und Moralismus beider Seiten. Die Zahlen sind eine <strong>argumentierte Eigen-Einschätzung, kein Messwert</strong>; Anhänger beider Positionen würden sie bestreiten.</p>
+    </div>
+
+    <p class="sec__eyebrow">08 · Der gemeinsame blinde Fleck</p>
+    <h2>Beide streiten über das „Wie“, nicht über das „Wessen“</h2>
+    <p class="sec__dek">Die schärfste linke Klinge zielt nicht auf eine der Seiten, sondern auf ihren geteilten Rahmen.</p>
+
+    <figure class="b-bild" style="margin:2.2em 0;">
+<svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Meisterbild: Zwei Streitende ziehen einen Marker auf der Achse 'Wie regulieren' hin und her; die senkrechte Achse 'Wessen Körper, wessen Konsens' bleibt unbeachtet" style="display:block;width:100%;height:auto;background:#f4ecd9;">
+  <defs>
+    <pattern id="mb5-halftone" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><circle cx="3" cy="3" r="1.15" fill="#1d3a40" opacity="0.5"/></pattern>
+    <pattern id="mb5-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#1d3a40" stroke-width="0.8" opacity="0.35"/></pattern>
+    <linearGradient id="mb5-third" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#a07a1e" stop-opacity="0.0"/><stop offset="100%" stop-color="#a07a1e" stop-opacity="0.5"/></linearGradient>
+  </defs>
+
+  <rect width="1200" height="760" fill="#f4ecd9"/>
+  <rect width="1200" height="760" fill="url(#mb5-halftone)" opacity="0.06"/>
+  <rect x="22" y="22" width="1156" height="716" fill="none" stroke="#1d3a40" stroke-width="3"/>
+  <rect x="33" y="33" width="1134" height="694" fill="none" stroke="#1d3a40" stroke-width="1"/>
+  <g stroke="#a07a1e" stroke-width="2.4" fill="none">
+    <path d="M48 78 q0 -30 30 -30 M78 48 h26 M48 78 v26"/><path d="M1152 78 q0 -30 -30 -30 M1122 48 h-26 M1152 78 v26"/>
+    <path d="M48 682 q0 30 30 30 M78 712 h26 M48 682 v-26"/><path d="M1152 682 q0 30 -30 30 M1122 712 h-26 M1152 682 v-26"/>
+  </g>
+  <g fill="#b85c2f"><circle cx="78" cy="78" r="3.4"/><circle cx="1122" cy="78" r="3.4"/><circle cx="78" cy="682" r="3.4"/><circle cx="1122" cy="682" r="3.4"/></g>
+
+  <!-- editorial-addition marker -->
+  <g transform="translate(600 96)">
+    <rect x="-220" y="-18" width="440" height="32" rx="16" fill="#3a2230"/>
+    <text x="0" y="3" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="11.5" letter-spacing="2.5" fill="#e9d9c9">ZUSATZ DES BEARBEITERS · NICHT IM TRANSKRIPT</text>
+  </g>
+
+  <!-- THE THIRD (overlooked) AXIS: vertical, rising through the centre -->
+  <line x1="600" y1="500" x2="600" y2="190" stroke="#a07a1e" stroke-width="2.4"/>
+  <path d="M600 182 l-8 16 h16 Z" fill="#a07a1e"/>
+  <rect x="560" y="200" width="80" height="300" fill="url(#mb5-third)" opacity="0.35"/>
+  <!-- third-axis tokens -->
+  <g font-family="'Inter Tight',Helvetica,sans-serif" font-size="13" letter-spacing="1" fill="#a07a1e" text-anchor="middle">
+    <text x="600" y="232">AUTONOMIE</text>
+    <text x="600" y="262">KONSENS</text>
+    <text x="600" y="292">GLEICHHEIT</text>
+  </g>
+  <!-- the overlooked subject standing on the third axis -->
+  <g transform="translate(582 410)">
+    <path d="M18 90 C 18 40 0 40 0 8 a18 18 0 0 1 36 0 C 36 40 18 40 18 90 Z" fill="#a07a1e"/>
+    <path d="M18 90 C 18 40 0 40 0 8 a18 18 0 0 1 36 0 C 36 40 18 40 18 90 Z" fill="url(#mb5-hatch)" opacity="0.3"/>
+    <circle cx="18" cy="0" r="8" fill="none" stroke="#f4ecd9" stroke-width="1.4"/>
+    <circle cx="18" cy="0" r="2.6" fill="#f4ecd9"/>
+    <g stroke="#f4ecd9" stroke-width="1.1"><line x1="18" y1="-7" x2="18" y2="-10"/><line x1="25" y1="0" x2="28" y2="0"/><line x1="11" y1="0" x2="8" y2="0"/></g>
+  </g>
+  <text x="600" y="524" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic" font-size="15" fill="#a07a1e">die übergangene Person</text>
+
+  <!-- THE AXIS THEY FIGHT ON: horizontal -->
+  <line x1="200" y1="560" x2="1000" y2="560" stroke="#1d3a40" stroke-width="2.6"/>
+  <path d="M192 560 l16 -8 v16 Z" fill="#1d3a40"/><path d="M1008 560 l-16 -8 v16 Z" fill="#1d3a40"/>
+  <text x="600" y="600" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="14" letter-spacing="2" fill="#1d3a40">WIE REGULIEREN?</text>
+  <text x="232" y="540" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="12" letter-spacing="1.5" fill="#1d3a40">STIGMA</text>
+  <text x="968" y="540" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="12" letter-spacing="1.5" fill="#1d3a40">KEIN STIGMA</text>
+
+  <!-- the contested marker on the horizontal axis -->
+  <g transform="translate(560 560)">
+    <circle cx="0" cy="0" r="13" fill="#b85c2f"/>
+    <circle cx="0" cy="0" r="13" fill="url(#mb5-halftone)" opacity="0.35"/>
+    <circle cx="0" cy="0" r="13" fill="none" stroke="#1d3a40" stroke-width="1.6"/>
+  </g>
+
+  <!-- LEFT figure S (pro-stigma), pulling marker left -->
+  <g transform="translate(250 380)">
+    <path d="M28 180 C 28 100 -4 100 -4 56 a32 32 0 0 1 64 0 C 60 100 28 100 28 180 Z" fill="#1d3a40"/>
+    <path d="M28 180 C 28 100 -4 100 -4 56 a32 32 0 0 1 64 0 C 60 100 28 100 28 180 Z" fill="url(#mb5-hatch)" opacity="0.5"/>
+    <circle cx="28" cy="44" r="9" fill="none" stroke="#f4ecd9" stroke-width="1.4"/>
+    <text x="28" y="48.5" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="11" font-style="italic" fill="#f4ecd9">S</text>
+  </g>
+  <!-- S's rope to the marker -->
+  <path d="M300 470 q120 60 248 88" fill="none" stroke="#1d3a40" stroke-width="3"/>
+
+  <!-- RIGHT figure G (anti-stigma), pulling marker right -->
+  <g transform="translate(900 380)">
+    <path d="M28 180 C 28 100 60 100 60 56 a32 32 0 0 0 -64 0 C -4 100 28 100 28 180 Z" fill="#1d3a40"/>
+    <path d="M28 180 C 28 100 60 100 60 56 a32 32 0 0 0 -64 0 C -4 100 28 100 28 180 Z" fill="url(#mb5-hatch)" opacity="0.5"/>
+    <circle cx="28" cy="44" r="9" fill="none" stroke="#f4ecd9" stroke-width="1.4"/>
+    <text x="28" y="48.5" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="11" font-style="italic" fill="#f4ecd9">G</text>
+  </g>
+  <path d="M928 470 q-110 64 -355 88" fill="none" stroke="#1d3a40" stroke-width="3"/>
+
+  <!-- their gazes (dotted) lock onto the horizontal marker only, never the vertical axis -->
+  <g stroke="#a3242c" stroke-width="1.4" stroke-dasharray="3 5" opacity="0.7">
+    <path d="M286 430 L 552 556"/><path d="M922 430 L 572 556"/>
+  </g>
+
+  <!-- banner: the synthesis -->
+  <g transform="translate(600 170)">
+    <rect x="-330" y="-26" width="660" height="48" rx="3" fill="#f4ecd9" stroke="#1d3a40" stroke-width="1.4" opacity="0.96"/>
+    <text x="0" y="6" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic" font-size="22" fill="#1d3a40">Sie streiten über das Wie — nie über das Wessen</text>
+  </g>
+
+  <!-- title cartouche -->
+  <g transform="translate(600 672)">
+    <rect x="-380" y="-30" width="760" height="58" fill="#1d3a40"/>
+    <rect x="-372" y="-22" width="744" height="42" fill="none" stroke="#a07a1e" stroke-width="1"/>
+    <text x="0" y="-2" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="23" letter-spacing="0.4" fill="#f4ecd9">»Über das Wie, nicht über das Wessen«</text>
+    <text x="0" y="17" text-anchor="middle" font-family="'Inter Tight',Helvetica,sans-serif" font-size="11" letter-spacing="3" fill="#a07a1e">TEIL V · DER GEMEINSAME BLINDE FLECK</text>
+  </g>
+</svg>
+<figcaption class="b-bild__cap" style="font-family:'Inter Tight',Helvetica,sans-serif;font-size:.8rem;color:var(--primary);padding:.7em 1em;border-top:1px solid var(--erule);background:var(--pcard);">
+  <strong>Meisterbild V.</strong> Illustratives Vintage-SVG (kein Foto, keine Daten) — und ausdrücklich <em>Eigen-Analyse des Bearbeiters, keine Aussage des Transkripts</em>: Beide Streitenden (S · G) zerren einen Marker auf der waagerechten Achse „Wie regulieren?“ zwischen <em>Stigma</em> und <em>kein Stigma</em>; ihre Blicke kleben an diesem Punkt. Die senkrechte dritte Achse — <em>Autonomie · Konsens · Gleichheit</em> — mit der übergangenen Person bleibt unbeachtet. Bildmetapher zum geteilten blinden Fleck.
+</figcaption>
+</figure>
+
+    <p>Eine progressive Kritik würde zuerst feststellen, was beide Männer eint: Sie verhandeln, <em>wie</em> Sexualität — und konkret meist <em>weibliche</em> Sexualität sowie männliche „Triebabfuhr“ — gesellschaftlich zu ordnen sei. Frauen erscheinen als Objekt der Regelung, nicht als gleichberechtigte Subjekte mit eigener Lust und eigener Stimme. Zustimmung (Konsens), Macht und Gleichheit kommen in keiner der beiden Reden vor. Der Gastgeber rät dem gestressten Mann, „kurz in den Puff“ zu gehen; Schlomo will Sexualität in „geordnete Formen“ pressen. Aus progressiver Sicht sind das zwei Spielarten desselben patriarchalen Zugriffs.</p>
+
+    <div class="b-mega">
+      <p class="b-mega__eyebrow">Die progressive Pointe</p>
+      <p class="b-mega__text">Beide streiten, <em>wie</em> man Sexualität ordnet — keiner fragt, <em>wessen</em> Sexualität.</p>
+      <p class="b-mega__sub">Der eigentliche linke Einwand richtet sich gegen den geteilten Rahmen, nicht gegen eine der Positionen.</p>
+    </div>
+
+    <p>Bemerkenswert: Der Gastgeber wirft Schlomo vor, er argumentiere „wie die Linken“, weil er „das Private politisch“ mache. Eine progressive Stimme würde diesen Satz umdrehen. Ja, das Private hat eine politische Dimension — aber sie liegt in Macht, Konsens und Gleichheit, nicht in „Lager-Stabilität“. Der Gastgeber benutzt die Formel als Beleidigung; eine feministische Position füllt sie mit einem anderen Inhalt.</p>
+
+    <div class="b-box plain">
+      <p class="b-box__lbl">→ Was bedeutet das konkret?</p>
+      <p>„Das Private ist politisch“ (eine Parole der Frauenbewegung der 1960er/70er) heißt nicht: „Der Staat soll dein Bett regeln.“ Es heißt: Auch in scheinbar privaten Beziehungen wirken Machtverhältnisse — wer entscheidet, wer schweigt, wessen Lust zählt. Genau diese Frage stellen beide Streitenden nicht.</p>
+    </div>
+
+    <h3>So begegnet man jeder Seite einzeln</h3>
+    <div class="b-sbs">
+      <div class="b-sbs__col b-sbs__a">
+        <h4>Gegen den Gastgeber (libertär)</h4>
+        <p><strong>1. Der Selbstwiderspruch.</strong> Er beansprucht Wertneutralität, nennt aber OnlyFans und promiske Frauen „Perversion“ — Schlomos „selbes Boot“-Treffer sitzt. Wer wertet, soll seine Maßstäbe offenlegen, statt sie als „nur sachlich“ zu tarnen.</p>
+        <p><strong>2. Das Doppelmaß.</strong> Frau mit vielen Partnern = „Perversion“, fremdgehender Mann = „absolute Normalität“. Das ist kein Gegensatz zur konservativen Doppelmoral, sondern ihre Fortsetzung — nur libertär verbrämt.</p>
+        <p><strong>3. Privat ≠ folgenlos.</strong> Seine Tabuisierung des Politischen blendet aus, dass Sexarbeit, Abhängigkeit und Konsens reale Macht- und Schutzfragen sind, die eine Gesellschaft sehr wohl angehen.</p>
+        <p><strong>4. Anekdote ist kein Beleg.</strong> „Keine Korrelation“ aus Coaching-Erfahrung ist eine Behauptung, kein Befund.</p>
+      </div>
+      <div class="b-sbs__col b-sbs__b">
+        <h4>Gegen Schlomo (pro-Stigma)</h4>
+        <p><strong>1. Der Sein-Sollen-Sprung.</strong> Dass alle Kulturen Sexualnormen hatten (deskriptiv plausibel), begründet nicht, dass <em>diese</em> Norm gut oder nötig ist. Sklaverei und Frauenausschluss waren auch fast universal.</p>
+        <p><strong>2. Die unfalsifizierbare Evolutionsgeschichte.</strong> „Gruppen ohne Stigma sind verschwunden“ ist eine Behauptung ohne Beleg, die sich nicht prüfen lässt — ein rhetorisches, kein empirisches Argument.</p>
+        <p><strong>3. Der Dammbruch.</strong> Vom Swingerclub zum gesellschaftlichen Kollaps führt eine Kette aus Unterstellungen, keine belegte Kausalität.</p>
+        <p><strong>4. Die zirkuläre Definition.</strong> „Alles außer Monogamie ist degeneriert“ setzt das Ergebnis schon in die Definition — das ist kein Urteil, sondern eine Setzung.</p>
+      </div>
+    </div>
+
+    <p class="sec__eyebrow" style="margin-top:2em;">Das Urteil in Zahlen</p>
+    <h3>Logikfehler und Moralismus, 0–10</h3>
+    <p>Die folgende Tabelle bewertet, wie stark sich beiden Seiten <em>Logikfehler</em> (formale Denkfehler) und <em>Moralismus</em> (das Erheben moralischer Wertung zum Maßstab) vorwerfen lassen — aus der hier eingenommenen progressiven Perspektive. 0 = trifft nicht zu, 10 = trifft voll zu.</p>
+
+    <table class="b-cmp">
+      <thead>
+        <tr><th>Fraktion</th><th>Logik&shy;fehler</th><th>Mora&shy;lismus</th><th>Tragende Begründung</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gastgeber</strong><br>libertär / „Coach“</td>
+          <td class="score">6</td>
+          <td class="score">6</td>
+          <td>Logik: performativer Selbstwiderspruch („Perversion“ trotz beanspruchter Neutralität), Schluss von Anekdote auf „keine Korrelation“, naturalistischer Fehlschluss („wir sind Säugetiere“), <em>tu quoque</em> beim Spaltungs-Vorwurf. — Moralismus: tritt als Anti-Moralist auf, urteilt aber selbst („Sittenverfall“, „Perversion“, Monogamie „gesellschaftserhaltend“) — verschärft durch ein klares Geschlechter-Doppelmaß. Real, aber inkonsistent und individualistisch verbrämt.</td>
+        </tr>
+        <tr>
+          <td><strong>Schlomo Finkelstein</strong><br>pro-Stigma / rechts</td>
+          <td class="score">8</td>
+          <td class="score">8</td>
+          <td>Logik: Sein-Sollen-Sprung und Traditionsargument, unfalsifizierbare Survivorship-Erzählung, Dammbruch, Zirkelschluss bei „degeneriert“, Korrelation-als-Kausalität (Hedonismus → Remigrations-Aufgabe). — Moralismus: verteidigt das moralische Stigma offen und programmatisch; das ist Moralismus per Konstruktion. Leicht gemildert durch philosophische Rahmung und rhetorisches Zugeständnis individueller Freiheit — der Kern bleibt die Forderung nach kollektiv erzwungener Sexualnorm.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="b-box warning">
+      <p class="b-box__lbl">Wo die Kritik schwächer wird (Fairness)</p>
+      <p>Zwei Punkte muss eine ehrliche progressive Replik einräumen. Erstens: Schlomos <em>deskriptive</em> Behauptung, dass es nirgends eine Gesellschaft ganz ohne Sexualnormen gab, ist weithin haltbar — falsch ist nur der Sprung von „existiert überall“ zu „ist gut und nötig“. Zweitens: Die <em>anti-essentialistische</em> Stoßrichtung des Gastgebers — sexuelle Praxis bestimmt nicht den politischen Charakter — teilt die progressive Seite sogar, auch wenn sie seine Rahmung und sein Doppelmaß verwirft. Beide Lager haben also je einen Punkt, den man nicht wegwischen sollte.</p>
+    </div>
+
+    <div class="b-synth">
+      <p class="b-synth__lbl">Kernerkenntnis der Replik</p>
+      <p>Der wirksamste linke Einwand verweigert die Wahl zwischen „Stigma verteidigen“ und „alles ist privat“ — und ersetzt beide durch eine dritte Achse: Autonomie, Konsens und Gleichheit statt Ordnung oder Beliebigkeit.</p>
+    </div>
+
+    <figure class="b-bild">
+      <div class="b-bild__frame">
+        <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration: zwei gegenläufige Pfeile, dazu eine dritte, senkrechte Achse">
+          <rect width="700" height="220" fill="#f4ecd9"/>
+          <!-- two opposing horizontal arrows -->
+          <g stroke-width="3" fill="none">
+            <line x1="120" y1="96" x2="320" y2="96" stroke="#1d3a40"/>
+            <path d="M120 96 l16 -8 M120 96 l16 8" stroke="#1d3a40"/>
+            <line x1="580" y1="96" x2="380" y2="96" stroke="#b85c2f"/>
+            <path d="M580 96 l-16 -8 M580 96 l-16 8" stroke="#b85c2f"/>
+          </g>
+          <text x="150" y="80" font-family="'Inter Tight',sans-serif" font-size="12" fill="#1d3a40">„alles ist privat“</text>
+          <text x="470" y="80" font-family="'Inter Tight',sans-serif" font-size="12" fill="#8f441f">„Stigma verteidigen“</text>
+          <!-- third vertical axis -->
+          <g stroke="#5e7355" stroke-width="3" fill="none">
+            <line x1="350" y1="170" x2="350" y2="40"/>
+            <path d="M350 40 l-8 16 M350 40 l8 16"/>
+          </g>
+          <text x="350" y="196" text-anchor="middle" font-family="'Newsreader',serif" font-style="italic" font-size="18" fill="#3a444c">Autonomie · Konsens · Gleichheit</text>
+        </svg>
+      </div>
+      <figcaption class="b-bild__cap"><span>Illustratives Motiv: die progressive „dritte Achse“ quer zur Streitlinie.</span><span class="src">SVG · kein Foto, kein Datendiagramm</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- STIMMEN -->
+<section class="sec" id="stimmen">
+  <div class="wrap">
+    <p class="sec__eyebrow">Apparat</p>
+    <h2>Stimmen im Text</h2>
+    <p class="sec__dek">Nur Personen, die im Gespräch tatsächlich aufgerufen werden.</p>
+    <div class="figgrid">
+      <div class="b-figcard">
+        <p class="b-figcard__name">Theodor W. Adorno</p>
+        <p class="b-figcard__life">1903–1969 · Soziologe &amp; Philosoph</p>
+        <p class="b-figcard__role">Sein Konzept des „autoritären Charakters“ wird als Erklärung herangezogen, warum laute Sittenwächter oft selbst Verdrängtes austreiben (Min. 41:50, 46:19).</p>
+      </div>
+      <div class="b-figcard">
+        <p class="b-figcard__name">Björn Höcke</p>
+        <p class="b-figcard__life">1972– · AfD-Politiker</p>
+        <p class="b-figcard__role">Als Beispiel einer Führungsfigur, deren Privatleben unter Dauerbeobachtung stehe und deshalb als unverdächtig gelte (Min. 47:50, 49:04).</p>
+      </div>
+      <div class="b-figcard">
+        <p class="b-figcard__name">Martin Sellner</p>
+        <p class="b-figcard__life">1989– · Aktivist der „Identitären Bewegung“</p>
+        <p class="b-figcard__role">Ebenfalls als prominenter Kopf angeführt, bei dem ein Leak sofort öffentlich würde (Min. 49:13).</p>
+      </div>
+      <div class="b-figcard">
+        <p class="b-figcard__name">Donald Trump</p>
+        <p class="b-figcard__life">1946– · US-Politiker</p>
+        <p class="b-figcard__role">Vergleichsfall dafür, dass man über das Privatleben einer Figur „hinwegsehen“ könne, ohne ihr Werk zu verwerfen (Min. 50:49).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAS BLEIBT -->
+<section class="sec" id="bleibt">
+  <div class="wrap">
+    <p class="sec__eyebrow">Bilanz</p>
+    <h2>Was bleibt</h2>
+    <p class="sec__dek">Die Argumentationskette in sechs Schritten.</p>
+    <ol class="b-chain">
+      <li><span class="b-chain__txt"><strong>Der Anlass ist klein, der Streit groß.</strong> Aus einer Bemerkung über Swingerclubs wird die Grundsatzfrage, ob „degeneriert“ eine erlaubte Kategorie ist.</span></li>
+      <li><span class="b-chain__txt"><strong>Die Asymmetrie ist der Kern.</strong> Schlomo: Das Stigma darf angegriffen, aber nicht verteidigt werden — sonst gilt man als spalterisch. Der Gastgeber bestreitet, das zu fordern, und dreht den Vorwurf um.</span></li>
+      <li><span class="b-chain__txt"><strong>Der Gastgeber ist selbst ein Moralist.</strong> Seine „Perversion“ über OnlyFans und sein Geschlechter-Doppelmaß widerlegen die Selbstbeschreibung als wertneutral — Schlomos „selbes Boot“-Treffer.</span></li>
+      <li><span class="b-chain__txt"><strong>Schlomos Geschichtsbeweis ist ein Werturteil im Tatsachen-Mantel.</strong> Dass etwas universal war, sagt nichts darüber, ob es gut oder nötig ist.</span></li>
+      <li><span class="b-chain__txt"><strong>Beide bleiben empirisch dünn.</strong> „Keine Korrelation“ vs. „Hedonismus zerstört die Wende“ — beides Behauptung, kein Befund.</span></li>
+      <li><span class="b-chain__txt"><strong>Der größte blinde Fleck ist geteilt.</strong> Konsens, Macht und weibliche Subjektivität fehlen bei beiden — hier setzt die progressive Replik an.</span></li>
+    </ol>
+    <div class="b-synth">
+      <p class="b-synth__lbl">Kernerkenntnis</p>
+      <p>Der Streit über das Wort „degeneriert“ ist ein Stellvertreterkrieg um eine Meta-Regel — und beide Kontrahenten ordnen Sexualität von oben, statt sie als Sache gleichberechtigter, einwilligender Subjekte zu denken.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSAR -->
+<section class="sec" id="glossar">
+  <div class="wrap">
+    <p class="sec__eyebrow">Nachschlagen</p>
+    <h2>Glossar</h2>
+    <p class="sec__dek">Schlüsselbegriffe in Klartext, mit Originalfundstelle und Wortherkunft.</p>
+
+    <div class="b-gloss">
+      <h4>Stigma</h4>
+      <p class="g-plain">Eine geteilte gesellschaftliche Abwertung, die ein Verhalten mit schlechtem Ruf belegt und so unter Druck setzt.</p>
+      <p class="g-original">„das Problem beginnt, wo das [Stigma] offen angegriffen wird, aber nicht verteidigt werden kann“ — sinngemäß, Min. 51:28 (Original: „Stickma“)</p>
+      <p class="g-etym">Etymologie: griechisch <em>stígma</em> = „Stich, Brandmal“ (ursprünglich das eingebrannte Zeichen an Sklaven).</p>
+    </div>
+    <div class="b-gloss">
+      <h4>Degeneration / degeneriert</h4>
+      <p class="g-plain">Wörtlich „Entartung“ — die Behauptung, etwas sei von einem gesunden Zustand verfallen. Schlomo nutzt es als Spektrum für gesellschaftsschädliches Verhalten; der Gastgeber sieht darin die höchste Abwertungsstufe.</p>
+      <p class="g-original">„das degeneriert … natürlich ein Spektrum“ — Min. 12:28</p>
+      <p class="g-etym">Etymologie: lateinisch <em>degenerare</em> = „aus der Art schlagen“, von <em>genus</em> = „Geschlecht, Art“.</p>
+    </div>
+    <div class="b-gloss">
+      <h4>Hedonismus</h4>
+      <p class="g-plain">Eine Lebenshaltung, die Lust und eigenes Wohlgefühl zum höchsten Ziel macht.</p>
+      <p class="g-original">„Hedonismus bedeutet ja, es geht mir um meine eigene Maximierung von Wohlgefühl“ — Min. 39:16</p>
+      <p class="g-etym">Etymologie: griechisch <em>hēdonḗ</em> = „Lust, Vergnügen“.</p>
+    </div>
+    <div class="b-gloss">
+      <h4>Autoritärer Charakter</h4>
+      <p class="g-plain">Ein von Adorno geprägter Begriff: ein Persönlichkeitsmuster, das sich Autorität unterwirft und Schwächere/Abweichler abwertet — oft, um eigene verdrängte Triebe zu bekämpfen.</p>
+      <p class="g-original">„im Grunde geht das ja zurück auf das, was Adorno damals geschrieben hat … vom autoritären Charakter“ — Min. 41:50</p>
+      <p class="g-etym">Etymologie: lateinisch <em>auctoritas</em> = „Ansehen, Einfluss“; <em>Charakter</em> von griechisch <em>charaktḗr</em> = „Gepräge“.</p>
+    </div>
+    <div class="b-gloss">
+      <h4>Auflösungsideologie</h4>
+      <p class="g-plain">Schlomos Kampfbegriff für die Vorstellung, dass moderne Strömungen feste Ordnungen (Familie, Sexualnorm) gezielt auflösten.</p>
+      <p class="g-original">„die moderne Auflösungsideologie ablämt [ablehnt]“ — Min. 46:40 (Original-Garble belassen)</p>
+      <p class="g-etym">Etymologie: „Ideologie“ von griechisch <em>idéa</em> + <em>lógos</em> = „Lehre von den Vorstellungen“.</p>
+    </div>
+    <div class="b-gloss">
+      <h4>Remigration</h4>
+      <p class="g-plain">Politische Forderung der Rechten nach (auch erzwungener) Rückführung von Migranten. Schlomo fürchtet, ein „Bremsungskurs“ verwässere sie.</p>
+      <p class="g-original">„nur noch Problemfälle rausbringen, aber das größere demografische Bild nicht verändern“ — Min. 45:05</p>
+      <p class="g-etym">Etymologie: lateinisch <em>re-</em> = „zurück“ + <em>migrare</em> = „wandern“.</p>
+    </div>
+    <div class="b-gloss">
+      <h4>„Das Private ist politisch“</h4>
+      <p class="g-plain">Eine Parole der Frauenbewegung: scheinbar private Verhältnisse sind von Macht und Ungleichheit durchzogen. Der Gastgeber benutzt die Formel als Vorwurf gegen Schlomo.</p>
+      <p class="g-original">„im Prinzip wie die Linken machen, da sagt das private ist politisch“ — Min. 45:46</p>
+      <p class="g-etym">Herkunft: feministischer Leitsatz der 1960er/70er-Jahre (englisch „the personal is political“).</p>
+    </div>
+  </div>
+</section>
+
+<!-- KOLOPHON -->
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot__lbl">Kolophon</p>
+    <p><strong>Quelle:</strong> Live-Streitgespräch zweier Akteure der rechten Szene (auto-transkribierter YouTube-Doppelstream, 0:00–1:02:56). Sprecher: der Gastgeber (libertär-anarchistischer Flirt-/Männlichkeitscoach, im Transkript nicht namentlich genannt) und Schlomo Finkelstein (nennt sich Min.&nbsp;29:47 selbst).</p>
+    <p><strong>Locatoren:</strong> Zeitmarken (Minute:Sekunde) ersetzen Seitenzahlen. <strong>Transkript-Hygiene:</strong> Eigennamen still berichtigt; das durchgehende „Stickma/Stickmat“ steht für <em>Stigma</em> und wird im Fließtext korrekt geschrieben, in Direktzitaten aber nicht als garbeltes Wort wiedergegeben. Da das Transkript keine Sprecher-Labels trägt, wurde anhand inhaltlicher Rolle zugeordnet; bei Unklarheit paraphrasiert statt zitiert.</p>
+    <p><strong>Bild-/Diagramm-Politik:</strong> keine generierten Fotos, keine erfundene Statistik. Der Quelltext liefert keine belastbaren Zahlen — daher kein Daten-Diagramm. Die drei Bild-Bühnen tragen rein illustrative, nicht-behauptende SVG-Motive in der Dokumentpalette.</p>
+    <p><strong>Anti-Halluzination:</strong> 14 belegte Direktzitate, jedes &lt; 25 Wörter, mit Zeitmarke. Die progressive Replik und die 0–10-Ratings sind als Eigen-Analyse markiert (Selbsteinschätzung, kein Messwert) und stehen nicht im Transkript. Siehe das Cover am Seitenanfang.</p>
+  </div>
+</footer>
+</main>
+
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  function upd(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd,{passive:true});
+  upd();
+})();
+</script>
+</body>
+</html>
