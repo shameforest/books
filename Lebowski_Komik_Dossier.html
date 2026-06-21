@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Der Witz ist die Weltsicht — Die Komik-Mechanik von The Big Lebowski</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16201e; --ink-2:#0f1715; --ink-3:#1d2a27; --paper:#efe6d3; --paper-2:#e7ddc6; --paper-3:#f6f0e3;
+  --lane:#cf9442; --lane-ink:#8f6014;
+  --teal:#36a89c; --teal-ink:#176258;
+  --rust:#c0492f; --rust-ink:#9c3320;
+  --gold:#dcb43e; --gold-ink:#8a6c12;
+  --plum:#a96a91; --plum-ink:#714a61;
+  --mute:#9a9384; --mute-d:#6f6657;
+  --textonpaper:#1c2624; --textonink:#efe6d3;
+  --rule:rgba(28,38,36,.14); --rule-ink:rgba(239,230,211,.14);
+  --accent:var(--lane); --accent-ink:var(--lane-ink);
+  --col:44rem; --d:.55s cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--textonink);
+  font-family:"Newsreader",Georgia,serif;font-optical-sizing:auto;
+  font-size:1.18rem;line-height:1.66;letter-spacing:.003em;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--lane);color:var(--ink-2)}
+a{color:var(--teal);text-underline-offset:.18em;text-decoration-thickness:.06em}
+a:hover{color:var(--lane)}
+img,svg{max-width:100%}
+
+/* ---- shells ---- */
+.wrap{max-width:var(--col);margin-inline:auto;padding-inline:1.4rem}
+.panel{background:var(--paper);color:var(--textonpaper)}
+.panel a{color:var(--teal-ink)} .panel a:hover{color:var(--rust-ink)}
+.panel ::selection{background:var(--accent);color:var(--paper)}
+.body-pad{padding-block:clamp(2.6rem,6vw,4.6rem)}
+
+/* ---- type ---- */
+.display{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;line-height:.95;letter-spacing:-.02em}
+.mono{font-family:"Space Mono",ui-monospace,monospace}
+h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:-.01em;line-height:1.1;
+  font-size:clamp(1.4rem,3.1vw,1.95rem);margin:2.6rem 0 .5rem;color:var(--ink);
+  display:flex;gap:.6rem;align-items:baseline}
+h3 .hn{font-family:"Space Mono",monospace;font-weight:700;font-size:.7em;color:var(--accent-ink);
+  border:2px solid var(--accent);border-radius:6px;padding:.05em .45em;flex:none;align-self:center}
+h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.08rem;letter-spacing:.005em;margin:1.7rem 0 .35rem;color:var(--ink)}
+p{margin:0 0 1.05rem}
+.lead{font-size:1.32rem;line-height:1.5}
+strong{font-weight:600}
+.small{font-size:.82rem;line-height:1.55}
+.dropcap::first-letter{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+  float:left;font-size:4.1rem;line-height:.78;padding:.15rem .55rem .1rem 0;color:var(--accent-ink)}
+.hl{background:linear-gradient(transparent 58%, color-mix(in srgb, var(--accent) 42%, transparent) 58%);padding:0 .05em;font-weight:500}
+.eyebrow{font-family:"Space Mono",monospace;text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;color:var(--accent)}
+
+/* ---- source tags ---- */
+.tag{font-family:"Space Mono",monospace;font-weight:700;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;
+  padding:.18em .5em;border-radius:4px;vertical-align:.1em;white-space:nowrap;border:1px solid}
+.tag::before{margin-right:.3em;font-size:.9em}
+.tag.film{color:var(--lane-ink);background:rgba(207,148,66,.18);border-color:rgba(207,148,66,.55)} .tag.film::before{content:"\25B6"}
+.tag.theo{color:var(--teal-ink);background:rgba(54,168,156,.16);border-color:rgba(54,168,156,.55)} .tag.theo::before{content:"\2756"}
+.tag.deut{color:var(--rust-ink);background:rgba(192,73,47,.14);border-color:rgba(192,73,47,.55)} .tag.deut::before{content:"\25C8"}
+.legend{display:flex;gap:.7rem;flex-wrap:wrap;margin:1.4rem 0;font-family:"Space Mono",monospace;font-size:.74rem;color:var(--textonpaper)}
+.legend span{display:inline-flex;gap:.45rem;align-items:center}
+.legend i{width:.85rem;height:.85rem;border-radius:3px;display:inline-block}
+
+/* ---- callout / Merkboxen ---- */
+.callout{border-radius:13px;padding:1.05rem 1.2rem;margin:1.6rem 0;border:1.5px solid;position:relative}
+.callout>.clabel{font-family:"Space Mono",monospace;font-size:.64rem;text-transform:uppercase;letter-spacing:.13em;font-weight:700;
+  display:inline-flex;gap:.45rem;align-items:center;margin-bottom:.5rem}
+.callout>.clabel::before{font-size:1.05em;line-height:1}
+.callout p{font-size:1rem;margin:0 0 .6rem} .callout p:last-child{margin-bottom:0}
+.merke{background:rgba(220,180,62,.13);border-color:rgba(220,180,62,.6)} .merke>.clabel{color:var(--gold-ink)} .merke>.clabel::before{content:"\25C6"}
+.defbox{background:rgba(54,168,156,.11);border-color:rgba(54,168,156,.55)} .defbox>.clabel{color:var(--teal-ink)} .defbox>.clabel::before{content:"\2756"}
+.beispiel{background:rgba(207,148,66,.12);border-color:rgba(207,148,66,.55);border-left-width:5px} .beispiel>.clabel{color:var(--lane-ink)} .beispiel>.clabel::before{content:"\25B6"}
+.beispiel .qf{font-family:"Bricolage Grotesque",sans-serif;font-weight:600}
+.deutbox{background:rgba(169,106,145,.12);border-color:rgba(169,106,145,.55)} .deutbox>.clabel{color:var(--plum-ink)} .deutbox>.clabel::before{content:"\25C8"}
+.tipp{background:rgba(54,168,156,.1);border-color:rgba(54,168,156,.5)} .tipp>.clabel{color:var(--teal-ink)} .tipp>.clabel::before{content:"\2691"}
+.achtung{background:rgba(192,73,47,.1);border-color:rgba(192,73,47,.55)} .achtung>.clabel{color:var(--rust-ink)} .achtung>.clabel::before{content:"\26A0"}
+.kernlehre{background:linear-gradient(135deg, rgba(220,180,62,.2), rgba(207,148,66,.1));border:2px solid var(--gold);border-radius:16px;padding:1.4rem 1.4rem}
+.kernlehre>.clabel{color:var(--gold-ink);font-size:.72rem} .kernlehre>.clabel::before{content:"\2726"}
+.kernlehre .big{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(1.2rem,2.6vw,1.5rem);line-height:1.18;color:var(--ink);margin:0}
+
+/* ---- collapsible Vertiefung ---- */
+details.vert{border-radius:13px;border:1.5px solid var(--accent);background:color-mix(in srgb, var(--accent) 7%, transparent);margin:1.6rem 0;overflow:hidden}
+details.vert>summary{cursor:pointer;padding:.9rem 1.15rem;font-family:"Space Mono",monospace;font-weight:700;font-size:.76rem;letter-spacing:.05em;
+  color:var(--accent-ink);display:flex;justify-content:space-between;align-items:center;gap:1rem;list-style:none}
+details.vert>summary::-webkit-details-marker{display:none}
+details.vert>summary .vlab{display:inline-flex;gap:.5rem;align-items:center}
+details.vert>summary .vlab::before{content:"\21F2";font-size:1.1em}
+details.vert>summary::after{content:"+";font-size:1.3rem;font-weight:700;color:var(--accent);line-height:1}
+details.vert[open]>summary::after{content:"\2212"}
+details.vert[open]>summary{border-bottom:1px solid color-mix(in srgb, var(--accent) 30%, transparent)}
+details.vert .vbody{padding:1rem 1.15rem 1.1rem;font-size:.98rem}
+details.vert .vbody p:last-child{margin-bottom:0}
+
+/* ---- chapter opener band ---- */
+.chapter{position:relative;overflow:hidden;background:var(--ink-2);color:var(--paper);
+  padding-block:clamp(2.8rem,7vw,4.6rem);border-top:3px solid var(--accent)}
+.chapter::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(90% 120% at 88% -20%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 60%);pointer-events:none}
+.chapter .bignum{position:absolute;right:-.5rem;top:50%;transform:translateY(-50%);
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(8rem,26vw,18rem);line-height:.8;
+  color:color-mix(in srgb, var(--accent) 16%, transparent);pointer-events:none;letter-spacing:-.04em}
+.chapter .inner{position:relative;z-index:1}
+.chapter .klabel{font-family:"Space Mono",monospace;text-transform:uppercase;letter-spacing:.24em;font-size:.74rem;color:var(--accent)}
+.chapter h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1;
+  font-size:clamp(2.1rem,6vw,3.7rem);margin:.35rem 0 .2rem;color:var(--paper)}
+.chapter .kepi{font-family:"Newsreader",serif;font-style:italic;font-size:1.12rem;color:color-mix(in srgb, var(--paper) 82%, var(--accent));max-width:32rem;margin:.6rem 0 0}
+
+/* ---- at-a-glance strip ---- */
+.glance{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.glance span{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.03em;
+  border:1px solid color-mix(in srgb, var(--accent) 45%, transparent);border-radius:30px;padding:.34em .85em;
+  color:var(--paper);background:color-mix(in srgb, var(--accent) 10%, transparent)}
+.glance span b{color:var(--accent);font-weight:700}
+
+/* ---- pills / xref ---- */
+.xref{font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.04em;color:var(--accent-ink);
+  border:1px dashed var(--accent);border-radius:20px;padding:.12em .55em;white-space:nowrap}
+
+/* ---- tables ---- */
+.tbl{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.95rem}
+.tbl th,.tbl td{text-align:left;padding:.62rem .72rem;border-bottom:1px solid var(--rule);vertical-align:top}
+.tbl thead th{font-family:"Space Mono",monospace;font-size:.64rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mute-d);font-weight:700;border-bottom:2px solid var(--accent)}
+.tbl tbody tr:hover td{background:color-mix(in srgb, var(--accent) 9%, transparent)}
+.tbl td .os{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;color:var(--accent-ink)}
+.tbl td .n{font-family:"Space Mono",monospace;font-weight:700;color:var(--accent-ink)}
+
+/* ---- figures ---- */
+figure{margin:2.2rem 0}
+figure svg{display:block;width:100%;height:auto;border-radius:12px}
+figcaption{font-family:"Space Mono",monospace;font-size:.72rem;line-height:1.55;color:var(--mute-d);margin-top:.7rem;letter-spacing:.02em}
+
+/* ---- divider motif ---- */
+.motif{display:flex;align-items:center;gap:.8rem;justify-content:center;margin:2.4rem 0;color:var(--accent)}
+.motif .ln{height:2px;flex:1;background:linear-gradient(90deg,transparent,color-mix(in srgb, var(--accent) 55%, transparent),transparent)}
+.motif svg{width:30px;height:30px;flex:none}
+
+/* ---- cards ---- */
+.cards{display:grid;gap:1.4rem;margin-top:1.9rem}
+@media(min-width:760px){.cards{grid-template-columns:1fr 1fr}}
+.card{background:var(--paper-3);border:1.5px solid var(--rule);border-top:4px solid var(--accent);border-radius:13px;
+  padding:1.5rem 1.3rem 1.15rem;position:relative;transition:transform var(--d),box-shadow var(--d)}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 36px -20px rgba(0,0,0,.45)}
+.card .fr{position:absolute;top:-.95rem;left:1.1rem;font-family:"Space Mono",monospace;font-weight:700;font-size:.7rem;
+  background:var(--ink);color:var(--accent);border:1.5px solid var(--accent);border-radius:6px;padding:.22em .6em;letter-spacing:.06em}
+.card .role{font-family:"Space Mono",monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent-ink);margin:.2rem 0 .1rem}
+.card h4{margin:.15rem 0 .55rem;font-size:1.2rem;line-height:1.12}
+.card p{font-size:.98rem;margin-bottom:.7rem}
+.card .ex{font-size:.92rem;background:color-mix(in srgb, var(--accent) 9%, transparent);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:.6rem .8rem;color:var(--textonpaper)}
+.card .ex b{font-family:"Space Mono",monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-ink);display:block;margin-bottom:.18rem}
+details.prompt{margin-top:.9rem;border-top:1px dashed var(--rule);padding-top:.65rem}
+details.prompt summary{cursor:pointer;font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.04em;color:var(--accent-ink);list-style:none}
+details.prompt summary::-webkit-details-marker{display:none}
+details.prompt summary::before{content:"\25B8 ";color:var(--accent)}
+details.prompt[open] summary::before{content:"\25BE "}
+details.prompt .pbody{font-family:"Space Mono",monospace;font-size:.82rem;line-height:1.55;background:var(--ink);color:var(--paper);border-radius:9px;padding:.85rem .95rem;margin-top:.6rem}
+details.prompt .pbody::before{content:"PROMPT";display:block;font-size:.58rem;letter-spacing:.16em;color:var(--accent);margin-bottom:.4rem}
+
+/* ---- hero ---- */
+.hero{background:
+   radial-gradient(120% 80% at 82% -10%, rgba(54,168,156,.12), transparent 60%),
+   radial-gradient(120% 90% at -10% 110%, rgba(207,148,66,.14), transparent 55%),
+   radial-gradient(80% 60% at 50% 120%, rgba(169,106,145,.1), transparent 60%),
+   var(--ink);
+  min-height:96vh;display:flex;flex-direction:column;justify-content:center;
+  padding-block:clamp(3rem,8vh,6rem);position:relative;overflow:hidden}
+.hero .framestrip{display:flex;gap:.4rem;margin-bottom:1.6rem}
+.hero .framestrip i{width:26px;height:30px;border:1.5px solid var(--mute);border-radius:3px;display:grid;place-items:start center;position:relative}
+.hero .framestrip i::after{content:"";position:absolute;top:3px;width:9px;height:9px;border:1.5px solid var(--mute);border-radius:2px}
+.hero .framestrip i.s{border-color:var(--gold)} .hero .framestrip i.s::after{border-color:var(--gold);background:var(--gold)}
+.hero .framestrip i.t{border-color:var(--teal)} .hero .framestrip i.t::after{border-color:var(--teal)}
+.hero .framestrip i.r{border-color:var(--rust)} .hero .framestrip i.r::after{border-color:var(--rust)}
+.hero h1{margin:.5rem 0 0;font-size:clamp(3rem,13vw,8.4rem);letter-spacing:-.03em}
+.hero h1 span{display:block}
+.hero h1 .l2{color:var(--lane)} .hero h1 .l3{color:var(--teal)}
+.hero .sub{font-family:"Newsreader",serif;font-size:clamp(1.2rem,2.4vw,1.55rem);max-width:35rem;margin:1.7rem 0 0;color:var(--paper)}
+.hero .epigraph{margin-top:2.4rem;border-left:3px solid var(--gold);padding:.3rem 0 .3rem 1.2rem;max-width:35rem}
+.hero .epigraph .q{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1.18rem;color:var(--paper)}
+.hero .epigraph .a{font-family:"Space Mono",monospace;font-size:.72rem;color:var(--gold);margin-top:.5rem;letter-spacing:.05em}
+.hero .meta{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.12em;color:var(--mute);margin-top:2.2rem;text-transform:uppercase}
+
+/* ---- TOC ---- */
+.toc{background:var(--ink-3)}
+.toc ol{list-style:none;margin:1.3rem 0 0;padding:0}
+.toc li{border-top:1px solid var(--rule-ink)}
+.toc a{display:flex;gap:1rem;align-items:baseline;padding:1rem .3rem;text-decoration:none;color:var(--paper);transition:padding-left var(--d),background var(--d)}
+.toc a:hover{padding-left:1rem;background:rgba(220,180,62,.07)}
+.toc a .n{font-family:"Space Mono",monospace;font-size:.82rem;min-width:2.6rem;font-weight:700}
+.toc a .t{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.15rem;flex:1}
+.toc a:hover .t{color:var(--gold)}
+.toc a .d{font-size:.85rem;color:var(--mute);max-width:17rem;text-align:right;display:none}
+@media(min-width:720px){.toc a .d{display:block}}
+.toc a.c1 .n{color:var(--gold)} .toc a.c2 .n{color:var(--teal)} .toc a.c3 .n{color:var(--lane)}
+.toc a.c4 .n{color:var(--plum)} .toc a.c5 .n{color:var(--rust)} .toc a.c6 .n{color:var(--gold)} .toc a.c7 .n{color:var(--mute)}
+
+/* ---- pull ---- */
+.bigpull{background:var(--ink-2);padding-block:clamp(3rem,7vw,5rem);text-align:center;position:relative;overflow:hidden}
+.bigpull::before{content:"\201C";position:absolute;top:-1rem;left:50%;transform:translateX(-50%);font-family:"Bricolage Grotesque",sans-serif;font-size:14rem;color:rgba(220,180,62,.12);line-height:1}
+.bigpull .q{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;line-height:1.1;letter-spacing:-.015em;font-size:clamp(1.5rem,4vw,2.4rem);color:var(--paper);position:relative;max-width:38rem;margin-inline:auto}
+.bigpull .src{display:block;font-family:"Space Mono",monospace;font-weight:400;font-size:.8rem;letter-spacing:.04em;color:var(--gold);margin-top:1rem}
+
+/* ---- apparatus ---- */
+.appx{background:var(--ink-3)}
+.srclist{list-style:none;margin:1.3rem 0;padding:0}
+.srclist li{border-top:1px solid var(--rule-ink);padding:.85rem 0;display:flex;gap:.8rem;flex-wrap:wrap;align-items:baseline}
+.srclist .s{flex:1;min-width:14rem;font-size:.97rem;color:var(--paper)}
+.glo{list-style:none;margin:1.3rem 0;padding:0}
+.glo li{border-top:1px solid var(--rule-ink);padding:.8rem 0;color:var(--paper)}
+.glo b{font-family:"Bricolage Grotesque",sans-serif;color:var(--gold);font-weight:700}
+.scene{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.2rem 0}
+.scene span{font-family:"Space Mono",monospace;font-size:.72rem;border:1px solid var(--rule-ink);border-radius:22px;padding:.32em .85em;color:var(--paper);transition:border-color var(--d),color var(--d)}
+.scene span:hover{border-color:var(--gold);color:var(--gold)}
+
+footer{background:var(--ink-2);padding-block:3.4rem;text-align:center}
+footer .mono{color:var(--mute);font-size:.74rem;letter-spacing:.06em;line-height:1.9}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity var(--d),transform var(--d)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.07s}.reveal.d2{transition-delay:.14s}.reveal.d3{transition-delay:.21s}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:3px}
+
+/* =====================================================================
+   ENHANCEMENTS — added visual layer (v2)
+   ===================================================================== */
+
+/* --- reading-progress lane (bowling lane) --- */
+.progress{position:fixed;inset:0 0 auto 0;height:5px;z-index:80;background:rgba(239,230,211,.08)}
+.progress .bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--lane) 45%,var(--teal));box-shadow:0 0 12px rgba(220,180,62,.4)}
+.progress .ball{position:absolute;top:50%;left:0;width:14px;height:14px;border-radius:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 34% 30%, #fffd 0 14%, #2a3633 72%);box-shadow:0 0 0 2px var(--gold),0 2px 6px rgba(0,0,0,.5)}
+
+/* --- back-to-top bowling ball --- */
+.totop{position:fixed;right:1.05rem;bottom:1.05rem;z-index:75;width:50px;height:50px;border-radius:50%;border:0;cursor:pointer;
+  background:radial-gradient(circle at 33% 28%, #44544f 0 18%, var(--ink-2) 72%);color:var(--gold);display:grid;place-items:center;
+  box-shadow:0 12px 26px -12px rgba(0,0,0,.7), inset 0 0 0 2px rgba(220,180,62,.45);
+  opacity:0;pointer-events:none;transition:opacity .3s, transform .3s}
+.totop.show{opacity:1;pointer-events:auto}
+.totop:hover{transform:translateY(-3px) rotate(-10deg);color:var(--lane)}
+.totop svg{width:20px;height:20px}
+
+/* --- chapter-opener icon badge --- */
+.chapter .kico{position:relative;z-index:1;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;margin-bottom:1rem;
+  background:color-mix(in srgb,var(--accent) 16%,transparent);border:1.5px solid color-mix(in srgb,var(--accent) 55%,transparent);color:var(--accent)}
+.chapter .kico svg{width:26px;height:26px}
+
+/* --- chapter TL;DR strip --- */
+.tldr{display:flex;gap:.85rem;align-items:flex-start;margin:0 0 2rem;
+  background:color-mix(in srgb,var(--accent) 9%,transparent);
+  border:1.5px solid color-mix(in srgb,var(--accent) 38%,transparent);border-radius:13px;padding:1rem 1.15rem}
+.tldr .tk{flex:none;margin-top:.05rem;font-family:"Space Mono",monospace;font-weight:700;font-size:.6rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent-ink);border:1.5px solid var(--accent);border-radius:6px;padding:.3em .52em}
+.tldr p{margin:0;font-size:1.02rem;line-height:1.5}
+.tldr strong{font-weight:600;color:var(--ink)}
+
+/* --- stat band --- */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin:2rem 0;
+  background:var(--rule);border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+@media(min-width:700px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--paper-3);padding:1.2rem 1rem;text-align:center}
+.stat .num{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;line-height:1;letter-spacing:-.02em;
+  font-size:clamp(1.7rem,5vw,2.4rem);color:var(--accent-ink)}
+.stat .num .u{font-size:.42em;font-weight:700;color:var(--mute-d);letter-spacing:0}
+.stat .lbl{font-family:"Space Mono",monospace;font-size:.63rem;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--mute-d);margin-top:.55rem;line-height:1.45}
+
+/* --- VS split --- */
+.vs{display:grid;gap:1px;margin:1.8rem 0;background:var(--rule);border:1px solid var(--rule);border-radius:14px;overflow:hidden;position:relative}
+@media(min-width:600px){.vs{grid-template-columns:1fr 1fr}}
+.vs .side{background:var(--paper-3);padding:1.25rem 1.3rem}
+.vs .side.a{border-top:4px solid var(--vsa,var(--lane))}
+.vs .side.b{border-top:4px solid var(--vsb,var(--teal))}
+.vs .vh{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.08rem;margin:0 0 .45rem;display:flex;gap:.45rem;align-items:center}
+.vs .side.a .vh{color:var(--vsa-ink,var(--lane-ink))}
+.vs .side.b .vh{color:var(--vsb-ink,var(--teal-ink))}
+.vs .side p{margin:0;font-size:.96rem}.vs .side p+p{margin-top:.5rem}
+.vs .mid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:2.5rem;height:2.5rem;border-radius:50%;
+  display:grid;place-items:center;background:var(--ink);color:var(--paper);box-shadow:0 0 0 5px var(--paper);
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:.74rem}
+
+/* --- film quote card (subtitle style) --- */
+.qcard{position:relative;overflow:hidden;margin:1.8rem 0;padding:1.5rem 1.4rem 1.3rem;border-radius:14px;
+  background:var(--ink-2);border:1px solid var(--rule-ink)}
+.qcard::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(130% 130% at 0 0, color-mix(in srgb,var(--accent) 22%,transparent), transparent 55%)}
+.qcard>*{position:relative}
+.qcard .ql{font-family:"Space Mono",monospace;font-size:.59rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;display:flex;gap:.5rem;align-items:center}
+.qcard .ql::before{content:"\25B6";font-size:.9em}
+.qcard .qt{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:-.01em;line-height:1.16;
+  font-size:clamp(1.2rem,3.1vw,1.6rem);color:var(--paper)}
+.qcard .qt em{font-style:normal;color:var(--accent)}
+.qcard .qa{font-family:"Space Mono",monospace;font-size:.72rem;color:var(--mute);margin-top:.85rem;letter-spacing:.03em}
+
+/* --- theory timeline --- */
+.timeline{position:relative;margin:1.9rem 0;padding-left:1.7rem}
+.timeline::before{content:"";position:absolute;left:.42rem;top:.5rem;bottom:.5rem;width:2px;
+  background:linear-gradient(var(--accent),color-mix(in srgb,var(--accent) 18%,transparent))}
+.tl{position:relative;padding-bottom:1.2rem}.tl:last-child{padding-bottom:0}
+.tl::before{content:"";position:absolute;left:-1.36rem;top:.3rem;width:.74rem;height:.74rem;border-radius:50%;
+  background:var(--paper-3);border:2.5px solid var(--accent)}
+.tl .yr{font-family:"Space Mono",monospace;font-weight:700;font-size:.68rem;letter-spacing:.04em;color:var(--accent-ink)}
+.tl .tt{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.02rem;color:var(--ink);margin:.05rem 0 .15rem}
+.tl p{margin:0;font-size:.93rem}
+
+/* --- concept chips --- */
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0}
+.chips.tight{margin:.6rem 0 0}
+.chip{font-family:"Space Mono",monospace;font-size:.67rem;letter-spacing:.02em;border-radius:30px;padding:.36em .85em;
+  background:color-mix(in srgb,var(--accent) 11%,transparent);border:1px solid color-mix(in srgb,var(--accent) 38%,transparent);color:var(--accent-ink)}
+.chip b{color:var(--ink);font-weight:700}
+
+/* --- character / OS cards --- */
+.oscards{display:grid;gap:1.15rem;margin:1.8rem 0}
+@media(min-width:600px){.oscards{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.oscards{grid-template-columns:1fr 1fr 1fr}}
+.oscard{position:relative;background:var(--paper-3);border:1.5px solid var(--rule);border-top:4px solid var(--oc,var(--lane));
+  border-radius:14px;padding:1.15rem 1.1rem 1.05rem;transition:transform var(--d),box-shadow var(--d)}
+.oscard:hover{transform:translateY(-4px);box-shadow:0 18px 38px -22px rgba(0,0,0,.5)}
+.oscard .nm{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.16rem;color:var(--ink);line-height:1;display:flex;align-items:center;gap:.5rem}
+.oscard .pn{width:.72rem;height:.72rem;border-radius:50%;background:var(--oc,var(--lane));flex:none}
+.oscard .lab{font-family:"Space Mono",monospace;font-size:.55rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ocink,var(--lane-ink));margin:.75rem 0 .12rem}
+.oscard .ov{font-size:.95rem;font-weight:500;color:var(--ink);margin:0}
+.oscard .fv{font-size:.92rem;margin:0;color:var(--textonpaper)}
+
+/* --- "what's next" preview --- */
+.nextgrid{display:grid;gap:1.1rem;margin:1.9rem 0}
+@media(min-width:640px){.nextgrid{grid-template-columns:1fr 1fr}}
+.nextcard{position:relative;background:color-mix(in srgb,var(--nc,#888) 8%, var(--ink-3));
+  border:1px solid color-mix(in srgb,var(--nc,#888) 35%,transparent);border-left:4px solid var(--nc,#888);border-radius:12px;padding:1.05rem 1.15rem}
+.nextcard .nn{font-family:"Space Mono",monospace;font-weight:700;font-size:.66rem;letter-spacing:.06em;color:var(--nc,#aaa)}
+.nextcard h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.12rem;color:var(--paper);margin:.25rem 0 .3rem}
+.nextcard p{font-size:.92rem;margin:0;color:color-mix(in srgb,var(--paper) 78%,transparent)}
+.nextcard .st{position:absolute;top:.85rem;right:.9rem;font-family:"Space Mono",monospace;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--nc,#aaa);border:1px solid color-mix(in srgb,var(--nc,#888) 45%,transparent);border-radius:20px;padding:.22em .55em}
+
+/* --- rug divider (it really ties the room together) --- */
+.rug{margin:2.8rem 0 .4rem;height:16px;border-radius:7px;opacity:.62;
+  background:repeating-linear-gradient(45deg,var(--rust) 0 7px,var(--gold) 7px 14px,var(--teal) 14px 21px,var(--plum) 21px 28px)}
+.rug-cap{font-family:"Space Mono",monospace;font-size:.6rem;letter-spacing:.1em;color:var(--mute-d);text-align:center;margin:.5rem 0 0;font-style:italic}
+
+/* --- aside / margin note --- */
+.aside-note{border-left:3px solid var(--accent);background:color-mix(in srgb,var(--accent) 6%,transparent);
+  border-radius:0 10px 10px 0;padding:.85rem 1rem;margin:1.6rem 0}
+.aside-note .anl{font-family:"Space Mono",monospace;font-size:.57rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent-ink);margin-bottom:.35rem}
+.aside-note p{margin:0;font-size:.95rem}
+
+/* --- TOC present / pending states --- */
+.toc .subhead{font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:1.6rem 0 .1rem}
+.toc .subhead:first-of-type{margin-top:1.3rem}
+.toc a .badge{font-family:"Space Mono",monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;border-radius:20px;
+  padding:.22em .55em;border:1px solid;align-self:center;flex:none}
+.toc a .badge.here{color:var(--teal);border-color:color-mix(in srgb,var(--teal) 55%,transparent)}
+.toc a .badge.next{color:var(--mute);border-color:var(--rule-ink)}
+.toc a.soon{opacity:.55;cursor:default}
+.toc a.soon:hover{padding-left:.3rem;background:none}
+.toc a.soon:hover .t{color:var(--paper)}
+
+/* scroll cue in hero */
+.scrollcue{margin-top:2.4rem;display:inline-flex;align-items:center;gap:.6rem;font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.scrollcue svg{width:16px;height:22px}
+.scrollcue svg .dot{animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(5px);opacity:1}}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><div class="bar" id="pbar"></div><div class="ball" id="pball"></div></div>
+<button class="totop" id="totop" aria-label="Zurück nach oben" title="Zurück nach oben">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+</button>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="framestrip" aria-hidden="true"><i class="s"></i><i class="t"></i><i class="r"></i><i></i><i></i></div>
+    <p class="eyebrow" style="color:var(--gold)">Analyse &amp; Werkzeugkasten · 24 Tiefen-Durchläufe, kondensiert</p>
+    <h1 class="display"><span class="l1">Der Witz</span><span class="l2">ist die</span><span class="l3">Weltsicht</span></h1>
+    <p class="sub">Die Komik-Mechanik von <em>The Big Lebowski</em> — und warum dieselbe Maschine, die zum Lachen bringt, zugleich die Bedeutung des Films trägt.</p>
+    <div class="epigraph">
+      <p class="q">„…and then there's Walter, whose instincts are always wrong."</p>
+      <p class="a">— Ethan Coen · dt.: „…und dann ist da Walter, dessen Instinkte immer falsch liegen."</p>
+    </div>
+    <p class="meta">Frame 00 · Eine Operation, zwei Outputs · Sprache DE · 7 Frames</p>
+    <a class="scrollcue" href="#these" aria-label="Zum ersten Kapitel scrollen">
+      <svg viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="1" width="14" height="20" rx="7"/><circle class="dot" cx="8" cy="7" r="1.8" fill="currentColor" stroke="none"/></svg>
+      Weiterscrollen
+    </a>
+  </div>
+</header>
+
+<!-- ===== TOC ===== -->
+<nav class="toc" aria-label="Inhalt">
+  <div class="wrap body-pad">
+    <p class="eyebrow" style="color:var(--mute)">Lesehilfe — sieben Frames</p>
+    <p class="subhead">In diesem Export · 2 Frames</p>
+    <ol>
+      <li><a class="c1" href="#these"><span class="n">I</span><span class="t">Die These: Form = Inhalt</span><span class="d">Eine Maschine für Witz und Bedeutung</span><span class="badge here">hier</span></a></li>
+      <li><a class="c2" href="#saeulen"><span class="n">II</span><span class="t">Fünf Säulen der Komik</span><span class="d">Was den Film besonders macht</span><span class="badge here">hier</span></a></li>
+    </ol>
+    <p class="subhead">Folgt · 5 Frames — noch nicht in diesem Export</p>
+    <ol>
+      <li><a class="c3 soon" href="#nachwort"><span class="n">III</span><span class="t">Werkzeugkasten: Schreibtechniken</span><span class="d">Acht anwendbare Karten</span><span class="badge next">folgt</span></a></li>
+      <li><a class="c4 soon" href="#nachwort"><span class="n">IV</span><span class="t">Werkzeugkasten: Brainstorm</span><span class="d">Sechs Ideen-Verfahren</span><span class="badge next">folgt</span></a></li>
+      <li><a class="c5 soon" href="#nachwort"><span class="n">V</span><span class="t">Die Dynamiken</span><span class="d">Dreieck · passiver Held · Wiederholung</span><span class="badge next">folgt</span></a></li>
+      <li><a class="c6 soon" href="#nachwort"><span class="n">VI</span><span class="t">Synthese</span><span class="d">Einzigartig vs. übertragbar</span><span class="badge next">folgt</span></a></li>
+      <li><a class="c7 soon" href="#nachwort"><span class="n">§</span><span class="t">Apparat</span><span class="d">Quellen · Szenen · Glossar</span><span class="badge next">folgt</span></a></li>
+    </ol>
+  </div>
+</nav>
+
+<!-- ===== TEIL I ===== -->
+<section class="chapter" id="these" style="--accent:var(--gold);--accent-ink:var(--gold-ink)">
+  <span class="bignum" aria-hidden="true">I</span>
+  <div class="wrap inner">
+    <div class="kico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h6"/><path d="M10 12l8-6"/><path d="M10 12l8 6"/><path d="M18 6h0M18 18h0"/></svg></div>
+    <p class="klabel">Teil I</p>
+    <h2>Die These: Form = Inhalt</h2>
+    <p class="kepi">Der komische Mechanismus ist nicht Dekoration — er <em>ist</em> die Bedeutung.</p>
+    <div class="glance">
+      <span><b>Begriff:</b> Inkongruenz</span><span><b>Schlüssel:</b> Witz = Erkenntnis</span><span><b>Beleg:</b> Coen + Merrill</span><span><b>Diagramm:</b> 1 Bruch → 2 Outputs</span>
+    </div>
+  </div>
+</section>
+<section class="panel" style="--accent:var(--gold);--accent-ink:var(--gold-ink)">
+  <div class="wrap body-pad">
+    <p class="lead dropcap reveal">In den meisten Komödien sitzt der Witz als Dekoration auf der Handlung. Bei <em>Lebowski</em> sind Komik und Weltsicht <strong>dieselbe Maschine</strong>. Das ist der Grund, warum der Film wieder und wieder geschaut werden kann und trotz aller Albernheit „tief" wirkt: nicht weil er eine Botschaft <em>liefert</em>, sondern weil sein komischer Mechanismus seine Bedeutung <em>ist</em>.</p>
+
+    <div class="tldr reveal">
+      <span class="tk">In Kürze</span>
+      <p>Ein einziger Mechanismus — die <strong>Inkongruenz</strong> (Rahmen trifft Realität) — erzeugt gleichzeitig den Lacher <em>und</em> die Aussage des Films. Witz und Weltsicht sind nicht zwei Dinge, sondern <strong>ein und dieselbe Maschine</strong>.</p>
+    </div>
+
+    <div class="legend reveal" aria-label="Beleg-Typen">
+      <span><i style="background:var(--lane)"></i> <span class="tag film">Film</span> filminterne Evidenz</span>
+      <span><i style="background:var(--teal)"></i> <span class="tag theo">Theorie</span> Forschung &amp; Begriffe</span>
+      <span><i style="background:var(--rust)"></i> <span class="tag deut">Deutung</span> eigene Interpretation</span>
+    </div>
+
+    <h3 class="reveal"><span class="hn">1</span> Der Motor: Inkongruenz</h3>
+    <p class="reveal">Die Operation, die alles antreibt, ist die <span class="hl">Inkongruenz</span>: Eine sicher gehaltene Deutung (ein <em>Rahmen</em>) trifft auf eine Realität, die nicht hineinpasst.</p>
+
+    <div class="callout defbox reveal">
+      <span class="clabel">Begriff · Inkongruenz &amp; Bisoziation</span>
+      <p>Seit Kant und Schopenhauer der klassische Schlüssel des Komischen. Arthur Koestler nennt den Moment, in dem wir eine Lage gleichzeitig in zwei unvereinbaren <em>frames of reference</em> sehen, „Bisoziation" (<em>The Act of Creation</em>, 1964).</p>
+    </div>
+
+    <div class="callout deutbox reveal">
+      <span class="clabel">Deutung · die zentrale Brücke</span>
+      <p>Dieselbe Inkongruenz (Rahmen ≠ Realität) ist auch der <em>erkenntnistheoretische</em> Irrtum (Gewissheit ≠ Faktenlage). Der epistemische Fehler ist kein Zusatz zur Komik — er ist der <strong>Spezialfall</strong> genau jener Inkongruenz, aus der die Komik entsteht. Ein Bruch, zwei Lesarten.</p>
+    </div>
+
+    <figure class="reveal" aria-label="Diagramm: ein Bruch erzeugt zwei Outputs">
+      <svg viewBox="0 0 760 240" role="img" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="240" rx="12" fill="#16201e"/>
+        <rect x="40" y="92" width="190" height="56" rx="8" fill="none" stroke="#efe6d3" stroke-width="1.5"/>
+        <text x="135" y="116" text-anchor="middle" fill="#efe6d3" font-family="Bricolage Grotesque,sans-serif" font-weight="700" font-size="15">Sichere Deutung</text>
+        <text x="135" y="135" text-anchor="middle" fill="#9a9384" font-family="Space Mono,monospace" font-size="11">ein Rahmen</text>
+        <text x="270" y="124" text-anchor="middle" fill="#c0492f" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="30">⊥</text>
+        <text x="270" y="150" text-anchor="middle" fill="#9a9384" font-family="Space Mono,monospace" font-size="10">trifft</text>
+        <rect x="310" y="92" width="150" height="56" rx="8" fill="none" stroke="#efe6d3" stroke-width="1.5"/>
+        <text x="385" y="124" text-anchor="middle" fill="#efe6d3" font-family="Bricolage Grotesque,sans-serif" font-weight="700" font-size="15">Realität</text>
+        <line x1="460" y1="120" x2="540" y2="120" stroke="#9a9384" stroke-width="1.5"/><polygon points="540,120 532,116 532,124" fill="#9a9384"/>
+        <text x="500" y="110" text-anchor="middle" fill="#9a9384" font-family="Space Mono,monospace" font-size="10">Bruch</text>
+        <rect x="548" y="58" width="172" height="48" rx="8" fill="rgba(220,180,62,.18)" stroke="#dcb43e" stroke-width="1.5"/>
+        <text x="634" y="87" text-anchor="middle" fill="#dcb43e" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="17">LACHEN</text>
+        <rect x="548" y="134" width="172" height="48" rx="8" fill="rgba(54,168,156,.15)" stroke="#36a89c" stroke-width="1.5"/>
+        <text x="634" y="163" text-anchor="middle" fill="#36a89c" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="17">THESE</text>
+        <path d="M540,120 C544,120 544,82 548,82" fill="none" stroke="#dcb43e" stroke-width="1.5"/>
+        <path d="M540,120 C544,120 544,158 548,158" fill="none" stroke="#36a89c" stroke-width="1.5"/>
+        <text x="380" y="212" text-anchor="middle" fill="#6f6657" font-family="Space Mono,monospace" font-size="11">Dieselbe Operation. Zwei Outputs. Das ist „Form = Inhalt".</text>
+      </svg>
+      <figcaption>Inkongruenz erzeugt den Lacher <em>und</em> die erkenntnistheoretische Aussage im selben Riss — zwei Lesarten eines Ereignisses.</figcaption>
+    </figure>
+
+    <div class="callout merke reveal">
+      <span class="clabel">Merke</span>
+      <p>Nicht der <em>Wahrheitsgehalt</em> einer Annahme richtet den Schaden an, sondern die Bereitschaft, <strong>ohne Prüfung danach zu handeln</strong>. Dieselbe Mechanik gilt für Figuren, Plot — und den Zuschauer.</p>
+    </div>
+
+    <div class="callout kernlehre reveal">
+      <span class="clabel">Kernlehre · der eine Satz</span>
+      <p class="big">Der komische Mechanismus ist nicht Dekoration auf der Bedeutung — er <em>ist</em> die Bedeutung. Ein Riss, zwei Lesarten: Lachen und These.</p>
+    </div>
+
+    <div class="stats reveal" aria-label="Kennzahlen zur These">
+      <div class="stat"><div class="num">1</div><div class="lbl">Operation trägt Witz <span class="u">&amp;</span> Bedeutung</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Outputs aus einem Bruch — Lachen + These</div></div>
+      <div class="stat"><div class="num">1964</div><div class="lbl">Koestler nennt es „Bisoziation"</div></div>
+      <div class="stat"><div class="num">≠</div><div class="lbl">Rahmen ≠ Realität spiegelt Gewissheit ≠ Faktenlage</div></div>
+    </div>
+
+    <h3 class="reveal"><span class="hn">2</span> Witz und Krimi teilen dieselbe DNA</h3>
+    <p class="reveal">Das gilt nicht nur szenenweise, sondern fürs ganze Genre. <span class="tag theo">Theorie</span> Komödie und Detektivfilm arbeiten <em>beide</em> durch Erwartungs-Subversion — sie „teilen dieselbe DNA" (LA Review of Books). Die Coens haben den „comic impulse" freigelegt, der in jeder Krimi-Maschinerie steckt: Die Auflösung wird zur buchstäblichen Pointe, die Wahrheit „far simpler, and sillier", als jeder erwartet.</p>
+
+    <div class="callout beispiel reveal">
+      <span class="clabel">Film · die machtlose Wahrheit</span>
+      <p>Als der Dude den Fall endlich korrekt deutet, sagt der Milliardär nur <span class="qf">„you have your story, I have mine."</span> Kein Geld kehrt zurück, niemand wird belangt. Was im Film <em>handelt</em>, ist nie die Wahrheit, sondern die Gewissheit — und die ist blind.</p>
+    </div>
+
+    <div class="qcard reveal">
+      <p class="ql">Drehbuch-Absicht</p>
+      <p class="qt">„A hopelessly complex plot that's <em>ultimately unimportant</em>."</p>
+      <p class="qa">— Joel Coen über die Bauweise des Falls (nach Chandler-Vorbild)</p>
+    </div>
+
+    <details class="vert reveal">
+      <summary><span class="vlab">Vertiefung — der Zuschauer ist mitgemeint</span></summary>
+      <div class="vbody">
+        <p>Joel Coen wollte ausdrücklich „a hopelessly complex plot that's ultimately unimportant" nach Chandler-Vorbild. <span class="tag theo">Theorie</span> Die Forschung liest Chandlers Marlowe genauso: Seine Lösung „löst in Wahrheit nichts" (Merrill, <em>Narrative</em> 7/1, 1999).</p>
+        <p>Der Plot ist so verschachtelt, dass <em>wir</em> nach einer tiefen Lösung gieren — und naiv dastehen. Wir sind „like Walter, clinging onto absurd principles". Die Erkenntnistheorie wird nicht nur <em>gezeigt</em>, sondern <em>an uns vollzogen</em>.</p>
+      </div>
+    </details>
+
+    <h3 class="reveal"><span class="hn">3</span> Vier Schichten</h3>
+    <p class="reveal">Über die ganze Analyse hinweg zerfällt der Film in vier Schichten, die der Werkzeugkasten später aufgreift:</p>
+    <table class="tbl reveal">
+      <thead><tr><th>Schicht</th><th>Was sie tut</th><th>Form = Inhalt?</th></tr></thead>
+      <tbody>
+        <tr><td><span class="os">Motor</span></td><td>Inkongruenz / Rahmen-Bruch — funny <em>und</em> wahr</td><td>ja — die These selbst</td></tr>
+        <tr><td><span class="os">Chassis</span></td><td>Reincorporation, Rhythmus, Geschmacksgrenze</td><td>nein — dient ihm</td></tr>
+        <tr><td><span class="os">Antwort</span></td><td>„abide" / wu wei — die gelebte Reaktion</td><td>angeboten <em>und</em> unterminiert</td></tr>
+        <tr><td><span class="os">Demut</span></td><td>der Film verweigert eine einzige These</td><td>die These, vollzogen</td></tr>
+      </tbody>
+    </table>
+    <div class="callout tipp reveal">
+      <span class="clabel">Tipp · so liest sich die Tabelle</span>
+      <p>Nur die <strong>Motor</strong>-Zeile <em>ist</em> die These; die anderen drei dienen ihr. Wer den Film analysiert, fragt also bei jeder Szene zuerst: Wo bricht hier ein Rahmen an der Realität? Alles Übrige — Rhythmus, Antwort, Demut — hängt daran.</p>
+    </div>
+
+    <div class="callout deutbox reveal">
+      <span class="clabel">Deutung · der Meisterzug</span>
+      <p>Ein Film über die Blindheit der Gewissheit kann über seine <em>eigene</em> Bedeutung nicht gewiss sein. Seine Vieldeutigkeit ist kein Mangel, sondern die These, am eigenen Leib vorgeführt — er <em>abidet</em> über sich selbst.</p>
+    </div>
+
+    <div class="motif reveal" aria-hidden="true"><span class="ln"></span><svg viewBox="0 0 40 40"><circle cx="20" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="2"/><rect x="11" y="24" width="18" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="ln"></span></div>
+  </div>
+</section>
+
+<section class="bigpull">
+  <p class="q">„Form = Inhalt": Wenn Witz und These dieselbe Maschine sind, wird die Komödie herausragend statt bloß witzig.</p>
+  <span class="src">— die Leitthese aus 24 Durchläufen</span>
+</section>
+
+<!-- ===== TEIL II ===== -->
+<section class="chapter" id="saeulen" style="--accent:var(--teal);--accent-ink:var(--teal-ink)">
+  <span class="bignum" aria-hidden="true">II</span>
+  <div class="wrap inner">
+    <div class="kico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6v12M7.5 6v12M12 6v12M16.5 6v12M21 6v12"/></svg></div>
+    <p class="klabel">Teil II</p>
+    <h2>Fünf Säulen der Komik</h2>
+    <p class="kepi">Fünf tragende Säulen — jede eine andere Seite desselben Motors.</p>
+    <div class="glance">
+      <span><b>1</b> Figuren-OS</span><span><b>2</b> Noir fehlbesetzt</span><span><b>3</b> Bathos</span><span><b>4</b> Nicht-Kommunikation</span><span><b>5</b> Hyperspezifität</span>
+    </div>
+  </div>
+</section>
+<section class="panel" style="--accent:var(--teal);--accent-ink:var(--teal-ink)">
+  <div class="wrap body-pad">
+    <p class="lead dropcap reveal">Was den Film besonders macht, lässt sich auf fünf tragende Säulen verteilen. Sie greifen ineinander — und alle laufen am Ende auf dieselbe Operation aus Teil I zurück.</p>
+
+    <div class="tldr reveal">
+      <span class="tk">In Kürze</span>
+      <p>Fünf Hebel: starre <strong>Figuren-Betriebssysteme</strong>, ein <strong>ernst gespielter Noir mit fehlbesetztem Personal</strong>, permanente <strong>Bathos</strong> (Einsatz-Verwechslung), <strong>Dialog als Nicht-Kommunikation</strong> und manische <strong>Hyperspezifität</strong>. Jeder Hebel ist eine andere Seite desselben Inkongruenz-Motors.</p>
+    </div>
+
+    <h3 class="reveal"><span class="hn">1</span> Figuren als Betriebssysteme</h3>
+    <p class="reveal">Kaum ein Witz hat Setup-Pointe-Struktur. Jede Figur hat ein starres <span class="hl">Betriebssystem (OS)</span> — eine Leitlinse, durch die sie <em>alles</em> filtert.</p>
+    <div class="callout defbox reveal">
+      <span class="clabel">Begriff · drei Rahmen in einem</span>
+      <p>Ben Jonsons Komödie der „humours" (eine regierende Eigenschaft je Figur) + Bergsons mechanische Erstarrung („du mécanique plaqué sur du vivant") + das Improv-„game of the scene" (ein fixer Standpunkt, auf jede Lage angewandt). Die Bergson-Forschung liefert die Brücke: „comedy is basically anti-theoretical" — die starre Figur <em>ist</em> ein Theoretiker, den die Praxis blamiert.</p>
+    </div>
+    <div class="chips reveal" aria-label="Drei Theorie-Rahmen">
+      <span class="chip"><b>Jonson</b> · Komödie der „humours"</span>
+      <span class="chip"><b>Bergson</b> · mécanique plaqué sur du vivant</span>
+      <span class="chip"><b>Improv</b> · game of the scene</span>
+    </div>
+    <div class="callout deutbox reveal">
+      <span class="clabel">Deutung · Nicht-Entwicklung ist Programm</span>
+      <p><strong>Keine</strong> Hauptfigur aktualisiert ihr OS. Ein Charakterbogen würde den Komik-Motor abstellen — der Film thematisiert das sogar im „abide".</p>
+    </div>
+    <div class="oscards">
+      <div class="oscard reveal" style="--oc:var(--rust);--ocink:var(--rust-ink)">
+        <div class="nm"><span class="pn"></span>Walter</div>
+        <div class="lab">Betriebssystem</div><p class="ov">Alles ist Regelbruch / Vietnam</p>
+        <div class="lab">Failure-Mode</div><p class="fv">Maximale Gewalt auf Triviales</p>
+      </div>
+      <div class="oscard reveal d1" style="--oc:var(--teal);--ocink:var(--teal-ink)">
+        <div class="nm"><span class="pn"></span>Der Dude</div>
+        <div class="lab">Betriebssystem</div><p class="ov">Reibung minimieren, „abide"</p>
+        <div class="lab">Failure-Mode</div><p class="fv">Saugt fremde Agenden auf</p>
+      </div>
+      <div class="oscard reveal d2" style="--oc:var(--gold);--ocink:var(--gold-ink)">
+        <div class="nm"><span class="pn"></span>Donny</div>
+        <div class="lab">Betriebssystem</div><p class="ov">Dazugehören wollen</p>
+        <div class="lab">Failure-Mode</div><p class="fv">Ewig einen Beat zurück</p>
+      </div>
+      <div class="oscard reveal" style="--oc:var(--lane);--ocink:var(--lane-ink)">
+        <div class="nm"><span class="pn"></span>Gr. Lebowski</div>
+        <div class="lab">Betriebssystem</div><p class="ov">Leistungs-/Bootstrap-Ideologie</p>
+        <div class="lab">Failure-Mode</div><p class="fv">Hohle Autorität ohne Geld</p>
+      </div>
+      <div class="oscard reveal d1" style="--oc:var(--plum);--ocink:var(--plum-ink)">
+        <div class="nm"><span class="pn"></span>Maude</div>
+        <div class="lab">Betriebssystem</div><p class="ov">Kunsttheorie &amp; Kontrolle</p>
+        <div class="lab">Failure-Mode</div><p class="fv">Menschen als Instrumente</p>
+      </div>
+      <div class="oscard reveal d2" style="--oc:var(--mute);--ocink:var(--mute-d)">
+        <div class="nm"><span class="pn"></span>Nihilisten</div>
+        <div class="lab">Betriebssystem</div><p class="ov">„Nichts" glauben</p>
+        <div class="lab">Failure-Mode</div><p class="fv">Wollen trotzdem Geld — „it's not fair"</p>
+      </div>
+    </div>
+    <details class="vert reveal">
+      <summary><span class="vlab">Kompakt-Ansicht — alle sechs als Tabelle</span></summary>
+      <div class="vbody">
+        <table class="tbl" style="margin:.3rem 0">
+          <thead><tr><th>Figur</th><th>Betriebssystem</th><th>Failure-Mode</th></tr></thead>
+          <tbody>
+            <tr><td><span class="os">Walter</span></td><td>alles ist Regelbruch / Vietnam</td><td>maximale Gewalt auf Triviales</td></tr>
+            <tr><td><span class="os">Der Dude</span></td><td>Reibung minimieren, „abide"</td><td>saugt fremde Agenden auf</td></tr>
+            <tr><td><span class="os">Donny</span></td><td>dazugehören wollen</td><td>ewig einen Beat zurück</td></tr>
+            <tr><td><span class="os">Gr. Lebowski</span></td><td>Leistungs-/Bootstrap-Ideologie</td><td>hohle Autorität ohne Geld</td></tr>
+            <tr><td><span class="os">Maude</span></td><td>Kunsttheorie &amp; Kontrolle</td><td>Menschen als Instrumente</td></tr>
+            <tr><td><span class="os">Nihilisten</span></td><td>„nichts" glauben</td><td>wollen trotzdem Geld, „it's not fair"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+    <div class="callout beispiel reveal"><span class="clabel">Film · reine OS-Kollision</span><p>Walter zieht über ein Bowling-Foul die Waffe — <span class="qf">„mark it zero"</span>. Treibt den Plot null voran; ist hundertprozentig Walter.</p></div>
+
+    <h3 class="reveal"><span class="hn">2</span> Noir ernst gespielt, Figuren fehlbesetzt</h3>
+    <p class="reveal">Ein echter Film noir — bevölkert von Leuten, die dafür völlig ungeeignet sind. Die Coens spielen die Genre-<em>Maschinerie ernst</em> (ein funktionierender Fall, von Deakins wie echtes Noir fotografiert); die Komik kommt allein aus der <span class="hl">Fehlbesetzung</span>.</p>
+    <div class="callout deutbox reveal"><span class="clabel">Deutung</span><p>Parodie = <strong>Subtraktion von Kompetenz</strong>, nicht Addition von Albernheit. Die Schablone lieferte Altmans <em>The Long Goodbye</em> (1973) — Genre todernst, Held zeitversetzt und passiv. Lebowski geht weiter und <em>spaltet</em> die kompetente Detektivfigur in zwei Versager.</p></div>
+    <div class="vs reveal" style="--vsa:var(--teal);--vsa-ink:var(--teal-ink);--vsb:var(--rust);--vsb-ink:var(--rust-ink)">
+      <div class="side a">
+        <p class="vh">✓ Subtraktion von Kompetenz</p>
+        <p>Die Genre-Maschinerie läuft tadellos — von Deakins wie echtes Noir fotografiert. Komik entsteht aus dem, <em>was den Figuren fehlt</em>.</p>
+      </div>
+      <div class="mid" aria-hidden="true">≠</div>
+      <div class="side b">
+        <p class="vh">✗ Addition von Albernheit</p>
+        <p>Der naheliegende Irrtum: man müsste Gags draufsetzen. Genau das tut der Film <em>nicht</em> — er nimmt das Genre todernst.</p>
+      </div>
+    </div>
+
+    <figure class="reveal" aria-label="Diagramm: Marlowe gespalten">
+      <svg viewBox="0 0 760 250" role="img" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="250" rx="12" fill="#16201e"/>
+        <rect x="270" y="26" width="220" height="56" rx="8" fill="none" stroke="#efe6d3" stroke-width="1.5"/>
+        <text x="380" y="50" text-anchor="middle" fill="#efe6d3" font-family="Bricolage Grotesque,sans-serif" font-weight="700" font-size="16">Marlowe</text>
+        <text x="380" y="69" text-anchor="middle" fill="#9a9384" font-family="Space Mono,monospace" font-size="10">kompetente Deduktion · moralischer Kompass</text>
+        <path d="M380,82 C380,110 200,110 200,138" fill="none" stroke="#cf9442" stroke-width="1.5"/>
+        <path d="M380,82 C380,110 560,110 560,138" fill="none" stroke="#36a89c" stroke-width="1.5"/>
+        <polygon points="200,138 196,130 204,130" fill="#cf9442"/><polygon points="560,138 556,130 564,130" fill="#36a89c"/>
+        <rect x="80" y="140" width="240" height="74" rx="8" fill="rgba(207,148,66,.14)" stroke="#cf9442" stroke-width="1.5"/>
+        <text x="200" y="166" text-anchor="middle" fill="#cf9442" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="17">WALTER</text>
+        <text x="200" y="187" text-anchor="middle" fill="#efe6d3" font-family="Space Mono,monospace" font-size="11">aktive Deduktion</text>
+        <text x="200" y="203" text-anchor="middle" fill="#9a9384" font-family="Space Mono,monospace" font-size="11">selbstsicher — aber falsch</text>
+        <rect x="440" y="140" width="240" height="74" rx="8" fill="rgba(54,168,156,.13)" stroke="#36a89c" stroke-width="1.5"/>
+        <text x="560" y="166" text-anchor="middle" fill="#36a89c" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="17">DER DUDE</text>
+        <text x="560" y="187" text-anchor="middle" fill="#efe6d3" font-family="Space Mono,monospace" font-size="11">passive Intuition</text>
+        <text x="560" y="203" text-anchor="middle" fill="#9a9384" font-family="Space Mono,monospace" font-size="11">richtig — aber machtlos</text>
+        <text x="380" y="238" text-anchor="middle" fill="#6f6657" font-family="Space Mono,monospace" font-size="11">„instincts are always wrong" ⟂ „intuitively figuring out"</text>
+      </svg>
+      <figcaption><span class="tag film">Film</span> Der eine kompetente Detektiv zerfällt in Walter (sicher-aber-falsch) und den Dude (richtig-aber-machtlos). Der Film braucht beide Hälften.</figcaption>
+    </figure>
+
+    <h3 class="reveal"><span class="hn">3</span> Bathos — die permanente Einsatz-Verwechslung</h3>
+    <p class="reveal">Triviales wird mit der Schwere von Krieg und Tod behandelt, Ernstes weggewischt.</p>
+    <div class="callout defbox reveal"><span class="clabel">Begriff · Bathos</span><p>Der lächerliche Absturz vom Erhabenen ins Banale (Pope, <em>Peri Bathous</em>, 1727). In Lebowski <em>bidirektional und oft simultan</em>.</p></div>
+    <div class="vs reveal" style="--vsa:var(--lane);--vsa-ink:var(--lane-ink);--vsb:var(--teal);--vsb-ink:var(--teal-ink)">
+      <div class="side a">
+        <p class="vh">↑ Aufblähung</p>
+        <p>Triviales bekommt die Schwere von Krieg und Tod: ein Bowling-Foul, eine bepinkelte Vorlage, ein Teppich, der „das Zimmer zusammenhält".</p>
+      </div>
+      <div class="mid" aria-hidden="true">⇅</div>
+      <div class="side b">
+        <p class="vh">↓ Entleerung</p>
+        <p>Ernstes wird beiläufig weggewischt: eine (vorgetäuschte) Entführung, ein abgetrennter Zeh, der reale Tod — kurz quittiert, sofort übergangen.</p>
+      </div>
+    </div>
+
+    <div class="callout beispiel reveal"><span class="clabel">Film · Aufblähung + Entleerung in einem Satz</span><p>Die Grabrede presst beides zusammen: <span class="qf">„…Khe Sanh… Donny, who loved bowling."</span></p></div>
+    <details class="vert reveal">
+      <summary><span class="vlab">Vertiefung — der Kipp-Punkt (warum der Film daran nicht bricht)</span></summary>
+      <div class="vbody"><p>Donnys <em>tatsächlicher</em> Tod wird als Einziges <em>nicht</em> für einen Lacher ausgeschlachtet — der Film setzt die Bathos kurz aus und landet auf echter Trauer. Weil er zwei Stunden auf Fehlkalibrierung trainiert hat, trifft die <em>eine korrekt gewichtete</em> Stelle mit unverhältnismäßiger Wucht. Bathos wird hier nicht aufgegeben, sondern kurz <strong>korrigiert</strong> — und die Korrektur ist verheerend.</p></div>
+    </details>
+
+    <h3 class="reveal"><span class="hn">4</span> Dialog als Nicht-Kommunikation</h3>
+    <p class="reveal">Gespräche bestehen aus Aneinander-vorbei-Reden, Entgleisen, Hängenbleiben am falschen Wort.</p>
+    <div class="callout defbox reveal"><span class="clabel">Begriff · „signifiers without signifieds"</span><p>Der Forschungskonsens liest den Film als „Meditation über Sprache": Figuren <em>recyceln</em> fremde Phrasen, die sich vom Sinn gelöst haben — Sprache als frei zirkulierende Münze.</p></div>
+    <div class="qcard reveal">
+      <p class="ql">Geborgter Rahmen</p>
+      <p class="qt">„This aggression <em>will not stand</em>."</p>
+      <p class="qa">— Der Dude, wörtlich aus einer TV-Ansprache übernommen — eine Phrase, die sich vom Sprecher gelöst hat</p>
+    </div>
+    <div class="callout beispiel reveal"><span class="clabel">Film · das Echo</span><p>Der Dude wiederholt Bushs <span class="qf">„this aggression will not stand"</span> (aus dem TV); Comer: „in a small way, he becomes Bush". Das Echo ist die <em>verbale</em> Form der falschen Gewissheit — geborgte Rahmen ohne Inhalt.</p></div>
+    <div class="callout merke reveal"><span class="clabel">Merke · Craft-Pointe</span><p>Fast <em>jede</em> Zeile ist geschrieben — nur „human paraquat" war improvisiert. Die „Wortsuppe" ist ein präzise komponierter Effekt, kein loser Naturalismus.</p></div>
+
+    <h3 class="reveal"><span class="hn">5</span> Hyperspezifität</h3>
+    <p class="reveal">Nicht „eine Limo", sondern Sioux City Sarsaparilla; nicht „du Idiot", sondern <span class="qf" style="font-style:normal">„you human paraquat"</span>.</p>
+    <div class="chips reveal" aria-label="Hyperspezifische Details aus dem Film">
+      <span class="chip">White Russian / „Caucasian"</span>
+      <span class="chip">Sioux City Sarsaparilla</span>
+      <span class="chip">In-N-Out · 3×3</span>
+      <span class="chip">Folgers-Dose</span>
+      <span class="chip">Creedence-Tapes</span>
+      <span class="chip">„human paraquat"</span>
+    </div>
+    <div class="callout defbox reveal"><span class="clabel">Begriff · Realitätseffekt (Barthes)</span><p>Konkrete Details bezeichnen letztlich nur „wir sind das Reale" — sie <em>konnotieren Wirklichkeit</em> („L'effet de réel", 1968).</p></div>
+    <div class="callout deutbox reveal"><span class="clabel">Deutung · drei Jobs zugleich</span><p>Spezifität leistet <em>Charakter</em>, <em>Realitätseffekt</em> und <em>Inkongruenz-Komik</em> in einem — und der Realitätseffekt <strong>lizenziert</strong> das Surreale: Die „soft drugs logic" wirkt nur echt, weil die Möblierung echt ist.</p></div>
+    <div class="callout merke reveal"><span class="clabel">Merke</span><p>„The movie where <strong>every detail matters and doesn't matter at all</strong>" — Bathos auf Texturebene. Aufwendige Spezifität an einer wertlosen Suche.</p></div>
+
+    <div class="stats reveal" aria-label="Kennzahlen zu den fünf Säulen">
+      <div class="stat"><div class="num">5</div><div class="lbl">tragende Säulen, ein Motor</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">improvisierte Zeile — der Rest ist geschrieben</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Versager aus einer Detektivfigur</div></div>
+      <div class="stat"><div class="num">100<span class="u">%</span></div><div class="lbl">Komik aus Fehlbesetzung, nicht Albernheit</div></div>
+    </div>
+
+    <details class="vert reveal">
+      <summary><span class="vlab">Theorie-Stammbaum — die Ahnengalerie der Begriffe</span></summary>
+      <div class="vbody">
+        <div class="timeline">
+          <div class="tl"><div class="yr">1598</div><div class="tt">Ben Jonson · „Every Man in His Humour"</div><p>Komödie der „humours": je Figur eine regierende Eigenschaft. → Säule 1, das Figuren-OS.</p></div>
+          <div class="tl"><div class="yr">1727</div><div class="tt">Alexander Pope · „Peri Bathous"</div><p>Der lächerliche Absturz vom Erhabenen ins Banale. → Säule 3, die Bathos.</p></div>
+          <div class="tl"><div class="yr">1900</div><div class="tt">Henri Bergson · „Le Rire"</div><p>„Du mécanique plaqué sur du vivant" — das Mechanische, dem Lebendigen aufgesetzt. → Säule 1, die starre Figur.</p></div>
+          <div class="tl"><div class="yr">1964</div><div class="tt">Arthur Koestler · „The Act of Creation"</div><p>„Bisoziation": eine Lage gleichzeitig in zwei unvereinbaren Rahmen sehen. → der Motor aus Teil I.</p></div>
+          <div class="tl"><div class="yr">1968</div><div class="tt">Roland Barthes · „L'effet de réel"</div><p>Konkrete Details bezeichnen am Ende nur „Wirklichkeit". → Säule 5, die Hyperspezifität.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="rug reveal" aria-hidden="true"></div>
+    <p class="rug-cap">…that rug really tied the room together.</p>
+
+    <div class="motif reveal" aria-hidden="true"><span class="ln"></span><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="7" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="18" r="1.6" fill="currentColor"/><circle cx="22" cy="17" r="1.6" fill="currentColor"/><circle cx="20" cy="22" r="1.6" fill="currentColor"/></svg><span class="ln"></span></div>
+  </div>
+</section>
+
+<!-- ===== WAS NOCH KOMMT (Vorschau auf III–VI + Apparat) ===== -->
+<section class="appx" id="nachwort" style="--accent:var(--gold);--accent-ink:var(--gold-ink)">
+  <div class="wrap body-pad">
+    <p class="eyebrow" style="color:var(--gold)">Fortsetzung folgt · 5 Frames in Arbeit</p>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1.02;font-size:clamp(1.9rem,5.2vw,3rem);color:var(--paper);margin:.4rem 0 .2rem">Was noch kommt</h2>
+    <p class="reveal" style="max-width:40rem;color:color-mix(in srgb,var(--paper) 84%,transparent)">Dieser Export enthält die Frames <strong style="color:var(--gold)">I &amp; II</strong> — These und die fünf Säulen. Die fünf folgenden Frames sind noch nicht enthalten; hier eine Vorschau, damit der Bauplan vollständig sichtbar bleibt.</p>
+
+    <div class="nextgrid">
+      <div class="nextcard reveal" style="--nc:#cf9442">
+        <span class="st">folgt</span>
+        <p class="nn">Frame III</p>
+        <h4>Werkzeugkasten: Schreibtechniken</h4>
+        <p>Acht anwendbare Karten — die Schreibtechniken aus der Analyse, als benutzbarer Werkzeugkasten aufbereitet.</p>
+      </div>
+      <div class="nextcard reveal d1" style="--nc:#a96a91">
+        <span class="st">folgt</span>
+        <p class="nn">Frame IV</p>
+        <h4>Werkzeugkasten: Brainstorm</h4>
+        <p>Sechs Ideen-Verfahren — Methoden, um aus dem Film-Prinzip eigene Szenen und Gags zu entwickeln.</p>
+      </div>
+      <div class="nextcard reveal" style="--nc:#c0492f">
+        <span class="st">folgt</span>
+        <p class="nn">Frame V</p>
+        <h4>Die Dynamiken</h4>
+        <p>Das Dreieck · der passive Held · die Wiederholung — die tragenden Beziehungs- und Rhythmus-Muster.</p>
+      </div>
+      <div class="nextcard reveal d1" style="--nc:#dcb43e">
+        <span class="st">folgt</span>
+        <p class="nn">Frame VI</p>
+        <h4>Synthese</h4>
+        <p>Einzigartig vs. übertragbar — was nur <em>Lebowski</em> kann und was sich auf andere Stoffe übertragen lässt.</p>
+      </div>
+      <div class="nextcard reveal" style="--nc:#9a9384;grid-column:1/-1">
+        <span class="st">folgt</span>
+        <p class="nn">Apparat §</p>
+        <h4>Quellen · Szenen · Glossar</h4>
+        <p>Der wissenschaftliche Apparat: belegte Quellen, ein Szenenregister und ein Glossar der zentralen Begriffe.</p>
+      </div>
+    </div>
+
+    <div class="callout tipp reveal" style="margin-top:2rem">
+      <span class="clabel">So geht's weiter</span>
+      <p>Schick mir die Inhalte für Teil III–VI und den Apparat (oder die passenden Markdown-Durchläufe) — ich bringe sie auf exakt dieselbe visuelle Ebene: Icon-Köpfe, Merk- und Aufklapp-Boxen, Karten, Vergleiche und Kennzahlen-Bänder.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <p class="mono">Der Witz ist die Weltsicht — Die Komik-Mechanik von <em>The Big Lebowski</em></p>
+    <p class="mono" style="opacity:.7">Analyse-Dossier · 24 Tiefen-Durchläufe, kondensiert · Frames I–II in diesem Export · Sprache DE</p>
+    <p class="mono" style="opacity:.55">The Dude abides.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* scroll-reveal */
+  var revs = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    revs.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revs.forEach(function(el){ io.observe(el); });
+  }
+
+  /* reading progress + back-to-top */
+  var pbar  = document.getElementById('pbar');
+  var pball = document.getElementById('pball');
+  var totop = document.getElementById('totop');
+
+  function onScroll(){
+    var max = (document.documentElement.scrollHeight - window.innerHeight) || 1;
+    var y   = window.scrollY || window.pageYOffset || 0;
+    var p   = Math.min(1, Math.max(0, y / max));
+    var pct = (p * 100).toFixed(2) + '%';
+    if(pbar)  pbar.style.width = pct;
+    if(pball) pball.style.left = pct;
+    if(totop){ totop.classList.toggle('show', y > 600); }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  if(totop){
+    totop.addEventListener('click', function(){
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
