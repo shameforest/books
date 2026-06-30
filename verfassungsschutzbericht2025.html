@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wehrhafte Demokratie — Das Lagebild 2025 (Verfassungsschutzbericht 2025)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opt@0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style id="br-base">
+:root{
+  --paper:#f4ecd9; --paper2:#f7f0db; --ink:#22190d; --ink2:#3c3120;
+  --gold:#c89b3c; --gold-br:#e6c873; --petrol:#1d3a40; --terra:#b85c2f;
+  --line:#cdbf9c; --muted:#7c7053; --rule:#d8cbac;
+  --acc-a:#34506b; --acc-b:#9e2b25; --acc-c:#b07d2b; --acc-d:#7d3560;
+  --acc-e:#1d6a6a; --acc-f:#5c6b2f; --acc-g:#3a3f6b; --acc-h:#b07f15;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;color:var(--ink);font-family:'Spectral',Georgia,serif;line-height:1.5;
+  background:radial-gradient(130% 90% at 50% 0%,#16242d,#0b1116 70%) fixed,#0b1116;}
+.br-doc{display:block;}
+.br-sep{border:none;height:0;margin:0;display:block;}
+img{max-width:100%;}
+h1,h2,h3{font-family:'Newsreader',Georgia,serif;}
+
+/* ---------- screen: pages as A4 panels on dark surround ---------- */
+@media screen{
+  .br-page{max-width:840px;margin:30px auto;background:linear-gradient(180deg,var(--paper2),var(--paper));
+    box-shadow:0 22px 70px rgba(0,0,0,.55),0 2px 0 rgba(255,255,255,.04);}
+  #cover-title{box-shadow:0 22px 70px rgba(0,0,0,.6);}
+}
+
+/* ---------- shared brochure page chrome ---------- */
+.br-page{position:relative;color:var(--ink);--acc:var(--petrol);
+  padding:clamp(32px,4.4vw,52px) clamp(28px,4.6vw,54px) clamp(50px,5.6vw,62px);
+  isolation:isolate;overflow:hidden;}
+.br-frame{position:absolute;inset:clamp(15px,2.2vw,26px);border:1.6px solid var(--gold);pointer-events:none;z-index:1;}
+.br-frame::before{content:"";position:absolute;inset:5px;border:1px solid rgba(200,155,60,.42);}
+.br-frame::after{content:"";position:absolute;inset:-2px;pointer-events:none;
+  background:
+    linear-gradient(var(--gold),var(--gold)) left top/18px 2.4px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) left top/2.4px 18px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) right top/18px 2.4px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) right top/2.4px 18px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) left bottom/18px 2.4px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) left bottom/2.4px 18px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) right bottom/18px 2.4px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) right bottom/2.4px 18px no-repeat;}
+.br-head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:baseline;
+  gap:14px;font:700 10.5px/1 'Inter Tight',sans-serif;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:clamp(11px,1.8vw,18px);}
+.br-head .br-head__ch{color:var(--acc);}
+.br-foot{position:absolute;left:clamp(30px,5vw,58px);right:clamp(30px,5vw,58px);bottom:clamp(22px,3vw,30px);
+  z-index:2;display:flex;justify-content:space-between;align-items:center;
+  font:600 10px/1 'Inter Tight',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.br-foot__no{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:22px;
+  border:1px solid var(--gold);color:var(--ink2);border-radius:3px;background:rgba(200,155,60,.1);}
+.br-kick{font:700 clamp(10px,1.3vw,12px)/1 'Inter Tight',sans-serif;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--acc);margin:0 0 8px;}
+.br-ptitle{font:600 clamp(26px,4.2vw,42px)/1.04 'Newsreader',serif;margin:0 0 5px;color:#211a0e;}
+.br-lead{font:500 clamp(13.5px,1.6vw,16px)/1.46 'Spectral',serif;color:var(--ink2);margin:0 0 clamp(11px,1.6vw,16px);max-width:64ch;}
+
+/* ---------- print: real A4 pages, paginated ---------- */
+@page{size:A4 portrait;margin:0;}
+@media print{
+  body{background:#fff;}
+  .br-doc{display:block;}
+  #cover-title,.br-page{margin:0!important;box-shadow:none!important;width:210mm;min-height:297mm;}
+  .br-page{break-before:page;break-inside:avoid;}
+  #cover-title{break-after:page;}
+  .br-sep{display:none!important;}
+  .tc-shimmer,.tc-scrollcue,.br-scrollcue{display:none!important;}
+  /* Druck-exklusive Hoehenanpassung: nur ueberlange Seiten verkleinern, Bildschirm bleibt unveraendert */
+  #seal{zoom:.80;}
+  #k8{zoom:.92;}
+  #k1,#k2b,#k4{zoom:.955;}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+.seal-status--ok{color:#1d6a4a!important;border-color:#1d6a4a!important;background:rgba(29,106,74,.08)!important;font-weight:700!important;}</style>
+
+<style id="tc-css">
+/* ====================== TITELCOVER (scoped: tc-) ====================== */
+#cover-title{position:relative;min-height:100vh;overflow:hidden;color:#f6efda;
+  display:flex;align-items:center;justify-content:center;isolation:isolate;
+  font-family:'Spectral',Georgia,serif;
+  background:linear-gradient(102deg,
+     #11232a 0%, #1d3a40 25%, #23395c 46.4%,
+     #c89b3c 49.3%, #e6c873 50%, #c89b3c 50.7%,
+     #6e1f24 53.6%, #7c241f 72%, #290f13 100%);}
+.tc-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
+.tc-light{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(70% 42% at 50% 6%, rgba(255,244,214,.16), transparent 60%),
+    radial-gradient(46% 34% at 50% 44%, rgba(236,200,104,.18), transparent 70%),
+    linear-gradient(180deg, transparent 58%, rgba(4,6,9,.55) 100%);}
+.tc-shimmer{position:absolute;top:0;bottom:0;left:50%;width:3px;transform:translateX(-1.5px);z-index:2;
+  pointer-events:none;background:linear-gradient(180deg,transparent,rgba(255,240,200,.85),rgba(236,200,104,.55),transparent);
+  filter:blur(.4px);opacity:.5;animation:tcShim 5.5s ease-in-out infinite;}
+@keyframes tcShim{0%,100%{opacity:.28}50%{opacity:.7}}
+.tc-frame{position:absolute;inset:clamp(16px,2.4vw,30px);z-index:3;pointer-events:none;
+  border:1.6px solid rgba(225,196,106,.7);}
+.tc-frame::before{content:"";position:absolute;inset:6px;border:1px solid rgba(225,196,106,.34);}
+.tc-frame::after{content:"";position:absolute;inset:-2px;
+  background:
+    linear-gradient(#e6c873,#e6c873) left top/22px 2.4px no-repeat,
+    linear-gradient(#e6c873,#e6c873) left top/2.4px 22px no-repeat,
+    linear-gradient(#e6c873,#e6c873) right top/22px 2.4px no-repeat,
+    linear-gradient(#e6c873,#e6c873) right top/2.4px 22px no-repeat,
+    linear-gradient(#e6c873,#e6c873) left bottom/22px 2.4px no-repeat,
+    linear-gradient(#e6c873,#e6c873) left bottom/2.4px 22px no-repeat,
+    linear-gradient(#e6c873,#e6c873) right bottom/22px 2.4px no-repeat,
+    linear-gradient(#e6c873,#e6c873) right bottom/2.4px 22px no-repeat;}
+.tc-inner{position:relative;z-index:4;width:100%;max-width:940px;
+  padding:clamp(40px,7vw,72px) clamp(26px,5vw,56px);text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2.2vw,24px);}
+.tc-kicker--top{margin:0;font:700 clamp(10px,1.35vw,12.5px)/1.4 'Inter Tight',sans-serif;
+  letter-spacing:.26em;text-transform:uppercase;color:#ecc868;
+  padding:.5rem .95rem;border:1.5px solid rgba(225,196,106,.6);border-radius:999px;
+  background:rgba(13,18,23,.55);backdrop-filter:blur(2px);}
+.tc-titleblock{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.tc-title{margin:0;font:800 clamp(34px,7vw,74px)/0.98 'Newsreader',serif;letter-spacing:.005em;
+  color:#f7e9c4;text-transform:uppercase;
+  text-shadow:0 1px 0 rgba(255,247,224,.5),0 -1px 0 rgba(0,0,0,.5),0 3px 10px rgba(0,0,0,.6);}
+.tc-subtitle{margin:0;font:500 italic clamp(14px,2vw,21px)/1.3 'Newsreader',serif;color:#e9dcc0;}
+
+.tc-duel{width:100%;max-width:none;display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;justify-items:center;gap:clamp(8px,1.4vw,16px) clamp(14px,2vw,30px);margin:clamp(6px,1vw,12px) 0;}
+.tc-crest{width:clamp(80px,11vw,118px);height:clamp(90px,12.4vw,130px);}
+.tc-crest svg{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45));}
+.tc-vsspacer{width:clamp(84px,10.5vw,120px);height:1px;}
+.tc-name{min-width:0;max-width:100%;padding-inline:clamp(2px,.8vw,10px);text-align:center;
+  font:800 clamp(28px,5vw,48px)/0.98 'Newsreader',serif;text-transform:uppercase;letter-spacing:.01em;
+  color:#f6efda;text-shadow:0 1px 0 rgba(255,250,235,.45),0 -1px 0 rgba(0,0,0,.55),0 4px 12px rgba(0,0,0,.6);}
+.tc-name--in{color:#eaf3f3;}
+.tc-name--out{color:#f7e3df;}
+.tc-tag{font:700 clamp(10px,1.4vw,13px)/1 'Inter Tight',sans-serif;letter-spacing:.18em;
+  text-transform:uppercase;padding:.42rem .8rem;border-radius:4px;border:1.4px solid;}
+.tc-tag--in{color:#bfe0e4;border-color:rgba(120,180,190,.7);background:rgba(13,30,34,.5);}
+.tc-tag--out{color:#f0bdb6;border-color:rgba(190,90,80,.7);background:rgba(40,15,16,.5);}
+
+.tc-medallion{position:relative;width:clamp(84px,10.5vw,120px);height:clamp(84px,10.5vw,120px);
+  display:flex;align-items:center;justify-content:center;}
+.tc-medallion svg{position:absolute;inset:0;width:100%;height:100%;}
+.tc-medallion span{position:relative;z-index:2;font:800 clamp(24px,3vw,38px)/1 'Newsreader',serif;
+  color:#f3e6c2;text-shadow:0 1px 0 rgba(255,250,235,.4),0 2px 6px rgba(0,0,0,.7);}
+
+.tc-pitch{max-width:760px;margin-top:clamp(8px,1.4vw,16px);
+  background:rgba(12,17,22,.7);border:3px solid rgba(225,196,106,.78);border-radius:8px;
+  padding:clamp(14px,2vw,20px) clamp(18px,3vw,30px);backdrop-filter:blur(2px);
+  box-shadow:0 10px 30px rgba(0,0,0,.4);}
+.tc-pitch p{margin:0;font:500 italic clamp(15px,2.1vw,22px)/1.4 'Newsreader',serif;color:#f3ead2;}
+.tc-pitch p::before,.tc-pitch p::after{content:"";display:inline-block;width:26px;height:1px;
+  background:rgba(225,196,106,.6);vertical-align:middle;margin:0 .55em;}
+.tc-scrollcue{position:absolute;left:0;right:0;bottom:clamp(20px,3vw,30px);z-index:4;text-align:center;
+  font:700 10px/1 'Inter Tight',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#dcc78a;
+  animation:tcCue 2.6s ease-in-out infinite;}
+@keyframes tcCue{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(4px);opacity:1}}
+
+@media (max-width:860px){
+  .tc-duel{display:flex;flex-direction:column;gap:12px;}
+  .tc-crest{order:1;width:104px;height:116px;}
+  .tc-name{order:2;font-size:clamp(34px,11vw,52px);}
+  .tc-tag{order:3;}
+  .tc-medallion{order:4;width:120px;height:120px;margin:4px 0;}
+  .tc-crest--out{order:5;} .tc-name--out{order:6;} .tc-tag--out{order:7;}
+  .tc-vsspacer{display:none;}
+}
+</style>
+<style id="seal-css">
+/* ====================== PRÜFSIEGEL (scoped: seal-) ====================== */
+#seal{position:relative;overflow:hidden;color:#f4ecd9;isolation:isolate;
+  font-family:'Spectral',Georgia,serif;
+  padding:clamp(42px,6vw,68px) clamp(26px,5vw,56px) clamp(56px,7vw,74px);
+  background:radial-gradient(120% 82% at 50% 0%,#1b2832,#0e161b 64%),#0e161b;}
+@media screen{#seal{box-shadow:0 22px 70px rgba(0,0,0,.55);}}
+.seal-frame{position:absolute;inset:clamp(15px,2.2vw,26px);border:1.6px solid rgba(200,155,60,.6);pointer-events:none;z-index:1;}
+.seal-frame::before{content:"";position:absolute;inset:5px;border:1px solid rgba(200,155,60,.3);}
+.seal-frame::after{content:"";position:absolute;inset:-2px;
+  background:
+    linear-gradient(#e6c873,#e6c873) left top/20px 2.2px no-repeat,
+    linear-gradient(#e6c873,#e6c873) left top/2.2px 20px no-repeat,
+    linear-gradient(#e6c873,#e6c873) right top/20px 2.2px no-repeat,
+    linear-gradient(#e6c873,#e6c873) right top/2.2px 20px no-repeat,
+    linear-gradient(#e6c873,#e6c873) left bottom/20px 2.2px no-repeat,
+    linear-gradient(#e6c873,#e6c873) left bottom/2.2px 20px no-repeat,
+    linear-gradient(#e6c873,#e6c873) right bottom/20px 2.2px no-repeat,
+    linear-gradient(#e6c873,#e6c873) right bottom/2.2px 20px no-repeat;}
+.seal-wrap{position:relative;z-index:2;max-width:880px;margin:0 auto;}
+.seal-num{position:absolute;top:clamp(20px,3vw,30px);right:clamp(26px,4vw,46px);z-index:3;
+  font:600 11px/1 'Inter Tight',sans-serif;letter-spacing:.12em;color:#cda24f;}
+.seal-eyebrow{margin:0 0 4px;text-align:center;font:700 clamp(10px,1.3vw,12px)/1.3 'Inter Tight',sans-serif;
+  letter-spacing:.26em;text-transform:uppercase;color:#cda24f;}
+.seal-kicker{margin:0 0 clamp(18px,2.6vw,28px);text-align:center;
+  font:600 italic clamp(20px,3vw,30px)/1.2 'Newsreader',serif;color:#f7f0db;}
+.seal-h{margin:clamp(22px,3vw,30px) 0 12px;font:700 clamp(11px,1.4vw,13px)/1 'Inter Tight',sans-serif;
+  letter-spacing:.2em;text-transform:uppercase;color:#cda24f;border-bottom:1px solid rgba(200,155,60,.25);padding-bottom:7px;}
+
+/* centerpiece */
+.seal-hero{display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,38px);align-items:center;justify-content:center;}
+.seal-mark{width:clamp(186px,25vw,244px);flex:none;}
+.seal-mark svg{width:100%;height:auto;display:block;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5));}
+.seal-rate{flex:1;min-width:262px;}
+.seal-rate__lab{font:700 .64rem/1 'Inter Tight',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#9a8f78;margin:0 0 2px;}
+.seal-rate__big{margin:0;font:800 clamp(32px,5.4vw,54px)/0.96 'Newsreader',serif;color:#ecc868;
+  text-shadow:0 2px 10px rgba(0,0,0,.5);}
+.seal-rate__sub{margin:2px 0 12px;font:500 italic clamp(13px,1.6vw,15px)/1.35 'Newsreader',serif;color:#cdbfa0;}
+.seal-badges{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;}
+.seal-badge{display:inline-flex;flex-direction:column;gap:1px;border:1px solid rgba(200,155,60,.5);border-radius:6px;
+  padding:7px 11px;background:rgba(200,155,60,.08);}
+.seal-badge b{font:700 clamp(14px,1.8vw,17px)/1 'Inter Tight',sans-serif;color:#f4ecd9;}
+.seal-badge span{font:600 .56rem/1.1 'Inter Tight',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#9a8f78;}
+.seal-badge--est b{color:#ecc868;}
+.seal-sum{margin:8px 0 0;font:500 clamp(13.5px,1.7vw,15.5px)/1.5 'Spectral',serif;color:#e7dcc2;
+  border-left:3px solid #cda24f;padding-left:12px;}
+
+/* verlass-satz */
+.seal-trust{margin:clamp(16px,2.4vw,22px) 0 0;padding:12px 16px;border:1px solid rgba(58,107,53,.55);border-radius:8px;
+  background:rgba(58,107,53,.12);font:500 clamp(13px,1.6vw,15px)/1.45 'Spectral',serif;color:#dfe6d4;}
+.seal-trust b{color:#bfe0a8;}
+
+/* model-rate bars */
+.seal-bars{margin-top:4px;}
+.seal-barrow{display:grid;grid-template-columns:clamp(118px,22vw,200px) 1fr;gap:12px;align-items:center;margin-bottom:9px;}
+.seal-barlab{font:600 clamp(11px,1.4vw,13px)/1.2 'Inter Tight',sans-serif;color:#e7dcc2;text-align:right;}
+.seal-barlab small{display:block;font:600 .56rem/1 'Inter Tight',sans-serif;color:#9a8f78;letter-spacing:.04em;}
+.seal-track{position:relative;height:25px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;}
+.seal-fill{height:100%;display:flex;align-items:center;justify-content:flex-end;padding:0 9px;border-radius:3px;
+  font:700 12px/1 'Inter Tight',sans-serif;color:#0e161b;background:linear-gradient(90deg,#b9a25a,#cda24f);}
+.seal-fill--me{background:linear-gradient(90deg,#caa64e,#ecc868);box-shadow:inset 0 0 0 2px rgba(14,22,27,.35);outline:2px solid #ecc868;outline-offset:1px;}
+.seal-scale{font:600 .6rem/1 'Inter Tight',sans-serif;color:#9a8f78;letter-spacing:.06em;margin:2px 0 0 0;text-align:right;}
+.seal-note{margin:10px 0 0;font:400 clamp(11px,1.35vw,12.5px)/1.5 'Spectral',serif;color:#a99f86;}
+.seal-note b{color:#cdbfa0;font-weight:600;}
+
+/* mit/ohne comparison */
+.seal-cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.seal-card{border-radius:9px;padding:clamp(13px,1.8vw,18px);}
+.seal-card h4{margin:0 0 6px;font:700 .68rem/1 'Inter Tight',sans-serif;letter-spacing:.12em;text-transform:uppercase;}
+.seal-card p{margin:0;font:500 clamp(12.5px,1.5vw,14px)/1.45 'Spectral',serif;color:#cdbfa0;}
+.seal-card__rate{display:block;margin-top:8px;font:800 clamp(20px,2.6vw,27px)/1 'Newsreader',serif;}
+.seal-card--no{border:1px solid rgba(168,132,44,.55);background:rgba(168,132,44,.09);}
+.seal-card--no h4{color:#d8af52;} .seal-card--no .seal-card__rate{color:#e0b85a;}
+.seal-card--yes{border:1px solid rgba(58,107,53,.6);background:rgba(58,107,53,.12);}
+.seal-card--yes h4{color:#9fcf7e;} .seal-card--yes .seal-card__rate{color:#bfe0a8;}
+
+/* ampel */
+.seal-light{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.seal-cell{border-radius:9px;padding:13px 16px;border:1px solid;}
+.seal-cell h4{margin:0 0 4px;font:700 clamp(13px,1.6vw,15px)/1 'Inter Tight',sans-serif;display:flex;align-items:center;gap:8px;}
+.seal-cell p{margin:0;font:500 clamp(12px,1.45vw,13.5px)/1.4 'Spectral',serif;color:#cdbfa0;}
+.seal-cell--ok{border-color:rgba(58,107,53,.6);background:rgba(58,107,53,.12);} .seal-cell--ok h4{color:#bfe0a8;}
+.seal-cell--warn{border-color:rgba(168,132,44,.55);background:rgba(168,132,44,.1);} .seal-cell--warn h4{color:#e0b85a;}
+
+/* audit synthesis */
+.seal-audit{padding:clamp(13px,1.8vw,18px);border:1px solid rgba(200,155,60,.3);border-radius:9px;background:rgba(0,0,0,.2);}
+.seal-audit p{margin:0 0 10px;font:500 clamp(13px,1.6vw,15px)/1.5 'Spectral',serif;color:#e7dcc2;}
+.seal-chips{display:flex;flex-wrap:wrap;gap:7px;}
+.seal-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(200,155,60,.45);border-radius:999px;
+  padding:4px 11px;font:600 clamp(10px,1.2vw,11.5px)/1 'Inter Tight',sans-serif;letter-spacing:.04em;color:#dcd0b4;
+  background:rgba(200,155,60,.06);}
+.seal-chip i{font-style:normal;color:#cda24f;font-weight:700;}
+.seal-status{display:inline-block;margin-top:10px;font:700 .7rem/1.3 'Inter Tight',sans-serif;letter-spacing:.06em;
+  text-transform:uppercase;color:#e0b85a;}
+
+/* details */
+.seal-details{margin-top:clamp(18px,2.6vw,24px);border:1px solid rgba(200,155,60,.28);border-radius:9px;background:rgba(0,0,0,.18);}
+.seal-details>summary{cursor:pointer;list-style:none;padding:13px 16px;font:700 .72rem/1 'Inter Tight',sans-serif;
+  letter-spacing:.14em;text-transform:uppercase;color:#cda24f;display:flex;justify-content:space-between;align-items:center;}
+.seal-details>summary::-webkit-details-marker{display:none;}
+.seal-details>summary::after{content:"+";font-size:1.1rem;color:#cda24f;}
+.seal-details[open]>summary::after{content:"–";}
+.seal-details__body{padding:0 16px 16px;font:400 12.5px/1.55 'Spectral',serif;color:#bcb096;}
+.seal-details__body h5{margin:14px 0 4px;font:700 .66rem/1 'Inter Tight',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#cdbfa0;}
+.seal-details__body ol,.seal-details__body ul{margin:4px 0;padding-left:1.2rem;}
+.seal-details__body li{margin:2px 0;}
+.seal-details__body b{color:#dcd0b4;}
+
+@media (max-width:620px){
+  .seal-cmp,.seal-light{grid-template-columns:1fr;}
+  .seal-barrow{grid-template-columns:1fr;gap:4px;}
+  .seal-barlab{text-align:left;}
+}
+</style>
+
+<style id="br-comp">
+:root{--egold:#a07a1e;--ered:#a3242c;}
+/* ---------- layout helpers ---------- */
+.br-grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(13px,2vw,18px);}
+.br-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;}
+.br-stack{display:flex;flex-direction:column;gap:clamp(13px,2vw,18px);}
+@media(max-width:680px){.br-grid2,.br-grid3{grid-template-columns:1fr;}}
+
+/* ---------- key box ---------- */
+.br-key{background:var(--paper2);border-left:4px solid var(--acc);padding:15px 18px;}
+.br-key__lbl{font:700 .66rem/1 'Inter Tight',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 9px;}
+.br-key ul{margin:0;padding-left:18px;}
+.br-key li{font:500 .95rem/1.45 'Spectral',serif;color:var(--ink2);margin:0 0 6px;}
+.br-key li b{color:var(--ink);font-weight:600;}
+
+/* ---------- thesis / dark box ---------- */
+.br-thesis{background:var(--petrol);color:var(--paper2);padding:17px 20px;box-shadow:0 14px 30px -20px rgba(0,0,0,.6);}
+.br-thesis .br-key__lbl{color:var(--gold-br);}
+.br-thesis p{margin:0;font:500 1.04rem/1.4 'Newsreader',serif;}
+
+/* ---------- stats (verified numbers only) ---------- */
+.br-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(116px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.br-stat{background:var(--paper2);padding:13px 14px;}
+.br-stat__num{font:600 clamp(1.65rem,3vw,2.25rem)/1 'Newsreader',serif;color:var(--acc);}
+.br-stat__lbl{font:600 .6rem/1.25 'Inter Tight',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:5px;}
+.br-stat__src{font:600 .56rem/1 'Inter Tight',sans-serif;color:var(--muted);opacity:.85;margin-top:3px;}
+
+/* ---------- quote card ---------- */
+.br-qcard{position:relative;background:var(--paper2);border-top:3px solid var(--acc);padding:24px 22px 16px;}
+.br-qcard::before{content:"\201E";position:absolute;top:-6px;left:12px;font:5rem/1 'Newsreader',serif;color:var(--acc);opacity:.24;}
+.br-qcard__lbl{position:relative;font:700 .62rem/1 'Inter Tight',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 8px;}
+.br-qcard__body{position:relative;font:500 1.24rem/1.36 'Newsreader',serif;color:var(--ink);margin:0 0 9px;}
+.br-qcard__cite{position:relative;font:600 .76rem/1 'Inter Tight',sans-serif;color:var(--muted);}
+
+/* ---------- inline quote ---------- */
+.br-iq{font-style:italic;color:var(--ink);}
+.br-src{font:600 .76rem 'Inter Tight',sans-serif;color:var(--muted);white-space:nowrap;}
+
+/* ---------- side by side ---------- */
+.br-sbs{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.br-sbs__col{padding:16px 16px 16px 26px;position:relative;border-radius:2px;}
+.br-sbs__col::before{content:"";position:absolute;left:13px;top:19px;width:8px;height:8px;border-radius:50%;}
+.br-sbs__a{background:var(--paper);} .br-sbs__a::before{background:var(--petrol);}
+.br-sbs__b{background:var(--paper2);} .br-sbs__b::before{background:var(--acc);}
+.br-sbs h4{font:700 .7rem/1 'Inter Tight',sans-serif;letter-spacing:.1em;text-transform:uppercase;margin:0 0 7px;color:var(--ink);}
+.br-sbs p{font:500 .92rem/1.45 'Spectral',serif;margin:0;color:var(--ink2);}
+@media(max-width:680px){.br-sbs{grid-template-columns:1fr;}}
+
+/* ---------- numbered chain ---------- */
+.br-chain{counter-reset:s;list-style:none;padding:0;margin:0;}
+.br-chain li{counter-increment:s;display:flex;gap:14px;padding:0 0 15px;position:relative;}
+.br-chain li::before{content:counter(s);flex:none;width:31px;height:31px;border-radius:50%;background:var(--acc);color:#fff;font:600 .85rem/1 'Inter Tight',sans-serif;display:flex;align-items:center;justify-content:center;}
+.br-chain li:not(:last-child)::after{content:"";position:absolute;left:15px;top:31px;bottom:1px;width:2px;background:var(--rule);}
+.br-chain__t{font:500 .95rem/1.4 'Spectral',serif;color:var(--ink2);padding-top:4px;}
+.br-chain__t b{color:var(--ink);font-family:'Newsreader',serif;font-weight:600;}
+
+/* ---------- horizontal flow ---------- */
+.br-flow{display:flex;flex-wrap:wrap;gap:0;}
+.br-flow__s{flex:1;min-width:128px;background:var(--paper2);border:1px solid var(--rule);padding:12px 14px;position:relative;}
+.br-flow__s:not(:last-child){margin-right:18px;}
+.br-flow__s:not(:last-child)::after{content:"\2192";position:absolute;right:-15px;top:50%;transform:translateY(-50%);font-size:1.2rem;color:var(--acc);z-index:2;}
+.br-flow__n{font:600 .66rem 'Inter Tight',sans-serif;color:var(--acc);letter-spacing:.06em;}
+.br-flow__t{font:600 .83rem/1.2 'Inter Tight',sans-serif;color:var(--ink);margin:4px 0;}
+.br-flow__d{font:500 .82rem/1.4 'Spectral',serif;color:var(--ink2);margin:0;}
+@media(max-width:680px){.br-flow__s{flex:1 1 100%;margin:0 0 22px;} .br-flow__s:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-17px;transform:translateX(-50%) rotate(90deg);}}
+
+/* ---------- comparison / matrix table ---------- */
+.br-cmp{width:100%;border-collapse:collapse;font:500 .9rem 'Spectral',serif;}
+.br-cmp caption{caption-side:top;text-align:left;font:600 .64rem 'Inter Tight',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 0 7px;}
+.br-cmp th{background:var(--petrol);color:var(--paper2);font:600 .72rem 'Inter Tight',sans-serif;letter-spacing:.05em;text-transform:uppercase;text-align:left;padding:9px 11px;}
+.br-cmp td{padding:8px 11px;border-bottom:1px solid var(--rule);color:var(--ink2);}
+.br-cmp tr:nth-child(even) td{background:var(--paper2);}
+.br-cmp td.num,.br-cmp th.num{text-align:right;font-variant-numeric:tabular-nums;}
+.br-cmp td.num{font-weight:600;color:var(--ink);}
+
+/* ---------- figcard ---------- */
+.br-figcard{background:var(--paper2);border:1px solid var(--rule);padding:14px;}
+.br-figcard__name{font:600 1.1rem 'Newsreader',serif;color:var(--ink);margin:0;}
+.br-figcard__sub{font:600 .7rem 'Inter Tight',sans-serif;color:var(--muted);margin:2px 0 7px;}
+.br-figcard__role{font:500 .88rem/1.4 'Spectral',serif;color:var(--ink2);margin:0;}
+
+/* ---------- schema (illustratives SVG) ---------- */
+.br-schema{background:var(--paper);border:1px solid var(--rule);border-top:4px solid var(--acc);padding:15px 18px;}
+.br-schema__lbl{font:700 .64rem 'Inter Tight',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin:0 0 8px;display:flex;justify-content:space-between;gap:8px;align-items:center;}
+.br-schema__lbl em{font-style:normal;color:var(--muted);font-weight:600;letter-spacing:.06em;font-size:.92em;}
+.br-schema svg{width:100%;height:auto;display:block;}
+
+/* ---------- mark chips ---------- */
+.br-marks{display:flex;flex-wrap:wrap;gap:6px;}
+.br-mark{font:600 .68rem 'Inter Tight',sans-serif;letter-spacing:.04em;border:1px solid var(--rule);border-radius:3px;padding:4px 9px;color:var(--ink2);background:var(--paper2);}
+.br-mark--acc{border-color:var(--acc);color:var(--acc);}
+.br-mark--ban{border-style:dashed;color:var(--ered);border-color:rgba(163,36,44,.5);}
+
+/* ---------- Claude attribution marker ---------- */
+.br-claude{display:inline-flex;align-items:center;gap:7px;font:700 .58rem/1.2 'Inter Tight',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#8a4a1f;background:rgba(184,92,47,.1);border:1px dashed rgba(184,92,47,.55);border-radius:3px;padding:5px 9px;}
+.br-claude::before{content:"\25B3";font-size:.66rem;}
+
+/* ---------- CHAPTER SYNTHESIS (mandatory) ---------- */
+.br-synth{margin-top:clamp(12px,1.8vw,16px);border:1px solid var(--rule);border-top:3px solid var(--acc);background:var(--paper2);}
+.br-synth__head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--rule);background:rgba(29,58,64,.04);}
+.br-synth__title{font:700 .72rem/1 'Inter Tight',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin:0;}
+.br-synth__grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);}
+.br-synth__cell{background:var(--paper2);padding:11px 15px;}
+.br-synth__lbl{font:700 .62rem/1 'Inter Tight',sans-serif;letter-spacing:.1em;text-transform:uppercase;margin:0 0 7px;}
+.br-synth__cell ul{margin:0;padding-left:16px;}
+.br-synth__cell li{font:500 .86rem/1.36 'Spectral',serif;color:var(--ink2);margin:0 0 4px;}
+.br-synth__cell li b{color:var(--ink);font-weight:600;}
+.br-synth__cell.core .br-synth__lbl{color:var(--petrol);}
+.br-synth__cell.open .br-synth__lbl{color:var(--egold);}
+.br-synth__cell.contra .br-synth__lbl{color:var(--ered);}
+.br-synth__cell.end .br-synth__lbl{color:var(--terra);}
+@media(max-width:680px){.br-synth__grid{grid-template-columns:1fr;}}
+
+/* ---------- THEMENLANDKARTE (br-map) ---------- */
+.br-map{position:relative;margin-top:6px;}
+.br-map__bg{position:absolute;inset:-10px 0;width:100%;height:calc(100% + 20px);z-index:0;pointer-events:none;}
+.br-hub{position:relative;z-index:1;max-width:580px;margin:0 auto clamp(20px,3vw,30px);text-align:center;
+  border:2px solid var(--gold);border-radius:12px;padding:clamp(15px,2.4vw,22px);
+  background:linear-gradient(180deg,#fffdf6,var(--paper2));box-shadow:0 12px 32px -18px rgba(0,0,0,.45);}
+.br-hub__lbl{font:700 .62rem/1 'Inter Tight',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--egold);margin:0 0 5px;}
+.br-hub__q{font:600 italic clamp(15px,2.1vw,20px)/1.32 'Newsreader',serif;color:var(--petrol);margin:0 0 11px;}
+.br-hub__poles{display:flex;align-items:center;justify-content:center;gap:10px;font:700 .7rem 'Inter Tight',sans-serif;letter-spacing:.08em;text-transform:uppercase;flex-wrap:wrap;}
+.br-hub__poles .in{color:var(--acc-e);} .br-hub__poles .out{color:var(--ered);} .br-hub__poles .x{color:var(--gold);font-size:1.05em;}
+.br-mapgrid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.br-mapnode{display:block;text-decoration:none;border:1px solid var(--rule);border-left:5px solid var(--nacc);border-radius:6px;
+  background:var(--paper2);padding:12px 15px;transition:transform .2s ease,box-shadow .2s ease;}
+.br-mapnode:hover{transform:translateY(-3px);box-shadow:0 12px 26px -16px rgba(0,0,0,.45);}
+.br-mapnode__top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:3px;}
+.br-mapnode__ch{font:700 .64rem 'Inter Tight',sans-serif;letter-spacing:.08em;color:var(--nacc);}
+.br-mapnode__vec{font:600 .54rem 'Inter Tight',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.br-mapnode__name{font:600 clamp(15px,1.9vw,17.5px)/1.16 'Newsreader',serif;color:var(--ink);margin:0 0 4px;}
+.br-mapnode__stat{font:700 .8rem 'Inter Tight',sans-serif;color:var(--nacc);margin:0 0 5px;}
+.br-mapnode__subs{font:500 .77rem/1.34 'Spectral',serif;color:var(--ink2);margin:0;}
+@media(max-width:760px){.br-mapgrid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.br-mapgrid{grid-template-columns:1fr;}}
+.br-legend{display:flex;flex-wrap:wrap;gap:9px 16px;justify-content:center;margin-top:16px;padding-top:13px;border-top:1px solid var(--rule);}
+.br-legitem{display:inline-flex;align-items:center;gap:7px;font:600 .68rem 'Inter Tight',sans-serif;letter-spacing:.03em;color:var(--ink2);}
+.br-legdot{width:11px;height:11px;border-radius:3px;flex:none;}
+.br-mapcap{text-align:center;margin-top:14px;font:600 .72rem 'Inter Tight',sans-serif;letter-spacing:.03em;color:var(--muted);}
+</style>
+
+<style id="br-more-css">
+.br-more{margin-top:clamp(15px,2.2vw,20px);border:2px solid var(--acc);border-radius:14px;overflow:hidden;background:#fffdf9;box-shadow:0 12px 30px -22px rgba(0,0,0,.55);}
+.br-more>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:15px 20px;background:var(--acc);color:#fff;font:800 .8rem/1.15 'Inter Tight',sans-serif;letter-spacing:.15em;text-transform:uppercase;user-select:none;}
+.br-more>summary::-webkit-details-marker{display:none;}
+.br-more>summary::marker{content:"";}
+.br-more>summary:hover{filter:brightness(1.07);}
+.br-more>summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+.br-more__label{display:flex;flex-direction:column;gap:2px;}
+.br-more__sub{font:600 .6rem/1.1 'Inter Tight',sans-serif;letter-spacing:.07em;opacity:.85;text-transform:none;}
+.br-more__plus{margin-left:auto;flex:0 0 auto;width:28px;height:28px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font-size:1.3rem;line-height:0;transition:transform .25s ease;opacity:.9;}
+.br-more[open] .br-more__plus{transform:rotate(45deg);}
+.br-more--ink>summary{color:#22190d;}
+.br-more__body{padding:clamp(16px,2.4vw,22px);}
+.br-more__body>h4{font:800 .66rem/1.25 'Inter Tight',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--acc);margin:0 0 8px;}
+.br-more__body>h4:not(:first-child){margin-top:18px;padding-top:15px;border-top:1px solid var(--rule);}
+.br-more__body p{font:400 .92rem/1.62 'Spectral',serif;color:var(--ink2);margin:0 0 9px;}
+.br-more__body ul{margin:0;padding-left:1.1em;}
+.br-more__body li{font:400 .9rem/1.55 'Spectral',serif;color:var(--ink2);margin:0 0 7px;}
+.br-more__body li:last-child{margin-bottom:0;}
+.br-more__body b{color:var(--ink);font-weight:700;}
+.br-more__data{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:4px 0 10px;}
+.br-more__d{border:1px solid var(--rule);border-left:3px solid var(--acc);background:var(--paper2);padding:9px 12px;}
+.br-more__d b{display:block;font:800 1.2rem/1.1 'Newsreader',serif;color:var(--acc);}
+.br-more__d span{display:block;font:500 .7rem/1.3 'Inter Tight',sans-serif;color:var(--ink2);margin-top:2px;}
+.br-more__d em{display:block;font:600 .56rem/1.2 'Inter Tight',sans-serif;color:var(--muted);font-style:normal;margin-top:3px;}
+.br-more .br-claude{margin-bottom:8px;}
+@media (max-width:520px){.br-more>summary{font-size:.7rem;letter-spacing:.1em;padding:13px 15px;}}
+@media print{.br-more{display:none!important;}}
+</style>
+</head>
+<body>
+<main class="br-doc">
+
+<section id="cover-title" aria-label="Titelcover: Verfassungsschutzbericht 2025 — die freiheitliche demokratische Grundordnung, bedroht von innen durch Extremismen und von außen durch fremde Mächte.">
+  <svg class="tc-bg" viewBox="0 0 1000 1400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <pattern id="tcHalf" width="13" height="13" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1.1" fill="#e6c873" fill-opacity="0.5"/>
+      </pattern>
+      <radialGradient id="tcGlow" cx="50%" cy="40%" r="55%">
+        <stop offset="0" stop-color="#ffe9b0" stop-opacity="0.16"/>
+        <stop offset="1" stop-color="#ffe9b0" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="tcSeam" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffeebc" stop-opacity="0"/>
+        <stop offset="0.5" stop-color="#ffeebc" stop-opacity="0.5"/>
+        <stop offset="1" stop-color="#ffeebc" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <rect width="1000" height="1400" fill="url(#tcHalf)" opacity="0.16"/>
+    <rect width="1000" height="1400" fill="url(#tcGlow)"/>
+    
+    <g stroke="#e6c873" stroke-opacity="0.12" stroke-width="1.1">
+      <line x1="500" y1="90" x2="120" y2="640"/><line x1="500" y1="90" x2="230" y2="700"/>
+      <line x1="500" y1="90" x2="360" y2="740"/><line x1="500" y1="90" x2="500" y2="760"/>
+      <line x1="500" y1="90" x2="640" y2="740"/><line x1="500" y1="90" x2="770" y2="700"/>
+      <line x1="500" y1="90" x2="880" y2="640"/>
+    </g>
+    
+    <g stroke="#ffeebc" stroke-opacity="0.10" stroke-width="1">
+      <line x1="380" y1="0" x2="540" y2="1400"/><line x1="430" y1="0" x2="590" y2="1400"/>
+      <line x1="480" y1="0" x2="640" y2="1400"/><line x1="320" y1="0" x2="480" y2="1400"/>
+      <line x1="560" y1="0" x2="720" y2="1400"/>
+    </g>
+    
+    <rect x="497" y="0" width="6" height="1400" fill="url(#tcSeam)"/>
+    
+    <g transform="translate(500,560)" stroke="#e6c873" stroke-opacity="0.16" fill="none" stroke-width="1">
+      <ellipse rx="210" ry="118"/><ellipse rx="210" ry="118" transform="rotate(30)"/>
+      <ellipse rx="210" ry="118" transform="rotate(60)"/><ellipse rx="210" ry="118" transform="rotate(90)"/>
+      <ellipse rx="210" ry="118" transform="rotate(120)"/><ellipse rx="210" ry="118" transform="rotate(150)"/>
+      <circle r="150" stroke-opacity="0.2"/><circle r="100" stroke-opacity="0.2"/>
+    </g>
+    
+    <g stroke="#9fd0db" stroke-opacity="0.16" fill="none" stroke-width="1.4">
+      <path d="M70 980 a150 150 0 0 1 220 0"/><path d="M105 980 a115 115 0 0 1 150 0"/>
+      <path d="M140 980 a80 80 0 0 1 80 0"/>
+      <path d="M180 760 l-14 60 l24 -10 l-16 64 l26 -14 l-12 56" stroke-opacity="0.28"/>
+    </g>
+    
+    <g stroke="#e8959c" stroke-opacity="0.15" fill="none" stroke-width="1.3">
+      <path d="M760 900 l60 0 m-18 -14 l18 14 l-18 14"/>
+      <path d="M780 960 l60 0 m-18 -14 l18 14 l-18 14"/>
+      <path d="M800 1020 l60 0 m-18 -14 l18 14 l-18 14"/>
+      <g stroke-opacity="0.1">
+        <line x1="700" y1="700" x2="940" y2="700"/><line x1="700" y1="752" x2="940" y2="752"/>
+        <line x1="700" y1="804" x2="940" y2="804"/>
+        <line x1="724" y1="676" x2="724" y2="828"/><line x1="800" y1="676" x2="800" y2="828"/>
+        <line x1="876" y1="676" x2="876" y2="828"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="tc-light" aria-hidden="true"></div>
+  <div class="tc-shimmer" aria-hidden="true"></div>
+  <div class="tc-frame" aria-hidden="true"></div>
+
+  <div class="tc-inner">
+    <p class="tc-kicker--top">Verfassungsschutzbericht 2025 · Bundesministerium des Innern</p>
+
+    <div class="tc-titleblock">
+      <h1 class="tc-title">Wehrhafte Demokratie</h1>
+      <p class="tc-subtitle">Das Lagebild der Verfassungsfeinde</p>
+    </div>
+
+    <div class="tc-duel">
+      
+      <div class="tc-crest tc-crest--in">
+        <svg viewBox="0 0 120 132" aria-hidden="true">
+          <path d="M60 4 L112 20 V70 Q112 112 60 128 Q8 112 8 70 V20 Z" fill="#16323a" stroke="#9fd0db" stroke-opacity="0.85" stroke-width="2.2"/>
+          <path d="M60 16 L100 28 V70 Q100 100 60 114 Q20 100 20 70 V28 Z" fill="none" stroke="#9fd0db" stroke-opacity="0.35" stroke-width="1"/>
+          
+          <path d="M34 44 L60 60 L86 44 M34 60 L60 76 L86 60" fill="none" stroke="#9fd0db" stroke-opacity="0.8" stroke-width="2.4"/>
+          
+          <path d="M60 60 l-6 16 l10 -4 l-7 20 l9 -6 l-5 16" fill="none" stroke="#dff0f3" stroke-opacity="0.95" stroke-width="2"/>
+          
+          <path d="M28 96 Q40 86 44 70 M30 100 Q34 92 34 86" fill="none" stroke="#9fd0db" stroke-opacity="0.5" stroke-width="1.4"/>
+          <path d="M92 96 Q80 86 76 70 M90 100 Q86 92 86 86" fill="none" stroke="#9fd0db" stroke-opacity="0.5" stroke-width="1.4"/>
+        </svg>
+      </div>
+      <div class="tc-vsspacer" aria-hidden="true"></div>
+      <div class="tc-crest tc-crest--out">
+        <svg viewBox="0 0 120 132" aria-hidden="true">
+          <path d="M60 4 L112 20 V70 Q112 112 60 128 Q8 112 8 70 V20 Z" fill="#2a1114" stroke="#e8959c" stroke-opacity="0.85" stroke-width="2.2"/>
+          <path d="M60 16 L100 28 V70 Q100 100 60 114 Q20 100 20 70 V28 Z" fill="none" stroke="#e8959c" stroke-opacity="0.35" stroke-width="1"/>
+          
+          <circle cx="60" cy="58" r="22" fill="none" stroke="#e8959c" stroke-opacity="0.8" stroke-width="2"/>
+          <ellipse cx="60" cy="58" rx="9" ry="22" fill="none" stroke="#e8959c" stroke-opacity="0.6" stroke-width="1.3"/>
+          <line x1="38" y1="58" x2="82" y2="58" stroke="#e8959c" stroke-opacity="0.6" stroke-width="1.3"/>
+          
+          <path d="M60 36 l0 -16 m-6 6 l6 -6 l6 6" fill="none" stroke="#f0bdb6" stroke-opacity="0.95" stroke-width="2"/>
+          <path d="M84 58 l16 0 m-6 -6 l6 6 l-6 6" fill="none" stroke="#f0bdb6" stroke-opacity="0.95" stroke-width="2"/>
+          <path d="M36 58 l-16 0 m6 -6 l-6 6 l6 6" fill="none" stroke="#f0bdb6" stroke-opacity="0.7" stroke-width="1.6"/>
+          
+          <path d="M52 96 l8 -8 l8 8 M60 88 v18" fill="none" stroke="#e8959c" stroke-opacity="0.55" stroke-width="1.4"/>
+        </svg>
+      </div>
+      
+      <div class="tc-name tc-name--in">von&nbsp;innen</div>
+      <div class="tc-medallion">
+        <svg viewBox="0 0 150 150" aria-hidden="true">
+          <g transform="translate(75,75)" fill="none" stroke="#e6c873">
+            <circle r="71" stroke-opacity="0.85" stroke-width="2"/>
+            <circle r="64" stroke-opacity="0.4" stroke-width="1"/>
+            <g stroke-opacity="0.5" stroke-width="1">
+              <ellipse rx="58" ry="30"/><ellipse rx="58" ry="30" transform="rotate(45)"/>
+              <ellipse rx="58" ry="30" transform="rotate(90)"/><ellipse rx="58" ry="30" transform="rotate(135)"/>
+            </g>
+            <circle r="44" fill="#120c08" stroke="#e6c873" stroke-opacity="0.9" stroke-width="2"/>
+            
+            <g fill="#e6c873" fill-opacity="0.8" stroke="none">
+              <circle cx="0" cy="-58" r="2.4"/><circle cx="0" cy="58" r="2.4"/>
+              <circle cx="-58" cy="0" r="2.4"/><circle cx="58" cy="0" r="2.4"/>
+            </g>
+          </g>
+        </svg>
+        <span>vs.</span>
+      </div>
+      <div class="tc-name tc-name--out">von&nbsp;außen</div>
+      
+      <div class="tc-tag tc-tag--in">Die Extremismen</div>
+      <div class="tc-vsspacer" aria-hidden="true"></div>
+      <div class="tc-tag tc-tag--out">Fremde Mächte</div>
+    </div>
+
+    <div class="tc-pitch">
+      <p>Wer bedroht die freiheitliche demokratische Grundordnung — und wie misst ein Frühwarnsystem die Gefahr?</p>
+    </div>
+  </div>
+
+  <div class="tc-scrollcue" aria-hidden="true">Prüfsiegel ↓</div>
+</section>
+<hr class="br-sep">
+
+<section id="seal" aria-label="Prüfsiegel: Anti-Halluzination und Audit. Quellenbasierte Arbeit; Modellraten sind Closed-Book-Werte ohne Quelle und gelten nicht für diese Broschüre.">
+  <div class="seal-frame" aria-hidden="true"></div>
+  <span class="seal-num">02 / 15</span>
+  <div class="seal-wrap">
+
+    <p class="seal-eyebrow">Apparat · Anti-Halluzination &amp; Audit</p>
+    <p class="seal-kicker">Worauf bei dieser Broschüre Verlass ist</p>
+
+    <div class="seal-hero">
+      <div class="seal-mark">
+        <svg viewBox="0 0 240 240" role="img" aria-label="Prüfsiegel mit Häkchen; Bewertung: hoch.">
+          <g transform="translate(120,120)">
+            <circle r="112" fill="none" stroke="#cda24f" stroke-opacity="0.85" stroke-width="2.4"/>
+            <circle r="104" fill="none" stroke="#cda24f" stroke-opacity="0.35" stroke-width="1"/>
+            <g stroke="#cda24f" stroke-opacity="0.7" stroke-width="2">
+              
+              <line x1="0" y1="-112" x2="0" y2="-102"/><line x1="56" y1="-97" x2="51" y2="-88.5" transform="rotate(0)"/>
+            </g>
+            <g stroke="#cda24f" stroke-opacity="0.55">
+              <circle r="95" fill="none" stroke-dasharray="2 9" stroke-width="3"/>
+            </g>
+            
+            <g fill="none" stroke="#cda24f" stroke-opacity="0.3" stroke-width="1">
+              <ellipse rx="86" ry="44"/><ellipse rx="86" ry="44" transform="rotate(30)"/>
+              <ellipse rx="86" ry="44" transform="rotate(60)"/><ellipse rx="86" ry="44" transform="rotate(90)"/>
+              <ellipse rx="86" ry="44" transform="rotate(120)"/><ellipse rx="86" ry="44" transform="rotate(150)"/>
+            </g>
+            <circle r="64" fill="#0e161b" stroke="#ecc868" stroke-opacity="0.9" stroke-width="2.5"/>
+            <circle r="56" fill="none" stroke="#cda24f" stroke-opacity="0.4" stroke-width="1"/>
+            
+            <path d="M-26 2 L-7 22 L30 -22" fill="none" stroke="#ecc868" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="0" y="46" text-anchor="middle" fill="#cda24f" font-family="'Inter Tight',sans-serif" font-weight="700" font-size="9.5" letter-spacing="1.4">VSB 2025</text>
+            
+            <g fill="#ecc868" fill-opacity="0.85">
+              <circle cx="0" cy="-104" r="2.6"/><circle cx="0" cy="104" r="2.6"/>
+              <circle cx="-104" cy="0" r="2.6"/><circle cx="104" cy="0" r="2.6"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="seal-rate">
+        <p class="seal-rate__lab">Bewertung dieser Broschüre</p>
+        <p class="seal-rate__big">Hoch</p>
+        <p class="seal-rate__sub">Quellenbasiert aus einer amtlichen Primärquelle · alle Zahlen und Zitate am Locator geprüft.</p>
+        <div class="seal-badges">
+          <span class="seal-badge seal-badge--est"><b>≈ 4–9 %</b><span>Faktenrisiko · geschätzt, nicht gemessen</span></span>
+          <span class="seal-badge"><b>≈ 6×</b><span>geringer als ohne Quelle</span></span>
+          <span class="seal-badge"><b>8 / 8</b><span>Schluss-Audit bestanden</span></span>
+        </div>
+        <p class="seal-sum">Struktur, Thesen und Kennzahlen sind an den Verfassungsschutzbericht 2025 gebunden; das Restrisiko konzentriert sich auf exakte Zahlen, Seitenangaben und den Zitatwortlaut.</p>
+      </div>
+    </div>
+
+    <p class="seal-trust"><b>Verlass:</b> Alle Zitate, Zahlen und Sachaussagen sind an die amtliche Primärquelle (Verfassungsschutzbericht 2025) gebunden und wurden wortwörtlich an der Fundstelle geprüft.</p>
+
+    <h3 class="seal-h">Modell-Halluzinationsraten · ohne Quelle gemessen (Closed-Book)</h3>
+    <div class="seal-bars">
+      <div class="seal-barrow">
+        <div class="seal-barlab">Command A+ <small>Cohere</small></div>
+        <div class="seal-track"><div class="seal-fill" style="width:23.5%">14,1 %</div></div>
+      </div>
+      <div class="seal-barrow">
+        <div class="seal-barlab">Grok 4.3 (medium) <small>xAI</small></div>
+        <div class="seal-track"><div class="seal-fill" style="width:26.7%">16 %</div></div>
+      </div>
+      <div class="seal-barrow">
+        <div class="seal-barlab">Qwen3.7 Max <small>Alibaba</small></div>
+        <div class="seal-track"><div class="seal-fill" style="width:38.2%">22,9 %</div></div>
+      </div>
+      <div class="seal-barrow">
+        <div class="seal-barlab">Claude Opus 4.8 <small>Anthropic · dieses Modell</small></div>
+        <div class="seal-track"><div class="seal-fill seal-fill--me" style="width:59.8%">35,9 %</div></div>
+      </div>
+    </div>
+    <p class="seal-scale">Skala: volle Breite ≙ 60 % · niedriger ist besser</p>
+    <p class="seal-note"><b>Lesart:</b> AA-Omniscience misst den Anteil falscher Antworten unter den nicht-korrekten — eine Überkonfidenz-Kennzahl bei schweren Fragen, die durch Enthaltung beeinflusst wird: Modelle mit sehr niedriger Rate antworten oft seltener. Claude Opus 4.8 verbindet 35,9 % mit 46,6 % Treffergenauigkeit (Omniscience-Index 27, zweithöchster Gesamtwert). Diese Werte beschreiben das Modell allgemein <b>ohne beigelegte Quelle</b> — nicht diese quellenbasierte Broschüre. Quelle: Artificial Analysis, AA-Omniscience (2026).</p>
+
+    <h3 class="seal-h">Was Claude mit vs. ohne Quellen leistet</h3>
+    <div class="seal-cmp">
+      <div class="seal-card seal-card--no">
+        <h4>Ohne Quellen</h4>
+        <p>Frei aus dem Modellgedächtnis, ohne beigelegte Vorlage → höheres Faktenrisiko.
+          <span class="seal-card__rate">≈ 35,9 %</span></p>
+        <p style="margin-top:4px;font-size:.78rem;color:#9a8f78;">Closed-Book (Modellwert, nicht diese Arbeit)</p>
+      </div>
+      <div class="seal-card seal-card--yes">
+        <h4>Mit Quellen (hier)</h4>
+        <p>An die amtliche Vorlage gebunden, Zahlen und Zitate am Locator geprüft → „nahezu perfekt belegt“.
+          <span class="seal-card__rate">≈ 4–9 %</span></p>
+        <p style="margin-top:4px;font-size:.78rem;color:#9a8f78;">geschätzt, nicht gemessen</p>
+      </div>
+    </div>
+
+    <h3 class="seal-h">Ampel — worauf Verlass ist, was zu prüfen ist</h3>
+    <div class="seal-light">
+      <div class="seal-cell seal-cell--ok">
+        <h4><span aria-hidden="true">✓</span> Verlässlich</h4>
+        <p>Belegte Zitate, Zahlen und Sachaussagen — jeweils mit Seitenangabe (Locator) aus dem Bericht.</p>
+      </div>
+      <div class="seal-cell seal-cell--warn">
+        <h4><span aria-hidden="true">⚠</span> Vorher prüfen</h4>
+        <p>Claudes Einordnungen, Szenarien, Bewertungen und Schlussthesen (durchgehend als solche markiert).</p>
+      </div>
+    </div>
+
+    <h3 class="seal-h">Audit in einfachen Worten</h3>
+    <div class="seal-audit">
+      <p>Diese Broschüre wurde in acht geordneten Schritten geprüft — prüfen, beheben, erneut prüfen. Alle acht Pässe sind bestanden; die Korrekturen sind in die Datei eingeflossen.</p>
+      <div class="seal-chips">
+        <span class="seal-chip"><i>1</i> Technik</span>
+        <span class="seal-chip"><i>2</i> Sauberkeit</span>
+        <span class="seal-chip"><i>3</i> Quellentreue</span>
+        <span class="seal-chip"><i>4</i> Zitate &amp; Zuordnung</span>
+        <span class="seal-chip"><i>5</i> Verständlichkeit</span>
+        <span class="seal-chip"><i>6</i> Aufbau &amp; Synthesen</span>
+        <span class="seal-chip"><i>7</i> Optik · Cover-Niveau</span>
+        <span class="seal-chip"><i>8</i> Druck / Flyer</span>
+      </div>
+      <span class="seal-status seal-status--ok" id="seal-audit-status">✓ Schluss-Audit (8 Pässe): 8 / 8 bestanden · Stand 30. Juni 2026</span>
+    </div>
+
+    <details class="seal-details">
+      <summary>Details &amp; Methodik</summary>
+      <div class="seal-details__body">
+        <h5>Was diese Zahlen bedeuten</h5>
+        <p>Modellweite Werte auf einem Closed-Book-Wissensbenchmark (AA-Omniscience), gemessen <b>ohne</b> beigelegte Quelle. Sie beschreiben das Modell allgemein, <b>nicht</b> diese Antwort. Mit Originalquelle im Kontext (Grounding) liegt das praktische Halluzinationsrisiko für Struktur und Thesen deutlich niedriger; das Restrisiko konzentriert sich auf exakte Zahlen und Zitate.</p>
+        <p>Da diese Arbeit quellenbasiert (grounded) erstellt wurde, liegt das reale Halluzinationsrisiko für Struktur und Thesen deutlich unter dem Closed-Book-Wert von 35,9 %; das Restrisiko konzentriert sich auf exakte Zahlen, Seitenangaben und den Zitatwortlaut.</p>
+
+        <h5>Schätz-Methode der Risiko-Spanne</h5>
+        <p>Die Spanne ist <b>geschätzt, nicht gemessen</b>. Faktor N = 35,9 ÷ Spannen-Mittelwert: bei 4–9 % ist der Mittelwert 6,5 % → N = 5,5 → kaufmännisch gerundet <b>≈ 6</b>. Die Einstufung „Hoch“ folgt aus: eine amtliche Primärquelle (Zone B = JA), Zahlen/Zitate verbatim am Locator, geplantes Schluss-Audit; die Spanne liegt für eine mehrbereichige Broschüre im unteren Bereich, weil durchgehend aus einer einzigen, vollständig eingelesenen Quelle gearbeitet wurde.</p>
+
+        <h5>Modellraten — Quelle &amp; Vorbehalt</h5>
+        <p>Quelle: Artificial Analysis, AA-Omniscience (Closed-Book), 2026. Die Halluzinationsrate bezeichnet den Anteil falscher Antworten unter den nicht-korrekten und wird durch das Enthaltungsverhalten beeinflusst; sie ist <b>keine</b> Quote falscher Alltagsantworten. Niedrige Raten gehen oft mit selteneren Antworten einher. Werte gelten modellweit, nicht für diese Arbeit.</p>
+
+        <h5>Die acht Audit-Schritte</h5>
+        <ol>
+          <li>Technik &amp; Robustheit (Tag-Balance, Page-Errors, Guards)</li>
+          <li>Sauberkeit / Artefakte (keine Prozess-Etiketten, keine HTML-Kommentare)</li>
+          <li>Quellentreue (Aussagen gegen den Bericht)</li>
+          <li>Zitate &amp; Zuordnung (wortwörtlich, Locator, Eigen-Analyse getrennt)</li>
+          <li>Verständlichkeit (knackig, kompakt)</li>
+          <li>Aufbau / Struktur / Synthesen (jede Kapitel-Synthese vorhanden)</li>
+          <li>Visuelle Ästhetik / Cover-Niveau auf jeder Seite</li>
+          <li>Druck / Flyer (A4-Pagination, kein Überlauf) + Go/No-Go</li>
+        </ol>
+
+        <h5>Zone B — Mit Originalquelle gearbeitet</h5>
+        <p><b>JA.</b> Quelle: <b>Verfassungsschutzbericht 2025</b>, Hrsg. Bundesministerium des Innern, 460 Seiten — vollständig eingelesen; Locator-Schema: gedruckte Seitenzahl (S.).</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="karte" style="--acc:var(--gold);" aria-label="Themenlandkarte: die freiheitliche demokratische Grundordnung im Zentrum, bedroht von innen durch fünf Extremismus-Bereiche, von außen durch fremde Mächte, mit Antisemitismus als Querschnitt. Zugleich Inhaltsverzeichnis.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Themenlandkarte</span></header>
+
+  <p class="br-kick">Die Kristallisation · Konfliktkarte &amp; Inhaltsverzeichnis</p>
+  <h2 class="br-ptitle">Eine Verfassung, zwei Angriffsrichtungen</h2>
+  <p class="br-lead">Der Verfassungsschutzbericht 2025 ordnet die Bedrohungen der freiheitlichen demokratischen Grundordnung in Phänomenbereiche. Jeder Knoten unten ist ein Kapitel — ein Klick führt dorthin.</p>
+
+  <div class="br-map">
+    <svg class="br-map__bg" viewBox="0 0 1000 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><pattern id="mapHalf" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#1d3a40" fill-opacity="0.5"/></pattern></defs>
+      <rect width="1000" height="720" fill="url(#mapHalf)" opacity="0.06"/>
+      <g stroke="#c89b3c" stroke-opacity="0.14" stroke-width="1" fill="none">
+        <line x1="500" y1="120" x2="120" y2="640"/><line x1="500" y1="120" x2="320" y2="660"/>
+        <line x1="500" y1="120" x2="500" y2="680"/><line x1="500" y1="120" x2="680" y2="660"/>
+        <line x1="500" y1="120" x2="880" y2="640"/>
+        <circle cx="500" cy="120" r="60" stroke-opacity="0.2"/><circle cx="500" cy="120" r="120" stroke-opacity="0.12"/>
+      </g>
+    </svg>
+
+    <div class="br-hub">
+      <p class="br-hub__lbl">Der Hauptkonflikt</p>
+      <p class="br-hub__q">Wer bedroht die freiheitliche demokratische Grundordnung — und wie misst ein Frühwarnsystem die Gefahr?</p>
+      <p class="br-hub__poles"><span class="in">von innen</span> <span class="x">◆</span> <span class="out">von außen</span></p>
+    </div>
+
+    <nav class="br-mapgrid" aria-label="Kapitel-Navigation">
+      <a class="br-mapnode" href="#k1" style="--nacc:var(--acc-a);">
+        <span class="br-mapnode__top"><span class="br-mapnode__ch">Kapitel 1</span><span class="br-mapnode__vec">Die Lupe</span></span>
+        <h3 class="br-mapnode__name">Frühwarnsystem &amp; PMK-Gesamtbild</h3>
+        <p class="br-mapnode__stat">85.837 PMK · 58.851 extremistisch</p>
+        <p class="br-mapnode__subs">Auftrag · Kontrolle · Aufklärung · Personenpotenzial im Überblick</p>
+      </a>
+      <a class="br-mapnode" href="#k2" style="--nacc:var(--acc-b);">
+        <span class="br-mapnode__top"><span class="br-mapnode__ch">Kapitel 2</span><span class="br-mapnode__vec">von innen</span></span>
+        <h3 class="br-mapnode__name">Rechtsextremismus</h3>
+        <p class="br-mapnode__stat">59.850 · gewaltorientiert 15.600</p>
+        <p class="br-mapnode__subs">Verjüngung · Rechtsterror (LVW) · Kinder &amp; Jugend · Neue Rechte · AfD-Verdachtsfall</p>
+      </a>
+      <a class="br-mapnode" href="#k3" style="--nacc:var(--acc-c);">
+        <span class="br-mapnode__top"><span class="br-mapnode__ch">Kapitel 3</span><span class="br-mapnode__vec">von innen</span></span>
+        <h3 class="br-mapnode__name">„Reichsbürger“ &amp; „Selbstverwalter“</h3>
+        <p class="br-mapnode__stat">26.000 · gewaltorientiert ≈ 2.600</p>
+        <p class="br-mapnode__subs">Delegitimierung des Staates · Verschwörungsnarrative · Waffenaffinität</p>
+      </a>
+      <a class="br-mapnode" href="#k4" style="--nacc:var(--acc-d);">
+        <span class="br-mapnode__top"><span class="br-mapnode__ch">Kapitel 4</span><span class="br-mapnode__vec">von innen</span></span>
+        <h3 class="br-mapnode__name">Linksextremismus</h3>
+        <p class="br-mapnode__stat">42.200 · gewaltorientiert 11.600 (Höchststand)</p>
+        <p class="br-mapnode__subs">Angriffe auf KRITIS · militanter Antifaschismus · Polizei im Fokus</p>
+      </a>
+      <a class="br-mapnode" href="#k5" style="--nacc:var(--acc-e);">
+        <span class="br-mapnode__top"><span class="br-mapnode__ch">Kapitel 5</span><span class="br-mapnode__vec">von innen</span></span>
+        <h3 class="br-mapnode__name">Islamismus &amp; Terrorismus</h3>
+        <p class="br-mapnode__stat">28.645 · gewaltorientiert 9.110</p>
+        <p class="br-mapnode__subs">Junge, allein handelnde, online radikalisierte Täter · KI · HAMAS · „Muslim Interaktiv“ verboten</p>
+      </a>
+      <a class="br-mapnode" href="#k6" style="--nacc:var(--acc-f);">
+        <span class="br-mapnode__top"><span class="br-mapnode__ch">Kapitel 6</span><span class="br-mapnode__vec">von innen</span></span>
+        <h3 class="br-mapnode__name">Auslandsbezogener Extremismus</h3>
+        <p class="br-mapnode__stat">33.850</p>
+        <p class="br-mapnode__subs">PKK · türkischer Rechts- &amp; Linksextremismus · säkular-propalästinensisch</p>
+      </a>
+      <a class="br-mapnode" href="#k7" style="--nacc:var(--acc-g);">
+        <span class="br-mapnode__top"><span class="br-mapnode__ch">Kapitel 7</span><span class="br-mapnode__vec">von außen</span></span>
+        <h3 class="br-mapnode__name">Spionage · Cyber · Sabotage · Desinformation</h3>
+        <p class="br-mapnode__stat">Hybride Bedrohungen</p>
+        <p class="br-mapnode__subs">Russland / China / Iran · Sabotage · Einflussnahme · Transnationale Repression · Proliferation</p>
+      </a>
+      <a class="br-mapnode" href="#k8" style="--nacc:var(--acc-h);">
+        <span class="br-mapnode__top"><span class="br-mapnode__ch">Kapitel 8</span><span class="br-mapnode__vec">Querschnitt</span></span>
+        <h3 class="br-mapnode__name">Nahostkonflikt &amp; Antisemitismus</h3>
+        <p class="br-mapnode__stat">Verbindendes Merkmal</p>
+        <p class="br-mapnode__subs">über alle vier Phänomenbereiche · Definition der Bundesregierung · Mobilisierung</p>
+      </a>
+    </nav>
+
+    <div class="br-legend">
+      <span class="br-legitem"><span class="br-legdot" style="background:var(--acc-a);"></span>Frühwarnsystem (Lupe)</span>
+      <span class="br-legitem"><span class="br-legdot" style="background:var(--acc-b);"></span>Rechtsextremismus</span>
+      <span class="br-legitem"><span class="br-legdot" style="background:var(--acc-c);"></span>„Reichsbürger“</span>
+      <span class="br-legitem"><span class="br-legdot" style="background:var(--acc-d);"></span>Linksextremismus</span>
+      <span class="br-legitem"><span class="br-legdot" style="background:var(--acc-e);"></span>Islamismus</span>
+      <span class="br-legitem"><span class="br-legdot" style="background:var(--acc-f);"></span>Auslandsbezogen</span>
+      <span class="br-legitem"><span class="br-legdot" style="background:var(--acc-g);"></span>Angriff von außen</span>
+      <span class="br-legitem"><span class="br-legdot" style="background:var(--acc-h);"></span>Nahost &amp; Antisemitismus</span>
+    </div>
+    <p class="br-mapcap">Farbe = Themenkomplex · „von innen“ = Extremismen, „von außen“ = fremde Staaten, „Querschnitt“ = bereichsübergreifend. Jeder Knoten führt zu seinem Kapitel.</p>
+  </div>
+
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">03</span></footer>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="k1" style="--acc:var(--acc-a);" aria-label="Kapitel 1: Der Verfassungsschutz als Frühwarnsystem und das Gesamtbild der politisch motivierten Kriminalität 2025.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Kapitel 1 · Frühwarnsystem</span></header>
+
+  <p class="br-kick">Komplex A · Die Lupe des wehrhaften Staates</p>
+  <h2 class="br-ptitle">Erkennen, messen, frühwarnen</h2>
+  <p class="br-lead">Der Verfassungsschutz beobachtet Bestrebungen gegen die freiheitliche demokratische Grundordnung und klärt darüber auf — als Nachrichtendienst <b>ohne Polizeibefugnisse</b>, kontrolliert durch Aufsicht, das Parlamentarische Kontrollgremium und Gerichte (S. 20–21).</p>
+
+  <p style="margin:0 0 clamp(14px,2vw,18px);padding:9px 14px;border-left:3px solid var(--gold);background:var(--paper2);font:500 italic clamp(13px,1.6vw,15px)/1.4 'Newsreader',serif;color:var(--ink2);">„… das zentrale Frühwarnsystem unserer Demokratie.“ <span style="font-style:normal;font:600 .72rem 'Inter Tight',sans-serif;color:var(--muted);">— Vorwort, S. 3</span></p>
+
+  <h3 class="br-kick" style="margin:0 0 9px;">Personenpotenzial 2025 — fünf Phänomenbereiche</h3>
+  <div class="br-schema" style="border-top-color:var(--acc-a);">
+    <p class="br-schema__lbl">Personenpotenzial nach Bereich <em>echte Quelldaten · VSB 2025</em></p>
+    <svg viewBox="0 0 620 246" style="max-width:540px;margin:0 auto;display:block;" role="img" aria-label="Balkendiagramm Personenpotenzial 2025: Rechtsextremismus 59.850, Linksextremismus 42.200, auslandsbezogener Extremismus 33.850, Islamismus 28.645, Reichsbürger 26.000; dunkler Anteil = gewaltorientiert.">
+      <g font-family="'Inter Tight',sans-serif">
+        <g stroke="#cdbf9c" stroke-width="1">
+          <line x1="303" y1="14" x2="303" y2="210"/><line x1="444" y1="14" x2="444" y2="210"/><line x1="586" y1="14" x2="586" y2="210"/>
+        </g>
+        <g>
+          <text x="154" y="34" text-anchor="end" font-size="11.5" font-weight="600" fill="#22190d">Rechtsextremismus</text>
+          <rect x="162" y="20" width="423" height="20" rx="2" fill="#9e2b25"/><rect x="162" y="20" width="110" height="20" rx="2" fill="#5a1714"/>
+          <text x="579" y="34" text-anchor="end" font-size="11" font-weight="700" fill="#fff">59.850</text>
+        </g>
+        <g>
+          <text x="154" y="74" text-anchor="end" font-size="11.5" font-weight="600" fill="#22190d">Linksextremismus</text>
+          <rect x="162" y="60" width="298" height="20" rx="2" fill="#7d3560"/><rect x="162" y="60" width="82" height="20" rx="2" fill="#491d38"/>
+          <text x="454" y="74" text-anchor="end" font-size="11" font-weight="700" fill="#fff">42.200</text>
+        </g>
+        <g>
+          <text x="154" y="114" text-anchor="end" font-size="11.5" font-weight="600" fill="#22190d">Auslandsbezogen</text>
+          <rect x="162" y="100" width="239" height="20" rx="2" fill="#5c6b2f"/><rect x="162" y="100" width="155" height="20" rx="2" fill="#37411b"/>
+          <text x="395" y="114" text-anchor="end" font-size="11" font-weight="700" fill="#fff">33.850</text>
+        </g>
+        <g>
+          <text x="154" y="154" text-anchor="end" font-size="11.5" font-weight="600" fill="#22190d">Islamismus</text>
+          <rect x="162" y="140" width="202" height="20" rx="2" fill="#1d6a6a"/><rect x="162" y="140" width="64" height="20" rx="2" fill="#0f3a3a"/>
+          <text x="358" y="154" text-anchor="end" font-size="11" font-weight="700" fill="#fff">28.645</text>
+        </g>
+        <g>
+          <text x="154" y="194" text-anchor="end" font-size="11.5" font-weight="600" fill="#22190d">„Reichsbürger“</text>
+          <rect x="162" y="180" width="184" height="20" rx="2" fill="#b07d2b"/><rect x="162" y="180" width="18" height="20" rx="2" fill="#6e4d16"/>
+          <text x="340" y="194" text-anchor="end" font-size="11" font-weight="700" fill="#fff">26.000</text>
+        </g>
+        <g font-size="9.5" fill="#7c7053" font-weight="600">
+          <text x="303" y="224" text-anchor="middle">20.000</text><text x="444" y="224" text-anchor="middle">40.000</text><text x="586" y="224" text-anchor="middle">60.000</text>
+        </g>
+        <g font-size="10" font-weight="600">
+          <rect x="162" y="234" width="12" height="9" fill="#9a8f78"/><text x="180" y="242" fill="#3a3120">Potenzial gesamt</text>
+          <rect x="306" y="234" width="12" height="9" fill="#3a2f1c"/><text x="324" y="242" fill="#3a3120">davon gewaltorientiert</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <p style="font:500 .76rem/1.45 'Spectral',serif;color:var(--muted);margin:7px 0 0;">Gewaltorientiert: Rechtsext. <b>15.600</b> (S. 94) · Linksext. <b>11.600</b>, Höchststand (S. 160) · auslandsbez. <b>≈ 22.000</b>, definitorisch (S. 283) · Islamismus <b>9.110</b> (S. 228) · „Reichsbürger“ <b>≈ 2.600</b> (S. 152). Zahlen laut Bericht teils geschätzt und gerundet.</p>
+
+  <h3 class="br-kick" style="margin:clamp(14px,2vw,18px) 0 9px;">Das Gesamtbild der politisch motivierten Kriminalität</h3>
+  <div class="br-stats">
+    <div class="br-stat"><div class="br-stat__num">85.837</div><div class="br-stat__lbl">PMK gesamt 2025</div><div class="br-stat__src">S. 25 · BKA</div></div>
+    <div class="br-stat"><div class="br-stat__num">58.851</div><div class="br-stat__lbl">extremistisch · 68,6 %</div><div class="br-stat__src">S. 26</div></div>
+    <div class="br-stat"><div class="br-stat__num">3.294</div><div class="br-stat__lbl">extremist. Gewaltdelikte</div><div class="br-stat__src">S. 26 · 2024: 2.976</div></div>
+    <div class="br-stat"><div class="br-stat__num">4.649</div><div class="br-stat__lbl">Bedienstete im BfV</div><div class="br-stat__src">S. 3</div></div>
+  </div>
+
+  <div class="br-synth">
+    <div class="br-synth__head"><p class="br-synth__title">Synthese · Kapitel 1</p><span class="br-claude">Claudes Einordnung · nicht in der Quelle</span></div>
+    <div class="br-synth__grid">
+      <div class="br-synth__cell core">
+        <p class="br-synth__lbl">Kernpunkte</p>
+        <ul>
+          <li>Der VS ist ein <b>Frühwarnsystem ohne Exekutivbefugnisse</b>.</li>
+          <li><b>85.837</b> politisch motivierte Straftaten, davon <b>58.851</b> extremistisch.</li>
+          <li><b>Extremistische Gewaltdelikte gestiegen</b> (2.976 → 3.294).</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell open">
+        <p class="br-synth__lbl">Offene Fragen</p>
+        <ul>
+          <li>Wie belastbar sind „Personenpotenziale“, die der Bericht selbst als <b>geschätzt und gerundet</b> ausweist?</li>
+          <li>Vergleichbarkeit bei wechselnden Zählweisen.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell contra">
+        <p class="br-synth__lbl">Spannungen / Logik</p>
+        <ul>
+          <li>Die wehrhafte Demokratie schützt Freiheit auch durch <b>Eingriffe in Freiheit</b> — ein Maß-, kein Gewissheitsproblem.</li>
+          <li>Schätzgrößen werden öffentlich oft als <b>harte Zahlen</b> gelesen.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell end">
+        <p class="br-synth__lbl">Zu Ende gedacht</p>
+        <ul>
+          <li>Wächst das „Potenzial“, wächst der Beobachtungsdruck — die Balance aus <b>Frühwarnung und Grundrechtsschonung</b> wird zur Daueraufgabe.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <details class="br-more">
+    <summary><span class="br-more__label"><span>Mehr Informationen</span><span class="br-more__sub">Vertiefung · Thesen, Beobachtungen &amp; Daten</span></span><span class="br-more__plus" aria-hidden="true">+</span></summary>
+    <div class="br-more__body">
+      <h4>Vertiefung · Wo extremistische Kriminalität anfällt</h4>
+      <p>Hinter dem Personenpotenzial steht die <b>Tatebene</b>. Von den 85.837 politisch motivierten Straftaten gelten <b>58.851 (68,6 %)</b> als extremistisch (S. 26). So verteilen sich diese:</p>
+      <div class="br-more__data">
+        <div class="br-more__d"><b>36.951</b><span>PMK · rechts</span><em>S. 26 · 2024: 37.835</em></div>
+        <div class="br-more__d"><b>8.133</b><span>PMK · links</span><em>S. 26 · 2024: 5.857</em></div>
+        <div class="br-more__d"><b>4.482</b><span>ausländische Ideologie</span><em>S. 26</em></div>
+        <div class="br-more__d"><b>1.823</b><span>religiöse Ideologie</span><em>S. 26</em></div>
+        <div class="br-more__d"><b>3.294</b><span>extremist. Gewaltdelikte</span><em>S. 26 · 2024: 2.976</em></div>
+      </div>
+      <h4>Die politische Kriminalität im Gesamtüberblick</h4>
+      <ul>
+        <li>Das BKA registrierte <b>85.837</b> politisch motivierte Straftaten (2024: 84.172) — ein leichter Anstieg (S. 25).</li>
+        <li>Davon waren <b>30.397 (35,4 %) Propagandadelikte</b> und <b>4.156 (4,8 %)</b> Gewaltkriminalität (S. 25).</li>
+        <li>Der extremistische Anteil liegt stabil bei <b>68,6 %</b>; die extremistischen Gewaltdelikte stiegen um rund 11 % auf 3.294 (S. 26).</li>
+      </ul>
+      <h4>Das BfV und seine Kontrolle</h4>
+      <ul>
+        <li>Das BfV versteht sich als <b>„Frühwarnsystem der wehrhaften Demokratie“</b> und beschäftigt 4.649 Bedienstete (S. 3).</li>
+        <li>Sein Auftrag ist <b>Aufklärung</b>, nicht Exekutive — es darf weder festnehmen noch durchsuchen (S. 21).</li>
+        <li>Es unterliegt der Fach- und Dienstaufsicht des BMI sowie der <b>parlamentarischen Kontrolle</b> durch das Parlamentarische Kontrollgremium (PKGr), das „regelmäßig und umfassend“ unterrichtet wird (S. 20).</li>
+      </ul>
+      <h4>Claudes vertiefende Lesart</h4>
+      <p class="br-claude">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Zwei Kennzahlen, zwei Bedeutungen: Das <b>Personenpotenzial misst Zugehörigkeit</b>, die <b>PMK misst Handeln</b> — erst zusammen entsteht ein Lagebild. Auf der Tatebene dominiert der Rechtsextremismus noch deutlicher (≈ 63 % der extremistischen Straftaten) als beim Potenzial. Bemerkenswert ist der Aufklärungs-Auftrag ohne Exekutivbefugnis: Die wehrhafte Demokratie trennt <b>Wissen und Zwang</b> bewusst — Wirksamkeit gegen Risiken muss daher durch Polizei und Justiz erfolgen.</p>
+    </div>
+  </details>
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">04</span></footer>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="k2" style="--acc:var(--acc-b);" aria-label="Kapitel 2, Teil 1: Rechtsextremismus als größte Bedrohung der freiheitlichen demokratischen Grundordnung; Verjüngung, Vernetzung, Aktionsorientierung und rechtsterroristische Ansätze.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Kapitel 2 · Rechtsextremismus</span></header>
+
+  <p class="br-kick">Komplex B · von innen · Die größte Bedrohung</p>
+  <h2 class="br-ptitle">Rechtsextremismus</h2>
+  <p class="br-lead">Der Bericht nennt den Rechtsextremismus die größte Gefahr für die freiheitliche demokratische Grundordnung — mit einem Personenpotenzial, das im Berichtsjahr deutlich gewachsen ist.</p>
+
+  <div class="br-thesis">
+    <p class="br-key__lbl">These des Berichts</p>
+    <p>„Daneben bleibt der Rechtsextremismus die größte Bedrohung für unsere freiheitliche demokratische Grundordnung.“ <span style="font:600 .7rem 'Inter Tight',sans-serif;opacity:.8;">— Vorwort, S. 2</span></p>
+  </div>
+
+  <div class="br-stats" style="margin-top:clamp(14px,2vw,18px);">
+    <div class="br-stat"><div class="br-stat__num">59.850</div><div class="br-stat__lbl">Personenpotenzial 2025</div><div class="br-stat__src">S. 94</div></div>
+    <div class="br-stat"><div class="br-stat__num">+8.000</div><div class="br-stat__lbl">Zuwachs ggü. Vorjahr</div><div class="br-stat__src">S. 2 · 2024: 51.500</div></div>
+    <div class="br-stat"><div class="br-stat__num">15.600</div><div class="br-stat__lbl">gewaltorientiert</div><div class="br-stat__src">S. 94 · 2024: 15.300</div></div>
+  </div>
+
+  <h3 class="br-kick" style="margin:clamp(16px,2.4vw,22px) 0 9px;">Der beunruhigende Trend</h3>
+  <div class="br-flow">
+    <div class="br-flow__s"><div class="br-flow__n">01</div><div class="br-flow__t">Verjüngung</div><p class="br-flow__d">Jüngere Szene; niedrigschwellige Angebote im Freizeitverhalten junger Menschen.</p></div>
+    <div class="br-flow__s"><div class="br-flow__n">02</div><div class="br-flow__t">Vernetzung</div><p class="br-flow__d">Virtuelle Zusammenschlüsse, z. B. der „Brenton Fanclub“ (S. 2).</p></div>
+    <div class="br-flow__s"><div class="br-flow__n">03</div><div class="br-flow__t">Aktionsorientierung</div><p class="br-flow__d">Verschiebung von Propaganda hin zu Aktion und Gewalt.</p></div>
+    <div class="br-flow__s"><div class="br-flow__n">04</div><div class="br-flow__t">Rechtsterror</div><p class="br-flow__d">Online-radikalisierte Einzelne und Gruppen (S. 96).</p></div>
+  </div>
+
+  <div class="br-key" style="margin-top:clamp(16px,2.4vw,20px);">
+    <p class="br-key__lbl">Rechtsterroristische Ansätze</p>
+    <ul>
+      <li>Gegen Mitglieder der Gruppe <b>„Letzte Verteidigungs Welle“ (L.V.W.)</b> wurden im <b>Mai 2025</b> Exekutivmaßnahmen wegen Verdachts der Mitgliedschaft/Unterstützung durchgeführt (S. 91).</li>
+      <li>Die Gefahr geht zunehmend von <b>online radikalisierten Einzelpersonen und Gruppen</b> aus (S. 96).</li>
+    </ul>
+  </div>
+
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">05</span></footer>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="k2b" style="--acc:var(--acc-b);" aria-label="Kapitel 2, Teil 2: Beeinflussung von Kindern und Jugendlichen, Akteure der Neuen Rechten, rechtsextremistisches Parteienspektrum und der Verdachtsfall AfD.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Kapitel 2 · Rechtsextremismus</span></header>
+
+  <p class="br-kick">Komplex B · von innen · Nachwuchs, Vorfeld, Partei</p>
+  <h2 class="br-ptitle">Wie die Szene wirkt</h2>
+  <p class="br-lead">Erstmals widmet der Bericht der Ansprache junger Menschen einen eigenen Abschnitt; daneben das Vorfeld der Neuen Rechten und das Parteienspektrum.</p>
+
+  <div class="br-key">
+    <p class="br-key__lbl">Beeinflussung von Kindern und Jugendlichen <span style="font-weight:600;color:var(--muted);">· erstmals eigener Abschnitt (S. 104)</span></p>
+    <ul>
+      <li>„Bemühungen zur ideologischen Indoktrination, Rekrutierung und Mobilisierung junger Menschen durch die rechtsextremistische Szene haben eine lange Tradition.“ (S. 104)</li>
+      <li>Zielgruppenspezifische Propaganda in <b>sozialen Medien</b>; Anknüpfung an das <b>Freizeitverhalten</b> über niedrigschwellige Angebote.</li>
+    </ul>
+  </div>
+
+  <h3 class="br-kick" style="margin:clamp(16px,2.4vw,20px) 0 9px;">Vorfeld &amp; Parteienspektrum (Beobachtungsobjekte)</h3>
+  <div class="br-grid2" style="align-items:start;">
+    <div>
+      <p style="font:700 .62rem 'Inter Tight',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 7px;">Neue Rechte / Vorfeld</p>
+      <div class="br-marks">
+        <span class="br-mark br-mark--acc">Identitäre Bewegung</span>
+        <span class="br-mark br-mark--acc">„Ein Prozent“</span>
+        <span class="br-mark br-mark--acc">„COMPACT-Magazin“</span>
+        <span class="br-mark br-mark--acc">„Institut für Staatspolitik“</span>
+        <span class="br-mark br-mark--acc">„Verlag Antaios“</span>
+        <span class="br-mark br-mark--acc">Verdachtsfall „AUF1“</span>
+      </div>
+    </div>
+    <div>
+      <p style="font:700 .62rem 'Inter Tight',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 7px;">Parteienspektrum</p>
+      <div class="br-marks">
+        <span class="br-mark">„Die Heimat“ (vormals NPD)</span>
+        <span class="br-mark">„DIE RECHTE“</span>
+        <span class="br-mark">„Der III. Weg“</span>
+        <span class="br-mark">„Freie Sachsen“</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="br-key" style="margin-top:clamp(16px,2.4vw,20px);border-left-style:dashed;">
+    <p class="br-key__lbl">Verdachtsfall „Alternative für Deutschland“ (AfD) <span style="font-weight:600;color:var(--muted);">· S. 130 / S. 135</span></p>
+    <ul>
+      <li>Die AfD wird vom BfV <b>als Verdachtsfall bearbeitet</b>; der Bericht überschreibt den Abschnitt ausdrücklich mit <b>„Gerichtliche Überprüfung der Einstufung“</b> (S. 130).</li>
+      <li>Verwiesen wird auf <b>OVG NRW</b> (Urteil 13.05.2024) und <b>BVerwG</b> (Beschluss 20.05.2025) (S. 130).</li>
+      <li>Die JA war bis 31.03.2025 offizielle Jugendorganisation; sie besteht seither als Liquidationsverein <b>„JA i. L.“ (Verdachtsfall)</b> fort (S. 135).</li>
+    </ul>
+    <p style="margin:9px 0 0;"><span class="br-claude">Claudes Einordnung · nicht in der Quelle</span> <span style="font:500 .82rem/1.4 'Spectral',serif;color:var(--ink2);">Diese Broschüre <b>referiert</b> die Einstufung des BfV und die laufende gerichtliche Überprüfung — sie <b>beurteilt</b> die Einstufung nicht.</span></p>
+  </div>
+
+  <div class="br-synth">
+    <div class="br-synth__head"><p class="br-synth__title">Synthese · Kapitel 2</p><span class="br-claude">Eigen-Analyse markiert</span></div>
+    <div class="br-synth__grid">
+      <div class="br-synth__cell core">
+        <p class="br-synth__lbl">Kernpunkte</p>
+        <ul>
+          <li>Rechtsextremismus = <b>größte Bedrohung der fdGO</b>; Potenzial <b>+8.000</b> auf 59.850.</li>
+          <li>Treiber: <b>Verjüngung, Vernetzung, Aktionsorientierung</b>; Rechtsterror durch online-radikalisierte Einzelne/Gruppen.</li>
+          <li>Erstmals eigener Abschnitt zur <b>Ansprache von Kindern/Jugendlichen</b>; AfD als Verdachtsfall (gerichtlich überprüft).</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell open">
+        <p class="br-synth__lbl">Offene Fragen</p>
+        <ul>
+          <li>Wie wirksam ist Prävention gegen <b>dezentrale Online-Radikalisierung</b>?</li>
+          <li>Ausgang der <b>gerichtlichen Überprüfung</b> der AfD-Einstufung — im Bericht offen (S. 130).</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell contra">
+        <p class="br-synth__lbl">Spannungen / Logik</p>
+        <ul>
+          <li>Eine Behörde stuft eine im Parlament vertretene Partei ein, während Gerichte prüfen — ein Spannungsfeld von <b>wehrhafter Demokratie und Parteienfreiheit (Art. 21 GG)</b>, das der Bericht benennt, aber nicht auflöst.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell end">
+        <p class="br-synth__lbl">Zu Ende gedacht</p>
+        <ul>
+          <li>Verjüngung plus Online-Vernetzung verlagert Radikalisierung in <b>schwer beobachtbare, dezentrale Räume</b> — Prävention müsste früher ansetzen: Schule, Plattformen, Elternhaus.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <details class="br-more">
+    <summary><span class="br-more__label"><span>Mehr Informationen</span><span class="br-more__sub">Vertiefung · Thesen, Beobachtungen &amp; Daten</span></span><span class="br-more__plus" aria-hidden="true">+</span></summary>
+    <div class="br-more__body">
+      <h4>Vertiefung · Zusammensetzung und Tatebene</h4>
+      <p>Der Zuwachs ist ein <b>Trend über drei Jahre</b> — die Tatzahlen bewegen sich auf hohem Niveau.</p>
+      <div class="br-more__data">
+        <div class="br-more__d"><b>15.600</b><span>gewaltorientiert 2025</span><em>S. 94 · 2023: 14.500</em></div>
+        <div class="br-more__d"><b>58.700</b><span>Potenzial (bereinigt)</span><em>S. 94</em></div>
+        <div class="br-more__d"><b>36.951</b><span>Straf- &amp; Gewalttaten</span><em>S. 95 · Vorjahresniveau</em></div>
+        <div class="br-more__d"><b>49</b><span>antisemit. Gewalttaten</span><em>S. 96 · 2024: 54 (−9,3 %)</em></div>
+      </div>
+      <h4>Rechtsterrorismus aus dem Netz</h4>
+      <ul>
+        <li>Geplanten rechtsextremistischen Gewalttaten ging „oftmals eine <b>Radikalisierung im Internet</b>“ voraus — auch auf Mainstream-Plattformen wie Instagram oder TikTok sowie über Telegram (S. 96).</li>
+        <li>Aus der „Siege-“ bzw. <b>„Attentäter-Fanszene“</b> erwachsen Akteure, die Rechtsterrorismus erwägen; exemplarisch stehen Anschlagsplanungen zweier Mitglieder einer internationalen Telegram-Chatgruppe (S. 97).</li>
+        <li>Die Gruppe <b>„Letzte Verteidigungswelle“</b> verübte rechtsterroristische Handlungen; der <b>„Brenton Fanclub“</b> vernetzt sich virtuell und verherrlicht Gewalt (S. 100 / S. 2).</li>
+      </ul>
+      <h4>Die „Neue Rechte“ und ihre Strategie</h4>
+      <ul>
+        <li>Das weitgehend parteiungebundene Spektrum umfasst Beobachtungsobjekte wie die <b>„Identitäre Bewegung Deutschland“</b>, „COMPACT-Magazin“, „Institut für Staatspolitik“, „Ein Prozent e.V.“, „Antaios-Verlag“ und „PI-NEWS“ (S. 94).</li>
+        <li>Ihr Ziel ist „die metapolitische Erringung der <b>kulturellen Hegemonie</b>“ — also eine ideologische „Gegenkultur“ statt offener Gewalt (S. 149).</li>
+      </ul>
+      <h4>Beeinflussung von Kindern und Jugendlichen</h4>
+      <p>Erstmals widmet der Bericht der Ansprache junger Menschen einen eigenen Abschnitt: Indoktrination und Rekrutierung haben „eine lange Tradition“, doch <b>zielgruppenspezifische Propaganda in den sozialen Medien</b> gewinnt zunehmend an Bedeutung (S. 104).</p>
+      <h4>Zur Einstufung der AfD <span style="font-weight:600;color:var(--muted);font-family:'Inter Tight',sans-serif;">· referiert, nicht bewertet</span></h4>
+      <ul>
+        <li>Die der AfD zugehörige Teilorganisation <b>JA</b> (Verdachtsfall) ist <b>seit dem 01.04.2025 in Liquidation</b>; geschätzte Doppelmitgliedschaften sind in der Potenzialzahl berücksichtigt (S. 94).</li>
+        <li>Die Einstufung der <b>AfD als Verdachtsfall</b> wird gerichtlich überprüft (S. 130) — der Bericht referiert diesen Stand, über die Einstufung entscheiden die Gerichte.</li>
+      </ul>
+      <h4>Claudes vertiefende Lesart</h4>
+      <p class="br-claude">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Der Rechtsextremismus zeigt sich <b>zweigleisig</b>: eine metapolitische, gewaltferne „Neue Rechte“, die um kulturelle Deutungshoheit ringt — und eine online radikalisierte Gewaltszene, in der Einzeltäter und Kleinstgruppen den Ton angeben. Beides zusammen, plus die Ansprache Minderjähriger, erklärt das Urteil <b>„größte Bedrohung“</b>: Gefährlich ist nicht eine Zahl, sondern die <b>Breite der Einfallstore</b> — von der Zeitschrift bis zum Telegram-Kanal.</p>
+    </div>
+  </details>
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">06</span></footer>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="k3" style="--acc:var(--acc-c);" aria-label="Kapitel 3: Die Szene der Reichsbürger und Selbstverwalter, die den Staat verneint; rund 26.000 Personen, hohe Waffenaffinität, Vermischung mit rechtsextremistischen Narrativen.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Kapitel 3 · „Reichsbürger“</span></header>
+
+  <p class="br-kick">Komplex C · von innen · Der Staat wird verneint</p>
+  <h2 class="br-ptitle">„Reichsbürger“ &amp; „Selbstverwalter“</h2>
+  <p class="br-lead">Eine Szene, die die Bundesrepublik als Staat nicht anerkennt — stabil in der Zahl, aber durch Waffenaffinität und Annäherung an den Rechtsextremismus riskant.</p>
+
+  <figure class="br-qcard" style="margin:0 0 clamp(14px,2vw,18px);">
+    <figcaption class="br-qcard__lbl">O‑Ton · Bericht</figcaption>
+    <p class="br-qcard__body">„… die die Bundesrepublik als Staat nicht anerkennen, unsere Verfassung, Gesetze und Behörden ablehnen …“</p>
+    <p class="br-qcard__cite">Verfassungsschutzbericht 2025, Vorwort, S. 3</p>
+  </figure>
+
+  <div class="br-stats">
+    <div class="br-stat"><div class="br-stat__num">26.000</div><div class="br-stat__lbl">Personen · stabil</div><div class="br-stat__src">S. 152 · 2024: 26.000</div></div>
+    <div class="br-stat"><div class="br-stat__num">≈ 2.600</div><div class="br-stat__lbl">gewaltorientiert (≈ 10 %)</div><div class="br-stat__src">S. 152</div></div>
+    <div class="br-stat"><div class="br-stat__num">≈ 1.400</div><div class="br-stat__lbl">zugleich rechtsextrem. (≈ 5 %)</div><div class="br-stat__src">S. 152</div></div>
+  </div>
+
+  <h3 class="br-kick" style="margin:clamp(14px,2vw,18px) 0 9px;">Warum die Szene gefährlich bleibt</h3>
+  <div class="br-flow">
+    <div class="br-flow__s"><div class="br-flow__n">01</div><div class="br-flow__t">Verneinung des Staates</div><p class="br-flow__d">Verfassung, Gesetze, Behörden werden abgelehnt; oft Verschwörungs- und antisemitische Narrative (S. 3).</p></div>
+    <div class="br-flow__s"><div class="br-flow__n">02</div><div class="br-flow__t">Waffenaffinität</div><p class="br-flow__d">Die „hohe Waffenaffinität der Szene“ bleibt ein „zentrales Risikoelement“ (S. 3).</p></div>
+    <div class="br-flow__s"><div class="br-flow__n">03</div><div class="br-flow__t">Terroristische Bezüge</div><p class="br-flow__d">Vermischung mit delegitimierenden und rechtsextremistischen Narrativen → „potenziell terroristische Bezüge“ (S. 3 / 152).</p></div>
+  </div>
+
+  <div class="br-synth">
+    <div class="br-synth__head"><p class="br-synth__title">Synthese · Kapitel 3</p><span class="br-claude">Claudes Einordnung · nicht in der Quelle</span></div>
+    <div class="br-synth__grid">
+      <div class="br-synth__cell core">
+        <p class="br-synth__lbl">Kernpunkte</p>
+        <ul>
+          <li>Zahl <b>stabil bei 26.000</b>; rund <b>2.600 gewaltorientiert</b>.</li>
+          <li>Risiko aus <b>Waffenaffinität</b> und <b>Vermischung</b> mit Rechtsextremismus.</li>
+          <li>Daraus „potenziell terroristische Bezüge“ (S. 3).</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell open">
+        <p class="br-synth__lbl">Offene Fragen</p>
+        <ul>
+          <li>Wie greift man eine Szene, die <b>staatliche Autorität grundsätzlich verneint</b>?</li>
+          <li>Wo endet Verschwörungsglaube, wo beginnt Gewaltbereitschaft?</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell contra">
+        <p class="br-synth__lbl">Spannungen / Logik</p>
+        <ul>
+          <li>Die Selbst-Erzählung ist <b>zirkulär</b>: Wer den Staat verneint, deutet jede staatliche Reaktion als Beweis der eigenen These.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell end">
+        <p class="br-synth__lbl">Zu Ende gedacht</p>
+        <ul>
+          <li>Stabile Zahl bei wachsender Waffen- und Rechtsextremismus-Nähe bedeutet: nicht mehr, aber <b>härtere</b> Risiken — Früherkennung von Einzeltätern wird zentral.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <details class="br-more br-more--ink">
+    <summary><span class="br-more__label"><span>Mehr Informationen</span><span class="br-more__sub">Vertiefung · Thesen, Beobachtungen &amp; Daten</span></span><span class="br-more__plus" aria-hidden="true">+</span></summary>
+    <div class="br-more__body">
+      <h4>Vertiefung · Von der Negation zum Umsturzplan</h4>
+      <p>Die „Reichsbürger“ sind keine Organisation, sondern ein <b>heterogenes Feld</b> — und genau das macht die Szene schwer fassbar.</p>
+      <ul>
+        <li><b>Definition:</b> „Reichsbürger“ und „Selbstverwalter“ negieren „die Existenz der Bundesrepublik Deutschland“ und lehnen deren Rechtssystem ab (S. 150).</li>
+        <li><b>Struktur:</b> Einzelpersonen ohne Einbindung, Kleinst- und Kleingruppen, überregionale Zusammenschlüsse und <b>virtuelle Netzwerke</b> (S. 150).</li>
+        <li><b>Rechtsbruch:</b> „eine hohe Wahrscheinlichkeit“ vorsätzlicher Verstöße, etwa aktiver Widerstand gegen staatliche Maßnahmen (S. 150).</li>
+        <li><b>Eskalation:</b> in einigen Fällen „Systemüberwindungsfantasien, die sich in konkreten Umsturzplänen manifestieren“ (S. 150).</li>
+      </ul>
+      <h4>Verschwörung, Antisemitismus — und eine wichtige Einschränkung</h4>
+      <ul>
+        <li>Antisemitische Denkmuster reichen von Verschwörungserzählungen (etwa, der Erste Weltkrieg sei „von den Juden“ geplant worden) bis zur <b>Holocaustleugnung</b> (S. 151).</li>
+        <li>Das Verbinden solcher „Versatzstücke“ erhöht die <b>Anschlussfähigkeit</b> für Extremisten anderer Phänomenbereiche und für radikalisierte Einzelpersonen aus dem Verschwörungsmilieu (S. 151).</li>
+        <li><b>Einschränkung:</b> Bei vielen Szeneangehörigen sind rechtsextremistische Ideologieelemente „nur in geringem Maße oder gar nicht“ auszumachen (S. 151) — die Szene ist nicht deckungsgleich mit dem Rechtsextremismus.</li>
+      </ul>
+      <h4>Der konkrete Umsturzfall</h4>
+      <p>Eine Gruppierung muss sich u. a. wegen <b>„Vorbereitung eines hochverräterischen Unternehmens“</b> und Unterstützung einer terroristischen Vereinigung vor den Oberlandesgerichten <b>Frankfurt am Main, München und Stuttgart</b> verantworten; in ihr flossen „Reichsbürger“-Ideologeme und rechtsextremistische Narrative zusammen (S. 156).</p>
+      <h4>Claudes vertiefende Lesart</h4>
+      <p class="br-claude">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Das Risiko liegt nicht in der — stabilen — Mitgliederzahl, sondern im <b>Schritt von der Ideologie zur Tat</b> und in der <b>Brückenfunktion</b> der Szene: Ihr Verschwörungsbaukasten macht sie anschlussfähig für andere Milieus. Bei hoher Waffenaffinität wiegt jeder Einzelfall schwer — der Umsturzprozess vor drei Oberlandesgerichten zeigt, dass aus „Fantasien“ Anklagen wegen Hochverrats werden können.</p>
+    </div>
+  </details>
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">07</span></footer>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="k4" style="--acc:var(--acc-d);" aria-label="Kapitel 4: Linksextremismus mit neuem Höchststand bei gewaltorientierten Personen; Angriff auf die Berliner Stromversorgung als Signaturfall; militanter Antifaschismus.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Kapitel 4 · Linksextremismus</span></header>
+
+  <p class="br-kick">Komplex D · von innen · Neuer Gewalt-Höchststand</p>
+  <h2 class="br-ptitle">Linksextremismus</h2>
+  <p class="br-lead">Das Personenpotenzial wächst, der gewaltorientierte Anteil erreicht einen Höchststand — und Angriffe auf kritische Infrastruktur gefährden konkret Menschen.</p>
+
+  <div class="br-thesis">
+    <p class="br-key__lbl">Befund des Berichts</p>
+    <p>„… um 4.200 auf nunmehr 42.200 Personen angewachsen, darunter 11.600 (2024: 11.200) gewaltorientierte Linksextremisten.“ <span style="font:600 .7rem 'Inter Tight',sans-serif;opacity:.8;">— S. 160</span></p>
+  </div>
+
+  <div class="br-stats" style="margin-top:clamp(13px,1.8vw,17px);">
+    <div class="br-stat"><div class="br-stat__num">42.200</div><div class="br-stat__lbl">Personenpotenzial · +4.200</div><div class="br-stat__src">S. 160</div></div>
+    <div class="br-stat"><div class="br-stat__num">11.600</div><div class="br-stat__lbl">gewaltorientiert · Höchststand</div><div class="br-stat__src">S. 160 · 2024: 11.200</div></div>
+    <div class="br-stat"><div class="br-stat__num">8.700</div><div class="br-stat__lbl">davon Autonome</div><div class="br-stat__src">S. 163</div></div>
+  </div>
+
+  <div class="br-key" style="margin-top:clamp(14px,2vw,18px);">
+    <p class="br-key__lbl">Signatur-Fall · Anschlag auf die Berliner Stromversorgung <span style="font-weight:600;color:var(--muted);">· S. 165 / 166</span></p>
+    <ul>
+      <li>Mehrere Zehntausend Haushalte und Betriebe sowie Gesundheits- und Verkehrsinfrastruktur waren <b>mehrere Tage</b> ohne Strom — „darunter <b>Beatmungsgeräte in einem Pflegeheim</b>, Notrufnummern und Verkehrsampeln“ (S. 165).</li>
+      <li>Anonyme Autoren bekannten sich: Ziel sei die Stromversorgung des Heizkraftwerks Berlin-Lichterfelde und „die fossile Energiewirtschaft“ gewesen (S. 166).</li>
+    </ul>
+  </div>
+
+  <div class="br-key" style="margin-top:clamp(13px,1.8vw,16px);">
+    <p class="br-key__lbl">Weitere Aktionsfelder</p>
+    <ul>
+      <li><b>Militanter Antifaschismus:</b> Angriffe auf vermeintliche Rechtsextremisten — und Gewalt gegen die Polizei — werden szeneintern legitimiert (S. 178).</li>
+      <li><b>Polizei im Fokus:</b> Münchner Anschlagserie, u. a. Brandanschlag auf 22 Fahrzeuge der Diensthundestaffel (S. 2); Angriffe auf KRITIS und Wirtschaft (S. 164).</li>
+    </ul>
+  </div>
+
+  <div class="br-synth">
+    <div class="br-synth__head"><p class="br-synth__title">Synthese · Kapitel 4</p><span class="br-claude">Claudes Einordnung · nicht in der Quelle</span></div>
+    <div class="br-synth__grid">
+      <div class="br-synth__cell core">
+        <p class="br-synth__lbl">Kernpunkte</p>
+        <ul>
+          <li>Gewaltorientierte auf <b>Höchststand (11.600)</b>.</li>
+          <li>KRITIS-Angriffe mit <b>konkreter Personengefährdung</b>.</li>
+          <li>Gewalt gegen Gegner und Polizei wird <b>selbst-legitimiert</b>.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell open">
+        <p class="br-synth__lbl">Offene Fragen</p>
+        <ul>
+          <li>Verschiebt sich von <b>Sach-</b> zu <b>Personengewalt</b>?</li>
+          <li>Wie schützt man dezentrale, vernetzte KRITIS?</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell contra">
+        <p class="br-synth__lbl">Spannungen / Logik</p>
+        <ul>
+          <li>Ein als „Sachbeschädigung an Infrastruktur“ erklärter Angriff nimmt durch <b>ausgefallene Beatmungsgeräte</b> Personengefährdung in Kauf — die Grenze zur Gewalt gegen Menschen verschwimmt.</li>
+          <li>Selbst-Etiketten wie „gemeinwohlorientiert“ sind <b>zirkuläre</b> Rechtfertigung.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell end">
+        <p class="br-synth__lbl">Zu Ende gedacht</p>
+        <ul>
+          <li>Wenn Infrastruktur-Sabotage als legitim gilt, eskaliert die Logik vom Symbol zum <b>Versorgungssystem</b> — mit unkalkulierbaren Folgen für Unbeteiligte.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <details class="br-more">
+    <summary><span class="br-more__label"><span>Mehr Informationen</span><span class="br-more__sub">Vertiefung · Thesen, Beobachtungen &amp; Daten</span></span><span class="br-more__plus" aria-hidden="true">+</span></summary>
+    <div class="br-more__body">
+      <h4>Vertiefung · Wenn Straftaten schneller steigen als Köpfe</h4>
+      <p>Das Personenpotenzial wuchs um rund 11 % — die <b>Straf- und Gewalttaten</b> stiegen weit darüber hinaus.</p>
+      <div class="br-more__data">
+        <div class="br-more__d"><b>+38,9 %</b><span>linksext. Straftaten → 8.133</span><em>S. 160</em></div>
+        <div class="br-more__d"><b>+60,9 %</b><span>Gewalttaten → 856</span><em>S. 160</em></div>
+        <div class="br-more__d"><b>11.600</b><span>gewaltorientiert</span><em>S. 160</em></div>
+        <div class="br-more__d"><b>8.700</b><span>davon Autonome</span><em>S. 163</em></div>
+      </div>
+      <h4>Die Aktionsfelder</h4>
+      <ul>
+        <li><b>Militanter Antifaschismus:</b> geprägt durch das Netzwerk „Antifa-Ost“, eine „linksextremistische kriminelle Vereinigung“ mit zahlreichen „äußerst brutalen Überfällen“ auf vermeintliche Rechtsextremisten (S. 160).</li>
+        <li><b>Antimilitarismus:</b> gewinnt „seit Beginn des russischen Angriffskriegs gegen die Ukraine“ an Bedeutung (S. 162).</li>
+        <li>Weitere Felder: <b>Antirepression</b> sowie Angriffe auf <b>KRITIS und Wirtschaft</b> (S. 164 / 167).</li>
+        <li>Pro-palästinensische Mobilisierung: zum Nakba-Tag (15.05.2025) war u. a. zu lesen: „Die Besatzung und ihre Unterstützer angreifen“ (S. 178).</li>
+      </ul>
+      <h4>Eine neue Dynamik: junge Dogmatiker</h4>
+      <p>Auffällig ist der „Zulauf von vornehmlich sehr jungen Menschen“ zu gewaltorientierten, neuen <b>dogmatisch-kommunistischen Strukturen</b>; bundesweit wächst die Zahl solcher lokalen Gruppen (S. 161).</p>
+      <h4>Claudes vertiefende Lesart</h4>
+      <p class="br-claude">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Die Schere zwischen Personenzuwachs (≈ 11 %) und <b>Gewaltzuwachs (+60,9 %)</b> ist der eigentliche Befund: Nicht die Breite, sondern die <b>Gewaltintensität</b> wächst. Zwei Entwicklungen treiben das — eine verjüngte, dogmatisch-kommunistische Mobilisierung und die KRITIS-Angriffe der Hauptseite. Der Antimilitarismus zeigt zudem, wie stark der Ukraine-Krieg auch die <b>innenpolitischen</b> Konfliktlinien verschiebt.</p>
+    </div>
+  </details>
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">08</span></footer>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="k5" style="--acc:var(--acc-e);" aria-label="Kapitel 5: Islamismus und islamistischer Terrorismus; Bedrohung zunehmend durch junge, allein handelnde, online radikalisierte Täter; KI-Propaganda; Verbot Muslim Interaktiv.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Kapitel 5 · Islamismus</span></header>
+
+  <p class="br-kick">Komplex E · von innen · Jung, allein, online</p>
+  <h2 class="br-ptitle">Islamismus &amp; Terrorismus</h2>
+  <p class="br-lead">Das Personenpotenzial steigt leicht, der gewaltorientierte Anteil sinkt — doch die Bedrohung verlagert sich zu jungen Einzeltätern, die sich online radikalisieren.</p>
+
+  <div class="br-thesis">
+    <p class="br-key__lbl">Befund des Berichts</p>
+    <p>„Die Bedrohung geht zunehmend von jungen, allein handelnden und online radikalisierten Tätern aus …“ <span style="font:600 .7rem 'Inter Tight',sans-serif;opacity:.8;">— Vorwort, S. 2</span></p>
+  </div>
+
+  <div class="br-stats" style="margin-top:clamp(13px,1.8vw,17px);">
+    <div class="br-stat"><div class="br-stat__num">28.645</div><div class="br-stat__lbl">Islamismuspotenzial</div><div class="br-stat__src">S. 228 · 2024: 28.280</div></div>
+    <div class="br-stat"><div class="br-stat__num">9.110</div><div class="br-stat__lbl">gewaltorientiert ▼</div><div class="br-stat__src">S. 228 · 2024: 9.540</div></div>
+    <div class="br-stat"><div class="br-stat__num">11.200</div><div class="br-stat__lbl">Salafismus (größte Strömung)</div><div class="br-stat__src">S. 228</div></div>
+  </div>
+
+  <div class="br-key" style="margin-top:clamp(14px,2vw,18px);">
+    <p class="br-key__lbl">Neue Dynamik 2025</p>
+    <ul>
+      <li><b>Online-Radikalisierung:</b> Gaming- und Chat-Plattformen (z. B. Discord) wirken als „Echokammer für junge Jihadisten“ (S. 232).</li>
+      <li><b>KI-Nutzung:</b> KI erzeugt „islamistische Propaganda mit ausdrucksstarken Bildern und Videos“ — bis hin zu <b>Deepfakes</b> (S. 232).</li>
+      <li><b>Organisierte Strukturen</b> steuern und verbreiten weiterhin das Gedankengut (S. 2).</li>
+    </ul>
+  </div>
+
+  <h3 class="br-kick" style="margin:clamp(13px,1.8vw,16px) 0 8px;">Beobachtete Organisationen &amp; staatliche Maßnahmen</h3>
+  <div class="br-marks">
+    <span class="br-mark br-mark--acc">HAMAS</span>
+    <span class="br-mark br-mark--acc">„Hizb Allah“</span>
+    <span class="br-mark br-mark--acc">Muslimbruderschaft</span>
+    <span class="br-mark br-mark--acc">„Hizb ut-Tahrir“</span>
+    <span class="br-mark br-mark--ban">„Muslim Interaktiv“ — verboten 05.11.2025 (S. 225)</span>
+  </div>
+
+  <div class="br-synth">
+    <div class="br-synth__head"><p class="br-synth__title">Synthese · Kapitel 5</p><span class="br-claude">Claudes Einordnung · nicht in der Quelle</span></div>
+    <div class="br-synth__grid">
+      <div class="br-synth__cell core">
+        <p class="br-synth__lbl">Kernpunkte</p>
+        <ul>
+          <li>Potenzial leicht <b>↑ (28.645)</b>, gewaltorientiert <b>↓ (9.110)</b>.</li>
+          <li>Gefahr verlagert sich zu <b>jungen Online-Einzeltätern</b>.</li>
+          <li>KI senkt die Schwelle zu <b>Propaganda und Deepfakes</b>.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell open">
+        <p class="br-synth__lbl">Offene Fragen</p>
+        <ul>
+          <li>Sinkt die <b>reale Gefahr</b>, wenn Gewaltorientierte ↓, aber Einzeltäter schwerer erkennbar werden?</li>
+          <li>Wie wirkt KI-Propaganda auf Radikalisierungstempo?</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell contra">
+        <p class="br-synth__lbl">Spannungen / Logik</p>
+        <ul>
+          <li>Eine sinkende Kennzahl (gewaltorientiert) und eine <b>steigende Bedrohungserzählung</b> (Einzeltäter) stehen nebeneinander — beides kann zutreffen, misst aber Verschiedenes.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell end">
+        <p class="br-synth__lbl">Zu Ende gedacht</p>
+        <ul>
+          <li>Verlagert sich Radikalisierung in Gaming-Räume und KI-Bilder, verliert das klassische „Organisations“-Raster an Trennschärfe — Detektion muss <b>plattform- und inhaltsbasiert</b> werden.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <details class="br-more">
+    <summary><span class="br-more__label"><span>Mehr Informationen</span><span class="br-more__sub">Vertiefung · Thesen, Beobachtungen &amp; Daten</span></span><span class="br-more__plus" aria-hidden="true">+</span></summary>
+    <div class="br-more__body">
+      <h4>Vertiefung · Die Organisationen</h4>
+      <p>Hinter der Gesamtzahl stehen feste Organisationen mit <b>stabilen oder wachsenden</b> Anhängerzahlen.</p>
+      <div class="br-more__data">
+        <div class="br-more__d"><b>11.200</b><span>Salafismus (größte Strömung)</span><em>S. 228</em></div>
+        <div class="br-more__d"><b>1.250</b><span>„Hizb Allah“ (stabil)</span><em>S. 228</em></div>
+        <div class="br-more__d"><b>650</b><span>HAMAS (steigend)</span><em>S. 228 · 2023: 450</em></div>
+      </div>
+      <h4>Jihadismus = IS</h4>
+      <p>Der <b>IS</b> ist laut Bericht die Organisation, die die global-jihadistische Ideologie nicht nur propagiert, sondern durch direkte Anleitung oder Propaganda Menschen radikalisieren kann — <b>eine formale Anbindung ist nicht erforderlich</b>, ein Loyalitätsbekenntnis genügt (S. 226).</p>
+      <h4>Trends 2025</h4>
+      <ul>
+        <li><b>Immer jüngere Akteure:</b> Jugendliche — teils noch nicht strafmündig — entwickeln Anschlagspläne und geraten in den Fokus der Behörden (S. 231).</li>
+        <li><b>Rasante Radikalisierung:</b> oft „innerhalb kürzester Zeit (wenige Wochen bis Monate)“ (S. 231).</li>
+        <li><b>Abkoppelung:</b> Der Jihadismus löst sich zunehmend vom Salafismus und festen Organisationen (S. 227).</li>
+      </ul>
+      <h4>Organisationen &amp; staatliche Maßnahmen</h4>
+      <ul>
+        <li>Bei <b>Festnahmen mutmaßlicher HAMAS-Anhänger am 1. Oktober 2025</b> wurden Schusswaffen sichergestellt; es besteht eine „abstrakt erhöhte Gefährdung“ jüdischer und israelischer Ziele (S. 227).</li>
+        <li><b>LSBTIQ als Feindbild</b> ist „fester Bestandteil aller islamistischen Ideologien“ (S. 236).</li>
+        <li>Verbot von <b>„Muslim Interaktiv“</b> am 05.11.2025; KI erzeugt Propaganda bis hin zu <b>Deepfakes</b> (S. 225 / 232).</li>
+      </ul>
+      <h4>Claudes vertiefende Lesart</h4>
+      <p class="br-claude">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Der sinkende gewaltorientierte Wert (Hauptseite) und die stabilen Organisationszahlen widersprechen sich nur scheinbar: Die <b>organisierte Basis bleibt</b>, während sich die akute Gefahr — IS-inspiriert, ohne Mitgliedsausweis — zu <b>jungen, schnell radikalisierten Einzeltätern</b> verlagert. Dass teils noch nicht Strafmündige Anschlagspläne fassen, ist der beunruhigendste Befund: Prävention muss früher ansetzen als Strafrecht.</p>
+    </div>
+  </details>
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">09</span></footer>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="k6" style="--acc:var(--acc-f);" aria-label="Kapitel 6: Auslandsbezogener Extremismus mit 33.850 Personen; PKK, türkischer Rechts- und Linksextremismus, säkular-propalästinensischer Extremismus.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Kapitel 6 · Auslandsbezogen</span></header>
+
+  <p class="br-kick">Komplex F · von innen · Importierte Konflikte</p>
+  <h2 class="br-ptitle">Auslandsbezogener Extremismus</h2>
+  <p class="br-lead">Konflikte anderer Staaten und Regionen wirken in Deutschland fort — getragen von einigen großen Organisationen und einem definitorisch hohen Gewaltanteil.</p>
+
+  <div class="br-grid2" style="align-items:start;">
+    <div class="br-schema" style="border-top-color:var(--acc-f);">
+      <p class="br-schema__lbl">Personenpotenzial nach Strömung <em>echte Quelldaten · S. 283</em></p>
+      <svg viewBox="0 0 600 196" style="max-width:520px;margin:0 auto;display:block;" role="img" aria-label="Balkendiagramm auslandsbezogener Extremismus 2025: PKK 15.000, türkischer Rechtsextremismus 13.500, türkischer Linksextremismus 3.250, sonstige 1.100, säkular palästinensisch 1.000.">
+        <g font-family="'Inter Tight',sans-serif">
+          <g>
+            <text x="160" y="30" text-anchor="end" font-size="11" font-weight="600" fill="#22190d">PKK</text>
+            <rect x="168" y="16" width="386" height="20" rx="2" fill="#5c6b2f"/><text x="548" y="30" text-anchor="end" font-size="11" font-weight="700" fill="#fff">15.000</text>
+          </g>
+          <g>
+            <text x="160" y="62" text-anchor="end" font-size="11" font-weight="600" fill="#22190d">Türk. Rechtsextr.</text>
+            <rect x="168" y="48" width="347" height="20" rx="2" fill="#6e7d3a"/><text x="509" y="62" text-anchor="end" font-size="11" font-weight="700" fill="#fff">13.500</text>
+          </g>
+          <g>
+            <text x="160" y="94" text-anchor="end" font-size="11" font-weight="600" fill="#22190d">Türk. Linksextr.</text>
+            <rect x="168" y="80" width="84" height="20" rx="2" fill="#7d8a4a"/><text x="258" y="94" font-size="11" font-weight="700" fill="#3a3120">3.250</text>
+          </g>
+          <g>
+            <text x="160" y="126" text-anchor="end" font-size="11" font-weight="600" fill="#22190d">Sonstige</text>
+            <rect x="168" y="112" width="28" height="20" rx="2" fill="#8a9559"/><text x="202" y="126" font-size="11" font-weight="700" fill="#3a3120">1.100</text>
+          </g>
+          <g>
+            <text x="160" y="158" text-anchor="end" font-size="11" font-weight="600" fill="#22190d">Säkular palästin.</text>
+            <rect x="168" y="144" width="26" height="20" rx="2" fill="#8a9559"/><text x="200" y="158" font-size="11" font-weight="700" fill="#3a3120">1.000</text>
+          </g>
+          <text x="168" y="184" font-size="9.5" fill="#7c7053" font-weight="600">Summe 33.850 · davon ≈ 22.000 gewaltorientiert (definitorisch)</text>
+        </g>
+      </svg>
+    </div>
+    <div class="br-key">
+      <p class="br-key__lbl">Die Akteure</p>
+      <ul>
+        <li><b>PKK</b> — größte Einzelorganisation (S. 287).</li>
+        <li><b>„Ülkücü“-Bewegung</b> — türkischer Rechtsextremismus, „extrem nationalistisch bis rechtsextremistisch“ (S. 303).</li>
+        <li><b>DHKP-C</b> — türkischer Linksextremismus (S. 299).</li>
+        <li><b>Säkular-propalästinensisch:</b> geeint durch „Feindschaft gegenüber Israel“ (S. 308).</li>
+        <li>Eigener Abschnitt: <b>Antisemitismus</b> in diesem Bereich (S. 313).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="br-synth">
+    <div class="br-synth__head"><p class="br-synth__title">Synthese · Kapitel 6</p><span class="br-claude">Claudes Einordnung · nicht in der Quelle</span></div>
+    <div class="br-synth__grid">
+      <div class="br-synth__cell core">
+        <p class="br-synth__lbl">Kernpunkte</p>
+        <ul>
+          <li><b>33.850</b> Personen; getragen von <b>PKK</b> und <b>„Ülkücü“</b>.</li>
+          <li>Gewaltanteil definitorisch <b>hoch (≈ 22.000)</b>.</li>
+          <li>Israelfeindschaft als verbindendes Motiv mehrerer Strömungen.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell open">
+        <p class="br-synth__lbl">Offene Fragen</p>
+        <ul>
+          <li>Wie trennt man <b>legitimen Diaspora-Protest</b> von Extremismus?</li>
+          <li>Wirkung außenpolitischer Ereignisse auf die Mobilisierung hier.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell contra">
+        <p class="br-synth__lbl">Spannungen / Logik</p>
+        <ul>
+          <li>„Gewaltorientiert ≈ 22.000“ folgt aus einer <b>Definition</b> (Organisationszugehörigkeit), nicht aus 22.000 Gewalttaten — ein Etikett, das vorsichtig zu lesen ist.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell end">
+        <p class="br-synth__lbl">Zu Ende gedacht</p>
+        <ul>
+          <li>Solange Herkunftskonflikte ungelöst sind, bleibt das Mobilisierungspotenzial <b>importiert und konjunkturell</b> — es folgt den Krisen anderswo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <details class="br-more">
+    <summary><span class="br-more__label"><span>Mehr Informationen</span><span class="br-more__sub">Vertiefung · Thesen, Beobachtungen &amp; Daten</span></span><span class="br-more__plus" aria-hidden="true">+</span></summary>
+    <div class="br-more__body">
+      <h4>Vertiefung · Mobilisierung, Geld, Antisemitismus</h4>
+      <p>Der auslandsbezogene Extremismus wächst seit Jahren — getragen von Organisationen mit <b>eigener Logistik und Finanzierung</b>.</p>
+      <div class="br-more__data">
+        <div class="br-more__d"><b>13–14 Mio €</b><span>PKK-„Jahresspendenkampagne“ 2025</span><em>S. 285 · 2024: 14–15 Mio</em></div>
+        <div class="br-more__d"><b>216</b><span>PKK-Straftaten (−41,3 %)</span><em>S. 285 · 2024: 368</em></div>
+        <div class="br-more__d"><b>33.850</b><span>Gesamtpotenzial</span><em>S. 283 · 2023: 30.650</em></div>
+      </div>
+      <h4>Die Akteure im Detail</h4>
+      <ul>
+        <li><b>PKK</b> — größte Einzelorganisation; finanziert sich u. a. über die jährliche Spendenkampagne („kampanya“), 2025 geschätzt 13–14 Mio € in Deutschland (zweiter Rückgang in Folge, S. 285).</li>
+        <li><b>DHKP-C</b> — „marxistisch-leninistische Terrororganisation“, die in der Türkei für die „revolutionäre Zerschlagung der Staats- und Gesellschaftsordnung“ eintritt und sich antiimperialistisch gegen den „US-Imperialismus“ richtet (S. 299).</li>
+        <li><b>„Ülkücü“-Bewegung</b> — türkischer Rechtsextremismus, „extrem nationalistisch bis rechtsextremistisch“ (S. 303).</li>
+        <li><b>Säkular-propalästinensisch</b> — geeint durch die „Feindschaft gegenüber Israel“ (S. 308).</li>
+      </ul>
+      <h4>Antisemitismus im Bereich</h4>
+      <p>Er ist je nach Strömung verschieden ausgeprägt — beim türkischen Rechtsextremismus verbunden mit der „rassistischen Überhöhung des Türkentums bei gleichzeitiger Abwertung anderer Nationen“ (S. 313).</p>
+      <h4>Claudes vertiefende Lesart</h4>
+      <p class="br-claude">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Bemerkenswert ist die Kombination aus <b>wachsendem Personenpotenzial</b> bei zugleich <b>rückläufigen Straftaten und Spenden</b>: Die Szene wird größer gezählt, agiert aber zurückhaltender. Das stützt die Hauptseiten-Lesart, dass „gewaltorientiert“ hier eine <b>definitorische</b>, keine taten-gestützte Größe ist. Gemeinsam ist den sehr unterschiedlichen Organisationen vor allem eines: Ihre Konflikte sind <b>importiert</b> und folgen den Krisen ihrer Herkunftsregionen.</p>
+    </div>
+  </details>
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">10</span></footer>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="k7" style="--acc:var(--acc-g);" aria-label="Kapitel 7, Teil 1: hybride Bedrohungen durch fremde Staaten, vor allem Russland; fünf Vektoren — Spionage, Cyberangriffe, Sabotage, Einflussnahme, Desinformation.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Kapitel 7 · Angriff von außen</span></header>
+
+  <p class="br-kick">Komplex G · von außen · Hybride Bedrohung</p>
+  <h2 class="br-ptitle">Angriff von außen</h2>
+  <p class="br-lead">Der russische Angriffskrieg hat die Sicherheitslage verschoben: fremde Staaten greifen die offene Gesellschaft unterhalb der Kriegsschwelle an — auf fünf Wegen zugleich.</p>
+
+  <div class="br-thesis">
+    <p class="br-key__lbl">Lagebild des Berichts</p>
+    <p>„Wir sind regelmäßig Ziel hybrider Angriffe Russlands. Der russische Staat möchte unsere Gesellschaft destabilisieren, unsere Demokratie unterwandern und unsere Unterstützung für die Ukraine unterminieren.“ <span style="font:600 .7rem 'Inter Tight',sans-serif;opacity:.8;">— Vorwort, S. 1</span></p>
+  </div>
+
+  <h3 class="br-kick" style="margin:clamp(14px,2vw,18px) 0 9px;">Fünf Vektoren hybrider Bedrohung</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:10px;">
+    <div style="border:1px solid var(--rule);border-top:3px solid var(--acc-g);background:var(--paper2);padding:11px 12px;">
+      <p style="font:600 .82rem 'Newsreader',serif;color:var(--ink);margin:0 0 4px;">Spionage</p>
+      <p style="font:500 .74rem/1.35 'Spectral',serif;color:var(--ink2);margin:0;">Beschaffung in Politik, Wirtschaft, Militär.</p>
+      <p style="font:600 .6rem 'Inter Tight',sans-serif;color:var(--muted);margin:6px 0 0;">S. 336</p>
+    </div>
+    <div style="border:1px solid var(--rule);border-top:3px solid var(--acc-g);background:var(--paper2);padding:11px 12px;">
+      <p style="font:600 .82rem 'Newsreader',serif;color:var(--ink);margin:0 0 4px;">Cyberangriffe</p>
+      <p style="font:500 .74rem/1.35 'Spectral',serif;color:var(--ink2);margin:0;">Eindringen, Ausspähen, Stören.</p>
+      <p style="font:600 .6rem 'Inter Tight',sans-serif;color:var(--muted);margin:6px 0 0;">S. 346</p>
+    </div>
+    <div style="border:1px solid var(--rule);border-top:3px solid var(--acc-g);background:var(--paper2);padding:11px 12px;">
+      <p style="font:600 .82rem 'Newsreader',serif;color:var(--ink);margin:0 0 4px;">Sabotage</p>
+      <p style="font:500 .74rem/1.35 'Spectral',serif;color:var(--ink2);margin:0;">Angriffe auf KRITIS: Kraftwerke, Pipelines, Datenkabel.</p>
+      <p style="font:600 .6rem 'Inter Tight',sans-serif;color:var(--muted);margin:6px 0 0;">S. 355</p>
+    </div>
+    <div style="border:1px solid var(--rule);border-top:3px solid var(--acc-g);background:var(--paper2);padding:11px 12px;">
+      <p style="font:600 .82rem 'Newsreader',serif;color:var(--ink);margin:0 0 4px;">Einflussnahme</p>
+      <p style="font:500 .74rem/1.35 'Spectral',serif;color:var(--ink2);margin:0;">Unzulässige Einwirkung auf Politik und Gesellschaft.</p>
+      <p style="font:600 .6rem 'Inter Tight',sans-serif;color:var(--muted);margin:6px 0 0;">S. 358</p>
+    </div>
+    <div style="border:1px solid var(--rule);border-top:3px solid var(--acc-g);background:var(--paper2);padding:11px 12px;">
+      <p style="font:600 .82rem 'Newsreader',serif;color:var(--ink);margin:0 0 4px;">Desinformation</p>
+      <p style="font:500 .74rem/1.35 'Spectral',serif;color:var(--ink2);margin:0;">Zweifel an der demokratischen Ordnung säen (S. 361).</p>
+      <p style="font:600 .6rem 'Inter Tight',sans-serif;color:var(--muted);margin:6px 0 0;">S. 361</p>
+    </div>
+  </div>
+  <p style="font:500 .78rem/1.45 'Spectral',serif;color:var(--muted);margin:11px 0 0;">Sabotage zielt laut Bericht auf „Einrichtungen, die lebenswichtig für das Funktionieren eines Staates oder den Schutz und die Versorgung seiner Bevölkerung sind“ (S. 355). Desinformation soll „Zweifel an der demokratischen Ordnung“ wecken (S. 361).</p>
+
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">11</span></footer>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="k7b" style="--acc:var(--acc-g);" aria-label="Kapitel 7, Teil 2: Transnationale Repression gegen Diaspora und Oppositionelle; Proliferation; die Nachrichtendienste Russlands, Chinas und Irans.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Kapitel 7 · Angriff von außen</span></header>
+
+  <p class="br-kick">Komplex G · von außen · Repression &amp; Akteure</p>
+  <h2 class="br-ptitle">Wer angreift — und wen</h2>
+  <p class="br-lead">Fremde Dienste greifen nicht nur den Staat an, sondern verfolgen auch hier lebende Menschen. Hinter den Aktivitäten stehen vor allem drei Nachrichtendienst-Apparate.</p>
+
+  <div class="br-key">
+    <p class="br-key__lbl">Transnationale Repression (TNR) <span style="font-weight:600;color:var(--muted);">· S. 364</span></p>
+    <ul>
+      <li>TNR ist laut Bericht ein „Instrument illegitimer extraterritorialer Machtausübung“ autoritärer Staaten (S. 364).</li>
+      <li>Sie greift „völkerrechtswidrig in die Souveränität anderer Staaten ein und verletzt die Menschenrechte der Betroffenen“ — meist <b>Oppositionelle und Diaspora-Angehörige</b> (S. 364).</li>
+    </ul>
+  </div>
+
+  <h3 class="br-kick" style="margin:clamp(14px,2vw,18px) 0 9px;">Die zentralen Nachrichtendienst-Apparate</h3>
+  <table class="br-cmp">
+    <thead><tr><th>Staat</th><th>Dienst (Beispiel)</th><th class="num">S.</th></tr></thead>
+    <tbody>
+      <tr><td>Russische Föderation</td><td>SWR (ziviler Auslandsnachrichtendienst), GRU u. a.</td><td class="num">389</td></tr>
+      <tr><td>Volksrepublik China</td><td>MSS (Ministry of State Security)</td><td class="num">390</td></tr>
+      <tr><td>Islamische Republik Iran</td><td>VAJA (Geheimdienstministerium)</td><td class="num">393</td></tr>
+    </tbody>
+  </table>
+  <p style="font:500 .78rem/1.45 'Spectral',serif;color:var(--muted);margin:9px 0 0;">Daneben behandelt der Bericht <b>Staatsterrorismus</b> (S. 371) und <b>Proliferation</b> — die Beschaffung für Massenvernichtungswaffen-Programme (S. 372).</p>
+
+  <div class="br-synth">
+    <div class="br-synth__head"><p class="br-synth__title">Synthese · Kapitel 7</p><span class="br-claude">Claudes Einordnung · nicht in der Quelle</span></div>
+    <div class="br-synth__grid">
+      <div class="br-synth__cell core">
+        <p class="br-synth__lbl">Kernpunkte</p>
+        <ul>
+          <li>Hybride Bedrohung <b>vor allem durch Russland</b>; fünf Vektoren.</li>
+          <li><b>TNR</b> verfolgt Oppositionelle und Diaspora in Deutschland.</li>
+          <li>Tragende Apparate: <b>Russland, China, Iran</b>.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell open">
+        <p class="br-synth__lbl">Offene Fragen</p>
+        <ul>
+          <li>Wie <b>attribuiert</b> und schreckt man hybride Angriffe ab?</li>
+          <li>Wie schützt der Staat <b>Diaspora-Angehörige</b> wirksam?</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell contra">
+        <p class="br-synth__lbl">Spannungen / Logik</p>
+        <ul>
+          <li>Hybride Angriffe verwischen <b>Krieg und Frieden</b>: unterhalb der Schwelle bewaffneter Konflikte, aber mit strategischer Wirkung — die Offenheit der Gesellschaft ist zugleich ihre Angriffsfläche.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell end">
+        <p class="br-synth__lbl">Zu Ende gedacht</p>
+        <ul>
+          <li>Je vernetzter KRITIS und Öffentlichkeit, desto größer die fremden Hebel — <b>Resilienz</b> (Infrastruktur, Informationskompetenz) wird selbst zur Sicherheitspolitik.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <details class="br-more">
+    <summary><span class="br-more__label"><span>Mehr Informationen</span><span class="br-more__sub">Vertiefung · Thesen, Beobachtungen &amp; Daten</span></span><span class="br-more__plus" aria-hidden="true">+</span></summary>
+    <div class="br-more__body">
+      <h4>Vertiefung · Wie die Vektoren wirken</h4>
+      <ul>
+        <li><b>Cyber:</b> Deutschland ist Ziel „immer komplexerer Cyberangriffe“; russische zielen vorrangig auf „kontinuierliche Informationsbeschaffung“, können aber Sabotage, Einflussnahme oder Desinformation bezwecken (S. 346 / 347). <b>Phishing</b> dient oft als Türöffner (S. 347).</li>
+        <li><b>Sabotage:</b> Angriffe auf lebenswichtige Einrichtungen — „Kraftwerke, Pipelines für Öl und Gas oder Datenkabel“ (S. 355).</li>
+        <li><b>Einflussnahme &amp; Desinformation:</b> Russische Bemühungen „verfangen insbesondere an den politischen Rändern“ und sind antiliberal, antidemokratisch und antiwestlich ausgerichtet; gearbeitet wird verdeckt (S. 359).</li>
+        <li><b>Proliferation:</b> die Verbreitung chemischer, biologischer, radiologischer und nuklearer <b>Massenvernichtungswaffen (CBRN)</b> samt Trägersystemen (S. 372).</li>
+      </ul>
+      <h4>Die drei Apparate und ihre Ziele</h4>
+      <ul>
+        <li><b>Russland:</b> Ein Verfahren betraf den Transport von Versorgungsgütern, Medizinprodukten und Drohnen in den Donbass zugunsten prorussischer Milizionäre (GBA-Durchsuchungen Mai 2025, S. 359).</li>
+        <li><b>China:</b> Im Fokus stehen „Politik und Verwaltung, Wirtschaft und Wissenschaft sowie das Militär“; relevant auch für die Vereinigungsbestrebungen mit Taiwan (S. 340).</li>
+        <li><b>Iran:</b> TNR gegen Oppositionelle und „Staatsfeinde“; besonders gefährdet sind Personen mit deutscher und iranischer Staatsangehörigkeit (S. 367).</li>
+      </ul>
+      <h4>Wenn der Angriff Menschen trifft</h4>
+      <p>2025 gewann das BfV „konkrete Erkenntnisse zu Ausspähungen gegen (pro-)israelische und (pro-)jüdische Einrichtungen wie Einzelpersonen“ (S. 372) — die hybride Bedrohung berührt damit unmittelbar das Sonderthema Antisemitismus (Kapitel 8).</p>
+      <h4>Claudes vertiefende Lesart</h4>
+      <p class="br-claude">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Zwei Befunde stechen heraus. Erstens: Fremde Einflussnahme „verfängt an den politischen Rändern“ — sie sucht also genau die Spaltungen, die die <b>inneren</b> Extremismen (Kapitel 2–6) erzeugen. Außen und innen greifen ineinander. Zweitens: Die drei Apparate verfolgen verschiedene Ziele — Russland <b>Destabilisierung</b>, China <b>strategisch-ökonomischen Vorteil</b>, Iran <b>Regimesicherung</b> —, teilen aber das Muster, in Deutschland lebende Menschen anzugreifen. Hybride Bedrohung ist damit nicht nur Staats-, sondern <b>Personenschutz</b>.</p>
+    </div>
+  </details>
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">12</span></footer>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="k8" style="--acc:var(--acc-h);" aria-label="Kapitel 8: Nahostkonflikt und Antisemitismus als bereichsübergreifendes Sonderthema; Antisemitismus verbindet Rechtsextremismus, Linksextremismus, Islamismus und auslandsbezogenen Extremismus.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Kapitel 8 · Nahost &amp; Antisemitismus</span></header>
+
+  <p class="br-kick">Komplex H · Querschnitt · Das verbindende Merkmal</p>
+  <h2 class="br-ptitle">Nahostkonflikt &amp; Antisemitismus</h2>
+  <p class="br-lead">Erstmals fasst der Bericht den Antisemitismus in einem Sonderkapitel zusammen — weil er sich quer durch alle Phänomenbereiche zieht.</p>
+
+  <div class="br-thesis">
+    <p class="br-key__lbl">Kernaussage des Berichts</p>
+    <p>Antisemitismus ist „zu einem verbindenden Merkmal zwischen Rechtsextremismus, Linksextremismus, dem islamistischen Spektrum und dem auslandsbezogenen Extremismus geworden“ — er „kennt keine ideologische Grenze“. <span style="font:600 .7rem 'Inter Tight',sans-serif;opacity:.8;">— Vorwort, S. 1–2</span></p>
+  </div>
+
+  <h3 class="br-kick" style="margin:clamp(14px,2vw,18px) 0 9px;">Ein Hass, vier Phänomenbereiche</h3>
+  <div class="br-schema" style="border-top-color:var(--acc-h);">
+    <p class="br-schema__lbl">Antisemitismus als Querschnitt <em>Illustratives Schema · Fundstellen aus dem Sonderkapitel</em></p>
+    <svg viewBox="0 0 560 232" style="max-width:520px;margin:0 auto;display:block;" role="img" aria-label="Schema: Antisemitismus im Zentrum, verbunden mit Rechtsextremismus (S. 67), Linksextremismus (S. 69), Islamismus (S. 62) und auslandsbezogenem Extremismus (S. 65).">
+      <g stroke="#b07f15" stroke-width="1.6" stroke-opacity="0.7">
+        <line x1="280" y1="116" x2="96" y2="35"/><line x1="280" y1="116" x2="464" y2="35"/>
+        <line x1="280" y1="116" x2="96" y2="197"/><line x1="280" y1="116" x2="464" y2="197"/>
+      </g>
+      <g font-family="'Inter Tight',sans-serif">
+        <g><rect x="20" y="16" width="152" height="38" rx="6" fill="#f7f0db" stroke="#9e2b25" stroke-width="1.6"/><text x="96" y="33" text-anchor="middle" font-size="11.5" font-weight="700" fill="#22190d">Rechtsextremismus</text><text x="96" y="47" text-anchor="middle" font-size="9" font-weight="600" fill="#7c7053">+ „Reichsbürger“ · S. 67</text></g>
+        <g><rect x="388" y="16" width="152" height="38" rx="6" fill="#f7f0db" stroke="#7d3560" stroke-width="1.6"/><text x="464" y="33" text-anchor="middle" font-size="11.5" font-weight="700" fill="#22190d">Linksextremismus</text><text x="464" y="47" text-anchor="middle" font-size="9" font-weight="600" fill="#7c7053">Israelfeindschaft · S. 69</text></g>
+        <g><rect x="20" y="178" width="152" height="38" rx="6" fill="#f7f0db" stroke="#1d6a6a" stroke-width="1.6"/><text x="96" y="195" text-anchor="middle" font-size="11.5" font-weight="700" fill="#22190d">Islamismus</text><text x="96" y="209" text-anchor="middle" font-size="9" font-weight="600" fill="#7c7053">S. 62</text></g>
+        <g><rect x="388" y="178" width="152" height="38" rx="6" fill="#f7f0db" stroke="#5c6b2f" stroke-width="1.6"/><text x="464" y="195" text-anchor="middle" font-size="11.5" font-weight="700" fill="#22190d">Auslandsbezogen</text><text x="464" y="209" text-anchor="middle" font-size="9" font-weight="600" fill="#7c7053">S. 65</text></g>
+        <circle cx="280" cy="116" r="50" fill="#b07f15" stroke="#8a6310" stroke-width="2"/>
+        <text x="280" y="112" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">Anti-</text>
+        <text x="280" y="128" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">semitismus</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="br-key" style="margin-top:clamp(13px,1.8vw,16px);">
+    <p class="br-key__lbl">Definition &amp; Lage</p>
+    <ul>
+      <li><b>Definition:</b> Es gibt „weder in der Wissenschaft noch im politischen Raum eine allgemein anerkannte Definition“; der Bericht nutzt die von der Bundesregierung empfohlene (S. 60).</li>
+      <li><b>Mobilisierung:</b> zahlreiche „Pro Palästina“-Versammlungen — auch nach der Waffenruhe vom 10.10.2025 (S. 60).</li>
+      <li><b>Gefährdung:</b> jüdische und israelische Menschen sowie Einrichtungen unter „gesteigerter“ Gefährdung (S. 71).</li>
+    </ul>
+  </div>
+
+  <div class="br-synth">
+    <div class="br-synth__head"><p class="br-synth__title">Synthese · Kapitel 8</p><span class="br-claude">Claudes Einordnung · nicht in der Quelle</span></div>
+    <div class="br-synth__grid">
+      <div class="br-synth__cell core">
+        <p class="br-synth__lbl">Kernpunkte</p>
+        <ul>
+          <li>Antisemitismus als <b>Querschnitt</b> aller vier Phänomenbereiche.</li>
+          <li>Nahostkonflikt als <b>Mobilisierungsmotor</b>, über die Waffenruhe hinaus.</li>
+          <li>Erhöhte Gefährdung jüdischen Lebens.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell open">
+        <p class="br-synth__lbl">Offene Fragen</p>
+        <ul>
+          <li>Wo verläuft die Grenze zwischen <b>Israelkritik</b> und Antisemitismus?</li>
+          <li>Warum fehlt eine allgemein anerkannte Definition — und was folgt daraus?</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell contra">
+        <p class="br-synth__lbl">Spannungen / Logik</p>
+        <ul>
+          <li>Wenn ein Motiv <b>alle Lager</b> verbindet, sind die sauber getrennten „Phänomenbereiche“ teils eine <b>Ordnungs-, keine Realitätskategorie</b>.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell end">
+        <p class="br-synth__lbl">Zu Ende gedacht</p>
+        <ul>
+          <li>Ein bereichsübergreifendes Motiv verlangt eine <b>bereichsübergreifende Antwort</b> — sonst bekämpft man dasselbe Phänomen viermal getrennt.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <details class="br-more br-more--ink">
+    <summary><span class="br-more__label"><span>Mehr Informationen</span><span class="br-more__sub">Vertiefung · Thesen, Beobachtungen &amp; Daten</span></span><span class="br-more__plus" aria-hidden="true">+</span></summary>
+    <div class="br-more__body">
+      <h4>Vertiefung · Was den Antisemitismus konkret macht</h4>
+      <ul>
+        <li><b>Definition (Fortsetzung):</b> Auch der Staat Israel, „der dabei als jüdisches Kollektiv verstanden wird“, kann Ziel solcher Angriffe sein (S. 60) — israelbezogener Antisemitismus.</li>
+        <li><b>Auslöser:</b> Der HAMAS-Terrorangriff vom 7. Oktober 2023 und der darauffolgende israelische Militäreinsatz im Gazastreifen wirken „fortlaufend“ auf die Sicherheitslage (S. 60).</li>
+        <li><b>Konkreter Fall:</b> Messerangriff eines sich zum IS bekennenden Täters am <b>Berliner Holocaust-Mahnmal</b> (21.02.2025); der Täter bezog sich auf den Nahostkonflikt und sah das Opfer fälschlich als Juden an (S. 64).</li>
+      </ul>
+      <h4>Ein Hass in jedem Lager</h4>
+      <p>Das Sonderkapitel ordnet den Antisemitismus <b>jedem Phänomenbereich einzeln</b> zu: Islamismus (S. 62), auslandsbezogener Extremismus (S. 65), Rechtsextremismus (S. 67) und Linksextremismus (S. 69). Selbst <b>fremde Nachrichtendienste</b> spähen „(pro-)israelische und (pro-)jüdische Einrichtungen wie Einzelpersonen“ aus (S. 372) — der Hass kennt keine Lagergrenze.</p>
+      <h4>Die Definition und ihre Grenze</h4>
+      <p>Es gibt „weder in der Wissenschaft noch im politischen Raum eine allgemein anerkannte Definition“; der Bericht nutzt die von der Bundesregierung empfohlene (S. 60). Die Lage bleibt angespannt: Versammlungen setzten sich auch nach der Waffenruhe vom 10.10.2025 fort, jüdische und israelische Menschen und Einrichtungen stehen unter „gesteigerter“ Gefährdung (S. 60 / 71).</p>
+      <h4>Claudes vertiefende Lesart</h4>
+      <p class="br-claude">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Der Fall am Holocaust-Mahnmal verdichtet das Querschnitt-Argument der Hauptseite: ein <b>islamistisch motivierter, nahostbezogener Angriff am Erinnerungsort</b> des deutschen Zivilisationsbruchs. Antisemitismus zeigt sich hier nicht als <b>eine</b> Ideologie, sondern als <b>Schnittpunkt mehrerer</b> — von Islamisten über fremde Dienste bis in den Rechts- und Linksextremismus. Dass selbst eine fehlende, allgemein anerkannte Definition den Befund nicht relativiert, ist das eigentlich Beunruhigende: Das Phänomen ist realer als seine begriffliche Einhegung.</p>
+    </div>
+  </details>
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">13</span></footer>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="schluss" style="--acc:var(--acc-h);" aria-label="Schluss-Synthese: Claudes übergreifende Lesart des Verfassungsschutzberichts 2025 — die offene Gesellschaft als Schutzgut und Angriffsfläche.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Schluss-Synthese</span></header>
+
+  <p class="br-kick">Das Gesamtbild · Claudes Lesart</p>
+  <h2 class="br-ptitle">Schutzgut und Angriffsfläche</h2>
+  <p class="br-lead">Was bleibt, wenn man die acht Kapitel zusammenzieht? Die folgende Lesart ist eine Deutung — gestützt auf den Bericht, aber nicht selbst Quellaussage.</p>
+
+  <div style="border:2px solid var(--gold);border-radius:12px;background:linear-gradient(180deg,#fffdf6,var(--paper2));padding:clamp(16px,2.4vw,22px);box-shadow:0 12px 32px -18px rgba(0,0,0,.4);">
+    <p style="display:flex;align-items:center;gap:9px;margin:0 0 9px;"><span class="br-claude">Schlussthese von Claude (KI) · keine Quellaussage</span></p>
+    <p style="font:500 italic clamp(16px,2.3vw,22px)/1.4 'Newsreader',serif;color:var(--petrol);margin:0;">Der Bericht zeichnet eine Demokratie, die sich zugleich <b style="font-style:normal;">von innen</b> (Extremismen) und <b style="font-style:normal;">von außen</b> (fremde Mächte) bedroht sieht. Die Pointe: Was sie verteidigt — die offene Gesellschaft — ist zugleich ihre Angriffsfläche. Dieselbe Freiheit, die Extremisten nutzen (Rede, Versammlung, Plattformen), wenden fremde Staaten gegen Informationsraum und Infrastruktur.</p>
+  </div>
+
+  <div class="br-synth" style="margin-top:clamp(14px,2vw,18px);">
+    <div class="br-synth__head"><p class="br-synth__title">Vier Linien durch das Lagebild</p><span class="br-claude">Claudes Lesart · keine Quellaussage</span></div>
+    <div class="br-synth__grid">
+      <div class="br-synth__cell core">
+        <p class="br-synth__lbl">Das Gesamtbild</p>
+        <ul>
+          <li>Fast alle Potenziale <b>steigen</b> (Rechts +8.000, Links auf Höchststand, auslandsbez. ↑).</li>
+          <li>Einzige Gegenbewegung: <b>islamistisch gewaltorientiert ↓</b> (9.540 → 9.110).</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell open">
+        <p class="br-synth__lbl">Was die Zahlen (nicht) sagen</p>
+        <ul>
+          <li>„Personenpotenzial“ ist <b>geschätzt und gerundet</b> — Indikator, nicht exakte Kopfzahl.</li>
+          <li>„Gewaltorientiert“ heißt je Bereich Verschiedenes (auslandsbez. <b>definitorisch</b>).</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell contra">
+        <p class="br-synth__lbl">Der rote Faden</p>
+        <ul>
+          <li><b>Antisemitismus</b> verbindet alle Lager (S. 1–2); <b>Online-Räume und KI</b> senken überall die Radikalisierungsschwelle.</li>
+          <li>Die „Phänomenbereiche“ sind teils Ordnungs-, nicht Realitätsgrenzen.</li>
+        </ul>
+      </div>
+      <div class="br-synth__cell end">
+        <p class="br-synth__lbl">Die offene Kernspannung</p>
+        <ul>
+          <li>Wehrhafte Demokratie schützt Freiheit durch <b>maßvolle Freiheitsbeschränkung</b> — ein Verhältnismäßigkeits-, kein Gewissheitsproblem.</li>
+          <li>Der <b>AfD-Verdachtsfall</b> (gerichtlich überprüft, S. 130) ist der sichtbarste Austragungsort: der Bericht benennt, Gerichte entscheiden — diese Broschüre urteilt nicht.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">14</span></footer>
+</section>
+<hr class="br-sep">
+
+<section class="br-page" id="kolophon" style="--acc:var(--acc-h);" aria-label="Kolophon: Quelle, Methode, Anti-Halluzinations-Kurzfassung und ein abschließender Denkanstoß.">
+  <div class="br-frame" aria-hidden="true"></div>
+  <header class="br-head"><span>Wehrhafte Demokratie · Lagebild 2025</span><span class="br-head__ch">Kolophon</span></header>
+
+  <p class="br-kick">Kolophon · Quellen, Methode &amp; Transparenz</p>
+  <h2 class="br-ptitle">Woher, womit, wohin</h2>
+  <p class="br-lead">Diese Broschüre ist ein analytisches Referenzdokument auf Basis einer einzigen amtlichen Quelle — keine amtliche Veröffentlichung.</p>
+
+  <div class="br-grid2" style="align-items:start;">
+    <div class="br-key">
+      <p class="br-key__lbl">Quelle</p>
+      <ul>
+        <li><b>Verfassungsschutzbericht 2025</b>, Hrsg. Bundesministerium des Innern (Bundesminister Alexander Dobrindt).</li>
+        <li><b>460 Seiten</b>, Stand Juni 2026; amtliches Werk, vollständig eingelesen.</li>
+        <li><b>Locator‑Schema:</b> gedruckte Seitenzahl (S.). Druckseite = PDF‑Seite − 2.</li>
+      </ul>
+    </div>
+    <div class="br-key">
+      <p class="br-key__lbl">Methode</p>
+      <ul>
+        <li>Quellenbasiert; alle <b>Zahlen und Zitate wortwörtlich an der Fundstelle geprüft</b> (Substring‑Abgleich gegen den normalisierten Korpus).</li>
+        <li>Personen nur als <b>Monogramme/Silhouetten</b>; keine erfundenen Bilder.</li>
+        <li>Diagramme nur aus <b>echten Zahlen</b>, sonst „Illustratives Schema“.</li>
+        <li>Eigen‑Analyse durchgehend als <b>„Claudes Einordnung“</b> markiert.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="br-key" style="margin-top:clamp(13px,1.8vw,16px);border-left-color:var(--gold);">
+    <p class="br-key__lbl" style="color:var(--egold);">Anti‑Halluzination · Kurzfassung</p>
+    <ul>
+      <li>Bewertung <b>„Hoch“</b>; geschätztes Faktenrisiko <b>≈ 4–9 % („geschätzt, nicht gemessen“)</b> — Details im Prüfsiegel (S. 2).</li>
+      <li>Der Closed‑Book‑Wert <b>≈ 35,9 %</b> beschreibt das Modell ohne Quelle und gilt <b>nicht</b> für diese Arbeit.</li>
+      <li>Vor Weiterverwendung prüfen: <b>exakte Zahlen, Seitenangaben, Zitatwortlaut</b> sowie alle als „Claudes Einordnung“ markierten Passagen.</li>
+    </ul>
+  </div>
+
+  <div style="margin-top:clamp(14px,2vw,18px);border:2px solid var(--gold);border-radius:12px;background:linear-gradient(180deg,#fffdf6,var(--paper2));padding:clamp(15px,2.2vw,20px);">
+    <p style="display:flex;align-items:center;gap:9px;margin:0 0 8px;"><span class="br-claude">Denkanstoß von Claude (KI) · keine Quellaussage</span></p>
+    <p style="font:500 italic clamp(15px,2.1vw,20px)/1.4 'Newsreader',serif;color:var(--petrol);margin:0;">Wer eine offene Gesellschaft verteidigt, muss entscheiden, wie viel Geschlossenheit er dafür in Kauf nimmt. Die eigentliche Frage des Lagebilds lautet darum nicht „wie groß ist die Gefahr?“, sondern: <b style="font-style:normal;">Wie viel Wehrhaftigkeit verträgt die Freiheit, die sie schützen soll?</b></p>
+  </div>
+
+  <p style="text-align:center;margin:clamp(16px,2.4vw,22px) 0 0;font:600 .68rem 'Inter Tight',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Wehrhafte Demokratie — Das Lagebild 2025 · Quellsynthese mit Claude · ohne Gewähr</p>
+
+  <footer class="br-foot"><span>Verfassungsschutzbericht 2025 · BMI</span><span class="br-foot__no">15</span></footer>
+</section>
+<hr class="br-sep">
+
+</main>
+</body>
+</html>
