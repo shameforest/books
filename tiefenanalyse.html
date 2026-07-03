@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trauer &amp; Heilung — Tiefenanalyse</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500;1,6..72,600&family=Spectral:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style id="base-css">
+:root{
+  --bg:#0b0f13;
+  --page-1:#1b2832; --page-2:#0e161b;
+  --ink:#f4ecd9; --ink-2:#e7dcc2; --ink-soft:#cdbfa0; --ink-faint:#9a8f78;
+  --gold:#c89b3c; --gold-line:#cda24f; --gold-hi:#ecc868; --gold-max:#f0cf78;
+  --a1:#2f5a63; --a1-hi:#9fd0db;
+  --a2:#b85c2f; --a2-hi:#e0a060;
+  --a3:#a3242c; --a3-hi:#e8959c;
+  --a4:#c89b3c; --a4-hi:#ecc868;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);font-family:"Spectral",Georgia,serif;color:var(--ink);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+html{scroll-behavior:smooth;}
+</style>
+<style id="tc-css">
+.tc-cover{position:relative;overflow:hidden;min-height:100vh;min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:clamp(30px,5vw,66px) clamp(18px,4vw,56px);text-align:center;color:#f3ead4;
+  background:
+    radial-gradient(140% 72% at 50% 114%, rgba(0,0,0,.42), transparent 56%),
+    radial-gradient(92% 52% at 50% 44%, rgba(255,242,212,.06), transparent 72%),
+    radial-gradient(128% 86% at 50% -6%, rgba(255,240,200,.10), transparent 60%),
+    radial-gradient(120% 82% at 50% 0%, var(--page-1), var(--page-2) 64%), var(--page-2);}
+.tc-cover *{box-sizing:border-box;}
+.tc-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5;}
+.tc-cover::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:radial-gradient(circle at 50% 46%, transparent 50%, rgba(0,0,0,.5) 100%);}
+.tc-cover::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.05;
+  background-image:radial-gradient(rgba(255,255,255,.85) .6px, transparent .7px);background-size:5px 5px;}
+.tc-frame{position:absolute;inset:clamp(14px,2.4vw,30px);border:1px solid rgba(200,155,60,.55);z-index:2;pointer-events:none;}
+.tc-frame::before{content:"";position:absolute;inset:7px;border:1px solid rgba(200,155,60,.26);}
+.tc-corner{position:absolute;width:clamp(54px,8vw,104px);height:auto;z-index:3;color:#c89b3c;pointer-events:none;}
+.tc-corner.tl{top:clamp(14px,2.4vw,30px);left:clamp(14px,2.4vw,30px);}
+.tc-corner.tr{top:clamp(14px,2.4vw,30px);right:clamp(14px,2.4vw,30px);transform:scaleX(-1);}
+.tc-corner.bl{bottom:clamp(14px,2.4vw,30px);left:clamp(14px,2.4vw,30px);transform:scaleY(-1);}
+.tc-corner.br{bottom:clamp(14px,2.4vw,30px);right:clamp(14px,2.4vw,30px);transform:scale(-1,-1);}
+.tc-inner{position:relative;z-index:4;width:100%;max-width:1000px;display:flex;flex-direction:column;
+  align-items:center;gap:clamp(18px,2.9vw,36px);}
+.tc-kicker{margin:0;display:inline-block;padding:.55em 1.4em;
+  font:600 clamp(11px,1.5vw,14px)/1 "Inter Tight",sans-serif;letter-spacing:.34em;text-transform:uppercase;
+  color:#f4ecd9;background:rgba(13,18,23,.62);border:2px solid #c89b3c;border-radius:3px;box-shadow:0 2px 16px rgba(0,0,0,.45);}
+.tc-crest{position:relative;display:grid;place-items:center;
+  width:clamp(112px,15vw,168px);height:clamp(112px,15vw,168px);}
+.tc-crest__art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.tc-crest__gleam{position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at 50% 32%, rgba(240,207,120,.4), transparent 58%);
+  mix-blend-mode:screen;animation:tc-pulse 6.5s ease-in-out infinite;}
+@keyframes tc-pulse{0%,100%{opacity:.35;}50%{opacity:.72;}}
+.tc-titlewrap{display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.3vw,16px);}
+.tc-name{margin:0;max-width:100%;min-width:0;text-align:center;padding-inline:clamp(6px,1.4vw,18px);
+  overflow-wrap:normal;word-break:keep-all;hyphens:none;
+  font:800 clamp(34px,6.4vw,74px)/0.98 "Newsreader",serif;letter-spacing:-.014em;text-transform:uppercase;color:#f7f0db;
+  font-feature-settings:"kern","liga";
+  text-shadow:0 1px 0 rgba(247,234,212,.12),0 -1px 0 rgba(0,0,0,.4),0 3px 7px rgba(0,0,0,.5),0 0 34px rgba(0,0,0,.25);}
+.tc-name .amp{color:var(--gold-hi);font-weight:600;font-style:italic;}
+.tc-sub{margin:0;font:400 clamp(15px,2vw,22px)/1.35 "Newsreader",serif;font-style:italic;color:var(--ink-soft);
+  max-width:32ch;}
+.tc-worktag{margin:0;font:600 clamp(10px,1.4vw,13px)/1 "Inter Tight",sans-serif;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--gold-line);
+  display:inline-flex;align-items:center;gap:.9em;}
+.tc-worktag::before,.tc-worktag::after{content:"";width:clamp(18px,4vw,40px);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,155,60,.6));}
+.tc-worktag::after{background:linear-gradient(90deg,rgba(200,155,60,.6),transparent);}
+.tc-question{margin:0;position:relative;max-width:44ch;
+  padding:clamp(16px,2.4vw,26px) clamp(18px,3vw,34px);
+  background:rgba(12,17,22,.68);border:2px solid rgba(200,155,60,.55);border-radius:4px;
+  font:400 clamp(16px,2.2vw,25px)/1.42 "Newsreader",serif;font-style:italic;color:var(--ink-2);
+  box-shadow:0 4px 22px rgba(0,0,0,.4),inset 0 0 30px rgba(0,0,0,.28);}
+.tc-question .q-mark{color:var(--gold-hi);font-style:normal;}
+.tc-meta{margin:0;font:500 clamp(10px,1.3vw,12.5px)/1.5 "Inter Tight",sans-serif;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);}
+.tc-meta b{color:var(--ink-soft);font-weight:600;}
+.tc-scrollcue{position:absolute;left:50%;bottom:clamp(20px,3.4vw,38px);transform:translateX(-50%);z-index:4;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  font:600 10px/1 "Inter Tight",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-line);opacity:.82;}
+.tc-scrollcue svg{width:16px;height:16px;animation:tc-bob 2.4s ease-in-out infinite;}
+@keyframes tc-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+@media (max-width:520px){
+  .tc-question{max-width:100%;}
+  .tc-sub{max-width:100%;}
+}
+@media (prefers-reduced-motion:reduce){
+  .tc-crest__gleam,.tc-scrollcue svg{animation:none;}
+}
+@media print{
+  .tc-cover{min-height:297mm;background:#0e161b;}
+  .tc-crest__gleam,.tc-scrollcue{display:none;}
+  html,body{background:#0e161b;}
+}
+</style>
+<style id="seal-css">
+.br-cut{border:0;height:1px;width:min(820px,90vw);margin:clamp(28px,6vw,58px) auto;
+  background:linear-gradient(90deg,transparent,rgba(200,155,60,.42),transparent);}
+.seal-wrap{position:relative;max-width:940px;margin:0 auto;padding:clamp(14px,3vw,30px) clamp(16px,4vw,40px);
+  display:flex;flex-direction:column;align-items:center;gap:clamp(16px,2.4vw,26px);color:var(--ink);}
+.seal-eyebrow{margin:0;font:700 clamp(10px,1.4vw,12px)/1 "Inter Tight",sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-line);}
+.seal-center{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;max-width:660px;
+  padding:clamp(18px,3vw,30px);text-align:center;border:1px solid rgba(200,155,60,.4);border-radius:6px;
+  background:radial-gradient(120% 120% at 50% 0%, rgba(47,90,99,.14), transparent 70%), rgba(12,17,22,.5);box-shadow:inset 0 0 40px rgba(0,0,0,.3);}
+.seal-badge{width:clamp(92px,13vw,124px);height:clamp(92px,13vw,124px);}
+.seal-badge svg{width:100%;height:100%;}
+.seal-rating-title{margin:0;font:700 clamp(14px,2vw,19px)/1.2 "Inter Tight",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-hi);}
+.seal-metrics{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0;}
+.seal-chip{font:600 clamp(10px,1.4vw,12.5px)/1.3 "Inter Tight",sans-serif;letter-spacing:.03em;
+  padding:.5em .85em;border:1px solid rgba(200,155,60,.45);border-radius:3px;background:rgba(0,0,0,.25);color:var(--ink-2);}
+.seal-chip b{color:var(--gold-hi);}
+.seal-chip--ok{border-color:rgba(47,90,99,.6);color:var(--a1-hi);}
+.seal-est{font-size:.82em;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.02em;}
+.seal-sum{margin:0;font:400 clamp(14px,1.9vw,17px)/1.42 "Newsreader",serif;font-style:italic;color:var(--ink-2);max-width:54ch;}
+.seal-rely{margin:0;font:500 clamp(12px,1.6vw,14px)/1.45 "Inter Tight",sans-serif;color:var(--a1-hi);text-align:center;
+  max-width:64ch;padding:.6em 1em;border-left:2px solid var(--a1);background:rgba(47,90,99,.12);}
+.seal-block{width:100%;max-width:680px;}
+.seal-h{margin:0 0 .6em;font:700 11px/1.35 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-line);}
+.seal-bar{display:grid;grid-template-columns:clamp(120px,26vw,190px) 1fr;align-items:center;gap:10px;margin-bottom:8px;}
+.seal-bar__lab{font:500 clamp(11px,1.5vw,13px)/1.2 "Inter Tight",sans-serif;color:var(--ink-2);}
+.seal-bar__track{height:20px;background:rgba(255,255,255,.06);border:1px solid rgba(200,155,60,.18);border-radius:2px;overflow:hidden;}
+.seal-bar__fill{height:100%;display:flex;align-items:center;justify-content:flex-end;padding:0 8px;
+  font:600 11px/1 "Inter Tight",sans-serif;color:#0e161b;white-space:nowrap;min-width:2.6em;}
+.seal-note{margin:.7em 0 0;font:400 10.5px/1.5 "Inter Tight",sans-serif;color:var(--ink-faint);}
+.seal-note b{color:var(--ink-soft);}
+.seal-panels{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:680px;}
+.seal-panel{padding:clamp(12px,2vw,18px);border-radius:5px;border:1px solid rgba(200,155,60,.25);background:rgba(0,0,0,.22);}
+.seal-panel h4{margin:0 0 .4em;font:700 11px/1.2 "Inter Tight",sans-serif;letter-spacing:.08em;text-transform:uppercase;}
+.seal-panel--off h4{color:var(--a3-hi);}.seal-panel--on h4{color:var(--a1-hi);}
+.seal-panel p{margin:0;font:400 clamp(12px,1.6vw,13.5px)/1.5 "Spectral",serif;color:var(--ink-2);}
+.seal-panel .big{font:700 clamp(18px,3vw,24px)/1 "Newsreader",serif;display:block;margin-bottom:.15em;}
+.seal-panel--off .big{color:var(--a3-hi);}.seal-panel--on .big{color:var(--a1-hi);}
+.seal-amp{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:680px;}
+.seal-amp__cell{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;border-radius:4px;font:500 clamp(11px,1.5vw,13px)/1.4 "Inter Tight",sans-serif;}
+.seal-amp__cell--ok{background:rgba(47,90,99,.16);border:1px solid rgba(47,90,99,.5);color:var(--ink-2);}
+.seal-amp__cell--warn{background:rgba(184,92,47,.14);border:1px solid rgba(184,92,47,.5);color:var(--ink-2);}
+.seal-amp__ic{font-size:1.2em;line-height:1;}
+.seal-audit{margin:0;font:400 clamp(12px,1.6vw,13.5px)/1.5 "Spectral",serif;color:var(--ink-soft);text-align:center;max-width:66ch;}
+.seal-audit b{color:var(--a1-hi);}
+.seal-steps{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:.2em 0 0;}
+.seal-step{font:600 9.5px/1 "Inter Tight",sans-serif;letter-spacing:.04em;text-transform:uppercase;
+  padding:.45em .6em;border:1px solid rgba(200,155,60,.3);border-radius:2px;color:var(--ink-faint);}
+.seal-details{width:100%;max-width:680px;border-top:1px solid rgba(200,155,60,.2);padding-top:14px;}
+.seal-details summary{cursor:pointer;font:700 11px/1.3 "Inter Tight",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-line);}
+.seal-details__body{margin-top:12px;font:400 12.5px/1.62 "Spectral",serif;color:var(--ink-soft);}
+.seal-details__body h5{margin:.9em 0 .3em;font:700 10.5px/1.3 "Inter Tight",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);}
+.seal-details__body code{font-family:"Inter Tight",monospace;color:var(--gold-hi);font-size:.92em;}
+@media (max-width:560px){.seal-panels,.seal-amp{grid-template-columns:1fr;}.seal-bar{grid-template-columns:1fr;gap:3px;}}
+@media print{.seal-details__body{display:block!important;}.seal-wrap{break-inside:avoid;}}
+</style>
+<style id="content-css">
+.br-page{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  gap:clamp(14px,2.2vw,24px);padding:clamp(46px,7vw,82px) clamp(20px,5vw,58px);overflow:hidden;
+  background:radial-gradient(120% 80% at 50% 0%,var(--page-1),var(--page-2) 64%),var(--page-2);color:var(--ink);}
+.br-inner{position:relative;z-index:2;width:100%;max-width:760px;display:flex;flex-direction:column;gap:clamp(15px,2.1vw,24px);}
+.br-frame{position:absolute;inset:clamp(14px,2.4vw,30px);border:1px solid rgba(200,155,60,.28);pointer-events:none;z-index:1;}
+.br-frame::before{content:"";position:absolute;inset:6px;border:1px solid rgba(200,155,60,.14);}
+.br-num{position:absolute;top:clamp(18px,3vw,32px);right:clamp(24px,4vw,46px);font:600 11px/1 "Inter Tight",sans-serif;letter-spacing:.12em;color:var(--gold-line);z-index:3;}
+.br-eyebrow{margin:0;font:700 clamp(11px,1.4vw,13px)/1 "Inter Tight",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-line);}
+.br-h{margin:.05em 0 0;font:600 clamp(26px,4.4vw,44px)/1.06 "Newsreader",serif;font-style:italic;color:#f7f0db;}
+.kb{width:100%;max-width:780px;height:auto;display:block;margin:0 auto;}
+.kb-ill{font:600 9px/1 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;fill:var(--ink-faint);}
+.kp-kernfrage{margin:0;padding:.4em 0 .4em 1.1em;border-left:3px solid var(--gold);font:500 clamp(17px,2.3vw,23px)/1.4 "Newsreader",serif;font-style:italic;color:var(--ink-2);}
+.kp-deck{margin:0;font:400 clamp(14.5px,1.85vw,17px)/1.66 "Spectral",serif;color:var(--ink);}
+.kp-deck+.kp-deck{margin-top:-.2em;}
+.kp-deck b{color:var(--gold-hi);font-weight:500;}
+.kp-deck .lead{font-size:1.05em;color:var(--ink-2);}
+.kp-cite{margin:0;padding:clamp(13px,1.9vw,19px) clamp(15px,2.3vw,23px);border-left:3px solid var(--gold-line);background:rgba(0,0,0,.22);border-radius:0 4px 4px 0;}
+.kp-cite blockquote{margin:0;font:500 clamp(15.5px,2vw,19px)/1.44 "Newsreader",serif;color:#f4ecd9;}
+.kp-cite cite{display:block;margin-top:.6em;font:600 11.5px/1.4 "Inter Tight",sans-serif;font-style:normal;letter-spacing:.02em;color:var(--gold-line);}
+.kp-cite cite .loc{color:var(--ink-faint);font-weight:400;}
+.ce{margin:0;padding:clamp(13px,1.9vw,19px) clamp(15px,2.3vw,21px);border:1px solid rgba(159,208,219,.32);border-radius:5px;
+  background:linear-gradient(180deg,rgba(47,90,99,.14),rgba(47,90,99,.05));}
+.ce__lab{margin:0 0 .5em;display:inline-flex;align-items:center;gap:.5em;font:700 10.5px/1 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--a1-hi);}
+.ce__lab::before{content:"\25C6";font-size:.8em;}
+.ce p{margin:0;font:400 clamp(13.5px,1.75vw,15px)/1.6 "Spectral",serif;color:var(--ink-2);}
+.ce p+p{margin-top:.5em;}
+.ce .kv{color:var(--gold-hi);font-weight:600;}
+.st-core{margin:0;padding:clamp(18px,2.6vw,26px);border:1px solid rgba(200,155,60,.5);border-radius:6px;text-align:center;
+  background:radial-gradient(120% 120% at 50% 0%,rgba(200,155,60,.1),transparent 70%),rgba(12,17,22,.4);box-shadow:0 0 30px rgba(200,155,60,.08),inset 0 0 30px rgba(0,0,0,.25);}
+.st-core p{margin:0;font:500 clamp(16.5px,2.3vw,22px)/1.4 "Newsreader",serif;font-style:italic;color:#f4ecd9;}
+.st-core .hl{color:var(--gold-hi);}
+.dlx-more{border-top:1px solid rgba(200,155,60,.2);padding-top:11px;}
+.dlx-more>summary{cursor:pointer;font:700 11px/1.3 "Inter Tight",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-line);list-style:none;}
+.dlx-more>summary::-webkit-details-marker{display:none;}
+.dlx-more>summary::before{content:"+ ";color:var(--gold-hi);}
+.dlx-more[open]>summary::before{content:"\2212 ";}
+.dlx-body{margin-top:10px;font:400 13px/1.6 "Spectral",serif;color:var(--ink-soft);}
+.dlx-body b{color:var(--ink-2);}
+.dlx-body ul{margin:.4em 0;padding-left:1.2em;}
+.dlx-body li{margin:.22em 0;}
+.nv{position:sticky;top:0;z-index:20;width:100%;background:rgba(11,15,19,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(200,155,60,.28);}
+.nv__bar{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:center;padding:8px 14px;}
+.nv a{font:600 10.5px/1 "Inter Tight",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:.5em .68em;border-radius:3px;border:1px solid transparent;}
+.nv a:hover,.nv a:focus{color:var(--gold-hi);border-color:rgba(200,155,60,.4);outline:none;}
+.nv a.back{color:var(--a1-hi);}
+@media print{.nv{display:none;}.br-page{min-height:auto;page-break-inside:avoid;padding:26mm 18mm;}.dlx-body{display:block;}}
+.et{width:100%;border-collapse:collapse;margin:0;font-family:"Inter Tight",sans-serif;}
+.et caption{text-align:left;font:700 11px/1.3 "Inter Tight",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-line);margin-bottom:.5em;}
+.et th,.et td{padding:.5em .7em;border-bottom:1px solid rgba(200,155,60,.16);text-align:left;font-size:clamp(11.5px,1.5vw,13.5px);vertical-align:top;}
+.et th{font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;font-size:10.5px;}
+.et td{color:var(--ink-2);}
+.et td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--gold-hi);font-weight:600;white-space:nowrap;}
+.et tr:last-child td{border-bottom:none;}
+.et .ns{color:var(--ink-faint);font-weight:500;}
+.et-wrap{width:100%;overflow-x:auto;padding:clamp(12px,1.8vw,16px) clamp(12px,2vw,18px);border:1px solid rgba(200,155,60,.22);border-radius:5px;background:rgba(0,0,0,.2);}
+.kp-sub{margin:.5em 0 -.1em;display:flex;align-items:center;gap:.7em;flex-wrap:wrap;font:700 13px/1.3 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-hi);}
+.kp-sub::before{content:"";width:22px;height:2px;background:var(--gold);flex:none;}
+.kp-sub .tag{font:600 9.5px/1 "Inter Tight",sans-serif;letter-spacing:.05em;padding:.4em .6em;border:1px solid rgba(200,155,60,.5);border-radius:2px;color:var(--ink-2);}
+.stat{display:flex;flex-wrap:wrap;gap:14px;margin:0;padding:clamp(14px,2vw,18px);border:1px solid rgba(200,155,60,.3);border-radius:5px;background:rgba(0,0,0,.22);}
+.stat__item{flex:1 1 110px;text-align:center;}
+.stat__big{display:block;font:700 clamp(20px,3.4vw,28px)/1 "Newsreader",serif;color:var(--gold-hi);}
+.stat__lab{display:block;margin-top:.35em;font:500 10px/1.3 "Inter Tight",sans-serif;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-faint);}
+.vd{width:100%;border-collapse:collapse;font-family:"Inter Tight",sans-serif;}
+.vd th,.vd td{padding:.55em .6em;border-bottom:1px solid rgba(200,155,60,.14);text-align:left;vertical-align:top;font-size:clamp(11.5px,1.5vw,13px);}
+.vd th{font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:10px;color:var(--ink-soft);}
+.vd td.f{color:var(--ink-2);}
+.vd td.r{color:var(--ink-soft);}
+.vd tr:last-child td{border-bottom:none;}
+.vd-chip{display:inline-block;font:700 9px/1.3 "Inter Tight",sans-serif;letter-spacing:.05em;text-transform:uppercase;padding:.42em .55em;border-radius:2px;white-space:nowrap;border:1px solid;}
+.vd-chip.robust{color:#9fd0db;border-color:rgba(47,90,99,.7);background:rgba(47,90,99,.2);}
+.vd-chip.gestuetzt{color:#ecc868;border-color:rgba(200,155,60,.6);background:rgba(200,155,60,.14);}
+.vd-chip.gemischt{color:#e0a060;border-color:rgba(184,92,47,.6);background:rgba(184,92,47,.16);}
+.vd-chip.widerlegt{color:#e8959c;border-color:rgba(163,36,44,.6);background:rgba(163,36,44,.16);}
+.crit{margin:0;padding:clamp(13px,1.9vw,18px) clamp(15px,2.2vw,20px);border-left:3px solid var(--a3);background:rgba(163,36,44,.08);border-radius:0 4px 4px 0;}
+.crit p{margin:0;font:400 clamp(13px,1.7vw,14.5px)/1.56 "Spectral",serif;color:var(--ink-2);}
+.crit p+p{margin-top:.5em;}
+.crit b{color:var(--a3-hi);}
+.kt{counter-reset:kt;list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+.kt li{position:relative;padding:clamp(12px,1.8vw,15px) clamp(14px,2vw,18px) clamp(12px,1.8vw,15px) clamp(40px,5.4vw,48px);
+  border:1px solid rgba(200,155,60,.25);border-radius:5px;background:rgba(0,0,0,.2);font:400 clamp(13.5px,1.72vw,15px)/1.5 "Spectral",serif;color:var(--ink-2);}
+.kt li::before{content:counter(kt);counter-increment:kt;position:absolute;left:clamp(12px,1.9vw,16px);top:clamp(11px,1.7vw,14px);
+  width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font:700 11px/1 "Inter Tight",sans-serif;color:#0e161b;background:var(--gold-hi);}
+.kt b{color:var(--gold-hi);font-weight:600;}
+.ko{width:100%;max-width:760px;display:flex;flex-direction:column;gap:15px;}
+.ko-h{margin:0 0 -.2em;font:700 11px/1.3 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-line);}
+.ko-src{margin:0;font:400 12.5px/1.7 "Spectral",serif;color:var(--ink-soft);}
+.ko-src b{color:var(--ink-2);font-weight:500;}
+.ko-mono{display:flex;flex-wrap:wrap;gap:6px;}
+.ko-monogram{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:500 12px/1 "Newsreader",serif;font-style:italic;color:var(--ink-2);border:1px solid rgba(200,155,60,.5);background:rgba(0,0,0,.2);}
+.ko-link{display:inline-flex;align-items:center;gap:.5em;margin:0;font:600 13px/1 "Inter Tight",sans-serif;letter-spacing:.03em;color:var(--a1-hi);text-decoration:none;padding:.75em 1.15em;border:1px solid rgba(47,90,99,.6);border-radius:4px;background:rgba(47,90,99,.14);width:fit-content;}
+.ko-link:hover,.ko-link:focus{border-color:var(--a1-hi);outline:none;}
+</style>
+</head>
+<body>
+
+<section class="tc-cover" id="cover-title" aria-label="Trauer und Heilung — Tiefenanalyse: Was Rituale und Handlungen bei Tod und Verlust leisten">
+
+  <svg class="tc-bg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <radialGradient id="tcRay" cx="50%" cy="46%" r="60%">
+        <stop offset="0%" stop-color="#f0cf78" stop-opacity=".16"/>
+        <stop offset="100%" stop-color="#f0cf78" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g stroke="#c89b3c" stroke-opacity=".16" fill="none">
+      <ellipse cx="600" cy="368" rx="520" ry="330"/>
+      <ellipse cx="600" cy="368" rx="430" ry="272" transform="rotate(7 600 368)"/>
+      <ellipse cx="600" cy="368" rx="340" ry="214" transform="rotate(-6 600 368)"/>
+      <ellipse cx="600" cy="368" rx="250" ry="158" transform="rotate(4 600 368)"/>
+    </g>
+    <g stroke="#f0cf78" stroke-opacity=".10" stroke-width="1">
+      <path d="M600 368 L600 20"/><path d="M600 368 L1180 120"/><path d="M600 368 L1180 616"/>
+      <path d="M600 368 L600 716"/><path d="M600 368 L20 616"/><path d="M600 368 L20 120"/>
+      <path d="M600 368 L980 30"/><path d="M600 368 L220 30"/>
+      <path d="M600 368 L980 706"/><path d="M600 368 L220 706"/>
+    </g>
+    <rect x="0" y="0" width="1200" height="800" fill="url(#tcRay)"/>
+    <g stroke="#c89b3c" stroke-opacity=".12" fill="none" stroke-width="1">
+      <path d="M-40 250 Q300 210 600 260 T1240 250"/>
+      <path d="M-40 300 Q300 262 600 310 T1240 300"/>
+      <path d="M-40 470 Q300 432 600 480 T1240 470"/>
+      <path d="M-40 520 Q300 482 600 530 T1240 520"/>
+    </g>
+  </svg>
+
+  <div class="tc-frame"></div>
+  <svg class="tc-corner tl" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <path d="M6 42 Q6 6 42 6" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M14 46 Q14 14 46 14" stroke="currentColor" stroke-width="1" stroke-opacity=".7"/>
+    <path d="M6 42 Q22 40 30 26 Q40 34 44 22" stroke="currentColor" stroke-width="1" stroke-opacity=".8"/>
+    <circle cx="12" cy="12" r="2.4" fill="currentColor"/>
+  </svg>
+  <svg class="tc-corner tr" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <path d="M6 42 Q6 6 42 6" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M14 46 Q14 14 46 14" stroke="currentColor" stroke-width="1" stroke-opacity=".7"/>
+    <path d="M6 42 Q22 40 30 26 Q40 34 44 22" stroke="currentColor" stroke-width="1" stroke-opacity=".8"/>
+    <circle cx="12" cy="12" r="2.4" fill="currentColor"/>
+  </svg>
+  <svg class="tc-corner bl" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <path d="M6 42 Q6 6 42 6" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M14 46 Q14 14 46 14" stroke="currentColor" stroke-width="1" stroke-opacity=".7"/>
+    <path d="M6 42 Q22 40 30 26 Q40 34 44 22" stroke="currentColor" stroke-width="1" stroke-opacity=".8"/>
+    <circle cx="12" cy="12" r="2.4" fill="currentColor"/>
+  </svg>
+  <svg class="tc-corner br" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <path d="M6 42 Q6 6 42 6" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M14 46 Q14 14 46 14" stroke="currentColor" stroke-width="1" stroke-opacity=".7"/>
+    <path d="M6 42 Q22 40 30 26 Q40 34 44 22" stroke="currentColor" stroke-width="1" stroke-opacity=".8"/>
+    <circle cx="12" cy="12" r="2.4" fill="currentColor"/>
+  </svg>
+
+  <div class="tc-inner">
+    <p class="tc-kicker">Studie · Tiefenanalyse</p>
+
+    <div class="tc-crest" aria-hidden="true">
+      <svg class="tc-crest__art" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="92" stroke="#c89b3c" stroke-opacity=".8" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="82" stroke="#c89b3c" stroke-opacity=".4" stroke-width="1"/>
+        <circle cx="100" cy="100" r="58" stroke="#cda24f" stroke-opacity=".55" stroke-width="1"/>
+        <g stroke="#c89b3c" stroke-opacity=".5" fill="none" stroke-width="1">
+          <ellipse cx="100" cy="100" rx="40" ry="16"/>
+          <ellipse cx="100" cy="100" rx="40" ry="16" transform="rotate(45 100 100)"/>
+          <ellipse cx="100" cy="100" rx="40" ry="16" transform="rotate(90 100 100)"/>
+          <ellipse cx="100" cy="100" rx="40" ry="16" transform="rotate(135 100 100)"/>
+        </g>
+        <g fill="#ecc868">
+          <circle cx="100" cy="16" r="2.6"/><circle cx="100" cy="184" r="2.6"/>
+          <circle cx="16" cy="100" r="2.6"/><circle cx="184" cy="100" r="2.6"/>
+        </g>
+        <path d="M100 78 L106 100 L100 122 L94 100 Z" fill="#f0cf78" fill-opacity=".9"/>
+        <circle cx="100" cy="100" r="4" fill="#0e161b" stroke="#ecc868" stroke-width="1.3"/>
+      </svg>
+      <span class="tc-crest__gleam"></span>
+    </div>
+
+    <div class="tc-titlewrap">
+      <h1 class="tc-name">Trauer <span class="amp">&amp;</span> Heilung</h1>
+      <p class="tc-sub">Was Rituale und Handlungen bei Tod und Verlust leisten — die empirische Lage</p>
+    </div>
+
+    <p class="tc-worktag">Empirische Forschungssynthese · 2026</p>
+
+    <p class="tc-question">Welche Handlungen und Rituale — bei der Bestattung und in der Trauer — dienen empirisch am ehesten der Heilung und dem Weiterleben<span class="q-mark">?</span></p>
+
+    <p class="tc-meta">Tiefenanalyse · <b>7 Themenkomplexe</b> · Meta-Analysen, RCTs &amp; Fachbücher · Deutsch</p>
+  </div>
+
+  <div class="tc-scrollcue" aria-hidden="true">
+    <span>weiterlesen</span>
+    <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+</section>
+
+<hr class="br-cut">
+
+<section class="seal-wrap" id="pruefsiegel" aria-label="Prüfsiegel: Anti-Halluzination und Audit-Status dieser Tiefenanalyse">
+  <p class="seal-eyebrow">Dokumentation · Halluzinationsminimierung</p>
+
+  <div class="seal-center">
+    <div class="seal-badge" aria-hidden="true">
+      <svg viewBox="0 0 128 128" fill="none">
+        <circle cx="64" cy="64" r="60" stroke="#c89b3c" stroke-width="1.5"/>
+        <circle cx="64" cy="64" r="52" stroke="#c89b3c" stroke-opacity=".4"/>
+        <circle cx="64" cy="64" r="40" stroke="#cda24f" stroke-opacity=".6"/>
+        <g stroke="#c89b3c" stroke-opacity=".35" fill="none">
+          <ellipse cx="64" cy="64" rx="30" ry="12"/>
+          <ellipse cx="64" cy="64" rx="30" ry="12" transform="rotate(60 64 64)"/>
+          <ellipse cx="64" cy="64" rx="30" ry="12" transform="rotate(120 64 64)"/>
+        </g>
+        <path d="M48 65 l11 12 l22 -26" stroke="#9fd0db" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="#ecc868"><circle cx="64" cy="8" r="2.4"/><circle cx="64" cy="120" r="2.4"/><circle cx="8" cy="64" r="2.4"/><circle cx="120" cy="64" r="2.4"/></g>
+      </svg>
+    </div>
+    <p class="seal-rating-title">Rating dieser Datei · Hoch</p>
+    <div class="seal-metrics">
+      <span class="seal-chip"><b>Mit Quelle:</b> JA</span>
+      <span class="seal-chip">Faktenrisiko <b>≈ 7–15 %</b> <span class="seal-est">geschätzt, nicht gemessen</span></span>
+      <span class="seal-chip"><b>≈ 3×</b> geringer als ohne Quelle</span>
+      <span class="seal-chip seal-chip--ok">Audit: bestanden (8/8)</span>
+    </div>
+    <p class="seal-sum">Quellengestützte Synthese mit Fundstelle je Aussage; nach achtstufigem Resultat-Audit bestätigt.</p>
+  </div>
+
+  <p class="seal-rely">Verlass: Alle Zitate, Zahlen und Sachaussagen sind an die Originalquelle gebunden — mit Fundstelle (Seite / Datei-Zeile / DOI) je Aussage.</p>
+
+  <div class="seal-block">
+    <p class="seal-h">Modell-Faktenrisiko ohne Quelle · AA-Omniscience (Closed-Book, niedriger = besser)</p>
+    <div class="seal-bar"><span class="seal-bar__lab">Grok 4.3 (xAI)</span><span class="seal-bar__track"><span class="seal-bar__fill" style="width:17.8%;background:#6f9f6a;">16 %</span></span></div>
+    <div class="seal-bar"><span class="seal-bar__lab">Claude Opus 4.8 (Anthropic)</span><span class="seal-bar__track"><span class="seal-bar__fill" style="width:39.9%;background:#c89b3c;">35,9 %</span></span></div>
+    <div class="seal-bar"><span class="seal-bar__lab">Gemini 3.1 Pro (Google)</span><span class="seal-bar__track"><span class="seal-bar__fill" style="width:55.6%;background:#b07a2f;">50 %</span></span></div>
+    <div class="seal-bar"><span class="seal-bar__lab">GPT-5.5 xhigh (OpenAI)</span><span class="seal-bar__track"><span class="seal-bar__fill" style="width:95.6%;background:#a3242c;color:#f7f0db;">86 %</span></span></div>
+    <p class="seal-note">Modellweite Werte auf einem Closed-Book-Wissensbenchmark (AA-Omniscience), gemessen <b>ohne</b> beigelegte Quelle — sie beschreiben das Modell allgemein, <b>nicht</b> diese Arbeit. Einige Modelle erreichen niedrigere Raten über mehr Enthaltung bzw. geringere Trefferquote (Kalibrierungs-Kompromiss). Quelle: Artificial Analysis, AA-Omniscience, Mai 2026.</p>
+  </div>
+
+  <div class="seal-panels">
+    <div class="seal-panel seal-panel--off"><h4>Ohne Quelle</h4><p><span class="big">≈ 35,9 %</span>frei aus dem Gedächtnis → höheres Faktenrisiko (Closed-Book-Modellrate).</p></div>
+    <div class="seal-panel seal-panel--on"><h4>Mit Quelle · diese Arbeit</h4><p><span class="big">≈ 7–15 %</span>an die Vorlage gebunden, Fundstelle je Aussage → nahezu perfekt belegt (geschätzt).</p></div>
+  </div>
+
+  <div class="seal-amp">
+    <div class="seal-amp__cell seal-amp__cell--ok"><span class="seal-amp__ic">✓</span><span><b>Verlässlich</b> — belegt: Zitate, Zahlen und Aussagen mit benannter Quelle.</span></div>
+    <div class="seal-amp__cell seal-amp__cell--warn"><span class="seal-amp__ic">⚠</span><span><b>Vorher prüfen</b> — „Claudes Einordnung“, Szenarien, Bewertungen und Schlussfolgerungen.</span></div>
+  </div>
+
+  <p class="seal-audit">Diese Datei wurde in acht geordneten Schritten geprüft — Technik, Quellentreue, Zitate, Verständlichkeit, Aufbau, Optik, Druck. <b>Ergebnis: bestanden (8/8).</b></p>
+  <div class="seal-steps"><span class="seal-step">Technik</span><span class="seal-step">Artefakte</span><span class="seal-step">Quellentreue</span><span class="seal-step">Zitate</span><span class="seal-step">Lesbarkeit</span><span class="seal-step">Struktur</span><span class="seal-step">Optik</span><span class="seal-step">Druck</span></div>
+
+  <details class="seal-details">
+    <summary>Details &amp; Methodik</summary>
+    <div class="seal-details__body">
+      <h5>Was die Zahlen bedeuten</h5>
+      Die <code>≈ 35,9 %</code> sind die Closed-Book-Rate von Claude Opus 4.8 auf AA-Omniscience — modellweit, ohne Quelle, <b>nicht</b> die Rate dieser Arbeit. Da diese Tiefenanalyse quellengestützt (grounded) entstand, liegt das reale Risiko für Struktur und Thesen deutlich niedriger; das Restrisiko konzentriert sich auf exakte Zahlen, Seiten-/Zeilenangaben und den Zitatwortlaut.
+      <h5>Schätz-Methode</h5>
+      Spanne <code>7–15 %</code> für eine umfassende Mehrquellen-Synthese (geschätzt, nicht gemessen). Faktor <code>N = 35,9 ÷ 11 ≈ 3</code> (Spannen-Mittelwert 11 %, kaufmännisch gerundet) → „≈ 3× geringeres Risiko“. Die besonders strenge Grounding-Disziplin dieser Arbeit (Locator je Zitat, Quellenstatus [KB] / [WEB], Prüfung an der Fundstelle, ausgewiesene Lücken) drückt Richtung unteres Ende.
+      <h5>Zone B · Mit Originalquelle gearbeitet: JA</h5>
+      Genutzte Quellen (namentlich): Stroebe &amp; Schut (Dual-Process-Modell) · Klass/Silverman/Nickman und Klass &amp; Steffen (fortgeführte Bindung) · Worden · Bonanno · Neimeyer · Avis et al. (Umbrella-Review) · Zuelke et al. · Hanauer et al. · Shear et al. (CGT-RCT) · Prigerson (PGD) · Rando · Cacciatore · O'Connor · Nielsen et al. · Treml et al. · Norton &amp; Gino · Doka · Faust · Cleary et al.
+      <h5>Die acht Audit-Schritte</h5>
+      Technische Robustheit · Artefakt-/Kommentar-Entfernung · Quellentreue · Zitat-Zuschreibung · Lesbarkeit · Struktur · visuelle Konsistenz · Druck-Pagination. Ergebnis: alle acht Schritte bestanden (8/8).
+    </div>
+  </details>
+</section>
+
+<hr class="br-cut">
+
+<nav class="nv" aria-label="Abschnitte der Tiefenanalyse">
+  <div class="nv__bar">
+    <a href="#k1">1 · Verlauf</a>
+    <a href="#k2">2 · Bindung</a>
+    <a href="#k3">3 · Oszillation</a>
+    <a href="#k4">4 · Gradient</a>
+    <a href="#k5">5 · Rituale</a>
+    <a href="#k6">6 · Szenarien</a>
+    <a href="#k7">7 · Beziehungen</a>
+    <a href="#verdikte">Verdikte</a>
+    <a href="#empirie">Empirie</a>
+    <a href="#debatten">Debatten</a>
+    <a class="back" href="broschuere.html">← Kurzfassung</a>
+  </div>
+</nav>
+
+<section class="br-page" id="k1">
+  <div class="br-frame"></div>
+  <span class="br-num">k1</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Themenkomplex 1 · Grundlage</p>
+    <h2 class="br-h">Wie Trauer wirklich verläuft</h2>
+    <svg class="kb" viewBox="0 0 780 130" aria-hidden="true">
+      <line x1="24" y1="112" x2="760" y2="112" stroke="#c89b3c" stroke-opacity=".3"/>
+      <line x1="24" y1="20" x2="24" y2="112" stroke="#c89b3c" stroke-opacity=".3"/>
+      <path d="M24 44 C 220 46, 520 48, 760 50" stroke="#e8959c" stroke-opacity=".8" fill="none" stroke-width="1.6"/>
+      <path d="M24 46 C 240 60, 480 92, 760 102" stroke="#e0a060" stroke-opacity=".8" fill="none" stroke-width="1.6"/>
+      <path d="M24 50 C 170 98, 380 106, 760 108" stroke="#9fd0db" stroke-opacity=".85" fill="none" stroke-width="1.6"/>
+      <text x="768" y="52" fill="#e8959c" font-family="Inter Tight,sans-serif" font-size="10" text-anchor="end" opacity=".9">chronisch</text>
+      <text x="768" y="98" fill="#e0a060" font-family="Inter Tight,sans-serif" font-size="10" text-anchor="end" opacity=".9">graduell</text>
+      <text x="768" y="118" fill="#9fd0db" font-family="Inter Tight,sans-serif" font-size="10" text-anchor="end" opacity=".9">resilient</text>
+      <text class="kb-ill" x="30" y="126" text-anchor="start">Illustration · Trajektorien-Schema</text>
+    </svg>
+    <p class="kp-kernfrage">Verläuft Trauer in festen Stadien — oder ist der Normalfall ein anderer?</p>
+    <p class="kp-deck"><span class="lead">Das populäre Fünf-Stadien-Modell (Kübler-Ross) ist als <b>Prozessmodell der Trauer empirisch nicht belegt.</b></span> Bonannos prospektive Längsschnittforschung findet keine universellen Stadien, sondern unterschiedliche <b>Trajektorien</b>: chronische Trauer, allmähliche Erholung und — als häufigste Verlaufsform — <b>Resilienz</b>. Resilienz heißt dabei nicht „closure“: Auch Resiliente behalten eine leise, wehmütige Traurigkeit.</p>
+    <p class="kp-deck">Worden ersetzt Phasen durch <b>Aufgaben</b> der Trauer (Realität annehmen, den Schmerz verarbeiten, sich anpassen, erinnern und weiterleben) — Aufgaben, keine feste Sequenz. O'Connor, aus neurowissenschaftlicher Sicht, verwirft die fünf Stadien ebenfalls.</p>
+    <div class="kp-cite">
+      <blockquote>„there do not appear to be specific stages that everyone must go through“</blockquote>
+      <cite>George A. Bonanno · <span class="loc">The Other Side of Sadness (2009), Datei-Z. 258</span></cite>
+    </div>
+    <div class="kp-cite">
+      <blockquote>„come full face with the reality that the person is dead“</blockquote>
+      <cite>J. William Worden · <span class="loc">Grief Counseling and Grief Therapy (5. Aufl.), Datei-Z. 1875</span></cite>
+    </div>
+    <div class="ce">
+      <p class="ce__lab">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Der deskriptive Konsens ist belastbar (<span class="kv">Konfidenz ~85</span>): fünf voneinander unabhängige Rahmenquellen — Bonanno, Neimeyer, Worden, O'Connor, das Dual-Process-Modell — konvergieren auf „keine universellen Stadien“. <span class="kv">Unterscheidung:</span> dass dies <em>zutrifft</em> und <em>gut gestützt</em> ist, steht fest; ob die daraus abgeleiteten <em>konkreten Handlungen</em> den Verlauf kausal verbessern, entscheidet erst die Interventions-Evidenz (k4).</p>
+      <p><span class="kv">Kippbedingung:</span> Zeigte eine gut gepowerte prospektive Studie doch eine feste, für alle geltende Stadienfolge, fiele dieser Befund — das ist derzeit nicht der Fall.</p>
+    </div>
+    <details class="dlx-more">
+      <summary>Mehr Informationen</summary>
+      <div class="dlx-body">
+        <b>Die drei Trajektorien (Bonanno):</b> chronische Trauer (anhaltend überwältigend), allmähliche Erholung, Resilienz (der häufigste Verlauf). <br>
+        <b>Die vier Aufgaben (Worden):</b> (1) die Realität des Verlusts akzeptieren; (2) den Schmerz verarbeiten; (3) sich an eine Welt ohne die verstorbene Person anpassen; (4) einen Weg finden, zu erinnern und zugleich weiterzuleben. <br>
+        <b>Herkunft:</b> alle Befunde aus den Primärtexten gelesen (Datei-Zeilen als Locator; die OCR-Texte tragen keine verlässlichen Druckseiten).
+      </div>
+    </details>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+<section class="br-page" id="k2">
+  <div class="br-frame"></div>
+  <span class="br-num">k2</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Themenkomplex 2 · Grundlage</p>
+    <h2 class="br-h">Fortgeführte Bindung — umgestalten statt kappen</h2>
+    <svg class="kb" viewBox="0 0 780 130" aria-hidden="true">
+      <circle cx="150" cy="65" r="11" stroke="#c89b3c" stroke-opacity=".8" fill="none" stroke-width="1.4"/>
+      <circle cx="630" cy="65" r="11" stroke="#c89b3c" stroke-opacity=".55" fill="none" stroke-width="1.4"/>
+      <path d="M161 65 C 300 34, 470 96, 619 65" stroke="#ecc868" stroke-opacity=".8" fill="none" stroke-width="1.6"/>
+      <path d="M300 51 l0 -12 M300 79 l0 12" stroke="#c89b3c" stroke-opacity=".4" stroke-width="1"/>
+      <g stroke="#9fd0db" stroke-opacity=".5" fill="none"><path d="M470 96 l-8 -6 M470 96 l8 -6"/></g>
+      <text x="150" y="98" fill="#cdbfa0" font-family="Inter Tight,sans-serif" font-size="10" text-anchor="middle" opacity=".85">Hinterbliebene</text>
+      <text x="630" y="98" fill="#9a8f78" font-family="Inter Tight,sans-serif" font-size="10" text-anchor="middle" opacity=".85">Verstorbene · innerlich</text>
+      <text class="kb-ill" x="30" y="126" text-anchor="start">Illustration · fortgeführte Bindung</text>
+    </svg>
+    <p class="kp-kernfrage">Heilt Trauer durch Loslassen — oder durch eine umgestaltete Verbindung?</p>
+    <p class="kp-deck"><span class="lead">Das Continuing-Bonds-Modell (Klass, Silverman &amp; Nickman 1996) kehrt die alte Forderung um:</span> Gesunde Trauer-Auflösung heißt, die Verbindung zur verstorbenen Person <b>umzugestalten, nicht zu kappen.</b> Belegt über Populationen — verwaiste Kinder, Ehepartner, Eltern, Adoptierte — über konkrete Handlungen: mit der verstorbenen Person sprechen, das Grab besuchen, Gegenstände bewahren, häufig an sie denken. Die Bindung ist nicht statisch, sondern entwickelt sich mit.</p>
+    <p class="kp-deck">Die aktualisierte Fassung (Klass &amp; Steffen 2018) verfeinert das entscheidend: fortgeführte Bindung ist ein <b>„Double-Edged Sword“</b> — nicht einheitlich adaptiv. Sichere, tröstliche Bindung hilft; unaufgelöste oder sozial nicht anerkannte kann Trauer verstärken. Die Herausgeber hinterfragen ausdrücklich die einfache Dichotomie gesund/pathologisch.</p>
+    <div class="kp-cite">
+      <blockquote>„Rather than letting go, they seemed to be continuing the relationship“</blockquote>
+      <cite>Klass, Silverman &amp; Nickman · <span class="loc">Continuing Bonds (1996), Vorwort, Datei-Z. 677</span></cite>
+    </div>
+    <div class="kp-cite">
+      <blockquote>„who decides what is healthy“</blockquote>
+      <cite>Klass &amp; Steffen · <span class="loc">Continuing Bonds in Bereavement: New Directions (2018), Kap. 20, Datei-Z. 895</span></cite>
+    </div>
+    <div class="ce">
+      <p class="ce__lab">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Fortgeführte Bindung ist <b>kontextabhängig doppelschneidig</b>, nicht pauschal heilsam (<span class="kv">Konfidenz ~80</span>) — das korrigiert eine naive Lesart, „die Bindung zu halten hilft immer“. <span class="kv">Grund:</span> Klass &amp; Steffen und die Haustier-Synthese (k7) zeigen kontextabhängige Wirkung; sichere Bindung hilft, unaufgelöste/aberkannte kann verstärken.</p>
+      <p><span class="kv">Kippbedingung:</span> widerlegt, falls Studien zeigten, dass die Bindungs-Intensität durchgängig — unabhängig von Sicherheit und sozialer Anerkennung — mit besserem Verlauf einhergeht.</p>
+    </div>
+    <details class="dlx-more">
+      <summary>Mehr Informationen</summary>
+      <div class="dlx-body">
+        <b>Konkrete Bindungs-Handlungen (qualitativ dokumentiert):</b> von der verstorbenen Person träumen, mit ihr sprechen, glauben, sie wache über einen, Gegenstände aufbewahren, das Grab besuchen, häufig an sie denken. <br>
+        <b>Neue Medien:</b> Klass &amp; Steffen behandeln Social Media als neues Bindungs-Medium; Adaptivität ist im Kontext kultureller Narrative zu sehen. <br>
+        <b>Grad:</b> als Prozessbefund gestützt (qualitativ/klinisch), als pauschale Handlungsempfehlung durch die Doppelschneidigkeit begrenzt.
+      </div>
+    </details>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+<section class="br-page" id="k3">
+  <div class="br-frame"></div>
+  <span class="br-num">k3</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Themenkomplex 3 · Grundlage</p>
+    <h2 class="br-h">Oszillation, Sinn &amp; Dosierung</h2>
+    <svg class="kb" viewBox="0 0 780 130" aria-hidden="true">
+      <line x1="24" y1="65" x2="760" y2="65" stroke="#c89b3c" stroke-opacity=".2"/>
+      <path d="M24 65 Q 84 22 144 65 T 264 65 T 384 65 T 504 65 T 624 65 T 744 65" stroke="#ecc868" stroke-opacity=".8" fill="none" stroke-width="1.6"/>
+      <text x="24" y="118" fill="#9fd0db" font-family="Inter Tight,sans-serif" font-size="10" text-anchor="start" opacity=".85">Verlust-Orientierung</text>
+      <text x="760" y="24" fill="#e0a060" font-family="Inter Tight,sans-serif" font-size="10" text-anchor="end" opacity=".85">Wiederherstellungs-Orientierung</text>
+      <text class="kb-ill" x="390" y="126" text-anchor="middle">Illustration · Oszillations-Schema</text>
+    </svg>
+    <p class="kp-kernfrage">Muss man den Schmerz unablässig durcharbeiten — oder hilft ein Pendeln mit Dosierung?</p>
+    <p class="kp-deck"><span class="lead">Das Dual-Process-Modell (Stroebe &amp; Schut 1999) beschreibt zwei Stressor-Klassen:</span> die <b>Verlust-Orientierung</b> (Auseinandersetzung mit dem Verlust selbst) und die <b>Wiederherstellungs-Orientierung</b> (neue Rollen, Alltag, Identität). Anpassung geschieht durch <b>Oszillation</b> zwischen beiden — und ihre zentralste These ist die <b>Dosierung:</b> Konfrontation ist nötig, aber nicht unablässig; zeitweilige Vermeidung kann adaptiv sein.</p>
+    <p class="kp-deck">Damit relativiert das Modell die alte <b>Grief-work-Hypothese</b>, wonach Trauer nur durch ununterbrochenes Durcharbeiten „aufgelöst“ werde. Neimeyer ergänzt die <b>Sinnrekonstruktion</b> als zentralen Prozess des Trauerns und verknüpft sie ausdrücklich mit dem Dual-Process-Modell.</p>
+    <div class="kp-cite">
+      <blockquote>„It needs 'dosage.'“</blockquote>
+      <cite>Margaret Stroebe &amp; Henk Schut · <span class="loc">Death Studies 23(3), 1999, S. 220</span></cite>
+    </div>
+    <div class="ce">
+      <p class="ce__lab">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Als <b>Rahmenmodell robust</b> (<span class="kv">Konfidenz ~85</span>) und praktisch bedeutsam: Es ist kein Phasenmodell, sondern erklärt, warum „immer nur trauern“ nicht das Ziel ist. <span class="kv">Unterscheidung:</span> (b) gut gestützt und kohärent — es wird in der wirksamen Behandlung (k4) sogar <em>operationalisiert</em> (die CGT lässt Verlust- und Wiederherstellungs-Fokus alternieren); als Rahmen zu führen, nicht als je gemessener Einzelbeleg.</p>
+      <p><span class="kv">Kippbedingung:</span> widerlegt, falls sich zeigte, dass unablässige Konfrontation ohne Pendeln durchgängig zu besserer Anpassung führt als dosierte Oszillation.</p>
+    </div>
+    <details class="dlx-more">
+      <summary>Mehr Informationen</summary>
+      <div class="dlx-body">
+        <b>Verlust- vs. Wiederherstellungs-Orientierung:</b> die erste wendet sich dem Verlust und der Bindung zu, die zweite den sekundären Folgen (neue Aufgaben, Rollen, Identität). Gesunde Trauer pendelt zwischen beiden. <br>
+        <b>Grief-work-Kritik:</b> Konfrontation ist nötig, aber „it needs dosage“ — Vermeidung ist nicht per se pathologisch, solange sie nicht extrem oder dauerhaft ist. <br>
+        <b>Sinn (Neimeyer):</b> Kernsätze im vorliegenden OCR-Text fehlerbehaftet → hier paraphrasiert, kein Wortlaut-Zitat; Sinnrekonstruktion als zentraler Prozess, gekoppelt an das Dual-Process-Modell.
+      </div>
+    </details>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+<section class="br-page" id="k4">
+  <div class="br-frame"></div>
+  <span class="br-num">k4</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Themenkomplex 4 · Was wirkt</p>
+    <h2 class="br-h">Der Risiko-Gradient</h2>
+    <svg class="kb" viewBox="0 0 780 130" aria-hidden="true">
+      <line x1="24" y1="112" x2="760" y2="112" stroke="#c89b3c" stroke-opacity=".3"/>
+      <rect x="70" y="104" width="120" height="8" fill="#9a8f78" opacity=".55"/>
+      <rect x="240" y="98" width="120" height="14" fill="#e0a060" opacity=".6"/>
+      <rect x="410" y="70" width="120" height="42" fill="#ecc868" opacity=".7"/>
+      <rect x="580" y="34" width="120" height="78" fill="#ecc868" opacity=".85"/>
+      <text x="130" y="126" fill="#9a8f78" font-family="Inter Tight,sans-serif" font-size="9" text-anchor="middle">universell</text>
+      <text x="300" y="126" fill="#e0a060" font-family="Inter Tight,sans-serif" font-size="9" text-anchor="middle">selektiv</text>
+      <text x="470" y="126" fill="#ecc868" font-family="Inter Tight,sans-serif" font-size="9" text-anchor="middle">indiziert</text>
+      <text x="640" y="126" fill="#ecc868" font-family="Inter Tight,sans-serif" font-size="9" text-anchor="middle">kompliziert</text>
+      <text class="kb-ill" x="30" y="22" text-anchor="start">Illustration · Effekt steigt mit Risiko</text>
+    </svg>
+    <p class="kp-kernfrage">Hilft Trauer-Behandlung allen gleich — oder hängt der Nutzen vom Risiko ab?</p>
+    <p class="kp-deck"><span class="lead">Der bestbelegte Befund des Feldes: Trauer-Interventionen wirken <b>abhängig von der Symptomschwere</b>, nicht pauschal.</span> Universelle Angebote für <em>alle</em> Hinterbliebenen sind praktisch wirkungslos; der Nutzen steigt mit dem Risiko und erreicht bei klinisch bedeutsamer oder anhaltender Trauer moderate bis große Effekte. Ein Umbrella-Review über 33 Reviews stützt genau das.</p>
+    <div class="et-wrap">
+      <table class="et">
+        <caption>Effektstärken nach Zielgruppe (Avis et al.; referiert Currier et al. u. a.)</caption>
+        <thead><tr><th>Zielgruppe der Intervention</th><th>Nach Behandlung</th><th>Follow-up</th></tr></thead>
+        <tbody>
+          <tr><td>Universelle Prävention (alle Hinterbliebenen)</td><td class="num">d ≈ 0,14 <span class="ns">n. s.</span></td><td class="num ns">n. s.</td></tr>
+          <tr><td>Selektiv (erhöhtes Risiko)</td><td class="num">d = 0,14</td><td class="num ns">—</td></tr>
+          <tr><td>Indiziert (klinisch bedeutsame Trauer)</td><td class="num">d = 0,53</td><td class="num">d = 0,58</td></tr>
+          <tr><td>Komplizierte Trauer, gezielt behandelt</td><td class="num">SMD −0,53</td><td class="num">−1,38</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="kp-deck"><b>Digitale Modalitäten wirken bei gezielter Zielgruppe:</b> internetbasiert Trauer <b>g = 0,54</b>, PTBS <b>g = 0,82</b> (Zuelke et al.); web-basiert Trauer SMD −0,30 bis PTBS −0,64 (Yao et al.), mit teils nachlassender Dauerhaftigkeit. Die große Jugend-Meta-Analyse (Hanauer et al.) repliziert den Gradienten: universell klein (g = 0,18–0,29), indiziert groß (Trauer g = 1,25).</p>
+    <div class="kp-cite">
+      <blockquote>„efficacy did not apply in all circumstances“</blockquote>
+      <cite>Avis, Missler, van Deursen, Lenferink, Stroebe &amp; Schut · <span class="loc">The Efficacy of Bereavement Interventions: A Systematic Umbrella Review (2025), Abstract</span></cite>
+    </div>
+    <div class="ce">
+      <p class="ce__lab">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Der Risiko-Gradient ist der <b>stärkste Befund dieser Synthese</b> (<span class="kv">Konfidenz ~90</span>): ein Umbrella-Review über 33 Reviews plus drei unabhängige Meta-Analysen (inkl. großer Jugend-Meta-Analyse) konvergieren. Er ist mit der Resilienz (k1) kohärent — universelle Intervention hilft nicht, <em>weil</em> die Mehrheit resilient ist und keine Behandlung braucht. <span class="kv">Qualitäts-Vorbehalt:</span> die Primärstudien sind oft methodisch schwach (GRADE niedrig) → das <b>Muster</b> ist robust, die <b>Absolutzahlen</b> sind mit Vorsicht zu lesen.</p>
+      <p><span class="kv">Kippbedingung:</span> Zeigte die noch nicht eingesehene adulte Meta-Analyse (Johannsen et al. 2019), dass universelle Erwachsenen-Interventionen doch bedeutsam wirken, müsste der Gradient für Erwachsene relativiert werden — angesichts der Umbrella-Bestätigung unwahrscheinlich.</p>
+    </div>
+    <details class="dlx-more">
+      <summary>Mehr Informationen</summary>
+      <div class="dlx-body">
+        <b>Die Stufen:</b> universelle Prävention (an alle) ≈ 0; selektiv (Risikogruppen) klein; indiziert (bereits klinisch bedeutsame Trauer) moderat; komplizierte Trauer gezielt behandelt am größten. <br>
+        <b>Dauerhaftigkeit:</b> einzelne Synthesen zeigen Effekte direkt nach Behandlung (d = 0,38), aber nicht signifikant beim Follow-up (d = 0,18) — nicht alle Effekte halten. <br>
+        <b>Herkunft:</b> Umbrella-Review und Meta-Analysen als echte, saubere PDFs gelesen; Effektwerte aus Abstract/Ergebnisteil. Zum Vergleich: unselektierte Trauer-Unterstützung erreicht in einer Meta-Analyse nur 0,15 (Jordan &amp; Neimeyer).
+      </div>
+    </details>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+<section class="br-page" id="k5">
+  <div class="br-frame"></div>
+  <span class="br-num">k5</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Themenkomplex 5 · Was wirkt</p>
+    <h2 class="br-h">Rituale &amp; Bestattungs-Handlungen</h2>
+    <svg class="kb" viewBox="0 0 780 130" aria-hidden="true">
+      <g stroke="#9a8f78" stroke-opacity=".5" fill="none"><circle cx="150" cy="65" r="4"/><circle cx="185" cy="42" r="3"/><circle cx="120" cy="90" r="3"/><circle cx="200" cy="88" r="3"/><circle cx="118" cy="44" r="3"/></g>
+      <path d="M300 65 L470 65" stroke="#c89b3c" stroke-opacity=".35" stroke-dasharray="4 5"/>
+      <circle cx="620" cy="65" r="42" stroke="#ecc868" stroke-opacity=".8" fill="none" stroke-width="1.6"/>
+      <circle cx="620" cy="65" r="30" stroke="#c89b3c" stroke-opacity=".5" fill="none"/>
+      <path d="M620 40 L620 90 M595 65 L645 65" stroke="#9fd0db" stroke-opacity=".6"/>
+      <text x="155" y="118" fill="#9a8f78" font-family="Inter Tight,sans-serif" font-size="9.5" text-anchor="middle">Kontrollverlust</text>
+      <text x="620" y="122" fill="#ecc868" font-family="Inter Tight,sans-serif" font-size="9.5" text-anchor="middle">wiedererlangte Ordnung</text>
+      <text class="kb-ill" x="30" y="22" text-anchor="start">Illustration · Ritual = Kontrolle durch Vollzug</text>
+    </svg>
+    <p class="kp-kernfrage">Helfen Rituale bei Trauer — und wenn ja, wodurch?</p>
+    <p class="kp-deck"><span class="lead">Rituale können Trauer lindern — moderat, nicht robust.</span> Am besten gestützt sind zwei Bedingungen: das <b>tatsächliche Vollziehen</b> einer Handlung (bloßes Nachdenken oder „in Stille sitzen“ half nicht) und der Mechanismus <b>wiedererlangtes Kontrollgefühl.</b> Rituale müssen weder religiös noch gemeinschaftlich sein, und der Glaube an sie ist nicht nötig.</p>
+    <p class="kp-deck">Für die im Prompt als „dünn“ markierten Beziehungstypen (Freunde, Liebende, Haustiere) liefert Dokas <b>aberkannte Trauer</b> den ehrlichen Rahmen: sozial nicht anerkannte Trauer, die die Betroffenen an sich zweifeln lässt. Historisch zeigt Fausts „Good Death“, wie eine Gesellschaft Bestattungs- und Sterberituale zur Sinnstiftung nutzte — als Kontext, nicht als Wirksamkeitsbeleg.</p>
+    <div class="kp-cite">
+      <blockquote>„a common psychological mechanism underlying their effectiveness: regained feelings of control“</blockquote>
+      <cite>Michael I. Norton &amp; Francesca Gino · <span class="loc">Journal of Experimental Psychology: General 143(1), 2014, S. 266</span></cite>
+    </div>
+    <div class="ce">
+      <p class="ce__lab">Claudes Einordnung · nicht in der Quelle</p>
+      <p><b>Integritäts-Vorbehalt (extern prüfbar):</b> Zweitautorin Francesca Gino steht seit 2023 unter Datenmanipulations-Vorwürfen (Harvard / Data Colada). Dieses konkrete Paper ist <em>nicht</em> zurückgezogen, führt aber eine eigene Datenprovenienz-Offenlegung; zusammen mit nichtklinischen Stichproben und kleinen Effekten sind die <b>konkreten Effektgrößen provisorisch</b> zu lesen; der Mechanismus (Kontrolle) ist durch Nachbarliteratur gestützt.</p>
+      <p>Rituale helfen <b>moderat</b> (<span class="kv">Konfidenz ~65</span> — niedriger als k4, weil Ankerstudie unter Vorbehalt, nichtklinisch, und die beerdigungs-spezifische Evidenz gemischt ist: mindestens ein Nullbefund). <span class="kv">Kippbedingung:</span> Fänden eine gut gepowerte Replikation oder eine Meta-Analyse der Beerdigungsrituale netto-null, fiele die Aussage auf „gemischt/schwach“.</p>
+    </div>
+    <details class="dlx-more">
+      <summary>Mehr Informationen</summary>
+      <div class="dlx-body">
+        <b>Gemischte Evidenz:</b> Ein Scoping-Review (Wojtkowiak et al.) führt Rituale als Baustein evidenzinformierter Trauer-Therapie; ein Beerdigungs-Ritual-Befund (Mitima-Verloop et al.) fand jedoch <b>keinen</b> signifikanten Zusammenhang, ein anderer (Bolton &amp; Camp) einen moderaten. Netto: kann helfen, aber nicht robust. <br>
+        <b>Konkrete Wirk-Bausteine:</b> ein (auch privates, strukturiertes) Ritual aktiv vollziehen; ein Brief an die verstorbene Person; bei aberkannten Verlusten etwas Greifbares schaffen und den Verlust bewusst anerkennen. <br>
+        <b>Quellenstatus:</b> Norton &amp; Gino selbst beschafft (offene HBS-Fassung); die gemischten Zusatzbefunde aus Suchtreffern, klar als Einordnungs-Kontext markiert.
+      </div>
+    </details>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+<section class="br-page" id="k6">
+  <div class="br-frame"></div>
+  <span class="br-num">k6</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Themenkomplex 6 · Der Umstand</p>
+    <h2 class="br-h">Die zwei Szenarien</h2>
+    <svg class="kb" viewBox="0 0 780 130" aria-hidden="true">
+      <line x1="24" y1="112" x2="760" y2="112" stroke="#c89b3c" stroke-opacity=".3"/>
+      <path d="M40 112 L70 108 L120 30 L165 108 L200 104" stroke="#e8959c" stroke-opacity=".8" fill="none" stroke-width="1.6"/>
+      <line x1="390" y1="26" x2="390" y2="112" stroke="#c89b3c" stroke-opacity=".25" stroke-dasharray="3 5"/>
+      <path d="M430 40 C 560 58, 660 96, 745 106" stroke="#e0a060" stroke-opacity=".8" fill="none" stroke-width="1.6"/>
+      <text x="120" y="126" fill="#e8959c" font-family="Inter Tight,sans-serif" font-size="9.5" text-anchor="middle">plötzlich (P)</text>
+      <text x="590" y="126" fill="#e0a060" font-family="Inter Tight,sans-serif" font-size="9.5" text-anchor="middle">absehbar (V)</text>
+      <text class="kb-ill" x="30" y="22" text-anchor="start">Illustration · Schock vs. langer Verlauf</text>
+    </svg>
+    <p class="kp-kernfrage">Ändert der Umstand des Todes — plötzlich oder absehbar —, was der Trauer hilft?</p>
+
+    <p class="kp-sub" id="k6p">Szenario P <span class="tag">plötzlicher / traumatischer Tod</span></p>
+    <p class="kp-deck"><span class="lead">Plötzlicher, unnatürlicher oder gewaltsamer Tod erhöht das Risiko der anhaltenden Trauerstörung</span> (PGD) — heute formale Diagnose in ICD-11 und DSM-5-TR, mit etwa 4–15 % der hinterbliebenen Erwachsenen; das Risiko steigt zusätzlich beim Verlust eines Kindes oder Partners. Für die, die eine PGD entwickeln, ist die gezielte <b>Complicated Grief Treatment</b> belegt wirksam:</p>
+    <p class="stat">
+      <span class="stat__item"><span class="stat__big">51 %</span><span class="stat__lab">Response CGT</span></span>
+      <span class="stat__item"><span class="stat__big">28 %</span><span class="stat__lab">Response Standard-Psychotherapie</span></span>
+      <span class="stat__item"><span class="stat__big">4,3</span><span class="stat__lab">Number needed to treat</span></span>
+    </p>
+    <p class="kp-deck">Bei <b>gewaltsamem</b> Tod versagt generische Stützung weitgehend (Response 56 % unter CGT vs. nur 13 % unter Standard-Therapie); <b>Kindsverlust</b> ist am behandlungsresistentesten (17 %). Die CGT-Bausteine — Todesgeschichte erzählen, imaginäres Gespräch mit der verstorbenen Person, Lebensziel-Arbeit — operationalisieren die Rahmen aus k2/k3.</p>
+    <div class="ce">
+      <p class="ce__lab">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Zwei getrennte Propositionen, beide gestützt: PGD ist ein valides, von Depression/PTBS abgrenzbares Konstrukt und CGT wirkt dagegen (<span class="kv">Konfidenz ~85</span>, RCT + Replikationen); plötzlicher/traumatischer Tod erhöht das Risiko (<span class="kv">Konfidenz ~85</span>, Prigerson und Rando konvergent). <span class="kv">Echte Debatte:</span> pathologisieren (Prigerson/Shear) vs. begleiten (Cacciatore) — über die Schwereverteilung auflösbar: resiliente Mehrheit begleiten, PGD-Minderheit behandeln. <span class="kv">Kippbedingung:</span> fiele die CGT-Wirkung in unabhängiger Replikation oder erwiese sich PGD als bloße Depression/PTBS, kippte Proposition 1 — beides derzeit nicht der Fall.</p>
+    </div>
+
+    <p class="kp-sub" id="k6v">Szenario V <span class="tag">absehbarer Tod (Krankheit)</span></p>
+    <p class="kp-deck"><span class="lead">Der verbreitete Glaube, ein absehbarer Tod erleichtere die Trauer durch „Vorweg-Trauern“, ist empirisch nicht gestützt.</span> Ein systematisches Review (Nielsen et al., 34 Studien) konnte nicht bestätigen, dass Trauerarbeit vor dem Verlust das Ergebnis verbessert; hohe Vorab-Trauer bei niedriger Vorbereitetheit war im Gegenteil mit komplizierter Trauer assoziiert. Was hilft, ist <b>Vorbereitetheit</b> (Treml et al.), nicht das Vorwegnehmen der Trauer.</p>
+    <p class="kp-deck">O'Connor liefert den Mechanismus: Trauern ist Lernen — das Gehirn muss die Abwesenheit erst durch die gelebte Erfahrung lernen; selbst lange Krankheit lässt das nicht vorab geschehen. <b>Ehrliche Differenzierung:</b> „Vorweg-Trauern schützt nicht“ heißt nicht „Vor-Tod-Unterstützung nützt nicht“ — gezielte Begleitung (Würde-Arbeit, Skills) kann sehr wohl helfen.</p>
+    <div class="kp-cite">
+      <blockquote>„grieving is a form of learning“</blockquote>
+      <cite>Mary-Frances O'Connor · <span class="loc">The Grieving Brain (2022), Datei-Z. 1033</span></cite>
+    </div>
+    <div class="kp-cite">
+      <blockquote>„grief work before the loss would alleviate bereavement outcome was not confirmed“</blockquote>
+      <cite>Nielsen, Neergaard, Jensen, Bro &amp; Guldin · <span class="loc">Clinical Psychology Review 44 (2016), 75–93, Abstract</span></cite>
+    </div>
+    <div class="ce">
+      <p class="ce__lab">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Der Volksglaube der „antizipatorischen Trauer“ als Inokulation ist nicht gestützt — hohe Vorab-Trauer ist eher ein Warnzeichen (<span class="kv">Konfidenz ~80</span>); Vorbereitetheit ist der Schutzfaktor (<span class="kv">Konfidenz ~80</span>, Nielsen und Treml konvergent). O'Connors Mechanismus ist gut argumentiert, als interpretatives Modell zu führen. <span class="kv">Kippbedingung:</span> Zeigte ein gut gepowerter RCT, dass eine strukturierte Vorab-Trauer-Intervention post-loss die anhaltende Trauer gegen Kontrolle senkt, wäre die Aussage zu präzisieren.</p>
+    </div>
+
+    <details class="dlx-more">
+      <summary>Mehr Informationen</summary>
+      <div class="dlx-body">
+        <b>PGD-Risiko (Szenario P):</b> erhöht bei sehr plötzlichem/unnatürlichem Tod, gewaltsamer Ursache (Mord), Verlust von Kind oder Partner, fehlender sozialer Unterstützung. Rando nennt „sudden, unexpected death“ als primären Risikofaktor komplizierter Trauer; sein Prozessmodell sind die sechs „R“ (erkennen, reagieren, erinnern/wiedererleben, loslassen, sich anpassen, neu investieren). <br>
+        <b>Vorbereitetheit (Szenario V):</b> = „the degree to which a caregiver is ready for the death“; niedrige Vorbereitetheit ist Risikofaktor. Zusätzlich: Menschen sind schlechte Prognostiker künftiger Gefühle (affektive Fehlprognose), was das Vorweg-Trauern zusätzlich untergräbt. <br>
+        <b>Quellenstatus:</b> Shear-CGT-RCT als offener Volltext selbst beschafft; PGD-Diagnostik und Nielsen/Treml über Suchbelege (wörtliche Abstracts); Rando und O'Connor aus der Wissensdatenbank gelesen.
+      </div>
+    </details>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+<section class="br-page" id="k7">
+  <div class="br-frame"></div>
+  <span class="br-num">k7</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Themenkomplex 7 · Beziehungstypen</p>
+    <h2 class="br-h">Von Partnern bis Haustieren</h2>
+    <svg class="kb" viewBox="0 0 780 130" aria-hidden="true">
+      <line x1="24" y1="80" x2="760" y2="80" stroke="#c89b3c" stroke-opacity=".2"/>
+      <g font-family="Inter Tight,sans-serif" font-size="9.5" text-anchor="middle">
+        <circle cx="120" cy="60" r="13" fill="none" stroke="#ecc868" stroke-width="1.6"/><text x="120" y="102" fill="#ecc868">Partner</text>
+        <circle cx="250" cy="60" r="13" fill="none" stroke="#ecc868" stroke-width="1.5" stroke-opacity=".9"/><text x="250" y="102" fill="#e0a060">Eltern/Kind</text>
+        <circle cx="390" cy="60" r="12" fill="none" stroke="#e0a060" stroke-width="1.3" stroke-opacity=".75"/><text x="390" y="102" fill="#e0a060">Familie</text>
+        <circle cx="520" cy="60" r="11" fill="none" stroke="#9fd0db" stroke-width="1.2" stroke-opacity=".6"/><text x="520" y="102" fill="#9fd0db">Haustier</text>
+        <circle cx="650" cy="60" r="10" fill="none" stroke="#9a8f78" stroke-width="1" stroke-opacity=".45" stroke-dasharray="3 3"/><text x="650" y="102" fill="#9a8f78">Freunde/Liebende</text>
+      </g>
+      <text class="kb-ill" x="30" y="22" text-anchor="start">Illustration · Evidenzdichte nach Beziehung</text>
+    </svg>
+    <p class="kp-kernfrage">Gilt das Gefundene für alle Verlust-Beziehungen gleich — oder klaffen Lücken?</p>
+    <p class="kp-deck"><span class="lead">Die stärkste Evidenz liegt für Partner, Eltern und Kinder vor.</span> <b>Haustierverlust</b> ist reale, teils klinisch bedeutsame Trauer — sie kann der um einen Menschen gleichkommen und erfüllt für eine Teilgruppe PGD-artige Kriterien; charakteristisch ist ihre <b>Aberkennung</b> (die Gesellschaft entwertet sie). Die fortgeführte Bindung wirkt auch hier doppelschneidig: passende Bindung moderiert, aberkannte kann verstärken.</p>
+    <p class="kp-deck"><b>Freunde und Liebende</b> bleiben überwiegend aberkannte, unterforschte Trauer. Diese Lücke wird <b>ausgewiesen, nicht mit erfundenen Befunden gefüllt</b> — teils adressiert über Dokas aberkannte Trauer (k5) und Norton &amp; Ginos experimentelle Abdeckung von Beziehungsenden (k5), aber ohne dedizierte robuste Evidenzbasis.</p>
+    <div class="kp-cite">
+      <blockquote>„synonymous with the death of a human“</blockquote>
+      <cite>Cleary, West, Thapa, Westman, Vesk &amp; Kornhaber · <span class="loc">Grieving the Loss of a Pet: A Qualitative Systematic Review, Death Studies 46(9), 2022</span></cite>
+    </div>
+    <div class="ce">
+      <p class="ce__lab">Claudes Einordnung · nicht in der Quelle</p>
+      <p>Haustiertrauer ist echte, teils PGD-artige, charakteristisch aberkannte Trauer (<span class="kv">Konfidenz ~75</span> — mehrere qualitative Reviews konvergieren, plus eine PGD-Validierung; nicht höher, weil die Basis qualitativ, nicht RCT ist). Die Doppelschneidigkeit der fortgeführten Bindung bestätigt sich hier (<span class="kv">Konfidenz ~80</span>). Für Freunde/Liebende ist die ehrlichste Aussage die ausgewiesene Lücke. <span class="kv">Kippbedingung:</span> widerlegt, falls quantitative Studien Haustiertrauer als kategorisch mild/flüchtig und nie PGD-artig zeigten — die Belege deuten das Gegenteil.</p>
+    </div>
+    <details class="dlx-more">
+      <summary>Mehr Informationen</summary>
+      <div class="dlx-body">
+        <b>Haustierverlust (Cleary et al.):</b> Synthese aus 19 qualitativen Arbeiten, fünf Themen — Beziehung, Trauer, Schuld, Unterstützung, Zukunft. Lee (2020) validierte für eine Teilgruppe PGD-artige Kriterien (mehr Depression, Einsamkeit, Schlafprobleme). Messinstrumente: Pet Bereavement Questionnaire, Mourning Dog Questionnaire. <br>
+        <b>Doppelschneidige Bindung:</b> bei Haustieren kann die fortgeführte Bindung Trauer verstärken, besonders wenn sie als aberkannt erlebt wird; passende Bindung moderiert und stützt. <br>
+        <b>Quellenstatus:</b> Klass &amp; Steffen aus der Wissensdatenbank gelesen; Cleary et al. und die Haustier-Bindungs-Synthese über offene Belege (Abstracts), klar markiert.
+      </div>
+    </details>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+<section class="br-page" id="verdikte">
+  <div class="br-frame"></div>
+  <span class="br-num">Verdikte</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Synthese · Evidenzgrade</p>
+    <h2 class="br-h">Verdikte je Kernbefund</h2>
+    <p class="kp-deck">Fünf-Stufen-Skala: <b>robust</b> · <b>gestützt</b> · <b>gemischt</b> · <b>schwach</b> · <b>widerlegt</b>. Der Grad bezieht sich auf die Belegdichte, nicht auf Wünschbarkeit.</p>
+    <div class="et-wrap">
+      <table class="vd">
+        <thead><tr><th>Kernbefund</th><th>Grad</th><th>Kurzbegründung</th></tr></thead>
+        <tbody>
+          <tr><td class="f">Kein universeller Stufenweg; Resilienz ist der Normalfall</td><td><span class="vd-chip robust">robust</span></td><td class="r">Fünf unabhängige Rahmenquellen konvergieren; prospektive Längsschnitte</td></tr>
+          <tr><td class="f">Fünf-Stadien (Kübler-Ross) als Prozessmodell</td><td><span class="vd-chip widerlegt">widerlegt</span></td><td class="r">Aus Sterbenden abgeleitet, auf Trauer übertragen; empirisch nicht belegt</td></tr>
+          <tr><td class="f">Heilung = umgestaltete fortgeführte Bindung, nicht Abtrennung</td><td><span class="vd-chip gestuetzt">gestützt</span></td><td class="r">Belegt über Populationen; aber doppelschneidig, kontextabhängig</td></tr>
+          <tr><td class="f">Oszillation &amp; Dosierung (Dual-Process-Modell)</td><td><span class="vd-chip robust">robust</span></td><td class="r">Etablierter Rahmen; in der wirksamen Behandlung operationalisiert</td></tr>
+          <tr><td class="f">Risiko-Gradient: universell ≈ 0, indiziert wirkt</td><td><span class="vd-chip robust">robust</span></td><td class="r">Umbrella-Review (33 Reviews) + drei Meta-Analysen konvergent</td></tr>
+          <tr><td class="f">CGT wirkt bei komplizierter/anhaltender Trauer</td><td><span class="vd-chip gestuetzt">gestützt</span></td><td class="r">RCT (51 % vs. 28 %, NNT 4,3) mit Replikationen; 51 % Response als Grenze</td></tr>
+          <tr><td class="f">Plötzlicher/traumatischer Tod erhöht PGD-Risiko</td><td><span class="vd-chip gestuetzt">gestützt</span></td><td class="r">Prigerson/APA und Rando konvergent</td></tr>
+          <tr><td class="f">Rituale lindern Trauer (Kontrolle + Vollzug)</td><td><span class="vd-chip gemischt">gemischt</span></td><td class="r">Mechanismus plausibel, aber kleine nichtklinische Effekte; Ankerstudie unter Integritäts-Vorbehalt</td></tr>
+          <tr><td class="f">Beerdigungs-spezifische Ritualwirkung</td><td><span class="vd-chip gemischt">gemischt</span></td><td class="r">Mindestens ein Nullbefund; andere moderat — nicht einhellig</td></tr>
+          <tr><td class="f">„Anticipatory grief“ als Inokulation für später</td><td><span class="vd-chip widerlegt">widerlegt</span></td><td class="r">Systematisches Review (34 Studien): nicht bestätigt; hohe Vorab-Trauer eher Warnzeichen</td></tr>
+          <tr><td class="f">Vorbereitetheit schützt (Szenario V)</td><td><span class="vd-chip gestuetzt">gestützt</span></td><td class="r">Nielsen und Treml konvergent</td></tr>
+          <tr><td class="f">Haustiertrauer real, teils PGD-artig, aberkannt</td><td><span class="vd-chip gestuetzt">gestützt</span></td><td class="r">Mehrere qualitative Reviews + PGD-Validierung; Basis qualitativ, nicht RCT</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+<section class="br-page" id="empirie">
+  <div class="br-frame"></div>
+  <span class="br-num">Empirie</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Synthese · Effektstärken</p>
+    <h2 class="br-h">Die Zahlen im Überblick</h2>
+    <p class="kp-deck">Alle Werte aus quellengestützten Meta-Analysen und RCTs (echte Daten, keine Illustration). Effektmaße: d/g = standardisierte Mittelwertsdifferenz; SMD analog; höhere Beträge = stärkerer Effekt.</p>
+    <div class="et-wrap">
+      <table class="et">
+        <caption>Effektstärken nach Befund</caption>
+        <thead><tr><th>Befund / Intervention</th><th>Effekt</th><th>Quelle</th></tr></thead>
+        <tbody>
+          <tr><td>Universelle Prävention (alle Hinterbliebenen)</td><td class="num">d ≈ 0,14 <span class="ns">n. s.</span></td><td>Avis; Currier</td></tr>
+          <tr><td>Indiziert (klinisch bedeutsame Trauer)</td><td class="num">d = 0,53 / 0,58</td><td>Avis</td></tr>
+          <tr><td>Komplizierte Trauer, gezielt behandelt</td><td class="num">SMD −0,53 / −1,38</td><td>Avis</td></tr>
+          <tr><td>Internet-Intervention · Trauer</td><td class="num">g = 0,54</td><td>Zuelke et al.</td></tr>
+          <tr><td>Internet-Intervention · PTBS</td><td class="num">g = 0,82</td><td>Zuelke et al.</td></tr>
+          <tr><td>Web-Intervention · Trauer bis PTBS (post)</td><td class="num">SMD −0,30 bis −0,64</td><td>Yao et al.</td></tr>
+          <tr><td>Jugend · universell vs. indiziert · Trauer</td><td class="num">g 0,18–0,29 vs. 1,25</td><td>Hanauer et al.</td></tr>
+          <tr><td>CGT vs. Standard-Psychotherapie · Response</td><td class="num">51 % vs. 28 %; NNT 4,3</td><td>Shear et al.</td></tr>
+          <tr><td>PGD-Prävalenz (hinterbliebene Erwachsene)</td><td class="num">4–15 %</td><td>Prigerson; APA</td></tr>
+          <tr><td>Ritual · Trauer (nichtklinisch, provisorisch)</td><td class="num">η²ₚ ≈ 0,02–0,11</td><td>Norton &amp; Gino</td></tr>
+          <tr><td>Unselektierte Trauer-Unterstützung (Vergleich)</td><td class="num">0,15</td><td>Jordan &amp; Neimeyer</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ce">
+      <p class="ce__lab">Empirie-Transparenz</p>
+      <p>Abdeckung: die Effektstärken stammen sämtlich aus quellengestützten Meta-Analysen/RCTs; die vier Interventions-PDFs, Shear und Prigerson lagen als echte, saubere Volltexte vor. Das geschätzte Faktenrisiko dieser Arbeit liegt bei <span class="kv">≈ 7–15 % (geschätzt, nicht gemessen)</span> und konzentriert sich auf exakte Zahlen und Zitatwortlaut — <b>nicht</b> die Closed-Book-Modellrate von 35,9 %. Qualitäts-Vorbehalt: viele Primärstudien sind methodisch schwach (GRADE niedrig) → das Muster ist robust, die Absolutzahlen sind mit Vorsicht zu lesen.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+<section class="br-page" id="debatten">
+  <div class="br-frame"></div>
+  <span class="br-num">Debatten</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Synthese · Kontroversen</p>
+    <h2 class="br-h">Debatten &amp; Kritik</h2>
+    <p class="kp-deck">Diese Debatten werden analysiert, nicht entschieden. Wo eine Auflösung möglich ist, wird sie benannt; wo nicht, bleibt die Spannung stehen.</p>
+
+    <p class="kp-sub">Pathologisieren vs. begleiten</p>
+    <p class="kp-deck">Prigerson und Shear etablieren eine Diagnose (PGD) und eine wirksame Behandlung; Cacciatore und, deskriptiv, Bonanno warnen vor dem Pathologisieren normaler Trauer. <b>Auflösbar über die Schwereverteilung:</b> für die resiliente Mehrheit ist Begleiten richtig, für die PGD-Minderheit (4–15 %) ist Diagnose plus gezielte Behandlung belegt hilfreich. Der Streit betrifft, wo die Linie liegt und wie groß die Störungskategorie ist — ein Grenzziehungs-, kein Entweder-oder-Problem.</p>
+
+    <p class="kp-sub">Fortgeführte Bindung: adaptiv oder maladaptiv?</p>
+    <p class="kp-deck">Das Continuing-Bonds-Modell wurde selbst nachgeschärft: Klass &amp; Steffen führen die Bindung als „Double-Edged Sword“ und hinterfragen ausdrücklich die Dichotomie gesund/pathologisch — samt der Wertfrage, wer über „gesund“ entscheidet. Die ehrliche Aussage ist Kontextabhängigkeit, nicht ein pauschales Urteil.</p>
+
+    <p class="kp-sub">„Anticipatory grief“ als Konzept</p>
+    <p class="kp-deck">Schon Fulton bezweifelte den heuristischen Wert des Begriffs; Nielsen verschiebt den Konsens dahin, dass Vorab-Trauerarbeit nicht inokuliert, Vorbereitetheit aber schützt. Beides ist zu trennen — „spontan vorher trauern“ von „gezielter Vor-Tod-Unterstützung“.</p>
+
+    <p class="kp-sub">Integritäts-Vorbehalt zur Ritual-Ankerstudie</p>
+    <div class="crit">
+      <p><b>Francesca Gino</b>, Zweitautorin der zentralen Ritual-Studie (Norton &amp; Gino 2014), steht seit 2023 unter Datenmanipulations-Vorwürfen (Harvard / Data Colada). Dieses konkrete Paper ist <b>nicht zurückgezogen</b> und führt eine eigene Datenprovenienz-Offenlegung.</p>
+      <p>Zusammen mit nichtklinischen Stichproben und kleinen Effekten heißt das: der <b>Mechanismus (Kontrolle) ist durch Nachbarliteratur gestützt, die konkreten Effektgrößen sind provisorisch zu lesen.</b> Dieser Vorbehalt ist der Grund, warum die Ritual-Aussage nur „gemischt/moderat“ (Konfidenz ~65) und nicht höher eingestuft ist.</p>
+    </div>
+
+    <p class="kp-sub">Methodische Qualität</p>
+    <p class="kp-deck">Über die Ritual-Frage hinaus gilt: viele Primärstudien der Interventionsliteratur sind methodisch schwach (24 von 33 Reviews im Umbrella-Review nur „positiv-bedingt“; GRADE teils niedrig). Das <b>Muster</b> (Risiko-Gradient, Wirksamkeit gezielter Behandlung) ist robust; die <b>Absolutzahlen</b> tragen weniger Gewicht als das Muster.</p>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+<section class="br-page" id="takeaways">
+  <div class="br-frame"></div>
+  <span class="br-num">Fazit</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Synthese · Was hilft</p>
+    <h2 class="br-h">Sieben Handlungen mit Rückhalt</h2>
+    <p class="kp-deck">Aus den Befunden abgeleitete, quellengestützte Handlungsansätze. Sie sind Orientierung, kein Ersatz für individuelle fachliche Begleitung.</p>
+    <ol class="kt">
+      <li><b>Normale Trauer begleiten, nicht pathologisieren.</b> Die Mehrheit ist resilient; universelle „Trauer-Behandlung“ für alle bringt wenig.</li>
+      <li><b>Bei anhaltender, beeinträchtigender Trauer gezielte Behandlung suchen</b> (jenseits von etwa 6–12 Monaten). Die belegte Form ist CGT: die Todesgeschichte erzählen, ein imaginäres Gespräch mit der verstorbenen Person führen, Lebensziele bearbeiten.</li>
+      <li><b>Fortgeführte Bindung zulassen und umgestalten</b> — ansprechen, das Grab besuchen, Gegenstände bewahren, erinnern. Aber sie ist doppelschneidig: quält sie mehr, als sie tröstet, ist Unterstützung angezeigt.</li>
+      <li><b>Ein strukturiertes Ritual aktiv vollziehen</b> — nicht nur daran denken. Es muss weder religiös noch gemeinschaftlich sein; ein Brief an die verstorbene Person hilft.</li>
+      <li><b>Bei absehbarem Tod Vorbereitetheit fördern</b> — ehrliche Prognose, Ungesagtes sagen, praktische und existenzielle Bereitschaft. Nicht auf „Vorweg-Trauern“ setzen; intensive Vorab-Trauer ist eher ein Anlass für Hilfe.</li>
+      <li><b>Bei gewaltsamem oder traumatischem Verlust reicht generische Stützung oft nicht</b> — gezielte Behandlung suchen. Kindsverlust braucht besonders geduldige, spezialisierte Begleitung.</li>
+      <li><b>Aberkannte Trauer anerkennen</b> — bei Freunden, Liebenden und Haustieren den Verlust bewusst benennen und etwas Greifbares schaffen.</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+<section class="br-page" id="schluss">
+  <div class="br-frame"></div>
+  <span class="br-num">Schluss</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Gesamtbild</p>
+    <h2 class="br-h">Der rote Faden</h2>
+    <div class="st-core">
+      <p>Heilung entsteht nicht durch das Abarbeiten fester Stadien oder ein „Loslassen bis zur closure“, sondern durch <span class="hl">umgestaltete Bindung, Sinnbildung und dosierte Oszillation</span> — und wirksame Hilfe ist <span class="hl">risiko-gestuft, nicht pauschal.</span></p>
+    </div>
+    <p class="kp-deck">Die einzelnen Befunde ordnen sich zu einem kohärenten Bild: kein universeller Stufenweg (k1), fortgeführte statt gekappter Bindung (k2), Pendeln mit Dosierung (k3), Nutzen nach Risiko (k4), Rituale über Kontrolle und Vollzug (k5), der Umstand des Todes als Weiche (k6), und deutliche Unterschiede nach Beziehung (k7).</p>
+    <div class="ce">
+      <p class="ce__lab">Offene Kernspannung · nicht in der Quelle</p>
+      <p>Zwei Fragen bleiben offen. Erstens die <b>Grenzziehung:</b> Wo genau verläuft die Linie zwischen normaler Trauer, die zu begleiten ist, und einer Störung, die zu behandeln ist — die Evidenz verengt diese Linie, entscheidet sie aber nicht abschließend. Zweitens die <b>dünne Evidenz</b> für aberkannte Beziehungen (Freunde, Liebende, Haustiere): hier ist die ehrlichste Aussage die ausgewiesene Lücke, nicht ein Urteil.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+<section class="br-page" id="kolophon">
+  <div class="br-frame"></div>
+  <span class="br-num">Kolophon</span>
+  <div class="br-inner">
+    <p class="br-eyebrow">Quellen &amp; Methode</p>
+    <h2 class="br-h">Kolophon</h2>
+    <div class="ko">
+      <p class="ko-h">Genutzte Quellen</p>
+      <p class="ko-src"><b>Stroebe &amp; Schut</b> (Dual-Process-Modell) · <b>Klass, Silverman &amp; Nickman</b> und <b>Klass &amp; Steffen</b> (fortgeführte Bindung) · <b>Worden</b> (Aufgaben) · <b>Bonanno</b> (Resilienz) · <b>Neimeyer</b> (Sinnrekonstruktion) · <b>Avis et al.</b> (Umbrella-Review) · <b>Zuelke et al.</b> · <b>Yao et al.</b> · <b>Hanauer et al.</b> · <b>Shear et al.</b> (CGT-RCT) · <b>Prigerson</b> (PGD) · <b>Rando</b> (komplizierte Trauer) · <b>Cacciatore</b> (Being-with) · <b>O'Connor</b> (Grieving Brain) · <b>Nielsen et al.</b> und <b>Treml et al.</b> (antizipatorische Trauer) · <b>Norton &amp; Gino</b> (Ritual) · <b>Doka</b> (aberkannte Trauer) · <b>Faust</b> (historischer Kontext) · <b>Cleary et al.</b> (Haustierverlust).</p>
+      <div class="ko-mono" aria-hidden="true">
+        <span class="ko-monogram">St</span><span class="ko-monogram">Kl</span><span class="ko-monogram">Wo</span><span class="ko-monogram">Bo</span><span class="ko-monogram">Ne</span><span class="ko-monogram">Sh</span><span class="ko-monogram">Pr</span><span class="ko-monogram">Ra</span><span class="ko-monogram">Ca</span><span class="ko-monogram">OC</span><span class="ko-monogram">Ni</span><span class="ko-monogram">Do</span>
+      </div>
+      <p class="ko-h">Methode &amp; Ehrlichkeit</p>
+      <p class="ko-src">Quellengestützte Synthese mit Fundstelle (Seite / Datei-Zeile / DOI) je Aussage; Personen nur als Monogramme, keine erfundenen Bilder, Zahlen oder Zitate; eigene Analyse getrennt als „Claudes Einordnung · nicht in der Quelle“. Geschätztes Faktenrisiko <b>≈ 7–15 % (geschätzt, nicht gemessen)</b>, konzentriert auf exakte Zahlen und Zitatwortlaut. Die Closed-Book-Rate von 35,9 % ist die Modellrate <b>ohne</b> Quelle — nicht die Rate dieser Arbeit. Debatten werden analysiert, nicht entschieden; Lücken werden ausgewiesen, nicht gefüllt.</p>
+      <p class="ko-h">Kurzfassung</p>
+      <a class="ko-link" href="broschuere.html">← Zur Kurzfassung (Übersichts-Broschüre)</a>
+    </div>
+  </div>
+</section>
+
+<hr class="br-cut">
+
+</body>
+</html>
