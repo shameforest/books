@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deinen FaceBuilder-Kopf mit exakter Textur nach Unreal bringen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E9E8E3;
+    --card:#F6F5F1;
+    --ink:#1B1E22;
+    --ink-soft:#4C5157;
+    --ink-faint:#787B7C;
+    --line:#D5D3CC;
+    --line-soft:#E0DED7;
+    --teal:#1E6E6A;
+    --teal-deep:#154C49;
+    --teal-tint:#E1EDEB;
+    --teal-line:#B9D6D2;
+    --ochre:#A9761F;
+    --ochre-deep:#7E5714;
+    --ochre-tint:#F3EBD8;
+    --ochre-line:#E3D2A6;
+    --limit-tint:#EFE4D3;
+    --limit-line:#DCC49A;
+    --radius:14px;
+    --maxtext:720px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:17px;line-height:1.66;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  .progress{position:fixed;top:0;left:0;height:3px;width:0%;background:var(--teal);z-index:100;transition:width .12s linear;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px;}
+  .text{max-width:var(--maxtext);margin-left:auto;margin-right:auto;}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.74rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);}
+  a{color:var(--teal-deep);text-underline-offset:3px;text-decoration-thickness:1px;}
+  a:hover{color:var(--teal);}
+  :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:3px;}
+
+  /* HERO */
+  .hero{padding:88px 0 26px;}
+  .hero .kicker{margin-bottom:22px;}
+  .hero h1{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:clamp(2.2rem,5.4vw,3.6rem);line-height:1.05;letter-spacing:-.02em;margin:0 0 22px;max-width:17ch;}
+  .hero h1 em{font-style:normal;color:var(--teal);}
+  .hero .lede{font-size:1.14rem;color:var(--ink-soft);max-width:60ch;margin:0 0 8px;}
+  .hero .memo{font-size:1rem;color:var(--ink-faint);max-width:60ch;margin:18px 0 0;padding-left:16px;border-left:2px solid var(--line);font-style:italic;}
+
+  /* FORK OVERVIEW (signature) */
+  .fork{margin:44px 0 8px;padding:26px 22px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);}
+  .fork-label{margin-bottom:16px;}
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin-bottom:16px;}
+  .node{flex:1 1 150px;min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:12px 12px 13px;}
+  .node .n{font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:600;letter-spacing:.12em;color:var(--teal);display:block;margin-bottom:6px;}
+  .node .t{font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:.92rem;line-height:1.2;color:var(--ink);}
+  .node .s{display:block;font-size:.78rem;color:var(--ink-faint);margin-top:3px;line-height:1.3;font-family:"IBM Plex Sans",sans-serif;font-weight:400;}
+  .lane{border-radius:11px;padding:14px 16px 16px;margin-top:12px;}
+  .lane.a{background:var(--teal-tint);border:1px solid var(--teal-line);}
+  .lane.b{background:transparent;border:1px dashed var(--line);}
+  .lane-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+  .lane-head .tag{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;}
+  .lane.a .tag{color:var(--teal-deep);}
+  .lane.b .tag{color:var(--ink-faint);}
+  .badge{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;background:var(--teal);color:#fff;border-radius:20px;padding:3px 9px;font-weight:600;}
+  .lane .flow{margin-bottom:0;}
+  .lane.a .node{background:#fff;border-color:var(--teal-line);}
+  .lane.a .node .t{color:var(--teal-deep);}
+
+  /* PHASE HEADERS */
+  .phase{padding-top:64px;}
+  .phase-head{margin-bottom:26px;}
+  .phase-head .eyebrow{display:block;margin-bottom:10px;}
+  .phase-head h2{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:clamp(1.5rem,3.2vw,2rem);letter-spacing:-.01em;margin:0;line-height:1.12;}
+  .phase-head p{color:var(--ink-soft);margin:12px 0 0;font-size:1.02rem;}
+
+  /* STEP CARDS */
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px 30px 26px;margin:20px auto 0;max-width:var(--maxtext);}
+  .step.route-a{border-left:3px solid var(--teal);}
+  .step-top{display:flex;align-items:baseline;gap:16px;margin-bottom:6px;}
+  .step-num{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:.86rem;color:#fff;background:var(--teal);border-radius:7px;padding:5px 9px;flex:0 0 auto;letter-spacing:.02em;line-height:1;}
+  .step-num.opt{background:var(--ochre);}
+  .step h3{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:1.28rem;letter-spacing:-.01em;margin:0;line-height:1.2;}
+  .step .goal{color:var(--ink-soft);margin:8px 0 18px;}
+  .step p{margin:0 0 14px;}
+  .step ul{margin:0 0 16px;padding:0;list-style:none;}
+  .step ul li{position:relative;padding-left:22px;margin-bottom:9px;color:var(--ink-soft);}
+  .step ul li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--teal);}
+  .step ul li strong{color:var(--ink);font-weight:600;}
+  .optflag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ochre-deep);background:var(--ochre-tint);border:1px solid var(--ochre-line);border-radius:20px;padding:2px 8px;margin-left:8px;vertical-align:middle;}
+
+  .path{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.82rem;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--teal-deep);white-space:nowrap;}
+  .clickblock{background:var(--paper);border:1px solid var(--line-soft);border-radius:9px;padding:14px 16px;margin:0 0 16px;}
+  .clickblock .cap{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:9px;}
+  .clickblock ol{margin:0;padding-left:20px;}
+  .clickblock ol li{margin-bottom:7px;color:var(--ink-soft);}
+  .clickblock ol li:last-child{margin-bottom:0;}
+
+  .merk{background:var(--ochre-tint);border-left:3px solid var(--ochre);border-radius:0 9px 9px 0;padding:12px 16px;margin:16px 0 2px;}
+  .merk .lab{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ochre-deep);display:block;margin-bottom:3px;}
+  .merk p{margin:0;font-weight:500;color:var(--ink);font-size:1.02rem;line-height:1.5;}
+
+  .note{background:var(--teal-tint);border:1px solid var(--teal-line);border-radius:10px;padding:14px 16px;margin:16px 0;}
+  .note .lab,.warn .lab{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;display:block;margin-bottom:5px;}
+  .note .lab{color:var(--teal-deep);}
+  .note p{margin:0;color:var(--ink-soft);font-size:.96rem;}
+  .note p:last-child{margin-bottom:0;}
+  .warn{background:var(--ochre-tint);border:1px solid var(--ochre-line);border-radius:10px;padding:14px 16px;margin:16px 0;}
+  .warn .lab{color:var(--ochre-deep);}
+  .warn p{margin:0;color:var(--ink-soft);font-size:.96rem;}
+
+  .src-tag{display:block;margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--ink-faint);letter-spacing:.02em;}
+  .src-tag b{color:var(--ink-soft);font-weight:500;}
+
+  /* LIMITS */
+  .limits{background:var(--limit-tint);border:1px solid var(--limit-line);border-radius:var(--radius);padding:30px 30px 24px;margin:22px auto 0;max-width:var(--maxtext);}
+  .limits h3{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:1.28rem;margin:0 0 6px;letter-spacing:-.01em;}
+  .limits .sub{color:var(--ink-soft);margin:0 0 18px;}
+  .ledger{display:grid;grid-template-columns:1fr;gap:0;}
+  .ledger .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;padding:11px 0;border-top:1px solid var(--limit-line);align-items:baseline;}
+  .ledger .row:first-child{border-top:none;}
+  .ledger .what{color:var(--ink);font-size:.98rem;}
+  .ledger .verdict{font-family:"IBM Plex Mono",monospace;font-size:.78rem;font-weight:500;text-align:right;white-space:nowrap;}
+  .verdict.good{color:var(--teal-deep);}
+  .verdict.mid{color:var(--ochre-deep);}
+  .verdict.no{color:#8a4a2c;}
+  .limits .bottom{margin:18px 0 0;padding-top:16px;border-top:1px solid var(--limit-line);font-weight:500;color:var(--ink);}
+
+  /* DECISION */
+  .decide{margin:22px auto 0;max-width:var(--maxtext);display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .opt{border-radius:var(--radius);padding:22px 22px 20px;}
+  .opt.a{background:var(--teal-tint);border:1px solid var(--teal-line);}
+  .opt.b{background:var(--card);border:1px solid var(--line);}
+  .opt .rt{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;display:block;margin-bottom:8px;}
+  .opt.a .rt{color:var(--teal-deep);}
+  .opt.b .rt{color:var(--ink-faint);}
+  .opt h4{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:1.05rem;margin:0 0 8px;line-height:1.25;}
+  .opt p{margin:0;color:var(--ink-soft);font-size:.94rem;}
+
+  /* SOURCES */
+  .sources{padding-top:64px;}
+  .sources ol{max-width:var(--maxtext);margin:18px auto 0;padding:0;list-style:none;counter-reset:s;}
+  .sources li{counter-increment:s;position:relative;padding:14px 0 14px 42px;border-top:1px solid var(--line);}
+  .sources li:first-child{border-top:none;}
+  .sources li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:15px;font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--teal);font-weight:600;}
+  .sources .st{font-weight:600;color:var(--ink);display:block;margin-bottom:2px;font-size:.98rem;}
+  .sources .sd{color:var(--ink-faint);font-size:.86rem;display:block;margin-bottom:4px;}
+  .sources .su{font-family:"IBM Plex Mono",monospace;font-size:.78rem;word-break:break-all;}
+
+  footer{margin-top:72px;border-top:1px solid var(--line);padding:34px 0 60px;color:var(--ink-faint);font-size:.9rem;}
+  footer .text{display:flex;flex-direction:column;gap:6px;}
+  .about{max-width:var(--maxtext);margin:26px auto 0;padding:16px 18px;border:1px solid var(--line-soft);border-radius:10px;background:var(--card);font-size:.9rem;color:var(--ink-faint);}
+  .about b{color:var(--ink-soft);font-weight:600;}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+  @media (max-width:680px){
+    body{font-size:16px;}
+    .hero{padding:64px 0 20px;}
+    .step,.limits{padding:24px 20px;}
+    .node{flex:1 1 100%;}
+    .decide{grid-template-columns:1fr;}
+    .ledger .row{grid-template-columns:1fr;gap:2px;}
+    .ledger .verdict{text-align:left;}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow kicker">Praxis-Guide · Dein FaceBuilder-Kopf → Unreal Engine 5</span>
+    <h1>Dein Kopf ist fertig. So kommt er nach Unreal — mit genau <em>dieser</em> Textur.</h1>
+    <p class="lede">Du hast den Kopf gebaut, die echte Foto-Textur liegt drauf, und die Haare stecken als texturierte Geometrie schon mit drin. Dieser Guide bringt <strong>genau diesen Kopf</strong> nach Unreal und behält deine Blender-Textur — keine neu erstellte MetaHuman-Haut. Zwei klar getrennte Wege, je nach Ziel.</p>
+    <p class="memo">Ein Andenken verdient Sorgfalt. Deshalb steht hier offen, was mit genau diesem Kopf erreichbar ist — und was nicht.</p>
+
+    <div class="fork reveal">
+      <span class="eyebrow fork-label">Der Weg im Überblick — gemeinsame Vorbereitung, dann eine Weiche</span>
+      <div class="flow">
+        <div class="node"><span class="n">A1</span><span class="t">Textur sichern</span><span class="s">Create Texture + Pack/Export</span></div>
+        <div class="node"><span class="n">A2–A3</span><span class="t">Hals · Blendshapes</span><span class="s">trimmen · ARKit (optional)</span></div>
+        <div class="node"><span class="n">A4</span><span class="t">FBX-Export</span><span class="s">Convert to Mesh + embed</span></div>
+      </div>
+
+      <div class="lane a">
+        <div class="lane-head"><span class="tag">Route A — Direktweg</span><span class="badge">empfohlen</span></div>
+        <div class="flow">
+          <div class="node"><span class="n">5–6</span><span class="t">Import + Material</span><span class="s">exakte Textur = Base Color</span></div>
+          <div class="node"><span class="n">7</span><span class="t">ARKit-Animation</span><span class="s">Live Link · optional</span></div>
+          <div class="node"><span class="n">8</span><span class="t">Körper anhängen</span><span class="s">optional</span></div>
+        </div>
+      </div>
+
+      <div class="lane b">
+        <div class="lane-head"><span class="tag">Route B — MetaHuman (nur bei Bedarf voller Körper)</span></div>
+        <div class="flow">
+          <div class="node"><span class="n">B1</span><span class="t">MH-Textur + Solve</span><span class="s">Textur umgelegt</span></div>
+          <div class="node"><span class="n">B2</span><span class="t">Körper + Rig</span><span class="s">automatisch</span></div>
+          <div class="node"><span class="n">B3</span><span class="t">Haare neu</span><span class="s">als Groom</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- KEY FORK EXPLAINED -->
+<section class="phase">
+  <div class="wrap">
+    <div class="phase-head text">
+      <span class="eyebrow">Zuerst verstehen</span>
+      <h2>Die eine Entscheidung, die alles bestimmt</h2>
+      <p>Es gibt einen technischen Punkt, den man nicht umgehen kann — und er betrifft genau das, was dir wichtig ist.</p>
+    </div>
+    <div class="step reveal">
+      <p>Du kannst <strong>nicht gleichzeitig</strong> deine exakte Blender-Textur auf deinem exakten Mesh <em>und</em> MetaHumans Gesichts-Rig haben. MetaHuman ersetzt dafür die Kopf-Topologie und die Textur durch seine eigenen. Also entscheidet deine Priorität:</p>
+      <ul>
+        <li><strong>Route A (Direktweg):</strong> deine <strong>exakte</strong> Textur, dein exaktes Mesh, sogar die eingebackenen Haare bleiben. Gesichts-Animation läuft über FaceBuilders ARKit-Blendshapes. Was fehlt: ein MetaHuman-Körper — FaceBuilder ist nur der Kopf.</li>
+        <li><strong>Route B (MetaHuman):</strong> voller Körper + Rig, aber deine Textur wird auf MetaHuman-UVs <strong>umgelegt</strong> (die echte Foto-Textur, nur neu verteilt), und die eingebackenen Haare musst du durch einen Groom ersetzen.</li>
+      </ul>
+      <div class="note">
+        <span class="lab">Empfehlung für dein Ziel</span>
+        <p>Weil dein Wunsch „exakt diese Textur, keine neu erstellte" ist, ist <strong>Route A der klare Weg</strong>. Und dank FaceBuilders 51 ARKit-Blendshapes ist der Kopf dort trotzdem animierbar. Route B nur, wenn du zwingend den vollen, automatisch gerriggten Körper brauchst.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE A -->
+<section class="phase">
+  <div class="wrap">
+    <div class="phase-head text">
+      <span class="eyebrow">Vorbereitung — in Blender (für beide Routen)</span>
+      <h2>Deinen Kopf reisefertig machen</h2>
+      <p>Textur sichern, den weißen Halsbereich behandeln, optional Blendshapes erzeugen, sauber exportieren. Das gilt egal, welche Route du danach nimmst.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- A1 -->
+    <article class="step reveal">
+      <div class="step-top"><span class="step-num">A1</span><h3>Textur in FaceBuilder erzeugen &amp; sichern</h3></div>
+      <p class="goal">Deine Textur muss als echte Bilddatei existieren — sonst kann Unreal sie nicht mitnehmen.</p>
+      <p>FaceBuilder erzeugt die Textur mit einem Klick: im <span class="path">Texture</span>-Tab auf <strong>Create Texture</strong>. Sie wird aus den gepinnten Ansichten aufs UV gebacken.</p>
+      <ul>
+        <li>Über das <strong>Zahnrad</strong> neben dem Knopf: Quellbilder wählen und die Ausgabegröße setzen (z. B. 4096).</li>
+        <li>Erweitert: <strong>Angle strictness</strong> auf ca. <strong>10–20</strong> (bestes Blending), <strong>Expand Edges</strong> an (füllt dünne Stellen, z. B. Richtung Hinterkopf), bei unterschiedlichem Licht <strong>Equalize brightness/colour</strong>.</li>
+        <li><strong>Sichern:</strong> die Textur liegt zunächst nur in der .blend-Datei. Entweder <span class="path">File → External Data → Pack All</span>, oder im Texture-Tab den <strong>Export</strong>-Knopf nutzen und sie als eigene Bilddatei speichern.</li>
+      </ul>
+      <div class="merk"><span class="lab">Merksatz</span><p>Erst „Create Texture", dann sichern (Pack All oder Export) — sonst existiert die Textur nur flüchtig in der Datei.</p></div>
+      <span class="src-tag"><b>Quelle:</b> KeenTools FaceBuilder-Guide (Create Texture, Angle strictness, Expand Edges) [2] · SuperRenders (Pack All) [3]</span>
+    </article>
+
+    <!-- A2 -->
+    <article class="step reveal">
+      <div class="step-top"><span class="step-num">A2</span><h3>Den weißen Halsbereich behandeln</h3></div>
+      <p class="goal">Der weiße Teil unten ist untexturierte Geometrie — sonst leuchtet er in Unreal flach weiß.</p>
+      <p>Dein Kopf-Mesh reicht bis in einen Hals-/Kragenbereich, den die Fotos nicht abgedeckt haben. Zwei saubere Wege:</p>
+      <ul>
+        <li><strong>Abschneiden:</strong> im Edit-Modus die untere Kanten-Schleife auswählen und alles darunter löschen — ergibt eine saubere Büsten-Kante.</li>
+        <li><strong>Verdecken:</strong> stehen lassen und später unter Kleidung/Körper (Route A Schritt 8 oder Route B) verschwinden lassen.</li>
+        <li>Zusätzlich hilft <strong>Expand Edges</strong> in den Textur-Einstellungen, Hautfarbe etwas weiter nach unten zu ziehen.</li>
+      </ul>
+      <div class="merk"><span class="lab">Merksatz</span><p>Der weiße Hals ist untexturierte Geometrie — sauber abschneiden oder später unter Kleidung/Körper verstecken.</p></div>
+      <span class="src-tag"><b>Quelle:</b> Standard-Blender-Technik · FaceBuilder Expand Edges [2]</span>
+    </article>
+
+    <!-- A3 -->
+    <article class="step reveal">
+      <div class="step-top"><span class="step-num opt">A3</span><h3>ARKit-Blendshapes erzeugen <span class="optflag">optional · für Animation</span></h3></div>
+      <p class="goal">Der Grund, warum du für Gesichts-Animation keinen MetaHuman brauchst.</p>
+      <p>FaceBuilder kann <strong>51 ARKit-kompatible FACS-Blendshapes</strong> für den Kopf generieren (Blendshapes-Bereich). Die werden zu Shape Keys / Morph Targets — genau der ARKit-Satz, den du kennst. Damit lässt sich der Kopf später in Unreal per Live Link Face / ARKit steuern, ganz ohne MetaHuman.</p>
+      <div class="merk"><span class="lab">Merksatz</span><p>FaceBuilders 51 ARKit-Blendshapes machen den Kopf animierbar — genau deine FACS-Domäne, ohne MetaHuman.</p></div>
+      <span class="src-tag"><b>Quelle:</b> KeenTools FaceBuilder (51 ARKit-Blendshapes, Live Link) [1] · SuperRenders [3]</span>
+    </article>
+
+    <!-- A4 -->
+    <article class="step reveal">
+      <div class="step-top"><span class="step-num">A4</span><h3>In ein normales Mesh umwandeln &amp; als FBX exportieren</h3></div>
+      <p class="goal">So kommt genau dein Kopf — mit Textur — sauber in Unreal an.</p>
+      <ul>
+        <li>Rechtsklick auf das FaceBuilder-Objekt → <span class="path">Convert to → Mesh</span>. Danach ist es ein normales Mesh, kein FaceBuilder-Objekt mehr.</li>
+      </ul>
+      <div class="clickblock">
+        <span class="cap">In Blender: File → Export → FBX</span>
+        <ol>
+          <li><span class="path">Path Mode</span> auf <strong>Copy</strong>, den <strong>Embed Textures</strong>-Knopf daneben <strong>aktivieren</strong>.</li>
+          <li><span class="path">Limit to: Selected Objects</span> anhaken, nur den Kopf auswählen.</li>
+          <li>Falls du A3 gemacht hast: sicherstellen, dass <strong>Shape Keys / Morph Targets</strong> mit exportiert werden.</li>
+        </ol>
+      </div>
+      <div class="merk"><span class="lab">Merksatz</span><p>Erst „Convert to Mesh", dann FBX mit eingebetteter Textur — dein exakter Kopf, unverändert, für Unreal.</p></div>
+      <span class="src-tag"><b>Quelle:</b> SuperRenders (Convert to Mesh) [3] · CherryPeak (FBX-Embed-Settings) [6]</span>
+    </article>
+  </div>
+</section>
+
+<!-- PHASE B: ROUTE A -->
+<section class="phase">
+  <div class="wrap">
+    <div class="phase-head text">
+      <span class="eyebrow">Route A — empfohlen</span>
+      <h2>Direkt nach Unreal, exakte Textur behalten</h2>
+      <p>Kein MetaHuman, keine Umlegung. Dein Mesh, deine Textur, deine eingebackenen Haare — genau so, wie sie sind.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- 5 -->
+    <article class="step route-a reveal">
+      <div class="step-top"><span class="step-num">05</span><h3>FBX in Unreal importieren</h3></div>
+      <p class="goal">Der Kopf landet als echtes Mesh im Projekt — mit deiner Textur im Gepäck.</p>
+      <ul>
+        <li>Die FBX per Drag &amp; Drop in den <strong>Content Browser</strong> ziehen.</li>
+        <li>Hast du Blendshapes (A3): beim Import <span class="path">Import Morph Targets</span> anhaken.</li>
+        <li>Import als <strong>Skeletal Mesh</strong>, wenn du animieren/an einen Körper hängen willst — als <strong>Static Mesh</strong>, wenn es eine reine Büste bleibt.</li>
+      </ul>
+      <div class="merk"><span class="lab">Merksatz</span><p>Beim Import „Import Morph Targets" anhaken, wenn du die ARKit-Blendshapes mitnimmst.</p></div>
+      <span class="src-tag"><b>Quelle:</b> Standard-Unreal-FBX-Import · yelzkizi (Import/Morph-Hinweise) [5]</span>
+    </article>
+
+    <!-- 6 -->
+    <article class="step route-a reveal">
+      <div class="step-top"><span class="step-num">06</span><h3>Textur als Material zuweisen</h3></div>
+      <p class="goal">Der Moment, in dem die echte Haut unverändert im Charakter landet.</p>
+      <ul>
+        <li>Unreal importiert deine eingebettete Textur automatisch mit.</li>
+        <li>Ein <strong>Material</strong> anlegen und die FaceBuilder-Textur in <span class="path">Base Color</span> stecken. Für Haut kannst du später Subsurface/Roughness ergänzen — für die Kontrolle des Looks reicht zuerst Base Color.</li>
+        <li>Material dem Kopf zuweisen. Ergebnis: dein exaktes Mesh, deine exakte Textur, die eingebackenen Haare — in Unreal, ohne Drift, ohne neue Textur.</li>
+      </ul>
+      <div class="merk"><span class="lab">Merksatz</span><p>Deine FaceBuilder-Textur wandert direkt in „Base Color" — das ist die echte Haut, unverändert.</p></div>
+      <span class="src-tag"><b>Quelle:</b> Standard-Unreal-Material-Setup</span>
+    </article>
+
+    <!-- 7 -->
+    <article class="step route-a reveal">
+      <div class="step-top"><span class="step-num opt">07</span><h3>Gesicht animieren via ARKit / Live Link <span class="optflag">optional</span></h3></div>
+      <p class="goal">Dein gewohnter FACS-Workflow — jetzt auf deinem eigenen Kopf.</p>
+      <ul>
+        <li>Mit den importierten <strong>Morph Targets</strong> treibst du das Gesicht über <strong>Live Link Face</strong> (ARKit) — dieselbe Technik wie bei MetaHuman.</li>
+        <li>Ein Pose-Asset / Anim-Blueprint bildet die ARKit-Kurven auf die Morph Targets ab.</li>
+      </ul>
+      <div class="merk"><span class="lab">Merksatz</span><p>Live Link Face treibt die importierten ARKit-Morphs — dein FACS-Workflow, auf deinem eigenen Kopf.</p></div>
+      <span class="src-tag"><b>Quelle:</b> KeenTools (ARKit/Live Link) [1] · yelzkizi (ARKit-Test) [5]</span>
+    </article>
+
+    <!-- 8 -->
+    <article class="step route-a reveal">
+      <div class="step-top"><span class="step-num opt">08</span><h3>Einen Körper anhängen <span class="optflag">optional</span></h3></div>
+      <p class="goal">Der einzige echte Zusatzschritt gegenüber MetaHuman — dafür bleibt der Kopf exakt.</p>
+      <ul>
+        <li>FaceBuilder ist kopf-only. Für eine volle Figur: den Kopf am Hals an einen <strong>Körper-Mesh</strong> setzen (z. B. UE-Mannequin oder ein gekaufter Body), Hautton angleichen, verbinden/skinnen.</li>
+        <li>Das ist manueller als MetaHumans automatischer Körper — behält aber deinen exakten Kopf samt Textur.</li>
+      </ul>
+      <div class="merk"><span class="lab">Merksatz</span><p>Der Körper ist der einzige echte Zusatzschritt — Kopf bleibt exakt, Körper kommt separat dazu.</p></div>
+      <span class="src-tag"><b>Quelle:</b> KeenTools (FaceBuilder = Kopf) [1] · allgemeine Unreal-Praxis</span>
+    </article>
+  </div>
+</section>
+
+<!-- PHASE C: ROUTE B -->
+<section class="phase">
+  <div class="wrap">
+    <div class="phase-head text">
+      <span class="eyebrow">Route B — Alternative</span>
+      <h2>Voller Charakter über MetaHuman</h2>
+      <p>Nur wählen, wenn du zwingend den automatisch gerriggten Körper brauchst — mit den ehrlichen Kompromissen.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <article class="step reveal">
+      <div class="step-top"><span class="step-num">B</span><h3>Der MetaHuman-Weg im Kurzüberblick</h3></div>
+      <p class="goal">Körper + Rig automatisch — dafür Textur umgelegt, Haare neu, etwas Formdrift.</p>
+      <ul>
+        <li>In FaceBuilder statt der normalen Textur den <strong>Export → MetaHuman-Textur</strong> nutzen (synchron zum MetaHuman-UV, trägt Muttermale/Narben mit). Kopf als FBX exportieren.</li>
+        <li>In Unreal: MetaHuman-Plugin aktivieren, <span class="path">MetaHuman Identity</span> anlegen, <span class="path">Create Components → From Mesh</span>, Landmarks setzen, <strong>Conform</strong> + Sculpt.</li>
+        <li><span class="path">MetaHuman Identity Solve → Mesh to MetaHuman</span> → gerriggter MetaHuman mit Preset-Körper.</li>
+        <li>Textur zuweisen (<span class="path">Face Texture Index</span> + deine MH-Textur), Körper anpassen, <strong>Haare als Groom</strong> (Fab) ergänzen, per Live Link / MetaHuman Animator animieren.</li>
+      </ul>
+      <div class="warn">
+        <span class="lab">Ehrlich dazu</span>
+        <p>Die Textur ist auch hier deine echte Foto-Textur — nur auf MetaHuman-UVs neu verteilt, nicht das exakte Original-Mesh. Zusätzlich: leichte Formdrift durch den Conform, und die eingebackenen Haare gehen verloren (Groom nötig).</p>
+      </div>
+      <div class="merk"><span class="lab">Merksatz</span><p>MetaHuman schenkt dir Körper + Rig, kostet dich aber die eingebackenen Haare und etwas Formtreue.</p></div>
+      <span class="src-tag"><b>Quelle:</b> KeenTools FaceBuilder × MetaHuman [4] · yelzkizi [5] · CherryPeak [6]</span>
+    </article>
+  </div>
+</section>
+
+<!-- LIMITS -->
+<section class="phase" style="padding-top:56px;">
+  <div class="wrap">
+    <div class="limits reveal">
+      <h3>Was bei genau diesem Kopf herauskommt</h3>
+      <p class="sub">Kalibriert auf deinen Screenshot — Ohren sichtbar, Haut real projiziert, Haare eingebacken, Hinterkopf flacher, weißer Hals.</p>
+      <div class="ledger">
+        <div class="row"><span class="what">Gesicht von vorne + echte Textur (Route A, unverändert)</span><span class="verdict good">exzellent</span></div>
+        <div class="row"><span class="what">Eingebackene Haare &amp; Ohren (Route A)</span><span class="verdict good">bleiben erhalten</span></div>
+        <div class="row"><span class="what">Gesichts-Animation über ARKit-Blendshapes</span><span class="verdict good">möglich</span></div>
+        <div class="row"><span class="what">Hinterkopf &amp; Profil (FaceBuilder-typisch flacher)</span><span class="verdict mid">approximiert</span></div>
+        <div class="row"><span class="what">Weißer Halsbereich (untexturiert)</span><span class="verdict mid">trimmen/verdecken</span></div>
+        <div class="row"><span class="what">Voller Körper automatisch (Route A ist kopf-only)</span><span class="verdict no">separat nötig</span></div>
+      </div>
+      <p class="bottom">Kurz: Über Route A bekommst du genau diesen Kopf mit exakt dieser Textur und den Haaren nach Unreal, animierbar per ARKit. Der Körper ist der einzige Teil, den du separat ergänzt.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DECISION -->
+<section class="phase" style="padding-top:56px;">
+  <div class="wrap">
+    <div class="phase-head text">
+      <span class="eyebrow">Kurzentscheidung</span>
+      <h2>Welche Route für dich</h2>
+    </div>
+    <div class="decide reveal">
+      <div class="opt a">
+        <span class="rt">Route A — Direktweg</span>
+        <h4>Exakte Textur, Look inkl. Haare, ARKit-animierbar</h4>
+        <p>Wenn dir vor allem <strong>genau diese Textur</strong> und der Look wichtig sind — als Büste oder mit separat angehängtem Körper. Deine Priorität. Empfohlen.</p>
+      </div>
+      <div class="opt b">
+        <span class="rt">Route B — MetaHuman</span>
+        <h4>Voller, automatisch gerriggter Körper</h4>
+        <p>Nur wenn du <strong>zwingend</strong> den vollen MetaHuman-Körper brauchst und Textur-Umlegung, Groom-Haare und leichte Drift akzeptierst.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="sources">
+  <div class="wrap">
+    <div class="phase-head text">
+      <span class="eyebrow">Belege</span>
+      <h2>Quellen</h2>
+      <p>FaceBuilder-Schritte stammen aus KeenTools' eigenen Anleitungen; die MetaHuman-Schritte (Route B) aus den geprüften Walkthroughs. Material- und FBX-Import auf der Unreal-Seite sind Standard-Technik; Menünamen können sich mit neuen Versionen verschieben.</p>
+    </div>
+    <ol>
+      <li>
+        <span class="st">KeenTools — FaceBuilder for Blender (Produktseite)</span>
+        <span class="sd">Köpfe „animatable, game-ready", Export in jedes Format, 51 ARKit-kompatible FACS-Blendshapes, Live Link.</span>
+        <a class="su" href="https://keentools.io/products/facebuilder-for-blender">keentools.io/products/facebuilder-for-blender</a>
+      </li>
+      <li>
+        <span class="st">KeenTools — FaceBuilder for Blender Guide (Medium)</span>
+        <span class="sd">Create Texture im Texture-Tab, Angle strictness 10–20, Expand Edges, Textur im File / Export-Knopf.</span>
+        <a class="su" href="https://medium.com/keentools/facebuilder-for-blender-guide-cbb10c717f7c">medium.com/keentools — facebuilder-for-blender-guide</a>
+      </li>
+      <li>
+        <span class="st">Super Renders — FaceBuilder 2024.1</span>
+        <span class="sd">One-Click-Textur, ARKit-Blendshapes, „Convert to Mesh" vor Export, „Pack All" vor dem Verschieben.</span>
+        <a class="su" href="https://superrendersfarm.com/article/keentools-facebuilder-2024-1-blender-update">superrendersfarm.com — facebuilder-2024.1</a>
+      </li>
+      <li>
+        <span class="st">KeenTools — FaceBuilder × MetaHuman</span>
+        <span class="sd">Route B: „MH texture" synchron zum MetaHuman-Layout, überträgt Muttermale/Narben; MH-UV ab 2022.2.</span>
+        <a class="su" href="https://keentools.io/integrations/fbb-mh">keentools.io/integrations/fbb-mh</a>
+      </li>
+      <li>
+        <span class="st">yelzkizi — Real Humans to MetaHuman / from a Photo</span>
+        <span class="sd">Route B: Identity Solve, Textur/Normal-Handling, Face-Material überschreiben, ARKit-Test.</span>
+        <a class="su" href="https://yelzkizi.org/convert-a-real-human-to-metahuman/">yelzkizi.org/convert-a-real-human-to-metahuman</a>
+      </li>
+      <li>
+        <span class="st">CherryPeak — Translating Mesh into a MetaHuman Identity</span>
+        <span class="sd">FBX-Export-Settings (Embed Textures, Selected), Conform, Face Texture Index, Edit-Zyklus.</span>
+        <a class="su" href="https://cherrypeak.eu/en/blog/metahuman-2-face">cherrypeak.eu/en/blog/metahuman-2-face</a>
+      </li>
+      <li>
+        <span class="st">Fab — MetaHuman Grooms · Epic Groom Starter Kit</span>
+        <span class="sd">Route B: Haare als bindbarer Groom (.mhpkg / Alembic) an den MetaHuman-Kopf.</span>
+        <a class="su" href="https://dev.epicgames.com/documentation/metahuman/groom-starter-kit">dev.epicgames.com/documentation/metahuman/groom-starter-kit</a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="text">
+      <span class="about"><b>Zu diesem Guide:</b> zugeschnitten auf deinen konkreten FaceBuilder-Kopf. Kernbotschaft: Für „exakt diese Textur, keine neu erstellte" ist der <b>Direktweg (Route A)</b> die passende Wahl — er behält Mesh, Textur und die eingebackenen Haare 1:1, und über FaceBuilders ARKit-Blendshapes bleibt der Kopf animierbar. Route B nur für den vollen automatischen Körper.</span>
+      <span style="margin-top:14px;">Sorgfältig gebaut. Die Unreal-seitigen Menünamen können sich mit neuen Versionen verschieben — der Ablauf bleibt derselbe.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var bar=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var max=h.scrollHeight-h.clientHeight;var pct=max>0?(h.scrollTop/max)*100:0;bar.style.width=pct+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce && 'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  } else {document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
+</script>
+</body>
+</html>
