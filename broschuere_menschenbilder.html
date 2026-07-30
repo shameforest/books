@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Die Macht der Menschenbilder — Übersichts-Broschüre zur Doppelstudie (Zichy)</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500;1,6..72,600&family=Spectral:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style id="base-css">
+:root{
+  --bg:#0b0f13;
+  --page-1:#1b2832; --page-2:#0e161b;
+  --ink:#f4ecd9; --ink-2:#e7dcc2; --ink-soft:#cdbfa0; --ink-faint:#9a8f78;
+  --gold:#c89b3c; --gold-line:#cda24f; --gold-hi:#ecc868; --gold-max:#f0cf78;
+  --a1:#2f5a63; --a1-hi:#9fd0db;
+  --a2:#b85c2f; --a2-hi:#e0a060;
+  --a3:#a3242c; --a3-hi:#e8959c;
+  --a4:#c89b3c; --a4-hi:#ecc868;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);font-family:"Spectral",Georgia,serif;color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-feature-settings:"kern","liga","onum";}
+html{scroll-behavior:smooth;}
+a{color:var(--gold-hi);}
+a:focus-visible{outline:2px solid var(--gold-max);outline-offset:3px;}
+.br-page{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:clamp(16px,2.4vw,28px);padding:clamp(46px,7vw,84px) clamp(20px,5vw,60px);overflow:hidden;background:radial-gradient(120% 80% at 50% 0%,var(--page-1),var(--page-2) 64%),var(--page-2);color:var(--ink);}
+.br-cut{border:0;height:1px;width:min(820px,90vw);margin:0 auto;background:linear-gradient(90deg,transparent,rgba(200,155,60,.42),transparent);}
+.br-frame{position:absolute;inset:clamp(14px,2.4vw,30px);border:1px solid rgba(200,155,60,.5);pointer-events:none;}
+.br-frame::before{content:"";position:absolute;inset:5px;border:1px solid rgba(200,155,60,.24);}
+.br-corner{position:absolute;width:26px;height:26px;pointer-events:none;opacity:.85;}
+.br-corner svg{display:block;width:100%;height:100%;}
+.br-corner--tl{top:clamp(8px,1.6vw,20px);left:clamp(8px,1.6vw,20px);}
+.br-corner--tr{top:clamp(8px,1.6vw,20px);right:clamp(8px,1.6vw,20px);transform:rotate(90deg);}
+.br-corner--br{bottom:clamp(8px,1.6vw,20px);right:clamp(8px,1.6vw,20px);transform:rotate(180deg);}
+.br-corner--bl{bottom:clamp(8px,1.6vw,20px);left:clamp(8px,1.6vw,20px);transform:rotate(270deg);}
+.br-num{position:absolute;top:clamp(20px,3vw,34px);right:clamp(26px,4vw,48px);font:600 11px/1 "Inter Tight",sans-serif;letter-spacing:.1em;color:var(--gold-line);z-index:2;}
+.br-eyebrow{margin:0;font:700 clamp(11px,1.4vw,13px)/1 "Inter Tight",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-line);}
+.br-title{margin:0;font:600 clamp(28px,4.8vw,50px)/1.05 "Newsreader",serif;font-style:italic;color:#f7f0db;text-align:center;}
+.br-kicker{margin:0;max-width:760px;text-align:center;font:400 clamp(14px,1.7vw,16.5px)/1.55 "Spectral",Georgia,serif;color:var(--ink-soft);}
+.br-foot{margin-top:auto;padding-top:14px;font:600 10.5px/1.5 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);text-align:center;}
+.kb{width:min(780px,100%);margin:2px auto;border:1px solid rgba(200,155,60,.25);border-radius:8px;background:rgba(0,0,0,.22);padding:6px 8px 2px;}
+.kb svg{display:block;width:100%;height:auto;}
+.kb .kb-ill{font:600 8.5px "Inter Tight",sans-serif;letter-spacing:.14em;fill:#8d8266;text-transform:uppercase;}
+.kb text{font-family:"Inter Tight",sans-serif;}
+.kp-eyebrow{margin:0;font:700 clamp(11px,1.4vw,13px)/1 "Inter Tight",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--acc-hi,var(--gold-line));}
+.kp-title{margin:0;font:600 clamp(26px,4vw,42px)/1.06 "Newsreader",serif;font-style:italic;color:#f7f0db;text-align:center;}
+.kp-page{--acc:var(--a1);--acc-hi:var(--a1-hi);}
+.kp-page--a2{--acc:var(--a2);--acc-hi:var(--a2-hi);}
+.kp-page--a3{--acc:var(--a3);--acc-hi:var(--a3-hi);}
+.kp-page--a4{--acc:var(--a4);--acc-hi:var(--a4-hi);}
+.kp-kernfrage{width:min(760px,100%);margin:0;padding:10px 18px;border-left:3px solid var(--gold);background:rgba(200,155,60,.07);font:500 clamp(16px,2vw,19px)/1.5 "Newsreader",serif;font-style:italic;color:var(--ink-2);}
+.kp-kernfrage .kq-lab{display:block;font:700 .58rem/1 "Inter Tight",sans-serif;font-style:normal;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-line);margin-bottom:6px;}
+.merk{width:min(760px,100%);border:1px solid rgba(236,200,104,.55);border-radius:10px;background:linear-gradient(180deg,rgba(236,200,104,.14),rgba(236,200,104,.05));padding:14px 18px;}
+.merk .merk-lab{display:block;font:700 .6rem/1 "Inter Tight",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-max);margin-bottom:7px;}
+.merk p{margin:0;font:400 clamp(14.5px,1.8vw,16.5px)/1.6 "Spectral",Georgia,serif;color:#f6efdc;}
+.merk .merk-note{display:block;margin-top:8px;font:600 clamp(13px,1.6vw,14.5px)/1.5 "Inter Tight",sans-serif;color:var(--gold-hi);}
+.wiss{width:min(760px,100%);border:1px solid color-mix(in srgb,var(--acc,#2f5a63) 65%,#c89b3c 20%);border-radius:10px;background:rgba(255,255,255,.03);padding:14px 18px;}
+.wiss .wiss-lab{display:block;font:700 .6rem/1 "Inter Tight",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--acc-hi,#9fd0db);margin-bottom:8px;}
+.wiss ul{margin:0;padding-left:18px;}
+.wiss li{margin:0 0 7px;font:400 13.8px/1.55 "Spectral",Georgia,serif;color:var(--ink-2);}
+.wiss li:last-child{margin-bottom:0;}
+.wiss .wiss-opt{display:block;margin-top:10px;padding-top:9px;border-top:1px dashed rgba(200,155,60,.4);font:600 13.5px/1.55 "Inter Tight",sans-serif;color:var(--gold-hi);}
+.wiss .wiss-opt b{color:var(--gold-max);}
+.ev{display:inline-block;vertical-align:1px;margin-left:6px;padding:2px 7px;border-radius:999px;font:700 8.5px/1 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;}
+.ev--belegt{background:rgba(47,90,99,.5);color:#bfe4ec;border:1px solid #5d94a0;}
+.ev--gestuetzt{background:rgba(200,155,60,.22);color:#f0cf78;border:1px solid #b7924a;}
+.ev--plausibel{background:rgba(184,92,47,.22);color:#eab183;border:1px solid #b87a4f;}
+.ev--gemischt{background:rgba(163,36,44,.2);color:#eba3a9;border:1px solid #a95159;}
+.kp-cite{width:min(760px,100%);margin:0;padding:14px 18px;border-left:3px solid var(--gold);background:rgba(0,0,0,.25);}
+.kp-cite p{margin:0;font:500 clamp(16px,2.1vw,19.5px)/1.5 "Newsreader",serif;font-style:italic;color:#f4ead0;}
+.kp-cite .kc-src{display:block;margin-top:8px;font:600 10.5px/1.4 "Inter Tight",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-line);}
+.br-synth{width:min(760px,100%);border:1px solid rgba(47,90,99,.8);border-radius:10px;background:linear-gradient(180deg,rgba(29,58,64,.5),rgba(17,35,42,.55));padding:15px 18px;}
+.br-synth .sy-lab{display:block;font:700 .6rem/1 "Inter Tight",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#9fd0db;margin-bottom:9px;}
+.br-synth .sy-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;}
+.br-synth h4{margin:0 0 4px;font:700 10px/1.3 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-line);}
+.br-synth ul{margin:0;padding-left:16px;}
+.br-synth li{margin:0 0 4px;font:400 12.6px/1.5 "Spectral",Georgia,serif;color:var(--ink-2);}
+.br-synth .sy-conf{grid-column:1 / -1;margin:2px 0 0;padding-top:8px;border-top:1px dashed rgba(159,208,219,.35);font:600 12px/1.55 "Inter Tight",sans-serif;color:#bfe0e8;}
+.dlx-more{width:min(760px,100%);text-align:center;font:600 12.5px/1.5 "Inter Tight",sans-serif;letter-spacing:.06em;}
+.dlx-more a{color:var(--gold-hi);text-decoration:none;border-bottom:1px solid rgba(236,200,104,.5);padding-bottom:2px;}
+@media (max-width:620px){.br-synth .sy-grid{grid-template-columns:1fr;}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+@media print{
+  @page{size:A4 portrait;margin:0;}
+  body{background:#0e161b;}
+  .br-cut{display:none;}
+  .br-page{break-before:page;min-height:297mm;padding:16mm 13mm;}
+  #cover-title{break-before:auto;min-height:297mm;}
+  .tc-shimmer,.tc-cue{display:none!important;}
+  a{text-decoration:none;}
+}
+</style>
+<style id="tc-css">
+.tc-cover{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,2vw,22px);padding:clamp(52px,8vw,96px) clamp(22px,5vw,64px);overflow:hidden;text-align:center;color:var(--ink);background:radial-gradient(130% 95% at 50% -6%,#22384a 0%,#16242e 38%,#0d151b 78%),#0d151b;}
+.tc-bg{position:absolute;inset:0;z-index:0;opacity:.5;}
+.tc-bg svg{width:100%;height:100%;display:block;}
+.tc-light{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(62% 40% at 50% 34%,rgba(236,200,104,.13),transparent 70%),linear-gradient(180deg,rgba(244,236,217,.05),transparent 26%,transparent 72%,rgba(0,0,0,.42));}
+.tc-frame{position:absolute;inset:clamp(14px,2.4vw,30px);border:1px solid rgba(200,155,60,.55);pointer-events:none;z-index:2;}
+.tc-frame::before{content:"";position:absolute;inset:5px;border:1px solid rgba(200,155,60,.26);}
+.tc-shimmer{position:absolute;left:0;right:0;top:0;height:3px;z-index:2;background:linear-gradient(90deg,transparent,rgba(240,207,120,.85),transparent);animation:tcPulse 5.5s ease-in-out infinite;}
+@keyframes tcPulse{0%,100%{opacity:.25;}50%{opacity:.9;}}
+.tc-inner{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;gap:clamp(13px,1.9vw,20px);max-width:900px;}
+.tc-plaque{display:inline-block;padding:8px 20px;border:1px solid rgba(200,155,60,.75);border-radius:999px;background:rgba(13,18,23,.62);font:700 clamp(10.5px,1.3vw,12.5px)/1 "Inter Tight",sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-hi);}
+.tc-emblem{width:clamp(128px,16vw,176px);height:clamp(128px,16vw,176px);}
+.tc-emblem svg{width:100%;height:100%;display:block;filter:drop-shadow(0 10px 26px rgba(0,0,0,.55));}
+.tc-title{margin:0;font:800 clamp(34px,6.4vw,72px)/1.02 "Newsreader",serif;letter-spacing:.015em;text-transform:uppercase;color:#f7f0db;text-shadow:0 1px 0 rgba(255,246,220,.28),0 -1px 0 rgba(0,0,0,.55),0 3px 8px rgba(0,0,0,.5),0 14px 34px rgba(0,0,0,.45);}
+.tc-title .tc-thin{display:block;font-weight:500;font-style:italic;text-transform:none;letter-spacing:0;font-size:clamp(17px,2.5vw,26px);color:var(--ink-2);margin-top:10px;}
+.tc-author{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;font:600 clamp(11px,1.4vw,13px)/1 "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-line);}
+.tc-author span{padding:7px 14px;border:1px solid rgba(200,155,60,.45);border-radius:999px;background:rgba(0,0,0,.28);}
+.tc-pitch{max-width:720px;margin:4px 0 0;padding:clamp(14px,2vw,20px) clamp(18px,3vw,30px);border:3px solid rgba(200,155,60,.85);background:rgba(12,17,22,.68);box-shadow:0 10px 34px rgba(0,0,0,.45);font:500 clamp(17px,2.5vw,24px)/1.45 "Newsreader",serif;font-style:italic;color:#fbf3df;}
+.tc-pitch b{color:var(--gold-max);font-style:normal;}
+.tc-meta{margin:0;font:600 clamp(10.5px,1.3vw,12.5px)/1.7 "Inter Tight",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);}
+.tc-cue{position:relative;z-index:3;margin-top:clamp(8px,1.4vw,14px);display:flex;flex-direction:column;align-items:center;gap:5px;font:600 10px/1.5 "Inter Tight",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-line);opacity:.85;}
+.tc-cue svg{width:20px;height:12px;display:block;}
+.tc-corner{position:absolute;width:30px;height:30px;z-index:2;pointer-events:none;}
+.tc-corner svg{display:block;width:100%;height:100%;}
+.tc-corner--tl{top:clamp(8px,1.6vw,20px);left:clamp(8px,1.6vw,20px);}
+.tc-corner--tr{top:clamp(8px,1.6vw,20px);right:clamp(8px,1.6vw,20px);transform:rotate(90deg);}
+.tc-corner--br{bottom:clamp(8px,1.6vw,20px);right:clamp(8px,1.6vw,20px);transform:rotate(180deg);}
+.tc-corner--bl{bottom:clamp(8px,1.6vw,20px);left:clamp(8px,1.6vw,20px);transform:rotate(270deg);}
+@media (max-width:600px){.tc-title{letter-spacing:.005em;}}
+</style>
+</head>
+<body>
+<section class="tc-cover" id="cover-title" aria-label="Die Macht der Menschenbilder — Übersichts-Broschüre zur Doppelstudie von Michael Zichy">
+  <div class="tc-bg" aria-hidden="true"><svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="tcv1" cx="50%" cy="38%" r="65%"><stop offset="0" stop-color="#c89b3c" stop-opacity=".14"/><stop offset="1" stop-color="#c89b3c" stop-opacity="0"/></radialGradient>
+      <pattern id="tcdots1" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#cda24f" opacity=".16"/></pattern>
+    </defs>
+    <rect width="1200" height="800" fill="url(#tcdots1)"/>
+    <rect width="1200" height="800" fill="url(#tcv1)"/>
+    <g fill="none" stroke="#cda24f" opacity=".2">
+      <ellipse cx="600" cy="330" rx="430" ry="170"/><ellipse cx="600" cy="330" rx="430" ry="170" transform="rotate(30 600 330)"/><ellipse cx="600" cy="330" rx="430" ry="170" transform="rotate(60 600 330)"/><ellipse cx="600" cy="330" rx="430" ry="170" transform="rotate(90 600 330)"/><ellipse cx="600" cy="330" rx="430" ry="170" transform="rotate(120 600 330)"/><ellipse cx="600" cy="330" rx="430" ry="170" transform="rotate(150 600 330)"/>
+    </g>
+    <g stroke="#cda24f" opacity=".13">
+      <line x1="600" y1="330" x2="20" y2="30"/><line x1="600" y1="330" x2="300" y2="-20"/><line x1="600" y1="330" x2="900" y2="-20"/><line x1="600" y1="330" x2="1180" y2="30"/><line x1="600" y1="330" x2="1220" y2="330"/><line x1="600" y1="330" x2="-20" y2="330"/><line x1="600" y1="330" x2="60" y2="780"/><line x1="600" y1="330" x2="1140" y2="780"/>
+    </g>
+    <g fill="none" stroke="#9fd0db" opacity=".08"><path d="M-40 640 Q 300 560 600 640 T 1240 640"/><path d="M-40 690 Q 300 610 600 690 T 1240 690"/><path d="M-40 740 Q 300 660 600 740 T 1240 740"/></g>
+  </svg></div>
+  <div class="tc-light" aria-hidden="true"></div>
+  <div class="tc-shimmer" aria-hidden="true"></div>
+  <div class="tc-frame" aria-hidden="true"></div>
+  <div class="tc-corner tc-corner--tl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <div class="tc-corner tc-corner--tr" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <div class="tc-corner tc-corner--br" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <div class="tc-corner tc-corner--bl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <div class="tc-inner">
+    <span class="tc-plaque">Doppelstudie · Werkporträt</span>
+    <div class="tc-emblem" role="img" aria-label="Werk-Emblem: Guilloche-Rosette mit Monogramm MZ">
+      <svg viewBox="0 0 176 176" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="tcem1" cx="50%" cy="42%" r="62%"><stop offset="0" stop-color="#233a46"/><stop offset="1" stop-color="#101b22"/></radialGradient></defs>
+        <circle cx="88" cy="88" r="84" fill="url(#tcem1)" stroke="#cda24f" stroke-width="1.6"/>
+        <circle cx="88" cy="88" r="76" fill="none" stroke="#cda24f" stroke-width=".8" opacity=".7"/>
+        <g fill="none" stroke="#cda24f" stroke-width=".7" opacity=".55">
+          <ellipse cx="88" cy="88" rx="66" ry="26"/><ellipse cx="88" cy="88" rx="66" ry="26" transform="rotate(36 88 88)"/><ellipse cx="88" cy="88" rx="66" ry="26" transform="rotate(72 88 88)"/><ellipse cx="88" cy="88" rx="66" ry="26" transform="rotate(108 88 88)"/><ellipse cx="88" cy="88" rx="66" ry="26" transform="rotate(144 88 88)"/>
+        </g>
+        <g fill="#cda24f" opacity=".9"><circle cx="88" cy="10" r="1.7"/><circle cx="88" cy="166" r="1.7"/><circle cx="10" cy="88" r="1.7"/><circle cx="166" cy="88" r="1.7"/></g>
+        <circle cx="88" cy="88" r="40" fill="#0d151b" stroke="#ecc868" stroke-width="1.6"/>
+        <circle cx="88" cy="88" r="34" fill="none" stroke="#cda24f" stroke-width=".7" stroke-dasharray="2 3"/>
+        <text x="88" y="100" text-anchor="middle" font-family="Newsreader, serif" font-weight="800" font-size="34" fill="#f0cf78" letter-spacing="1">MZ</text>
+      </svg>
+    </div>
+    <h1 class="tc-title">Die Macht der<br>Menschenbilder<span class="tc-thin">Was wir über den Menschen glauben — und was dieser Glaube aus uns macht</span></h1>
+    <div class="tc-author"><span>Michael Zichy · Monografie · Reclam 2023</span><span>Zichy (Hrsg.) · Handbuch · Springer VS 2024</span></div>
+    <p class="tc-pitch">Welche <b>Macht</b> üben Menschenbilder über uns aus — und wie gehen wir <b>verantwortlich</b> mit ihnen um?</p>
+    <p class="tc-meta">Monografie 125 S. · Handbuch 50 Beiträge · 6 Themenkomplexe · Deutsch</p>
+  </div>
+  <div class="tc-cue" aria-hidden="true"><span>Karte hier · Gelände in der Tiefenanalyse</span><svg viewBox="0 0 20 12" xmlns="http://www.w3.org/2000/svg"><path d="M2 2 L10 10 L18 2" fill="none" stroke="#cda24f" stroke-width="1.6"/></svg></div>
+</section>
+<hr class="br-cut">
+<style id="seal-css">
+.seal-page{text-align:center;}
+.seal-verif{width:min(760px,100%);margin:0;padding:12px 18px;border-left:3px solid #7a3a3a;background:rgba(122,58,58,.12);font:400 clamp(13.5px,1.7vw,15.5px)/1.6 "Spectral",Georgia,serif;font-style:italic;color:var(--ink-2);text-align:left;}
+.seal-hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(18px,3vw,36px);width:min(860px,100%);}
+.seal-mark{width:clamp(180px,24vw,240px);height:clamp(180px,24vw,240px);flex:none;}
+.seal-mark svg{width:100%;height:100%;display:block;filter:drop-shadow(0 12px 30px rgba(0,0,0,.55));}
+.seal-facts{display:flex;flex-direction:column;gap:9px;max-width:430px;text-align:left;}
+.seal-badge{display:inline-block;align-self:flex-start;padding:7px 14px;border:1px solid rgba(236,200,104,.8);border-radius:6px;background:rgba(236,200,104,.12);font:700 12px/1 "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-max);}
+.seal-facts .sf-line{margin:0;font:400 13.5px/1.55 "Spectral",Georgia,serif;color:var(--ink-2);}
+.seal-facts .sf-line b{color:var(--gold-hi);}
+.seal-banner{margin:2px 0 0;padding:9px 14px;border:1px solid rgba(159,208,219,.55);border-radius:8px;background:rgba(47,90,99,.28);font:700 13px/1.4 "Inter Tight",sans-serif;color:#bfe4ec;}
+.seal-sum{margin:0;font:500 clamp(14px,1.8vw,16px)/1.55 "Newsreader",serif;font-style:italic;color:#f4ead0;}
+.seal-h{margin:10px 0 0;font:700 11px/1 "Inter Tight",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-line);}
+.seal-bars{width:min(720px,100%);display:flex;flex-direction:column;gap:7px;}
+.seal-bar{display:grid;grid-template-columns:minmax(120px,190px) 1fr;align-items:center;gap:10px;font:600 12px/1.2 "Inter Tight",sans-serif;color:var(--ink-2);}
+.seal-bar .sb-track{position:relative;height:22px;background:rgba(255,255,255,.06);border:1px solid rgba(200,155,60,.25);border-radius:4px;overflow:hidden;}
+.seal-bar .sb-fill{position:absolute;inset:0 auto 0 0;display:flex;align-items:center;padding:0 8px;font:700 11px/1 "Inter Tight",sans-serif;color:#0d151b;white-space:nowrap;border-radius:3px;}
+.seal-bar .sb-fill--good{background:linear-gradient(90deg,#7fae6b,#5d8f52);color:#0c1409;}
+.seal-bar .sb-fill--mid{background:linear-gradient(90deg,#d9b45e,#b7924a);}
+.seal-bar .sb-fill--open{background:rgba(154,143,120,.5);color:#f4ecd9;border:1px dashed rgba(244,236,217,.5);}
+.seal-cap{width:min(720px,100%);margin:2px 0 0;font:400 11.3px/1.55 "Spectral",Georgia,serif;color:var(--ink-faint);text-align:left;}
+.seal-cap b{color:var(--ink-soft);}
+.seal-duo{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:min(720px,100%);}
+.seal-duo .sd-card{border:1px solid rgba(200,155,60,.3);border-radius:10px;background:rgba(0,0,0,.24);padding:13px 15px;text-align:left;}
+.seal-duo .sd-card--good{border-color:rgba(159,208,219,.6);background:rgba(47,90,99,.22);}
+.seal-duo h3{margin:0 0 6px;font:700 10.5px/1.3 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-line);}
+.seal-duo .sd-card--good h3{color:#9fd0db;}
+.seal-duo p{margin:0;font:400 12.6px/1.55 "Spectral",Georgia,serif;color:var(--ink-2);}
+.seal-duo p b{color:var(--gold-hi);}
+.seal-ampel{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:min(720px,100%);}
+.seal-ampel .sa-cell{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:11px 14px;text-align:left;font:400 12.6px/1.5 "Spectral",Georgia,serif;}
+.seal-ampel .sa-cell--ok{border:1px solid rgba(127,174,107,.6);background:rgba(93,143,82,.14);color:#d9ecd1;}
+.seal-ampel .sa-cell--warn{border:1px solid rgba(217,180,94,.6);background:rgba(200,155,60,.12);color:#f0e3c2;}
+.seal-ampel .sa-ico{flex:none;font:700 15px/1.2 "Inter Tight",sans-serif;}
+.seal-ampel b{display:block;font:700 11px/1.4 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px;}
+.seal-audit{width:min(720px,100%);border:1px solid rgba(236,200,104,.5);border-radius:10px;background:rgba(236,200,104,.07);padding:13px 16px;text-align:left;}
+.seal-audit p{margin:0 0 9px;font:400 13.3px/1.6 "Spectral",Georgia,serif;color:var(--ink-2);}
+.seal-audit p b{color:var(--gold-max);}
+.seal-steps{display:flex;flex-wrap:wrap;gap:6px;}
+.seal-step{padding:4px 10px;border:1px solid rgba(127,174,107,.55);border-radius:999px;background:rgba(93,143,82,.15);font:700 9.5px/1 "Inter Tight",sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#cfe6c5;}
+.seal-zoneb{width:min(720px,100%);border:1px dashed rgba(232,149,156,.55);border-radius:10px;background:rgba(163,36,44,.08);padding:12px 16px;text-align:left;}
+.seal-zoneb h3{margin:0 0 7px;font:700 10.5px/1.4 "Inter Tight",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#e8959c;}
+.seal-zoneb p{margin:0 0 5px;font:400 12.8px/1.55 "Spectral",Georgia,serif;color:var(--ink-2);}
+.seal-zoneb p b{color:var(--ink);}
+.seal-details{width:min(720px,100%);text-align:left;border:1px solid rgba(200,155,60,.3);border-radius:10px;background:rgba(0,0,0,.22);}
+.seal-details summary{cursor:pointer;padding:11px 16px;font:700 11px/1.3 "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-hi);}
+.seal-details[open] summary{border-bottom:1px solid rgba(200,155,60,.25);}
+.seal-details .sd-body{padding:12px 16px 15px;font:400 12.6px/1.6 "Spectral",Georgia,serif;color:var(--ink-2);}
+.seal-details .sd-body h4{margin:10px 0 4px;font:700 10px/1.3 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-line);}
+.seal-details .sd-body h4:first-child{margin-top:0;}
+.seal-details .sd-body ul{margin:0 0 4px;padding-left:17px;}
+.seal-details .sd-body li{margin:0 0 4px;}
+@media (max-width:620px){.seal-duo,.seal-ampel{grid-template-columns:1fr;}.seal-facts{text-align:center;align-items:center;}.seal-facts .seal-badge{align-self:center;}}
+</style>
+<section class="br-page seal-page" id="pruefsiegel" aria-label="Prüfsiegel: Anti-Halluzinations- und Audit-Dokumentation dieser Broschüre">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">02 / 12</span><div class="br-corner br-corner--tl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--tr" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--br" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--bl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <p class="br-eyebrow">Dokumentation · Halluzinationsminimierung &amp; Audit</p>
+  <h2 class="br-title">Das Prüfsiegel</h2>
+  <p class="seal-verif">Diese Aufarbeitung wurde mit Originalquellen im Kontext erstellt (Zichy, „Die Macht der Menschenbilder“, Reclam 2023; Zichy (Hrsg.), „Handbuch Menschenbilder“, Springer VS 2024); die inhaltliche Verlässlichkeit wird als hoch eingeschätzt (Selbsteinschätzung, nicht gemessen), wobei das Restrisiko sich auf exakte Seitenangaben und den Zitatwortlaut konzentriert und vor Weiterverwendung dort geprüft werden sollte.</p>
+  <div class="seal-hero">
+    <div class="seal-mark" role="img" aria-label="Prüfsiegel mit Häkchen, Rating Hoch, Audit bestanden">
+      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="sg1" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#23404b"/><stop offset="1" stop-color="#0f1a20"/></radialGradient></defs>
+        <circle cx="120" cy="120" r="112" fill="url(#sg1)" stroke="#cda24f" stroke-width="2"/>
+        <circle cx="120" cy="120" r="103" fill="none" stroke="#cda24f" stroke-width=".8" opacity=".75"/>
+        <circle cx="120" cy="120" r="96" fill="none" stroke="#cda24f" stroke-width=".6" stroke-dasharray="1.5 3" opacity=".7"/>
+        <g fill="none" stroke="#cda24f" stroke-width=".6" opacity=".5">
+          <ellipse cx="120" cy="120" rx="88" ry="34"/><ellipse cx="120" cy="120" rx="88" ry="34" transform="rotate(45 120 120)"/><ellipse cx="120" cy="120" rx="88" ry="34" transform="rotate(90 120 120)"/><ellipse cx="120" cy="120" rx="88" ry="34" transform="rotate(135 120 120)"/>
+        </g>
+        <path id="sgArcT" d="M 40 120 A 80 80 0 0 1 200 120" fill="none"/>
+        <text font-family="Inter Tight, sans-serif" font-weight="700" font-size="12.5" letter-spacing="3.5" fill="#ecc868"><textPath href="#sgArcT" startOffset="50%" text-anchor="middle">QUELLENGEBUNDEN</textPath></text>
+        <path id="sgArcB" d="M 34 128 A 86 86 0 0 0 206 128" fill="none"/>
+        <text font-family="Inter Tight, sans-serif" font-weight="700" font-size="11" letter-spacing="2.6" fill="#cda24f"><textPath href="#sgArcB" startOffset="50%" text-anchor="middle">ZITATE VERBATIM GEPRÜFT</textPath></text>
+        <circle cx="120" cy="120" r="56" fill="#0d151b" stroke="#ecc868" stroke-width="2"/>
+        <path d="M98 122 L114 138 L146 102" fill="none" stroke="#7fae6b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="52" y="158" width="136" height="26" rx="4" fill="#1b2a32" stroke="#ecc868" stroke-width="1.4"/>
+        <text x="120" y="175" text-anchor="middle" font-family="Inter Tight, sans-serif" font-weight="700" font-size="13" letter-spacing="3" fill="#f0cf78">RATING: HOCH</text>
+      </svg>
+    </div>
+    <div class="seal-facts">
+      <span class="seal-badge">Audit bestanden (8/8)</span>
+      <p class="sf-line"><b>Geschätzte Faktenrisiko-Spanne dieser Broschüre: ≈ 7–15 %</b> — geschätzt, nicht gemessen (Format: umfassende Broschüre).</p>
+      <p class="seal-banner">≈ 3× geringeres Faktenrisiko als ohne Quelle</p>
+      <p class="seal-sum">Alle Zitate, Zahlen und Sachaussagen dieser Broschüre sind an die beiden Originalquellen gebunden; eigene Analyse ist sichtbar getrennt.</p>
+    </div>
+  </div>
+  <p class="br-kicker">Worauf Verlass ist: Alle Zitate wurden wortwörtlich per Volltextabgleich gegen die Quelldateien geprüft und tragen Seiten-Locators; Sachaussagen sind quellengebunden formuliert.</p>
+  <h3 class="seal-h">Zone A · Modell-Benchmark (ohne Quelle gemessen)</h3>
+  <div class="seal-bars" role="img" aria-label="Balkendiagramm der Closed-Book-Halluzinationsraten: Claude Opus 4.8 rund 36 Prozent, Gemini 3.1 Pro 50 Prozent, weitere Modelle von OpenAI und Google hoeher, ohne Zahlenangabe">
+    <div class="seal-bar"><span>Claude Opus 4.8 (Anthropic)</span><span class="sb-track"><span class="sb-fill sb-fill--good" style="width:59.8%">35,9 %</span></span></div>
+    <div class="seal-bar"><span>Gemini 3.1 Pro (Google)</span><span class="sb-track"><span class="sb-fill sb-fill--mid" style="width:83.3%">50 %</span></span></div>
+    <div class="seal-bar"><span>OpenAI · Peer-Modelle</span><span class="sb-track"><span class="sb-fill sb-fill--open" style="width:92%">höher (ohne Zahlenangabe)</span></span></div>
+    <div class="seal-bar"><span>Google · weitere Modelle</span><span class="sb-track"><span class="sb-fill sb-fill--open" style="width:92%">höher (ohne Zahlenangabe)</span></span></div>
+  </div>
+  <p class="seal-cap">Modellweite Werte auf einem Closed-Book-Wissensbenchmark (AA-Omniscience), gemessen <b>ohne</b> beigelegte Quelle. Beschreibt das Modell allgemein, <b>nicht</b> diese Antwort. Mit Originalquelle im Kontext (Grounding) liegt das praktische Halluzinationsrisiko für Struktur und Thesen deutlich niedriger; das Restrisiko konzentriert sich auf exakte Zahlen und Zitate. Quelle: Artificial Analysis, 28.05.2026. <b>Da diese Arbeit quellenbasiert (grounded) erstellt wurde, liegt das reale Halluzinationsrisiko für Struktur und Thesen deutlich unter dem Closed-Book-Wert von 35,9 %; das Restrisiko konzentriert sich auf exakte Zahlen, Seitenangaben und den Zitatwortlaut.</b></p>
+  <h3 class="seal-h">Was Claude mit und ohne Quellen kann</h3>
+  <div class="seal-duo">
+    <div class="sd-card"><h3>Ohne Quellen</h3><p>Frei aus dem Modellgedächtnis → <b>höheres Faktenrisiko</b> (Closed-Book ≈ 35,9 %). Struktur oft richtig, Details unzuverlässig.</p></div>
+    <div class="sd-card sd-card--good"><h3>Mit Quellen (diese Broschüre)</h3><p>An die Vorlagen gebunden → <b>geschätzt ≈ 7–15 %</b> (umfassende Broschüre; Einzeltext ≈ 3–7 %) → nahezu perfekt belegt.</p></div>
+  </div>
+  <div class="seal-ampel">
+    <div class="sa-cell sa-cell--ok"><span class="sa-ico">✓</span><span><b>Verlässlich</b>Belegtes: wörtliche Zitate mit Locator, Seitenangaben, quellengebundene Sachaussagen.</span></div>
+    <div class="sa-cell sa-cell--warn"><span class="sa-ico">⚠</span><span><b>Vorher prüfen</b>Eigen-Analyse („Claudes Einordnung“), Szenarien, Bewertungen, Evidenz-Marker-Zuordnungen.</span></div>
+  </div>
+  <div class="seal-audit">
+    <p><b>Audit in einfachen Worten:</b> Nach Fertigstellung wurde diese Broschüre in 8 geordneten Schritten geprüft — Technik, Sauberkeit des Codes, Quellentreue, Zitat-Wortlaut, Verständlichkeit, Aufbau, Optik und Druckbild. Ergebnis: <b>bestanden (8/8)</b>, ohne offene Beanstandungen.</p>
+    <div class="seal-steps"><span class="seal-step">1 Technik</span><span class="seal-step">2 Sauberkeit</span><span class="seal-step">3 Quellentreue</span><span class="seal-step">4 Zitate</span><span class="seal-step">5 Verständlichkeit</span><span class="seal-step">6 Aufbau</span><span class="seal-step">7 Optik</span><span class="seal-step">8 Druck</span></div>
+  </div>
+  <div class="seal-zoneb">
+    <h3>Zone B · Selbsteinschätzung zur aktuellen Aufgabe — nicht gemessen</h3>
+    <p><b>Mit Originalquelle gearbeitet:</b> Ja — Zichy, „Die Macht der Menschenbilder“ (Reclam 2023, E-Book) und Zichy (Hrsg.), „Handbuch Menschenbilder“ (Springer VS 2024, PDF), beide vollständig als Dateien vorliegend.</p>
+    <p><b>Eingeschätzte Verlässlichkeit:</b> hoch — alle Kernaussagen wurden extraktiv aus den Quelltexten gewonnen, jedes Zitat per Volltextabgleich verifiziert.</p>
+    <p><b>Vor Weiterverwendung prüfen:</b> Seiten-Locators (v. a. Handbuch: Druckseiten aus Kolumnentiteln rekonstruiert), Zitat-Wortlaut, die Evidenz-Marker der Seite „Die konkrete Antwort“ sowie alle als „Claudes Einordnung“ markierten Passagen.</p>
+  </div>
+  <details class="seal-details">
+    <summary>Details &amp; Methodik</summary>
+    <div class="sd-body">
+      <h4>Angewandte Maßnahmen</h4>
+      <ul><li>Extraktives Arbeiten aus beiden beigelegten Quellen statt aus dem Modellgedächtnis.</li><li>Fundstellen (Seiten-Locators) zu jeder tragenden Behauptung; Zitatbank vor dem Bau angelegt.</li><li>Jedes wörtliche Zitat unter 15 Wörtern, per automatisiertem Volltextabgleich exakt verifiziert.</li><li>Eindeutige Zuschreibung: Monografie [M] vs. Handbuch [H] mit Kapitelautor.</li><li>Trennung von Beleg (Quelle), Schlussfolgerung („Claudes Einordnung“) und Ungesichertem (benannt).</li><li>Konfidenz- und Kippbedingungs-Angaben in jeder Kapitel-Synthese; Lücken benannt statt gefüllt.</li><li>Anti-Sycophancy: Spannungen und Grenzen der Quellen offen ausgewiesen.</li></ul>
+      <h4>Was die Zahlen bedeuten</h4>
+      <ul><li>Der Closed-Book-Wert (≈ 35,9 %) ist ein modellweiter Benchmarkwert ohne Quellen — nie die Rate dieser Arbeit.</li><li>Die Spanne 7–15 % ist eine Schätzung für quellenbasierte, umfassende Broschüren; sie ist nicht gemessen.</li><li>Faktor-Berechnung: 35,9 ÷ Spannen-Mittelwert 11 = 3,26 → kaufmännisch gerundet ≈ 3× geringeres Risiko.</li></ul>
+      <h4>Die 8 Audit-Schritte</h4>
+      <ul><li>1 Technische Robustheit (Tag-Balance, 0 Konsolenfehler, Mobil-Render 390 px ohne Überlauf).</li><li>2 Sauberkeit (keine HTML-Kommentare, keine Generierungs-Artefakte, kein totes CSS).</li><li>3 Quellentreue (Stichproben aller Sachaussagen gegen die Quelldateien).</li><li>4 Zitat-Wortlaut (automatisierter Verbatim-Abgleich aller Zitate inkl. Locators).</li><li>5 Verständlichkeit (Merk-Boxen in Alltagssprache, Fachbegriffe erklärt).</li><li>6 Aufbau (Pflicht-Reihenfolge, Anker und Verweise funktionsfähig).</li><li>7 Visuelle Konsistenz (Tokens, deutsche Anführungszeichen paarig, Akzentlogik).</li><li>8 Druckbild (A4-Pagination, jede Seite beginnt auf eigenem Blatt, Klappboxen im Druck geöffnet).</li></ul>
+      <h4>Zone B · Quellenbindung</h4>
+      <ul><li>Mit Originalquelle gearbeitet: <b>JA</b>.</li><li>Quelle 1: Michael Zichy, „Die Macht der Menschenbilder. Wie wir andere wahrnehmen“, Reclam 2023.</li><li>Quelle 2: Michael Zichy (Hrsg.), „Handbuch Menschenbilder“, Springer VS, Wiesbaden 2024.</li></ul>
+    </div>
+  </details>
+<p class="br-foot">Die Macht der Menschenbilder · Übersichts-Broschüre zur Doppelstudie Zichy · Karte — Gelände in der Tiefenanalyse</p></section>
+<hr class="br-cut">
+<style id="lm-css">
+.lm-page{text-align:center;}
+.lm-epi{margin:0;font:500 clamp(15px,1.9vw,18px)/1.5 "Newsreader",serif;font-style:italic;color:var(--ink-2);}
+.lm-epi .lm-episrc{display:block;margin-top:5px;font:600 10px/1.4 "Inter Tight",sans-serif;font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-line);}
+.lm-map{width:min(760px,100%);border:1px solid rgba(200,155,60,.25);border-radius:10px;background:rgba(0,0,0,.22);padding:clamp(10px,1.6vw,18px);}
+.lm-map svg{width:100%;height:auto;display:block;}
+.lm-map text{font-family:"Inter Tight",sans-serif;}
+.lm-mapcap{margin-top:9px;font:600 .66rem/1.4 "Inter Tight",sans-serif;letter-spacing:.08em;color:var(--ink-faint);text-transform:uppercase;}
+.lm-toc{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:min(760px,100%);}
+.lm-toc a{display:flex;align-items:center;gap:11px;padding:10px 13px;border:1px solid rgba(200,155,60,.3);border-radius:8px;background:rgba(255,255,255,.03);text-decoration:none;text-align:left;color:var(--ink);}
+.lm-toc a:hover{border-color:var(--gold-hi);background:rgba(236,200,104,.07);}
+.lm-toc .lt-dot{flex:none;width:11px;height:11px;border-radius:3px;}
+.lm-toc .lt-tt{flex:1;font:600 13px/1.35 "Inter Tight",sans-serif;color:var(--ink);}
+.lm-toc .lt-tt small{display:block;font:400 11px/1.4 "Spectral",Georgia,serif;color:var(--ink-soft);}
+.lm-toc .lt-pg{flex:none;font:700 10.5px/1 "Inter Tight",sans-serif;letter-spacing:.08em;color:var(--gold-line);}
+.lm-sign{display:flex;align-items:center;justify-content:space-between;gap:14px;width:min(760px,100%);padding:13px 18px;border:2px solid var(--gold-hi);border-radius:10px;background:linear-gradient(90deg,rgba(236,200,104,.16),rgba(236,200,104,.05));text-decoration:none;text-align:left;}
+.lm-sign .ls-t{font:700 clamp(14px,1.9vw,17px)/1.35 "Inter Tight",sans-serif;color:var(--gold-max);}
+.lm-sign .ls-t small{display:block;font:400 12px/1.45 "Spectral",Georgia,serif;color:var(--ink-2);margin-top:2px;}
+.lm-sign .ls-arrow{flex:none;font:800 22px/1 "Newsreader",serif;color:var(--gold-max);}
+.lm-final{width:min(760px,100%);border:2px solid #ecc868;border-radius:12px;background:radial-gradient(120% 150% at 50% 0%,rgba(236,200,104,.17),rgba(236,200,104,.04));box-shadow:0 0 0 6px rgba(236,200,104,.06),0 12px 44px rgba(236,200,104,.17),0 6px 24px rgba(0,0,0,.5);padding:clamp(16px,2.4vw,26px) clamp(18px,3vw,34px);text-align:center;}
+.lm-final p{margin:0;font:600 clamp(16px,2.2vw,21px)/1.4 "Newsreader",serif;font-style:italic;color:#fbf3df;}
+.lm-final a{color:var(--gold-max);font-style:normal;text-decoration:none;border-bottom:1px solid rgba(240,207,120,.6);}
+.lm-final small{display:block;margin-top:7px;font:400 12px/1.5 "Spectral",Georgia,serif;font-style:normal;color:var(--ink-soft);}
+@media (max-width:620px){.lm-toc{grid-template-columns:1fr;}}
+</style>
+<section class="br-page lm-page" id="landkarte" aria-label="Themenlandkarte der Broschüre">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">03 / 12</span><div class="br-corner br-corner--tl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--tr" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--br" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--bl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <p class="br-eyebrow">Die Doppelstudie</p>
+  <h2 class="br-title">Die Landkarte der Macht</h2>
+  <p class="lm-epi">„Das, was wir über den Menschen glauben, ist wichtig.“<span class="lm-episrc">Zichy · Handbuch Menschenbilder, Einleitung, S. 1</span></p>
+  <div class="lm-map">
+    <svg viewBox="0 0 760 330" role="img" aria-label="Radiale Themenkarte: die Hauptfrage im Zentrum, sechs Themenkomplexe als Knoten darum" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#cda24f" opacity=".4">
+        <line x1="380" y1="165" x2="120" y2="70"/><line x1="380" y1="165" x2="380" y2="52"/><line x1="380" y1="165" x2="640" y2="70"/>
+        <line x1="380" y1="165" x2="120" y2="262"/><line x1="380" y1="165" x2="380" y2="284"/><line x1="380" y1="165" x2="640" y2="262"/>
+      </g>
+      <ellipse cx="380" cy="165" rx="128" ry="48" fill="#101c23" stroke="#ecc868" stroke-width="1.6"/>
+      <ellipse cx="380" cy="165" rx="121" ry="42" fill="none" stroke="#cda24f" stroke-width=".6" stroke-dasharray="2 3"/>
+      <text x="380" y="156" text-anchor="middle" font-weight="700" font-size="13.5" fill="#f0cf78">Welche Macht üben Menschenbilder aus —</text>
+      <text x="380" y="176" text-anchor="middle" font-weight="700" font-size="13.5" fill="#f0cf78">und wie gehen wir verantwortlich damit um?</text>
+      <g>
+        <rect x="34" y="44" width="172" height="52" rx="9" fill="#14232b" stroke="#2f5a63" stroke-width="1.6"/>
+        <text x="120" y="66" text-anchor="middle" font-weight="700" font-size="12.5" fill="#9fd0db">1 · Der Begriff</text>
+        <text x="120" y="83" text-anchor="middle" font-size="10.5" fill="#cdbfa0">Was ein Menschenbild ist</text>
+        <rect x="294" y="18" width="172" height="52" rx="9" fill="#1d1a10" stroke="#c89b3c" stroke-width="1.6"/>
+        <text x="380" y="40" text-anchor="middle" font-weight="700" font-size="12.5" fill="#ecc868">2 · Pluralismus</text>
+        <text x="380" y="57" text-anchor="middle" font-size="10.5" fill="#cdbfa0">Ein Bild trägt die vielen</text>
+        <rect x="554" y="44" width="172" height="52" rx="9" fill="#1e1510" stroke="#b85c2f" stroke-width="1.6"/>
+        <text x="640" y="66" text-anchor="middle" font-weight="700" font-size="12.5" fill="#e0a060">3 · Funktionen</text>
+        <text x="640" y="83" text-anchor="middle" font-size="10.5" fill="#cdbfa0">Wozu wir sie brauchen</text>
+        <rect x="34" y="236" width="172" height="52" rx="9" fill="#1e1113" stroke="#a3242c" stroke-width="1.6"/>
+        <text x="120" y="258" text-anchor="middle" font-weight="700" font-size="12.5" fill="#e8959c">4 · Macht &amp; Wirkung</text>
+        <text x="120" y="275" text-anchor="middle" font-size="10.5" fill="#cdbfa0">Wie Bilder formen</text>
+        <rect x="294" y="258" width="172" height="52" rx="9" fill="#1e1510" stroke="#b85c2f" stroke-width="1.6"/>
+        <text x="380" y="280" text-anchor="middle" font-weight="700" font-size="12.5" fill="#e0a060">5 · Fallstudien</text>
+        <text x="380" y="297" text-anchor="middle" font-size="10.5" fill="#cdbfa0">Geschichte &amp; Gegenwart</text>
+        <rect x="554" y="236" width="172" height="52" rx="9" fill="#14232b" stroke="#2f5a63" stroke-width="1.6"/>
+        <text x="640" y="258" text-anchor="middle" font-weight="700" font-size="12.5" fill="#9fd0db">6 · Konflikte</text>
+        <text x="640" y="275" text-anchor="middle" font-size="10.5" fill="#cdbfa0">Wenn Bilder kollidieren</text>
+      </g>
+      <text x="748" y="322" text-anchor="end" font-weight="600" font-size="8.5" letter-spacing="1.5" fill="#8d8266">ILLUSTRATIVES SCHEMA</text>
+    </svg>
+    <div class="lm-mapcap">Die Kristallisation der Doppelquelle: eine Hauptfrage, sechs Themenkomplexe — Farbe = Komplex</div>
+  </div>
+  <a class="lm-sign" href="#antwort"><span class="ls-t">Die konkrete Antwort — direkt zur Handlungsseite<small>Was sich aus beiden Werken konkret tun lässt, benannt und mit Evidenz-Marker — auf der nächsten Seite.</small></span><span class="ls-arrow">→</span></a>
+  <div class="lm-toc">
+    <a href="#antwort"><span class="lt-dot" style="background:#ecc868"></span><span class="lt-tt">Die konkrete Antwort<small>Handlungen, gruppiert und markiert</small></span><span class="lt-pg">S. 04</span></a>
+    <a href="#k1"><span class="lt-dot" style="background:#2f5a63"></span><span class="lt-tt">Der Begriff<small>Bündel von Annahmen über den Menschen</small></span><span class="lt-pg">S. 05</span></a>
+    <a href="#k2"><span class="lt-dot" style="background:#c89b3c"></span><span class="lt-tt">Pluralismus<small>Das eine gesellschaftliche Menschenbild</small></span><span class="lt-pg">S. 06</span></a>
+    <a href="#k3"><span class="lt-dot" style="background:#b85c2f"></span><span class="lt-tt">Funktionen<small>Zehn Leistungen im Alltag</small></span><span class="lt-pg">S. 07</span></a>
+    <a href="#k4"><span class="lt-dot" style="background:#a3242c"></span><span class="lt-tt">Macht &amp; Wirkung<small>Intentionalität · Institutionen · Konstitution</small></span><span class="lt-pg">S. 08</span></a>
+    <a href="#k5"><span class="lt-dot" style="background:#b85c2f"></span><span class="lt-tt">Fallstudien<small>Vom Dritten Reich bis zur IT-Industrie</small></span><span class="lt-pg">S. 09</span></a>
+    <a href="#k6"><span class="lt-dot" style="background:#2f5a63"></span><span class="lt-tt">Konflikte<small>Warum Menschenbildstreite so hartnäckig sind</small></span><span class="lt-pg">S. 10</span></a>
+    <a href="#schluss"><span class="lt-dot" style="background:#9fd0db"></span><span class="lt-tt">Gesamtbild &amp; Kolophon<small>Einsicht, offene Spannungen, Quellen</small></span><span class="lt-pg">S. 11–12</span></a>
+  </div>
+  <div class="lm-final"><p>→ <a href="tiefenanalyse.html">Vollständige Tiefenanalyse öffnen</a><small>System B: das Gelände zur vorliegenden Karte — gleiche Themen-IDs, volle Beleg- und Argumenttiefe.</small></p></div>
+<p class="br-foot">Die Macht der Menschenbilder · Übersichts-Broschüre zur Doppelstudie Zichy · Karte — Gelände in der Tiefenanalyse</p></section>
+<hr class="br-cut">
+<style id="ans-css">
+.ans-page{text-align:center;}
+.ans-lead{width:min(760px,100%);margin:0;font:400 clamp(14px,1.8vw,16px)/1.6 "Spectral",Georgia,serif;color:var(--ink-2);text-align:center;}
+.ans-lead b{color:var(--gold-hi);}
+.ans-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;width:min(760px,100%);font:400 11.5px/1.5 "Spectral",Georgia,serif;color:var(--ink-soft);}
+.ans-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;width:min(820px,100%);}
+.ans-group{border:1px solid rgba(200,155,60,.3);border-radius:10px;background:rgba(255,255,255,.03);padding:13px 15px;text-align:left;}
+.ans-group h3{margin:0 0 8px;font:700 11.5px/1.3 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-hi);}
+.ans-group ol{margin:0;padding-left:19px;}
+.ans-group li{margin:0 0 8px;font:400 12.8px/1.5 "Spectral",Georgia,serif;color:var(--ink-2);}
+.ans-group li:last-child{margin-bottom:0;}
+.ans-group li b{color:var(--ink);font-family:"Inter Tight",sans-serif;font-size:12.3px;}
+.ans-note{width:min(820px,100%);margin:0;padding:11px 15px;border:1px dashed rgba(200,155,60,.45);border-radius:9px;background:rgba(0,0,0,.2);font:400 12.3px/1.55 "Spectral",Georgia,serif;color:var(--ink-soft);text-align:left;}
+.ans-note b{color:var(--gold-hi);}
+.ans-quote{margin:0;font:500 clamp(14.5px,1.9vw,17.5px)/1.5 "Newsreader",serif;font-style:italic;color:#f4ead0;}
+.ans-quote .aq-src{display:block;margin-top:5px;font:600 10px/1.4 "Inter Tight",sans-serif;font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-line);}
+@media (max-width:680px){.ans-grid{grid-template-columns:1fr;}}
+</style>
+<section class="br-page ans-page" id="antwort" aria-label="Die konkrete Antwort auf die Hauptfrage der Broschüre">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">04 / 12</span><div class="br-corner br-corner--tl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--tr" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--br" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--bl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <p class="br-eyebrow">Die Hauptfrage · direkt beantwortet</p>
+  <h2 class="br-title">Die konkrete Antwort</h2>
+  <p class="ans-lead">Verantwortlicher Umgang mit der Macht der Menschenbilder heißt in beiden Werken konkret: <b>sehen lernen, prüfen, gemeinsamen Boden pflegen, wachsam bleiben</b>. Zwölf benannte Handlungen, je mit Evidenz-Marker:</p>
+  <div class="ans-legend"><span><span class="ev ev--belegt">belegt</span> Quellen führen empirische Forschung an</span><span><span class="ev ev--gestuetzt">gestützt</span> systematisch argumentiert + Fallstudien</span><span><span class="ev ev--plausibel">plausibel</span> Mechanismus skizziert, Effekt offen</span><span><span class="ev ev--gemischt">gemischt</span> Diagnose in der Quelle selbst mit Vorbehalt</span></div>
+  <div class="ans-grid">
+    <div class="ans-group">
+      <h3>I · Sehen lernen — Bilder erkennen</h3>
+      <ol>
+        <li><b>Das eigene Menschenbild explizit machen:</b> die elf Leitfragen der Monografie (Zugehörigkeit, Stellung, Freiheit, Verhaltensfaktoren, gutes Leben …) als Prüfraster durchgehen. [M S. 17–19]<span class="ev ev--gestuetzt">gestützt</span></li>
+        <li><b>Implizite Bilder aufspüren:</b> bei Regeln, Institutionen und Produkten fragen, welches Menschenbild sie voraussetzen — Bilder stecken in Gewohnheiten und Strukturen. [M S. 18; H S. 24–25]<span class="ev ev--gestuetzt">gestützt</span></li>
+        <li><b>Vorbewusste Typisierung einkalkulieren:</b> Stereotype wirken schon vor der bewussten Kontrolle — Deutungen anderer Menschen bewusst verzögern. [M S. 81; H S. 24]<span class="ev ev--belegt">belegt</span></li>
+      </ol>
+    </div>
+    <div class="ans-group">
+      <h3>II · Prüfen — Bilder kritisieren</h3>
+      <ol start="4">
+        <li><b>Freilegen, dann rational kritisieren:</b> erst identifizierte Menschenbildüberzeugungen lassen sich prüfen — vorgeführt an den Debatten um Abtreibung und Sterbehilfe. [M S. 116–117]<span class="ev ev--gestuetzt">gestützt</span></li>
+        <li><b>Öffentlich und privat unterscheiden:</b> rational legitimierte von weltanschaulich-religiösen Überzeugungen trennen — Voraussetzung für Kompromisse. [M S. 117]<span class="ev ev--gestuetzt">gestützt</span></li>
+        <li><b>Realbild und Idealbild trennen:</b> Aussagen darüber, wie Menschen sind, nicht mit Aussagen verwechseln, wie sie sein sollen. [M S. 65–66]<span class="ev ev--gestuetzt">gestützt</span></li>
+      </ol>
+    </div>
+    <div class="ans-group">
+      <h3>III · Gemeinsamen Boden pflegen</h3>
+      <ol start="7">
+        <li><b>Das Torso-Menschenbild benennen und schützen:</b> die geteilten dünnen Annahmen (Würde, Gleichheit, Freiheit) sind der Boden des Pluralismus — nicht selbstverständlich, sondern erkämpft. [M S. 116–118]<span class="ev ev--gestuetzt">gestützt</span></li>
+        <li><b>Freiräume geben, Kritik nicht scheuen:</b> anderen Bildern Raum lassen, ohne aus falsch verstandenem Respekt auf Analyse und strenge Kritik zu verzichten. [M S. 118]<span class="ev ev--gestuetzt">gestützt</span></li>
+        <li><b>In Wertkonflikten die geteilte Formel zuerst nennen:</b> dann den Interpretationsdissens verhandeln (z. B. Menschenwürde in der Bioethik). [M S. 31–33]<span class="ev ev--gestuetzt">gestützt</span></li>
+      </ol>
+    </div>
+    <div class="ans-group">
+      <h3>IV · Wachsam bleiben — Missbrauch erkennen</h3>
+      <ol start="10">
+        <li><b>Verengungs-Alarm ernst nehmen:</b> Bilder, die Gruppen den vollen Menschenstatus absprechen, gingen Entrechtung und Gewalt historisch voraus (Fallstudien: NS, Kolonialismus, Kastenwesen, „schwarze Pädagogik“). [H Teil I; M S. 83, 119]<span class="ev ev--gestuetzt">gestützt</span></li>
+        <li><b>Untergründige Bilder regelmäßig thematisieren:</b> Homo oeconomicus, das „Nutzer“- und Mängelwesen-Bild der IT — laut Quellen Diagnosen, keine Messwerte; gerade deshalb aussprechen. [M S. 119–120; H S. 827]<span class="ev ev--gemischt">gemischt</span></li>
+        <li><b>„Neuer Mensch“-Versprechen misstrauen:</b> Menschen sind nur begrenzt formbar; gezielte Umformungsprojekte des 20. Jahrhunderts scheiterten grausam. [M S. 111–112]<span class="ev ev--gestuetzt">gestützt</span></li>
+      </ol>
+    </div>
+  </div>
+  <p class="ans-note"><b>Ehrlichkeit über die Stärke:</b> Kein Punkt ist ein gemessener Interventionseffekt. „belegt“ steht nur dort, wo die Quellen ausdrücklich empirische Forschung anführen (Stereotype/Vorurteile, selbsterfüllende Prophezeiung, Pädagogik-Wirkung); die Reflexions- und Diskursempfehlungen sind systematisch argumentiert und an historischen Fällen gezeigt („gestützt“), der Gefühls-Wirkmechanismus bleibt Skizze („plausibel“). Eine Erfolgsgarantie gibt keine der beiden Quellen.</p>
+  <p class="ans-quote">„Ein schlechteres Menschenbild wird die Chancen verringern, dass Leben gelingen …“<span class="aq-src">Zichy · Die Macht der Menschenbilder, S. 120</span></p>
+<p class="br-foot">Die Macht der Menschenbilder · Übersichts-Broschüre zur Doppelstudie Zichy · Karte — Gelände in der Tiefenanalyse</p></section>
+<hr class="br-cut">
+<section class="br-page kp-page" id="k1" aria-label="Kapitel 1: Der Begriff">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">05 / 12</span><div class="br-corner br-corner--tl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--tr" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--br" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--bl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <p class="kp-eyebrow">Kapitel 1 · Der Begriff</p>
+  <h2 class="kp-title">Was ist ein Menschenbild?</h2>
+  <p class="kp-kernfrage"><span class="kq-lab">Leitfrage</span>Was genau ist ein Menschenbild — und warum ist der Begriff so umstritten?</p>
+  <div class="merk"><span class="merk-lab">In einfachen Worten</span><p>Ein Menschenbild ist das Bündel von Annahmen, das jemand — eine Person, eine Gruppe, eine Gesellschaft — über den Menschen im Allgemeinen hat. Meist wirkt es unbemerkt im Hintergrund unseres Denkens und Handelns.</p><span class="merk-note">Zum Merken: Jede und jeder hat ein Menschenbild — auch wer überzeugt ist, keines zu haben.</span></div>
+  <div class="wiss"><span class="wiss-lab">Was für Leser wissenswert ist</span>
+    <ul>
+      <li>Der Streit um den Begriff beruht auf einem Missverständnis: Gegner (etwa Luhmann: „Menschenbilder, sowas Grausliches.“, zit. n. [M S. 10]) meinen nur religiös-weltanschauliche Bilder; tatsächlich gehören auch rational prüfbare Basisannahmen dazu — etwa Sprach- und Vernunftbegabung. [M S. 10–11; H S. 12]<span class="ev ev--gestuetzt">gestützt</span></li>
+      <li>Elf Fragetypen machen die eigenen Annahmen auffindbar: Wer zählt als Mensch? Freiheit? Selbst? Verhaltensfaktoren? Gutes Leben? Grund des Soseins? [M S. 17–19, Tabelle 1]<span class="ev ev--gestuetzt">gestützt</span></li>
+      <li>Vieles ist nur implizit vorhanden — in Gewohnheiten, Entscheidungen, Institutionen — und muss erst „herausanalysiert“ werden; klare, fertige Überzeugungen sind die Ausnahme. [M S. 18]<span class="ev ev--gestuetzt">gestützt</span></li>
+    </ul>
+    <span class="wiss-opt"><b>Robuste Option:</b> Das eigene Menschenbild einmal schriftlich mit dem Elf-Fragen-Raster explizit machen — das Werkzeug stammt direkt aus der Quelle; sein Nutzen ist Reflexionsgewinn, kein gemessener Effekt.</span>
+  </div>
+  <div class="kb"><svg viewBox="0 0 780 130" role="img" aria-label="Illustration: verstreute Annahme-Punkte werden zu einem gerahmten Bild gebündelt" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#cda24f" opacity=".8"><circle cx="60" cy="34" r="2.4"/><circle cx="96" cy="74" r="2"/><circle cx="132" cy="46" r="2.8"/><circle cx="170" cy="92" r="2"/><circle cx="206" cy="38" r="2.4"/><circle cx="240" cy="70" r="2"/><circle cx="118" cy="104" r="2.2"/><circle cx="196" cy="66" r="1.8"/><circle cx="72" cy="96" r="1.8"/><circle cx="250" cy="102" r="2.4"/></g>
+    <g stroke="#cda24f" opacity=".45" fill="none"><path d="M60 34 C 300 20 330 60 392 62"/><path d="M96 74 C 300 70 330 66 392 65"/><path d="M132 46 C 300 40 340 60 392 63"/><path d="M170 92 C 300 92 340 70 392 66"/><path d="M206 38 C 320 30 350 58 392 62"/><path d="M240 70 C 320 70 350 66 392 65"/><path d="M118 104 C 310 104 350 72 392 67"/><path d="M250 102 C 330 98 356 70 392 66"/></g>
+    <rect x="392" y="22" width="86" height="86" rx="6" fill="none" stroke="#ecc868" stroke-width="1.6"/>
+    <rect x="399" y="29" width="72" height="72" rx="4" fill="none" stroke="#cda24f" stroke-width=".7" opacity=".7"/>
+    <path d="M415 96 Q 415 74 435 74 Q 455 74 455 96 Z" fill="#2f5a63"/><circle cx="435" cy="58" r="12" fill="#2f5a63"/>
+    <g fill="none" stroke="#9fd0db" opacity=".6"><path d="M498 44 H 720"/><path d="M498 65 H 690"/><path d="M498 86 H 710"/></g>
+    <text x="606" y="34" text-anchor="middle" font-weight="700" font-size="11" letter-spacing="2" fill="#ecc868">BÜNDEL VON ANNAHMEN</text>
+    <text x="770" y="122" text-anchor="end" class="kb-ill">Illustration</text>
+  </svg></div>
+  <blockquote class="kp-cite"><p>„kohärente Bündel an Annahmen über wichtige Eigenschaften des Menschen im Allgemeinen“</p><span class="kc-src">Zichy · Die Macht der Menschenbilder · S. 14</span></blockquote>
+  <div class="br-synth"><span class="sy-lab">Synthese — Claudes Einordnung · nicht in der Quelle</span>
+    <div class="sy-grid">
+      <div><h4>Kernpunkte</h4><ul><li>Offene, neutrale Definition statt weltanschaulicher Engführung.</li><li>Zwei Annahme-Ebenen: wenige zentrale, viele triviale.</li><li>Lebensweltlich-praktische Bilder sind das Thema — nicht Wissenschaftsmodelle.</li><li>Der Begriff stammt von Nietzsche; die Debatte lebt von Nachkriegskonflikten. [M S. 7; H S. 12–13]</li></ul></div>
+      <div><h4>Offene Fragen</h4><ul><li>Wo endet ein „Bündel“ — nach welchen Kriterien werden zwei Bilder gezählt statt eines?</li><li>Wie stark dürfen Annahmen widersprechen, bevor das Bild zerfällt?</li></ul></div>
+      <div><h4>Widersprüche / Spannungen</h4><ul><li>Keine echten Widersprüche; eine Spannung bleibt: möglichst offen definieren und zugleich trennscharf bleiben wollen.</li></ul></div>
+      <div><h4>Konsequent zu Ende gedacht</h4><ul><li>Wenn jede Praxis ein Menschenbild trägt, ist auch „kein Menschenbild haben“ eine menschenbildliche Position — der Begriff wird unausweichlich.</li></ul></div>
+      <p class="sy-conf">Konfidenz 92/100, dass die Begriffsrekonstruktion die Quellen korrekt wiedergibt und trägt. Kippbedingung: verbreitete Alltagsverwendungen von „Menschenbild“, die sich dem Kern „Annahmen über den Menschen im Allgemeinen“ nicht zuordnen lassen.</p>
+    </div>
+  </div>
+  <p class="dlx-more"><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a></p>
+<p class="br-foot">Die Macht der Menschenbilder · Übersichts-Broschüre zur Doppelstudie Zichy · Karte — Gelände in der Tiefenanalyse</p></section>
+<hr class="br-cut">
+<section class="br-page kp-page kp-page--a4" id="k2" aria-label="Kapitel 2: Pluralismus">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">06 / 12</span><div class="br-corner br-corner--tl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--tr" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--br" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--bl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <p class="kp-eyebrow">Kapitel 2 · Pluralismus</p>
+  <h2 class="kp-title">Ein Bild trägt die vielen</h2>
+  <p class="kp-kernfrage"><span class="kq-lab">Leitfrage</span>Wie können viele Menschenbilder friedlich koexistieren — und was hält sie zusammen?</p>
+  <div class="merk"><span class="merk-lab">In einfachen Worten</span><p>Unter der bunten Vielfalt der Menschenbilder liegt ein gemeinsames, inhaltlich dünnes gesellschaftliches Menschenbild — etwa Würde, Freiheit, Gleichheit. Dieses geteilte Fundament macht das Zusammenleben der vielen Bilder erst möglich.</p><span class="merk-note">Zum Merken: Die Vielfalt oben funktioniert nur, weil unten etwas geteilt wird.</span></div>
+  <div class="wiss"><span class="wiss-lab">Was für Leser wissenswert ist</span>
+    <ul>
+      <li>Drei Schichten: individuelle, gruppenspezifische und gesellschaftliche Menschenbilder; das gesellschaftliche ist abstrakt und dünn — und gerade dadurch für viele anschlussfähig. [M S. 28–33]<span class="ev ev--gestuetzt">gestützt</span></li>
+      <li>Bewusste Leerstellen sind ein Merkmal, kein Defekt: Über Seele, Schöpfung oder Lebenssinn besteht wissentlich kein Konsens — und das wissen alle. [M S. 33–34]<span class="ev ev--gestuetzt">gestützt</span></li>
+      <li>Konflikte entstehen an der Konkretisierung (etwa: Was heißt Menschenwürde bei Sterbehilfe?). Das Handbuch beschreibt zudem zwei dominante westliche Bilder — ein menschenrechtlich-normatives und ein kapitalistisches —, die stark ineinandergreifen. [M S. 32–33; H S. 949]<span class="ev ev--gestuetzt">gestützt</span></li>
+    </ul>
+    <span class="wiss-opt"><b>Robuste Option:</b> In Wertkonflikten zuerst die geteilte abstrakte Überzeugung benennen, dann den Interpretationsdissens verhandeln — so bleibt der Aushandlungsraum offen. Argumentativ gestützt; Wirksamkeit im Einzelfall ist nicht gemessen.</span>
+  </div>
+  <div class="kb"><svg viewBox="0 0 780 130" role="img" aria-label="Illustration: viele verschiedene Schichten ruhen auf einem gemeinsamen goldenen Fundament" xmlns="http://www.w3.org/2000/svg">
+    <g opacity=".9">
+      <rect x="70" y="24" width="64" height="14" rx="3" fill="none" stroke="#9fd0db"/><rect x="150" y="24" width="46" height="14" rx="3" fill="none" stroke="#e0a060"/><rect x="212" y="24" width="76" height="14" rx="3" fill="none" stroke="#e8959c"/><rect x="304" y="24" width="52" height="14" rx="3" fill="none" stroke="#9fd0db"/><rect x="372" y="24" width="68" height="14" rx="3" fill="none" stroke="#e0a060"/><rect x="456" y="24" width="58" height="14" rx="3" fill="none" stroke="#e8959c"/><rect x="530" y="24" width="74" height="14" rx="3" fill="none" stroke="#9fd0db"/><rect x="620" y="24" width="60" height="14" rx="3" fill="none" stroke="#e0a060"/>
+      <rect x="110" y="50" width="150" height="14" rx="3" fill="none" stroke="#cdbfa0"/><rect x="280" y="50" width="190" height="14" rx="3" fill="none" stroke="#cdbfa0"/><rect x="490" y="50" width="160" height="14" rx="3" fill="none" stroke="#cdbfa0"/>
+    </g>
+    <rect x="70" y="82" width="610" height="18" rx="4" fill="rgba(236,200,104,.16)" stroke="#ecc868" stroke-width="1.6"/>
+    <text x="375" y="95" text-anchor="middle" font-weight="700" font-size="11" letter-spacing="2.5" fill="#f0cf78">DAS GETEILTE GESELLSCHAFTLICHE MENSCHENBILD</text>
+    <text x="88" y="19" font-weight="700" font-size="9" letter-spacing="1.5" fill="#8d8266">INDIVIDUELL</text>
+    <text x="128" y="45" font-weight="700" font-size="9" letter-spacing="1.5" fill="#8d8266">GRUPPEN</text>
+    <text x="770" y="122" text-anchor="end" class="kb-ill">Illustration</text>
+  </svg></div>
+  <blockquote class="kp-cite"><p>„der Boden, auf dem eine pluralistische Gesellschaft allein möglich ist“</p><span class="kc-src">Zichy · Die Macht der Menschenbilder · S. 46 · über das eine gesellschaftliche Menschenbild</span></blockquote>
+  <div class="br-synth"><span class="sy-lab">Synthese — Claudes Einordnung · nicht in der Quelle</span>
+    <div class="sy-grid">
+      <div><h4>Kernpunkte</h4><ul><li>Der Pluralismus-Einwand wird umgedreht: Vielfalt setzt ein geteiltes Bild voraus.</li><li>Das gesellschaftliche Bild ist autoritativ und sanktionsbewehrt — manches lässt sich praktisch gar nicht leugnen. [M S. 44–45]</li><li>Leerstellen sind bewusste, geteilte Nicht-Festlegungen.</li></ul></div>
+      <div><h4>Offene Fragen</h4><ul><li>Wie dünn darf das Torso-Bild werden, bevor es Tragkraft verliert?</li><li>Wie ließe sich die Fundament-These empirisch prüfen?</li></ul></div>
+      <div><h4>Widersprüche / Spannungen</h4><ul><li>Dünn im Inhalt, stark in der Geltung — das wirkt paradox, ist aber konsistent: Die Dünne betrifft das Was, die Autorität das Dass.</li></ul></div>
+      <div><h4>Konsequent zu Ende gedacht</h4><ul><li>Erodieren die geteilten Grundannahmen, verlieren politische Kompromisse ihre Basis — Polarisierung wird als Menschenbild-Problem lesbar.</li></ul></div>
+      <p class="sy-conf">Konfidenz 85/100 für die Schichten-Rekonstruktion und die Fundament-These als Lesart der Quellen. Kippbedingung: empirische Befunde stabiler pluralistischer Kooperation ohne geteilte anthropologische Minimalannahmen würden die Fundament-These auf eine Ermöglichungs-, nicht Notwendigkeitsthese herabstufen.</p>
+    </div>
+  </div>
+  <p class="dlx-more"><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a></p>
+<p class="br-foot">Die Macht der Menschenbilder · Übersichts-Broschüre zur Doppelstudie Zichy · Karte — Gelände in der Tiefenanalyse</p></section>
+<hr class="br-cut">
+<section class="br-page kp-page kp-page--a2" id="k3" aria-label="Kapitel 3: Funktionen">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">07 / 12</span><div class="br-corner br-corner--tl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--tr" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--br" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--bl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <p class="kp-eyebrow">Kapitel 3 · Funktionen</p>
+  <h2 class="kp-title">Wozu wir sie brauchen</h2>
+  <p class="kp-kernfrage"><span class="kq-lab">Leitfrage</span>Welche Arbeit leisten Menschenbilder in unserem Alltag?</p>
+  <div class="merk"><span class="merk-lab">In einfachen Worten</span><p>Menschenbilder sind Alltagswerkzeuge: Sie helfen uns, Menschen zu erkennen, einzuordnen, ihr Verhalten zu erwarten und zu erklären — und sie geben Orientierung und Identität.</p><span class="merk-note">Zum Merken: Wer diese stille Arbeit kennt, versteht, warum Menschen dieselbe Situation so unterschiedlich deuten.</span></div>
+  <div class="wiss"><span class="wiss-lab">Was für Leser wissenswert ist</span>
+    <ul>
+      <li>Die Monografie unterscheidet zehn Funktionen — von der Identifikation über Komplexitätsreduktion, Erklärung und Legitimation bis zur Identitätsstiftung. [M S. 53–67]<span class="ev ev--gestuetzt">gestützt</span></li>
+      <li>Kehrseite: Dieselben Leistungen erzeugen blinde Flecken — die Deutungsfolie hebt hervor, was ins Raster passt, und deckt anderes zu. [M S. 62–63]<span class="ev ev--gestuetzt">gestützt</span></li>
+      <li>Warnsignal für den Alltag: Wirkt das Verhalten anderer „nicht normal“, setzt oft das eigene Realbild unbemerkt die Norm — Typisierungen greifen vorbewusst. [M S. 65–66, 81]<span class="ev ev--belegt">belegt</span></li>
+    </ul>
+    <span class="wiss-opt"><b>Robuste Option:</b> Bei irritierendem Verhalten zuerst die eigene Erwartung ausformulieren („Ich hatte angenommen, dass …“), erst dann deuten — die vorbewusste Wirkung von Stereotypen ist in beiden Quellen mit empirischer Forschung angeführt.</span>
+  </div>
+  <div class="kb"><svg viewBox="0 0 780 130" role="img" aria-label="Illustration: eine halbdurchlässige Folie zwischen Blick und Welt hebt manche Linien hervor und deckt andere zu" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="86" cy="65" r="17" fill="none" stroke="#e0a060" stroke-width="1.8"/><circle cx="86" cy="65" r="6" fill="#e0a060"/>
+    <g stroke="#cda24f" opacity=".55" fill="none"><path d="M104 58 L 336 34"/><path d="M104 65 L 336 65"/><path d="M104 72 L 336 96"/></g>
+    <rect x="336" y="16" width="26" height="98" rx="5" fill="rgba(224,160,96,.14)" stroke="#e0a060" stroke-width="1.4"/>
+    <text x="349" y="70" text-anchor="middle" font-weight="700" font-size="9" letter-spacing="2" fill="#e0a060" transform="rotate(-90 349 70)">FOLIE</text>
+    <g fill="none"><path d="M362 34 H 700" stroke="#f0cf78" stroke-width="2.4"/><path d="M362 65 H 700" stroke="#cda24f" stroke-width="1" opacity=".8"/><path d="M362 96 H 560" stroke="#8d8266" stroke-width="1" stroke-dasharray="3 5" opacity=".6"/></g>
+    <text x="700" y="26" text-anchor="end" font-weight="700" font-size="9.5" letter-spacing="1.5" fill="#f0cf78">HERVORGEHOBEN</text>
+    <text x="574" y="108" text-anchor="start" font-weight="700" font-size="9.5" letter-spacing="1.5" fill="#8d8266">ZUGEDECKT</text>
+    <text x="770" y="122" text-anchor="end" class="kb-ill">Illustration</text>
+  </svg></div>
+  <blockquote class="kp-cite"><p>„wie eine selbst unsichtbare Folie, durch die hindurch wir die Menschen betrachten“</p><span class="kc-src">Zichy · Die Macht der Menschenbilder · S. 62 · über die Wirkung des Menschenbildes</span></blockquote>
+  <div class="br-synth"><span class="sy-lab">Synthese — Claudes Einordnung · nicht in der Quelle</span>
+    <div class="sy-grid">
+      <div><h4>Kernpunkte</h4><ul><li>Funktionen von Erkennen bis Identität: Menschenbilder sind Gebrauchsgegenstände, kein Zierrat.</li><li>Orientierung wirkt doppelt: Realbild (Normalität) und Idealbild (Sollen). [M S. 65–66]</li><li>Kontingenzbewältigung erklärt, warum Bilder sich gegen Zweifel immunisieren. [M S. 60–61]</li></ul></div>
+      <div><h4>Offene Fragen</h4><ul><li>Sind die zehn Funktionen trennscharf oder Facetten weniger Grundleistungen (Kategorisierung, Normierung)?</li><li>Welche Funktion dominiert wann — gibt es eine Rangordnung?</li></ul></div>
+      <div><h4>Widersprüche / Spannungen</h4><ul><li>Keine nennenswerten; die Liste ist additiv angelegt und beansprucht keine Vollständigkeit.</li></ul></div>
+      <div><h4>Konsequent zu Ende gedacht</h4><ul><li>Wer einem Menschen „ohne Bild“ begegnen wollte, verlöre Erwartbarkeit und Erklärbarkeit — Bildlosigkeit ist keine Option, nur Bildpflege.</li></ul></div>
+      <p class="sy-conf">Konfidenz 90/100, dass die Funktionsliste die Quelle korrekt bündelt. Kippbedingung: Nachweis, dass zentrale Leistungen (etwa Erwartungsbildung gegenüber Fremden) ohne generalisierte Annahmen über den Menschen auskommen.</p>
+    </div>
+  </div>
+  <p class="dlx-more"><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a></p>
+<p class="br-foot">Die Macht der Menschenbilder · Übersichts-Broschüre zur Doppelstudie Zichy · Karte — Gelände in der Tiefenanalyse</p></section>
+<hr class="br-cut">
+<section class="br-page kp-page kp-page--a3" id="k4" aria-label="Kapitel 4: Macht und Wirkung">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">08 / 12</span><div class="br-corner br-corner--tl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--tr" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--br" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--bl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <p class="kp-eyebrow">Kapitel 4 · Macht &amp; Wirkung</p>
+  <h2 class="kp-title">Wie Bilder formen</h2>
+  <p class="kp-kernfrage"><span class="kq-lab">Leitfrage</span>Auf welchen Wegen wirken Menschenbilder — und wo enden ihre Kräfte?</p>
+  <div class="merk"><span class="merk-lab">In einfachen Worten</span><p>Menschenbilder wirken auf drei Wegen: auf unser Wahrnehmen, Fühlen und Urteilen; auf Einrichtungen wie Recht, Moral und Erziehung; und auf das, was Menschen selbst werden. Das Bild formt den Menschen mit — aber es kann ihn nicht beliebig umformen.</p><span class="merk-note">Zum Merken: Wer eine Regel versteht, versteht sie erst ganz, wenn er ihr Menschenbild kennt.</span></div>
+  <div class="wiss"><span class="wiss-lab">Was für Leser wissenswert ist</span>
+    <ul>
+      <li>Weg 1 — Intentionalität: Typisierungen prägen schon die vorbewusste Informationsverarbeitung; beide Quellen führen dafür die empirische Stereotyp- und Vorurteilsforschung an. [M S. 81; H S. 24]<span class="ev ev--belegt">belegt</span></li>
+      <li>Weg 2 — Institutionen: Recht, Moral und Pädagogik organisieren sich um das jeweilige Bild des Menschen (klassisch bei Radbruch gezeigt); Weg 3 — Konstitution: vierfacher Anpassungsdruck (Erwartungen, Vorbilder, Institutionen, Selbstkontrolle) — bis hin zu dem, was das Handbuch als „selbsterfüllende Prophezeiung“ fasst. [M S. 86–92; H S. 24–25]<span class="ev ev--gestuetzt">gestützt</span></li>
+      <li>Der Gefühls-Mechanismus (Deutung verändert das Gefühl, Identifikation, Fokus) ist laut Quelle selbst nur eine grobe Skizze — und die Kräfte sind begrenzt: Menschen sind nur teilweise formbar, Bilder wirken als „kulturelles Megaphon“ zugleich als Produkte ihrer Zeit. [M S. 104–108, 111–113]<span class="ev ev--plausibel">plausibel</span></li>
+    </ul>
+    <span class="wiss-opt"><b>Robuste Option:</b> Bei jeder Regel-, Organisations- oder Erziehungsfrage zuerst fragen: „Welches Menschenbild setzt das voraus?“ — dieses Analysewerkzeug tragen beide Quellen durchgängig.</span>
+  </div>
+  <div class="kb"><svg viewBox="0 0 780 130" role="img" aria-label="Illustration: ein Bild wirkt in drei Richtungen auf Kopf, Institution und Person" xmlns="http://www.w3.org/2000/svg">
+    <rect x="52" y="38" width="72" height="54" rx="6" fill="rgba(163,36,44,.15)" stroke="#e8959c" stroke-width="1.6"/>
+    <text x="88" y="60" text-anchor="middle" font-weight="700" font-size="9.5" letter-spacing="1.4" fill="#e8959c">DAS</text>
+    <text x="88" y="74" text-anchor="middle" font-weight="700" font-size="9.5" letter-spacing="1.4" fill="#e8959c">BILD</text>
+    <g stroke="#cda24f" fill="none" opacity=".7"><path d="M124 50 C 220 30 260 30 320 34"/><path d="M124 65 C 220 65 260 65 320 65"/><path d="M124 80 C 220 100 260 100 320 96"/></g>
+    <g fill="#cda24f"><path d="M320 34 l-9 -4 v8 z"/><path d="M320 65 l-9 -4 v8 z"/><path d="M320 96 l-9 -4 v8 z"/></g>
+    <circle cx="366" cy="32" r="13" fill="none" stroke="#f0cf78" stroke-width="1.6"/><path d="M360 32 q6 -8 12 0 q-6 8 -12 0" fill="none" stroke="#f0cf78"/>
+    <text x="392" y="36" font-weight="700" font-size="9.5" letter-spacing="1.4" fill="#f0cf78">WAHRNEHMEN · URTEILEN</text>
+    <g fill="none" stroke="#f0cf78" stroke-width="1.6"><path d="M352 78 h28 M352 78 v-16 h28 v16 M356 62 v-6 h20 v6"/><path d="M357 78 v-11 M364 78 v-11 M371 78 v-11"/></g>
+    <text x="392" y="70" font-weight="700" font-size="9.5" letter-spacing="1.4" fill="#f0cf78">RECHT · MORAL · ERZIEHUNG</text>
+    <path d="M354 112 Q 354 96 366 96 Q 378 96 378 112 Z" fill="#f0cf78" opacity=".85"/><circle cx="366" cy="88" r="7.5" fill="#f0cf78" opacity=".85"/>
+    <text x="392" y="104" font-weight="700" font-size="9.5" letter-spacing="1.4" fill="#f0cf78">WAS MENSCHEN WERDEN</text>
+    <path d="M700 100 C 640 116 560 116 500 108" fill="none" stroke="#8d8266" stroke-dasharray="3 5"/><path d="M500 108 l10 -1 -6 8 z" fill="#8d8266"/>
+    <text x="700" y="92" text-anchor="end" font-weight="700" font-size="8.5" letter-spacing="1.4" fill="#8d8266">RÜCKWIRKUNG: BILDER SIND SELBST GEFORMT</text>
+    <text x="770" y="122" text-anchor="end" class="kb-ill">Illustration</text>
+  </svg></div>
+  <blockquote class="kp-cite"><p>„Nichts ist so entscheidend für den Stil eines Rechtszeitalters wie die Auffassung vom Menschen“</p><span class="kc-src">Gustav Radbruch · zit. n. Zichy, Die Macht der Menschenbilder, S. 88</span></blockquote>
+  <div class="br-synth"><span class="sy-lab">Synthese — Claudes Einordnung · nicht in der Quelle</span>
+    <div class="sy-grid">
+      <div><h4>Kernpunkte</h4><ul><li>Drei Wirkwege: Intentionalität, Institutionen, Konstitution — mit absteigender empirischer Härte.</li><li>Die Grundthese: Bilder sind nicht nur repräsentativ, sondern konstitutiv. [M S. 8, 80]</li><li>Grenzen sind eingebaut: begrenzte Formbarkeit, viele Ko-Faktoren, Wechselwirkung. [M S. 111–113]</li></ul></div>
+      <div><h4>Offene Fragen</h4><ul><li>Wie groß sind die Effekte relativ zu Ökonomie, Macht, Psyche? Die Quellen quantifizieren bewusst nicht.</li><li>Lassen sich Bild-Wirkungen von den Wirkungen der Institutionen trennen, die sie tragen?</li></ul></div>
+      <div><h4>Widersprüche / Spannungen</h4><ul><li>Kein Selbstwiderspruch: Die starke Wirkungsthese wird durch das eigene Grenzen-Kapitel diszipliniert — eher vorsichtige Stärke als Übergriff.</li></ul></div>
+      <div><h4>Konsequent zu Ende gedacht</h4><ul><li>Wenn Bilder konstitutiv sind, ist Menschenbildpflege Institutionenpolitik: Wer das Bild ändert, verschiebt langfristig Recht, Pädagogik — und Menschen.</li></ul></div>
+      <p class="sy-conf">Konfidenz 88/100 für die Drei-Wege-Rekonstruktion; 75/100 für die Reichweite der Konstitutionsthese, da sie auf Plausibilisierung statt Messung ruht. Kippbedingung: Studien, die bei kontrolliertem Institutionen-Umfeld keine eigenständige Bildwirkung finden, würden Weg 3 auf Institutionenwirkung reduzieren.</p>
+    </div>
+  </div>
+  <p class="dlx-more"><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a></p>
+<p class="br-foot">Die Macht der Menschenbilder · Übersichts-Broschüre zur Doppelstudie Zichy · Karte — Gelände in der Tiefenanalyse</p></section>
+<hr class="br-cut">
+<section class="br-page kp-page kp-page--a2" id="k5" aria-label="Kapitel 5: Fallstudien">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">09 / 12</span><div class="br-corner br-corner--tl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--tr" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--br" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--bl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <p class="kp-eyebrow">Kapitel 5 · Fallstudien</p>
+  <h2 class="kp-title">Die Macht, konkret gezeigt</h2>
+  <p class="kp-kernfrage"><span class="kq-lab">Leitfrage</span>Wo hat sich die Macht der Menschenbilder historisch und gegenwärtig konkret gezeigt?</p>
+  <div class="merk"><span class="merk-lab">In einfachen Worten</span><p>Die Fallstudien des Handbuchs zeigen beide Richtungen: Menschenbilder können Würde tragen und schützen — oder Entrechtung und Gewalt vorbereiten und rechtfertigen.</p><span class="merk-note">Zum Merken: Die gefährlichsten Bilder sind oft die, die niemand ausspricht.</span></div>
+  <div class="wiss"><span class="wiss-lab">Was für Leser wissenswert ist</span>
+    <ul>
+      <li>Muster der Gefahr: Wo Bilder Gruppen den vollen Menschenstatus absprachen, folgten Ausbeutung und Gewalt — NS-Rassenkollektivismus [H S. 55], Kindheitsbilder der „schwarzen Pädagogik“, die dem Kind Verletzlichkeit und Personalität absprachen [H S. 90], Kolonialismus und Kastendenken [M S. 83; H S. 24].<span class="ev ev--gestuetzt">gestützt</span></li>
+      <li>Muster des Schutzes: Das Menschenbild der Menschenrechte bündelt Würde und Freiheit und gibt den Schutznormen Richtung; die Würde erschließt sich über ihre Verletzungen. [H S. 117–124]<span class="ev ev--gestuetzt">gestützt</span></li>
+      <li>Gegenwart: Unauffällige Bilder wirken untergründig — der Homo oeconomicus [M S. 119–120] und die Bilder der IT-Industrie, „dass die IT-Industrie den Menschen als Mängelwesen ansieht“ [H S. 827]. Beides sind Diagnosen mit Vorbehalt, keine Messwerte.<span class="ev ev--gemischt">gemischt</span></li>
+    </ul>
+    <span class="wiss-opt"><b>Robuste Option:</b> Bei neuen Regeln, Produkten und Software das eingebaute Menschenbild ausdrücklich prüfen: Wen schließt es ein? Wen verkürzt es? — Die Fallstudien zeigen, dass genau an dieser Stelle Schutz oder Schaden beginnt.</span>
+  </div>
+  <div class="kb"><svg viewBox="0 0 780 130" role="img" aria-label="Illustration: ein Zeitband mit Fallmarken von der Frühen Neuzeit bis zur Gegenwart" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 78 H 730" stroke="#cda24f" stroke-width="1.6"/>
+    <g stroke="#e0a060" stroke-width="1.4"><line x1="120" y1="78" x2="120" y2="52"/><line x1="268" y1="78" x2="268" y2="52"/><line x1="415" y1="78" x2="415" y2="52"/><line x1="562" y1="78" x2="562" y2="52"/><line x1="690" y1="78" x2="690" y2="52"/></g>
+    <g fill="#e0a060"><circle cx="120" cy="78" r="4"/><circle cx="268" cy="78" r="4"/><circle cx="415" cy="78" r="4"/><circle cx="562" cy="78" r="4"/><circle cx="690" cy="78" r="4"/></g>
+    <text x="120" y="42" text-anchor="middle" font-weight="700" font-size="9" letter-spacing="1.2" fill="#e0a060">KOLONIALISMUS</text>
+    <text x="268" y="42" text-anchor="middle" font-weight="700" font-size="9" letter-spacing="1.2" fill="#e0a060">SCHWARZE PÄDAGOGIK</text>
+    <text x="415" y="42" text-anchor="middle" font-weight="700" font-size="9" letter-spacing="1.2" fill="#e0a060">DRITTES REICH</text>
+    <text x="562" y="42" text-anchor="middle" font-weight="700" font-size="9" letter-spacing="1.2" fill="#f0cf78">MENSCHENRECHTE</text>
+    <text x="690" y="42" text-anchor="middle" font-weight="700" font-size="9" letter-spacing="1.2" fill="#e0a060">HOMO OEC. · IT</text>
+    <text x="120" y="100" text-anchor="middle" font-size="8.5" fill="#8d8266">Aberkennung</text>
+    <text x="268" y="100" text-anchor="middle" font-size="8.5" fill="#8d8266">Aberkennung</text>
+    <text x="415" y="100" text-anchor="middle" font-size="8.5" fill="#8d8266">Aberkennung</text>
+    <text x="562" y="100" text-anchor="middle" font-size="8.5" fill="#f0cf78">Schutz</text>
+    <text x="690" y="100" text-anchor="middle" font-size="8.5" fill="#8d8266">untergründig</text>
+    <text x="770" y="122" text-anchor="end" class="kb-ill">Illustration</text>
+  </svg></div>
+  <blockquote class="kp-cite"><p>„Die nationalsozialistische Anthropologie war nicht individualistisch, sondern kollektivistisch ausgelegt.“</p><span class="kc-src">Manuel Becker · Handbuch Menschenbilder, „Drittes Reich“, S. 55</span></blockquote>
+  <div class="br-synth"><span class="sy-lab">Synthese — Claudes Einordnung · nicht in der Quelle</span>
+    <div class="sy-grid">
+      <div><h4>Kernpunkte</h4><ul><li>Teil I des Handbuchs belegt die lebensweltliche Intuition: Menschenbilder sind relevante Wirkfaktoren. [H S. 5]</li><li>Das wiederkehrende Gefahrenmuster ist die Status-Aberkennung („uns“ / „die anderen“). [M S. 119]</li><li>Schutzbilder (Menschenrechte) sind bewusst dünn — und gerade so anschlussfähig.</li></ul></div>
+      <div><h4>Offene Fragen</h4><ul><li>Wie viel erklärt das Bild, wie viel erklären Interessen? Die Quelle nennt beim Kolonialismus ausdrücklich auch „niedrige Motive“. [M S. 83]</li><li>Sind die IT-Diagnosen verallgemeinerbar oder branchen- und fallgebunden?</li></ul></div>
+      <div><h4>Widersprüche / Spannungen</h4><ul><li>Keine internen Widersprüche; die Kausalfrage (Ursache vs. Mitursache) bleibt in den Fallstudien bewusst offen.</li></ul></div>
+      <div><h4>Konsequent zu Ende gedacht</h4><ul><li>Wenn Aberkennung das Frühwarnzeichen ist, gehört Menschenbild-Monitoring zu Prävention — von Verfassungsschutz bis Produktethik.</li></ul></div>
+      <p class="sy-conf">Konfidenz 88/100 für das Muster „Status-Aberkennung geht Gewalt voraus“ als Befund der Fallstudien; als Kausalthese nur 65/100. Kippbedingung: Fallstudien massenhafter Entrechtung ohne vorgängige Bild-Verengung würden das Bild zur bloßen Begleiterscheinung herabstufen.</p>
+    </div>
+  </div>
+  <p class="dlx-more"><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a></p>
+<p class="br-foot">Die Macht der Menschenbilder · Übersichts-Broschüre zur Doppelstudie Zichy · Karte — Gelände in der Tiefenanalyse</p></section>
+<hr class="br-cut">
+<section class="br-page kp-page" id="k6" aria-label="Kapitel 6: Konflikte">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">10 / 12</span><div class="br-corner br-corner--tl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--tr" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--br" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--bl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <p class="kp-eyebrow">Kapitel 6 · Konflikte</p>
+  <h2 class="kp-title">Wenn Bilder kollidieren</h2>
+  <p class="kp-kernfrage"><span class="kq-lab">Leitfrage</span>Warum sind Menschenbildkonflikte so hartnäckig — und wie werden sie verhandelbar?</p>
+  <div class="merk"><span class="merk-lab">In einfachen Worten</span><p>Viele Dauerstreite — etwa um Abtreibung, Sterbehilfe, Behinderung, Mensch und Tier oder die technische „Verbesserung“ des Menschen — sind im Kern Konflikte zwischen Menschenbildern.</p><span class="merk-note">Zum Merken: Wer den Streit entschärfen will, muss zuerst die Bilder dahinter beim Namen nennen.</span></div>
+  <div class="wiss"><span class="wiss-lab">Was für Leser wissenswert ist</span>
+    <ul>
+      <li>Die Konfliktherde des Handbuch-Teils IV: Natur des Menschen, Individualismus/Kollektivismus, Universalismus/Partikularismus, Evolution/Naturalismus, Behinderung, Bioethik, Enhancement, Tier- und Naturethik. [H S. 539–706]<span class="ev ev--gestuetzt">gestützt</span></li>
+      <li>Menschenwürde: als Formel geteilt, in der Konkretisierung umstritten; der Gehalt erschließt sich über die Verletzungen — „Der Gehalt der Menschenwürde erschließt sich durch die Negation der Menschenwürde.“ [M S. 31–33; H S. 124]<span class="ev ev--gestuetzt">gestützt</span></li>
+      <li>Warnsignal: Wird „Menschenbild“ als Diskurs-Stopper eingesetzt (Immunisierung statt Argument), kippt Analyse in Dogmatik — beide Quellen benennen dieses Risiko ausdrücklich. [M S. 7; H S. 4]<span class="ev ev--gestuetzt">gestützt</span></li>
+    </ul>
+    <span class="wiss-opt"><b>Robuste Option:</b> In festgefahrenen Debatten die zugrunde liegenden Annahmen beider Seiten explizit auflisten (Freilegung) — laut Quelle die Voraussetzung fruchtbarer Auseinandersetzung, gezeigt an Abtreibung und Sterbehilfe. Ohne Erfolgsgarantie im Einzelfall.</span>
+  </div>
+  <div class="kb"><svg viewBox="0 0 780 130" role="img" aria-label="Illustration: zwei Klippen mit Spalt, überbrückt von einer Linie aus offengelegten Annahmen" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 46 H 330 L 322 82 L 334 130 H 50 Z" fill="#14232b" stroke="#2f5a63" stroke-width="1.4"/>
+    <path d="M730 46 H 450 L 458 82 L 446 130 H 730 Z" fill="#1e1113" stroke="#a3242c" stroke-width="1.4"/>
+    <text x="190" y="70" text-anchor="middle" font-weight="700" font-size="10" letter-spacing="1.6" fill="#9fd0db">BILD A · ANNAHMEN</text>
+    <text x="590" y="70" text-anchor="middle" font-weight="700" font-size="10" letter-spacing="1.6" fill="#e8959c">BILD B · ANNAHMEN</text>
+    <g stroke="#9fd0db" opacity=".65"><line x1="100" y1="86" x2="300" y2="86"/><line x1="100" y1="100" x2="270" y2="100"/><line x1="100" y1="114" x2="290" y2="114"/></g>
+    <g stroke="#e8959c" opacity=".65"><line x1="480" y1="86" x2="680" y2="86"/><line x1="510" y1="100" x2="680" y2="100"/><line x1="490" y1="114" x2="680" y2="114"/></g>
+    <path d="M334 52 H 446" stroke="#f0cf78" stroke-width="2.2" stroke-dasharray="7 5"/>
+    <text x="390" y="42" text-anchor="middle" font-weight="700" font-size="9.5" letter-spacing="1.6" fill="#f0cf78">FREILEGUNG</text>
+    <text x="390" y="104" text-anchor="middle" font-weight="700" font-size="9" letter-spacing="1.4" fill="#8d8266">DER GRABEN</text>
+    <text x="770" y="122" text-anchor="end" class="kb-ill">Illustration</text>
+  </svg></div>
+  <blockquote class="kp-cite"><p>„Kein kohärentes Menschenbild kann darauf verzichten, eine Natur des Menschen …“</p><span class="kc-src">Christian Illies · Handbuch Menschenbilder, „Die Natur des Menschen“, S. 557 · Fragment, Fortsetzung: als objektiv gegeben zu betrachten</span></blockquote>
+  <div class="br-synth"><span class="sy-lab">Synthese — Claudes Einordnung · nicht in der Quelle</span>
+    <div class="sy-grid">
+      <div><h4>Kernpunkte</h4><ul><li>Menschenbildkonflikte sind Tiefenkonflikte: Sie betreffen Annahmen, nicht bloß Interessen.</li><li>Die Würde-Formel eint und entzweit zugleich — je nach Konkretisierungsebene.</li><li>Freilegung ist der gemeinsame methodische Vorschlag beider Werke.</li></ul></div>
+      <div><h4>Offene Fragen</h4><ul><li>Gibt es Konflikte, die auch nach vollständiger Freilegung unentscheidbar bleiben — und was dann?</li><li>Wie viel Naturannahme braucht ein Bild mindestens (Illies) — und verträgt sich das mit radikal konstruktivistischen Bildern?</li></ul></div>
+      <div><h4>Widersprüche / Spannungen</h4><ul><li>Zwischen Handbuch-Beiträgen bestehen echte Positionsdifferenzen (z. B. Natur vs. Konstruktion) — das ist Programm des explorativen Bandes, kein Fehler. [H S. 5]</li></ul></div>
+      <div><h4>Konsequent zu Ende gedacht</h4><ul><li>Wenn Freilegung Kompromisse erst ermöglicht, ist das Verschweigen von Menschenbildern — auch aus Höflichkeit — langfristig konfliktverschärfend. [M S. 118]</li></ul></div>
+      <p class="sy-conf">Konfidenz 87/100, dass die Konfliktdiagnose die Quellen korrekt bündelt. Kippbedingung: Belege, dass zentrale bioethische Dauerkonflikte primär durch Interessen- statt Annahmenausgleich gelöst wurden, würden die Tiefenkonflikt-These schwächen.</p>
+    </div>
+  </div>
+  <p class="dlx-more"><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a></p>
+<p class="br-foot">Die Macht der Menschenbilder · Übersichts-Broschüre zur Doppelstudie Zichy · Karte — Gelände in der Tiefenanalyse</p></section>
+<hr class="br-cut">
+<style id="st-css">
+.st-page{text-align:center;}
+.st-core{width:min(780px,100%);border:2px solid #ecc868;border-radius:14px;background:radial-gradient(130% 160% at 50% 0%,rgba(236,200,104,.18),rgba(236,200,104,.04));box-shadow:0 0 0 6px rgba(236,200,104,.06),0 14px 48px rgba(236,200,104,.16),0 8px 26px rgba(0,0,0,.5);padding:clamp(22px,3.4vw,40px) clamp(20px,3vw,40px);}
+.st-core .st-lab{display:block;font:700 .62rem/1 "Inter Tight",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-line);margin-bottom:12px;}
+.st-core p{margin:0;font:600 clamp(18px,2.6vw,26px)/1.42 "Newsreader",serif;font-style:italic;color:#fbf3df;}
+.st-core p b{color:var(--gold-max);font-style:normal;}
+.st-quote{margin:0;font:500 clamp(15px,2vw,19px)/1.5 "Newsreader",serif;font-style:italic;color:#f4ead0;}
+.st-quote .stq-src{display:block;margin-top:6px;font:600 10px/1.4 "Inter Tight",sans-serif;font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-line);}
+.st-open{display:grid;grid-template-columns:1fr 1fr;gap:11px;width:min(780px,100%);}
+.st-open .so-card{border:1px solid rgba(47,90,99,.75);border-radius:10px;background:rgba(29,58,64,.35);padding:13px 15px;text-align:left;}
+.st-open h4{margin:0 0 5px;font:700 10.5px/1.35 "Inter Tight",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9fd0db;}
+.st-open p{margin:0;font:400 12.6px/1.55 "Spectral",Georgia,serif;color:var(--ink-2);}
+.st-note{width:min(780px,100%);margin:0;font:400 12.3px/1.55 "Spectral",Georgia,serif;color:var(--ink-soft);}
+@media (max-width:640px){.st-open{grid-template-columns:1fr;}}
+</style>
+<section class="br-page st-page" id="schluss" aria-label="Schluss-Gesamtbild der Doppelstudie">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">11 / 12</span><div class="br-corner br-corner--tl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--tr" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--br" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--bl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <p class="br-eyebrow">Schluss · Das Gesamtbild</p>
+  <h2 class="br-title">Unverzichtbar — und gefährlich</h2>
+  <div class="st-core"><span class="st-lab">Die übergreifende Einsicht der Doppelstudie</span><p>Menschenbilder sind zugleich <b>unverzichtbar</b> — ohne sie kein Erkennen, keine Erwartung, keine Ordnung — und <b>machtvoll bis gefährlich</b>, weil sie den Menschen mitformen, den sie abzubilden vorgeben. Deshalb ist der verantwortliche Umgang mit ihnen keine akademische Kür, sondern eine <b>Daueraufgabe</b>: benennen, prüfen, gemeinsamen Boden pflegen, wachsam bleiben.</p></div>
+  <p class="st-quote">„Sie bilden den Menschen nicht einfach nur ab, sie bilden ihn mit.“<span class="stq-src">Zichy · Die Macht der Menschenbilder, S. 8 · die Kernthese</span></p>
+  <div class="st-open">
+    <div class="so-card"><h4>Offen 1 · Tragfähigkeit des dünnen Bildes</h4><p>Wie dünn darf das geteilte Torso-Menschenbild werden, bevor es die pluralistische Gesellschaft nicht mehr trägt? Die Quellen zeigen die Abhängigkeit, nicht die Belastungsgrenze.</p></div>
+    <div class="so-card"><h4>Offen 2 · Kritik im eigenen Medium</h4><p>Jede Kritik an Menschenbildern arbeitet selbst mit einem Menschenbild. Die Quellen fordern Reflexion — ein bildfreier Standpunkt wird nirgends versprochen.</p></div>
+    <div class="so-card"><h4>Offen 3 · Universal oder westlich?</h4><p>Das westliche Verständnis des Menschen ist im Weltvergleich eher die Ausnahme; zugleich beansprucht das Menschenrechtsbild universale Geltung. Diese Spannung bleibt produktiv ungelöst. [M S. 93; H S. 949]</p></div>
+    <div class="so-card"><h4>Offen 4 · Natur oder Konstruktion?</h4><p>Braucht jedes kohärente Bild eine „Natur des Menschen“ (Illies) — oder ist gerade die Formbarkeit der Kern (Pico-Motiv)? Das Handbuch lässt den Streit bewusst stehen. [H S. 557; M S. 115]</p></div>
+  </div>
+  <p class="st-note">Karte gelesen? Das Gelände — die vollständige Argumentation, Beleglage und Gegenpositionen — gehört in die Tiefenanalyse (Verweis im Kolophon).</p>
+<p class="br-foot">Die Macht der Menschenbilder · Übersichts-Broschüre zur Doppelstudie Zichy · Karte — Gelände in der Tiefenanalyse</p></section>
+<hr class="br-cut">
+<style id="ko-css">
+.ko-page{text-align:center;}
+.ko-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;width:min(800px,100%);}
+.ko-card{border:1px solid rgba(200,155,60,.3);border-radius:10px;background:rgba(255,255,255,.03);padding:13px 16px;text-align:left;}
+.ko-card h3{margin:0 0 7px;font:700 10.5px/1.3 "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-hi);}
+.ko-card p,.ko-card li{font:400 12.6px/1.6 "Spectral",Georgia,serif;color:var(--ink-2);}
+.ko-card p{margin:0 0 7px;}
+.ko-card p:last-child{margin-bottom:0;}
+.ko-card ul{margin:0;padding-left:17px;}
+.ko-card li{margin:0 0 5px;}
+.ko-card b{color:var(--ink);}
+.ko-cross{width:min(800px,100%);padding:13px 18px;border:2px solid var(--gold-hi);border-radius:10px;background:linear-gradient(90deg,rgba(236,200,104,.14),rgba(236,200,104,.04));font:600 13.5px/1.55 "Inter Tight",sans-serif;color:var(--ink);text-align:left;}
+.ko-cross a{color:var(--gold-max);text-decoration:none;border-bottom:1px solid rgba(240,207,120,.6);}
+.ko-fin{margin:0;font:500 13px/1.6 "Newsreader",serif;font-style:italic;color:var(--ink-soft);}
+@media (max-width:640px){.ko-grid{grid-template-columns:1fr;}}
+</style>
+<section class="br-page ko-page" id="kolophon" aria-label="Kolophon: Quellen, Methode und Verweise">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">12 / 12</span><div class="br-corner br-corner--tl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--tr" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--br" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div><div class="br-corner br-corner--bl" aria-hidden="true"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M2 28 V6 Q2 2 6 2 H28" fill="none" stroke="#cda24f" stroke-width="1.4"/><circle cx="6" cy="6" r="2" fill="none" stroke="#cda24f"/></svg></div>
+  <p class="br-eyebrow">Rückseite · Kolophon</p>
+  <h2 class="br-title">Quellen &amp; Methode</h2>
+  <div class="ko-grid">
+    <div class="ko-card"><h3>Die Quellen [M] und [H]</h3>
+      <p><b>[M]</b> Michael Zichy: <b>Die Macht der Menschenbilder. Wie wir andere wahrnehmen.</b> Reclam, Ditzingen 2023. E-Book-ISBN 978-3-15-961955-2 (Druck: 978-3-15-014150-2), 125 Seiten.</p>
+      <p><b>[H]</b> Michael Zichy (Hrsg.): <b>Handbuch Menschenbilder.</b> Springer VS, Wiesbaden 2024. eBook-ISBN 978-3-658-32128-4, 50 Beiträge, rund 990 Seiten. Zitierte Beiträge: Zichy (Einleitung; Grundlagen; Das westliche Menschenbild), Becker (Drittes Reich), Seichter (Schwarze Pädagogik), Kirchschläger (Menschenrechte), Illies (Die Natur des Menschen), von Spiekermann-Hoff (Das Digitale Menschenbild).</p>
+    </div>
+    <div class="ko-card"><h3>Methode dieser Broschüre</h3>
+      <ul><li>Beide Quelldateien vollständig maschinell erschlossen; Kristallisation von Hauptfrage und sechs Themenkomplexen vor dem Bau.</li><li>Zitatbank zuerst: 13 Kernzitate, jedes unter 15 Wörtern, per Volltextabgleich wortwörtlich verifiziert.</li><li>Locators: [M] Reclam-Druckseiten aus den Seitenankern des E-Books; [H] Druckseiten über die Kolumnentitel des PDFs rekonstruiert und stichprobengeprüft.</li><li>Drei Textebenen je Kapitel: Merksatz (einfach) · Wissenswert (konkret) · Claudes Einordnung (kalibriertes Urteil) — kein Doppeln.</li></ul>
+    </div>
+    <div class="ko-card"><h3>Anti-Halluzination, kurz</h3>
+      <p>Quellenbasiert erstellt (Zone B: <b>JA</b>, beide Werke im Volltext). Eigene Analyse ist überall als <b>„Claudes Einordnung · nicht in der Quelle“</b> markiert und trägt Konfidenz plus Kippbedingung. Keine erfundenen Bilder, Zahlen oder Zitate; alle Diagramme sind gekennzeichnete Illustrationen, die einzige Datengrafik (Prüfsiegel) nutzt die festen Benchmark-Werte. Geschätzte Risikospanne: 7–15 %, geschätzt, nicht gemessen.</p>
+    </div>
+    <div class="ko-card"><h3>Weiterdenken</h3>
+      <p>Nehmen Sie eine Regel, ein Produkt oder eine Debatte Ihrer Woche und stellen Sie die eine Frage dieser Broschüre: <b>Welches Menschenbild setzt das voraus — und würde ich es unterschreiben?</b></p>
+      <p>Prüfhinweis: Evidenz-Marker und Einordnungen sind Claudes Zuordnungen; für Entscheidungen bitte an den angegebenen Fundstellen gegenlesen.</p>
+    </div>
+  </div>
+  <p class="ko-cross">Diese Broschüre ist die <b>Kurzfassung (System A — die Karte)</b>. Die vollständige Analyse mit ganzer Beleg- und Argumenttiefe finden Sie hier: <a href="tiefenanalyse.html">tiefenanalyse.html — Vollständige Tiefenanalyse öffnen →</a></p>
+  <p class="ko-fin">Erstellt von Claude (Anthropic) als quellengebundene Aufarbeitung · Formelles Deutsch · Bildschirm und Druck (A4)</p>
+<p class="br-foot">Die Macht der Menschenbilder · Übersichts-Broschüre zur Doppelstudie Zichy · Karte — Gelände in der Tiefenanalyse</p></section>
+<script>
+(function(){
+  var ds=[].slice.call(document.querySelectorAll("details"));
+  var st=[];
+  window.addEventListener("beforeprint",function(){st=ds.map(function(d){return d.open;});ds.forEach(function(d){d.open=true;});});
+  window.addEventListener("afterprint",function(){ds.forEach(function(d,i){d.open=st[i];});});
+})();
+</script>
+</body>
+</html>
