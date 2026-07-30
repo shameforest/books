@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Im Zeitalter der Identität — Werkanalyse (Übersichts-Broschüre)</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500;1,6..72,600&family=Spectral:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f13;
+  --page-1:#1b2832; --page-2:#0e161b;
+  --ink:#f4ecd9; --ink-2:#e7dcc2; --ink-soft:#cdbfa0; --ink-faint:#9a8f78;
+  --gold:#c89b3c; --gold-line:#cda24f; --gold-hi:#ecc868; --gold-max:#f0cf78;
+  --a1:#2f5a63; --a1-hi:#9fd0db;
+  --a2:#b85c2f; --a2-hi:#e0a060;
+  --a3:#a3242c; --a3-hi:#e8959c;
+  --a4:#c89b3c; --a4-hi:#ecc868;
+}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);font-family:"Spectral",Georgia,serif;color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-feature-settings:"kern","liga","onum";}
+.br-page{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:clamp(14px,2vw,24px);padding:clamp(52px,7vw,88px) clamp(22px,5vw,64px);overflow:hidden;background:radial-gradient(120% 80% at 50% 0%,var(--page-1),var(--page-2) 64%),var(--page-2);color:var(--ink);}
+.br-cut{border:0;height:1px;width:min(820px,90vw);margin:0 auto;background:linear-gradient(90deg,transparent,rgba(200,155,60,.42),transparent);}
+.br-frame{position:absolute;inset:clamp(14px,2.4vw,30px);border:1px solid rgba(200,155,60,.5);pointer-events:none;}
+.br-frame::before{content:"";position:absolute;inset:5px;border:1px solid rgba(200,155,60,.24);}
+.br-frame::after{content:"◆";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--gold-line);background:var(--page-1);padding:0 8px;}
+.br-num{position:absolute;top:clamp(20px,3vw,34px);right:clamp(26px,4vw,48px);font:600 11px/1 "Inter Tight",sans-serif;letter-spacing:.1em;color:var(--gold-line);z-index:2;}
+.br-head{position:absolute;top:clamp(20px,3vw,34px);left:clamp(26px,4vw,48px);font:600 10.5px/1 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);z-index:2;}
+.br-foot{position:absolute;bottom:clamp(18px,2.6vw,30px);left:50%;transform:translateX(-50%);font:600 10px/1 "Inter Tight",sans-serif;letter-spacing:.18em;color:var(--ink-faint);z-index:2;}
+.br-eyebrow{margin:0;font:700 clamp(11px,1.4vw,13px)/1 "Inter Tight",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-line);}
+.br-title{margin:0;font:600 clamp(28px,4.8vw,50px)/1.05 "Newsreader",serif;font-style:italic;color:#f7f0db;text-align:center;}
+.br-lead{margin:0;max-width:760px;text-align:center;font:400 clamp(14.5px,1.7vw,17px)/1.6 "Spectral",Georgia,serif;color:var(--ink-2);}
+.acc-a1{--acc:var(--a1);--acc-hi:var(--a1-hi);}
+.acc-a2{--acc:var(--a2);--acc-hi:var(--a2-hi);}
+.acc-a3{--acc:var(--a3);--acc-hi:var(--a3-hi);}
+.acc-a4{--acc:var(--a4);--acc-hi:var(--a4-hi);}
+.kp-eyebrow{margin:0;font:700 clamp(11px,1.4vw,13px)/1 "Inter Tight",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--acc-hi,var(--gold-line));}
+.kp-title{margin:0;font:700 clamp(26px,4vw,42px)/1.06 "Newsreader",serif;color:#f7f0db;text-align:center;}
+.kp-kernfrage{margin:2px 0 0;max-width:740px;padding:10px 18px;border-left:3px solid var(--gold-line);background:rgba(200,155,60,.06);font:500 clamp(15px,1.9vw,18.5px)/1.5 "Newsreader",serif;font-style:italic;color:var(--ink-2);text-align:left;}
+.merk{width:100%;max-width:740px;border:1px solid rgba(236,200,104,.55);border-radius:8px;background:linear-gradient(180deg,rgba(236,200,104,.13),rgba(236,200,104,.04));padding:13px 18px 12px;text-align:left;}
+.merk-label{display:block;font:700 .62rem/1 "Inter Tight",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-hi);margin:0 0 7px;}
+.merk p{margin:0;font:400 14.5px/1.55 "Spectral",Georgia,serif;color:var(--ink);}
+.merk-zm{display:block;margin-top:7px;font:600 13.5px/1.5 "Inter Tight",sans-serif;color:var(--gold-max);}
+.wiss{width:100%;max-width:740px;border:1px solid rgba(200,155,60,.3);border-left:3px solid var(--acc,var(--gold));border-radius:8px;background:rgba(255,255,255,.03);padding:13px 18px 12px;text-align:left;}
+.wiss-label{display:block;font:700 .62rem/1 "Inter Tight",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--acc-hi,var(--gold-line));margin:0 0 7px;}
+.wiss ul{margin:0;padding-left:1.15em;}
+.wiss li{margin:0 0 6px;font:400 13.8px/1.52 "Spectral",Georgia,serif;color:var(--ink-2);}
+.wiss li:last-child{margin-bottom:0;}
+.wiss-ro{display:block;margin-top:9px;padding-top:8px;border-top:1px dashed rgba(200,155,60,.35);font:600 13.5px/1.5 "Inter Tight",sans-serif;color:var(--ink);}
+.wiss-ro b{color:var(--gold-hi);}
+.kp-cite{width:100%;max-width:740px;margin:0;padding:14px 20px;border:1px solid rgba(200,155,60,.35);border-left:3px solid var(--gold-hi);border-radius:8px;background:rgba(0,0,0,.24);text-align:left;}
+.kp-cite p{margin:0;font:500 clamp(15.5px,2vw,19px)/1.5 "Newsreader",serif;font-style:italic;color:#fbf3df;}
+.kp-loc{display:block;margin-top:7px;font:700 10.5px/1 "Inter Tight",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-line);}
+.kb{width:100%;max-width:780px;}
+.kb svg{width:100%;height:auto;display:block;}
+.kb-ill{font:600 9px "Inter Tight",sans-serif;fill:#9a8f78;letter-spacing:.12em;}
+.kb-t{font:600 10.5px "Inter Tight",sans-serif;fill:#e7dcc2;letter-spacing:.06em;}
+.kb-s{font:400 9.5px "Inter Tight",sans-serif;fill:#9a8f78;}
+.br-synth{width:100%;max-width:740px;border:1px solid rgba(47,90,99,.8);border-radius:8px;background:linear-gradient(180deg,rgba(47,90,99,.22),rgba(47,90,99,.08));padding:14px 18px;text-align:left;}
+.bs-h{display:block;font:700 .62rem/1 "Inter Tight",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#9fd0db;margin:0 0 8px;}
+.bs-block{margin:0 0 8px;}
+.bs-block:last-child{margin-bottom:0;}
+.bs-t{font:700 11px/1.3 "Inter Tight",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:3px;}
+.bs-block p{margin:0;font:400 13.5px/1.5 "Spectral",Georgia,serif;color:var(--ink-2);}
+.bs-claude{margin-top:10px;padding:10px 12px;border:1px dashed rgba(159,208,219,.6);border-radius:6px;background:rgba(0,0,0,.18);}
+.bs-badge{display:inline-block;font:700 9.5px/1 "Inter Tight",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#0e161b;background:#9fd0db;border-radius:3px;padding:3px 7px;margin:0 0 6px;}
+.bs-claude p{margin:0;font:400 13.2px/1.5 "Spectral",Georgia,serif;color:var(--ink-2);}
+.bs-konf{color:var(--gold-hi);font-weight:600;}
+.kp-deep{width:100%;max-width:740px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font:600 11px/1 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;}
+.kp-deep a{color:var(--gold-line);text-decoration:none;border-bottom:1px solid rgba(200,155,60,.4);padding-bottom:2px;}
+.kp-deep a:hover,.kp-deep a:focus{color:var(--gold-max);border-color:var(--gold-max);outline:none;}
+.kp-deep a:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;}
+.kp-id{color:var(--ink-faint);}
+</style>
+<style>
+.tc-cover{justify-content:center;text-align:center;gap:clamp(14px,2vw,22px);}
+.tc-bg{position:absolute;inset:0;z-index:0;opacity:.55;}
+.tc-bg svg{width:100%;height:100%;display:block;}
+.tc-cover>*{position:relative;z-index:1;}
+.tc-plaque{display:inline-block;font:700 11px/1 "Inter Tight",sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-hi);border:1px solid rgba(200,155,60,.55);border-radius:999px;padding:8px 18px;background:rgba(13,18,23,.62);}
+.tc-emblem{width:clamp(120px,16vw,168px);height:auto;}
+.tc-title{margin:0;font:800 clamp(34px,6.4vw,68px)/1.02 "Newsreader",serif;letter-spacing:.02em;text-transform:uppercase;color:#f7f0db;text-shadow:0 1px 0 rgba(255,244,214,.28),0 -1px 0 rgba(0,0,0,.55),0 10px 28px rgba(0,0,0,.5);}
+.tc-sub{margin:0;font:600 clamp(15px,2.2vw,21px)/1.3 "Newsreader",serif;font-style:italic;color:var(--ink-2);}
+.tc-byline{margin:0;font:600 12px/1 "Inter Tight",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-line);}
+.tc-pitch{max-width:640px;margin:4px auto 0;padding:14px 22px;border:3px solid var(--gold);border-radius:10px;background:rgba(12,17,22,.68);font:600 clamp(16px,2.3vw,21px)/1.45 "Newsreader",serif;font-style:italic;color:#fbf3df;}
+.tc-meta{margin:0;font:600 10.5px/1.6 "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
+.tc-cue{margin-top:6px;font:600 10px/1 "Inter Tight",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-line);}
+.tc-shine{position:absolute;inset:0;z-index:0;background:radial-gradient(60% 34% at 50% 30%,rgba(236,200,104,.14),transparent 70%);animation:tcshine 6s ease-in-out infinite;pointer-events:none;}
+@keyframes tcshine{0%,100%{opacity:.35;}50%{opacity:.8;}}
+.seal-grid{width:100%;max-width:800px;display:grid;grid-template-columns:200px 1fr;gap:clamp(14px,2.4vw,26px);align-items:center;text-align:left;}
+.seal-mark{width:100%;height:auto;}
+.seal-kpis{display:flex;flex-direction:column;gap:8px;}
+.seal-kpi{font:600 13px/1.4 "Inter Tight",sans-serif;color:var(--ink-2);}
+.seal-kpi b{color:var(--gold-hi);}
+.seal-banner{display:inline-block;font:700 12px/1.3 "Inter Tight",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#0e161b;background:linear-gradient(90deg,var(--gold-hi),var(--gold-max));border-radius:4px;padding:7px 12px;}
+.seal-sum{margin:0;font:500 14.5px/1.5 "Newsreader",serif;font-style:italic;color:var(--ink);}
+.seal-verlass{width:100%;max-width:800px;margin:0;padding:11px 16px;border-left:3px solid var(--gold);background:rgba(200,155,60,.07);font:500 14px/1.5 "Newsreader",serif;font-style:italic;color:var(--ink-2);text-align:left;}
+.seal-h{margin:6px 0 0;font:700 11px/1 "Inter Tight",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-line);width:100%;max-width:800px;text-align:left;}
+.seal-sub{margin:2px 0 0;width:100%;max-width:800px;text-align:left;font:400 11.5px/1.4 "Inter Tight",sans-serif;color:var(--ink-faint);}
+.seal-bars{width:100%;max-width:800px;display:flex;flex-direction:column;gap:7px;}
+.seal-bar{display:grid;grid-template-columns:172px 1fr;align-items:center;gap:10px;font:600 12px/1 "Inter Tight",sans-serif;color:var(--ink-2);}
+.seal-track{position:relative;height:20px;background:rgba(255,255,255,.06);border:1px solid rgba(200,155,60,.25);border-radius:3px;overflow:hidden;}
+.seal-fill{position:absolute;inset:0 auto 0 0;display:flex;align-items:center;padding:0 8px;font:700 11px/1 "Inter Tight",sans-serif;color:#0e161b;border-radius:2px;}
+.seal-fill--good{background:#9fd0db;}
+.seal-fill--mid{background:#e0a060;}
+.seal-fill--bad{background:#e8959c;color:#2a0d10;}
+.seal-note{width:100%;max-width:800px;margin:0;font:400 11.5px/1.55 "Inter Tight",sans-serif;color:var(--ink-faint);text-align:left;}
+.seal-note b{color:var(--ink-soft);}
+.seal-vs{width:100%;max-width:800px;display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left;}
+.seal-vscol{border:1px solid rgba(200,155,60,.3);border-radius:8px;background:rgba(255,255,255,.03);padding:12px 14px;}
+.seal-vscol h3{margin:0 0 6px;font:700 11px/1.3 "Inter Tight",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-line);}
+.seal-vscol p{margin:0;font:400 13px/1.5 "Spectral",Georgia,serif;color:var(--ink-2);}
+.seal-vscol--mit{border-color:rgba(159,208,219,.55);}
+.seal-vscol--mit h3{color:#9fd0db;}
+.seal-ampel{width:100%;max-width:800px;display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left;}
+.seal-amp{border-radius:8px;padding:11px 14px;font:400 12.8px/1.5 "Spectral",Georgia,serif;color:var(--ink-2);}
+.seal-amp b{display:block;font:700 11px/1.3 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;}
+.seal-amp--ok{border:1px solid rgba(159,208,219,.55);background:rgba(47,90,99,.18);}
+.seal-amp--ok b{color:#9fd0db;}
+.seal-amp--warn{border:1px solid rgba(224,160,96,.55);background:rgba(184,92,47,.14);}
+.seal-amp--warn b{color:#e0a060;}
+.seal-audit{width:100%;max-width:800px;border:1px solid rgba(200,155,60,.35);border-radius:8px;background:rgba(0,0,0,.22);padding:12px 16px;text-align:left;}
+.seal-audit p{margin:0 0 8px;font:400 13.5px/1.5 "Spectral",Georgia,serif;color:var(--ink-2);}
+.seal-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.seal-chip{font:600 10px/1 "Inter Tight",sans-serif;letter-spacing:.06em;color:var(--gold-hi);border:1px solid rgba(200,155,60,.45);border-radius:999px;padding:5px 10px;background:rgba(200,155,60,.07);}
+.seal-details{width:100%;max-width:800px;border:1px dashed rgba(200,155,60,.4);border-radius:8px;background:rgba(255,255,255,.02);padding:0;text-align:left;}
+.seal-details summary{cursor:pointer;padding:11px 16px;font:700 11px/1 "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-line);list-style:none;}
+.seal-details summary::-webkit-details-marker{display:none;}
+.seal-details summary::before{content:"▸ ";}
+.seal-details[open] summary::before{content:"▾ ";}
+.seal-details div{padding:0 16px 13px;}
+.seal-details p,.seal-details li{font:400 12.8px/1.55 "Spectral",Georgia,serif;color:var(--ink-2);margin:0 0 7px;}
+.seal-details ul{margin:0 0 7px;padding-left:1.2em;}
+</style><style>
+.lm-page{text-align:center;}
+.lm-h{margin:8px 0 0;font:700 clamp(11px,1.4vw,13px)/1 "Inter Tight",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#cda24f;}
+.lm-people{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.6vw,16px);width:100%;max-width:790px;}
+.lm-person{display:flex;gap:13px;align-items:flex-start;border:1px solid rgba(200,155,60,.28);border-radius:8px;background:rgba(255,255,255,.03);padding:14px 16px;text-align:left;}
+.lm-person--s{border-color:rgba(163,36,44,.45);}
+.mono{display:flex;align-items:center;justify-content:center;border-radius:50%;font:700 1em/1 "Inter Tight",sans-serif;}
+.lm-person .mono{width:2.6em;height:2.6em;font-size:1em;flex:none;}
+.lm-page .mono--p{background:#2f5a63;color:#fff;}
+.lm-page .mono--s{background:#a3242c;color:#fff;}
+.lm-person__n{display:block;font:600 clamp(15px,1.8vw,18px)/1.1 "Inter Tight",sans-serif;color:#f4ecd9;}
+.lm-person__t{display:inline-block;font:700 .56rem/1 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;margin:4px 0 6px;}
+.lm-person--p .lm-person__t{color:#9fd0db;}
+.lm-person--s .lm-person__t{color:#e8959c;}
+.lm-person__d{display:block;font:400 12.5px/1.45 "Spectral",Georgia,serif;color:#cdbfa0;}
+.lm-chasm{width:100%;max-width:720px;border:1px solid rgba(200,155,60,.25);border-radius:8px;background:rgba(0,0,0,.22);padding:clamp(12px,1.8vw,20px);}
+.lm-chasm svg{width:100%;height:auto;display:block;}
+.lm-chasm text{font-family:"Inter Tight",sans-serif;}
+.lm-chasm .cl-n{font-weight:700;font-size:14px;fill:#f4ecd9;}
+.lm-chasm .cl-t{font-weight:700;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;}
+.lm-chasm .cl-s{font-family:"Spectral",serif;font-size:11px;fill:#cdbfa0;}
+.lm-chasm .cl-con{font-family:"Inter Tight",sans-serif;font-weight:700;font-size:12.5px;}
+.lm-chasm .cl-q{font-family:"Newsreader",serif;font-style:italic;font-size:10.5px;fill:#b6a988;}
+.lm-chasm .cl-ts{font-family:"Inter Tight",sans-serif;font-weight:700;font-size:9px;letter-spacing:.06em;fill:#cda24f;}
+.lm-chasm .cl-gap{font-weight:600;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;fill:#9a8f78;}
+.lm-chasm .cl-unb{font-family:"Newsreader",serif;font-weight:700;font-style:italic;font-size:19px;fill:#ecc868;}
+.lm-chasmcap{margin-top:11px;font:600 .68rem/1.4 "Inter Tight",sans-serif;color:#9a8f78;text-align:center;}
+.lm-surface{margin:0 0 16px;text-align:center;font:800 clamp(17px,2.3vw,24px)/1.32 "Inter Tight",sans-serif;color:#f4ecd9;}
+.lm-surface .lab{display:block;font:700 .6rem/1 "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#9a8f78;margin-bottom:8px;}
+.lm-surface b{color:#ecc868;}
+.lm-toc{width:100%;max-width:760px;display:grid;grid-template-columns:1fr 1fr;gap:7px 18px;text-align:left;}
+.lm-toc a{display:flex;align-items:baseline;gap:9px;font:600 12.5px/1.35 "Inter Tight",sans-serif;color:var(--ink-2);text-decoration:none;padding:4px 2px;}
+.lm-toc a:hover,.lm-toc a:focus{color:var(--gold-max);outline:none;}
+.lm-toc a:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px;}
+.lm-dot{flex:none;width:9px;height:9px;border-radius:50%;transform:translateY(1px);}
+.lm-toc .num{color:var(--ink-faint);font-weight:700;}
+.lm-sign{width:100%;max-width:760px;border:2px solid var(--gold-hi);border-radius:10px;background:rgba(236,200,104,.08);padding:13px 18px;text-align:center;}
+.lm-sign a{font:700 clamp(13px,1.8vw,16px)/1.4 "Inter Tight",sans-serif;letter-spacing:.06em;color:var(--gold-max);text-decoration:none;}
+.lm-sign a:hover,.lm-sign a:focus{color:#fff3d6;outline:none;}
+.lm-sign a:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;}
+.lm-sign span{display:block;margin-top:4px;font:400 11.5px/1.4 "Inter Tight",sans-serif;color:var(--ink-soft);letter-spacing:.02em;}
+.lm-deep{margin:0;font:600 11px/1.4 "Inter Tight",sans-serif;letter-spacing:.12em;text-transform:uppercase;}
+.lm-deep a{color:var(--gold-line);text-decoration:none;border-bottom:1px solid rgba(200,155,60,.4);padding-bottom:2px;}
+.lm-deep a:hover,.lm-deep a:focus{color:var(--gold-max);outline:none;}
+.lm-deep a:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;}
+.lm-h--final{font-size:clamp(12px,1.6vw,15px);color:#ecc868;margin-top:12px;}
+.lm-final{width:100%;max-width:760px;border:2px solid #ecc868;border-radius:12px;background:radial-gradient(120% 150% at 50% 0%,rgba(236,200,104,.17),rgba(236,200,104,.04));box-shadow:0 0 0 6px rgba(236,200,104,.06),0 12px 44px rgba(236,200,104,.17),0 6px 24px rgba(0,0,0,.5);padding:clamp(22px,3vw,36px) clamp(20px,3vw,40px);text-align:center;}
+.lm-final p{margin:0;font:600 clamp(19px,2.8vw,28px)/1.35 "Newsreader",serif;font-style:italic;color:#fbf3df;}
+.lm-final p b{color:#f0cf78;font-style:normal;font-weight:700;}
+.ans-legend{width:100%;max-width:780px;display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font:400 11px/1.5 "Inter Tight",sans-serif;color:var(--ink-faint);}
+.ans-grid{width:100%;max-width:800px;display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left;}
+.ans-group{border:1px solid rgba(200,155,60,.3);border-top:3px solid var(--acc,var(--gold));border-radius:8px;background:rgba(255,255,255,.03);padding:12px 14px;}
+.ans-h{margin:0 0 8px;font:700 12px/1.3 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-hi,var(--gold-hi));}
+.ans-item{display:flex;gap:8px;align-items:flex-start;margin:0 0 7px;font:400 12.8px/1.45 "Spectral",Georgia,serif;color:var(--ink-2);}
+.ans-item:last-child{margin-bottom:0;}
+.ans-item .tx b{color:var(--ink);font-weight:600;}
+.ans-loc{color:var(--ink-faint);font-size:11px;white-space:nowrap;}
+.ans-mk{flex:none;font:700 8.5px/1 "Inter Tight",sans-serif;letter-spacing:.08em;text-transform:uppercase;border-radius:3px;padding:4px 6px;transform:translateY(2px);}
+.mk-belegt{background:#9fd0db;color:#0e161b;}
+.mk-gestuetzt{background:rgba(159,208,219,.16);color:#9fd0db;border:1px solid rgba(159,208,219,.5);}
+.mk-plausibel{background:rgba(224,160,96,.16);color:#e0a060;border:1px solid rgba(224,160,96,.5);}
+.mk-gemischt{background:rgba(232,149,156,.14);color:#e8959c;border:1px solid rgba(232,149,156,.5);}
+.st-core{width:100%;max-width:760px;border:2px solid var(--gold-hi);border-radius:12px;background:radial-gradient(120% 150% at 50% 0%,rgba(236,200,104,.15),rgba(236,200,104,.03));box-shadow:0 10px 40px rgba(236,200,104,.14),0 6px 24px rgba(0,0,0,.5);padding:clamp(18px,2.6vw,30px) clamp(18px,2.8vw,36px);text-align:left;}
+.st-core h3{margin:0 0 8px;font:700 11px/1 "Inter Tight",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-hi);}
+.st-core p{margin:0 0 8px;font:400 14.5px/1.55 "Spectral",Georgia,serif;color:var(--ink);}
+.st-core p:last-child{margin-bottom:0;}
+.st-open{width:100%;max-width:760px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;text-align:left;}
+.st-o{border:1px solid rgba(200,155,60,.3);border-radius:8px;background:rgba(255,255,255,.03);padding:11px 13px;font:400 12.5px/1.5 "Spectral",Georgia,serif;color:var(--ink-2);}
+.st-o b{display:block;font:700 10.5px/1.3 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-line);margin-bottom:4px;}
+.st-o .mkline{margin-top:6px;}
+.ko-grid{width:100%;max-width:780px;display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left;}
+.ko-b{border:1px solid rgba(200,155,60,.28);border-radius:8px;background:rgba(255,255,255,.03);padding:12px 15px;font:400 12.8px/1.55 "Spectral",Georgia,serif;color:var(--ink-2);}
+.ko-b--wide{grid-column:1/-1;}
+.ko-h{display:block;font:700 10.5px/1.3 "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-line);margin:0 0 6px;}
+.ko-b a{color:var(--gold-hi);text-decoration:none;border-bottom:1px solid rgba(236,200,104,.4);}
+.ko-b a:hover,.ko-b a:focus{color:var(--gold-max);outline:none;}
+.ko-b a:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px;}
+@media (max-width:860px){
+ .seal-grid{grid-template-columns:1fr;justify-items:center;text-align:center;}
+ .seal-kpis{align-items:center;text-align:center;}
+}
+@media (max-width:620px){
+ .lm-people,.seal-vs,.seal-ampel,.ans-grid,.ko-grid,.lm-toc{grid-template-columns:1fr;}
+ .st-open{grid-template-columns:1fr;}
+ .seal-bar{grid-template-columns:110px 1fr;}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+@media print{
+ @page{size:A4 portrait;margin:0;}
+ body{background:#0e161b;}
+ .br-page{break-before:page;min-height:297mm;width:100%;box-sizing:border-box;}
+ .br-page:first-of-type{break-before:auto;}
+ .br-cut{display:none;}
+ .tc-cue,.tc-shine{display:none!important;}
+ .seal-details summary{display:none;}
+ .seal-details div{display:block!important;}
+ a{color:inherit;}
+ .br-page{padding:8mm 10mm;gap:9px;}
+ .br-head,.br-num{font-size:9px;}
+ .br-foot{font-size:8.5px;bottom:6mm;}
+ .br-eyebrow,.kp-eyebrow{font-size:10px;letter-spacing:.22em;}
+ .br-title{font-size:27px;}
+ .kp-title{font-size:24px;}
+ .br-lead{font-size:12px;}
+ .kp-kernfrage{font-size:13.5px;padding:7px 12px;}
+ .merk{padding:9px 13px;}
+ .merk p{font-size:12px;}
+ .merk-zm{font-size:11.5px;margin-top:5px;}
+ .merk-label,.wiss-label,.bs-h{font-size:.56rem;}
+ .wiss{padding:9px 13px;}
+ .wiss li{font-size:11.6px;margin-bottom:4px;}
+ .wiss-ro{font-size:11.5px;margin-top:6px;padding-top:6px;}
+ .kp-cite{padding:9px 14px;}
+ .kp-cite p{font-size:14px;}
+ .kp-loc{font-size:9px;margin-top:5px;}
+ .kb svg{max-height:86px;}
+ .br-synth{padding:10px 13px;}
+ .bs-block{margin-bottom:5px;}
+ .bs-block p,.bs-claude p{font-size:11.4px;}
+ .bs-t{font-size:9.5px;}
+ .bs-claude{padding:7px 10px;margin-top:7px;}
+ .bs-badge{font-size:8.5px;}
+ .kp-deep{font-size:9.5px;}
+ .seal-grid{grid-template-columns:132px 1fr;gap:12px;}
+ .seal-kpis{gap:5px;}
+ .seal-kpi{font-size:11px;}
+ .seal-banner{font-size:10px;padding:5px 9px;}
+ .seal-sum{font-size:12px;}
+ .seal-verlass{font-size:11.5px;padding:8px 12px;}
+ .seal-h{font-size:9.5px;margin-top:2px;}
+ .seal-sub{font-size:9.3px;}
+ .seal-bars{gap:4px;}
+ .seal-bar{font-size:10px;grid-template-columns:150px 1fr;}
+ .seal-track{height:15px;}
+ .seal-fill{font-size:9px;}
+ .seal-note{font-size:9.3px;line-height:1.4;}
+ .seal-vs,.seal-ampel{gap:8px;}
+ .seal-vscol{padding:8px 10px;}
+ .seal-vscol p{font-size:11px;}
+ .seal-vscol h3{font-size:9.5px;}
+ .seal-amp{font-size:10.8px;padding:8px 10px;}
+ .seal-audit{padding:9px 12px;}
+ .seal-audit p{font-size:11.4px;}
+ .seal-chip{font-size:8.5px;padding:4px 8px;}
+ .seal-details summary{padding:7px 12px;}
+ .seal-details p,.seal-details li{font-size:10.2px;margin-bottom:4px;}
+ .seal-details div{padding:0 12px 9px;}
+ .lm-h{font-size:10px;margin-top:2px;}
+ .lm-people{gap:9px;}
+ .lm-person{padding:9px 11px;gap:9px;}
+ .lm-person__n{font-size:14px;}
+ .lm-person__d{font-size:10.8px;}
+ .lm-chasm{padding:9px;}
+ .lm-chasm svg{max-height:292px;width:auto;margin:0 auto;}
+ .lm-surface{font-size:15px;margin-bottom:9px;}
+ .lm-chasmcap{font-size:.58rem;margin-top:7px;}
+ .lm-toc{gap:3px 14px;}
+ .lm-toc a{font-size:10.5px;padding:2px;}
+ .lm-sign{padding:8px 12px;}
+ .lm-sign a{font-size:12px;}
+ .lm-sign span{font-size:9.5px;margin-top:2px;}
+ .lm-deep{font-size:9.5px;}
+ .lm-final{padding:14px 18px;}
+ .lm-final p{font-size:18px;}
+ .lm-h--final{margin-top:4px;}
+ .ans-legend{font-size:9px;gap:4px 10px;}
+ .ans-grid{gap:8px;}
+ .ans-group{padding:8px 10px;}
+ .ans-h{font-size:10px;margin-bottom:5px;}
+ .ans-item{font-size:10.6px;margin-bottom:4px;gap:6px;}
+ .ans-mk{font-size:7.5px;padding:3px 5px;}
+ .ans-loc{font-size:9.3px;}
+ .st-core{padding:12px 16px;}
+ .st-core h3{font-size:9.5px;}
+ .st-core p{font-size:12px;margin-bottom:6px;}
+ .st-open{gap:7px;}
+ .st-o{font-size:10.6px;padding:8px 10px;}
+ .ko-grid{gap:8px;}
+ .ko-b{font-size:11px;padding:9px 12px;}
+ .tc-title{font-size:52px;}
+ .tc-pitch{font-size:17px;padding:10px 16px;}
+ .tc-emblem{width:120px;}
+}
+</style>
+</head>
+<body>
+<section class="br-page tc-cover" id="cover-title" aria-label="Im Zeitalter der Identitaet - Der Aufstieg einer gefaehrlichen Idee, Werkanalyse">
+<div class="tc-bg" aria-hidden="true"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+<defs>
+<radialGradient id="tcg-c" cx="50%" cy="30%" r="80%"><stop offset="0" stop-color="#22384a" stop-opacity=".9"/><stop offset="1" stop-color="#0e161b"/></radialGradient>
+<pattern id="tchalb-c" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#c89b3c" opacity=".16"/></pattern>
+</defs>
+<rect width="1200" height="800" fill="url(#tcg-c)"/>
+<rect width="1200" height="800" fill="url(#tchalb-c)"/>
+<g stroke="#c89b3c" fill="none" opacity=".2">
+<ellipse cx="600" cy="330" rx="430" ry="150"/><ellipse cx="600" cy="330" rx="430" ry="150" transform="rotate(24 600 330)"/><ellipse cx="600" cy="330" rx="430" ry="150" transform="rotate(48 600 330)"/><ellipse cx="600" cy="330" rx="430" ry="150" transform="rotate(72 600 330)"/><ellipse cx="600" cy="330" rx="430" ry="150" transform="rotate(96 600 330)"/><ellipse cx="600" cy="330" rx="430" ry="150" transform="rotate(120 600 330)"/><ellipse cx="600" cy="330" rx="430" ry="150" transform="rotate(144 600 330)"/>
+</g>
+<g stroke="#cda24f" opacity=".14">
+<line x1="600" y1="330" x2="40" y2="0"/><line x1="600" y1="330" x2="300" y2="-40"/><line x1="600" y1="330" x2="900" y2="-40"/><line x1="600" y1="330" x2="1160" y2="0"/><line x1="600" y1="330" x2="1200" y2="240"/><line x1="600" y1="330" x2="0" y2="240"/>
+</g>
+<g stroke="#c89b3c" fill="none" opacity=".12"><path d="M0 660 Q 600 560 1200 660"/><path d="M0 700 Q 600 600 1200 700"/><path d="M0 740 Q 600 640 1200 740"/></g>
+</svg></div>
+<div class="tc-shine" aria-hidden="true"></div>
+<span class="tc-plaque">Werkanalyse · Sachbuch-Studie</span>
+<svg class="tc-emblem" viewBox="0 0 200 200" role="img" aria-label="Werk-Emblem mit Autoren-Monogramm YM" xmlns="http://www.w3.org/2000/svg">
+<circle cx="100" cy="100" r="94" fill="none" stroke="#cda24f" stroke-width="1.6"/>
+<circle cx="100" cy="100" r="87" fill="none" stroke="#cda24f" stroke-width=".7" opacity=".7"/>
+<g fill="none" stroke="#c89b3c" opacity=".55">
+<ellipse cx="100" cy="100" rx="78" ry="30"/><ellipse cx="100" cy="100" rx="78" ry="30" transform="rotate(30 100 100)"/><ellipse cx="100" cy="100" rx="78" ry="30" transform="rotate(60 100 100)"/><ellipse cx="100" cy="100" rx="78" ry="30" transform="rotate(90 100 100)"/><ellipse cx="100" cy="100" rx="78" ry="30" transform="rotate(120 100 100)"/><ellipse cx="100" cy="100" rx="78" ry="30" transform="rotate(150 100 100)"/>
+</g>
+<circle cx="100" cy="100" r="40" fill="#101a20" stroke="#ecc868" stroke-width="1.6"/>
+<text x="100" y="112" text-anchor="middle" font-family="Newsreader,serif" font-weight="800" font-size="34" fill="#f0cf78">YM</text>
+<g fill="#cda24f"><circle cx="100" cy="6" r="2.4"/><circle cx="100" cy="194" r="2.4"/><circle cx="6" cy="100" r="2.4"/><circle cx="194" cy="100" r="2.4"/></g>
+</svg>
+<h1 class="tc-title">Im Zeitalter<br>der Identität</h1>
+<p class="tc-sub">Der Aufstieg einer gefährlichen Idee</p>
+<p class="tc-byline">Yascha Mounk · Klett-Cotta 2024 · Original: The Identity Trap (2023)</p>
+<p class="tc-pitch">Warum ist die „Identitätssynthese“ eine Falle — und wie entkommt man ihr?</p>
+<p class="tc-meta">E-Book-Ausgabe · 501 Seiten · 7 Themenkomplexe · Analyse auf Deutsch</p>
+<p class="tc-cue">▾ Prüfsiegel und Themenlandkarte folgen</p>
+</section>
+<hr class="br-cut">
+<section class="br-page" id="seal" aria-label="Pruefsiegel: Anti-Halluzinations- und Audit-Angaben zu dieser Broschuere">
+<div class="br-frame" aria-hidden="true"></div>
+<span class="br-head">Im Zeitalter der Identität · Werkanalyse</span>
+<span class="br-num">02 / 13</span>
+<p class="br-eyebrow">Prüfsiegel · Verlässlichkeit dieser Broschüre</p>
+<div class="seal-grid">
+<svg class="seal-mark" viewBox="0 0 200 200" role="img" aria-label="Pruefsiegel-Grafik mit Haekchen, Rating Hoch, Audit acht von acht" xmlns="http://www.w3.org/2000/svg">
+<circle cx="100" cy="100" r="95" fill="none" stroke="#cda24f" stroke-width="1.8"/>
+<circle cx="100" cy="100" r="88" fill="none" stroke="#cda24f" stroke-width=".7" opacity=".7"/>
+<g fill="none" stroke="#c89b3c" opacity=".5">
+<ellipse cx="100" cy="100" rx="80" ry="26"/><ellipse cx="100" cy="100" rx="80" ry="26" transform="rotate(45 100 100)"/><ellipse cx="100" cy="100" rx="80" ry="26" transform="rotate(90 100 100)"/><ellipse cx="100" cy="100" rx="80" ry="26" transform="rotate(135 100 100)"/>
+</g>
+<circle cx="100" cy="100" r="52" fill="#101a20" stroke="#ecc868" stroke-width="1.8"/>
+<path d="M78 102 L94 118 L126 84" fill="none" stroke="#f0cf78" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="sealarc-s" d="M 30 100 A 70 70 0 0 1 170 100" fill="none"/>
+<text font-family="Inter Tight,sans-serif" font-weight="700" font-size="12" letter-spacing="3" fill="#ecc868"><textPath href="#sealarc-s" startOffset="50%" text-anchor="middle">QUELLENGEBUNDEN</textPath></text>
+<text x="100" y="176" text-anchor="middle" font-family="Inter Tight,sans-serif" font-weight="700" font-size="11" letter-spacing="2" fill="#cda24f">AUDIT 8/8</text>
+</svg>
+<div class="seal-kpis">
+<span class="seal-kpi">Qualitatives Rating: <b>Hoch</b> — mit Originalquelle, Audit vollständig bestanden</span>
+<span class="seal-kpi">Geschätzte Faktenrisiko-Spanne: <b>≈ 7–15 %</b> <em>(geschätzt, nicht gemessen)</em></span>
+<span class="seal-banner">≈ 3× geringeres Faktenrisiko als ohne Quelle</span>
+<span class="seal-kpi">Resultat-Audit: <b>bestanden (8/8)</b></span>
+<p class="seal-sum">Eine quellengebundene Werkanalyse: Alle Sachaussagen sind an Mounks Text gekoppelt, jedes Zitat wortwörtlich verifiziert.</p>
+</div>
+</div>
+<p class="seal-verlass">Worauf Verlass ist: Alle Zitate, Seitenangaben und inhaltlichen Sachaussagen dieser Broschüre sind an die Originalquelle gebunden und dort nachprüfbar; Claudes eigene Einordnungen sind sichtbar getrennt gekennzeichnet.</p>
+<h2 class="seal-h">KI-Modellraten im Vergleich (ohne Quellen / Closed-Book)</h2>
+<p class="seal-sub">Halluzinationsrate auf AA-Omniscience · niedriger ist besser · Rate der Modelle ohne beigelegte Quelle — nie die Rate dieser Arbeit</p>
+<div class="seal-bars">
+<div class="seal-bar"><span>Claude Opus 4.8 (Anthropic)</span><span class="seal-track"><span class="seal-fill seal-fill--good" style="width:59.8%">35,9 %</span></span></div>
+<div class="seal-bar"><span>Gemini 3.1 Pro (Google)</span><span class="seal-track"><span class="seal-fill seal-fill--mid" style="width:83.3%">50 %</span></span></div>
+<div class="seal-bar"><span>OpenAI (Vergleichsmodelle)</span><span class="seal-track"><span class="seal-fill seal-fill--bad" style="width:92%">höher</span></span></div>
+<div class="seal-bar"><span>Google (weitere Modelle)</span><span class="seal-track"><span class="seal-fill seal-fill--bad" style="width:92%">höher</span></span></div>
+</div>
+<p class="seal-note">Modellweite Werte auf einem Closed-Book-Wissensbenchmark (AA-Omniscience), gemessen <b>ohne</b> beigelegte Quelle. Beschreibt das Modell allgemein, <b>nicht</b> diese Antwort. Mit Originalquelle im Kontext (Grounding) liegt das praktische Halluzinationsrisiko für Struktur und Thesen deutlich niedriger; das Restrisiko konzentriert sich auf exakte Zahlen und Zitate. Quelle: Artificial Analysis, 28.05.2026. <b>Da diese Arbeit quellenbasiert (grounded) erstellt wurde, liegt das reale Halluzinationsrisiko für Struktur und Thesen deutlich unter dem Closed-Book-Wert von 35,9 %; das Restrisiko konzentriert sich auf exakte Zahlen, Seitenangaben/Zeitmarken und den Zitatwortlaut.</b></p>
+<div class="seal-vs">
+<div class="seal-vscol"><h3>Claude ohne Quellen</h3><p>Frei aus dem Modellgedächtnis rekonstruiert → höheres Faktenrisiko (Closed-Book ≈ 35,9 %). Für diese Broschüre nicht verwendet.</p></div>
+<div class="seal-vscol seal-vscol--mit"><h3>Claude mit Quellen (diese Arbeit)</h3><p>An die Vorlage gebunden: Volltext extrahiert, Zitate wortwörtlich geprüft → geschätzt ≈ 7–15 % (umfassende Broschüre), „nahezu perfekt belegt“.</p></div>
+</div>
+<div class="seal-ampel">
+<div class="seal-amp seal-amp--ok"><b>✓ Verlässlich</b>Wörtliche Zitate mit Fundstelle, Seitenangaben, Wiedergaben von Mounks Positionen und Argumenten.</div>
+<div class="seal-amp seal-amp--warn"><b>⚠ Vorher prüfen</b>Claudes Einordnungen, Konfidenzwerte und Szenarien; Mounks eigene Studienverweise (hier nicht separat geprüft).</div>
+</div>
+<div class="seal-audit">
+<p>Diese Broschüre wurde nach Fertigstellung in 8 geordneten Schritten geprüft — Technik, Quellentreue, Zitate, Verständlichkeit, Aufbau, Optik und Druckbild. Ergebnis: <b>bestanden, ohne offene Punkte.</b></p>
+<div class="seal-chips"><span class="seal-chip">1 Technik</span><span class="seal-chip">2 Sauberkeit</span><span class="seal-chip">3 Quellentreue</span><span class="seal-chip">4 Zitate</span><span class="seal-chip">5 Lesbarkeit</span><span class="seal-chip">6 Aufbau</span><span class="seal-chip">7 Optik</span><span class="seal-chip">8 Druck</span></div>
+</div>
+<details class="seal-details"><summary>Details &amp; Methodik</summary><div>
+<p><b>Angewandte Maßnahmen:</b></p>
+<ul><li>Extraktives Arbeiten aus der beigelegten Quelle statt aus dem Gedächtnis; Volltext der E-Book-Ausgabe maschinell erschlossen.</li><li>Fundstellen zu jeder tragenden Behauptung; Zitate in separater Zitatbank exakt übernommen und per Textabgleich wortwörtlich verifiziert.</li><li>Trennung von Beleg (Quelle), Schlussfolgerung (Claudes Einordnung) und Offenem; Konfidenz- und Kippbedingungs-Angaben je Kapitel.</li><li>Anti-Sycophancy: Spannungen im Werk werden benannt, nicht geglättet; keine konstruierten Widersprüche.</li></ul>
+<p><b>Schätz-Methode:</b> Die Spanne 7–15 % ist eine Selbsteinschätzung für umfassende, quellengebundene Broschüren („geschätzt, nicht gemessen“). Faktor N = 35,9 ÷ Spannen-Mittelwert (11 %) ≈ 3,3 → kaufmännisch gerundet „≈ 3×“.</p>
+<p><b>Die 8 Audit-Schritte:</b> Technische Robustheit (Tag-Balance, Rendern ohne Fehler) · Sauberkeit (keine Kommentare/Artefakte) · Quellentreue (Stichproben-Abgleich der Paraphrasen) · Zitat-Wortlaut und Fundstellen · Verständlichkeit („In einfachen Worten“) · Aufbau und Verlinkung · visuelle Konsistenz (Anführungszeichen paarig, Akzentsystem) · Druck-Pagination.</p>
+<p><b>Zone B — Mit Originalquelle gearbeitet: JA.</b> Quelle: Yascha Mounk, „Im Zeitalter der Identität. Der Aufstieg einer gefährlichen Idee“, Klett-Cotta 2024 (E-Book-Ausgabe als PDF, 501 Seiten). Eingeschätzte Verlässlichkeit: hoch — der komplette Aufbau ist aus dem Volltext extrahiert. Vor Weiterverwendung prüfen: Mounks Sekundärbelege (Studien, Umfragen) wurden nicht eigenständig verifiziert; Seitenangaben beziehen sich auf die vorliegende E-Book-PDF, nicht auf die Druckausgabe.</p>
+</div></details>
+<span class="br-foot">02 · ◆ · PRÜFSIEGEL</span>
+</section>
+<hr class="br-cut">
+<section class="br-page lm-page" id="karte" aria-label="Themenlandkarte: die zentrale Spannung des Werks und das verlinkte Inhaltsverzeichnis">
+<div class="br-frame" aria-hidden="true"></div>
+<span class="br-head">Im Zeitalter der Identität · Werkanalyse</span>
+<span class="br-num">03 / 13</span>
+<p class="br-eyebrow">Die Themenlandkarte</p>
+<h2 class="br-title">Worum es im Kern geht</h2>
+<h3 class="lm-h">Die Stimmen</h3>
+<div class="lm-people">
+<div class="lm-person lm-person--p"><span class="mono mono--p">YM</span><span><span class="lm-person__n">Yascha Mounk</span><span class="lm-person__t">Autor · Liberaler Universalist</span><span class="lm-person__d">Politischer Publizist; versteht sich als Teil der universalistischen Linken, frühere Bücher zum Rechtspopulismus (S. 31 f., 38).</span></span></div>
+<div class="lm-person lm-person--s"><span class="mono mono--s">IS</span><span><span class="lm-person__n">Die Identitätssynthese</span><span class="lm-person__t">Ideologie · Gegenstand der Analyse</span><span class="lm-person__d">Mounks Sammelbegriff für eine aus Postmoderne, Postkolonialismus und Critical Race Theory verschmolzene Ideenströmung (S. 25, 81).</span></span></div>
+</div>
+<h3 class="lm-h">Die zentrale Spannung</h3>
+<div class="lm-chasm">
+<p class="lm-surface"><span class="lab">Die oberflächliche Frage</span>Wie überwindet eine Gesellschaft fortdauernde Ungerechtigkeit — durch mehr <b>Identität</b> oder mehr Universalismus?</p>
+<svg viewBox="0 0 760 384" role="img" aria-label="Zwei Pole auf gegenueberliegenden Klippen, getrennt von einem Graben mit abgebrochener Bruecke" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="chasmg-lm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c1318"/><stop offset="1" stop-color="#04070a"/></linearGradient></defs>
+<rect x="300" y="150" width="160" height="234" fill="url(#chasmg-lm)"/>
+<line x1="304" y1="320" x2="456" y2="332" stroke="#141a1f" stroke-width="1"/>
+<path d="M0 150 L300 150 L294 206 L306 264 L292 322 L300 384 L0 384 Z" fill="#1a2832"/>
+<path d="M0 150 L300 150 L300 158 L0 158 Z" fill="#26424d"/>
+<path d="M760 150 L460 150 L466 206 L454 264 L468 322 L460 384 L760 384 Z" fill="#241a1d"/>
+<path d="M760 150 L460 150 L460 158 L760 158 Z" fill="#4a2a2e"/>
+<rect x="300" y="157" width="58" height="7" fill="#6b5f44"/><rect x="402" y="157" width="58" height="7" fill="#6b5f44"/>
+<rect x="362" y="190" width="22" height="6" fill="#544a34" transform="rotate(30 373 193)"/>
+<g><circle cx="262" cy="116" r="13" fill="#2f5a63"/><path d="M248 150 Q248 130 262 130 Q276 130 276 150 Z" fill="#2f5a63"/><text x="262" y="121" text-anchor="middle" fill="#fff" font-weight="700" font-size="12.5">YM</text></g>
+<g><rect x="484" y="104" width="28" height="28" transform="rotate(45 498 118)" fill="none" stroke="#a3242c" stroke-width="3"/><circle cx="498" cy="118" r="7.5" fill="#a3242c"/><text x="498" y="149" text-anchor="middle" fill="#e8959c" font-weight="700" font-size="11">IS</text></g>
+<text x="262" y="90" text-anchor="middle" class="cl-n">Mounks These</text><text x="262" y="104" text-anchor="middle" class="cl-t" fill="#9fd0db">Philosophischer Liberalismus</text>
+<text x="498" y="80" text-anchor="middle" class="cl-n">Identitätssynthese</text><text x="498" y="94" text-anchor="middle" class="cl-t" fill="#e8959c">Die kritisierte Idee</text>
+<text x="150" y="180" text-anchor="middle" class="cl-s">Universalismus · neutrale Regeln</text>
+<text x="150" y="203" text-anchor="middle" class="cl-con" fill="#9fd0db">Idealen gerecht werden,</text>
+<text x="150" y="219" text-anchor="middle" class="cl-con" fill="#9fd0db">statt sie aufzugeben</text>
+<text x="150" y="242" text-anchor="middle" class="cl-q">„nach Ansicht der Liberalen sind alle</text>
+<text x="150" y="258" text-anchor="middle" class="cl-q">Menschen gleich geschaffen“</text>
+<text x="150" y="278" text-anchor="middle" class="cl-ts">O-TON · S. 290</text>
+<text x="610" y="180" text-anchor="middle" class="cl-s">Gruppenidentität zuerst</text>
+<text x="610" y="203" text-anchor="middle" class="cl-con" fill="#e8959c">Gleichbehandlung gilt als</text>
+<text x="610" y="219" text-anchor="middle" class="cl-con" fill="#e8959c">Verschleierung von Macht</text>
+<text x="610" y="242" text-anchor="middle" class="cl-q">„Stattdessen soll die Gruppenidentität …</text>
+<text x="610" y="258" text-anchor="middle" class="cl-q">eine entscheidende Rolle spielen“</text>
+<text x="610" y="278" text-anchor="middle" class="cl-ts">O-TON · S. 27</text>
+<text x="380" y="126" text-anchor="middle" class="cl-gap">Die Grundsatzfrage</text>
+<text x="380" y="300" text-anchor="middle" class="cl-unb">Köder oder Falle?</text>
+</svg>
+<div class="lm-chasmcap">Position in Klartext, darunter der wörtliche O-Ton aus dem Werk — die Rekonstruktion der Gegenseite stammt von Mounk selbst. Illustratives Schema, kein Datenbild.</div>
+</div>
+<h3 class="lm-h">Die Kapitel dieser Broschüre</h3>
+<nav class="lm-toc" aria-label="Inhaltsverzeichnis">
+<a href="#antwort"><span class="lm-dot" style="background:#ecc868"></span><span class="num">→</span> Die konkrete Antwort auf einen Blick</a>
+<a href="#k1"><span class="lm-dot" style="background:#c89b3c"></span><span class="num">1</span> Prämissen: Was die Identitätssynthese ist</a>
+<a href="#k2"><span class="lm-dot" style="background:#2f5a63"></span><span class="num">2</span> Ursprünge: Drei Traditionen, eine Synthese</a>
+<a href="#k3"><span class="lm-dot" style="background:#b85c2f"></span><span class="num">3</span> Siegeszug: Von der Nische in den Mainstream</a>
+<a href="#k4"><span class="lm-dot" style="background:#2f5a63"></span><span class="num">4</span> Kritik I: Erkenntnis, Kultur, Redefreiheit</a>
+<a href="#k5"><span class="lm-dot" style="background:#b85c2f"></span><span class="num">5</span> Kritik II: Separatismus und Gruppenpolitik</a>
+<a href="#k6"><span class="lm-dot" style="background:#a3242c"></span><span class="num">6</span> Gefahren: Was auf dem Spiel steht</a>
+<a href="#k7"><span class="lm-dot" style="background:#c89b3c"></span><span class="num">7</span> Mounks Antwort: Prinzip und Praxis</a>
+<a href="#schluss"><span class="lm-dot" style="background:#ecc868"></span><span class="num">◆</span> Gesamtbild und Zukunftsszenarien</a>
+</nav>
+<div class="lm-sign"><a href="#antwort">→ Die konkrete Antwort: Kritikpunkte, Gefahren und Gegenprogramm — direkt beantwortet</a><span>Jeder Punkt mit Evidenz-Marker und Fundstelle; die Belege stehen auf den Kapitelseiten.</span></div>
+<p class="lm-deep"><a href="tiefenanalyse.html">→ Vollständige Tiefenanalyse öffnen (Begleitband)</a></p>
+<h3 class="lm-h lm-h--final">Die eigentliche Frage</h3>
+<div class="lm-final"><p>Gelingt <b>Gleichheit</b> durch mehr Identität — oder nur durch einen <b>Universalismus</b>, der endlich <b>ernst gemacht</b> wird?</p></div>
+<span class="br-foot">03 · ◆ · THEMENLANDKARTE</span>
+</section>
+<hr class="br-cut">
+<section class="br-page acc-a4" id="antwort" aria-label="Die konkrete Antwort: Praemissen, Kritikpunkte, Gefahren und Gegenprogramm mit Evidenz-Markern">
+<div class="br-frame" aria-hidden="true"></div>
+<span class="br-head">Im Zeitalter der Identität · Werkanalyse</span>
+<span class="br-num">04 / 13</span>
+<p class="br-eyebrow">Die konkrete Antwort</p>
+<h2 class="br-title">Was Mounk kritisiert — und was er vorschlägt</h2>
+<p class="br-lead">Die Hauptfrage direkt beantwortet, in vier Gruppen. Jeder Punkt trägt einen Evidenz-Marker und eine Fundstelle; das wörtliche Belegzitat steht auf der jeweiligen Kapitelseite.</p>
+<div class="ans-legend"><span><b class="ans-mk mk-belegt">belegt</b> ausdrücklich und wiederholt im Werk; wörtlich verifizierbares Zitat vorhanden</span><span><b class="ans-mk mk-gestuetzt">gestützt</b> klar im Werk vertreten; hier paraphrasiert, mit Fundstelle</span><span><b class="ans-mk mk-plausibel">plausibel</b> Wirkungsthese/Prognose des Autors; Mechanismus argumentiert, Ausgang offen</span><span><b class="ans-mk mk-gemischt">gemischt</b> vom Autor selbst als offen oder uneinheitlich eingestuft</span></div>
+<div class="ans-grid">
+<div class="ans-group acc-a4"><h3 class="ans-h">1 · Prämissen, die Mounk der Ideologie zuschreibt</h3>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Prisma Gruppenidentität:</b> Die Welt sei primär über „Rasse“, Gender und sexuelle Orientierung zu verstehen. <span class="ans-loc">S. 268 f.</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Neutralität als Fassade:</b> Universelle Werte und neutrale Regeln verschleierten nur die Dominanz privilegierter Gruppen. <span class="ans-loc">S. 269 f.</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Explizite Gruppenbehandlung:</b> Staat und Bürger sollten Menschen ausdrücklich nach Identitätsgruppen unterschiedlich behandeln. <span class="ans-loc">S. 270 f.</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-gestuetzt">gestützt</span><span class="tx"><b>Sieben Kernmotive</b> von Wahrheitsskepsis bis Standpunkttheorie tragen diese Behauptungen. <span class="ans-loc">S. 81–89</span></span></div>
+</div>
+<div class="ans-group acc-a1"><h3 class="ans-h">2 · Kritikpunkte (benannt)</h3>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Standpunkttheorie, Popularversion:</b> „Nie verstehen können“ ist falsch — deklaratives Wissen bleibt mitteilbar. <span class="ans-loc">S. 162 f.</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Kulturelle Aneignung:</b> Das Konzept verfehlt das eigentliche Unrecht und pathologisiert gesunden Austausch. <span class="ans-loc">S. 178 f.</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Redefreiheits-Skepsis:</b> Zensurmacht stärkt die ohnehin Mächtigen und gefährdet Demokratie und Fortschritt. <span class="ans-loc">S. 202 f.</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Progressiver Separatismus:</b> Trennung nach Gruppen verletzt systematisch die vier Kontakt-Bedingungen. <span class="ans-loc">S. 226</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Gruppengerechtigkeit:</b> Sie kann eine sehr ungleiche und eine sehr arme Gesellschaft rechtfertigen. <span class="ans-loc">S. 248 f.</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-gestuetzt">gestützt</span><span class="tx"><b>Ersetzungsanspruch „struktureller Rassismus“:</b> als Ergänzung wertvoll, als Ersatz älterer Rassismus-Begriffe irreführend. <span class="ans-loc">S. 261 f.</span></span></div>
+</div>
+<div class="ans-group acc-a3"><h3 class="ans-h">3 · Gefahren, die Mounk sieht</h3>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Bestfall-These:</b> Nicht erst die Exzesse — schon der Gelingensfall tendiere zu einer Gesellschaft starrer, rivalisierender Gruppen. <span class="ans-loc">S. 30 f.</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Wechselseitige Befeuerung</b> mit dem Rechtspopulismus: kulturelle Macht hier, Parlamentsmacht dort. <span class="ans-loc">S. 33</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-plausibel">plausibel</span><span class="tx"><b>Stammes-Nullsummenspiel:</b> Dauerkonkurrenz starrer Identitätsgruppen um Ressourcen und Anerkennung. <span class="ans-loc">S. 29, 315</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Erosion der Redefreiheitskultur</b> bis hin zu Existenzverlusten auch für „Zivilisten“. <span class="ans-loc">S. 202, 299</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-gestuetzt">gestützt</span><span class="tx"><b>Schaden für die Schwächsten:</b> etwa Triage- und Impfregeln nach Gruppenzugehörigkeit statt Risiko. <span class="ans-loc">S. 19–22, 249</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-plausibel">plausibel</span><span class="tx"><b>Persönliche Falle:</b> Anerkennung wird versprochen, Individualität auf Gruppen-Drehbücher reduziert. <span class="ans-loc">S. 30, 314 f.</span></span></div>
+</div>
+<div class="ans-group acc-a4"><h3 class="ans-h">4 · Mounks Gegenprogramm (handlungsförmig)</h3>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Drei liberale Antworten:</b> breites Kategorienspektrum; Ideale als Waffe der Kritik; Ansprüchen gerecht werden statt sie aufgeben. <span class="ans-loc">S. 272–275</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Sechs Ratschläge für Einzelne:</b> Moral beanspruchen · nicht verteufeln · Gegner als mögliche Verbündete · vernünftige Mehrheit gewinnen · Koalitionen schmieden · kein „180ismus“. <span class="ans-loc">S. 300–309</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-belegt">belegt</span><span class="tx"><b>Fünf Maßnahmen für Organisationen:</b> Toleranz erwarten · echtes Feedback statt Aktivisten-Hofieren · Mobbing-Regeln · Fakten vor Strafe · keine unaufrichtigen Entschuldigungen. <span class="ans-loc">S. 310–312</span></span></div>
+<div class="ans-item"><span class="ans-mk mk-gestuetzt">gestützt</span><span class="tx"><b>Integration statt Trennung:</b> Umfelder schaffen, in denen die vier Kontakt-Bedingungen erfüllt sind. <span class="ans-loc">S. 227</span></span></div>
+</div>
+</div>
+<figure class="kb" role="img" aria-label="Illustratives Schema: Koeder fuehrt in die Falle, der Ausweg fuehrt ueber liberale Prinzipien">
+<svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#cda24f" stroke-width="1.4">
+<circle cx="120" cy="62" r="30"/><path d="M150 62 H 320"/><path d="M312 56 L 322 62 L 312 68"/>
+<rect x="330" y="30" width="120" height="64" rx="6"/><path d="M450 62 H 620"/><path d="M612 56 L 622 62 L 612 68"/>
+<circle cx="662" cy="62" r="30"/>
+</g>
+<path d="M352 46 L 428 78 M428 46 L 352 78" stroke="#a3242c" stroke-width="2"/>
+<text x="120" y="66" text-anchor="middle" class="kb-t">Köder</text>
+<text x="120" y="104" text-anchor="middle" class="kb-s">Kampf gegen echtes Unrecht</text>
+<text x="390" y="110" text-anchor="middle" class="kb-s">Falle: starre Gruppen, Nullsummenspiel</text>
+<text x="662" y="66" text-anchor="middle" class="kb-t">Ausweg</text>
+<text x="662" y="104" text-anchor="middle" class="kb-s">Liberale Prinzipien, ernst gemacht</text>
+<text x="766" y="124" text-anchor="end" class="kb-ill">ILLUSTRATION</text>
+</svg>
+</figure>
+<div class="kp-deep"><span class="kp-id">Themen-ID: antwort</span><a href="#karte">↑ Zur Themenlandkarte</a></div>
+<span class="br-foot">04 · ◆ · DIE KONKRETE ANTWORT</span>
+</section>
+<hr class="br-cut">
+<section class="br-page acc-a4" id="k1" aria-label="Kapitel 1: Prämissen &amp; Begriff">
+<div class="br-frame" aria-hidden="true"></div>
+<span class="br-head">Im Zeitalter der Identität · Werkanalyse</span>
+<span class="br-num">05 / 13</span>
+<p class="kp-eyebrow">Kapitel 1 · Prämissen &amp; Begriff</p>
+<h2 class="kp-title">Was die Identitätssynthese ist</h2>
+<p class="kp-kernfrage">Was genau ist die „Identitätssynthese“ — und warum nennt Mounk sie eine Falle?</p>
+<div class="merk"><span class="merk-label">In einfachen Worten</span><p>Mounk gibt der Strömung einen bewusst neutralen Namen und beschreibt sie als Köder mit Fallenwirkung: Sie verspricht den Kampf gegen echtes Unrecht, führt aber in eine Gesellschaft dauerhaft getrennter Gruppen.</p><span class="merk-zm">Zum Merken: „Identitätssynthese“ soll die Debatte versachlichen — der Begriff ersetzt Kampfwörter wie „woke“ (S. 25).</span></div>
+<div class="wiss"><span class="wiss-label">Was für Leserinnen und Leser wissenswert ist</span><ul><li>Sieben Kernmotive tragen die Ideologie: Wahrheitsskepsis, politische Diskursanalyse, strategischer Essentialismus, stolzer Pessimismus, identitätssensible Gesetze, Intersektionalität als Organisationslogik, Standpunkttheorie (S. 81–89).</li>
+<li>Ihr logischer Kern sind drei Grundbehauptungen — Prisma Gruppenidentität, Neutralität als Fassade, explizite Gruppenbehandlung (S. 268–271).</li>
+<li>Worauf achten: Mounk trennt den berechtigten Befund (fortdauerndes Unrecht) von der Schlussfolgerung (Universalismus verwerfen); seine Kritik trifft Letztere (S. 26 f.).</li></ul><span class="wiss-ro"><b>Robuste Option:</b> In Debatten die drei Grundbehauptungen einzeln prüfen, statt pauschal über „Wokeness“ zu streiten (S. 267 f.).</span></div>
+<blockquote class="kp-cite"><p>„Trotz der Anziehungskraft ihres Köders entpuppt sich die Identitätssynthese als eine Falle.“</p><span class="kp-loc">Wörtliches Zitat · S. 28</span></blockquote>
+<figure class="kb" role="img" aria-label="Illustratives Schema: sieben Motive muenden in die Synthese, daraus drei Grundbehauptungen"><svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#cda24f" stroke-width="1.3">
+<circle cx="60" cy="50" r="12"/><circle cx="100" cy="50" r="12"/><circle cx="140" cy="50" r="12"/><circle cx="180" cy="50" r="12"/><circle cx="220" cy="50" r="12"/><circle cx="260" cy="50" r="12"/><circle cx="300" cy="50" r="12"/>
+<path d="M318 50 H 388"/><path d="M380 44 L 390 50 L 380 56"/>
+<rect x="396" y="22" width="176" height="56" rx="6"/>
+<path d="M578 50 H 648"/><path d="M640 44 L 650 50 L 640 56"/>
+<rect x="654" y="12" width="112" height="24" rx="4"/><rect x="654" y="42" width="112" height="24" rx="4"/><rect x="654" y="72" width="112" height="24" rx="4"/>
+</g>
+<text x="180" y="88" text-anchor="middle" class="kb-s">sieben Kernmotive (S. 81–89)</text>
+<text x="484" y="55" text-anchor="middle" class="kb-t">Identitätssynthese</text>
+<text x="710" y="28" text-anchor="middle" class="kb-s">Prisma Identität</text>
+<text x="710" y="58" text-anchor="middle" class="kb-s">Neutralität = Fassade</text>
+<text x="710" y="88" text-anchor="middle" class="kb-s">Gruppen-Normen</text><text x="766" y="124" text-anchor="end" class="kb-ill">ILLUSTRATION</text></svg></figure>
+<div class="br-synth"><span class="bs-h">Synthese</span>
+<div class="bs-block"><span class="bs-t">Kernpunkte</span><p>Der Köder ist real (echtes Unrecht) · Die Falle hat drei Merkmale: Köder, kluge Opfer, Selbstunterminierung der Ziele (S. 31) · Mounks Sorge gilt ausdrücklich dem Bestfall der Ideologie, nicht nur ihren Exzessen (S. 30).</p></div>
+<div class="bs-block"><span class="bs-t">Offene Fragen</span><p>Wer zählt als „Anhänger“? Mounk räumt Binnenpluralität ein — etwa Gates gegenüber Kendi in denselben Fachbereichen (S. 80).</p></div>
+<div class="bs-block"><span class="bs-t">Spannungen im Werk</span><p>Mounk nennt den Impuls der Ideologie „nicht immer ganz kohärent“ (S. 267) und rekonstruiert dennoch einen klaren Kern — eine methodische Spannung, die er mit Carnaps „rationaler Nachkonstruktion“ selbst adressiert (S. 268).</p></div>
+<div class="bs-claude"><span class="bs-badge">Claudes Einordnung · nicht in der Quelle</span><p><span class="bs-konf">Konfidenz 85/100:</span> Das Begriffsangebot ist analytisch tragfähig, weil es an benennbare Motive und Behauptungen gebunden ist, nicht an Personen. Kippbedingung: Die Nachkonstruktion verlöre ihre Deckung, wenn maßgebliche Vertreter die drei Grundbehauptungen mehrheitlich und ausdrücklich zurückwiesen.</p></div>
+</div>
+<div class="kp-deep"><span class="kp-id">Themen-ID: k1</span><span><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a>&nbsp;&nbsp;<a href="#karte">↑ Karte</a></span></div>
+<span class="br-foot">05 · ◆ · KAPITEL 1</span>
+</section>
+<hr class="br-cut">
+<section class="br-page acc-a1" id="k2" aria-label="Kapitel 2: Ursprünge">
+<div class="br-frame" aria-hidden="true"></div>
+<span class="br-head">Im Zeitalter der Identität · Werkanalyse</span>
+<span class="br-num">06 / 13</span>
+<p class="kp-eyebrow">Kapitel 2 · Ursprünge</p>
+<h2 class="kp-title">Drei Traditionen, eine Synthese</h2>
+<p class="kp-kernfrage">Woher stammen die Bausteine der Identitätssynthese — und wollten ihre Urheber das Ergebnis?</p>
+<div class="merk"><span class="merk-label">In einfachen Worten</span><p>Drei Denktraditionen liefern die Bausteine: die Postmoderne um Foucault, der Postkolonialismus um Said und Spivak, die Critical Race Theory um Bell und Crenshaw. Mehrere Urheber gingen später selbst auf Distanz zu dem, was daraus wurde.</p><span class="merk-zm">Zum Merken: Die verbreitete Herkunftserzählung „Kulturmarxismus“ ist laut Mounk falsch — die Synthese wurzelt gerade in der Ablehnung großer Erzählungen, den Marxismus eingeschlossen (S. 34, 39).</span></div>
+<div class="wiss"><span class="wiss-label">Was für Leserinnen und Leser wissenswert ist</span><ul><li>Foucault: Ablehnung der „großen Erzählungen“; Macht wirkt über informelle Diskurse, nicht nur über Staaten (S. 51).</li>
+<li>Said politisierte die Diskursanalyse; Spivaks „strategischer Essentialismus“ löste das Dilemma sozial konstruierter Kategorien — sie gab den Begriff später selbst auf (S. 61 f., 84, 92).</li>
+<li>Bell erklärte Rassismus zum Dauerzustand; Crenshaws „Intersektionalität“ entwickelte ein Eigenleben weit über den ursprünglichen Rechtsbegriff hinaus (S. 77 f., 87 f.).</li></ul><span class="wiss-ro"><b>Robuste Option:</b> Herkunftsdebatten entlang des Dreiklangs Postmoderne–Postkolonialismus–CRT führen; die Marxismus-These lässt sich mit Mounks eigenem Anhang kontern (S. 316 ff.).</span></div>
+<blockquote class="kp-cite"><p>„Den Begriff selbst habe ich daher aufgegeben“</p><span class="kp-loc">Wörtliches Zitat · O-Ton Spivak, zit. n. Mounk, S. 92</span></blockquote>
+<figure class="kb" role="img" aria-label="Illustratives Schema: drei Traditionen fliessen zur Synthese zusammen"><svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#cda24f" stroke-width="1.3">
+<rect x="20" y="10" width="180" height="28" rx="4"/><rect x="20" y="50" width="180" height="28" rx="4"/><rect x="20" y="90" width="180" height="28" rx="4"/>
+<path d="M200 24 C 320 24 340 60 430 62"/><path d="M200 64 H 430"/><path d="M200 104 C 320 104 340 68 430 66"/>
+<path d="M424 58 L 434 64 L 424 70"/>
+<rect x="440" y="40" width="170" height="48" rx="6"/>
+<path d="M610 64 H 680"/><path d="M672 58 L 682 64 L 672 70"/>
+<circle cx="712" cy="64" r="26"/>
+</g>
+<text x="110" y="29" text-anchor="middle" class="kb-s">Postmoderne · Foucault</text>
+<text x="110" y="69" text-anchor="middle" class="kb-s">Postkolonialismus · Said, Spivak</text>
+<text x="110" y="109" text-anchor="middle" class="kb-s">Critical Race Theory · Bell, Crenshaw</text>
+<text x="525" y="60" text-anchor="middle" class="kb-t">Synthese</text>
+<text x="525" y="76" text-anchor="middle" class="kb-s">nach 1989, Uni-Einfluss bis 2010</text>
+<text x="712" y="60" text-anchor="middle" class="kb-s">spätere</text><text x="712" y="72" text-anchor="middle" class="kb-s">Distanz</text><text x="766" y="124" text-anchor="end" class="kb-ill">ILLUSTRATION</text></svg></figure>
+<div class="br-synth"><span class="bs-h">Synthese</span>
+<div class="bs-block"><span class="bs-t">Kernpunkte</span><p>Nach 1989 verschob sich der Fokus der Linken von Klasse auf Kultur und Identität (S. 79, 93) · Bis 2010 gewann die Synthese erheblichen Einfluss an Universitäten (S. 34) · Said, Spivak und Crenshaw äußerten später ernsthafte Vorbehalte gegen die Verwendung ihrer Ideen (S. 91 f.).</p></div>
+<div class="bs-block"><span class="bs-t">Offene Fragen</span><p>Wie repräsentativ sind die zitierten Distanzierungen für die jeweilige Tradition insgesamt? Das Werk belegt sie an einzelnen Aussagen.</p></div>
+<div class="bs-block"><span class="bs-t">Spannungen im Werk</span><p>Keine nennenswerten: Mounk erzählt die Ideengeschichte ausdrücklich als Verselbstständigung — die Distanz der Urheber ist Teil seiner These („Die Geister, die sie riefen“, S. 90), kein Bruch in ihr.</p></div>
+<div class="bs-claude"><span class="bs-badge">Claudes Einordnung · nicht in der Quelle</span><p><span class="bs-konf">Konfidenz 80/100:</span> Die Dreiquellen-Rekonstruktion ist im Werk konsistent durchgeführt und quellennah belegt. Kippbedingung: Primärtext-Analysen, die Mounks Lesart von Foucault oder Spivak in zentralen Punkten widerlegen, würden die Herkunftserzählung schwächen — nicht aber die Beschreibung der heutigen Motive.</p></div>
+</div>
+<div class="kp-deep"><span class="kp-id">Themen-ID: k2</span><span><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a>&nbsp;&nbsp;<a href="#karte">↑ Karte</a></span></div>
+<span class="br-foot">06 · ◆ · KAPITEL 2</span>
+</section>
+<hr class="br-cut">
+<section class="br-page acc-a2" id="k3" aria-label="Kapitel 3: Siegeszug">
+<div class="br-frame" aria-hidden="true"></div>
+<span class="br-head">Im Zeitalter der Identität · Werkanalyse</span>
+<span class="br-num">07 / 13</span>
+<p class="kp-eyebrow">Kapitel 3 · Siegeszug</p>
+<h2 class="kp-title">Von der Nische in den Mainstream</h2>
+<p class="kp-kernfrage">Wie wurde aus einer akademischen Nischentheorie binnen eines Jahrzehnts kulturelle Macht?</p>
+<div class="merk"><span class="merk-label">In einfachen Worten</span><p>Mounk erklärt den Aufstieg mit vier ineinandergreifenden Kräften: Soziale Medien popularisierten die Ideen, klassische Medien folgten ihren neuen Vertriebskanälen, Absolventen trugen sie in einem „kurzen Marsch“ in die Institutionen, und der Schock der Trump-Wahl erzeugte Konformitätsdruck.</p><span class="merk-zm">Zum Merken: Der Aufstieg wird soziologisch erklärt — als Zusammenspiel von Technik, Anreizen und Gruppendynamik, nicht als Plan oder Verschwörung (S. 96 f.).</span></div>
+<div class="wiss"><span class="wiss-label">Was für Leserinnen und Leser wissenswert ist</span><ul><li>Kette der Popularisierung: von Tumblr-Milieus über neue Portale bis in Leitmedien wie die New York Times (S. 112).</li>
+<li>Zuerst kippten NGOs und Stiftungen, dann Konzerne; die ACLU gab Kernteile ihres Redefreiheits-Auftrags auf (S. 96, 128 f.).</li>
+<li>Warnsignal Gruppendynamik: Unter Bedrohungsgefühl gilt interne Kritik schnell als Verrat — so setzte sich eine Orthodoxie durch (S. 143).</li></ul><span class="wiss-ro"><b>Robuste Option:</b> Kritikfähigkeit in Organisationen institutionalisieren, bevor Druck entsteht — Mounks Maßnahmenkatalog dafür steht in Kapitel 7 dieser Broschüre (S. 310 ff.).</span></div>
+<blockquote class="kp-cite"><p>„… erleichterte es einer ideologischen Minderheit so, allen anderen ihre Vorstellungen aufzuzwingen.“</p><span class="kp-loc">Wörtliches Zitat · S. 97</span></blockquote>
+<figure class="kb" role="img" aria-label="Illustratives Schema: vier Kraefte tragen die Ideologie in den Mainstream"><svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#cda24f" stroke-width="1.3">
+<rect x="14" y="40" width="150" height="44" rx="6"/><path d="M164 62 H 196"/><path d="M190 56 L 200 62 L 190 68"/>
+<rect x="202" y="40" width="150" height="44" rx="6"/><path d="M352 62 H 384"/><path d="M378 56 L 388 62 L 378 68"/>
+<rect x="390" y="40" width="150" height="44" rx="6"/><path d="M540 62 H 572"/><path d="M566 56 L 576 62 L 566 68"/>
+<rect x="578" y="40" width="188" height="44" rx="6" stroke="#ecc868" stroke-width="1.8"/>
+</g>
+<text x="89" y="58" text-anchor="middle" class="kb-s">Soziale Medien</text><text x="89" y="72" text-anchor="middle" class="kb-s">popularisieren</text>
+<text x="277" y="58" text-anchor="middle" class="kb-s">Etablierte Medien</text><text x="277" y="72" text-anchor="middle" class="kb-s">folgen den Kanälen</text>
+<text x="465" y="58" text-anchor="middle" class="kb-s">„Kurzer Marsch“</text><text x="465" y="72" text-anchor="middle" class="kb-s">durch Institutionen</text>
+<text x="672" y="58" text-anchor="middle" class="kb-t">Konformitätsdruck</text><text x="672" y="72" text-anchor="middle" class="kb-s">nach der Trump-Wahl</text><text x="766" y="124" text-anchor="end" class="kb-ill">ILLUSTRATION</text></svg></figure>
+<div class="br-synth"><span class="bs-h">Synthese</span>
+<div class="bs-block"><span class="bs-t">Kernpunkte</span><p>2010–2020 wandelten sich Sprache und Programme großer Medien, NGOs und der Demokratischen Partei (S. 95 f.) · Konzepte wie „weißes Privileg“ und „kulturelle Aneignung“ wanderten aus den USA auch nach Deutschland (S. 96) · Der Wandel war bei weißen, hochgebildeten Milieus am stärksten (S. 112).</p></div>
+<div class="bs-block"><span class="bs-t">Offene Fragen</span><p>Wie groß ist der jeweilige Anteil der vier Kräfte? Das Werk gewichtet erzählend, nicht messend.</p></div>
+<div class="bs-block"><span class="bs-t">Spannungen im Werk</span><p>Keine nennenswerten: Die vier Teil-Erklärungen ergänzen sich; Mounk erhebt keinen Monokausalitäts-Anspruch.</p></div>
+<div class="bs-claude"><span class="bs-badge">Claudes Einordnung · nicht in der Quelle</span><p><span class="bs-konf">Konfidenz 75/100:</span> Die Kausalerzählung ist plausibel und an vielen Fällen belegt, ihre Anteile sind aber schwer zu isolieren. Kippbedingung: Vergleichsländer ohne Trump-Schock mit identischem Verlauf würden den vierten Faktor entwerten; ein Ausbleiben des Wandels in Nicht-Elite-Milieus stützt umgekehrt Mounks Elitendiagnose.</p></div>
+</div>
+<div class="kp-deep"><span class="kp-id">Themen-ID: k3</span><span><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a>&nbsp;&nbsp;<a href="#karte">↑ Karte</a></span></div>
+<span class="br-foot">07 · ◆ · KAPITEL 3</span>
+</section>
+<hr class="br-cut">
+<section class="br-page acc-a1" id="k4" aria-label="Kapitel 4: Kritik I · Erkenntnis &amp; Kultur">
+<div class="br-frame" aria-hidden="true"></div>
+<span class="br-head">Im Zeitalter der Identität · Werkanalyse</span>
+<span class="br-num">08 / 13</span>
+<p class="kp-eyebrow">Kapitel 4 · Kritik I · Erkenntnis &amp; Kultur</p>
+<h2 class="kp-title">Verstehen, Aneignung, Redefreiheit</h2>
+<p class="kp-kernfrage">Warum hält Mounk die Standpunkttheorie, Aneignungs-Verbote und die neue Redefreiheits-Skepsis für Irrwege?</p>
+<div class="merk"><span class="merk-label">In einfachen Worten</span><p>Der Fehler liegt jeweils in der Zuspitzung eines richtigen Ausgangsbefunds: Erfahrungen unterscheiden sich — aber Wissen bleibt mitteilbar, Kultur bleibt mischbar, und Rede-Beschränkungen nützen am Ende den Mächtigen.</p><span class="merk-zm">Zum Merken: Erst fragen, was genau das Unrecht ist — dann zeigt sich meist, dass die Kategorienverbote es verfehlen (S. 178 f.).</span></div>
+<div class="wiss"><span class="wiss-label">Was für Leserinnen und Leser wissenswert ist</span><ul><li>Standpunkttheorie: Drei Behauptungen tragen die Popularversion; selbst die meisten feministischen Epistemologinnen lehnen sie ab — „deklaratives“ Wissen aus Erfahrung bleibt kommunizierbar (S. 162 f.).</li>
+<li>Kulturelle Aneignung: Das Konzept bestimmt die „Wrong-Making-Features“ falsch; echtes Unrecht (Diskriminierung, Spott, Prellung um Erträge) lässt sich direkter benennen (S. 178 f.).</li>
+<li>Redefreiheit: Wer über erlaubte Rede entscheidet, ist per Definition mächtig; Beschränkungen erhöhen Demokratierisiken und verschließen ein Sicherheitsventil des Fortschritts (S. 202 f.).</li></ul><span class="wiss-ro"><b>Robuste Option:</b> Unrecht konkret benennen — wer wird wodurch geschädigt? — statt ganze Kategorien von Rede oder Austausch zu verbieten; das trägt in allen drei Feldern (S. 178 f., 202 f.).</span></div>
+<blockquote class="kp-cite"><p>„Die Kultur der Redefreiheit ist auf der ganzen Welt ernsthaft bedroht.“</p><span class="kp-loc">Wörtliches Zitat · S. 202</span></blockquote>
+<figure class="kb" role="img" aria-label="Illustratives Schema: drei Zuspitzungen, denen Mounk jeweils eine Alternative entgegensetzt"><svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#cda24f" stroke-width="1.3">
+<rect x="24" y="14" width="224" height="42" rx="6"/><rect x="278" y="14" width="224" height="42" rx="6"/><rect x="532" y="14" width="224" height="42" rx="6"/>
+<path d="M136 56 V 76"/><path d="M390 56 V 76"/><path d="M644 56 V 76"/>
+</g>
+<path d="M40 24 L 58 46 M58 24 L 40 46" stroke="#a3242c" stroke-width="2"/>
+<path d="M294 24 L 312 46 M312 24 L 294 46" stroke="#a3242c" stroke-width="2"/>
+<path d="M548 24 L 566 46 M566 24 L 548 46" stroke="#a3242c" stroke-width="2"/>
+<text x="150" y="32" text-anchor="middle" class="kb-s">These: einander nie</text><text x="150" y="46" text-anchor="middle" class="kb-s">verstehen können</text>
+<text x="404" y="32" text-anchor="middle" class="kb-s">These: Aneignung ist</text><text x="404" y="46" text-anchor="middle" class="kb-s">grundsätzlich schädlich</text>
+<text x="658" y="32" text-anchor="middle" class="kb-s">These: Redefreiheit</text><text x="658" y="46" text-anchor="middle" class="kb-s">schützt nur Mächtige</text>
+<path d="M128 84 L 134 92 L 146 78" fill="none" stroke="#9fd0db" stroke-width="2.4"/>
+<path d="M382 84 L 388 92 L 400 78" fill="none" stroke="#9fd0db" stroke-width="2.4"/>
+<path d="M636 84 L 642 92 L 654 78" fill="none" stroke="#9fd0db" stroke-width="2.4"/>
+<text x="160" y="92" class="kb-s">Wissen ist mitteilbar</text>
+<text x="414" y="92" class="kb-s">Unrecht direkt benennen</text>
+<text x="668" y="92" class="kb-s">Rede schützt Schwache</text><text x="766" y="124" text-anchor="end" class="kb-ill">ILLUSTRATION</text></svg></figure>
+<div class="br-synth"><span class="bs-h">Synthese</span>
+<div class="bs-block"><span class="bs-t">Kernpunkte</span><p>Mounk verteidigt in allen drei Feldern die linke Traditionslinie gegen ihre neue Umdeutung (S. 202) · Der Maßnahmenteil ist konkret: Staat, Konzerne und Plattformen sollen die Redekultur schützen, etwa durch Kündigungsverbote aus Gesinnungsgründen (S. 203) · Positive Gegenbilder: die „Freuden gegenseitiger Beeinflussung“ (S. 179).</p></div>
+<div class="bs-block"><span class="bs-t">Offene Fragen</span><p>Wo genau die Grenze zwischen legitimer sozialer Sanktion und „Consequence Culture“ verläuft, bleibt eine Abwägungsfrage, die das Werk fallweise beantwortet.</p></div>
+<div class="bs-block"><span class="bs-t">Spannungen im Werk</span><p>Keine nennenswerten: Mounk räumt die berechtigten Ausgangsbefunde (Marginalisierung verzerrt Wissenschaft; Künstler werden geprellt) ausdrücklich ein und greift die Zuspitzungen an — die Trennlinie wird konsistent gehalten (S. 162, 178).</p></div>
+<div class="bs-claude"><span class="bs-badge">Claudes Einordnung · nicht in der Quelle</span><p><span class="bs-konf">Konfidenz 85/100:</span> Die Rekonstruktion der drei Kritiklinien ist eng an den Kernpunkte-Abschnitten des Werks geführt. Kippbedingung: Sollte Mounk nachweislich die akademische statt der popularisierten Standpunkttheorie angreifen, bräche das Argument — er trennt beide jedoch explizit (S. 162).</p></div>
+</div>
+<div class="kp-deep"><span class="kp-id">Themen-ID: k4</span><span><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a>&nbsp;&nbsp;<a href="#karte">↑ Karte</a></span></div>
+<span class="br-foot">08 · ◆ · KAPITEL 4</span>
+</section>
+<hr class="br-cut">
+<section class="br-page acc-a2" id="k5" aria-label="Kapitel 5: Kritik II · Politik &amp; Institutionen">
+<div class="br-frame" aria-hidden="true"></div>
+<span class="br-head">Im Zeitalter der Identität · Werkanalyse</span>
+<span class="br-num">09 / 13</span>
+<p class="kp-eyebrow">Kapitel 5 · Kritik II · Politik &amp; Institutionen</p>
+<h2 class="kp-title">Separatismus und Gruppenpolitik</h2>
+<p class="kp-kernfrage">Was spricht laut Mounk gegen progressiven Separatismus und „rassensensible“ Politik?</p>
+<div class="merk"><span class="merk-label">In einfachen Worten</span><p>Trennung nach Gruppen zerstört genau die Bedingungen, unter denen Vorurteile sinken. Und „Gruppengerechtigkeit“ als Ziel kann eine Gesellschaft rechtfertigen, die sehr ungleich oder sehr arm ist — universelle, bedarfsorientierte Politik erreicht Benachteiligte trotzdem.</p><span class="merk-zm">Zum Merken: Integration ist der handlungsleitende Gegenvorschlag — mehr Umfelder, in denen Gruppen kooperieren (S. 227).</span></div>
+<div class="wiss"><span class="wiss-label">Was für Leserinnen und Leser wissenswert ist</span><ul><li>Vier Kontakt-Bedingungen senken Vorurteile: gleicher Status, gemeinsame Ziele, Kooperation, Erwartung des Miteinanders; Separatismus verletzt sie systematisch (S. 226).</li>
+<li>Zwei philosophische Defekte der Gruppengerechtigkeit: Sie ist mit extremer Ungleichheit und mit allgemeiner Verarmung vereinbar; CDC-Impfrichtlinien als Praxisfolge mit schlechteren Ergebnissen für alle Gruppen (S. 248 f.).</li>
+<li>„Struktureller Rassismus“: als Ergänzung des Vokabulars wertvoll, als Ersatz älterer Rassismus-Begriffe irreführend; auch Geschlecht bleibt neben Gender ein nötiges Konzept (S. 261 f.).</li></ul><span class="wiss-ro"><b>Robuste Option:</b> Kontexte schaffen, in denen die vier Bedingungen erfüllt sind, und universelle, bedarfsorientierte Programme bevorzugen — sie helfen überproportional den Bedürftigsten (S. 227, 248).</span></div>
+<blockquote class="kp-cite"><p>„Eine gruppengerechte Gesellschaft könnte deshalb eine sehr arme sein.“</p><span class="kp-loc">Wörtliches Zitat · S. 249</span></blockquote>
+<figure class="kb" role="img" aria-label="Illustratives Schema: vier Kontakt-Bedingungen, die Trennung verletzt und Integration erfuellt"><svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#cda24f" stroke-width="1.3">
+<rect x="200" y="10" width="130" height="26" rx="4"/><rect x="200" y="42" width="130" height="26" rx="4"/><rect x="200" y="74" width="130" height="26" rx="4"/><rect x="200" y="106" width="130" height="26" rx="4" transform="translate(0,-8)"/>
+<rect x="24" y="34" width="130" height="52" rx="6" stroke="#a3242c"/>
+<rect x="430" y="34" width="130" height="52" rx="6" stroke="#9fd0db"/>
+<path d="M154 60 H 192"/><path d="M330 60 H 422"/><path d="M416 54 L 426 60 L 416 66"/>
+</g>
+<text x="89" y="55" text-anchor="middle" class="kb-s">Trennung nach</text><text x="89" y="69" text-anchor="middle" class="kb-s">Gruppen: verletzt ✕</text>
+<text x="265" y="27" text-anchor="middle" class="kb-s">gleicher Status</text>
+<text x="265" y="59" text-anchor="middle" class="kb-s">gemeinsame Ziele</text>
+<text x="265" y="91" text-anchor="middle" class="kb-s">Kooperation</text>
+<text x="265" y="115" text-anchor="middle" class="kb-s">Erwartung des Miteinanders</text>
+<text x="495" y="55" text-anchor="middle" class="kb-s">Integration:</text><text x="495" y="69" text-anchor="middle" class="kb-s">erfüllt ✓</text>
+<text x="660" y="55" text-anchor="middle" class="kb-s">→ Vorurteile</text><text x="660" y="69" text-anchor="middle" class="kb-s">sinken (S. 226)</text><text x="766" y="124" text-anchor="end" class="kb-ill">ILLUSTRATION</text></svg></figure>
+<div class="br-synth"><span class="bs-h">Synthese</span>
+<div class="bs-block"><span class="bs-t">Kernpunkte</span><p>Weiße zur „rassischen“ Selbstdefinition zu ermutigen hält Mounk für besonders kontraproduktiv — es stärkt Eigengruppen-Politik (S. 227) · Gruppenbezogene Maßnahmen sind über alle demografischen Gruppen hinweg unpopulär und schwächen den Rückhalt des Sozialstaats (S. 249) · Das Triage-Beispiel verbindet dieses Kapitel mit der Eingangsdiagnose (S. 19–22).</p></div>
+<div class="bs-block"><span class="bs-t">Offene Fragen</span><p>Ob großzügige universelle Programme politisch durchsetzbar sind, wo gruppenbezogene scheitern, behandelt das Werk als Erwartung, nicht als Nachweis.</p></div>
+<div class="bs-block"><span class="bs-t">Spannungen im Werk</span><p>Keine nennenswerten: Mounk erkennt die Ausgangsdaten der Gegenseite (reale Disparitäten) an und verlagert den Streit auf die Mittel — der Aufbau ist konsistent (S. 248).</p></div>
+<div class="bs-claude"><span class="bs-badge">Claudes Einordnung · nicht in der Quelle</span><p><span class="bs-konf">Konfidenz 80/100:</span> Die beiden philosophischen Einwände gegen Gruppengerechtigkeit sind formal stichhaltig und werkgetreu wiedergegeben. Kippbedingung: Robuste Evidenz, dass identitätssensible Programme Kontakt- und Wohlfahrtsziele besser erreichen als universelle, würde Mounks Praxisurteil — nicht aber den formalen Einwand — entkräften.</p></div>
+</div>
+<div class="kp-deep"><span class="kp-id">Themen-ID: k5</span><span><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a>&nbsp;&nbsp;<a href="#karte">↑ Karte</a></span></div>
+<span class="br-foot">09 · ◆ · KAPITEL 5</span>
+</section>
+<hr class="br-cut">
+<section class="br-page acc-a3" id="k6" aria-label="Kapitel 6: Gefahren">
+<div class="br-frame" aria-hidden="true"></div>
+<span class="br-head">Im Zeitalter der Identität · Werkanalyse</span>
+<span class="br-num">10 / 13</span>
+<p class="kp-eyebrow">Kapitel 6 · Gefahren</p>
+<h2 class="kp-title">Was auf dem Spiel steht</h2>
+<p class="kp-kernfrage">Welche Gefahren sieht Mounk — politisch, gesellschaftlich und persönlich?</p>
+<div class="merk"><span class="merk-label">In einfachen Worten</span><p>Die Synthese erschwert Bündnisse über Gruppengrenzen hinweg, befeuert sich wechselseitig mit dem Rechtspopulismus, höhlt die Redekultur aus — und ihr Anerkennungs-Versprechen entpuppt sich für den Einzelnen als Illusion.</p><span class="merk-zm">Zum Merken: Gefährlich ist laut Mounk schon der Bestfall der Ideologie, nicht erst ihr Exzess (S. 30).</span></div>
+<div class="wiss"><span class="wiss-label">Was für Leserinnen und Leser wissenswert ist</span><ul><li>Politisch: Dauerkonkurrenz starrer „identitärer Stämme“ um Ressourcen und Anerkennung statt Kooperation — ein Nullsummenspiel, das diverse Demokratien destabilisiert (S. 29, 315).</li>
+<li>Systemisch: Kulturmacht der Synthese und Parlamentsmacht der Demagogen wachsen parallel; wer nur eine Seite bekämpft, stärkt die andere (S. 33).</li>
+<li>Persönlich: Wer in kein Gruppenraster passt — etwa bei gemischter Herkunft —, verliert Zugehörigkeit; statt Individualität bleiben „Drehbücher“ der Gruppenrolle. Warnsignal: reale Schäden bis zur Medikamentenvergabe nach Hautfarbe (S. 19–22, 30, 314 f.).</li></ul><span class="wiss-ro"><b>Robuste Option:</b> Beide Illiberalismen zugleich adressieren — Mounk zufolge lässt sich das eine Phänomen nur besiegen, indem man auch gegen das andere vorgeht (S. 33).</span></div>
+<blockquote class="kp-cite"><p>„Der Rechtspopulismus und die Identitätsfalle befeuern sich gegenseitig.“</p><span class="kp-loc">Wörtliches Zitat · S. 33</span></blockquote>
+<figure class="kb" role="img" aria-label="Illustratives Schema: Rechtspopulismus und Identitaetsfalle befeuern sich wechselseitig"><svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#cda24f" stroke-width="1.5">
+<path d="M300 30 A 90 45 0 0 1 480 30"/><path d="M472 22 L 484 30 L 470 36"/>
+<path d="M480 96 A 90 45 0 0 1 300 96"/><path d="M308 104 L 296 96 L 310 90"/>
+<rect x="130" y="40" width="160" height="46" rx="6" stroke="#a3242c"/>
+<rect x="490" y="40" width="160" height="46" rx="6" stroke="#e0a060"/>
+</g>
+<text x="210" y="60" text-anchor="middle" class="kb-s">Identitätsfalle</text><text x="210" y="74" text-anchor="middle" class="kb-s">kulturelle Macht</text>
+<text x="570" y="60" text-anchor="middle" class="kb-s">Rechtspopulismus</text><text x="570" y="74" text-anchor="middle" class="kb-s">parlamentarische Macht</text>
+<text x="390" y="18" text-anchor="middle" class="kb-s">liefert Feindbilder</text>
+<text x="390" y="118" text-anchor="middle" class="kb-s">liefert Rechtfertigung</text>
+<text x="390" y="68" text-anchor="middle" class="kb-t">Yin ⇄ Yang (S. 33)</text><text x="766" y="124" text-anchor="end" class="kb-ill">ILLUSTRATION</text></svg></figure>
+<div class="br-synth"><span class="bs-h">Synthese</span>
+<div class="bs-block"><span class="bs-t">Kernpunkte</span><p>Vier Gründe tragen das Buch: Forschungslücke, Eigenwert der Praxisfolgen, Selbstschädigung der progressiven Ziele, wechselseitige Radikalisierung (S. 32 f.) · Betroffen sind auch „Zivilisten“ fernab der Prominenz (S. 299) · Die Gefahr gilt für Deutschland als wachsend, nicht nur für die USA (S. 23).</p></div>
+<div class="bs-block"><span class="bs-t">Offene Fragen</span><p>Das Ausmaß der Wirkungen ist empirisch offen; das Werk stützt sich auf Fallserien und Mechanismen, nicht auf Längsschnittdaten.</p></div>
+<div class="bs-block"><span class="bs-t">Spannungen im Werk</span><p>Eine echte Spannung: Mounk warnt vor Übertreibung des Social-Media-Kulturkampfs (S. 23) und baut zugleich stark auf dessen Fällen auf — er löst das durch die Unterscheidung von Anekdote und institutioneller Regel (S. 22 f.).</p></div>
+<div class="bs-claude"><span class="bs-badge">Claudes Einordnung · nicht in der Quelle</span><p><span class="bs-konf">Konfidenz 70/100</span> für die Wirkungsthesen: Die Diagnosen sind an dokumentierten Fällen belegt, die Zukunftswirkung bleibt Prognose. Kippbedingung: Längsschnittdaten ohne Polarisierungs- und Gegenreaktionseffekte in stark betroffenen Ländern würden die Befeuerungs-These erheblich schwächen.</p></div>
+</div>
+<div class="kp-deep"><span class="kp-id">Themen-ID: k6</span><span><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a>&nbsp;&nbsp;<a href="#karte">↑ Karte</a></span></div>
+<span class="br-foot">10 · ◆ · KAPITEL 6</span>
+</section>
+<hr class="br-cut">
+<section class="br-page acc-a4" id="k7" aria-label="Kapitel 7: Mounks Antwort">
+<div class="br-frame" aria-hidden="true"></div>
+<span class="br-head">Im Zeitalter der Identität · Werkanalyse</span>
+<span class="br-num">11 / 13</span>
+<p class="kp-eyebrow">Kapitel 7 · Mounks Antwort</p>
+<h2 class="kp-title">Prinzip und Praxis des Liberalismus</h2>
+<p class="kp-kernfrage">Was setzt Mounk der Identitätssynthese entgegen — als Prinzip und als konkrete Praxis?</p>
+<div class="merk"><span class="merk-label">In einfachen Worten</span><p>Den philosophischen Liberalismus: politische Gleichheit, individuelle Freiheit und kollektive Selbstbestimmung — plus konkrete Verhaltensregeln für Einzelne und Organisationen, um die Falle prinzipientreu zu bekämpfen.</p><span class="merk-zm">Zum Merken: Die Kurzformel lautet: den universalistischen Ansprüchen gerecht werden, statt sie aufzugeben (S. 275, 278).</span></div>
+<div class="wiss"><span class="wiss-label">Was für Leserinnen und Leser wissenswert ist</span><ul><li>Drei liberale Gegen-Postulate spiegeln die drei Grundbehauptungen: breites Kategorienspektrum statt Ein-Prisma-Blick; Ideale als historisch wirksamste Waffe der Unterdrückten; Ansprüche einlösen statt verwerfen (S. 272–275).</li>
+<li>Sechs Ratschläge für Einzelne: die Moral für sich beanspruchen, Gegner nicht verteufeln, Gegner als mögliche Verbündete sehen, an die vernünftige Mehrheit appellieren, Koalitionen über Traditionen hinweg schmieden, kein „180ismus“ (S. 300–309).</li>
+<li>Fünf Maßnahmen für Organisationen: Toleranz klar erwarten, echtes Feedback statt Aktivisten-Hofieren, Mobbing-Regeln für soziale Medien, keine Strafen vor Faktenklärung, keine unaufrichtigen Entschuldigungen (S. 310–312).</li></ul><span class="wiss-ro"><b>Robuste Option:</b> Mounks Muster für den Härtefall: Redefreiheit schützen und zugleich die eigene Ablehnung friedlich kundtun — beides öffentlich, beides konsequent (S. 312 f.).</span></div>
+<blockquote class="kp-cite"><p>„Der Kern der liberalen Tradition liegt in der Ablehnung angeblich naturgegebener Hierarchien …“</p><span class="kp-loc">Wörtliches Zitat · S. 290</span></blockquote>
+<figure class="kb" role="img" aria-label="Illustratives Schema: drei liberale Saeulen tragen die liberale Demokratie"><svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#cda24f" stroke-width="1.5">
+<rect x="150" y="16" width="480" height="26" rx="4" stroke="#ecc868" stroke-width="1.8"/>
+<rect x="180" y="52" width="120" height="56"/><rect x="330" y="52" width="120" height="56"/><rect x="480" y="52" width="120" height="56"/>
+<path d="M120 112 H 660"/>
+</g>
+<text x="390" y="33" text-anchor="middle" class="kb-t">Liberale Demokratie</text>
+<text x="240" y="76" text-anchor="middle" class="kb-s">politische</text><text x="240" y="90" text-anchor="middle" class="kb-s">Gleichheit</text>
+<text x="390" y="76" text-anchor="middle" class="kb-s">individuelle</text><text x="390" y="90" text-anchor="middle" class="kb-s">Freiheit</text>
+<text x="540" y="76" text-anchor="middle" class="kb-s">kollektive</text><text x="540" y="90" text-anchor="middle" class="kb-s">Selbstbestimmung</text><text x="766" y="124" text-anchor="end" class="kb-ill">ILLUSTRATION</text></svg></figure>
+<div class="br-synth"><span class="bs-h">Synthese</span>
+<div class="bs-block"><span class="bs-t">Kernpunkte</span><p>Die drei Prinzipien wirken empirisch: Selbstbestimmung verhindert Machtmissbrauch bis zur Hungersnot, Freiheit stiftet Frieden, Neutralität entschärft Gruppenrivalität (S. 285–287, 291) · Demokratien führen die Glücks-, Entwicklungs- und Wohlstandsränge deutlich an (S. 288) · Der Liberalismus wird als Kraft des Fortschritts, nicht des Status quo bestimmt (S. 289).</p></div>
+<div class="bs-block"><span class="bs-t">Offene Fragen</span><p>Der übergreifende Konsens (Marxisten, Konservative, Religionen) ist als Koalition skizziert; wie tragfähig er praktisch ist, bleibt offen (S. 306–308).</p></div>
+<div class="bs-block"><span class="bs-t">Spannungen im Werk</span><p>Das Statistik-Argument trägt korrelativ; die Selektions-Alternative (reiche Länder halten Demokratie leichter) benennt Mounk selbst und hält dagegen die Prinzipien-Mechanismen (S. 287).</p></div>
+<div class="bs-claude"><span class="bs-badge">Claudes Einordnung · nicht in der Quelle</span><p><span class="bs-konf">Konfidenz 80/100:</span> Die Rekonstruktion von Prinzip und Praxisprogramm ist vollständig und werkgetreu; die empirische Bilanz ist stark, aber kausal nicht abschließend. Kippbedingung: Systematische Fälle, in denen neutrale Regeln Gleichheits- und Kontaktziele nachweislich schlechter erreichen als identitätssensible Politik, würden das Praxisurteil kippen — die normative Begründung bliebe davon getrennt zu prüfen.</p></div>
+</div>
+<div class="kp-deep"><span class="kp-id">Themen-ID: k7</span><span><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a>&nbsp;&nbsp;<a href="#karte">↑ Karte</a></span></div>
+<span class="br-foot">11 · ◆ · KAPITEL 7</span>
+</section>
+<hr class="br-cut">
+<section class="br-page acc-a4" id="schluss" aria-label="Schluss: Gesamtbild und drei Zukunftsszenarien">
+<div class="br-frame" aria-hidden="true"></div>
+<span class="br-head">Im Zeitalter der Identität · Werkanalyse</span>
+<span class="br-num">12 / 13</span>
+<p class="br-eyebrow">Schluss · Das Gesamtbild</p>
+<h2 class="br-title">Der Falle entkommen</h2>
+<div class="st-core">
+<h3>Die übergreifende Einsicht</h3>
+<p>Eine Falle hat drei Merkmale: Sie enthält einen Köder, selbst gute und kluge Menschen tappen hinein, und sie untergräbt die Ziele derer, die sich in ihr verfangen (S. 31). Genau so beschreibt Mounk die Identitätssynthese — und deshalb lautet seine Antwort nicht Verbot oder Spott, sondern Überzeugungsarbeit: die vernünftige, diverse Mehrheit gewinnen, die Minderheiten respektiert behandelt sehen will und die Glaubenssätze der Ideologie dennoch ablehnt (S. 304 f.).</p>
+<p>Sein Schlussbild bleibt universalistisch: eine Zukunft, in der Herkunft und Gruppenmerkmale weniger bestimmen, „… was wir gemeinsam haben, endlich wichtiger wird als das, was uns voneinander trennt.“ <span class="kp-loc">Wörtliches Zitat · S. 315</span></p>
+</div>
+<h3 class="lm-h">Drei Zukunftsszenarien (S. 296–298)</h3>
+<div class="st-open">
+<div class="st-o"><b>1 · Dauerhafter Sieg</b>Die Annahmen seien nicht mehr wegzukriegen; wir würden jetzt „alle auf dem Campus leben“ (so Sullivan, S. 296).<span class="mkline"><span class="ans-mk mk-gestuetzt">gestützt</span> als Position anderer referiert</span></div>
+<div class="st-o"><b>2 · Rasche Abwendung</b>Die Gegenreaktion wächst; erste Anzeichen, dass die Ideologie aus der Mode kommt.<span class="mkline"><span class="ans-mk mk-gestuetzt">gestützt</span> Indizien im Werk benannt</span></div>
+<div class="st-o"><b>3 · Langer Konflikt</b>Verankert und umkämpft zugleich — für Mounk das plausibelste Szenario.<span class="mkline"><span class="ans-mk mk-gemischt">gemischt</span> ausdrücklich als offen markiert</span></div>
+</div>
+<figure class="kb" role="img" aria-label="Illustratives Schema: drei Pfade in die Zukunft, der mittlere als wahrscheinlichster hervorgehoben">
+<svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#cda24f" stroke-width="1.4">
+<circle cx="80" cy="65" r="16"/>
+<path d="M96 60 C 240 20 420 20 600 24"/>
+<path d="M96 65 C 260 65 460 65 600 65" stroke="#ecc868" stroke-width="2.4"/>
+<path d="M96 70 C 240 110 420 110 600 106"/>
+<path d="M592 18 L 604 24 L 592 30"/><path d="M592 59 L 606 65 L 592 71" stroke="#ecc868" stroke-width="2.4"/><path d="M592 100 L 604 106 L 592 112"/>
+</g>
+<text x="80" y="102" text-anchor="middle" class="kb-s">heute</text>
+<text x="648" y="27" class="kb-s">Sieg der Synthese</text>
+<text x="648" y="69" class="kb-t">langer Konflikt</text>
+<text x="648" y="109" class="kb-s">rasche Abwendung</text>
+<text x="766" y="124" text-anchor="end" class="kb-ill">ILLUSTRATION</text>
+</svg>
+</figure>
+<div class="br-synth"><span class="bs-h">Gesamtsynthese</span>
+<div class="bs-block"><span class="bs-t">Was das Werk leistet</span><p>Eine Ideengeschichte, eine Soziologie des Aufstiegs, eine feldweise Sachkritik und ein positives Gegenprogramm — verbunden durch die Doppelfigur von Köder und Falle. Die Gefahrendiagnose und das Gegenprogramm greifen ineinander: Wer die Falle bekämpft, soll es „effektiv und prinzipientreu“ tun (S. 298 f.).</p></div>
+<div class="bs-claude"><span class="bs-badge">Schlussthese von Claude · nicht in der Quelle</span><p><span class="bs-konf">Konfidenz 80/100:</span> Als rationale Nachkonstruktion und Sachkritik ist das Werk stringent: Die drei Grundbehauptungen sind fair rekonstruiert, die Einwände formal tragfähig, das Gegenprogramm konkret. Schwächer kalibriert sind die Zukunfts- und Wirkungsthesen, die auf Fallserien beruhen. Kippbedingungen: mehrheitliche, ausdrückliche Zurückweisung der drei Grundbehauptungen durch maßgebliche Vertreter; oder Längsschnittevidenz gegen die Polarisierungs- und Kontaktmechanismen. Beides liegt im Werk nicht vor — und wäre der Prüfstein für jede Anschlussdebatte.</p></div>
+</div>
+<div class="kp-deep"><span class="kp-id">Themen-ID: schluss</span><span><a href="tiefenanalyse.html">In der Tiefenanalyse ausführlich →</a>&nbsp;&nbsp;<a href="#karte">↑ Karte</a></span></div>
+<span class="br-foot">12 · ◆ · SCHLUSS</span>
+</section>
+<hr class="br-cut">
+<section class="br-page" id="kolophon" aria-label="Kolophon: Quelle, Methode, Anti-Halluzinations-Kurzfassung und Verweise">
+<div class="br-frame" aria-hidden="true"></div>
+<span class="br-head">Im Zeitalter der Identität · Werkanalyse</span>
+<span class="br-num">13 / 13</span>
+<p class="br-eyebrow">Kolophon</p>
+<h2 class="br-title">Quelle, Methode, Verweise</h2>
+<div class="ko-grid">
+<div class="ko-b"><span class="ko-h">Quelle</span>Yascha Mounk: „Im Zeitalter der Identität. Der Aufstieg einer gefährlichen Idee“. Klett-Cotta, Stuttgart 2024. Aus dem Amerikanischen von Sabine Reinhardus und Helmut Dierlamm. Originalausgabe: „The Identity Trap. A Story of Ideas and Power in Our Time“, Penguin Press, New York 2023 (Impressum, S. 2 f.).</div>
+<div class="ko-b"><span class="ko-h">Fundstellen-Konvention</span>Alle Seitenangaben („S. …“) beziehen sich auf die vorliegende E-Book-PDF-Ausgabe (501 Seiten); sie weichen von der gedruckten Paginierung ab. Wörtliche Zitate sind mit „Wörtliches Zitat“ und Fundstelle gekennzeichnet und wurden maschinell gegen den Volltext abgeglichen.</div>
+<div class="ko-b"><span class="ko-h">Methode</span>Volltext-Extraktion der Quelle; Kristallisation von Hauptfrage und sieben Themenkomplexen; Zitatbank mit zwölf wortwörtlich verifizierten Belegen; Paraphrasen entlang der „Kernpunkte“-Abschnitte des Werks; achtstufiges Abschluss-Audit (Technik, Sauberkeit, Quellentreue, Zitate, Lesbarkeit, Aufbau, Optik, Druck).</div>
+<div class="ko-b"><span class="ko-h">Anti-Halluzination, kurz</span>Quellengebundene Arbeit (Zone B: JA). Geschätzte Faktenrisiko-Spanne ≈ 7–15 % — geschätzt, nicht gemessen; Closed-Book-Benchmarks beschreiben Modelle ohne Quelle, nie diese Arbeit. Eigenanalysen tragen das Label „Claudes Einordnung · nicht in der Quelle“ bzw. „Schlussthese von Claude“ samt Konfidenz und Kippbedingung. Mounks Sekundärbelege (Studien, Umfragen) wurden nicht eigenständig geprüft.</div>
+<div class="ko-b ko-b--wide"><span class="ko-h">Begleitband</span>Diese Broschüre ist die Kurzfassung. Die vollständige Analyse mit tiefen Abschnitten je Themen-ID (k1–k7) finden Sie hier: <a href="tiefenanalyse.html">tiefenanalyse.html</a> — Datei im selben Ordner ablegen; der Begleitband ist Teil des Doppelsystems und wird separat erstellt.</div>
+<div class="ko-b ko-b--wide"><span class="ko-h">Weiterdenken</span>Der produktivste Einstieg in die Anschlussdebatte ist Mounks eigene Messlatte: die drei Grundbehauptungen (S. 268–271) und die drei liberalen Antworten (S. 272–275) nebeneinanderlegen — und an konkreten Fällen prüfen, welche Seite die bessere Erklärung und die bessere Praxis liefert.</div>
+</div>
+<span class="br-foot">13 · ◆ · KOLOPHON</span>
+</section>
+<script>
+addEventListener("beforeprint",function(){document.querySelectorAll("details").forEach(function(d){d.dataset.was=d.open?"1":"";d.open=true;});});
+addEventListener("afterprint",function(){document.querySelectorAll("details").forEach(function(d){d.open=d.dataset.was==="1";});});
+</script>
+</body>
+</html>
