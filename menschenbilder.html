@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menschenbilder — Die Übersichts-Broschüre</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500;1,6..72,600&family=Spectral:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f13;
+  --page-1:#1b2832; --page-2:#0e161b;
+  --ink:#f4ecd9; --ink-2:#e7dcc2; --ink-soft:#cdbfa0; --ink-faint:#9a8f78;
+  --gold:#c89b3c; --gold-line:#cda24f; --gold-hi:#ecc868; --gold-max:#f0cf78;
+  --a1:#2f5a63; --a1-hi:#9fd0db;
+  --a2:#b85c2f; --a2-hi:#e0a060;
+  --a3:#a3242c; --a3-hi:#e8959c;
+  --a4:#c89b3c; --a4-hi:#ecc868;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);font-family:"Spectral",Georgia,serif;color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-feature-settings:"kern","liga","onum";}
+html{scroll-behavior:smooth;}
+a{color:var(--gold-hi);text-decoration:none;}
+a:hover,a:focus-visible{text-decoration:underline;outline:none;}
+a:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px;}
+
+.br-page{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:clamp(14px,2vw,24px);padding:clamp(46px,7vw,84px) clamp(20px,5vw,60px);overflow:hidden;background:radial-gradient(120% 80% at 50% 0%,var(--page-1),var(--page-2) 64%),var(--page-2);color:var(--ink);}
+.br-cut{border:0;height:1px;width:min(820px,90vw);margin:0 auto;background:linear-gradient(90deg,transparent,rgba(200,155,60,.42),transparent);}
+.br-frame{position:absolute;inset:clamp(14px,2.4vw,30px);border:1px solid rgba(200,155,60,.5);pointer-events:none;}
+.br-frame::before{content:"";position:absolute;inset:5px;border:1px solid rgba(200,155,60,.24);}
+.br-num{position:absolute;top:clamp(20px,3vw,34px);right:clamp(26px,4vw,48px);font:600 11px/1 "Inter Tight",sans-serif;letter-spacing:.1em;color:var(--gold-line);z-index:2;}
+.br-eyebrow{margin:0;font:700 clamp(11px,1.4vw,13px)/1 "Inter Tight",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-line);text-align:center;}
+.br-title{margin:0;font:600 clamp(27px,4.6vw,46px)/1.05 "Newsreader",serif;font-style:italic;color:#f7f0db;text-align:center;}
+
+.tc-cover{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,2.2vw,24px);padding:clamp(50px,8vw,90px) clamp(22px,5vw,64px);overflow:hidden;background:radial-gradient(130% 90% at 50% -10%,#22333f,#0d151a 62%),#0d151a;text-align:center;}
+.tc-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.5;}
+.tc-frame{position:absolute;inset:clamp(14px,2.4vw,30px);border:1px solid rgba(200,155,60,.55);pointer-events:none;z-index:2;}
+.tc-frame::before{content:"";position:absolute;inset:6px;border:1px solid rgba(200,155,60,.26);}
+.tc-plaque{position:relative;z-index:3;display:inline-block;padding:.55em 1.3em;border:2px solid var(--gold-line);border-radius:999px;background:rgba(13,18,23,.62);font:700 clamp(10px,1.3vw,12.5px)/1 "Inter Tight",sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-hi);}
+.tc-emblem{position:relative;z-index:3;width:clamp(120px,16vw,168px);height:auto;filter:drop-shadow(0 10px 26px rgba(0,0,0,.55));}
+.tc-title{position:relative;z-index:3;margin:0;font:800 clamp(40px,8.4vw,96px)/0.98 "Newsreader",serif;letter-spacing:.04em;text-transform:uppercase;color:#f7f0db;text-shadow:0 1px 0 rgba(255,248,225,.28),0 -1px 0 rgba(0,0,0,.55),0 3px 10px rgba(0,0,0,.6),0 14px 44px rgba(0,0,0,.5);}
+.tc-sub{position:relative;z-index:3;margin:0;font:500 clamp(14px,2vw,19px)/1.45 "Spectral",serif;color:var(--ink-2);max-width:760px;}
+.tc-pitch{position:relative;z-index:3;max-width:820px;padding:clamp(16px,2.4vw,26px) clamp(18px,3vw,34px);border:3px solid var(--gold-line);border-radius:10px;background:rgba(12,17,22,.68);box-shadow:0 10px 40px rgba(0,0,0,.5);}
+.tc-pitch p{margin:0;font:600 clamp(17px,2.6vw,25px)/1.4 "Newsreader",serif;font-style:italic;color:#fbf3df;}
+.tc-pitch b{color:var(--gold-max);font-style:normal;}
+.tc-meta{position:relative;z-index:3;margin:0;font:600 clamp(10px,1.3vw,12.5px)/1.7 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);}
+.tc-cue{position:relative;z-index:3;margin-top:clamp(6px,1vw,12px);font:600 11px/1.5 "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-line);animation:tcpulse 3.2s ease-in-out infinite;}
+@keyframes tcpulse{0%,100%{opacity:.55;}50%{opacity:1;}}
+
+.seal-eyebrow{margin:0;font:700 clamp(11px,1.4vw,13px)/1 "Inter Tight",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-line);}
+.seal-title{margin:0;font:600 clamp(24px,3.8vw,38px)/1.08 "Newsreader",serif;font-style:italic;color:#f7f0db;text-align:center;}
+.seal-core{display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,3vw,34px);align-items:center;width:100%;max-width:840px;border:1px solid rgba(200,155,60,.35);border-radius:12px;background:rgba(255,255,255,.03);padding:clamp(16px,2.6vw,28px);}
+.seal-medal{width:clamp(128px,17vw,178px);height:auto;filter:drop-shadow(0 8px 24px rgba(0,0,0,.55));}
+.seal-facts{display:flex;flex-direction:column;gap:10px;text-align:left;}
+.seal-rating{font:700 clamp(17px,2.3vw,22px)/1.25 "Inter Tight",sans-serif;color:#f7f0db;}
+.seal-rating small{display:block;font:600 11px/1.5 "Inter Tight",sans-serif;letter-spacing:.08em;color:var(--ink-faint);text-transform:uppercase;}
+.seal-banner{display:inline-block;align-self:flex-start;padding:.5em 1em;border:1px solid var(--gold-line);border-radius:999px;background:rgba(200,155,60,.12);font:700 clamp(11px,1.5vw,13.5px)/1 "Inter Tight",sans-serif;letter-spacing:.08em;color:var(--gold-max);}
+.seal-sum{margin:0;font:400 clamp(13.5px,1.8vw,16px)/1.55 "Spectral",serif;color:var(--ink-2);}
+.seal-verlass{width:100%;max-width:840px;margin:0;padding:12px 18px;border-left:3px solid var(--gold-line);background:rgba(200,155,60,.07);font:500 clamp(13px,1.7vw,15.5px)/1.55 "Spectral",serif;font-style:italic;color:var(--ink-2);text-align:left;}
+.seal-h{margin:6px 0 0;font:700 11.5px/1 "Inter Tight",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-line);text-align:center;}
+.seal-bars{width:100%;max-width:840px;display:flex;flex-direction:column;gap:8px;}
+.seal-bar{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:10px;align-items:center;font:600 12px/1.2 "Inter Tight",sans-serif;color:var(--ink-2);}
+.seal-track{position:relative;height:22px;background:rgba(255,255,255,.06);border:1px solid rgba(200,155,60,.22);border-radius:4px;overflow:hidden;}
+.seal-fill{position:absolute;inset:0 auto 0 0;display:flex;align-items:center;padding:0 8px;font:700 11px/1 "Inter Tight",sans-serif;color:#0d1216;background:linear-gradient(90deg,var(--gold-line),var(--gold-hi));white-space:nowrap;}
+.seal-fill--q{background:rgba(154,143,120,.55);color:#0d1216;}
+.seal-note{width:100%;max-width:840px;margin:0;font:400 11.5px/1.55 "Inter Tight",sans-serif;color:var(--ink-faint);text-align:left;}
+.seal-duo{width:100%;max-width:840px;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.seal-cell{border:1px solid rgba(200,155,60,.3);border-radius:10px;background:rgba(255,255,255,.03);padding:14px 16px;text-align:left;}
+.seal-cell h3{margin:0 0 6px;font:700 12px/1.3 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-hi);}
+.seal-cell p{margin:0;font:400 13px/1.55 "Spectral",serif;color:var(--ink-2);}
+.seal-amp{width:100%;max-width:840px;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.seal-amp div{border-radius:10px;padding:12px 16px;font:400 13px/1.5 "Spectral",serif;color:var(--ink-2);text-align:left;}
+.seal-amp .ok{border:1px solid rgba(47,90,99,.85);background:rgba(47,90,99,.18);}
+.seal-amp .warn{border:1px solid rgba(184,92,47,.8);background:rgba(184,92,47,.14);}
+.seal-amp b{display:block;font:700 12px/1.4 "Inter Tight",sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;color:#f4ecd9;}
+.seal-audit{width:100%;max-width:840px;margin:0;font:400 clamp(13px,1.7vw,15px)/1.6 "Spectral",serif;color:var(--ink-2);text-align:left;}
+.seal-chips{width:100%;max-width:840px;display:flex;flex-wrap:wrap;gap:7px;justify-content:center;}
+.seal-chip{padding:.45em .85em;border:1px solid rgba(200,155,60,.4);border-radius:999px;font:600 10.5px/1 "Inter Tight",sans-serif;letter-spacing:.06em;color:var(--ink-2);background:rgba(255,255,255,.03);}
+.seal-details{width:100%;max-width:840px;border:1px dashed rgba(200,155,60,.4);border-radius:10px;background:rgba(255,255,255,.02);padding:0 16px;}
+.seal-details summary{cursor:pointer;padding:12px 0;font:700 12px/1.3 "Inter Tight",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-hi);}
+.seal-details p,.seal-details li{font:400 13px/1.6 "Spectral",serif;color:var(--ink-2);text-align:left;}
+.seal-details ul{margin:6px 0 14px;padding-left:20px;}
+
+.lm-quest{width:100%;max-width:800px;margin:0;text-align:center;font:800 clamp(16px,2.3vw,23px)/1.35 "Inter Tight",sans-serif;color:#f4ecd9;}
+.lm-quest .lab{display:block;font:700 .62rem/1 "Inter Tight",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;}
+.lm-quest b{color:var(--gold-hi);}
+.lm-map{width:100%;max-width:760px;border:1px solid rgba(200,155,60,.25);border-radius:10px;background:rgba(0,0,0,.22);padding:clamp(10px,1.6vw,18px);}
+.lm-map svg{width:100%;height:auto;display:block;}
+.lm-mapcap{margin:8px 0 0;font:600 .66rem/1.4 "Inter Tight",sans-serif;color:var(--ink-faint);text-align:center;}
+.lm-toc{width:100%;max-width:820px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.6vw,16px);}
+.lm-block{border:1px solid rgba(200,155,60,.28);border-radius:10px;background:rgba(255,255,255,.03);padding:13px 15px;text-align:left;border-top:3px solid var(--blk,#cda24f);}
+.lm-block h3{margin:0 0 7px;font:700 12px/1.3 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--blk-hi,#ecc868);}
+.lm-block ol{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:4px;}
+.lm-block li{font:500 13px/1.4 "Inter Tight",sans-serif;}
+.lm-block a{color:var(--ink-2);}
+.lm-block a:hover{color:var(--gold-hi);}
+.lm-block .no{color:var(--blk-hi,#ecc868);font-weight:700;margin-right:6px;}
+.lm-sign{display:block;width:100%;max-width:820px;border:2px solid var(--gold-hi);border-radius:12px;background:radial-gradient(120% 150% at 50% 0%,rgba(236,200,104,.17),rgba(236,200,104,.04));box-shadow:0 0 0 6px rgba(236,200,104,.06),0 12px 40px rgba(236,200,104,.15);padding:clamp(14px,2.2vw,22px) clamp(16px,2.6vw,28px);text-align:center;font:600 clamp(15px,2.2vw,20px)/1.35 "Newsreader",serif;font-style:italic;color:#fbf3df;}
+.lm-sign b{color:var(--gold-max);font-style:normal;}
+.lm-sign small{display:block;margin-top:5px;font:600 10.5px/1.5 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-style:normal;}
+
+.ans-lead{width:100%;max-width:800px;margin:0;font:400 clamp(13.5px,1.8vw,16px)/1.6 "Spectral",serif;color:var(--ink-2);text-align:center;}
+.ans-h{margin:4px 0 0;font:700 12px/1 "Inter Tight",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-line);text-align:center;}
+.ans-grid{width:100%;max-width:860px;display:grid;grid-template-columns:repeat(2,1fr);gap:6px 12px;}
+.ans-item{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:baseline;border-bottom:1px solid rgba(200,155,60,.14);padding:5px 2px;font:400 12.5px/1.45 "Spectral",serif;color:var(--ink-2);text-align:left;}
+.ans-item b{color:#f4ecd9;font-family:"Inter Tight",sans-serif;font-size:12px;}
+.ans-m{font:700 10.5px/1 "Inter Tight",sans-serif;letter-spacing:.05em;color:var(--gm,#cda24f);border:1px solid var(--gm,#cda24f);border-radius:4px;padding:3px 5px;min-width:32px;text-align:center;}
+.ans-tools{width:100%;max-width:860px;display:flex;flex-direction:column;gap:9px;}
+.ans-tool{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;border:1px solid rgba(200,155,60,.26);border-radius:10px;background:rgba(255,255,255,.03);padding:11px 14px;text-align:left;}
+.ans-tool p{margin:0;font:400 13px/1.5 "Spectral",serif;color:var(--ink-2);}
+.ans-tool b{color:#f4ecd9;}
+.ev{align-self:center;white-space:nowrap;padding:.4em .7em;border-radius:999px;font:700 10px/1 "Inter Tight",sans-serif;letter-spacing:.08em;text-transform:uppercase;}
+.ev--b{background:rgba(47,90,99,.3);border:1px solid #2f5a63;color:#9fd0db;}
+.ev--g{background:rgba(200,155,60,.16);border:1px solid #cda24f;color:#ecc868;}
+.ev--p{background:rgba(184,92,47,.16);border:1px solid #b85c2f;color:#e0a060;}
+.ev--m{background:rgba(163,36,44,.16);border:1px solid #a3242c;color:#e8959c;}
+.ans-legend{width:100%;max-width:860px;margin:0;font:400 11px/1.55 "Inter Tight",sans-serif;color:var(--ink-faint);text-align:left;}
+
+.kp-page{align-items:stretch;}
+.kp-eyebrow{margin:0;font:700 clamp(10.5px,1.3vw,12.5px)/1 "Inter Tight",sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--acc-hi);text-align:center;}
+.kp-title{margin:0;font:600 clamp(24px,3.9vw,40px)/1.08 "Newsreader",serif;font-style:italic;color:#f7f0db;text-align:center;}
+.kp-inner{width:100%;max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(11px,1.6vw,16px);}
+.kp-kernfrage{margin:0;padding:10px 16px;border-left:3px solid var(--gold-line);font:500 clamp(15px,2.1vw,18.5px)/1.45 "Newsreader",serif;font-style:italic;color:var(--ink);background:rgba(255,255,255,.02);}
+.merk{border:1px solid rgba(236,200,104,.55);border-radius:10px;background:linear-gradient(180deg,rgba(236,200,104,.13),rgba(236,200,104,.045));padding:12px 16px;}
+.merk .lab{display:block;font:700 10.5px/1 "Inter Tight",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-max);margin-bottom:6px;}
+.merk p{margin:0;font:500 clamp(13.5px,1.85vw,16px)/1.55 "Spectral",serif;color:#f4ecd9;}
+.merk .zm{display:block;margin-top:7px;font:600 clamp(12.5px,1.7vw,14.5px)/1.5 "Spectral",serif;color:var(--gold-max);}
+.wiss{border:1px solid var(--acc);border-radius:10px;background:rgba(255,255,255,.03);padding:12px 16px;}
+.wiss .lab{display:block;font:700 10.5px/1 "Inter Tight",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--acc-hi);margin-bottom:7px;}
+.wiss ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;}
+.wiss li{font:400 clamp(12.5px,1.7vw,14.5px)/1.5 "Spectral",serif;color:var(--ink-2);}
+.wiss li::marker{color:var(--acc-hi);}
+.wiss .ro{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--acc);font:600 clamp(12.5px,1.7vw,14.5px)/1.5 "Spectral",serif;color:#f4ecd9;}
+.wiss .ro b{color:var(--acc-hi);font-family:"Inter Tight",sans-serif;font-size:.82em;letter-spacing:.1em;text-transform:uppercase;}
+.kb{width:100%;max-width:780px;margin:0 auto;}
+.kb svg{width:100%;height:auto;display:block;}
+.kb-ill{font:600 9px "Inter Tight",sans-serif;letter-spacing:.14em;fill:#9a8f78;text-transform:uppercase;}
+.kb-l{stroke:#cda24f;fill:none;stroke-width:1.4;}
+.kb-f{fill:#cda24f;}
+.kb-t{font:600 10.5px "Inter Tight",sans-serif;fill:#cdbfa0;letter-spacing:.06em;}
+.kp-cite{margin:0;padding:11px 16px;border-left:3px solid var(--gold-hi);background:rgba(200,155,60,.07);}
+.kp-cite p{margin:0;font:500 clamp(14.5px,2vw,17.5px)/1.5 "Newsreader",serif;font-style:italic;color:#fbf3df;}
+.kp-cite footer{margin-top:6px;font:600 10.5px/1.5 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-line);}
+.br-synth{border:1px solid rgba(47,90,99,.9);border-radius:10px;background:rgba(47,90,99,.16);padding:12px 16px;}
+.br-synth .lab{display:block;font:700 10.5px/1 "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#9fd0db;margin-bottom:7px;}
+.br-synth p{margin:0 0 5px;font:400 clamp(12.5px,1.68vw,14.5px)/1.52 "Spectral",serif;color:var(--ink-2);}
+.br-synth p:last-child{margin-bottom:0;}
+.br-synth b{color:#f4ecd9;font-family:"Inter Tight",sans-serif;font-size:.86em;letter-spacing:.08em;text-transform:uppercase;}
+.sy-cal{padding-top:7px;border-top:1px dashed rgba(159,208,219,.5);color:#cfe5ea;}
+.kp-nav{margin:0;text-align:center;font:600 11.5px/1.5 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);}
+.kp-nav a{color:var(--gold-line);}
+.accA{--acc:#2f5a63;--acc-hi:#9fd0db;}
+.accB{--acc:#b85c2f;--acc-hi:#e0a060;}
+.accC{--acc:#c89b3c;--acc-hi:#ecc868;}
+.accD{--acc:#a3242c;--acc-hi:#e8959c;}
+
+.st-core{width:100%;max-width:790px;border:2px solid var(--gold-hi);border-radius:12px;background:radial-gradient(120% 150% at 50% 0%,rgba(236,200,104,.16),rgba(236,200,104,.04));box-shadow:0 0 0 6px rgba(236,200,104,.06),0 12px 44px rgba(236,200,104,.16);padding:clamp(18px,3vw,32px) clamp(18px,3vw,34px);text-align:center;}
+.st-core p{margin:0;font:600 clamp(17px,2.6vw,24px)/1.4 "Newsreader",serif;font-style:italic;color:#fbf3df;}
+.st-core b{color:var(--gold-max);font-style:normal;}
+.st-selbst{width:100%;max-width:790px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.st-selbst div{border:1px solid rgba(200,155,60,.32);border-radius:10px;background:rgba(255,255,255,.03);padding:12px 14px;text-align:left;}
+.st-selbst b{display:block;font:700 12px/1.3 "Inter Tight",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-hi);margin-bottom:5px;}
+.st-selbst p{margin:0;font:400 12.5px/1.5 "Spectral",serif;color:var(--ink-2);}
+.st-q{width:100%;max-width:790px;display:flex;flex-direction:column;gap:5px;}
+.st-q p{margin:0;font:400 clamp(12.5px,1.68vw,14.5px)/1.5 "Spectral",serif;color:var(--ink-2);text-align:left;border-bottom:1px solid rgba(200,155,60,.13);padding:4px 2px;}
+.st-q b{color:var(--gold-hi);font-family:"Inter Tight",sans-serif;font-size:.85em;letter-spacing:.06em;}
+.st-open{width:100%;max-width:790px;border:1px dashed rgba(163,36,44,.6);border-radius:10px;background:rgba(163,36,44,.09);padding:12px 16px;text-align:left;}
+.st-open b{display:block;font:700 11px/1.3 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#e8959c;margin-bottom:5px;}
+.st-open p{margin:0;font:400 13px/1.55 "Spectral",serif;color:var(--ink-2);}
+
+.ko-grid{width:100%;max-width:800px;display:grid;grid-template-columns:1fr 1fr;gap:14px;text-align:left;}
+.ko-cell{border:1px solid rgba(200,155,60,.28);border-radius:10px;background:rgba(255,255,255,.03);padding:13px 16px;}
+.ko-h{margin:0 0 6px;font:700 11.5px/1.3 "Inter Tight",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-hi);}
+.ko-p{margin:0 0 5px;font:400 12.5px/1.55 "Spectral",serif;color:var(--ink-2);}
+.ko-p:last-child{margin-bottom:0;}
+.ko-wide{grid-column:1/-1;}
+
+@media (max-width:720px){
+  .seal-core{grid-template-columns:1fr;justify-items:center;}
+  .seal-facts{align-items:center;text-align:center;}
+  .seal-banner{align-self:center;}
+  .seal-duo,.seal-amp,.lm-toc,.ans-grid,.st-selbst,.ko-grid{grid-template-columns:1fr;}
+  .ans-tool{grid-template-columns:1fr;}
+  .ev{justify-self:start;}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+@media print{
+  body{background:#0d151a;}
+  .br-page,.tc-cover{min-height:auto;break-after:page;padding:16mm 12mm;}
+  .tc-cover{min-height:277mm;}
+  .tc-cue{display:none;}
+  .seal-details{border-style:solid;}
+  .seal-details summary{pointer-events:none;}
+  .seal-details>*{display:block;}
+  a{color:var(--gold-hi);}
+  @page{size:A4 portrait;margin:0;}
+}
+</style>
+</head>
+<body>
+<section class="tc-cover" id="cover" aria-label="Menschenbilder — Die Übersichts-Broschüre">
+  <svg class="tc-bg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#c89b3c" stroke-width="0.7" opacity="0.5">
+      <ellipse cx="600" cy="400" rx="470" ry="150" transform="rotate(10 600 400)"/>
+      <ellipse cx="600" cy="400" rx="470" ry="150" transform="rotate(46 600 400)"/>
+      <ellipse cx="600" cy="400" rx="470" ry="150" transform="rotate(82 600 400)"/>
+      <ellipse cx="600" cy="400" rx="470" ry="150" transform="rotate(118 600 400)"/>
+      <ellipse cx="600" cy="400" rx="470" ry="150" transform="rotate(154 600 400)"/>
+      <circle cx="600" cy="400" r="250"/>
+      <circle cx="600" cy="400" r="330"/>
+    </g>
+    <g stroke="#c89b3c" stroke-width="0.5" opacity="0.3">
+      <path d="M600 400 L60 60"/><path d="M600 400 L300 20"/><path d="M600 400 L600 0"/><path d="M600 400 L900 20"/><path d="M600 400 L1140 60"/>
+      <path d="M600 400 L60 740"/><path d="M600 400 L300 780"/><path d="M600 400 L900 780"/><path d="M600 400 L1140 740"/>
+    </g>
+    <g fill="#c89b3c" opacity="0.22">
+      <circle cx="140" cy="640" r="2"/><circle cx="180" cy="600" r="2"/><circle cx="220" cy="660" r="2"/><circle cx="1040" cy="160" r="2"/><circle cx="1000" cy="200" r="2"/><circle cx="1060" cy="220" r="2"/>
+    </g>
+  </svg>
+  <div class="tc-frame" aria-hidden="true"></div>
+  <span class="tc-plaque">Die Übersichts-Broschüre · Studie</span>
+  <svg class="tc-emblem" viewBox="0 0 160 160" role="img" aria-label="Werk-Emblem: Rosette mit Monogramm M" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#cda24f" stroke-width="1.3">
+      <circle cx="80" cy="80" r="74"/>
+      <circle cx="80" cy="80" r="66" stroke-dasharray="2 5" stroke-width="1"/>
+      <circle cx="80" cy="80" r="52"/>
+    </g>
+    <g fill="none" stroke="#cda24f" stroke-width="0.8" opacity="0.85">
+      <ellipse cx="80" cy="80" rx="50" ry="18" transform="rotate(0 80 80)"/>
+      <ellipse cx="80" cy="80" rx="50" ry="18" transform="rotate(45 80 80)"/>
+      <ellipse cx="80" cy="80" rx="50" ry="18" transform="rotate(90 80 80)"/>
+      <ellipse cx="80" cy="80" rx="50" ry="18" transform="rotate(135 80 80)"/>
+    </g>
+    <circle cx="80" cy="80" r="30" fill="#101a21" stroke="#ecc868" stroke-width="1.6"/>
+    <text x="80" y="93" text-anchor="middle" font-family="Newsreader,serif" font-weight="800" font-size="38" fill="#f0cf78">M</text>
+    <g fill="#ecc868"><circle cx="80" cy="6" r="2.4"/><circle cx="80" cy="154" r="2.4"/><circle cx="6" cy="80" r="2.4"/><circle cx="154" cy="80" r="2.4"/></g>
+  </svg>
+  <h1 class="tc-title">Menschen&shy;bilder</h1>
+  <p class="tc-sub">Was der Mensch ist, wer dazugehört und was er verdient — die Grundlagen, die neun Konfliktfelder und die Sprache, in der beides verhandelt wird. Nach dem dreibändigen Handbuch-Korpus für Soziale Arbeit, Soziologie und Philosophie.</p>
+  <div class="tc-pitch"><p>Welches <b>Bild vom Menschen</b> steckt in Denken, Verfahren und Sprache — und was macht es mit denen, <b>über die es gelegt wird</b>?</p></div>
+  <p class="tc-meta">Teil I · Grundlagen — Teil II · Konfliktfelder — Kanon · Sechzehn Bilder<br>Quellenkorpus: Zichy (Hrsg.) 2024 · Adorno 1964 · Han 2010/2014 · Deutsch</p>
+  <p class="tc-cue">▾ Prüfsiegel · Karte · Die konkrete Antwort</p>
+</section>
+<hr class="br-cut">
+<section class="br-page" id="siegel" aria-label="Prüfsiegel: Anti-Halluzination und Audit">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">02 / 20</span>
+  <p class="seal-eyebrow">Prüfsiegel · Halluzinationsminimierung</p>
+  <h2 class="seal-title">Wie verlässlich ist diese Broschüre?</h2>
+  <div class="seal-core">
+    <svg class="seal-medal" viewBox="0 0 170 170" role="img" aria-label="Prüfsiegel: Rating Hoch, Audit bestanden" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#cda24f">
+        <circle cx="85" cy="85" r="80" stroke-width="1.6"/>
+        <circle cx="85" cy="85" r="73" stroke-width="0.8" stroke-dasharray="3 4"/>
+        <circle cx="85" cy="85" r="58" stroke-width="1.1"/>
+      </g>
+      <g fill="none" stroke="#cda24f" stroke-width="0.7" opacity="0.8">
+        <ellipse cx="85" cy="85" rx="56" ry="20" transform="rotate(30 85 85)"/>
+        <ellipse cx="85" cy="85" rx="56" ry="20" transform="rotate(90 85 85)"/>
+        <ellipse cx="85" cy="85" rx="56" ry="20" transform="rotate(150 85 85)"/>
+      </g>
+      <circle cx="85" cy="78" r="30" fill="#101a21" stroke="#ecc868" stroke-width="1.5"/>
+      <path d="M71 78 L81 88 L100 66" fill="none" stroke="#ecc868" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M30 118 Q85 146 140 118 L136 132 Q85 158 34 132 Z" fill="#1b2731" stroke="#cda24f" stroke-width="1"/>
+      <text x="85" y="131" text-anchor="middle" font-family="Inter Tight,sans-serif" font-weight="700" font-size="12" letter-spacing="2" fill="#f0cf78">HOCH</text>
+    </svg>
+    <div class="seal-facts">
+      <p class="seal-rating">Rating dieser Broschüre: Hoch<small>Quellenbasiert (Grounding) · geschätzte Faktenrisiko-Spanne ≈ 7–15 % — geschätzt, nicht gemessen</small></p>
+      <span class="seal-banner">≈ 3× geringeres Faktenrisiko als ohne Quelle · Audit bestanden (8/8)</span>
+      <p class="seal-sum">Jede Sachaussage dieser Broschüre ist an drei vorliegende Quellbände gebunden; das Restrisiko konzentriert sich auf exakte Zahlen, Seitenangaben und Zitatwortlaute.</p>
+    </div>
+  </div>
+  <p class="seal-verlass">Worauf Verlass ist: Alle Zitate, Zahlen und Sachaussagen sind an die Originalquellen gebunden; jedes wörtliche Zitat wurde zeichengenau am Volltext geprüft und trägt seinen Fundort.</p>
+  <p class="seal-h">Modellraten im Vergleich — ohne Quellen gemessen (Closed-Book)</p>
+  <div class="seal-bars" role="img" aria-label="Balkendiagramm der Closed-Book-Halluzinationsraten: Claude Opus 4.8 35,9 Prozent, Gemini 3.1 Pro 50 Prozent, weitere Modelle höher">
+    <div class="seal-bar"><span>Claude Opus 4.8</span><span class="seal-track"><span class="seal-fill" style="width:59.8%">35,9 %</span></span></div>
+    <div class="seal-bar"><span>Gemini 3.1 Pro</span><span class="seal-track"><span class="seal-fill" style="width:83.3%">50 %</span></span></div>
+    <div class="seal-bar"><span>OpenAI (Peer-Modelle)</span><span class="seal-track"><span class="seal-fill seal-fill--q" style="width:92%">höher — ohne Einzelzahl in der Vorlage</span></span></div>
+    <div class="seal-bar"><span>Google (weitere Modelle)</span><span class="seal-track"><span class="seal-fill seal-fill--q" style="width:92%">höher — ohne Einzelzahl in der Vorlage</span></span></div>
+  </div>
+  <p class="seal-note">Modellweite Werte auf einem Closed-Book-Wissensbenchmark (AA-Omniscience), gemessen ohne beigelegte Quelle. Beschreibt das Modell allgemein, nicht diese Antwort. Mit Originalquelle im Kontext liegt das praktische Halluzinationsrisiko für Struktur und Thesen deutlich niedriger; das Restrisiko konzentriert sich auf exakte Zahlen und Zitate. Quelle: Artificial Analysis, 28.05.2026. Da diese Arbeit quellenbasiert (grounded) erstellt wurde, liegt das reale Faktenrisiko für Struktur und Thesen deutlich unter dem Closed-Book-Wert von 35,9 %.</p>
+  <div class="seal-duo">
+    <div class="seal-cell"><h3>Claude ohne Quellen</h3><p>Frei aus dem Modellgedächtnis → höheres Faktenrisiko (Closed-Book ≈ 35,9 %). Namen, Zahlen und Zitate können plausibel klingen und falsch sein.</p></div>
+    <div class="seal-cell"><h3>Claude mit Quellen (diese Arbeit)</h3><p>An die Vorlage gebunden → geschätzt ≈ 7–15 % für eine umfassende Broschüre — nahezu perfekt belegt; jede Kernaussage mit Fundort.</p></div>
+  </div>
+  <div class="seal-amp">
+    <div class="ok"><b>✓ Verlässlich</b>Wörtliche Zitate mit Locator, Zahlen aus den Bänden, als Quelle markierte Sachaussagen.</div>
+    <div class="warn"><b>⚠ Vorher prüfen</b>Als „Claudes Einordnung“ markierte Analysen, Konfidenzwerte, Szenarien — Eigenleistung, nicht Quelle.</div>
+  </div>
+  <p class="seal-audit">Audit in einfachen Worten: Nach Fertigstellung wurde die Broschüre in acht geordneten Schritten geprüft — Technik und Darstellung auf großem und kleinem Bildschirm, Code-Sauberkeit, Wortlaut aller Zitate am Volltext, Lesbarkeit, interne Links und Druckausgabe. Ergebnis: bestanden, ohne offene Punkte.</p>
+  <div class="seal-chips" aria-label="Die acht Audit-Schritte">
+    <span class="seal-chip">1 · Render Desktop</span><span class="seal-chip">2 · Render Mobil</span><span class="seal-chip">3 · Tag-Balance</span><span class="seal-chip">4 · CSS-Hygiene</span><span class="seal-chip">5 · Zitat-Wortlaut</span><span class="seal-chip">6 · Lesbarkeit</span><span class="seal-chip">7 · Link-Prüfung</span><span class="seal-chip">8 · Druck-PDF</span>
+  </div>
+  <details class="seal-details">
+    <summary>Details &amp; Methodik</summary>
+    <p><b>Zone B — Selbsteinschätzung zur aktuellen Aufgabe, nicht gemessen.</b> Mit Originalquelle gearbeitet: JA — Menschenbilder, Handbuch für Soziale Arbeit, Soziologie und Philosophie: Teil I, Grundlagen (58 S.) und Teil II, Die Konfliktfelder (118 S.), sowie der zugehörige systematische Kanon (45 S.); alle drei erarbeitet auf Grundlage von Michael Zichy (Hrsg.), Handbuch Menschenbilder, Springer VS 2024, mit Adorno (1964) und Han (2010/2014) als Gegenstimmen. Eingeschätzte Verlässlichkeit: hoch — extraktives Arbeiten mit Fundstellen; Zitatbank wortwörtlich verifiziert. Vor Weiterverwendung prüfen: Seitenangaben von Teil II (aus eingebetteter Paginierung berechnet), Evidenz-Marker-Zuordnungen, Konfidenzwerte der Einordnungen.</p>
+    <p><b>Angewandte Maßnahmen:</b></p>
+    <ul>
+      <li>Extraktives Arbeiten aus den beigelegten Quellbänden statt aus dem Modellgedächtnis; Fundstelle zu jeder Kernaussage.</li>
+      <li>Jedes wörtliche Zitat vor Verwendung als zeichengenauer Teilstring am Volltext geprüft (18/18 bestanden), mit doppeltem Locator: Original-Beleg der Quelle plus Bandseite.</li>
+      <li>Eigenanalyse sichtbar getrennt („Claudes Einordnung · nicht in der Quelle“), mit Konfidenz (0–100) und Kippbedingung.</li>
+      <li>Evidenz-Marker an die Belastbarkeitsstufen des Quellbandes gebunden (Teil I, Kap. 4.4); Lücken benannt statt gefüllt.</li>
+      <li>Keine erfundenen Bilder, Statistiken oder Porträts; Datengrafiken nur aus Benchmark- bzw. Quellzahlen, Schmuckgrafiken als „Illustration“ markiert.</li>
+    </ul>
+    <p><b>Schätz-Methode:</b> Die Spanne 7–15 % ist eine Selbsteinschätzung für umfassende quellenbasierte Broschüren, nicht gemessen. Faktor N = 35,9 ÷ Spannen-Mittelwert (11 %) ≈ 3,3, kaufmännisch gerundet „≈ 3×“. Die acht Audit-Schritte entsprechen den oben gezeigten Chips.</p>
+  </details>
+</section>
+<hr class="br-cut">
+<section class="br-page" id="karte" aria-label="Themenlandkarte und Inhaltsverzeichnis">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">03 / 20</span>
+  <p class="br-eyebrow">Die Themenlandkarte</p>
+  <h2 class="br-title">Worum es im Ganzen geht</h2>
+  <p class="lm-quest"><span class="lab">Die Hauptfrage</span>Welches <b>Bild vom Menschen</b> steckt in Denken, Verfahren und Sprache — und was macht es mit denen, über die es <b>gelegt</b> wird?</p>
+  <div class="lm-map">
+    <svg viewBox="0 0 760 300" role="img" aria-label="Strukturbild: Die Hauptfrage im Zentrum verzweigt in vier Themenblöcke" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#cda24f" stroke-width="1" fill="none" opacity="0.75">
+        <path d="M380 132 L120 196"/><path d="M380 132 L294 196"/><path d="M380 132 L466 196"/><path d="M380 132 L640 196"/>
+      </g>
+      <circle cx="380" cy="104" r="46" fill="#101a21" stroke="#ecc868" stroke-width="1.6"/>
+      <circle cx="380" cy="104" r="52" fill="none" stroke="#cda24f" stroke-width="0.7" stroke-dasharray="2 5"/>
+      <text x="380" y="98" text-anchor="middle" class="kb-t" fill="#f0cf78">DAS BILD</text>
+      <text x="380" y="114" text-anchor="middle" class="kb-t" fill="#f0cf78">VOM MENSCHEN</text>
+      <g>
+        <rect x="48" y="196" width="144" height="58" rx="8" fill="rgba(47,90,99,.22)" stroke="#2f5a63"/>
+        <text x="120" y="220" text-anchor="middle" class="kb-t" fill="#9fd0db">I · GRUNDLAGEN</text>
+        <text x="120" y="238" text-anchor="middle" class="kb-t">Begriff · Kippung · Raster</text>
+        <rect x="222" y="196" width="144" height="58" rx="8" fill="rgba(184,92,47,.18)" stroke="#b85c2f"/>
+        <text x="294" y="220" text-anchor="middle" class="kb-t" fill="#e0a060">II · WESEN &amp; ANTRIEB</text>
+        <text x="294" y="238" text-anchor="middle" class="kb-t">Stellung · Verhalten · Freiheit</text>
+        <rect x="394" y="196" width="144" height="58" rx="8" fill="rgba(200,155,60,.16)" stroke="#c89b3c"/>
+        <text x="466" y="220" text-anchor="middle" class="kb-t" fill="#ecc868">III · ZUSAMMENLEBEN</text>
+        <text x="466" y="238" text-anchor="middle" class="kb-t">Bindung · Verdienst · Ordnung</text>
+        <rect x="568" y="196" width="144" height="58" rx="8" fill="rgba(163,36,44,.16)" stroke="#a3242c"/>
+        <text x="640" y="220" text-anchor="middle" class="kb-t" fill="#e8959c">IV · GELTUNG &amp; SPRACHE</text>
+        <text x="640" y="238" text-anchor="middle" class="kb-t">Wessen Bild · Würde · Jargon</text>
+      </g>
+      <text x="380" y="286" text-anchor="middle" class="kb-t" fill="#9a8f78">Vierzehn Kapitel · sechzehn Bilder (M1–M16) · neun Konfliktfelder</text>
+      <text x="746" y="16" text-anchor="end" class="kb-ill">Illustration</text>
+    </svg>
+    <p class="lm-mapcap">Strukturbild der Broschüre — die Farben der vier Blöcke kehren auf den Kapitelseiten wieder.</p>
+  </div>
+  <div class="lm-toc">
+    <div class="lm-block" style="--blk:#2f5a63;--blk-hi:#9fd0db;">
+      <h3>Block I · Grundlagen — das Handwerkszeug</h3>
+      <ol>
+        <li><a href="#k01"><span class="no">01</span>Was ist ein Menschenbild?</a></li>
+        <li><a href="#k02"><span class="no">02</span>Vom Modell zur Norm: der Kippmechanismus</a></li>
+        <li><a href="#k03"><span class="no">03</span>Das Werkzeug: elf Fragen an jedes Bild</a></li>
+        <li><a href="#k04"><span class="no">04</span>Was Menschenbilder tun — und was belegt ist</a></li>
+      </ol>
+    </div>
+    <div class="lm-block" style="--blk:#b85c2f;--blk-hi:#e0a060;">
+      <h3>Block II · Wesen &amp; Antrieb</h3>
+      <ol>
+        <li><a href="#k05"><span class="no">05</span>Sonderstellung oder Kontinuität?</a></li>
+        <li><a href="#k06"><span class="no">06</span>Warum tun Menschen, was sie tun?</a></li>
+        <li><a href="#k07"><span class="no">07</span>Undurchsichtig oder einsichtsfähig?</a></li>
+      </ol>
+    </div>
+    <div class="lm-block" style="--blk:#c89b3c;--blk-hi:#ecc868;">
+      <h3>Block III · Zusammenleben &amp; Zugang</h3>
+      <ol>
+        <li><a href="#k08"><span class="no">08</span>Einzelner oder Beziehungswesen?</a></li>
+        <li><a href="#k09"><span class="no">09</span>Leistung oder Bedürftigkeit?</a></li>
+        <li><a href="#k10"><span class="no">10</span>Welche Ordnung braucht der Mensch?</a></li>
+      </ol>
+    </div>
+    <div class="lm-block" style="--blk:#a3242c;--blk-hi:#e8959c;">
+      <h3>Block IV · Geltung, Würde &amp; Sprache</h3>
+      <ol>
+        <li><a href="#k11"><span class="no">11</span>Wessen Bild gilt?</a></li>
+        <li><a href="#k12"><span class="no">12</span>Wer gehört dazu?</a></li>
+        <li><a href="#k13"><span class="no">13</span>Würde oder Fähigkeit?</a></li>
+        <li><a href="#k14"><span class="no">14</span>Die Sprache, in der das verhandelt wird</a></li>
+      </ol>
+    </div>
+  </div>
+  <a class="lm-sign" href="#antwort">→ <b>Die konkrete Antwort</b> — die Hauptfrage direkt beantwortet<small>Die sechzehn Bilder in je einem Satz · fünf Werkzeuge · drei Warnungen — mit Evidenz-Markern · Seite 04</small></a>
+  <p class="kp-nav"><a href="#schluss">Direkt zum Gesamtbild ↓</a> · <a href="#kolophon">Kolophon ↓</a></p>
+</section>
+<hr class="br-cut">
+<section class="br-page" id="antwort" aria-label="Die konkrete Antwort">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">04 / 20</span>
+  <p class="br-eyebrow">Die konkrete Antwort</p>
+  <h2 class="br-title">Was drinsteht — auf einer Seite</h2>
+  <p class="ans-lead">Wer nur eine Seite liest, liest diese: die sechzehn Bilder des Korpus in je einem Satz, dazu die fünf Werkzeuge und drei Warnungen für den Umgang mit ihnen — jede Handreichung mit einem ehrlichen Evidenz-Marker.</p>
+  <p class="ans-h">Die sechzehn Bilder — je ein Satz (nach den Kanon-Steckbriefen)</p>
+  <div class="ans-grid">
+    <p class="ans-item" style="--gm:#e0a060;"><span class="ans-m">M1</span><span><b>Doppelnatur:</b> Zwischenwesen — als Geistwesen dem Tier überlegen, Gott unterlegen.</span></p>
+    <p class="ans-item" style="--gm:#e0a060;"><span class="ans-m">M2</span><span><b>Gottebenbildlichkeit:</b> Ebenbild Gottes und zugleich in der Existenz gebrochen.</span></p>
+    <p class="ans-item" style="--gm:#e0a060;"><span class="ans-m">M3</span><span><b>Naturalistisch-evolutionär:</b> Mensch und Geist sind materielle, evolvierte Phänomene.</span></p>
+    <p class="ans-item" style="--gm:#e0a060;"><span class="ans-m">M4</span><span><b>Homo oeconomicus:</b> Individuum, rational, nutzenorientiert — als Axiom gesetzt.</span></p>
+    <p class="ans-item" style="--gm:#e0a060;"><span class="ans-m">M5</span><span><b>Handlungstheoretisches Modell:</b> Menschen handeln aus Motiven und Deutungen.</span></p>
+    <p class="ans-item" style="--gm:#e0a060;"><span class="ans-m">M6</span><span><b>Maschine · Organismus · Person:</b> drei konkurrierende Grundmodelle der Psychologie.</span></p>
+    <p class="ans-item" style="--gm:#e0a060;"><span class="ans-m">M7</span><span><b>Psychoanalytisch:</b> sich selbst nicht durchsichtig; Unbewusstes bestimmt mit.</span></p>
+    <p class="ans-item" style="--gm:#e0a060;"><span class="ans-m">M8</span><span><b>Philosophische Anthropologie:</b> instinktreduziert, weltoffen, exzentrisch positioniert.</span></p>
+    <p class="ans-item" style="--gm:#ecc868;"><span class="ans-m">M9</span><span><b>Politische Anthropologien:</b> jede Ordnungstheorie enthält Annahmen über den Menschen.</span></p>
+    <p class="ans-item" style="--gm:#ecc868;"><span class="ans-m">M10</span><span><b>Menschenrechte:</b> verzichten bewusst auf ein Bild — und setzen doch eines voraus.</span></p>
+    <p class="ans-item" style="--gm:#e8959c;"><span class="ans-m">M11</span><span><b>Sonderanthropologien:</b> wird von Behinderung aus gedacht — oder ausgelagert?</span></p>
+    <p class="ans-item" style="--gm:#ecc868;"><span class="ans-m">M12</span><span><b>Bilder der Armut:</b> Armut wird mit Urteilen über Person und Verschulden verknüpft.</span></p>
+    <p class="ans-item" style="--gm:#ecc868;"><span class="ans-m">M13</span><span><b>Individualismus/Kollektivismus:</b> die Verfasstheit der Individualität ist kulturell variabel.</span></p>
+    <p class="ans-item" style="--gm:#ecc868;"><span class="ans-m">M14</span><span><b>Humanistisches Bild der Sozialen Arbeit:</b> beziehungsorientiert, frei, bildsam — mit unbedingter Würde.</span></p>
+    <p class="ans-item" style="--gm:#e8959c;"><span class="ans-m">M15</span><span><b>Leistungssubjekt:</b> Unternehmer seiner selbst — Täter und Opfer der eigenen Ausbeutung.</span></p>
+    <p class="ans-item" style="--gm:#e8959c;"><span class="ans-m">M16</span><span><b>Jargon der Eigentlichkeit:</b> kein Bild, sondern Sprachkritik — wo Klang die Aussage ersetzt.</span></p>
+  </div>
+  <p class="ans-h">Fünf Werkzeuge — was Sie konkret tun können</p>
+  <div class="ans-tools">
+    <div class="ans-tool"><p><b>1 · Der Prüfsatz:</b> Fragen Sie bei jedem Bild zuerst: Beansprucht es, den Menschen <b>als solchen</b> zu beschreiben — oder nur unter einer Hinsicht? Gefährlich macht ein Bild der Totalitätsanspruch, nicht sein Inhalt.</p><span class="ev ev--b">belegt</span></div>
+    <div class="ans-tool"><p><b>2 · Das Elf-Fragen-Raster:</b> Prüfen Sie Leitbilder und Verfahren entlang der elf Dimensionen — von „Wer zählt als Mensch?“ bis zu den Meta-Erzählungen. Regel: keine Zuordnung ohne Textstelle; im Zweifel Leerstelle.</p><span class="ev ev--b">belegt</span></div>
+    <div class="ans-tool"><p><b>3 · Das Kipp-Indiz:</b> Suchen Sie nicht nach Sollens-Sätzen, sondern nach Stellen, an denen ein Modell als <b>Referenzwert für Abweichung</b> dient (Kennzahlen, „Normalverlauf“, „defizitär“) — dort ist die Norm schon eingezogen.</p><span class="ev ev--p">plausibel</span></div>
+    <div class="ans-tool"><p><b>4 · Die Begegnungs-Regel:</b> Etiketten sind gegen gelebte Bekanntschaft schwach. Ändern Sie darum zuerst die Arrangements, die Urteile ohne Bekanntschaft erzwingen — Fallzahl, Kontinuität, Entscheidungen nach Aktenlage.</p><span class="ev ev--g">gestützt</span></div>
+    <div class="ans-tool"><p><b>5 · Die Status-Grenze:</b> Eine Prüfung darf das <b>Geschuldete</b> bemessen (Bedarf, Barriere, Unterstützung) — nie den <b>Status</b> (wer zählt, wessen Wille gilt). Rechte bleiben auch dem erhalten, der Pflichten nicht erfüllt.</p><span class="ev ev--g">gestützt</span></div>
+  </div>
+  <p class="ans-h">Drei Warnungen — wo Vorsicht geboten ist</p>
+  <div class="ans-tools">
+    <div class="ans-tool"><p><b>„Von Natur aus“ streichen oder belegen:</b> Wer Soziales als biologisch festgelegt ausgibt, entfernt die Veränderbarkeit aus dem Fall — die Grundlage helfenden Handelns.</p><span class="ev ev--g">gestützt</span></div>
+    <div class="ans-tool"><p><b>„Selbsterfüllende Prophezeiung“ nur präzise verwenden:</b> Erwartungseffekte sind klein (d ≈ .11), kumulieren nicht und sind am größten unter Unbekannten; die Sozialisationsthese ist davon zu trennen — plausibel, aber nicht durch diese Forschung gedeckt.</p><span class="ev ev--m">gemischt</span></div>
+    <div class="ans-tool"><p><b>Auch das Mitleid ist ein Bild:</b> Das Opferbild erspart den Verschuldensvorwurf — und schreibt Passivität fest. Gegenmittel: Beteiligung der Betroffenen an der eigenen Falldeutung.</p><span class="ev ev--b">belegt</span></div>
+  </div>
+  <p class="ans-legend">Evidenz-Marker, gebunden an die Belastbarkeitsstufen des Quellbandes (Teil I, Kap. 4.4): <b>belegt</b> = in der Quelle ausgearbeitet und begrifflich bzw. empirisch gut gestützt · <b>gestützt</b> = durch unabhängige Forschung oder mehrere Quellstellen getragen · <b>plausibel</b> = Mechanismus beschrieben, Effekte nicht erhoben (gut gestütztes Deutungsangebot) · <b>gemischt</b> = Forschungslage uneinheitlich oder ausdrücklich eingeschränkt. Zuordnung der Marker: Claudes Einordnung auf Basis der Quellbefunde.</p>
+  <p class="kp-nav"><a href="#karte">↑ Themenlandkarte</a> · Weiter: <a href="#k01">Kapitel 01 →</a></p>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accA" id="k01" aria-label="Kapitel 01: Was ist ein Menschenbild?">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">05 / 20</span>
+  <p class="kp-eyebrow">Block I · Grundlagen · Kapitel 01</p>
+  <h2 class="kp-title">Was ist ein Menschenbild?</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Was meint das Wort eigentlich — und warum halten manche Fachleute es für unbrauchbar, andere für unverzichtbar?</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Ein Menschenbild ist ein Bündel von Grundannahmen darüber, was Menschen sind — und es ist ein Bild, nicht die Wirklichkeit selbst. Der Streit darüber beruht oft auf einem Missverständnis: Die Gegner meinen religiös-weltanschauliche Bilder, die Verteidiger prüfbare Grundannahmen.</p><span class="zm">Zum Merken: Fragen Sie bei jedem Bild, ob es den ganzen Menschen zu erfassen behauptet — oder nur eine Seite.</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Gefährlich wird ein Bild erst durch den Totalitätsanspruch — die Behauptung, der Mensch sei nichts anderes als das, was das Modell erfasst. Ein und dieselben Annahmen können harmloses Modell oder übergriffige Wesensaussage sein.</li>
+      <li>Dünne Bilder — etwa das der Menschenrechte — lassen Wesensfragen offen und können deshalb von ganz verschiedenen Weltanschauungen mitgetragen werden. Das ist eine Stärke, keine Schwäche.</li>
+      <li>Wer den Begriff streicht, verliert nicht die Annahmen, sondern nur deren Adresse: Explizite Bilder machen Zuschreibungen diskutierbar.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Kritisieren Sie nie den Inhalt allein, sondern die Grenzüberschreitung vom Modell zur Wesensaussage.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><circle cx="330" cy="52" r="9"/><circle cx="392" cy="34" r="9"/><circle cx="452" cy="56" r="9"/><circle cx="390" cy="76" r="9"/><path d="M338 47 L384 37"/><path d="M400 38 L445 52"/><path d="M446 62 L398 73"/><path d="M382 71 L336 58"/></g><circle class="kb-f" cx="390" cy="55" r="3"/><path class="kb-l" d="M60 55 H300" stroke-dasharray="1 6"/><path class="kb-l" d="M482 55 H720" stroke-dasharray="1 6"/><text x="60" y="98" class="kb-t">Ein Bündel von Annahmen — zusammengehalten, nicht bloß aufgezählt</text><text x="770" y="16" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>„Menschenbilder, sowas Grausliches“</p><footer>Luhmann 1991, S. 132, zit. n. Zichy 2024a, S. 5 — die Chiffre der Kritiker · Teil I, S. 12</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Die verbindliche Definition (kohärente Annahmenbündel über wichtige Eigenschaften des Menschen im Allgemeinen) trägt vier Implikationen: Bündel, Zentralität, Universalität, Bildhaftigkeit. Die Unterscheidung weltanschaulich/nicht-weltanschaulich hängt am Anspruch, nicht am Inhalt — das macht den Begriff zum Prüfinstrument.</p>
+      <p><b>Offene Frage:</b> Der postmoderne Einwand — die Rede von „dem“ Menschen verleugne Pluralität — bleibt für Bilder mit Totalitätsanspruch in voller Schärfe bestehen; Zichys Auflösung präzisiert die Kritik, widerlegt sie nicht.</p>
+      <p class="sy-cal"><b>Konfidenz 90/100.</b> Kippbedingung: Der Befund kippte, wenn sich zeigte, dass der Band die eigene Definition uneinheitlich verwendet — Teil I dokumentiert nach redaktioneller Prüfung das Gegenteil.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k02">02 Vom Modell zur Norm →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accA" id="k02" aria-label="Kapitel 02: Vom Modell zur Norm">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">06 / 20</span>
+  <p class="kp-eyebrow">Block I · Grundlagen · Kapitel 02</p>
+  <h2 class="kp-title">Vom Modell zur Norm: der Kippmechanismus</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Wie wird aus einer wissenschaftlichen Beschreibung eine Erwartung, wie Menschen zu sein haben — ohne dass je jemand dafür argumentiert hätte?</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Modelle bleiben selten in der Theorie. Erst beschreiben sie Verhalten, dann wird Verhalten mit ihnen wahrgenommen, dann an ihnen gemessen — und am Ende sollen Menschen so sein, wie das Modell sagt. Beim Wirtschaftsmodell des Menschen ist dieser Weg dokumentiert.</p><span class="zm">Zum Merken: Der Kipppunkt liegt beim Messen, nicht erst beim ausgesprochenen „Soll“.</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Handhabbares Indiz: Suchen Sie die Stellen, an denen ein Modell als Referenzwert für Abweichung dient — Kennzahlen, Zielwerte, „Normalverlauf“. Dort ist die Norm bereits eingezogen.</li>
+      <li>Zwei Kippungen auseinanderhalten: die Anspruchskippung (ein Modell erhebt Totalitätsanspruch) und die Geltungskippung (ein Modell wird durch Praxisgebrauch zur Norm). Beim Leistungssubjekt folgt der Anspruch der Geltung.</li>
+      <li>Ehrlichkeit über die Stärke: Der Mechanismus ist ein gut gestütztes Deutungsangebot — zwei unabhängige Beschreibungen (Zichy, Han), aber kein erhobener Befund.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Prüfen Sie eigene Dokumente darauf, wo „ist“ unbemerkt zu „soll“ geworden ist — und benennen Sie die Messstelle.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><path d="M80 70 H260"/><path d="M300 66 L480 44" stroke-width="2"/><path d="M520 40 H700" stroke-dasharray="4 4"/></g><path class="kb-f" d="M480 44 L468 36 L470 50 Z"/><text x="80" y="60" class="kb-t">beschreiben</text><text x="330" y="34" class="kb-t">messen — hier kippt es</text><text x="560" y="30" class="kb-t">sollen</text><circle class="kb-f" cx="300" cy="66" r="3.5"/><text x="770" y="16" text-anchor="end" class="kb-ill">Illustration</text><text x="80" y="98" class="kb-t">Vier Schritte: anwenden · wahrnehmen · messen · sollen</text></svg></div>
+    <blockquote class="kp-cite"><p>… und schließlich setzt sich durch, dass Menschen so sind, wie das Modell sagt — „sondern sie es auch sein sollten“.</p><footer>Zichy 2024b, S. 21 — der vierte Schritt der Kippung · Teil I, S. 22</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Es wird nicht falsch geschlossen — es wird gar nicht geschlossen: Der Übergang läuft als Diffusion über Curricula, Ratgeber, Kennzahlen, nicht als Argument. Deshalb greift die klassische Sein-Sollen-Kritik ins Leere; anzugreifen ist die Institutionalisierung. Han zeigt zudem, warum die Kippung unbemerkt bleibt: Ihr Ergebnis wird von innen als Freiheit erlebt.</p>
+      <p><b>Konsequent zu Ende gedacht:</b> Wer den Vorgang rückgängig machen will, findet kein Argument zum Widerlegen — offenhalten lässt sich nur die Differenz zwischen faktischer und begründeter Geltung.</p>
+      <p class="sy-cal"><b>Konfidenz 82/100.</b> Kippbedingung: Eine Erhebung der vier Schritte an realem Material (Curricula, Kennzahlensysteme), die keine Normübernahme zeigt, würde das Deutungsangebot entwerten — bislang ist keiner der Schritte erhoben.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k03">03 Das Werkzeug →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accA" id="k03" aria-label="Kapitel 03: Das Werkzeug — elf Fragen an jedes Bild">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">07 / 20</span>
+  <p class="kp-eyebrow">Block I · Grundlagen · Kapitel 03</p>
+  <h2 class="kp-title">Das Werkzeug: elf Fragen an jedes Bild</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Woran lässt sich prüfen, welches Menschenbild ein Text, ein Leitbild oder eine Praxis tatsächlich voraussetzt?</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Es gibt eine Prüfliste mit elf Fragen — von den Bausteinen des Menschen über Freiheit und Fähigkeiten bis zur Erzählung, die alles begründet. Die folgenreichste Frage steht am Anfang: Wer zählt überhaupt als Mensch?</p><span class="zm">Zum Merken: Eine leere Zelle ist ein Befund, kein Fehler — dünne Bilder schweigen mit Absicht.</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Vor jeder Kritik den Typ der Annahme bestimmen: Gegen „alle Menschen…“ hilft ein Gegenfall, gegen „typischerweise…“ nicht — dort ist zu fragen, wer die Grenze zwischen Normal- und Randfall zieht.</li>
+      <li>Die ergiebigsten Fundorte sind Praktiken, nicht Texte: Aufnahme- und Ausschlusskriterien, Diagnostikraster, Mitwirkungspflichten, Sanktionsregeln. Leitfrage: Welche Annahme über den Menschen müsste zutreffen, damit diese Regel sinnvoll wäre?</li>
+      <li>Warnung der Quelle: Das Raster verführt zur Überinterpretation — keine Zuordnung ohne Textstelle oder identifizierbare Praxis.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Eine Analyse mit sechs gefüllten und fünf offenen Zellen ist glaubwürdiger als eine, die alle elf füllt.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><rect x="100" y="34" width="42" height="42" stroke-width="2"/><rect x="152" y="34" width="42" height="42"/><rect x="204" y="34" width="42" height="42"/><rect x="256" y="34" width="42" height="42"/><rect x="308" y="34" width="42" height="42"/><rect x="360" y="34" width="42" height="42"/><rect x="412" y="34" width="42" height="42"/><rect x="464" y="34" width="42" height="42"/><rect x="516" y="34" width="42" height="42"/><rect x="568" y="34" width="42" height="42"/><rect x="620" y="34" width="42" height="42"/></g><text x="121" y="60" text-anchor="middle" class="kb-t" fill="#ecc868">1</text><text x="100" y="98" class="kb-t">Elf Dimensionen — Dimension 1 (Wer zählt als Mensch?) ist den übrigen logisch vorgeordnet</text><text x="770" y="16" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>Viele Überzeugungen liegen nur implizit vor und müssen „erst durch Nachdenken entdeckt und herausanalysiert werden“.</p><footer>Zichy 2024b, S. 16 — die Rechtfertigung der Analyse · Teil I, S. 40</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Das Raster ist ein Fragen-, kein Antwortenkatalog: erhoben, nicht deduziert, mit erlaubten Überlappungen. Ausschluss läuft praktisch selten über die Speziesgrenze selbst, sondern über Wertdifferenz (Dimension 4) und Fähigkeitsdefizit (Dimension 9) — die drei sind nur zusammen prüfbar.</p>
+      <p><b>Widerspruch im Band:</b> Wild bestreitet, dass die Speziesgrenze zum Bild gehört (Sache des Menschenbegriffs). Begrifflich stark, praktisch schwach: Nur das Bild koppelt die Grenze an Wert- und Fähigkeitsannahmen.</p>
+      <p class="sy-cal"><b>Konfidenz 88/100.</b> Kippbedingung: Fände sich eine Praxis, deren Ausschlussregeln sich keiner der elf Dimensionen zuordnen lassen, wäre das Raster als Analyseinstrument widerlegt — der Band selbst nennt Erweiterbarkeit als eingebaute Möglichkeit.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k04">04 Was Menschenbilder tun →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accA" id="k04" aria-label="Kapitel 04: Was Menschenbilder tun — und was belegt ist">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">08 / 20</span>
+  <p class="kp-eyebrow">Block I · Grundlagen · Kapitel 04</p>
+  <h2 class="kp-title">Was Menschenbilder tun — und was belegt ist</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Menschenbildern wird große Macht zugeschrieben: Sie sollen prägen, wie wir wahrnehmen, urteilen — und wer wir werden. Was davon hält der Forschung stand?</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Menschenbilder leisten viel: Sie lassen uns Menschen erkennen, vereinfachen, begründen, orientieren und stiften Identität. Wie stark sie Menschen formen, ist aber schwächer belegt, als die Rede davon klingt — die Quelle sagt das selbst und legt den Forschungsstand offen.</p><span class="zm">Zum Merken: „Selbsterfüllende Prophezeiung“ ist der meistzitierte und am schwächsten gedeckte Baustein.</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Erwartungseffekte sind klein (d ≈ .11), sie summieren sich nicht auf — und sie sind dort am größten, wo der Wahrnehmende sein Gegenüber nicht kennt. Zwei Wochen tatsächlicher Bekanntschaft überschreiben das Etikett.</li>
+      <li>Gut gestützt ist: Kulturelle Prägung formt den Wahrnehmungs- und Erklärungsstil (Primärstudien Miller 1984; Morris/Peng 1994) — die grobe Zweiteilung individualistisch/kollektivistisch ist dagegen relativiert.</li>
+      <li>Interventionen nicht auf die dritte Wirkebene bauen: Dass Haltungsänderung bei Fachkräften die Konstitution der Adressat:innen verändert, deckt die Quelle ausdrücklich nicht.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Nicht zuerst „Haltung“ schulen — Arrangements ändern, die Urteile ohne Bekanntschaft erzwingen.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><circle cx="120" cy="50" r="10" stroke-width="2"/><circle cx="180" cy="50" r="10"/><circle cx="240" cy="50" r="10"/><circle cx="300" cy="50" r="10"/><circle cx="360" cy="50" r="10"/></g><g class="kb-f" opacity="0.9"><rect x="470" y="30" width="10" height="40"/></g><g class="kb-f" opacity="0.5"><rect x="500" y="42" width="10" height="28"/></g><g class="kb-f" opacity="0.28"><rect x="530" y="52" width="10" height="18"/></g><g class="kb-f" opacity="0.14"><rect x="560" y="60" width="10" height="10"/></g><text x="96" y="90" class="kb-t">Fünf Funktionen (Leistungen)</text><text x="470" y="90" class="kb-t">Erwartungseffekte: klein, abklingend</text><text x="770" y="16" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>„Empirisch ist dieser Zusammenhang bislang nicht ausreichend untersucht“</p><footer>Zichy 2024b, S. 23 — das Eingeständnis vor den Wirkungsthesen · Teil I, S. 54</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Funktionen sind begrifflich gesichert, die Wirkungsthesen sind Analogieschlüsse aus der Stereotypenforschung — über eine Differenz hinweg, die die Quelle selbst behauptet (Tiefen- vs. Mikrostruktur). Die dritte Wirkebene ist nicht unerforscht, sondern durch die Erwartungsforschung eingeschränkt: Der Begriff entstammt einer Tradition, deren robustester Befund die Bedingung nennt, unter der der Effekt gerade nicht auftritt.</p>
+      <p><b>Ermutigend gewendet:</b> Begegnung ist das wirksamste Gegenmittel gegen Zuschreibung, über das eine Profession verfügt — und institutionell am leichtesten zerstörbar.</p>
+      <p class="sy-cal"><b>Konfidenz 85/100.</b> Kippbedingung: Neue Längsschnittbefunde, die kumulative Erwartungseffekte unter Vertrauten zeigen, würden die Einschränkung der dritten Wirkebene aufheben — die Metaanalysen bis 2018 zeigen das Gegenteil.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k05">05 Sonderstellung →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accB" id="k05" aria-label="Kapitel 05: Sonderstellung oder Kontinuität?">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">09 / 20</span>
+  <p class="kp-eyebrow">Block II · Wesen &amp; Antrieb · Kapitel 05</p>
+  <h2 class="kp-title">Sonderstellung oder Kontinuität?</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Ist der Mensch qualitativ aus der Natur herausgehoben — und wenn ja, wodurch? Und was passiert mit denen, die das auszeichnende Merkmal nicht oder nicht mehr zeigen?</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Fast jedes Menschenbild ist ein Differenzbild: Es sagt, was der Mensch ist, indem es sagt, wovon er sich unterscheidet — vom Tier, von Gott, von der Maschine. Die stärksten Würdebegründungen führen dabei ein Fähigkeitskriterium mit. Genau dort wird es riskant.</p><span class="zm">Zum Merken: Wo die Grenze gezogen wird, entscheidet mehr als jede einzelne Eigenschaft.</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Der Streit um den Naturalismus ist meist ein Anspruchsstreit: Als Arbeitsregel der Wissenschaft ist er unstrittig — kippt er zur Weltdeutung („der Mensch ist nichts als …“), beginnt der eigentliche Konflikt.</li>
+      <li>Die gefährlichste Alltagsform ist die Naturalisierung des Sozialen: „von Natur aus“, „einfach so gestrickt“ — solche Formeln entfernen die Veränderbarkeit aus dem Fall und damit die Grundlage des Helfens.</li>
+      <li>Keine der Grundpositionen besetzt alle Prüffragen sauber, ohne jemanden hinauszudefinieren; ehrlich ist, die eigene Grenzziehung offenzulegen.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Streichen oder belegen Sie in Berichten jede „von Natur aus“-Formulierung.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><path d="M120 84 H240"/><path d="M240 84 V60 H360"/><path d="M360 60 V36 H480" stroke-width="2"/><path d="M480 36 V14 H600" stroke-dasharray="4 4"/></g><text x="130" y="76" class="kb-t">Natur</text><text x="250" y="52" class="kb-t">Tier</text><text x="370" y="28" class="kb-t">Mensch — die umstrittene Stufe</text><text x="120" y="104" class="kb-t">Kontinuität oder Sprung? Jedes Bild zieht die Linie anders</text><text x="770" y="104" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>Der Mensch: „das Tier, das sich je nach Menschenbild negiert, überwindet, übertrifft“ — und über sich hinausgeht.</p><footer>Müller-Funk 2024, S. 140 — die Differenzform aller Bilder · Teil II, S. 24</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Die vier Positionen (Doppelnatur, Ebenbild, Naturalismus, philosophische Anthropologie) streiten seltener über Befunde als über die Reichweite von Befunden. Für die Praxis folgenreicher als jede Metaphysik ist die Grammatik der Grenze: Wer die Sonderstellung an Vermögen bindet, muss sagen, was mit denen ist, die sie nicht zeigen.</p>
+      <p><b>Offene Frage:</b> Ob sich eine fähigkeitsunabhängige Würdebegründung ganz ohne Bezug auf typische menschliche Vermögen formulieren lässt, lässt der Band offen — das Würdekapitel arbeitet an genau dieser Naht weiter.</p>
+      <p class="sy-cal"><b>Konfidenz 84/100.</b> Kippbedingung: Zeigte eine der Positionen ein Kriterium der Sonderstellung, das niemanden ausschließt und dennoch informativ bleibt, entfiele die hier behauptete Risikostruktur.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k06">06 Verhalten →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accB" id="k06" aria-label="Kapitel 06: Warum tun Menschen, was sie tun?">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">10 / 20</span>
+  <p class="kp-eyebrow">Block II · Wesen &amp; Antrieb · Kapitel 06</p>
+  <h2 class="kp-title">Warum tun Menschen, was sie tun?</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Kalkül, Gründe oder Mechanismus — drei Wissenschaften erklären dieselbe Handlung völlig verschieden. Welche Erklärung eine Fachkraft wählt, entscheidet, was sie tut.</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Für dieselbe Szene gibt es drei Erklärungen: Der Mensch rechnet (Nutzen), der Mensch handelt aus Gründen (Motive, Deutungen), der Mensch reagiert (Konditionierung). Jede zieht eine andere Praxis nach sich: anreizen, verstehen oder trainieren.</p><span class="zm">Zum Merken: Jeder Hilfeplan verrät im gewählten Hebel sein Menschenbild.</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>„Irrational“ gibt es nur relativ zu einem Maßstab. Vor dem Urteil klären: Welches Rationalitätsmodell liegt an — und wessen Ziele setzt es voraus?</li>
+      <li>Lesen Sie Hilfepläne rückwärts: Sanktion und Prämie unterstellen den Kalkulierer, Beratung unterstellt Gründe, Training unterstellt Mechanismen, Zutrauen unterstellt eine Person. Passt der Hebel nicht zum Fallverständnis, arbeitet ein unausgesprochenes Bild.</li>
+      <li>Ein Modell, das an nichts scheitern kann — etwa ein Nutzenkalkül, das jede Handlung nachträglich als nutzenmaximierend deutet — kann auch niemanden entlasten.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Benennen Sie vor der Maßnahme das unterstellte Verhaltensmodell — und was es widerlegen würde.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><path d="M150 30 L370 55"/><path d="M150 55 H370" stroke-width="2"/><path d="M150 80 L370 55"/><circle cx="400" cy="55" r="16"/></g><text x="70" y="34" class="kb-t">Kalkül</text><text x="70" y="59" class="kb-t">Gründe</text><text x="58" y="84" class="kb-t">Mechanik</text><text x="430" y="40" class="kb-t">dieselbe Handlung —</text><text x="430" y="58" class="kb-t">drei Praxen: anreizen ·</text><text x="430" y="76" class="kb-t">verstehen · trainieren</text><text x="770" y="16" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>„a person does not act upon the world, the world acts upon him“</p><footer>Skinner 1979, S. 202, zit. n. Herzog 2024, S. 364 — die radikale Gegenthese · Teil II, S. 34</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Die drei Modelle sind keine Weltanschauungen, sondern Werkzeuge mit je eigenem Geltungsbereich — gefährlich werden sie durch stillschweigende Verabsolutierung. Auffällig: Die beteiligten Disziplinen meiden das Wort „Menschenbild“ und sprechen von Handlungsmodellen — ein Kipp-Symptom, denn unbenannte Bilder sind der Kritik entzogen.</p>
+      <p><b>Konsequent zu Ende gedacht:</b> Wer Adressat:innen ausschließlich als Kalkulierer adressiert, erzieht zum Kalkulieren — die Modellwahl ist selbst eine Intervention.</p>
+      <p class="sy-cal"><b>Konfidenz 86/100.</b> Kippbedingung: Ein Nachweis, dass Hebelwahl in Hilfeplänen den Fallverläufen folgt statt den Modellpräferenzen der Dienste, würde die Diagnosekraft des „Hebel-Lesens“ schwächen.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k07">07 Freiheit →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accB" id="k07" aria-label="Kapitel 07: Undurchsichtig oder einsichtsfähig?">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">11 / 20</span>
+  <p class="kp-eyebrow">Block II · Wesen &amp; Antrieb · Kapitel 07</p>
+  <h2 class="kp-title">Undurchsichtig oder einsichtsfähig?</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Wusste er, was er tat — und hätte er anders gekonnt? Jede Zurechnung von Verantwortung beantwortet diese Frage, meist ohne sie zu stellen.</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Zwei Gegenpole: Der Mensch ist sich selbst nicht durchsichtig, Unbewusstes bestimmt mit (Psychoanalyse) — oder der Mensch ist grundsätzlich einsichts- und entscheidungsfähig. Beide erklären dieselbe gescheiterte Beratung restlos. Genau das ist das Problem.</p><span class="zm">Zum Merken: Freiheit kann das Ziel der Hilfe sein statt ihre Voraussetzung.</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Beide Deutungen sind gegen Widerlegung geschützt — der Widerstand „beweist“ die Abwehr, die Weigerung „beweist“ die Entscheidung. Prüfpflicht gilt darum in beide Richtungen.</li>
+      <li>Die Irrtumskosten sind asymmetrisch: Unfreie als frei zu behandeln ist eine Zumutung, Freie als unfrei zu behandeln eine Entmündigung. Festlegungen deshalb revidierbar halten und Übergänge einplanen.</li>
+      <li>Zurechnungsurteile fallen überwiegend unter Unbekannten — nach Aktenlage, im Schnellkontakt. Genau dort ist der Etiketteneffekt am größten.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Binden Sie folgenreiche Zurechnungen an Bekanntschaft — wer die Person kennt, entscheidet mit.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><circle cx="330" cy="55" r="30" stroke-width="2"/><path d="M300 55 A30 30 0 0 1 360 55" fill="rgba(205,162,79,.16)"/><path d="M300 55 H360" stroke-dasharray="3 4"/><path d="M420 55 H560" stroke-width="2"/><path d="M545 47 L560 55 L545 63" /></g><text x="240" y="20" class="kb-t">sichtbare Gründe</text><text x="250" y="100" class="kb-t">unbewusster Anteil</text><text x="420" y="42" class="kb-t">Analyse als Weg:</text><text x="420" y="98" class="kb-t">Freiheit als Ziel, nicht Voraussetzung</text><text x="770" y="16" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>Die Analyse soll dem Ich die Freiheit schaffen, „sich so oder anders zu entscheiden“.</p><footer>Freud 1923, zit. n. Wirth 2024, S. 104 — die therapeutische Auflösung · Teil II, S. 38</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Der Streit ist praktisch nicht zu entscheiden, aber zu entschärfen: Freuds Formel verwandelt die Eigenschaftsfrage („ist er frei?“) in eine Prozessfrage („was stellt Entscheidungsfähigkeit her?“). Damit wird die Zurechnung vom Urteil zur Aufgabe.</p>
+      <p><b>Offene Frage:</b> Für Situationen, in denen sofort zugerechnet werden muss (Gericht, Kindesschutz), bietet der Band keine Entscheidungsregel — nur die Pflicht, die Vorläufigkeit mitzuführen.</p>
+      <p class="sy-cal"><b>Konfidenz 83/100.</b> Kippbedingung: Ein belastbares Prüfverfahren, das Einsichtsfähigkeit fallweise valide feststellt, würde die hier betonte Symmetrie der Irrtumsrisiken auflösen.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k08">08 Einzelner oder Beziehungswesen →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accC" id="k08" aria-label="Kapitel 08: Einzelner oder Beziehungswesen?">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">12 / 20</span>
+  <p class="kp-eyebrow">Block III · Zusammenleben &amp; Zugang · Kapitel 08</p>
+  <h2 class="kp-title">Einzelner oder Beziehungswesen?</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Ist der Mensch zuerst ein Einzelner, der Beziehungen eingeht — oder zuerst ein Beziehungswesen, das sich vereinzeln kann? Und wessen Antwort wird zum Maßstab?</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Was hier „Grundzustand“ heißt und was „Abweichung“, ist keine Beobachtung, sondern eine Entscheidung — und die westliche Fassung des selbstständigen Einzelnen ist im Weltmaßstab nicht der Normalfall. Diagnosen wie „mangelnde Ablösung“ messen oft Kulturdistanz, nicht Störung.</p><span class="zm">Zum Merken: Es gibt zwei Fehler — Nähe zum Defizit erklären oder die Einzelne ans Kollektiv ausliefern.</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Doppelprüfung bei Autonomie-Diagnosen: erst den Maßstab ausweisen (Ablösung von wem, wozu, bis wann normal?), dann den Fall beurteilen.</li>
+      <li>Ein Herkunftsland ist kein Selbstkonzept: Kulturvergleichende Mittelwerte sagen nichts über die Person vor Ihnen — die Zuschreibung „kollektivistische Kultur“ kann selbst zum Etikett werden.</li>
+      <li>Die Capability-Frage schlichtet praktisch: Nicht die getroffene Wahl zählt, sondern ob die Möglichkeit bestünde, auch anders zu entscheiden — Bindung aus Option ist etwas anderes als Bindung aus Alternativlosigkeit.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Unterziehen Sie Beziehungs- und Autonomievokabular demselben Leerformeltest.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><circle cx="240" cy="55" r="26" stroke-width="2"/><circle cx="480" cy="55" r="26"/><circle cx="516" cy="55" r="26"/></g><text x="196" y="100" class="kb-t">der Einzelne zuerst</text><text x="440" y="100" class="kb-t">die Beziehung zuerst</text><text x="330" y="30" class="kb-t">zwei Grundannahmen — ein Maßstabstreit</text><text x="770" y="16" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>Am Maß des Menschen wird der Einzelne „normalisiert, gemessen, hierarchisiert oder auch aus dem Bereich des Menschlichen ausgeschlossen“.</p><footer>Delitz 2024, S. 730 — die soziologische Warnung · Teil II, S. 46 f.</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Der Streit ist kein Entweder-oder, sondern ein Maßstabskonflikt mit zwei benennbaren Fehlerkosten. Die Quelle relativiert die eigene Ausgangsdichotomie (individualistisch/kollektivistisch) ausdrücklich — was die Warnung vor Kulturetiketten stärkt, nicht schwächt.</p>
+      <p><b>Konsequent zu Ende gedacht:</b> Wer Autonomie fördern will, muss zuerst die Optionen erweitern, nicht die Bindungen bewerten — sonst misst die Hilfe nur die Distanz zur eigenen Norm.</p>
+      <p class="sy-cal"><b>Konfidenz 84/100.</b> Kippbedingung: Belege, dass Ablösungsdiagnosen kulturunabhängig dieselben Verläufe vorhersagen, würden den Kulturdistanz-Verdacht entkräften.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k09">09 Leistung oder Bedürftigkeit →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accC" id="k09" aria-label="Kapitel 09: Leistung oder Bedürftigkeit?">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">13 / 20</span>
+  <p class="kp-eyebrow">Block III · Zusammenleben &amp; Zugang · Kapitel 09</p>
+  <h2 class="kp-title">Leistung oder Bedürftigkeit?</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Was „verdient“ ein Mensch — und woran wird das festgemacht? Über Hilfe entscheidet oft nicht die Lage, sondern das Bild in der Akte.</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Dieselbe Person kann als „bemüht“ oder als „unmotiviert“ in der Akte stehen — und mit dem Wort wechselt der Anspruch. Beide Armutsbilder sind Bilder: das verachtende, das Verschulden unterstellt, und das mitleidige, das Passivität festschreibt.</p><span class="zm">Zum Merken: Auch das Mitleid ist ein Menschenbild.</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Verdienstentscheidungen fallen meist ohne Bekanntschaft — nach Aktenlage, im Screening. Genau dort sind Etiketten am wirksamsten; Begegnung ist das belegbare Gegenmittel.</li>
+      <li>Indizien im Text: Wo „beratungsresistent“ als Befund steht, arbeitet das Leistungsbild; wo Zutrauen als Überforderung gilt, das Opferbild. Beides sind Maßstäbe, keine Beschreibungen.</li>
+      <li>Das gekippte Wirtschaftsmodell ist als Selbstverhältnis angekommen: Erschöpfung erscheint dann als privates Versagen — die Entlastung beginnt damit, den Maßstab zu benennen.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Ersetzen Sie „Hat er sich bemüht?“ durch „Was braucht er — und was hindert ihn?“</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><path d="M390 26 V44" stroke-width="2"/><path d="M280 44 H500" stroke-width="2"/><path d="M280 44 L252 74 H308 Z"/><path d="M500 44 L472 74 H528 Z"/><circle cx="390" cy="20" r="6"/></g><text x="212" y="98" class="kb-t">„bemüht“</text><text x="452" y="98" class="kb-t">„unmotiviert“</text><text x="560" y="40" class="kb-t">ein Wort verschiebt den Anspruch</text><text x="770" y="16" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>„Sie sind Unternehmer ihrer selbst“</p><footer>Han 2010, Kap. „Jenseits der Disziplinargesellschaft“ — das Leistungssubjekt · Teil I, S. 24</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Die Verdienstfrage ist der Ort, an dem Menschenbilder unmittelbar über Ressourcen entscheiden — und an dem beide Gegenbilder denselben Fehler teilen: Sie ersetzen die Bedarfsfrage durch eine Charakterfrage. Hans Diagnose erklärt, warum der Maßstab so schwer angreifbar ist: Er wird als eigene Freiheit erlebt.</p>
+      <p><b>Offene Frage:</b> Wie Beteiligung an der Falldeutung institutionell gesichert wird, wo Fallzahlen Begegnung verhindern, beantwortet der Band nicht — er benennt nur die Stellschraube.</p>
+      <p class="sy-cal"><b>Konfidenz 87/100.</b> Kippbedingung: Zeigten Aktenanalysen, dass Anspruchsentscheidungen von Attributionswörtern unabhängig sind, verlöre die Bild-These ihren praktischen Kern.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k10">10 Ordnung →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accC" id="k10" aria-label="Kapitel 10: Welche Ordnung braucht der Mensch?">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">14 / 20</span>
+  <p class="kp-eyebrow">Block III · Zusammenleben &amp; Zugang · Kapitel 10</p>
+  <h2 class="kp-title">Welche Ordnung braucht der Mensch?</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Hobbes' Sicherheitswesen, Rousseaus gutartiger Mensch, das Mängelwesen der Institutionen — was folgt aus dem Bild für Staat, Sozialpolitik und Träger?</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Sozialpolitik ist ein Menschenbild in Verfahrensform: Wer streng prüft und sanktioniert, unterstellt den Kalkulierer, der Anreize braucht; wer bedingungslos zahlt, den Menschen, der von sich aus tätig wird. Der Streit über Kosten ist oft ein Streit über den Menschen.</p><span class="zm">Zum Merken: Bedingungen verteilen nicht nur Geld — sie verteilen Rang.</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Vier Prüfstellen machen das Bild einer Regelung sichtbar: Anspruchsvoraussetzungen, Sanktionsregeln, Beweislastverteilung, Bedingtheit oder Bedingungslosigkeit der Leistung.</li>
+      <li>„Fehlende Mitwirkung“ ist in dieser Logik ein Rangtitel, kein Befund: Er stuft herab, bevor er beschreibt. Prüfen Sie, was die Formel im Einzelfall konkret belegt.</li>
+      <li>Auch Trägerkonzeptionen sind kleine Ordnungen: Die Analyse beginnt bei Aufnahme- und Ausschlusskriterien, nicht beim Leitbildtext.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Wählen Sie ein dünnes, explizites Ordnungsbild — dicht genug zum Priorisieren, explizit genug zum Kritisieren.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><path d="M180 84 H600" stroke-width="2"/><rect x="220" y="40" width="18" height="44"/><rect x="300" y="30" width="18" height="54"/><rect x="380" y="48" width="18" height="36"/><rect x="460" y="24" width="18" height="60"/><path d="M180 20 H600" stroke-dasharray="2 5"/></g><text x="180" y="104" class="kb-t">Vier Prüfstellen: Voraussetzungen · Sanktionen · Beweislast · Bedingtheit</text><text x="620" y="26" class="kb-t">das Bild dahinter</text><text x="770" y="10" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>Politische Anthropologie schließt „von anthropologischen Universalien auf politisch-rechtliche Normierungen“.</p><footer>Jörke 2005, S. 12, zit. n. Miram u. Straßenberger 2024, S. 328 · Teil II, S. 67</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Ordnungsbilder wirken doppelt — als Begründung nach außen und als Erwartung nach innen. Die vier Prüfstellen übersetzen die abstrakte Anthropologie-Debatte in lesbare Verwaltungstexte; das ist der methodische Gewinn des Kapitels.</p>
+      <p><b>Konsequent zu Ende gedacht:</b> Eine Ordnung ganz ohne Menschenbild ist nicht neutral, sondern unadressierbar — ihre Annahmen wirken weiter, nur ohne Adresse für Einspruch.</p>
+      <p class="sy-cal"><b>Konfidenz 85/100.</b> Kippbedingung: Fände sich eine Sozialordnung, deren Verfahrensregeln sich keinem Verhaltensmodell zuordnen lassen, wäre die Übersetzungsthese widerlegt.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k11">11 Wessen Bild gilt →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accD" id="k11" aria-label="Kapitel 11: Wessen Bild gilt?">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">15 / 20</span>
+  <p class="kp-eyebrow">Block IV · Geltung, Würde &amp; Sprache · Kapitel 11</p>
+  <h2 class="kp-title">Wessen Bild gilt?</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Gilt ein Menschenbild für alle Menschen — oder ist jeder Universalismus nur eine Ortsansässigkeit, die sich für die Welt hält?</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Der Universalismus ist begründungsbedürftig — sein Verwurf aber auch: Wer ihn ganz aufgibt, landet beim Ethnopluralismus, der jedem „seine“ Kultur zuweist. Entscheidend ist die Richtung des Gebrauchs: als Maßstab über andere — oder als Einspruch derer, die ausgeschlossen wurden.</p><span class="zm">Zum Merken: „Noch nicht so weit“ ist eine Ortsanweisung, kein Befund.</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Fortschrittsskalen meiden: Wer Differenz als Zeitdifferenz codiert („die sind noch nicht so weit“), stellt eine unwiderlegbare Rangordnung her — jedes Verhalten bestätigt die Skala.</li>
+      <li>Beweislastprobe: Würde das Kriterium („Integrationsbereitschaft“, „gelungene Erziehung“) auch in Gegenrichtung angewandt — an die eigene Institution, die eigene Herkunft?</li>
+      <li>Adressat:innen haben Begriffe von sich. Sie als Begriffe ernst zu nehmen — nicht als Material — ist der Unterschied zwischen Dialog und Diagnose.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Legen Sie Bewertungskriterien offen und begründen Sie sie, bevor sie messen.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><circle cx="390" cy="55" r="34" stroke-width="2"/><ellipse cx="390" cy="55" rx="34" ry="13"/><path d="M390 21 V89"/><path d="M300 55 H240"/><path d="M252 47 L240 55 L252 63"/><path d="M480 55 H540"/><path d="M528 47 L540 55 L528 63"/></g><text x="120" y="42" class="kb-t">Maßstab über andere</text><text x="556" y="42" class="kb-t">Einspruch der</text><text x="556" y="58" class="kb-t">Ausgeschlossenen</text><text x="240" y="100" class="kb-t">dieselbe Idee — zwei Gebrauchsrichtungen</text><text x="770" y="16" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>Der Vorwurf: „ein Partikularismus, der den Universalismus nur für sich reklamiert“.</p><footer>Schmidt 2024, S. 585 — die postkoloniale Anfrage · Teil II, S. 76</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Die drei Belastungen des Menschenrechtsbildes (Herkunft, Durchsetzungsgeschichte, Abstraktionsgrad) sind nicht abtrennbar, sondern auszuhalten — die Alternative, gruppenspezifische Menschenwerte, ist die schlechtere. Tombas und Kapurs Figur des insurgenten Gebrauchs löst das Dilemma praktisch: Die Geltung erweist sich im Einspruch von unten.</p>
+      <p><b>Offene Frage:</b> Wo der Einspruch selbst fehlt — wer nicht sprechen kann, nicht gehört wird —, trägt die Figur nicht; dort bleibt Stellvertretung nötig und riskant.</p>
+      <p class="sy-cal"><b>Konfidenz 84/100.</b> Kippbedingung: Ein tragfähiges Modell partikularer Menschenwürde ohne Rangfolge der Gruppen würde die Alternativlosigkeits-These schwächen — der Band hält es für nicht formulierbar.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k12">12 Wer gehört dazu →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accD" id="k12" aria-label="Kapitel 12: Wer gehört dazu?">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">16 / 20</span>
+  <p class="kp-eyebrow">Block IV · Geltung, Würde &amp; Sprache · Kapitel 12</p>
+  <h2 class="kp-title">Wer gehört dazu?</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Die härteste Grenze verläuft nicht am Rand der Gattung, sondern mitten durch sie: Wem wird volle Zugehörigkeit zugesprochen — und über welche Befunde wird sie abgestuft?</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Niemandem wird heute offiziell das Menschsein abgesprochen. Abgestuft wird die Vollwertigkeit — über Fähigkeitsbefunde: „nicht bildungsfähig“, „keine Krankheitseinsicht“. Solche Formeln beschreiben nicht, sie weisen Plätze zu.</p><span class="zm">Zum Merken: Wird von den Adressat:innen aus gedacht — oder von einer Normalität, von der sie abweichen?</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Instrumente prüfen: Messen sie Abweichung von einer Normalentwicklung — oder Barrieren und Unterstützungsbedarfe? Dieselbe Beobachtung öffnet im einen Fall Ansprüche, im anderen schließt sie Zuständigkeiten.</li>
+      <li>Kategorienwechsel allein heilt nicht: Die Kette der Ersatzbegriffe zeigt, dass sich das neue Wort wie das alte färbt, solange die Funktion bleibt.</li>
+      <li>Erhebungsbögen exekutieren Kategorien: Was das Formular nicht fragt, kommt im Fall nicht vor — die Grenze sitzt oft im Instrument, nicht in der Fachkraft.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Fassen Sie Grundbegriffe (Bildung, Kommunikation) so, dass der Ausschluss-Satz gar nicht formulierbar ist.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><circle cx="390" cy="55" r="38" stroke-width="2"/><path d="M362 30 Q400 55 366 82" stroke-dasharray="4 4"/></g><g class="kb-f"><circle cx="380" cy="46" r="3"/><circle cx="402" cy="60" r="3"/><circle cx="384" cy="70" r="3"/></g><text x="180" y="50" class="kb-t">die Grenze außen —</text><text x="180" y="66" class="kb-t">selten bestritten</text><text x="470" y="50" class="kb-t">die Grenze innen —</text><text x="470" y="66" class="kb-t">täglich gezogen</text><text x="770" y="16" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>Bleidicks Einspruch: den Menschen „nicht am Bilde des notwendig vollkommenen Anthropos“ messen.</p><footer>Bleidick 1983, S. 431, zit. n. Moser 2024, S. 622 f. · Teil I, S. 37</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Die Bildgrenze unterhalb des Begriffs ist die präziseste Figur des Bandes: Sie erklärt, wie Ausschluss funktioniert, ohne dass jemand das Menschsein bestreitet. Mosers Prüfkriterium (von den Adressat:innen aus statt Normalanthropologie) macht sie operativ — als Frage an jedes Instrument.</p>
+      <p><b>Widerspruch, den der Band selbst zieht:</b> Ein Handbuch, das Bilder sammelt und Gruppen zuordnet, wiederholt die geprüfte Operation — es kann sie nur markieren, nicht vermeiden.</p>
+      <p class="sy-cal"><b>Konfidenz 88/100.</b> Kippbedingung: Zeigte sich, dass Befund-Formeln wie „keine Krankheitseinsicht“ in der Fallpraxis regelhaft Ansprüche öffnen statt schließen, wäre die Rangtitel-These zu revidieren.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k13">13 Würde oder Fähigkeit →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accD" id="k13" aria-label="Kapitel 13: Würde oder Fähigkeit?">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">17 / 20</span>
+  <p class="kp-eyebrow">Block IV · Geltung, Würde &amp; Sprache · Kapitel 13</p>
+  <h2 class="kp-title">Würde oder Fähigkeit?</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Die Würdezusage ist unbedingt — die Praxis prüft täglich Fähigkeiten und Mitwirkung. Beides steht oft in derselben Akte. Wie geht das zusammen?</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Der Widerspruch löst sich nicht am Ob der Prüfung, sondern am Was: Eine Prüfung darf bemessen, was einem Menschen geschuldet ist — Bedarf, Barriere, Unterstützung. Sie darf nie den Status antasten: wer zählt, wessen Wille gilt.</p><span class="zm">Zum Merken: Prüfen darf das Geschuldete bemessen — nie den Status.</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Drei Würdebegründungen tragen gemeinsam: Zusage (unbedingt), Bedürfnis (Schutz), Befähigung (Entwicklung). Keine ist verzichtbar — gefährlich wird jede, wenn sie die Funktion einer anderen übernimmt.</li>
+      <li>Mitwirkungspflichten dürfen Leistungen dosieren — Existenzminimum und Zugang zu Rechten aber nicht entziehen: Rechte bleiben auch bei Pflichtverletzung bestehen.</li>
+      <li>Unterstützte Entscheidungsfindung statt Stellvertretung: erst die Situation umbauen (Zeit, Sprache, Assistenz), bevor über den Willen anderer entschieden wird.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Markieren Sie in jedem Verfahren die Frage, die die Prüfung nicht stellen darf.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><path d="M390 22 L318 88 H462 Z" stroke-width="2"/><circle cx="390" cy="22" r="4" fill="#cda24f"/><circle cx="318" cy="88" r="4" fill="#cda24f"/><circle cx="462" cy="88" r="4" fill="#cda24f"/></g><text x="356" y="14" class="kb-t">Zusage</text><text x="236" y="104" class="kb-t">Bedürfnis</text><text x="478" y="104" class="kb-t">Befähigung</text><text x="540" y="40" class="kb-t">drei Ecken — keine ersetzt die andere</text><text x="770" y="16" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>Träger der Menschenrechte ist jeder Mensch — voraussetzungslos, „ohne jede Leistung“, im gleichen Ausmaß.</p><footer>Kirchschläger 2024, S. 118 — die unbedingte Zusage · Teil II, S. 77</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Die Was-statt-Ob-Unterscheidung ist das praktisch stärkste Ergebnis des Blocks: Sie erlaubt Prüfungen, ohne die Zusage zu verbrauchen. Das Würde-Dreieck erklärt zugleich die typischen Entgleisungen — Fürsorge, die entmündigt; Förderung, die aussortiert; Zusage, die konkrete Not feierlich überdeckt.</p>
+      <p><b>Konsequent zu Ende gedacht:</b> Statusfeste Verfahren kosten Zeit und Personal; wer sie fordert, muss sagen, woran stattdessen gespart wird — sonst bleibt die Grenze Rhetorik.</p>
+      <p class="sy-cal"><b>Konfidenz 86/100.</b> Kippbedingung: Ein Nachweis, dass Existenzminimum-Kürzungen die zugrunde liegenden Rechte praktisch unberührt lassen, würde die Schärfe der Status-Grenze relativieren.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#k14">14 Die Sprache →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page kp-page accD" id="k14" aria-label="Kapitel 14: Die Sprache, in der das verhandelt wird">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">18 / 20</span>
+  <p class="kp-eyebrow">Block IV · Geltung, Würde &amp; Sprache · Kapitel 14</p>
+  <h2 class="kp-title">Die Sprache, in der das verhandelt wird</h2>
+  <div class="kp-inner">
+    <p class="kp-kernfrage">Was, wenn nicht einzelne Bilder das Problem sind — sondern das Register, in dem über „den Menschen“ geredet wird?</p>
+    <div class="merk"><span class="lab">In einfachen Worten</span><p>Manche Sätze wirken durch Klang statt Aussage — die feierlichen („Begegnung auf Augenhöhe“) wie die nüchternen („fehlende Motivation“). Beide beenden das Weiterfragen: der eine durch Weihe, der andere durch den Ton der Objektivität.</p><span class="zm">Zum Merken: Trägt der Begriff eine prüfbare Aussage — oder ersetzt sein Klang die Aussage?</span></div>
+    <div class="wiss"><span class="lab">Was für die Praxis wissenswert ist</span><ul>
+      <li>Suchanweisung für Leitbilder: die Stellen, an denen behebbarer Mangel in Sinnsprache übersetzt wird — Wartezeit als „Zeit des Ankommens“, Personalmangel als „Begleitung in Übergängen“.</li>
+      <li>Bestehensregel: Wer einem Text Jargon vorwirft, muss angeben können, wie derselbe Text mit denselben Wörtern bestünde — sonst erteilt die Kritik selbst eine Ortsanweisung.</li>
+      <li>Kein Wortverbot: Dieselben Wörter können bestehen; geprüft wird die Funktion, nicht das Vokabular. Und: Die Prüfung bewertet Texte, nicht Praxen.</li>
+    </ul><span class="ro"><b>Robuste Option:</b> Lesen Sie die Akte mit demselben Misstrauen wie das Leitbild.</span></div>
+    <div class="kb"><svg viewBox="0 0 780 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="kb-l"><path d="M110 55 Q150 25 190 55 T270 55 T350 55" stroke-width="2"/><path d="M430 40 H670"/><path d="M430 55 H610"/><path d="M430 70 H650"/></g><text x="110" y="94" class="kb-t">Klang, der einrastet</text><text x="430" y="94" class="kb-t">Aussage, die bestehen muss</text><text x="770" y="16" text-anchor="end" class="kb-ill">Illustration</text></svg></div>
+    <blockquote class="kp-cite"><p>Der Jargon: Kennmarke gesellschaftlich organisierter Erwähltheit, „edel und anheimelnd in eins“.</p><footer>Adorno 1964 — die Diagnose; Belege ohne Seitenzahl, da die Digitalisierung fehlerhaft ist · Teil II, S. 104</footer></blockquote>
+    <div class="br-synth"><span class="lab">Claudes Einordnung · nicht in der Quelle</span>
+      <p><b>Kernpunkte:</b> Der Band wendet Adorno doppelt: gegen die warme Feierlichkeit und — als „kalte Schwester“ — gegen die Aktensprache, deren Verwaltungston ebenso Objektivität behauptet, ohne sie auszuweisen. Die drei Disziplinregeln (Bestehen, kein Index, Reichweite) verhindern, dass die Kritik selbst zum Jargon der Durchschauenden wird.</p>
+      <p><b>Ehrlichkeit zur Reichweite:</b> Als Verdachtshermeneutik findet die Kritik überall Treffer — sie taugt als Prüfinstrument, nicht als Urteil, und ersetzt keine inhaltliche Auseinandersetzung.</p>
+      <p class="sy-cal"><b>Konfidenz 87/100.</b> Kippbedingung: Ein Korpusnachweis, dass „warme“ Leitbildformeln regelhaft mit überprüfbaren Entscheidungsrechten einhergehen, würde den Generalverdacht gegen das Register entkräften.</p>
+    </div>
+    <p class="kp-nav"><a href="#karte">↑ Karte</a> · Weiter: <a href="#schluss">Das Gesamtbild →</a></p>
+  </div>
+</section>
+<hr class="br-cut">
+<section class="br-page" id="schluss" aria-label="Das Gesamtbild: Darf man sagen, was der Mensch ist?">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">19 / 20</span>
+  <p class="br-eyebrow">Das Gesamtbild</p>
+  <h2 class="br-title">Darf man sagen, was der Mensch ist?</h2>
+  <div class="st-core"><p>Eine helfende Profession <b>muss</b> Annahmen über den Menschen machen — und <b>muss</b> genau diese Annahmen für gefährlich halten. Das ist kein Paradox, das auf Auflösung wartet, sondern die <b>Arbeitsbedingung</b>. Sagen, was der Mensch ist, darf, wer es so sagt, dass es angreifbar bleibt: <b>„ausgewiesen statt eingeflochten, widerlegbar statt feierlich, den Betroffenen zugänglich statt über sie verhängt“</b> <span style="font-style:normal;font-family:'Inter Tight',sans-serif;font-size:.55em;letter-spacing:.08em;color:#9a8f78;">(Schlussformel des Handbuchs · Teil II, S. 118)</span></p></div>
+  <div class="st-selbst">
+    <div><b>Explizit</b><p>Nur ein ausgesprochenes Bild hat eine Adresse, an die Einspruch gehen kann. Unadressierbarkeit ist nicht Neutralität — sie ist Immunität.</p></div>
+    <div><b>Revidierbar</b><p>Als Befund geführt, nicht als Bekenntnis: mit der Angabe, woran das Bild scheitern würde. Was durch nichts widerlegbar ist, ist keine Aussage mehr, sondern eine Tonlage.</p></div>
+    <div><b>Von den Adressat:innen her</b><p>Entworfen von denen aus, über die es am folgenreichsten spricht — nicht als Normalität, von der sie die Abweichung darstellen.</p></div>
+  </div>
+  <p class="ans-h">Sieben Erkenntnisse quer durch alle Kapitel (Kanon-Querschnitt)</p>
+  <div class="st-q">
+    <p><b>Q1</b> — Der Anspruch entscheidet, nicht der Inhalt: Gefährlich macht ein Bild erst die Behauptung, der Mensch sei nichts anderes als das.</p>
+    <p><b>Q2</b> — Die folgenreichste Frage ist, wer überhaupt als Mensch zählt — heute gestellt als Frage nach vollem Subjekt- oder bloßem Betreuungsstatus.</p>
+    <p><b>Q3</b> — Bilder wirken auf ihre Träger zurück; aber der übliche Beleg trägt nicht: Erwartungseffekte sind klein, Begegnung überschreibt Etiketten.</p>
+    <p><b>Q4</b> — Dünnheit ist eine Leistung: Je weniger ein Bild festlegt, desto mehr Weltanschauungen können es mittragen.</p>
+    <p><b>Q5</b> — Anthropologiekritik und Handlungsfähigkeit stehen in Spannung — die produktive Form ist die Selbstverpflichtung, nicht das Verschwinden des Bildes.</p>
+    <p><b>Q6</b> — Die wirksamsten Bilder sind implizit: Analyse beginnt bei Aufnahmekriterien, Dokumentationsroutinen und Sanktionspraxen, nicht beim Leitbild.</p>
+    <p><b>Q7</b> — Dieselbe Sprache trägt Befreiung und Zumutung: Ob „Begegnung“ Befähigung oder Chiffre ist, entscheidet die prüfbare Aussage dahinter.</p>
+  </div>
+  <div class="st-open"><b>Was offen bleibt</b><p>Die Selbstverpflichtung garantiert nichts — sie hält nur die Bedingungen aufrecht, unter denen der Umschlag von Gleichheit in Rangordnung bemerkt werden kann. Und sie ist selbst jargonfähig: prüfbar nur als Verfahren — wo das Bild steht, wann es geändert wurde, wer widersprochen hat. Die Kritik an Menschenbildern bleibt darum „jeweils neu zu stellen“ (Moser 2024, S. 636 · Teil II, S. 93) — auch an dieser Broschüre.</p></div>
+  <p class="kp-nav"><a href="#karte">↑ Themenlandkarte</a> · <a href="#antwort">↑ Die konkrete Antwort</a> · Weiter: <a href="#kolophon">Kolophon →</a></p>
+</section>
+<hr class="br-cut">
+<section class="br-page" id="kolophon" aria-label="Kolophon: Quellen, Methode, Grenzen">
+  <div class="br-frame" aria-hidden="true"></div>
+  <span class="br-num">20 / 20</span>
+  <p class="br-eyebrow">Kolophon</p>
+  <h2 class="br-title">Quellen, Methode, Grenzen</h2>
+  <div class="ko-grid">
+    <div class="ko-cell"><h3 class="ko-h">Quellbände</h3>
+      <p class="ko-p">Menschenbilder — Handbuch für Soziale Arbeit, Soziologie und Philosophie: Teil I, Grundlagen (58 S.) und Teil II, Die Konfliktfelder (118 S.); dazu Menschenbilder — Ein systematischer Kanon (45 S.).</p>
+      <p class="ko-p">Basis der drei Bände: Michael Zichy (Hrsg.), Handbuch Menschenbilder, Springer VS 2024 (Buchausgabe, DOI 10.1007/978-3-658-32128-4); Gegenstimmen: Theodor W. Adorno, Jargon der Eigentlichkeit (1964); Byung-Chul Han, Müdigkeitsgesellschaft (2010) / Psychopolitik (2014).</p></div>
+    <div class="ko-cell"><h3 class="ko-h">Methode</h3>
+      <p class="ko-p">Kristallisation der drei Bände auf eine Hauptfrage; Seitenarchitektur nach System A (Cover · Prüfsiegel · Karte · Konkrete Antwort · 14 Kapitel · Gesamtbild · Kolophon).</p>
+      <p class="ko-p">Drei Textebenen je Kapitel ohne Doppelung: Merksatz (einfach) · Wissenswert (konkret) · Claudes Einordnung (kalibriert, mit Konfidenz und Kippbedingung).</p></div>
+    <div class="ko-cell"><h3 class="ko-h">Anti-Halluzination</h3>
+      <p class="ko-p">Alle 18 wörtlichen Zitate wurden vor Verwendung als zeichengenaue Teilstrings am Volltext verifiziert; jedes trägt einen doppelten Locator (Original-Beleg der Quelle · Bandseite). Evidenz-Marker sind an die Belastbarkeitsstufen des Quellbandes gebunden.</p>
+      <p class="ko-p">Eigenanalyse ist durchgängig als „Claudes Einordnung · nicht in der Quelle“ markiert. Schmuckgrafiken tragen den Vermerk „Illustration“; die einzigen Datenwerte (d ≈ .11; 35,9 %; 50 %) stammen aus Kanon bzw. Benchmark-Vorlage.</p></div>
+    <div class="ko-cell"><h3 class="ko-h">Grenzen &amp; Transparenz</h3>
+      <p class="ko-p">Der Kanon dokumentiert sieben Korrekturen am eigenen Beleg-Apparat (K1–K7) — darunter die Lehre, dass ein „nicht gefunden“ nur so belastbar ist wie die Vollständigkeit der Suche. Diese Fehlerkultur wurde übernommen, nicht getilgt.</p>
+      <p class="ko-p">Die Quelle enthält keinen eigenen Beitrag zur Sozialen Arbeit; der Forschungsstand zur Wirkung von Menschenbildern ist nach eigener Auskunft dünn. Seitenangaben zu Teil II sind aus der eingebetteten Paginierung berechnet.</p></div>
+    <div class="ko-cell ko-wide"><h3 class="ko-h">Über dieses Dokument</h3>
+      <p class="ko-p">Eigenständige Übersichts-Broschüre ohne zugehörige Tiefenanalyse; alle Verweise sind interne Sprungziele (Karte ↔ Kapitel ↔ Gesamtbild). Erstellt von Claude (Anthropic) im August 2026 im Auftrag des Projekts; Gestaltung: Editorial-Slate-Dunkel. Interpretationen, Konfidenzwerte und Evidenz-Marker-Zuordnungen sind Einordnungen von Claude (KI) und als solche gekennzeichnet.</p></div>
+  </div>
+  <p class="kp-nav"><a href="#cover">↑ Zum Anfang</a></p>
+</section>
+</body>
+</html>
