@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reform des Nachrichtendienstrechts 2026 — Was wirklich drinsteht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papier:#E3E7E3;
+  --papier-tief:#D3D8D2;
+  --papier-hell:#EFF2EE;
+  --tinte:#15191A;
+  --tinte-weich:#4C5553;
+  --stempel:#8A2B22;
+  --stempel-hell:rgba(138,43,34,.10);
+  --dienstblau:#1F4B6E;
+  --dienstblau-hell:rgba(31,75,110,.10);
+  --schwarz:#0D0F10;
+  --linie:rgba(21,25,26,.16);
+  --linie-stark:rgba(21,25,26,.34);
+  --f-display:"Barlow Condensed",'Haettenschweiler','Arial Narrow',sans-serif;
+  --f-body:"Literata",Georgia,'Times New Roman',serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,'SF Mono',Menlo,monospace;
+  --max:74rem;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--papier);color:var(--tinte);
+  font-family:var(--f-body);font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+a{color:var(--dienstblau);text-underline-offset:.18em}
+:focus-visible{outline:3px solid var(--stempel);outline-offset:3px}
+
+/* ---------- Kopfleiste ---------- */
+.leiste{
+  position:sticky;top:0;z-index:50;
+  background:var(--schwarz);color:var(--papier);
+  border-bottom:1px solid #000;
+}
+.leiste-in{
+  max-width:var(--max);margin:0 auto;padding:.5rem 1.25rem;
+  display:flex;gap:1rem;align-items:center;justify-content:space-between;
+  font-family:var(--f-mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;
+}
+.leiste-in b{font-weight:600}
+.leiste nav{display:flex;gap:.9rem;flex-wrap:wrap}
+.leiste nav a{color:rgba(227,231,227,.62);text-decoration:none;white-space:nowrap}
+.leiste nav a:hover{color:#fff}
+@media(max-width:820px){.leiste nav{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{
+  border-bottom:2px solid var(--tinte);
+  background:
+    repeating-linear-gradient(180deg,transparent 0 33px,rgba(21,25,26,.045) 33px 34px),
+    var(--papier-hell);
+}
+.hero-in{max-width:var(--max);margin:0 auto;padding:3.2rem 1.25rem 2.4rem}
+.aktenkopf{
+  font-family:var(--f-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tinte-weich);display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;
+  padding-bottom:1.1rem;margin-bottom:1.8rem;border-bottom:1px solid var(--linie);
+}
+.aktenkopf span b{color:var(--stempel);font-weight:600}
+h1{
+  font-family:var(--f-display);font-weight:700;
+  font-size:clamp(2.5rem,7.6vw,5.6rem);line-height:.94;letter-spacing:-.005em;
+  text-transform:uppercase;margin:0 0 1.4rem;max-width:22ch;
+}
+.rd{position:relative;display:inline-block;white-space:nowrap}
+.rd::after{
+  content:"";position:absolute;left:-.12em;right:-.12em;top:.06em;bottom:.1em;
+  background:var(--schwarz);transform-origin:right center;
+}
+@media (prefers-reduced-motion:no-preference){
+  .rd::after{animation:enthuellen .62s cubic-bezier(.7,.02,.3,1) forwards;transform:scaleX(1)}
+  .rd:nth-of-type(1)::after{animation-delay:.45s}
+  .rd:nth-of-type(2)::after{animation-delay:.85s}
+  .rd:nth-of-type(3)::after{animation-delay:1.25s}
+}
+@media (prefers-reduced-motion:reduce){.rd::after{display:none}}
+@keyframes enthuellen{to{transform:scaleX(0)}}
+.hero-lead{font-size:1.16rem;max-width:60ch;margin:0 0 1.6rem;color:var(--tinte)}
+.hero-lead strong{background:linear-gradient(transparent 62%,rgba(138,43,34,.22) 62%)}
+.warnkasten{
+  border:1px solid var(--linie-stark);border-left:5px solid var(--stempel);
+  background:var(--papier);padding:1.1rem 1.25rem;max-width:62ch;
+}
+.warnkasten h4{
+  font-family:var(--f-mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  margin:0 0 .5rem;color:var(--stempel);font-weight:600;
+}
+.warnkasten p{margin:0 0 .6rem;font-size:.94rem;line-height:1.55}
+.warnkasten p:last-child{margin-bottom:0}
+
+/* ---------- Legende ---------- */
+.legende{background:var(--schwarz);color:var(--papier);border-bottom:2px solid var(--tinte)}
+.legende-in{max-width:var(--max);margin:0 auto;padding:2.2rem 1.25rem}
+.legende h2{
+  font-family:var(--f-display);text-transform:uppercase;font-weight:600;
+  font-size:1.5rem;letter-spacing:.02em;margin:0 0 .3rem;
+}
+.legende p{max-width:62ch;color:rgba(227,231,227,.78);font-size:.95rem;margin:0 0 1.5rem}
+.legende .waage{--rahmen:rgba(227,231,227,.3)}
+.legende .waage-labels{color:rgba(227,231,227,.75)}
+.legende .skala-noten{
+  display:grid;gap:.7rem;margin-top:1.6rem;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  font-family:var(--f-mono);font-size:.74rem;line-height:1.5;color:rgba(227,231,227,.8);
+}
+.legende .skala-noten b{color:#fff;display:block;letter-spacing:.1em;text-transform:uppercase;font-size:.66rem;margin-bottom:.2rem}
+
+/* ---------- Filter ---------- */
+.filter{
+  position:sticky;top:33px;z-index:40;background:var(--papier-tief);
+  border-bottom:1px solid var(--linie-stark);
+}
+.filter-in{
+  max-width:var(--max);margin:0 auto;padding:.55rem 1.25rem;
+  display:flex;gap:.45rem;align-items:center;flex-wrap:wrap;
+}
+.filter span{
+  font-family:var(--f-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--tinte-weich);margin-right:.3rem;
+}
+.filter button{
+  font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+  background:transparent;border:1px solid var(--linie-stark);color:var(--tinte);
+  padding:.3rem .7rem;cursor:pointer;border-radius:0;
+}
+.filter button:hover{background:var(--papier-hell)}
+.filter button[aria-pressed="true"]{background:var(--schwarz);color:var(--papier);border-color:var(--schwarz)}
+
+/* ---------- Kapitel ---------- */
+main{max-width:var(--max);margin:0 auto;padding:0 1.25rem 5rem}
+.kapitel{padding-top:3.4rem;scroll-margin-top:5rem}
+.kapitel-kopf{border-top:2px solid var(--tinte);padding-top:.7rem;margin-bottom:2rem}
+.kapitel-nr{
+  font-family:var(--f-mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--stempel);font-weight:600;display:block;margin-bottom:.35rem;
+}
+.kapitel-kopf h2{
+  font-family:var(--f-display);text-transform:uppercase;font-weight:700;
+  font-size:clamp(1.7rem,4.2vw,2.9rem);line-height:1;margin:0 0 .5rem;letter-spacing:.005em;
+}
+.kapitel-kopf p{margin:0;max-width:64ch;color:var(--tinte-weich);font-size:1rem}
+
+/* ---------- Karte ---------- */
+.karte{
+  background:var(--papier-hell);border:1px solid var(--linie-stark);
+  margin-bottom:1.6rem;
+}
+.karte.aus{display:none}
+.karte-kopf{padding:1.15rem 1.35rem .1rem;border-bottom:1px solid var(--linie)}
+.norm{
+  font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;
+  color:var(--stempel);font-weight:600;display:block;margin-bottom:.3rem;
+}
+.karte-kopf h3{
+  font-family:var(--f-display);text-transform:uppercase;font-weight:600;
+  font-size:clamp(1.2rem,2.9vw,1.75rem);line-height:1.05;margin:0 0 .85rem;
+}
+.karte-koerper{padding:1.15rem 1.35rem 0}
+.karte-koerper > p{margin:0 0 .9rem}
+.karte-koerper > p:first-child{margin-top:0}
+.klarsatz{font-size:1.04rem}
+.detail{
+  font-size:.92rem;color:var(--tinte-weich);border-left:2px solid var(--linie-stark);
+  padding-left:.9rem;margin-bottom:1.1rem !important;
+}
+.detail b{color:var(--tinte)}
+
+/* Alltagsbeispiel */
+.beispiel{
+  background:var(--papier-tief);border-left:5px solid var(--dienstblau);
+  padding:.95rem 1.1rem;margin:0 0 1.2rem;
+}
+.beispiel h4{
+  font-family:var(--f-mono);font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--dienstblau);margin:0 0 .35rem;font-weight:600;
+}
+.beispiel p{margin:0;font-size:.98rem}
+.beispiel p + p{margin-top:.6rem}
+
+/* Zwei Spalten */
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--linie)}
+@media(max-width:720px){.zwei{grid-template-columns:1fr}}
+.spalte{padding:1.05rem 1.35rem}
+.spalte + .spalte{border-left:1px solid var(--linie)}
+@media(max-width:720px){.spalte + .spalte{border-left:none;border-top:1px solid var(--linie)}}
+.spalte h4{
+  font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
+  margin:0 0 .5rem;font-weight:600;
+}
+.pro h4{color:var(--dienstblau)}
+.contra h4{color:var(--stempel)}
+.pro{background:var(--dienstblau-hell)}
+.contra{background:var(--stempel-hell)}
+.spalte p{margin:0 0 .65rem;font-size:.94rem;line-height:1.55}
+.spalte p:last-child{margin-bottom:0}
+
+/* ---------- Die Waage (Signatur) ---------- */
+.waage{--rahmen:var(--linie-stark);padding:1.05rem 1.35rem 1.15rem;border-top:1px solid var(--linie)}
+.waage-schiene{
+  position:relative;height:34px;margin:.45rem 0 .3rem;
+  border-left:1px solid var(--rahmen);border-right:1px solid var(--rahmen);
+}
+.waage-schiene::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(138,43,34,.5) 0%,rgba(138,43,34,.10) 42%,rgba(31,75,110,.10) 58%,rgba(31,75,110,.5) 100%);
+}
+.waage-schiene::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:11px;
+  background:repeating-linear-gradient(90deg,var(--rahmen) 0 1px,transparent 1px 10%);
+}
+.waage-mitte{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--rahmen)}
+.waage-marke{
+  position:absolute;top:-4px;bottom:-4px;left:var(--pos);width:3px;
+  background:var(--schwarz);box-shadow:0 0 0 2px var(--papier-hell);transform:translateX(-1.5px);
+}
+.waage-marke::after{
+  content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%);
+  border-left:6px solid transparent;border-right:6px solid transparent;border-top:7px solid var(--schwarz);
+}
+.waage-labels{
+  display:flex;justify-content:space-between;
+  font-family:var(--f-mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--tinte-weich);
+}
+.waage-urteil{
+  margin:.75rem 0 0;font-size:.95rem;display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap;
+}
+.konf{
+  font-family:var(--f-mono);font-size:.64rem;letter-spacing:.11em;text-transform:uppercase;
+  border:1px solid var(--linie-stark);padding:.14rem .45rem;white-space:nowrap;color:var(--tinte-weich);
+}
+.kippe{
+  font-family:var(--f-mono);font-size:.76rem;line-height:1.5;color:var(--tinte-weich);
+  margin:.7rem 0 0;padding-top:.6rem;border-top:1px dashed var(--linie-stark);
+}
+.kippe b{color:var(--stempel);letter-spacing:.1em;text-transform:uppercase;font-size:.62rem;font-weight:600}
+
+/* ---------- Tabelle ---------- */
+.tab-wrap{overflow-x:auto;border:1px solid var(--linie-stark);background:var(--papier-hell);margin-bottom:1.6rem}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.9rem}
+th,td{padding:.6rem .8rem;text-align:left;border-bottom:1px solid var(--linie);vertical-align:top}
+th{
+  font-family:var(--f-mono);font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;
+  background:var(--schwarz);color:var(--papier);font-weight:500;
+}
+tbody tr:last-child td{border-bottom:none}
+td b{font-weight:600}
+
+/* ---------- Liste ---------- */
+.rangliste{list-style:none;padding:0;margin:0 0 1.6rem;counter-reset:r}
+.rangliste li{
+  counter-increment:r;display:grid;grid-template-columns:2.6rem 1fr;gap:.9rem;
+  padding:.85rem 0;border-bottom:1px solid var(--linie);
+}
+.rangliste li::before{
+  content:counter(r,decimal-leading-zero);
+  font-family:var(--f-mono);font-size:.95rem;color:var(--stempel);font-weight:600;padding-top:.1rem;
+}
+.rangliste h4{font-family:var(--f-body);font-weight:600;font-size:1rem;margin:0 0 .25rem}
+.rangliste p{margin:0;font-size:.92rem;color:var(--tinte-weich)}
+
+/* ---------- Reparaturliste ---------- */
+.reparatur{display:grid;gap:.7rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:1.6rem}
+.reparatur div{border:1px solid var(--linie-stark);background:var(--papier-hell);padding:.9rem 1rem}
+.reparatur h4{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dienstblau);margin:0 0 .35rem;font-weight:600}
+.reparatur p{margin:0;font-size:.92rem}
+
+/* ---------- Fuß ---------- */
+.fuss{background:var(--schwarz);color:rgba(227,231,227,.8);border-top:2px solid var(--tinte)}
+.fuss-in{max-width:var(--max);margin:0 auto;padding:2.6rem 1.25rem 3.4rem}
+.fuss h2{font-family:var(--f-display);text-transform:uppercase;color:var(--papier);font-size:1.5rem;margin:0 0 1rem}
+.fuss h3{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stempel);margin:1.8rem 0 .6rem;font-weight:600}
+.fuss ul{margin:0;padding-left:1.1rem;font-size:.9rem;line-height:1.6}
+.fuss li{margin-bottom:.35rem}
+.fuss a{color:#9FC3DF}
+.fuss p{font-size:.9rem;max-width:66ch}
+</style>
+</head>
+<body>
+
+<header class="leiste">
+  <div class="leiste-in">
+    <b>Akte&nbsp;·&nbsp;ND-Reform&nbsp;2026</b>
+    <nav>
+      <a href="#k1">1 Rahmen</a>
+      <a href="#k2">2 Schwellen</a>
+      <a href="#k3">3 Befugnisse</a>
+      <a href="#k4">4 Kontrolle</a>
+      <a href="#k5">5 BND</a>
+      <a href="#k6">6 Bilanz</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-in">
+    <div class="aktenkopf">
+      <span>Gesetz zur Reform des Nachrichtendienstrechts</span>
+      <span>Referentenentwurf&nbsp;<b>05.07.2026</b></span>
+      <span>Kabinettsbeschluss&nbsp;<b>12.08.2026</b></span>
+      <span>ca.&nbsp;700&nbsp;Seiten</span>
+      <span>Stand dieses Dossiers&nbsp;<b>13.08.2026</b></span>
+    </div>
+
+    <h1>Was der <span class="rd">Verfassungsschutz</span> künftig <span class="rd">darf</span> — und was er <span class="rd">nicht darf</span></h1>
+
+    <p class="hero-lead">Ein 700-Seiten-Gesetz, das drei Gesetze neu schreibt und mehr als zehn weitere ändert. Dieses Dossier übersetzt es in einfache Sprache — <strong>mit Alltagsbeispielen, mit der Begründung der Regierung, mit der Kritik dagegen</strong> und mit einer Anzeige, welche Seite bei welchem Punkt die besseren Argumente hat.</p>
+
+    <div class="warnkasten">
+      <h4>Bevor du weiterliest: die Quellenlage</h4>
+      <p>Das 700-Seiten-PDF war für mich nicht direkt abrufbar. Die Paragraphenangaben stammen aus indexierten Auszügen des Entwurfs selbst sowie aus Stellungnahmen, die den Text paragraphen- und seitengenau zitieren — vor allem der Gesellschaft für Freiheitsrechte vom 14.07.2026.</p>
+      <p>Alles Paragraphengenaue bezieht sich auf den <b>Referentenentwurf</b>. Das Kabinett hat am 12.08.2026 beschlossen; der Regierungsentwurfstext lag noch nicht öffentlich vor. Bekannte Abweichungen sind markiert.</p>
+      <p>Stellen, die ich nicht am Normtext verifizieren konnte, sind ausdrücklich als <b>unverifiziert</b> gekennzeichnet. Nutz sie nicht als Beleg, ohne selbst nachzuschlagen.</p>
+    </div>
+  </div>
+</section>
+
+<section class="legende">
+  <div class="legende-in">
+    <h2>Die Waage — wie du die Anzeige liest</h2>
+    <p>Unter jedem Punkt steht eine Skala. Sie zeigt nicht, ob eine Regel gut oder böse ist, sondern <b>welche Seite bei diesem konkreten Punkt die stärkeren Argumente hat</b>. Die Mitte heißt: beide tragen. Daneben steht eine Konfidenz von 0 bis 100 — wie sicher ich mir bei dieser Einordnung bin. Darunter die Kippbedingung: was mein Urteil umdrehen würde.</p>
+
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:50%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide tragen</span><span>Begründung trägt</span></div>
+    </div>
+
+    <div class="skala-noten">
+      <div><b>0–25</b> Die Kritik trägt klar. Die Regierungsbegründung erklärt nicht, warum die Norm so weit gefasst sein muss.</div>
+      <div><b>26–45</b> Die Kritik überwiegt, aber das Ziel dahinter ist nachvollziehbar.</div>
+      <div><b>46–55</b> Beide tragen. Es geht um eine echte Abwägung, nicht um richtig oder falsch.</div>
+      <div><b>56–75</b> Die Begründung überwiegt, einzelne Kritikpunkte bleiben berechtigt.</div>
+      <div><b>76–100</b> Die Begründung trägt klar. Die Kritik daran ist schwach oder falsch.</div>
+      <div><b>Konfidenz</b> Wie belastbar meine Einordnung ist. Unter 70 heißt: mit Vorsicht verwenden.</div>
+    </div>
+  </div>
+</section>
+
+<div class="filter">
+  <div class="filter-in">
+    <span>Filter</span>
+    <button data-f="alle" aria-pressed="true">Alles zeigen</button>
+    <button data-f="kritik" aria-pressed="false">Kritik trägt</button>
+    <button data-f="beide" aria-pressed="false">Beide tragen</button>
+    <button data-f="begruendung" aria-pressed="false">Begründung trägt</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ KAPITEL 1 ============ -->
+<section class="kapitel" id="k1">
+  <div class="kapitel-kopf">
+    <span class="kapitel-nr">Kapitel 1</span>
+    <h2>Der Rahmen</h2>
+    <p>Was das für ein Gesetz ist, warum es jetzt kommt, wer es geschrieben hat — und die eine Verwechslung, die fast jede Debatte kaputtmacht.</p>
+  </div>
+
+  <article class="karte" data-lean="beide">
+    <div class="karte-kopf"><span class="norm">Artikel 1 bis 8 + über zehn weitere Gesetze</span><h3>Kein Update. Ein Neubau.</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Das ist ein <b>Artikelgesetz</b>: ein einziges Gesetz, das mehrere andere Gesetze auf einmal neu schreibt oder ändert. Drei Gesetze werden komplett neu gefasst.</p>
+      <p class="detail"><b>Artikel 1</b> neues Bundesverfassungsschutzgesetz (BVerfSchG) · <b>Artikel 2</b> neues BND-Gesetz · <b>Artikel 3</b> Gesetz über die Rechtskontrolle durch den Unabhängigen Kontrollrat (UKRatG, komplett neu) · <b>Artikel 4</b> Änderung des BVerfSchG zum 1. Januar 2030 · <b>Artikel 5</b> Kriegswaffenkontrollgesetz · <b>Artikel 6</b> Informationsfreiheitsgesetz · <b>Artikel 7/8</b> Beamtenversorgung und Besoldung. Für den Militärischen Abschirmdienst gab es Anfang 2026 bereits eine erste Reformstufe; eine zweite wird parallel erarbeitet.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Das ist kein renoviertes Badezimmer. Das ist Abriss und Neubau — an derselben Adresse, mit demselben Namen am Klingelschild. Wer sagt „das ist doch nur eine Anpassung", hat den Umfang nicht verstanden. Wer sagt „hier wird alles Bisherige weggeworfen", auch nicht: Viele Regeln wandern nur um.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Das alte Recht war ein Flickenteppich. Das BND-Gesetz verwies an vielen Stellen einfach auf die Verfassungsschutzregeln. Getrennte, in sich geschlossene Gesetze sind schlicht besser lesbar.</p><p>Auch die Kritiker sehen das so: Die Gesellschaft für Freiheitsrechte nennt die Neuregelung im Grundsatz begrüßenswert und die Einbettung der früheren G-10-Befugnisse gesetzessystematisch sinnvoll.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Bei 700 Seiten geht Substanz in Systematik unter. Neue Befugnisse stehen zwischen Umsortierungen — man sieht nicht auf den ersten Blick, was neu ist und was nur umgezogen.</p><p>Die Verbände hatten <b>elf Tage</b> Zeit für ihre Stellungnahmen. Die GFF schreibt selbst, eine vollständige Begutachtung sei in der Frist nicht möglich gewesen.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:55%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Die Neufassung selbst ist sinnvoll. Die Frist war es nicht. <span class="konf">Konfidenz 85</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> sich im Bundestagsverfahren zeigt, dass unter dem Deckmantel der Systematisierung Befugnisse eingeführt wurden, die in keiner Vorabkommunikation auftauchten.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="beide">
+    <div class="karte-kopf"><span class="norm">Zielbestimmung des Entwurfs</span><h3>Warum ausgerechnet jetzt?</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Die Regierung nennt drei Ziele: Vorgaben des Bundesverfassungsgerichts umsetzen, auf die Bedrohungslage reagieren, die Kontrolle effizienter machen.</p>
+      <p class="detail">Der harte Treiber ist der erste Punkt: Karlsruhe hat der Bundesregierung eine <b>Frist bis Ende 2026</b> gesetzt. Betroffen ist vor allem, wie der BND mit innerdeutscher Kommunikation umgeht. Außerdem hielten die Richterinnen und Richter eine <b>hauptamtliche Aufsicht</b> für erforderlich, weil die ehrenamtliche G-10-Kommission nicht ausreicht.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Stell dir vor, ein Gericht sagt deinem Vermieter: Bis Silvester muss die Elektrik neu. Der Vermieter nutzt die Gelegenheit und baut gleich noch eine Kamera im Flur ein. Beides passiert im selben Bauantrag. Die Elektrik <b>musste</b> gemacht werden. Die Kamera nicht.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Ohne Neuregelung bis Ende 2026 fallen zentrale Rechtsgrundlagen weg. Das ist kein politischer Wunsch, sondern eine gerichtliche Vorgabe.</p><p>Zur Lage: Sicherheitsbehörden sehen eine deutlich gewachsene Bedrohung durch Spionage und Sabotage — vor allem durch Russland — sowie steigende Zahlen politisch motivierter Straftaten. Das ist keine erfundene Kulisse.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Der Fristdruck betrifft im Kern den <b>BND</b>. Er rechtfertigt nicht die neuen Befugnisse des Inlandsdienstes, die Entmachtung der Datenschutzaufsicht oder die Einschränkung der Informationsfreiheit.</p><p>Zeitdruck erzeugt schlechte Gesetze. Elf Tage Verbändefrist und ein Kabinettstermin mitten in den Sommerferien machen eine ernsthafte öffentliche Debatte praktisch unmöglich.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:50%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Beide tragen — aber für unterschiedliche Teile des Pakets. <span class="konf">Konfidenz 85</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> die Regierung darlegt, dass die Karlsruher Frist auch die BfV-Befugnisse und die IFG-Änderung erzwingt. Bisher habe ich dafür keine Darlegung gefunden.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">Verwechslungsgefahr Nr. 1</span><h3>BND ist nicht BfV. Das ist der wichtigste Satz im ganzen Dossier.</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Fast jede falsche Behauptung über diesen Entwurf entsteht dadurch, dass Befugnisse des <b>Auslandsdienstes</b> dem <b>Inlandsdienst</b> zugeschrieben werden — oder umgekehrt.</p>
+      <div class="tab-wrap"><table>
+        <thead><tr><th>Nur BND (Ausland)</th><th>Nur BfV (Inland)</th><th>Beide</th></tr></thead>
+        <tbody><tr>
+          <td>15 % des Datenvolumens abgreifen · Post- und Warensendungen öffnen <b>und bearbeiten</b> · Hackback im engeren Sinn · Nacheile ins Inland · kinetische Mittel im Verteidigungsfall (nur in der Begründung) · Wohnraumüberwachung als <b>neue</b> Befugnis</td>
+          <td>Zugriff auf fremde Videoüberwachung · V-Leute ab 16 · Weisungen an Landesbehörden · Schutzmaßnahmen nach §§ 60 ff. mit Beschränkung auf Gegenstände</td>
+          <td>Online-Durchsuchung · biometrischer Abgleich mit Internetdaten · automatisierte Datenanalyse und KI · Kontrolle durch den Unabhängigen Kontrollrat</td>
+        </tr></tbody>
+      </table></div>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Wenn jemand sagt „der Verfassungsschutz darf jetzt 15 Prozent des Internets abschnorcheln" — das ist der BND. Wenn jemand sagt „der BND darf am Bahnhof deine Kamera anzapfen" — das ist das BfV. Beide Sätze klingen gleich empörend und beide sind falsch.</p></div>
+      <p class="detail">Auch politisch wichtig: Das Paket wurde <b>nicht allein von Dobrindt</b> geschrieben. Das Kanzleramt, zuständig für den BND, hat es gemeinsam mit dem Innenministerium und in Abstimmung mit dem Justizressort erarbeitet. Artikel 2 ist Kanzleramt.</p>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:50%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Keine Wertung — eine Sortierhilfe. Wer sie ignoriert, verliert jede Debatte. <span class="konf">Konfidenz 90</span></p>
+    </div>
+  </article>
+</section>
+
+<!-- ============ KAPITEL 2 ============ -->
+<section class="kapitel" id="k2">
+  <div class="kapitel-kopf">
+    <span class="kapitel-nr">Kapitel 2</span>
+    <h2>Die Schwellen</h2>
+    <p>Bevor der Verfassungsschutz irgendetwas darf, muss eine Stufe erreicht sein. Diese Stufen sind der Türsteher für alles Weitere — und genau deshalb der wichtigste Kampfplatz.</p>
+  </div>
+
+  <article class="karte" data-lean="beide">
+    <div class="karte-kopf"><span class="norm">§ 2, § 3 BVerfSchG-E</span><h3>Neues Stichwort: „Bedrohung" statt „Bestrebung"</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Bisher war der Anknüpfungspunkt die <b>Bestrebung</b> — also eine Gruppe, die gegen die freiheitliche demokratische Grundordnung arbeitet. Künftig ist es die <b>Bedrohung</b>, ein breiterer Oberbegriff.</p>
+      <p class="detail">Darunter fallen: verfassungsfeindliche Bestrebungen (§ 2 Abs. 1 Nr. 1, 2), sicherheitsgefährdende Tätigkeiten (Nr. 3 lit. a), geheimdienstliche Tätigkeiten fremder Mächte (Nr. 3 lit. b) und funktionsgefährdende Tätigkeiten (§ 2 Abs. 4).</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Früher fragte man an der Tür: „Bist du eine Gruppe, die gegen die Verfassung arbeitet?" Jetzt fragt man: „Geht von dir eine Bedrohung aus?" Die zweite Frage ist nicht falsch — sie ist nur ein deutlich breiterer Türrahmen. Und alles, was danach kommt, hängt daran.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Sabotage an Bahnkabeln, Drohnen über Kasernen oder das Anwerben von Wegwerf-Agenten durch einen fremden Staat sind keine „Bestrebungen" im klassischen Sinn. Der alte Begriff passte auf diese Fälle schlecht.</p><p>Der Begriff macht die Kategorien außerdem sauber unterscheidbar, statt alles unter einen Sammelbegriff zu zwingen.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Ein breiterer Grundbegriff verschiebt automatisch alles, was darauf aufbaut. Wer die Tür verbreitert, muss die dahinterliegenden Räume neu vermessen — das tut der Entwurf nicht durchgehend.</p><p>Begriffe wie „hybride Einflussnahme" sind besonders dehnbar. Wer entscheidet, wo Kritik aufhört und Einflussnahme anfängt?</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:47%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Der Begriffswechsel selbst ist begründbar. Das Problem sitzt eine Etage tiefer. <span class="konf">Konfidenz 70</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> der Bundestag die konkreten Unterbegriffe schärft — dann verliert die Kritik am Oberbegriff ihren Gegenstand.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 3 Abs. 7 Satz 2 BVerfSchG-E</span><h3>Die Straftaten-Automatik</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Stufe 1 heißt <b>erheblich beobachtungsbedürftig</b>. Dafür braucht es Anhaltspunkte, dass eine Bedrohung geeignet ist, die Schutzgüter zu beeinträchtigen. Satz 2 sagt: Wenn zur Verfolgung des Ziels <b>Straftaten begangen werden, gilt diese Eignung als bewiesen</b> — unwiderleglich.</p>
+      <p class="detail">Es gibt <b>keine Mindestschwere</b>. Die GFF nennt als Beispiele ausdrücklich das Kleben von Stickern und das Abreißen von Plakaten im politischen Protest. Das Bundesverfassungsgericht hat unwiderlegliche Vermutungen für eine erhebliche Beobachtungsbedürftigkeit im Hessen-Beschluss beanstandet.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Eine Klimagruppe sprüht ein Wandbild — Sachbeschädigung. Damit ist gesetzlich vermutet: Stufe 1 erreicht. Und an Stufe 1 hängen unter anderem der Zugriff auf fremde Kameras (§ 15) und Eingriffe in Geräte (§ 23). Ein Sticker öffnet also formal dieselbe Tür wie ein Sprengstofflager.</p><p>Das gilt in beide Richtungen: Auch eine rechtsextreme Gruppe, die ein Hakenkreuz sprüht, erfüllt es. Die Norm ist nicht politisch gerichtet — sie ist einfach unbegrenzt.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Für die Behörde entsteht Rechtssicherheit: Wo eine Straftat vorliegt, muss nicht jedes Mal einzeln begründet werden, warum die Gruppe gefährlich sein könnte. Das reduziert Ermessen und damit Willkür.</p><p>Es entlastet Gerichte: Der Prüfmaßstab ist objektiv nachvollziehbar statt eine Prognose.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Nicht jede Straftat sagt etwas über Gefährlichkeit für die Verfassungsordnung. Die Automatik ersetzt die verfassungsrechtlich gebotene Verhältnismäßigkeitsprüfung durch einen Schalter.</p><p>Der Gesetzgeber hätte ein <b>Regelbeispiel</b> formulieren können — also eine widerlegliche Vermutung. Karlsruhe hat das ausdrücklich als zulässigen Weg beschrieben. Er wurde nicht gewählt.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:20%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Klarer Punkt für die Kritik. Die Reparatur ist trivial und wurde bewusst nicht gewählt. <span class="konf">Konfidenz 85</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> im Entwurfstext an anderer Stelle doch eine Erheblichkeitsschwelle für die Straftat steht, die in den Stellungnahmen übersehen wurde.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 3 Abs. 7 Satz 3 Nr. 1 lit. d BVerfSchG-E</span><h3>Wer sich schützt, macht sich verdächtig</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Als Regelbeispiel für Beobachtungsbedürftigkeit gilt eine <b>planmäßig verschleiernde Vorgehensweise</b> bei der Zielverfolgung.</p>
+      <p class="detail">Karlsruhe hat 2022 entschieden, dass der Grad der Abschottung ein Kriterium sein kann — aber im selben Absatz auf kritische Stimmen verwiesen, die darauf hinweisen, dass IT-Sicherheits- und Datenschutzmaßnahmen als Abschottung gewertet werden können.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Eine Lokaljournalistin recherchiert in einer rechtsextremen Szene. Sie bekommt Drohbriefe. Also nutzt sie Signal, ein Zweithandy, ein VPN und trifft Quellen nur ohne Telefon. Genau dieses Verhalten — Selbstschutz — kann als Indiz für Abschottung gewertet werden.</p><p>Dasselbe gilt für Betroffene häuslicher Gewalt, für Menschen mit Verfolgungserfahrung, für IT-Sicherheitsleute mit Berufskrankheit.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Konspiratives Verhalten ist real ein Indiz. Wer Klarnamen meidet, Treffen nur offline abhält und Handys in den Kühlschrank legt, tut das in bestimmten Milieus tatsächlich, um Aufklärung zu verhindern.</p><p>Es ist nur ein Regelbeispiel, keine Automatik — anders als bei der Straftatenvermutung.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Verschlüsselung ist inzwischen Voreinstellung, nicht Ausnahme. Ein Indiz, das auf einen wachsenden Teil der Bevölkerung zutrifft, taugt nicht als Unterscheidungsmerkmal.</p><p>Es bestraft im Effekt gerade die Schutzbedürftigsten — Aktivistinnen, Journalisten, Whistleblower.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:30%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Kritik überwiegt, aber das Kriterium ist nicht absurd — es braucht eine Ausnahme für Eigenschutz. <span class="konf">Konfidenz 75</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> der Text eine Klarstellung enthält, dass übliche IT-Sicherheitsmaßnahmen nicht ausreichen. Dann bleibt der Einwand theoretisch.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="begruendung">
+    <div class="karte-kopf"><span class="norm">§ 3 Abs. 8 BVerfSchG-E</span><h3>Stufe 2 — und eine echte Schutzregel, die kaum jemand erwähnt</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Für die schärfsten Mittel braucht es Stufe 2: <b>besonders erheblich beobachtungsbedürftig</b>. Anknüpfungspunkt sind unter anderem Straftaten, die mit einer Freiheitsstrafe von mindestens fünf Jahren bedroht sind.</p>
+      <p class="detail">Und: <b>Legalistische Bestrebungen zählen ausdrücklich nicht dazu.</b> Sie dürfen also nicht mit den eingriffsintensivsten Mitteln überwacht werden. Die GFF — die den Entwurf insgesamt für weitgehend verfassungswidrig hält — bewertet genau das als positiv.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Eine Organisation, die ihre Ziele über Wahlen, Anträge, Klagen und Öffentlichkeitsarbeit verfolgt, bleibt außerhalb von Trojaner und Wohnraumüberwachung — auch dann, wenn ihre Ziele als verfassungsfeindlich eingestuft werden. Das schützt eine Partei ebenso wie eine radikale Mieterinitiative.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Genau das verlangt die Karlsruher Rechtsprechung: Wer den legalen Weg geht, darf nicht mit den Mitteln behandelt werden, die für konspirative Gewaltstrukturen gedacht sind.</p><p>Die Zweistufigkeit macht Verhältnismäßigkeit im Gesetz selbst sichtbar — statt sie ins Ermessen zu legen.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Nr. 1 lit. b erfasst pauschal <b>Ersatzorganisationen verbotener Vereine</b>. Ein Verstoß gegen ein Vereinsverbot bedeutet aber nicht automatisch gesteigerte Gefährlichkeit.</p><p>Die Begründung leitet daraus einen Verlust des Vertrauens in die Herrschaft des Rechts ab und daraus wiederum eine Gefährdung der Sicherheit des Bundes. Diese Kette ist dünn.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:66%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Überwiegend gute Norm mit einem konkret benennbaren Fehler (lit. b). <span class="konf">Konfidenz 70</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> sich zeigt, dass „legalistisch" in der Praxis so eng ausgelegt wird, dass die Ausnahme faktisch niemanden schützt.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="begruendung">
+    <div class="karte-kopf"><span class="norm">§ 4 BVerfSchG-E · Regierungsentwurf</span><h3>Der Verdachtsfall bekommt eine Uhr</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Bisher konnte eine Vereinigung <b>unbegrenzt lange</b> als Verdachtsfall beobachtet werden. Künftig läuft eine Frist.</p>
+      <p class="detail">Im Referentenentwurf: Überprüfung nach spätestens <b>drei Jahren</b> (§ 4 Abs. 3). Im Kabinettsbeschluss zusätzlich berichtet: Beobachtung als extremistischer Verdachtsfall <b>höchstens fünf Jahre</b>; erhärtet sich der Verdacht nicht, ist in der Regel zu beenden. Verlängerung um je zwei Jahre möglich, aber <b>nur mit Zustimmung des Innenministeriums</b>.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Die AfD wird seit Februar 2021 als Verdachtsfall bearbeitet — inzwischen über fünf Jahre. Nach neuem Recht müsste spätestens jetzt eine ausdrückliche Entscheidung fallen: beenden oder mit Zustimmung des Ministers verlängern. Kein stilles Weiterlaufen mehr.</p></div>
+      <p class="detail">Das ist die Norm, die in der linken Kritik am häufigsten fehlt — obwohl sie den Verfassungsschutz <b>einschränkt</b>, und zwar genau gegenüber der Partei, um die es politisch geht.</p>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Eine Dauerbeobachtung ohne Ergebnis ist ein Dauereingriff ohne Rechtfertigung. Fristen zwingen zur Entscheidung.</p><p>Für Parteien ist die Einstufung ein Eingriff in die Chancengleichheit im Wettbewerb. Verhältnismäßigkeit verlangt hier eine zeitliche Grenze.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Der Zustimmungsvorbehalt des Ministeriums <b>politisiert</b> die Verlängerung. Ein Innenminister kann eine Beobachtung beenden, indem er einfach nicht zustimmt — ohne Begründungspflicht gegenüber der Öffentlichkeit.</p><p>Fünf Jahre sind bei komplexen Strukturen kurz. Erkenntnisse aus V-Personen und Aussteigerberichten brauchen oft länger.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:60%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Echte Einhegung — mit einem politischen Hebel, den man im Blick behalten muss. <span class="konf">Konfidenz 70</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> der Regierungsentwurf die Verlängerung ohne Zustimmungserfordernis oder unbegrenzt oft zulässt. Dann ist die Frist Symbolik.</p>
+    </div>
+  </article>
+</section>
+
+<!-- ============ KAPITEL 3 ============ -->
+<section class="kapitel" id="k3">
+  <div class="kapitel-kopf">
+    <span class="kapitel-nr">Kapitel 3</span>
+    <h2>Was das BfV künftig darf</h2>
+    <p>Zehn Befugnisse, jeweils: was drinsteht, wie sich das im Alltag anfühlt, warum die Regierung es will, was daran gefährlich ist.</p>
+  </div>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 8 Abs. 1 Satz 2 Nr. 2 BVerfSchG-E</span><h3>Gesichtserkennung mit dem ganzen Internet</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Das BfV darf <b>öffentlich zugängliche Quellen</b> — also auch Bilder aus dem Netz — biometrisch mit allen Daten abgleichen, auf die es zur Aufgabenerfüllung zugreifen darf. Schwelle: tatsächliche Anhaltspunkte im Einzelfall.</p>
+      <p class="detail">Die entscheidende Weichenstellung ist keine Zahl, sondern der Ort im Gesetz: Die Befugnis steht in der <b>allgemeinen Erhebungsklausel</b> — nicht bei den nachrichtendienstlichen Mitteln. Damit greifen die Schutzregeln für nachrichtendienstliche Mittel <b>nicht</b>: kein Kernbereichsschutz, keine besonderen Schranken, kein Berufsgeheimnisschutz.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Ein Foto von einer Demo wird gegen Millionen Netzbilder gehalten. Dein Gesicht ist im Hintergrund, weil du dort vorbeigelaufen bist. Auch ein <b>Nicht-Treffer</b> ist rechtlich schon ein Grundrechtseingriff — das Bundesverfassungsgericht hat das bei der Kennzeichenerfassung ausdrücklich so entschieden.</p><p>Und: Bilder landen oft ohne dein Wissen im Netz. Löschen ist meist unmöglich. Du kannst dich nicht schützen.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Wenn ein fremder Dienst einen Agenten unter falscher Identität einschleust, ist das Gesicht oft das einzige verlässliche Merkmal. Ohne biometrischen Abgleich ist Spionageabwehr in weiten Teilen blind.</p><p>Der Entwurf verlangt einen Anlass: nicht ins Blaue hinein, sondern bei konkreten Anhaltspunkten im Einzelfall.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Die <b>Streubreite</b> ist enorm. Massenhaft völlig Unbeteiligte werden mit abgeglichen — bei jeder einzelnen Abfrage.</p><p>Der Adressatenkreis ist nicht auf Anlasspersonen beschränkt. Ein Flächendeckungsverbot, wie Karlsruhe es für Kennzeichenkontrollen verlangt, fehlt.</p><p>Erkennungssysteme sind fehleranfällig und erkennen Frauen und People of Color messbar schlechter. Fehltreffer lösen weitere Eingriffe aus.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:25%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Das Ziel ist legitim, die Einordnung im Gesetz ist es nicht. <span class="konf">Konfidenz 80</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> der Bundestag die Befugnis zu den nachrichtendienstlichen Mitteln verschiebt und an Stufe 2 bindet. Dann fällt der Kern der Kritik weg.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 8 Abs. 2 BVerfSchG-E</span><h3>Der Umweg über Anbieter außerhalb Europas</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Kann das BfV einen biometrischen Abgleich nicht selbst leisten, darf er über <b>öffentliche Stellen und private Dritte im Nicht-EU-Ausland</b> erfolgen. Satz 2 sieht eine Löschverpflichtung vor.</p>
+      <p class="detail">Die GFF nennt konkret <b>PimEyes</b> und <b>Clearview</b> — Dienste, die nach europäischem Datenschutzrecht so nicht existieren dürften. Gegen PimEyes hat der Landesdatenschutzbeauftragte Baden-Württembergs ein Bußgeldverfahren eingeleitet.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Eine deutsche Behörde darf etwas nicht selbst tun. Also fragt sie jemanden, der es tut, weil er in einem Land sitzt, wo die Regel nicht gilt. Wie ein Vermieter, der die Schufa-Auskunft nicht einholen darf und deshalb einen Bekannten bittet, mal eben zu googeln.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Ein Massenabgleich ist praktisch nur mit einer riesigen Referenzdatenbank möglich. Eine eigene aufzubauen wäre in Deutschland zu Recht verfassungswidrig. Der Rückgriff auf Partner ist der Versuch, das Ergebnis ohne die Datenbank zu bekommen.</p><p>Die Norm ist ausdrücklich <b>subsidiär</b> und enthält eine Löschpflicht.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Die Subsidiarität <b>läuft leer</b>: Weil ein Abgleich ohne Referenzdatenbank inländisch regelmäßig nicht gleichermaßen möglich ist, ist die Ausnahme immer erfüllt.</p><p>Damit werden europäische Standards nicht gelockert, sondern umgangen. Vorgaben an die privaten Anbieter zur digitalen Souveränität fehlen vollständig.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:15%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Eine Norm, die ihre eigene Schranke aufhebt. Schwer zu verteidigen. <span class="konf">Konfidenz 80</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> der Bundestag eine ausdrückliche Positivliste zulässiger Partner und eine Einzelfall-Genehmigungspflicht durch den Kontrollrat einbaut.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 15 BVerfSchG-E</span><h3>Fremde Kameras — mit Ton</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Wer eine Videoüberwachung betreibt — privat oder öffentlich — kann verpflichtet werden: die <b>Mitbenutzung</b> zu ermöglichen, Daten <b>in Echtzeit</b> auszuleiten und gespeicherte <b>Bild- und Tonaufzeichnungen</b> zu übermitteln. Betroffen sind öffentlich zugängliche Räume.</p>
+      <p class="detail">Schwelle: Stufe 1 — also die Stufe, die nach § 3 Abs. 7 Satz 2 schon durch eine Bagatellstraftat erreicht sein kann. Auch diese Maßnahme ist <b>nicht</b> als nachrichtendienstliches Mittel eingestuft. In Kombination mit dem biometrischen Echtzeit-Abgleich wird daraus eine Live-Personensuche.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Der Bäcker am Hauptbahnhof kann verpflichtet werden, seine Kamera mitbenutzen zu lassen. Inklusive Ton. Alle, die dort ihren Kaffee holen, sind mit erfasst — dauerhaft, ohne es zu erfahren, ohne Anlass in ihrer Person.</p><p>Das Gleiche gilt für das Einkaufszentrum, die Tankstelle, den Fitnessstudio-Eingang.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Eigene Observationstechnik ist teuer, auffällig und langsam. Wenn ein Zielobjekt gerade jetzt an einem Bahnhof ist, ist der Zugriff auf vorhandene Technik die einzige realistische Option.</p><p>Der Staat baut keine eigene Kamerainfrastruktur auf — er nutzt bestehende. Aus Sicht des Steuerzahlers und der Ausbaudynamik ist das das mildere Mittel.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Faktisch alle Menschen in Deutschland werden erfasst. Die GFF spricht von einer weitgehend durchgängigen Überwachung des öffentlichen Raums.</p><p>Auch die Grundrechte der Betreiber sind betroffen — sie werden zu Zulieferern gemacht und dürfen es niemandem sagen.</p><p>Ton ist im deutschen Recht traditionell die deutlich höhere Hürde. Hier steht er gleichrangig neben Bild.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:20%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Der operative Bedarf ist echt. Die Schwelle steht in keinem Verhältnis zur Streubreite. <span class="konf">Konfidenz 80</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> die Befugnis an Stufe 2 gebunden, auf Einzelobjekte begrenzt und der Ton herausgenommen wird.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§§ 11 ff., § 56 Abs. 3 BVerfSchG-E</span><h3>Auskunftsersuchen — die stille Abkürzung</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Auskunftsersuchen an Banken, Telekommunikationsanbieter, Fluggesellschaften und andere stehen in einem <b>eigenen Unterabschnitt</b> und gelten ausdrücklich <b>nicht</b> als nachrichtendienstliche Mittel.</p>
+      <p class="detail">Folge: Weder die allgemeinen Schranken des § 30 noch der Kernbereichsschutz noch der Schutz von Berufsgeheimnisträgern greifen. Und weil diese Daten nach § 3 Abs. 11 nicht als „mit besonderen Befugnissen erlangt" gelten, dürfen sie nach <b>§ 56 Abs. 3 ohne jede Übermittlungsschwelle</b> weitergegeben werden — ohne konkretisierte Gefahr, ohne Tatsachengrundlage.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Für einen Trojaner auf deinem Handy gelten strenge Regeln. Für die Frage an deine Bank, deinen Provider und deine Airline gelten sie nicht — obwohl die drei Antworten zusammen mehr über dich verraten als eine Woche Telefonüberwachung: wo du warst, mit wem, wovon du lebst.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Eine einzelne Auskunft ist tatsächlich weniger eingriffsintensiv als das heimliche Eindringen in ein Gerät. Die Abstufung folgt einer nachvollziehbaren Logik.</p><p>Auskunftsersuchen sind das Arbeitspferd der Spionageabwehr. Sie mit dem Regelapparat für Trojaner zu belasten, würde die Arbeit praktisch lahmlegen.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Die Logik gilt für die <b>einzelne</b> Auskunft. Sie gilt nicht für die Summe. Der Entwurf regelt die Summe nicht.</p><p>Andere Verfassungsschutzgesetze — etwa das bayerische — behandeln Auskunftsersuchen sehr wohl als nachrichtendienstliche Mittel. Die Einordnung hier ist also eine Entscheidung, kein Sachzwang.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:25%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Unauffällig, technisch, folgenreich. Einer der unterschätztesten Punkte im Entwurf. <span class="konf">Konfidenz 75</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> eine Kumulationsregel eingeführt wird: ab X Auskünften zur selben Person gelten die Schutzvorschriften für nachrichtendienstliche Mittel.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§§ 23 bis 26 BVerfSchG-E</span><h3>Der Staatstrojaner kommt zum Inlandsdienst</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Das BfV bekommt <b>erstmals</b> die Befugnis zur Online-Durchsuchung. Der Entwurf nennt das „nachrichtendienstliches Eingreifen" und staffelt es in vier Normen.</p>
+      <p class="detail"><b>§ 23</b> Auslesen von Geräten: Zugangsverschaffung mit nachrichtendienstlichen Mitteln — laut Begründung (S. 295) einschließlich <b>elektronischem Fernzugang</b>, also Trojaner. Außerdem: Auslesen nach <b>Erhalt des Geräts von einem ausländischen Nachrichtendienst</b>.<br>
+      <b>§ 24</b> Eingriff in sonstige Systeme.<br>
+      <b>§ 25</b> Vollzugriff auf private Systeme, subsidiär gegenüber der Gefahrenabwehrbehörde (Abs. 1 Satz 3).<br>
+      <b>§ 26</b> „Abgegrenzter Eingriff" als niedrigere Stufe; Abs. 2 mit höherer Schwelle für Kommunikationsinhalte und Daten mit gewichtigen Einblicken; Quellen-TKÜ ist ein Unterfall; Abs. 1 Satz 3 enthält ein Umgehungsverbot.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel — die Definitionsfalle</h4><p>„Privat" ist ein System laut § 25 Abs. 1 Satz 2 nur, wenn es <b>als eigenes privat genutzt</b> wird. Dein Diensthandy? Das Familien-Tablet? Das Leihgerät? Fällt womöglich heraus — und dann gilt nur § 23 mit niedrigerer Hürde. Das Grundrecht auf IT-Systeme schützt aber auch beruflich genutzte Geräte.</p></div>
+      <div class="beispiel"><h4>Alltagsbeispiel — die Technikfalle</h4><p>Die Stufen sind juristisch, nicht technisch. Wenn ein Trojaner auf deinem Telefon läuft, hat er <b>Zugriff auf alles</b>. Die Vorstellung, man könne sauber nur die Chats und nicht die Fotos nehmen, entspricht nicht dem Stand der Technik. Das Umgehungsverbot verlangt also etwas, das niemand von außen überprüfen kann.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Praktisch jede relevante Kommunikation ist Ende-zu-Ende verschlüsselt. Ohne Zugriff auf das Endgerät ist der Inlandsdienst bei Terror- und Spionagefällen faktisch taub. Das BMI formuliert es so: IT soll kein Rückzugsraum für unbeobachtete Tatvorbereitung bleiben.</p><p>Die Abstufung ist ein <b>Zugeständnis</b>: Statt einer einzigen Vollzugriffsbefugnis gibt es mildere Zwischenstufen mit eigenen Hürden — das ist mehr Verhältnismäßigkeit, nicht weniger.</p><p>Dass auch beschlagnahmte Geräte erfasst sind, ist ein Fortschritt: Auch das Aufbrechen eines Geräts in staatlichem Gewahrsam braucht künftig eine Rechtsgrundlage. Die GFF begrüßt das ausdrücklich.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Die Abgrenzung „privat / nicht privat" ist enger als das Grundrecht und schafft eine große Grauzone genau dort, wo der Schutz eigentlich greifen müsste.</p><p>Aus dem Normtext allein ist nicht erkennbar, dass ein Trojanereinsatz gemeint ist — das steht nur in der Begründung. Das verletzt den Bestimmtheitsgrundsatz.</p><p>Der Beschaffungsweg über einen <b>ausländischen Nachrichtendienst</b> wirft die Frage auf, wie das Gerät dorthin gelangte und ob deutsche Standards dabei gewahrt waren.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:28%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Der Bedarf ist real, die Abstufung ehrlich gemeint — aber technisch nicht einlösbar. <span class="konf">Konfidenz 80</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> die Definition des privaten Systems an die Karlsruher Formel angeglichen wird und der Trojanereinsatz im Normtext selbst benannt wird. Dann bleibt nur noch das Technikproblem.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 10 Abs. 1, 2 BND-Gesetz-E · betrifft auch BfV und BSI</h3></span><h3>Die Feuerwehr verrät, wo die Schlösser kaputt sind</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Der Entwurf enthält <b>kein staatliches Schwachstellenmanagement</b> — obwohl das Bundesverfassungsgericht 2021 genau das verlangt hat. Stattdessen werden BfV und das Bundesamt für Sicherheit in der Informationstechnik verpflichtet, <b>Schwachstellen an den BND zu übermitteln</b>.</p>
+      <p class="detail">Es gibt im Entwurf keine Regeln zum Melden und Schließen von Sicherheitslücken, keinen nachvollziehbaren Abwägungsprozess, keine Fristen.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Das BSI ist die Feuerwehr der IT-Sicherheit. Firmen und Forscher melden ihr Lücken, damit sie geschlossen werden. Künftig gibt die Feuerwehr die Adressen der Häuser mit defekten Schlössern an jemanden weiter, der durch solche Türen einsteigen will.</p><p>Der Haken: Eine offen gelassene Lücke ist für <b>alle</b> offen. Auch für den russischen Dienst, gegen den man sie eigentlich braucht.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Ohne unbekannte Lücken funktioniert kein Trojaner und kein Gegenangriff. Wer die Befugnis will, muss die Munition mitregeln — alles andere wäre unehrlich.</p><p>Andere westliche Dienste arbeiten seit Jahren so. Wer sich davon abkoppelt, koppelt sich auch vom Informationsaustausch ab.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Der Vorwurf ist nicht Rhetorik, sondern hat eine benennbare Entscheidung hinter sich: Karlsruhe hat ein Schwachstellenmanagement als Schutzpflicht formuliert. Der Entwurf lässt es nicht einmal in Ansätzen erkennen.</p><p>Das <b>Anreizargument</b> der AG Kritis ist das stärkste: Wenn Betreiber kritischer Infrastruktur damit rechnen müssen, dass ihre Meldung beim Geheimdienst landet, melden sie weniger. Dann sinkt die Sicherheit insgesamt — durch ein Sicherheitsgesetz.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:15%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Hier trägt die Kritik auch auf dem eigenen Feld der Regierung: Es macht das Land unsicherer. <span class="konf">Konfidenz 85</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> ein gesetzlich normierter Abwägungsprozess mit Offenlegungsfristen ergänzt wird. Dann bleibt nur ein Streit über die Fristlänge.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 18 BVerfSchG-E, Entwurf S. 25</span><h3>V-Leute ab 16 Jahren</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Grundsätzlich sind Minderjährige als Vertrauenspersonen ausgeschlossen. Der Entwurf schafft eine <b>Ausnahme</b>: Die Amtsleitung kann sie zulassen bei einer Person, die mindestens 16 Jahre alt ist, wenn der Einsatz zur Aufklärung <b>besonders erheblich beobachtungsbedürftiger</b> Bestrebungen unerlässlich ist.</p>
+      <p class="detail">Begründet wird das laut Berichterstattung mit dem zunehmend jüngeren Alter von Rechtsextremisten. Der Entwurf enthält für V-Personen außerdem Kernbereichsschutzpflichten, eine Grenze für das Absehen von Strafverfolgung (ausgeschlossen, wenn mehr als ein Jahr Freiheitsstrafe zu erwarten ist) und das Recht, die eigene Tätigkeit gegenüber Dritten zu verleugnen — nicht aber im Strafverfahren.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Ein 16-Jähriger sitzt in einer rechtsextremen Telegram-Gruppe. Dieselbe Person darf ohne Eltern keinen Handyvertrag abschließen und ist nicht voll geschäftsfähig. Sie soll aber bezahlter Informant in einem Milieu werden können, in dem Auffliegen gefährlich ist.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Die Radikalisierung findet heute erheblich früher statt. Es gibt Terrorstrukturen, deren Mitglieder überwiegend minderjährig sind. Ein 40-jähriger V-Mann kommt dort nicht hinein.</p><p>Die Hürden sind hoch: Ausnahme, nur durch die Amtsleitung, nur bei <b>Unerlässlichkeit</b>, nur auf der höchsten Beobachtungsstufe. Das ist nicht „V-Leute ab 16 sind jetzt normal".</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Der Staat setzt Minderjährige einem Risiko aus, das er Erwachsenen nur mit umfangreicher Betreuung zumutet. Eine Elternbeteiligung ist im Entwurf nicht erkennbar.</p><p>Die deutsche V-Leute-Geschichte ist ein Katalog von Kontrollversagen. Wer die Aufarbeitung des NSU-Komplexes kennt, weiß, wie schwer diese Quellen zu führen sind — bei Erwachsenen.</p><p>Loyalitätskonflikte bei 16-Jährigen können Familie, Freundeskreis und Schule betreffen.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:28%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Der Bedarf ist nachvollziehbar. Die Schutzvorkehrungen für die Jugendlichen fehlen. <span class="konf">Konfidenz 75</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> eine Zustimmung des Familiengerichts, eine verpflichtende psychosoziale Begleitung und eine Höchstdauer ergänzt werden.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 36 Abs. 1 Nr. 1 lit. a, Abs. 2 Satz 1 Nr. 5 BVerfSchG-E</span><h3>KI-Training mit dem eigenen Datenbestand</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Die allgemeine Befugnis zur zweckändernden Weiterverarbeitung soll laut Gesetzesbegründung (S. 327) die Rechtsgrundlage dafür sein, dass das BfV mit den <b>bei ihm vorhandenen Daten eigene KI-Anwendungen trainiert</b>.</p>
+      <p class="detail">Keine Beschränkung auf bestimmte Produkte oder Modelle. Kein Ausschluss besonders sensibler Daten. Kein Ausschluss von Daten unbeteiligter Dritter. Auch biometrische Identifizierungssysteme wären möglich. Der Verwendungszweck ist nur durch die Aufgaben nach § 2 begrenzt.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Eine Akte kann man löschen. Ein Modell, das mit dieser Akte trainiert wurde, nicht — die Information ist in den Gewichten verteilt und praktisch nicht mehr herauszuoperieren.</p><p>Das heißt: Daten aus einer Wohnraumüberwachung, die nach Fristablauf gelöscht werden müssten, können vorher in ein Modell eingeflossen sein, das danach unbegrenzt weiterarbeitet. Die Löschfrist läuft ins Leere.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Wer keine eigenen Modelle trainieren darf, ist auf fremde angewiesen — also auf genau die außereuropäischen Anbieter, vor denen alle warnen. Eigene Modelle sind ein Souveränitätsargument.</p><p>Behördendaten sind fachspezifisch. Ein allgemeines Modell erkennt Spionagemuster nicht.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Die Norm ist so unbestimmt, dass man ohne die Begründung gar nicht erkennt, dass sie KI-Training erlaubt. Eine so weitreichende Befugnis muss im Gesetzestext stehen.</p><p>Die Zweckbindung — Grundprinzip des Datenschutzes — wird faktisch aufgehoben. Weder Herkunft noch Eingriffsgewicht der Daten werden differenziert.</p><p>Flankierende Regeln zu Trainingsdatenqualität, Nachvollziehbarkeit und Diskriminierungsvermeidung fehlen ganz.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:20%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Das Ziel ist vernünftig. Eine Generalklausel ist dafür die falsche Rechtsgrundlage. <span class="konf">Konfidenz 75</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> eine eigene KI-Trainingsnorm mit Datenkatalog, Ausschlüssen und Dokumentationspflicht geschaffen wird.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 37 BVerfSchG-E — insbesondere Absatz 6</span><h3>Profiling. Und eine Maschine, die selbst entscheidet.</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">§ 37 erlaubt die <b>automatisierte Datenanalyse</b>: getrennte Datenbestände mit Analysesoftware verbinden, um neues Wissen zu erzeugen. Einbezogen werden können <b>sämtliche</b> in Datensystemen des BfV gespeicherten personenbezogenen Daten.</p>
+      <p class="detail">Nicht auf rechtmäßig erhobene Daten beschränkt. Keine Ausnahme für besonders sensible Daten. Auch Daten aus Wohnraumüberwachungen und Online-Durchsuchungen können einfließen. Die Methoden sind kaum begrenzt — Personenprofile und komplexe Bewertungen sind möglich. Abs. 7 erlaubt ausdrücklich den Einsatz künstlicher Intelligenz.</p>
+      <p class="detail"><b>§ 37 Abs. 6 ist die schärfste Einzelnorm des gesamten Entwurfs:</b> Er lässt zu, dass Schutzmaßnahmen <b>vollständig automatisiert</b> durch qualifizierte Auswertungen angeordnet werden — also durch Software, ohne menschliche Mitwirkung.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Aus Telefonverbindungen, Kamerabildern, Auskünften und Netzfunden baut die Software ein Bild von dir. Absatz 6 heißt: Diese Software kann eine Maßnahme <b>auslösen</b>, ohne dass ein Mensch vorher nickt.</p><p>Und: Wenn das System dich falsch einsortiert, gibt es niemanden, den du fragen kannst, warum. Du erfährst in der Regel nicht einmal davon.</p></div>
+      <p class="detail">Praxisstand: Das BfV soll 2026 bereits <b>ArgonOS</b> des französischen Anbieters ChapsVision lizenziert haben — obwohl es für Betrieb oder Test eines solchen Werkzeugs bislang gar keine Rechtsgrundlage gibt. Es ist also nicht Palantir. Das Problem ist trotzdem da.</p>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Die Datenmengen sind ohne Automatisierung nicht auswertbar. Spionageabwehr ist Mustererkennung über Jahre und viele Quellen — das kann kein Mensch mehr von Hand.</p><p>Der Entwurf enthält Flankierungen, die man erwähnen muss: regelmäßige Kontrolle durch den Unabhängigen Kontrollrat (Abs. 5 Satz 2), Vorrang europäischer Anbieter (Abs. 7 Nr. 1), Diskriminierungsverbot (Nr. 2), interne Stichproben (Nr. 4). Die GFF nennt die externe Kontrolle ausdrücklich positiv.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Karlsruhe hat für die Polizei bei automatisierten Datenanalysen eine <b>konkretisierte Gefahr</b> verlangt und den KI-Einsatz im Gefahrenvorfeld ausdrücklich ausgeschlossen. Der Verfassungsschutz arbeitet ausschließlich im Vorfeld.</p><p>Kontrolle alle zwei Jahre ist bei einem neuen System zu selten. Und der Kontrollrat hat keine IT-Abteilung, die Quellcode prüfen könnte.</p><p>„Auf ordnungsgemäßes Funktionieren" prüfen heißt nicht: prüfen, ob das System halluziniert, diskriminiert oder missbraucht wird.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:15%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Für § 37 insgesamt: Kritik überwiegt deutlich. Für Absatz 6 allein wäre die Marke bei 10. <span class="konf">Konfidenz 80</span></p>
+      <p class="kippe"><b>Kippt teilweise, wenn</b> Absatz 6 gestrichen, sensible Datenkategorien ausgenommen und die Kontrolle auf jährlich mit technischem Prüfrecht gestellt wird. Offen bleibt dann die Grundsatzfrage, ob Karlsruhes Polizeimaßstab überhaupt übertragbar ist — das ist juristisch <b>nicht entschieden</b>.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§§ 60 bis 63 BVerfSchG-E</span><h3>„Schutzmaßnahmen" — der eigentliche Systembruch</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Bisher gilt: Nachrichtendienste beobachten und informieren, die Polizei greift ein. Der Entwurf gibt dem BfV erstmals eigene <b>operative Befugnisse</b>.</p>
+      <p class="detail"><b>Was erlaubt wird:</b> Einwirkung auf Gegenstände, die für die Bedrohung gegenwärtig oder künftig eingesetzt werden, sowie auf Güter, die im Rahmen einer Bedrohung ausgeführt werden sollen. Konkret genannt sind unter anderem das Verfälschen von Informationen und die Beeinträchtigung von Tatmitteln; berichtet werden außerdem Manipulation von Geräten, Umleiten und Löschen von Daten.</p>
+      <p class="detail"><b>Was ausdrücklich nicht erlaubt ist:</b> § 60 Abs. 2 Satz 2 schließt Zwang und damit Gewalt gegen Personen aus. Abs. 1 Satz 2 gibt operativen Maßnahmen anderer Stellen Vorrang. Abs. 3 verlangt eine besondere Bedrohung. Nach Regierungsdarstellung müssen erhebliche Unruhen in großen Teilen der Bevölkerung oder besonders schwere Schäden durch Aktivitäten fremder Mächte drohen.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel — so begründet es das Ministerium</h4><p>Der Dienst sitzt zur Aufklärung bereits in der IT-Struktur eines Angreifers und sieht dort das Angriffswerkzeug starten. Nur er kann in diesem Moment noch eingreifen — die Polizei kommt nicht rechtzeitig, weiß nichts davon und hat keinen Zugang. Dem Schaden zuzusehen, wäre unverantwortlich.</p><p>Das ist ein <b>gutes</b> Beispiel. Es beschreibt eine echte Lücke.</p></div>
+      <div class="beispiel"><h4>Alltagsbeispiel — so liest es die Kritik</h4><p>„Gegenstand" ist im Entwurf nicht auf Körperliches beschränkt. Ein Server ist ein Gegenstand. Eine Plattform. Ein Datensatz. Und nach dem Wortlaut muss der Gegenstand <b>nicht</b> dem Verursacher gehören. Dass die Maßnahmen sich auf Verantwortliche beschränken sollen, steht nur in der Begründung (S. 355), nicht im Gesetz.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Die Schutzlücke ist real und das Beispiel oben ist nicht konstruiert. Bei laufenden Cyberangriffen zählen Minuten.</p><p>Die Beschränkung auf Gegenstände und der Ausschluss von Gewalt gegen Personen sind ernstgemeinte Grenzen. Wer hier von „Geheimpolizei" spricht, ignoriert eine ausdrückliche Norm.</p><p>Die Subsidiarität stellt sicher, dass die Polizei zuerst zuständig bleibt.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Das schwerste Argument ist kein historisches, sondern ein <b>Konsistenzargument</b>: Karlsruhe hat die abgesenkten Eingriffsschwellen der Nachrichtendienste ausdrücklich damit begründet, dass sie <b>keine eigenen operativen Anschlussbefugnisse</b> haben. Fällt diese Voraussetzung weg, fällt die Rechtfertigung für die niedrigen Schwellen — und zwar für <b>alle</b> Aufklärungsbefugnisse.</p><p>Der Maßnahmenkatalog ist nicht abschließend. Damit ist die Grenze weder für Mitarbeitende noch für Betroffene erkennbar.</p><p>Kontrolliert wird ausschließlich durch den Kontrollrat, der für technische Prüfung von Hacks nicht ausgestattet ist.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:22%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Die Lücke existiert. Die Norm ist viel weiter als die Lücke. <span class="konf">Konfidenz 85</span></p>
+      <p class="kippe"><b>Kippt deutlich, wenn</b> der Katalog abschließend gemacht, die Zuordnung zum Verantwortlichen in den Gesetzestext geschrieben und die Befugnis an eine konkretisierte Gefahr gebunden wird. Dann bliebe genau das BMI-Beispiel erlaubt — und sonst nichts.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 47, § 48, § 51, § 56 BVerfSchG-E</span><h3>Wohin die Erkenntnisse fließen</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Der Verfassungsschutz sammelt nicht nur — er gibt weiter. Der Entwurf schreibt die Übermittlungsregeln komplett neu. Vier Stellen sind besonders relevant.</p>
+      <p class="detail"><b>§ 47 an die Verwaltung:</b> Der Katalog enthält nun auch Aufgaben nach den <b>Versammlungsgesetzen</b> (Nr. 3 lit. c) und die <b>Ausreiseuntersagung</b> (Nr. 5) — beides galt bisher als Fall der konkretisierten Gefahr. Nr. 8 erfasst die gesamte <b>Gewerbeaufsicht</b>, ohne die frühere Beschränkung auf Zuverlässigkeits- und Eignungsprüfungen.</p>
+      <p class="detail"><b>§ 48 an die Strafverfolgung:</b> Anlage 1 listet die Straftaten. Sie enthält beinahe alle Staatsschutzdelikte mit fünf Jahren Höchststrafe — darunter §§ 90 bis 90b StGB (Verunglimpfung) und § 106 StGB. Karlsruhe hat ausdrücklich festgestellt, dass nicht alle Staatsschutzdelikte besonders schwere Straftaten sind.</p>
+      <p class="detail"><b>§ 51 an Private:</b> Unter anderem an Wirtschaftsunternehmen, zum Schutz rechtlich gewährleisteter Geheimnisse, für Erziehungs- und Bildungsziele von <b>Schulen und Kindertagesbetreuung</b> und im Bereich der Verwendung <b>öffentlicher Fördermittel</b>.</p>
+      <p class="detail"><b>§ 56 Abs. 3/4:</b> Daten, die ohne besondere Befugnisse erlangt wurden — also unter anderem aus Auskunftsersuchen und biometrischen Abgleichen — dürfen <b>ohne jede Übermittlungsschwelle</b> weitergegeben werden.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Du meldest eine Demo an. Die Versammlungsbehörde bekommt Erkenntnisse des Verfassungsschutzes über dich — unterhalb der Gefahrenschwelle. Daraus werden Auflagen. Du erfährst nie, worauf sie beruhen.</p><p>Oder: Ein Verein beantragt Fördermittel für ein Jugendprojekt. Die vergebende Stelle kann Erkenntnisse erhalten. Das ist die gesetzliche Grundlage für die Verfassungsschutz-Abfrage vor Förderentscheidungen.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Ein Dienst, der etwas weiß und niemandem sagen darf, ist nutzlos. Die Neufassung ist der Versuch, mehrere Karlsruher Beschlüsse umzusetzen und die alten, teils verworfenen Vorschriften zu ersetzen.</p><p>Katalogisierung ist besser als Generalklausel: Man kann jetzt nachlesen, wer was bekommen darf.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Karlsruhe verlangt für Übermittlungen an Verwaltungsbehörden ein besonders hohes Gefahrenpotenzial für hochrangige Rechtsgüter. Versammlungsrecht und Gewerbeaufsicht erfüllen das nicht durchgehend.</p><p>Private sind nicht unmittelbar grundrechtsgebunden und unterliegen keiner vergleichbaren Transparenzpflicht. Übermittlungen an sie brauchen deshalb <b>höhere</b>, nicht niedrigere Hürden.</p><p>§ 56 Abs. 3 kennt gar keine Schwelle. Das ist auch für weniger eingriffsintensive Daten verfassungsrechtlich nicht haltbar.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:22%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Die Systematisierung ist gut. Die einzelnen Kataloge sind zu weit. <span class="konf">Konfidenz 78</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> Versammlungsrecht und Ausreiseuntersagung wieder an die konkretisierte Gefahr gebunden und § 56 Abs. 3 mit einer Schwelle versehen wird.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 32 Abs. 4 i.V.m. § 3 Abs. 5 BVerfSchG-E</span><h3>Wenn der Quellenschutz automatisch entfällt</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Journalistinnen, Anwälte, Ärztinnen und Seelsorger genießen besonderen Schutz. Der entfällt bei <b>Verstrickung</b> — wenn sie selbst an der Bedrohung beteiligt sind. Die Definition dieser Beteiligung ist der Streitpunkt.</p>
+      <p class="detail">Nach § 3 Abs. 5 genügt laut Begründung (S. 312 f.) bereits <b>jede objektive und mittelbare Unterstützung</b>. Ausdrücklich genannt wird auch die <b>Nachrichtenmittlung</b> (S. 313). Karlsruhe hat für Journalisten und Anwälte als Nachrichtenmittler qualifizierte Eingriffsschwellen verlangt.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Eine Investigativjournalistin trifft eine Quelle aus einer beobachteten Struktur und veröffentlicht deren Informationen. Genau das kann als mittelbare Unterstützung gewertet werden — der Schutz entfällt dann <b>automatisch</b>, ohne Abwägung zwischen Sicherheit und Pressefreiheit im Einzelfall.</p><p>Beim Anwalt dasselbe: Menschen aus einer beobachteten Szene suchen sich oft szenenahe Anwälte. Genau dort wird der Vertraulichkeitsschutz dünn.</p></div>
+      <p class="detail">Reporter ohne Grenzen ergänzt den unterschätzten Teil: In Kombination mit § 37 könnte eine Person schon <b>als Risiko markiert sein, bevor sie überhaupt etwas weitergegeben hat</b>.</p>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Echte Verstrickungsfälle gibt es. Anwälte als Kuriere, Ärzte als Deckadressen, Medienstrukturen als Propagandaarm eines fremden Dienstes sind dokumentierte Muster.</p><p>Ein absoluter Schutz würde eine sichere Nische schaffen, die gezielt angesteuert würde.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Die Ausnahme greift bei Investigativrecherche im nachrichtendienstlich relevanten Milieu praktisch immer — also genau dort, wo sie am wenigsten greifen dürfte.</p><p>„Objektiv und mittelbar" verzichtet auf jede subjektive Tatseite. Wer nichts wusste und nichts wollte, kann trotzdem verstrickt sein.</p><p>Der Schutz verschwindet nicht nach Abwägung, sondern automatisch. Das ist der Kern des Problems.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:20%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Ausnahmen sind nötig. Diese Ausnahme frisst die Regel. <span class="konf">Konfidenz 85</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> die Verstrickung auf subjektive Beteiligung begrenzt und die Nachrichtenmittlung ausdrücklich ausgenommen wird.</p>
+    </div>
+  </article>
+</section>
+
+<!-- ============ KAPITEL 4 ============ -->
+<section class="kapitel" id="k4">
+  <div class="kapitel-kopf">
+    <span class="kapitel-nr">Kapitel 4</span>
+    <h2>Kontrolle und Rechtsschutz</h2>
+    <p>Hier wird in der Debatte am meisten falsch behauptet — in beide Richtungen. Deshalb zuerst das, was stimmt.</p>
+  </div>
+
+  <article class="karte" data-lean="beide">
+    <div class="karte-kopf"><span class="norm">§ 27 UKRatG-E i.V.m. § 34 BVerfSchG-E</span><h3>Es gibt weiterhin einen Richter. Nur sitzt er woanders.</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Die verbreitetste Falschbehauptung zu diesem Entwurf lautet: Der Richtervorbehalt werde abgeschafft, Überwachung sei künftig eine reine Verwaltungsentscheidung. <b>Das stimmt nicht.</b></p>
+      <p class="detail">Der Unabhängige Kontrollrat hat ein <b>gerichtsähnliches Kontrollorgan</b>, das besonders eingriffsintensive Einzelmaßnahmen vorab genehmigt — überwiegend besetzt mit Richterinnen und Richtern. Das BMI schreibt selbst, die unabhängige Vorabkontrolle werde <b>auf weitere Intensiveingriffe erstreckt</b>. Auch die GFF, die schärfste Kritikerin, beschreibt die Vorabkontrolle als zentrale Aufgabe und bewertet die Kontrolle der Datenanalyse durch den Kontrollrat ausdrücklich positiv.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Es ist wie ein Ermittlungsrichter — mit drei Unterschieden: Der Termin ist geheim. Du erfährst nichts davon. Und es ist kein Anwalt dabei, der für dich spricht.</p><p>Das ist gruselig genug. Man muss es nicht falsch erzählen.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Karlsruhe hat eine hauptamtliche Aufsicht verlangt, weil die ehrenamtliche G-10-Kommission nicht ausreicht. Die Bündelung setzt eine Gerichtsvorgabe um.</p><p>Eine Stelle, die alles sieht, erkennt Muster, die vier getrennte Stellen nicht erkennen. Der Entwurf begründet das mit dem Ende der Zersplitterung (S. 625).</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Gerichtsähnlich ist ein Euphemismus: keine Öffentlichkeit, keine Verfahrensrechte für Betroffene, keine Anwälte.</p><p>Das Organ wächst von sechs auf acht Mitglieder — bei einem Vielfachen an Aufgaben. Die zwei neuen nichtrichterlichen Mitglieder müssen ebenfalls Volljuristen sein. Eine IT-Abteilung, die Trojaner oder KI-Systeme technisch prüfen könnte, ist nicht vorgesehen.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:55%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Die Ausweitung der Vorabkontrolle ist eine echte Verbesserung. Die Ausstattung ist es nicht. <span class="konf">Konfidenz 85</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> sich zeigt, dass die Vorabkontrolle durch § 31 (nächste Karte) praktisch leerläuft.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 31 UKRatG-E</span><h3>Erst machen, dann fragen</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Neu: Bei <b>Gefahr im Verzug</b> dürfen die Dienste eine vorabkontrollpflichtige Maßnahme sofort vollziehbar erklären und <b>vor</b> der Vorabkontrolle vollziehen. Bisher war auch in Eilfällen eine Vorabkontrolle notwendig.</p>
+      <p class="detail">Der Eilbedürftigkeit wurde bislang mit Zwischenfeststellungsanordnungen begegnet: Für eine fest umrissene Gruppe von Cyberangriffen wurden Maßnahmen vorab als rechtmäßig bestätigt. Dieser Weg existiert also bereits — der Entwurf ersetzt ihn durch die einfachere Lösung.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Wie eine Hausdurchsuchung, für die man sich den Beschluss hinterher holt. Das gibt es im Strafprozessrecht — und es ist dort der Klassiker unter den Erosionshebeln. Karlsruhe musste ausdrücklich klarstellen, dass „Gefahr im Verzug" die eng begrenzte Ausnahme bleiben muss und nicht zur Routine werden darf. <i>(Aus dem Gedächtnis rekonstruiert — bitte selbst nachschlagen, bevor du es zitierst.)</i></p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Cyberlagen entwickeln sich in Minuten. Ein Genehmigungsverfahren, das Stunden dauert, kommt zu spät.</p><p>Die Maßnahme wird ja kontrolliert — nur eben unmittelbar danach. Rechtswidriges bleibt rechtswidrig und muss gelöscht werden.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Nachträgliche Kontrolle kann einen vollzogenen Eingriff nicht rückgängig machen. Was der Trojaner gesehen hat, hat er gesehen.</p><p>Der Eilfall neigt zur Selbstvermehrung. Wer ihn feststellt, ist dieselbe Stelle, die die Maßnahme will.</p><p>Und: Es gab bereits ein funktionierendes Instrument für Eilfälle. Man ersetzt eine kontrollierte Lösung durch eine unkontrollierte.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:22%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Das ist die Stelle, an der der Richtervorbehalt tatsächlich aufgeweicht wird. <span class="konf">Konfidenz 78</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> eine harte Frist (etwa 24 Stunden), eine Berichtspflicht über jeden Eilfall und ein automatisches Verwertungsverbot bei nachträglicher Ablehnung ergänzt werden.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">§ 3 Abs. 1 UKRatG-E, § 70 Abs. 2 Nr. 2 BVerfSchG-E</span><h3>Die Datenschutzaufsicht verliert fast alles</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Soweit der Kontrollrat zuständig ist, ist die Bundesdatenschutzbeauftragte es <b>nicht mehr</b>. Für das BfV bleibt ihr nur: allgemeine Verwaltung, Aus- und Fortbildung sowie die Mitwirkung nach § 2 Abs. 5.</p>
+      <p class="detail">Das betrifft nicht nur die Vorabkontrolle, sondern auch nachträgliche Kontrollen und Eingaben von Einzelpersonen. Die eigentliche nachrichtendienstliche Tätigkeit wird von der BfDI künftig gar nicht mehr beaufsichtigt.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Bisher gab es einen Prüfer, der unangekündigt kommen, in alles hineinschauen und es danach in einem <b>öffentlichen Jahresbericht</b> aufschreiben konnte. Künftig ist er für die Kantine und die Ausbildung zuständig, nicht mehr für die Arbeit.</p><p>Die BfDI selbst sagt dazu: Die Kontrolle würde nicht gestärkt, sondern erheblich geschwächt; die geplante Ausgestaltung entspreche nicht dem Standard einer wirksamen Kontrolle.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Vier Kontrollstellen für dieselbe Behörde erzeugen Reibung, Doppelprüfungen und Zuständigkeitsstreit. Der Entwurf will die Zersplitterung beenden.</p><p>Eine Stelle mit Vollzugriff kann Gesamtzusammenhänge beurteilen, die verteilten Prüfern entgehen.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Die BfDI war nach übereinstimmender Einschätzung von Kritikern <b>und</b> Praktikern die wirksamste Bremse — gerade weil sie technische Expertise hatte und öffentlich berichten konnte.</p><p>Der Kontrollrat übernimmt die Aufgaben, aber nicht die Fähigkeiten. Datenschutzkontrolle allein an juristischen Maßstäben kann komplexe Systeme nicht prüfen.</p><p>Individualbeschwerden landen bei einer Stelle, die dafür keine Struktur hat.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:20%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Bündelung ist vertretbar. Bündelung <b>ohne</b> Übertragung der Fähigkeiten ist es nicht. <span class="konf">Konfidenz 85</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> der Kontrollrat eine eigene technische Prüfabteilung mit Quellcode-Zugriff und Spontanprüfrecht bekommt und die BfDI ein Mitwirkungsrecht behält.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">UKRatG-E · Prüfprogramm und Berichtspflichten</span><h3>Die angekündigte Kontrolle</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Das <b>administrative Kontrollorgan</b> darf nur im Rahmen eines Prüfprogramms tätig werden, das das gerichtsähnliche Organ für einen Zeitraum von <b>bis zu 24 Monaten</b> beschließt.</p>
+      <p class="detail">Steht ein Thema nicht im Programm, fehlt die Befugnis zur Prüfung. Beispiel: Enthält das Programm keinen Auftrag, die Verträge mit ausländischen Lieferanten von Spähsoftware datenschutzrechtlich zu prüfen, darf niemand das prüfen.</p>
+      <p class="detail">Öffentlicher Bericht: <b>alle zwei Jahre</b>, für den ersten kann sich der Kontrollrat bis <b>2030/31</b> Zeit lassen — und dann unter Beachtung des Geheimschutzes in abstrakter Weise.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Eine Lebensmittelkontrolle, bei der der Betrieb zwei Jahre vorher weiß, welche Kühlschränke geöffnet werden. Und der Prüfbericht erscheint erstmals in fünf Jahren, in allgemeiner Form.</p></div>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Planbarkeit erlaubt es, Prüfungen inhaltlich vorzubereiten statt punktuell zu stochern. Ein Programm zwingt zur Schwerpunktsetzung statt zur Zufallsauswahl.</p><p>Bei Geheimdiensten sind Berichte immer eine Gratwanderung — jede Detailinformation ist potenziell operativ relevant.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Kontrolle ohne Überraschungsmoment ist keine wirksame Kontrolle. Das ist kein politisches Argument, sondern Prüfungslehre.</p><p>Ein zweijähriger Berichtsrhythmus mit fünfjähriger Anlaufzeit macht öffentliche Rechenschaft in der ersten Legislaturperiode unmöglich — also genau in der Phase, in der die neuen Befugnisse eingeübt werden.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:18%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Für die Anlaufphase kaum verteidigbar. <span class="konf">Konfidenz 80</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> Spontanprüfrechte und ein jährlicher Bericht ab dem ersten Jahr ergänzt werden.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="beide">
+    <div class="karte-kopf"><span class="norm">§ 50 Verwaltungsgerichtsordnung</span><h3>Eine Instanz statt drei</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Wer als Vereinigung oder Partei gegen Einstufung und Beobachtung klagen will, kann das künftig nur noch <b>direkt beim Bundesverwaltungsgericht</b> — in erster wie letzter Instanz. Es gibt keine Berufung mehr.</p>
+      <p class="detail">Im veröffentlichten Referentenentwurf erfasst die Regelung nur den Rechtsschutz gegen die Information der Öffentlichkeit, nicht die Einstufung selbst. Das BMI hat auf Anfrage erklärt, im Regierungsentwurf sollten <b>beide</b> Streitgegenstände aufgeführt werden. Eine Übergangsregelung für anhängige Verfahren enthält der Entwurf nicht — laufende Verfahren dürften also unberührt bleiben.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Die AfD klagt gegen den Verfassungsschutz seit 2019 beziehungsweise 2021. Mehrere Eil- und Hauptverfahren, mehrere Instanzen, bis heute nicht abschließend geklärt. Künftig: ein Gericht, ein Verfahren, fertig.</p><p>Das gilt genauso für linke Gruppen, Neonazi-Strukturen und islamistische Vereinigungen.</p></div>
+      <p class="detail">Bemerkenswert: Diese Norm wird aus dem linken Spektrum deutlich <b>leiser</b> kritisiert als etwa die Hackbacks — obwohl sie eine Rechtsschutzverkürzung derselben Kategorie ist. Der Grund liegt auf der Hand: Der aktuelle Hauptnutznießer des langen Instanzenzugs ist die AfD. Wer diesen Punkt in einer Debatte nicht selbst anspricht, liefert dem Gegenüber den stärksten Konter.</p>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Warum das so gemacht wird</h4><p>Jahrelange Hängepartien nutzen niemandem. Solange nichts geklärt ist, kann jede Seite behaupten, die Rechtsfragen seien offen.</p><p>Art. 19 Abs. 4 Grundgesetz garantiert <b>effektiven</b> Rechtsschutz, nicht eine Mindestzahl an Instanzen. Direktzuständigkeiten des BVerwG gibt es in anderen Bereichen bereits. <i>(Aus dem Gedächtnis rekonstruiert.)</i></p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Bei dieser Materie geht es massiv um Tatsachenfeststellung — Dokumente, Zitate, Zurechnung. Eine einzige Tatsacheninstanz ist bei dieser Beweislast riskant.</p><p>Was heute gegen eine Partei wirkt, wirkt morgen gegen eine andere. Rechtsschutzverkürzungen sind nie gruppenspezifisch.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:45%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Hier ist die Lage wirklich offen — beide Seiten haben ein tragfähiges Argument. <span class="konf">Konfidenz 60</span></p>
+      <p class="kippe"><b>Kippt zur Kritik, wenn</b> keine erweiterten Beweiserhebungspflichten des BVerwG ergänzt werden. <b>Kippt zur Begründung, wenn</b> doch.</p>
+    </div>
+  </article>
+
+  <article class="karte" data-lean="kritik">
+    <div class="karte-kopf"><span class="norm">Artikel 6 — Informationsfreiheitsgesetz</span><h3>Der schwächste Teil des ganzen Pakets</h3></div>
+    <div class="karte-koerper">
+      <p class="klarsatz">Die Gesetzesbegründung (S. 659) formuliert es unmissverständlich: <b>Alle Tätigkeiten der Nachrichtendienste sollen vom Anspruch auf Informationszugang ausgeschlossen sein.</b></p>
+      <p class="detail">Das gilt künftig auch für Informationen über die Dienste, die <b>anderen Stellen</b> vorliegen — insbesondere dem Unabhängigen Kontrollrat. Reporter ohne Grenzen ergänzt: Damit sind auch die entsprechenden Stellen im Bundeskanzleramt, im Innen- und im Verteidigungsministerium von Auskunftsersuchen ausgenommen. Selbst eine Ausnahme im Hochschulstatistikgesetz soll verhindern, dass die Zahl künftiger Nachwuchskräfte bekannt wird.</p>
+      <div class="beispiel"><h4>Alltagsbeispiel</h4><p>Nicht nur die Behörde schweigt — auch derjenige, der die Behörde kontrolliert. Wie eine Prüfstelle, über deren Prüfungen man nichts erfahren darf, weil die Prüfungen von der geprüften Stelle handeln.</p></div>
+      <p class="detail"><b>Warum das hier anders bewertet wird als alles andere:</b> Für jeden anderen Punkt in diesem Dossier gibt es eine vorgetragene sachliche Begründung — Bedrohungslage, Karlsruher Frist, operative Notwendigkeit. Für die IFG-Ausnahme habe ich <b>keine</b> gefunden. Sie erzeugt keinen Sicherheitsgewinn, nur Intransparenz.</p>
+    </div>
+    <div class="zwei">
+      <div class="spalte pro"><h4>Was sich dafür sagen ließe</h4><p>Jede Einzelinformation über Personal, Struktur und Arbeitsweise kann von gegnerischen Diensten zu einem Lagebild zusammengesetzt werden. Der Schutz vor Mosaik-Aufklärung ist ein reales Konzept.</p><p>Anfragen binden Ressourcen, die anderswo fehlen.</p></div>
+      <div class="spalte contra"><h4>Wo der Haken liegt</h4><p>Die Dienste selbst waren schon bisher vom IFG ausgenommen. Neu ist die Erstreckung auf die <b>Kontrolleure</b> — und dafür greift das Mosaik-Argument nicht.</p><p>Eine Ausbildungsstatistik ist keine operative Information. Wenn selbst diese Schwelle gerissen wird, geht es nicht mehr um Geheimschutz.</p><p>Es steht in direktem Widerspruch zum erklärten Ziel des Entwurfs, die Kontrolle zu stärken.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:10%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Der eindeutigste Punkt im gesamten Dossier. <span class="konf">Konfidenz 88</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> die Regierung konkrete Fälle darlegt, in denen IFG-Anfragen an den Kontrollrat operativen Schaden verursacht haben.</p>
+    </div>
+  </article>
+</section>
+
+<!-- ============ KAPITEL 5 ============ -->
+<section class="kapitel" id="k5">
+  <div class="kapitel-kopf">
+    <span class="kapitel-nr">Kapitel 5</span>
+    <h2>Der BND-Teil — kurz, aber zum Auseinanderhalten</h2>
+    <p>Damit du in einer Debatte nicht das Falsche dem Falschen zuschreibst.</p>
+  </div>
+
+  <article class="karte" data-lean="beide">
+    <div class="karte-kopf"><span class="norm">Artikel 2 — BND-Gesetz (Zuständigkeit: Kanzleramt)</span><h3>Was nur der Auslandsdienst darf</h3></div>
+    <div class="karte-koerper">
+      <div class="tab-wrap"><table>
+        <thead><tr><th style="width:30%">Befugnis</th><th>Was drinsteht — und der Haken</th></tr></thead>
+        <tbody>
+          <tr><td><b>Strategische Aufklärung</b></td><td>Internetknoten anzapfen, bis zu <b>15 % des Datenvolumens</b>, das in allen Telekommunikationsnetzen übertragen werden <i>kann</i>. Haken: Das ist die <b>Kapazität</b>, nicht der tatsächliche Verkehr. Über den Frankfurter Knoten DE-CIX können über 200 Tbit/s fließen, tatsächlich flossen zuletzt im Schnitt rund 13 Tbit/s. 15 % der Kapazität entsprächen damit dem gesamten Verkehr.</td></tr>
+          <tr><td><b>Inlandsfilter</b></td><td>Reine Inlandskommunikation ist tabu und muss herausgefiltert werden — „soweit technisch möglich". Der DE-CIX-Betreiber sagte bereits vor Jahren: Selbst bei 99,9 % Genauigkeit blieben mehrere Millionen falsch getaggte Verbindungen pro Tag.</td></tr>
+          <tr><td><b>Nacheile ins Inland</b></td><td>Bei qualifiziertem Inlandsbezug soll der BND im Inland weiterarbeiten dürfen — etwa wenn ein im Ausland beobachteter Agent sich vorübergehend in Deutschland aufhält. Bisher war Deutschland kein Einsatzgebiet.</td></tr>
+          <tr><td><b>Hackback</b></td><td>Bei unmittelbar bevorstehender Gefahr für ein besonders gewichtiges Rechtsgut: Daten verändern oder löschen, Datenströme umleiten, den Betrieb von IT-Systemen einschränken oder unterbinden.</td></tr>
+          <tr><td><b>Post</b></td><td>Heimliches Öffnen <b>und Bearbeiten</b> des Inhalts von Post- und Warensendungen.</td></tr>
+          <tr><td><b>Kinetische Mittel</b></td><td>Ein Passus in den <b>Erläuterungen</b> — nicht im Normtext — sieht vor, dass der BND im Spannungs- oder Verteidigungsfall zu kinetischen Mitteln greifen können soll. Im Militärjargon: Waffengewalt. Der Fachexperte Thomas Rieger nennt das spektakulär und fordert eine rechtsstaatliche Eingrenzung.</td></tr>
+          <tr><td><b>Biometrie</b></td><td>Abgleich mit öffentlich zugänglichen Internetdaten. Wichtig: „Öffentlich zugänglich" umfasst laut Ministerium <b>auch Bereiche hinter formalen Zugangshürden</b> — also etwa hinter einer Registrierung.</td></tr>
+          <tr><td><b>Journalistenschutz</b></td><td>Reporter ohne Grenzen: Die Eingriffsschwellen für Ausland-Inland-Kommunikation werden an das niedrigere Niveau der Ausland-Ausland-Kommunikation angeglichen. Für Journalistinnen in Deutschland, die mit Kontakten im Ausland kommunizieren, bräuchte es dann keinen konkreten Nachweis einer Tatbeteiligung mehr.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="beispiel"><h4>Merksatz für die Debatte</h4><p>„Der Verfassungsschutz darf jetzt Tomahawks kaufen" — falsch, das ist ein Begründungspassus zum BND im Verteidigungsfall.<br>„Der BND darf am Bahnhof deine Kamera anzapfen" — falsch, das ist § 15 BVerfSchG und damit das BfV.</p></div>
+    </div>
+    <div class="waage">
+      <div class="waage-schiene"><div class="waage-mitte"></div><div class="waage-marke" style="--pos:35%"></div></div>
+      <div class="waage-labels"><span>Kritik trägt</span><span>Beide</span><span>Begründung trägt</span></div>
+      <p class="waage-urteil">Beim BND ist der Reformdruck am größten und die Unbestimmtheit ebenfalls. <span class="konf">Konfidenz 70</span></p>
+      <p class="kippe"><b>Kippt, wenn</b> die 15 % auf das tatsächliche Verkehrsvolumen bezogen und die kinetischen Mittel in den Normtext mit Parlamentsvorbehalt überführt werden.</p>
+    </div>
+  </article>
+</section>
+
+<!-- ============ KAPITEL 6 ============ -->
+<section class="kapitel" id="k6">
+  <div class="kapitel-kopf">
+    <span class="kapitel-nr">Kapitel 6</span>
+    <h2>Bilanz, Optionen, offene Fragen</h2>
+    <p>Was am stärksten trägt, was zu Unrecht untergeht, was der Bundestag reparieren könnte — und was ich nicht prüfen konnte.</p>
+  </div>
+
+  <h3 style="font-family:var(--f-display);text-transform:uppercase;font-size:1.4rem;margin:2rem 0 .8rem">Die sechs stärksten Kritikpunkte</h3>
+  <ol class="rangliste">
+    <li><h4>Das Konsistenzargument zu den §§ 60 ff. <span class="konf">Konfidenz 85</span></h4><p>Karlsruhe hat die niedrigen Schwellen des Verfassungsschutzes ausdrücklich damit begründet, dass er keine operativen Anschlussbefugnisse hat. Der Gesetzgeber kann nicht beides haben. Das ist kein Werturteil, sondern eine innere Widerspruchsanzeige.</p></li>
+    <li><h4>Die IFG-Ausnahme <span class="konf">Konfidenz 88</span></h4><p>Nicht mit der Bedrohungslage und nicht mit der Karlsruher Frist begründbar. Reiner Zugewinn an Intransparenz — auch bei den Kontrolleuren.</p></li>
+    <li><h4>Fehlendes Schwachstellenmanagement <span class="konf">Konfidenz 85</span></h4><p>Karlsruhe hat es verlangt, der Entwurf lässt es nicht in Ansätzen erkennen. Dazu das Anreizargument: sinkende Meldebereitschaft der KRITIS-Betreiber senkt die Sicherheit insgesamt.</p></li>
+    <li><h4>Quellenschutz und § 32 Abs. 4 <span class="konf">Konfidenz 85</span></h4><p>Eine Ausnahme, die bei Investigativrecherche praktisch immer greift, ist keine Ausnahme mehr.</p></li>
+    <li><h4>§ 37 Abs. 6 — vollautomatisierte Anordnung <span class="konf">Konfidenz 85</span></h4><p>Software, die ohne menschliche Mitwirkung eine Maßnahme auslöst. In der öffentlichen Debatte praktisch nicht vorhanden.</p></li>
+    <li><h4>Entmachtung der Datenschutzaufsicht <span class="konf">Konfidenz 85</span></h4><p>Bündelung ohne Übertragung der technischen Fähigkeiten und ohne Öffentlichkeitsfunktion.</p></li>
+  </ol>
+
+  <h3 style="font-family:var(--f-display);text-transform:uppercase;font-size:1.4rem;margin:2rem 0 .8rem">Was zu Unrecht untergeht</h3>
+  <ol class="rangliste">
+    <li><h4>Die Fünf-Jahres-Grenze für Verdachtsfälle</h4><p>Erstmals eine harte zeitliche Schranke, wo es bisher keine gab. Sie schränkt den Verfassungsschutz ein — ausgerechnet gegenüber der Partei, um die politisch gestritten wird.</p></li>
+    <li><h4>Legalistische Bestrebungen sind von Stufe 2 ausgenommen</h4><p>Wer den legalen Weg geht, bleibt außerhalb der schärfsten Mittel. Von der GFF ausdrücklich gelobt.</p></li>
+    <li><h4>Die Vorabkontrolle wird ausgeweitet, nicht abgeschafft</h4><p>Auf mehr Maßnahmearten als bisher. Wer „kein Richter mehr" behauptet, hat unrecht — und beschädigt damit die zutreffenden Punkte.</p></li>
+    <li><h4>§ 60 Abs. 2 Satz 2: kein Zwang, keine Gewalt gegen Personen</h4><p>Eine ausdrückliche Grenze im Gesetzestext. Wer sie ignoriert, argumentiert an der Norm vorbei.</p></li>
+    <li><h4>Auch beschlagnahmte Geräte brauchen jetzt eine Rechtsgrundlage</h4><p>Das Aufbrechen eines Geräts im staatlichen Gewahrsam wird erstmals ausdrücklich geregelt — von der GFF begrüßt.</p></li>
+    <li><h4>Die G-10-Befugnisse werden ins Fachgesetz integriert</h4><p>Ein Systematisierungsgewinn, den auch die schärfsten Kritiker als sinnvoll bezeichnen.</p></li>
+  </ol>
+
+  <h3 style="font-family:var(--f-display);text-transform:uppercase;font-size:1.4rem;margin:2rem 0 .8rem">Optionen: was der Bundestag ändern könnte</h3>
+  <div class="reparatur">
+    <div><h4>§ 3 Abs. 7 Satz 2</h4><p>Unwiderlegliche Vermutung in ein <b>Regelbeispiel</b> umwandeln und eine Erheblichkeitsschwelle für die Straftat einziehen.</p></div>
+    <div><h4>§ 8 / § 15</h4><p>Biometrie und Kamerazugriff als <b>nachrichtendienstliche Mittel</b> einstufen und an Stufe 2 binden. Ton streichen.</p></div>
+    <div><h4>§§ 11 ff.</h4><p><b>Kumulationsregel</b>: Ab einer bestimmten Zahl von Auskünften zur selben Person greifen die Schutzvorschriften.</p></div>
+    <div><h4>§ 25 Abs. 1 Satz 2</h4><p>Definition des privaten Systems an die Karlsruher Formel angleichen; Trojanereinsatz im Normtext benennen.</p></div>
+    <div><h4>Schwachstellen</h4><p>Gesetzlicher <b>Abwägungs- und Offenlegungsprozess</b> mit Fristen. Keine automatische Weitergabe an den BND.</p></div>
+    <div><h4>§ 37 Abs. 6</h4><p><b>Streichen.</b> Vollautomatisierte Anordnung von Eingriffsmaßnahmen ohne Menschen ist nicht reparierbar.</p></div>
+    <div><h4>§§ 60 ff.</h4><p>Maßnahmenkatalog <b>abschließend</b>; Zuordnung zum Verantwortlichen in den Text; Bindung an konkretisierte Gefahr.</p></div>
+    <div><h4>§ 31 UKRatG</h4><p>Harte Nachholfrist, Berichtspflicht je Eilfall, Verwertungsverbot bei nachträglicher Ablehnung.</p></div>
+    <div><h4>Kontrollrat</h4><p>Eigene <b>technische Prüfabteilung</b> mit Quellcode-Zugriff, Spontanprüfrecht, jährlicher Bericht ab Jahr eins.</p></div>
+    <div><h4>Artikel 6 (IFG)</h4><p>Erstreckung auf Kontrollstellen <b>streichen</b>. Die Dienste selbst waren ohnehin schon ausgenommen.</p></div>
+    <div><h4>§ 32 Abs. 4</h4><p>Verstrickung auf <b>subjektive</b> Beteiligung begrenzen; Nachrichtenmittlung ausdrücklich ausnehmen.</p></div>
+    <div><h4>Querschnitt</h4><p><b>Befristung mit Evaluationspflicht</b> für alle neuen Befugnisse. Das ist die wirksamste Antwort auf die Frage, wer dieses Instrument in zehn Jahren bedient.</p></div>
+  </div>
+
+  <h3 style="font-family:var(--f-display);text-transform:uppercase;font-size:1.4rem;margin:2rem 0 .8rem">Drei Fehler, die in der Debatte ständig gemacht werden</h3>
+  <ol class="rangliste">
+    <li><h4>„Der Richtervorbehalt wird abgeschafft"</h4><p>Falsch. Die Vorabkontrolle wird ausgeweitet. Die zutreffende Version lautet: ein Richter, aber im Geheimen, ohne dich, ohne Anwalt — und ab jetzt bei Gefahr im Verzug notfalls erst hinterher.</p></li>
+    <li><h4>BND-Befugnisse dem Verfassungsschutz zuschreiben</h4><p>15 %, Postbearbeitung, kinetische Mittel, Wohnraumüberwachung als Neuerung — alles BND. Diese Verwechslung erledigt jedes Argument in zehn Sekunden.</p></li>
+    <li><h4>„Das bisherige System hat sich bewährt"</h4><p>Karlsruhe hat es in mehreren Entscheidungen beanstandet und eine Frist gesetzt. Eine Neuregelung ist erzwungen. Kohärent wäre: „Reform ja, aber mit anderer Balance" — oder die klassische Position „Inlandsgeheimdienst abschaffen". Nicht: „alles bleibt".</p></li>
+  </ol>
+</section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss-in">
+    <h2>Was ich nicht prüfen konnte</h2>
+    <p>Diese Liste gehört ins Dossier, nicht ins Kleingedruckte. Wer sie überliest, zitiert irgendwann etwas, das er nicht belegen kann.</p>
+
+    <h3>Nicht am Normtext verifiziert</h3>
+    <ul>
+      <li><b>Das 700-Seiten-PDF selbst.</b> Der Server des Innenministeriums lieferte dem Abrufwerkzeug einen Fehler. Belegt ist aus indexierten Auszügen des Entwurfs sowie aus Stellungnahmen, die paragraphen- und seitengenau zitieren.</li>
+      <li><b>Der Regierungsentwurf vom 12.08.2026.</b> Noch nicht öffentlich gesichtet. Bekannt sind bislang nur die Fünf-Jahres-Grenze und die angekündigte Korrektur bei § 50 VwGO.</li>
+      <li><b>Ein Betretensrecht für Wohnungen durch das BfV.</b> In der Presse kritisiert, von mir keiner Norm zuzuordnen.</li>
+      <li><b>Die Verlagerung des Weisungsrechts nach § 7 auf das Innenministerium.</b> Plausibel und, falls zutreffend, ein erheblicher und wenig beachteter Machtzuwachs — denn geltendes Recht verlangt einen Angriff auf die verfassungsmäßige Ordnung des Bundes und eine Entscheidung der Bundesregierung als Kollegialorgan. Am Entwurfstext nicht verifiziert.</li>
+      <li><b>Ein Inkrafttretensdatum.</b> Belegt ist nur, dass Artikel 4 eine Änderung des BVerfSchG zum 1. Januar 2030 vorsieht — also eine gestufte Regelung.</li>
+    </ul>
+
+    <h3>Aus dem Gedächtnis rekonstruiert, nicht abgerufen</h3>
+    <ul>
+      <li>Der Verfassungsrang des Trennungsgebots. Anerkannt ist ein informationelles Trennungsprinzip; ein organisatorisches Trennungsgebot mit vollem Verfassungsrang ist in der Literatur umstritten und geht auf den Polizeibrief von 1949 zurück. Wer es als harte Verfassungsschranke behandelt, argumentiert auf strittigem Boden.</li>
+      <li>Die Karlsruher Rechtsprechung zu „Gefahr im Verzug" im Strafprozessrecht.</li>
+      <li>Dass Art. 19 Abs. 4 Grundgesetz effektiven Rechtsschutz garantiert, nicht eine Mindestzahl von Instanzen.</li>
+    </ul>
+
+    <h3>Zeitachse</h3>
+    <ul>
+      <li><b>06.07.2026</b> Referentenentwurf veröffentlicht (Bearbeitungsstand 05.07.2026)</li>
+      <li><b>bis 17.07.2026</b> Verbändebeteiligung — elf Tage</li>
+      <li><b>12.08.2026</b> Kabinettsbeschluss</li>
+      <li><b>ab Herbst 2026</b> Beratung im Bundestag — hier liegt der eigentliche Hebel</li>
+      <li><b>31.12.2026</b> Frist des Bundesverfassungsgerichts</li>
+      <li><b>01.01.2030</b> gestufte Änderung des BVerfSchG nach Artikel 4</li>
+    </ul>
+
+    <h3>Verwendete Quellen</h3>
+    <ul>
+      <li>Bundesministerium des Innern, Gesetzgebungsverfahren „Gesetz zur Reform des Nachrichtendienstrechts" — Vorhabenbeschreibung und Referentenentwurf</li>
+      <li>Gesellschaft für Freiheitsrechte, Stellungnahme vom 14.07.2026 — die textnächste öffentlich zugängliche Quelle</li>
+      <li>netzpolitik.org, „Geheimdienstreform: Zeitenwende für Spione", 10.07.2026, sowie das RSF-Interview vom 11.08.2026</li>
+      <li>Legal Tribune Online: Meldung vom 06.07.2026, Gastkommentar Niko Härting vom 13.07.2026, Analyse zur VwGO-Änderung vom 21.07.2026, Kabinettsmeldung vom 12.08.2026</li>
+      <li>taz, „Dobrindts Schnüffeloffensive", 15.07.2026 — mit Stellungnahmen von BfDI, GFF, AG Kritis, Grünen, Linken und SPD</li>
+      <li>CORRECTIV, Verbändekritik-Überblick vom 17.07.2026 — inkl. der Analyse von Thomas Rieger</li>
+      <li>Reporter ohne Grenzen und Deutscher Journalisten-Verband, Stellungnahmen zum Quellenschutz</li>
+      <li>ZDFheute und Bundesregierung, Darstellungen zum Kabinettsbeschluss vom 12.08.2026</li>
+      <li>Berliner Zeitung, Cicero/Kubicki und weitere zur Regelung über V-Personen ab 16 Jahren</li>
+    </ul>
+
+    <p style="margin-top:2rem;font-size:.82rem;color:rgba(227,231,227,.55)">Dossier erstellt am 13.08.2026. Alle Waage-Positionen und Konfidenzwerte sind Einschätzungen, keine Messwerte — sie sind dafür da, widersprochen zu werden. Prüf die Kippbedingungen, bevor du einen Punkt in einer Debatte einsetzt.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var knoepfe = document.querySelectorAll('.filter button');
+  var karten = document.querySelectorAll('.karte');
+  knoepfe.forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = b.dataset.f;
+      knoepfe.forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+      karten.forEach(function(k){
+        var zeigen = (f === 'alle') || (k.dataset.lean === f);
+        k.classList.toggle('aus', !zeigen);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
