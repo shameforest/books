@@ -1,0 +1,793 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Nach der Welle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: ein Messprotokoll der Aufmerksamkeit – Millimeterpapier, Tintenkurven, ein Signalrot nur für Spitzen */
+:root{
+  --paper:#eef1f3;
+  --paper-2:#e2e7eb;
+  --ink:#141c2b;
+  --ink-soft:#4a5568;
+  --grid:rgba(30,60,90,.07);
+  --signal:#d23a2f;
+  --cool:#2f5d8a;
+  --card:#f8fafb;
+  --line:rgba(20,28,43,.16);
+  --f-display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Newsreader", Georgia, "Times New Roman", serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0f141c; --paper-2:#161d28; --ink:#e7ecf2; --ink-soft:#a3afbf;
+    --grid:rgba(160,190,220,.06); --signal:#ff6a5c; --cool:#7fb0e0; --card:#141b26; --line:rgba(231,236,242,.16);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0f141c; --paper-2:#161d28; --ink:#e7ecf2; --ink-soft:#a3afbf;
+  --grid:rgba(160,190,220,.06); --signal:#ff6a5c; --cool:#7fb0e0; --card:#141b26; --line:rgba(231,236,242,.16);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:24px 24px;
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:clamp(17px,1.05rem + .2vw,19.5px);
+  line-height:1.6;
+  padding-inline:clamp(16px,4vw,48px);
+  padding-block:0 80px;
+}
+.wrap{max-width:1180px;margin-inline:auto}
+.prose{max-width:66ch}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.04;margin:0}
+h2{font-size:clamp(2rem,1.2rem + 3.4vw,3.9rem);font-weight:800;letter-spacing:-.02em}
+h3{font-size:clamp(1.25rem,1rem + .8vw,1.65rem);font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.eyebrow b{color:var(--signal);font-weight:600}
+a{color:var(--cool);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:18px;align-items:center;justify-content:space-between;
+  padding:12px 0;background:linear-gradient(var(--paper) 70%, transparent);backdrop-filter:blur(2px)}
+.bar .brand{font-family:var(--f-display);font-weight:800;letter-spacing:-.01em}
+.bar nav{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.bar nav a{color:var(--ink-soft);text-decoration:none}
+.bar nav a:hover{color:var(--signal)}
+.progress{position:fixed;left:0;top:0;height:3px;width:0;background:var(--signal);z-index:30}
+@media (max-width:760px){.bar nav{display:none}}
+
+/* hero */
+.hero{padding-block:clamp(28px,6vw,72px) 24px;display:grid;gap:28px}
+.hero h1{font-size:clamp(3rem,1.5rem + 8vw,8.6rem);font-weight:800;letter-spacing:-.045em;line-height:.9}
+.hero h1 em{font-family:var(--f-body);font-style:italic;font-weight:400;letter-spacing:-.02em;color:var(--signal)}
+.hero .lede{font-size:clamp(1.15rem,1rem + .6vw,1.5rem);max-width:44ch;color:var(--ink-soft)}
+.scope{position:relative;border:1px solid var(--line);background:var(--card);border-radius:6px;overflow:hidden}
+.scope canvas{display:block;width:100%;height:clamp(220px,32vw,380px)}
+.scope .legend{position:absolute;left:14px;top:12px;font-family:var(--f-mono);font-size:.7rem;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase}
+.scope .readout{position:absolute;right:14px;top:12px;font-family:var(--f-mono);font-size:.72rem;color:var(--signal)}
+
+/* sections */
+section{padding-block:clamp(56px,9vw,120px) 0}
+.head{display:grid;gap:14px;margin-bottom:34px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(20px,3vw,44px);align-items:start}
+.cols > *{min-width:0}
+.stack{display:grid;gap:18px}
+
+/* Merktext */
+.merk{margin-block:42px;padding:clamp(22px,4vw,44px) 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(14px,3vw,36px);align-items:start}
+.merk .tag{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);padding-top:.7em;writing-mode:vertical-rl;transform:rotate(180deg)}
+.merk p{font-family:var(--f-display);font-weight:700;font-size:clamp(1.7rem,1rem + 3vw,3.3rem);line-height:1.05;letter-spacing:-.025em;text-wrap:balance}
+.merk p span{color:var(--signal)}
+@media (max-width:520px){.merk{grid-template-columns:1fr}.merk .tag{writing-mode:horizontal-tb;transform:none;padding:0}}
+
+/* figure */
+figure{margin:0}
+.fig{border:1px solid var(--line);background:var(--card);border-radius:6px;padding:clamp(14px,2.4vw,26px)}
+figcaption{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-soft);margin-top:12px;line-height:1.5}
+svg text{font-family:var(--f-mono)}
+.src{font-family:var(--f-mono);font-size:.7rem;color:var(--ink-soft)}
+.status{display:inline-block;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.08em;padding:1px 6px;border:1px solid var(--line);border-radius:3px;vertical-align:2px;margin-left:4px}
+.status.p{color:var(--cool);border-color:var(--cool)}
+.status.s{color:var(--ink-soft)}
+
+/* Downs stages */
+.stages{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.stages button{font-family:var(--f-mono);font-size:.74rem;border:1px solid var(--line);background:transparent;color:var(--ink);padding:8px 12px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.stages button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.stage-text{margin-top:18px;min-height:7.5em}
+.stage-text h3{margin-bottom:8px}
+.downs-path{fill:none;stroke:var(--ink);stroke-width:3}
+.downs-seg{fill:var(--signal);opacity:.0;transition:opacity .35s}
+.downs-seg.on{opacity:.16}
+.downs-dot{fill:var(--signal)}
+
+/* stat blocks */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.stat{background:var(--card);padding:22px;display:grid;gap:6px}
+.stat .n{font-family:var(--f-display);font-weight:800;font-size:clamp(2.4rem,1.6rem + 2.6vw,3.6rem);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stat .n small{font-size:.45em;font-weight:500;color:var(--ink-soft)}
+.stat p{font-size:.95rem;color:var(--ink-soft)}
+
+/* bars */
+.hbar{display:grid;gap:14px}
+.hrow{display:grid;grid-template-columns:minmax(90px,170px) 1fr;gap:12px;align-items:center}
+.hrow .lab{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-soft)}
+.track{height:26px;background:var(--paper-2);border-radius:3px;position:relative;overflow:hidden}
+.fill{height:100%;background:var(--ink);width:var(--w);border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:var(--paper);font-family:var(--f-mono);font-size:.72rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fill.hot{background:var(--signal)}
+.fill.cool{background:var(--cool)}
+.play .fill{animation:grow 1.3s cubic-bezier(.2,.8,.2,1) both}
+@keyframes grow{from{width:0}to{width:var(--w)}}
+
+/* compare table McAdam */
+.cmp{display:grid;gap:16px}
+.cmp-row{display:grid;gap:6px}
+.cmp-row .q{font-size:.98rem}
+.cmp-row .pair{display:grid;grid-template-columns:86px 1fr;gap:4px 10px;align-items:center}
+.cmp-row .who{font-family:var(--f-mono);font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em}
+.cmp-row .track{height:18px}
+
+/* fork */
+.fork svg{width:100%;height:auto}
+.fork .node rect{fill:var(--card);stroke:var(--line)}
+.fork .node text{fill:var(--ink);font-size:13px}
+.fork .node.hot rect{stroke:var(--signal);stroke-width:2}
+.fork .edge{fill:none;stroke:var(--ink-soft);stroke-width:1.6;stroke-dasharray:5 5}
+.play .fork .edge, .fork.play .edge{animation:dash 1.2s linear both}
+@keyframes dash{from{stroke-dashoffset:120}to{stroke-dashoffset:0}}
+
+/* pyramids */
+.pyr{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px}
+.pyr svg{width:100%;height:auto}
+.pyr text{font-size:12px}
+
+/* cards list */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px}
+.card{border-top:2px solid var(--ink);padding-top:14px;display:grid;gap:8px;align-content:start}
+.card .k{font-family:var(--f-mono);font-size:.7rem;color:var(--signal);letter-spacing:.1em;text-transform:uppercase}
+.card p{font-size:.98rem}
+
+/* takeaways */
+.take{counter-reset:t;display:grid;gap:0;border-top:2px solid var(--ink)}
+.take li{list-style:none;counter-increment:t;display:grid;grid-template-columns:72px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.take li::before{content:counter(t,decimal-leading-zero);font-family:var(--f-mono);font-size:.9rem;color:var(--signal);padding-top:.35em}
+.take li b{font-family:var(--f-display);font-size:clamp(1.25rem,1rem + 1vw,1.75rem);letter-spacing:-.015em;line-height:1.15;display:block;margin-bottom:6px}
+.take ol{padding:0;margin:0}
+
+/* sources */
+.sources{font-size:.9rem;display:grid;gap:10px}
+.sources li{margin:0}
+.sources ol{padding-left:1.2em;display:grid;gap:10px;margin:0}
+.note{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-soft);border-left:2px solid var(--signal);padding-left:12px}
+
+footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:.72rem;color:var(--ink-soft)}
+
+.reveal{transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.pre{transform:translateY(14px)}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<div class="progress" id="progress"></div>
+<div class="wrap">
+  <header class="bar">
+    <span class="brand">Nach der Welle</span>
+    <nav aria-label="Kapitel">
+      <a href="#zyklus">Zyklus</a><a href="#tempo">Tempo</a><a href="#welle">Protestwelle</a><a href="#menschen">Menschen</a><a href="#kern">Der Kern</a><a href="#ruhe">Ruhephase</a><a href="#spuren">Spuren</a><a href="#quellen">Quellen</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <p class="eyebrow"><b>●</b> Ein Dossier über Aufmerksamkeit, Protest und das, was danach kommt</p>
+    <h1>Die Kurve fällt.<br><em>Die Menschen bleiben.</em></h1>
+    <p class="lede">Themen schießen nach oben und verschwinden wieder. Was die Forschung darüber weiß, warum das passiert und wohin die Menschen gehen, wenn das Scheinwerferlicht weiterwandert.</p>
+    <div class="scope" aria-label="Animierte Aufmerksamkeitskurve: steiler Anstieg, Spitze, langsamer Abfall">
+      <canvas id="scope"></canvas>
+      <span class="legend">Öffentliche Aufmerksamkeit · schematisch</span>
+      <span class="readout mono" id="readout">Phase: —</span>
+    </div>
+  </div>
+
+  <!-- 1 DOWNS -->
+  <section id="zyklus">
+    <div class="head">
+      <p class="eyebrow">Kapitel 1 · Anthony Downs, 1972</p>
+      <h2>Der Zyklus der Aufmerksamkeit</h2>
+    </div>
+    <div class="cols">
+      <div class="stack prose">
+        <p>Der Ökonom Anthony Downs beschrieb 1972 am Beispiel der Umweltdebatte ein Muster, das bis heute als Grundmodell gilt: den „issue-attention cycle“. Ein Problem existiert oft schon lange, bevor die Öffentlichkeit es bemerkt. Dann wird es plötzlich entdeckt, die Erregung ist groß, und mit ihr die Hoffnung auf eine schnelle Lösung.</p>
+        <p>Der Knick kommt, wenn klar wird, was eine echte Lösung kostet. Sie verlangt Opfer von vielen. Das Interesse sinkt nicht, weil das Problem gelöst wäre, sondern weil die Menschen entmutigt, verunsichert oder gelangweilt sind. Danach folgt eine lange Phase gedämpfter Aufmerksamkeit.</p>
+        <p>Entscheidend ist Downs' Nachsatz: Die Einrichtungen und Programme, die auf dem Höhepunkt entstanden sind, bleiben oft bestehen. Die Welle verschwindet, ihre Ablagerungen nicht.</p>
+        <p class="src">Downs, A. (1972). Up and down with ecology: the „issue-attention cycle“. The Public Interest. <span class="status p">Primärtext</span></p>
+      </div>
+      <figure class="fig">
+        <svg viewBox="0 0 520 300" role="img" aria-labelledby="downsT">
+          <title id="downsT">Downs' fünf Stufen entlang einer Aufmerksamkeitskurve</title>
+          <line x1="40" y1="250" x2="505" y2="250" stroke="currentColor" opacity=".35"/>
+          <line x1="40" y1="30" x2="40" y2="250" stroke="currentColor" opacity=".35"/>
+          <text x="44" y="24" font-size="11" fill="currentColor" opacity=".7">Aufmerksamkeit</text>
+          <text x="505" y="268" font-size="11" fill="currentColor" opacity=".7" text-anchor="end">Zeit</text>
+          <rect class="downs-seg" data-s="0" x="40" y="30" width="80" height="220"/>
+          <rect class="downs-seg" data-s="1" x="120" y="30" width="80" height="220"/>
+          <rect class="downs-seg" data-s="2" x="200" y="30" width="75" height="220"/>
+          <rect class="downs-seg" data-s="3" x="275" y="30" width="105" height="220"/>
+          <rect class="downs-seg" data-s="4" x="380" y="30" width="125" height="220"/>
+          <path class="downs-path" id="downsPath" d="M40,238 C80,236 105,234 120,226 C150,200 170,60 205,52 C235,46 255,70 275,110 C305,165 345,196 380,206 C420,216 470,214 505,212"/>
+          <circle class="downs-dot" id="downsDot" r="6" cx="120" cy="226"/>
+          <g font-size="11" fill="currentColor">
+            <text x="80" y="285" text-anchor="middle">1</text>
+            <text x="160" y="285" text-anchor="middle">2</text>
+            <text x="237" y="285" text-anchor="middle">3</text>
+            <text x="327" y="285" text-anchor="middle">4</text>
+            <text x="442" y="285" text-anchor="middle">5</text>
+          </g>
+        </svg>
+        <div class="stages" role="group" aria-label="Stufe wählen">
+          <button type="button" data-s="0" aria-pressed="false">1 Vorphase</button>
+          <button type="button" data-s="1" aria-pressed="true">2 Entdeckung</button>
+          <button type="button" data-s="2" aria-pressed="false">3 Kosten</button>
+          <button type="button" data-s="3" aria-pressed="false">4 Abfall</button>
+          <button type="button" data-s="4" aria-pressed="false">5 Nachphase</button>
+        </div>
+        <div class="stage-text" id="stageText" aria-live="polite"></div>
+        <figcaption>Schematische Darstellung der fünf Stufen nach Downs. Die Kurvenform ist illustrativ, nicht gemessen.</figcaption>
+      </figure>
+    </div>
+
+    <div class="merk"><span class="tag">Merksatz</span><p>Ein Thema verschwindet selten, weil es gelöst ist. Es verschwindet, weil <span>die Lösung teuer</span> wird.</p></div>
+
+    <div class="head"><h3>Welche Themen anfällig sind</h3></div>
+    <div class="cards">
+      <div class="card"><span class="k">Merkmal 1</span><p>Die Mehrheit leidet nicht so stark unter dem Problem wie eine Minderheit. Sie kann sich also wieder abwenden.</p></div>
+      <div class="card"><span class="k">Merkmal 2</span><p>Das Problem wird von gesellschaftlichen Arrangements getragen, die einer Mehrheit oder einer mächtigen Minderheit nützen.</p></div>
+      <div class="card"><span class="k">Merkmal 3</span><p>Das Thema ist nicht aus sich heraus spannend oder ist es nicht mehr. Es braucht Dramatisierung durch die Medien.</p></div>
+    </div>
+  </section>
+
+  <!-- 2 TEMPO -->
+  <section id="tempo">
+    <div class="head">
+      <p class="eyebrow">Kapitel 2 · Messungen</p>
+      <h2>Die Wellen werden kürzer</h2>
+    </div>
+    <div class="cols">
+      <div class="stack prose">
+        <p>Downs hatte eine Beobachtung, keine Messreihe. Heute lässt sich Aufmerksamkeit zählen: in Suchanfragen, Hashtags, Klicks. Ein Team um Philipp Lorenz-Spreen untersuchte 2019 sieben Datensätze, von Büchern über Kinokarten bis zu Twitter und Reddit.</p>
+        <p>Das Ergebnis: Die Spitzen werden nicht niedriger, aber steiler. Themen steigen schneller auf und fallen schneller ab. Die Autoren erklären das mit Konkurrenz. Wenn mehr Inhalte schneller produziert und geteilt werden, verdrängen sie einander rascher. Bemerkenswert ist die Ausnahme: Bei Wikipedia und wissenschaftlichen Zitationen zeigte sich kaum eine Beschleunigung.</p>
+        <p class="src">Lorenz-Spreen, Mønsted, Hövel, Lehmann (2019). Accelerating dynamics of collective attention. Nature Communications 10. <span class="status p">Primärtext</span></p>
+      </div>
+      <figure class="fig observe">
+        <p class="eyebrow" style="margin-bottom:14px">Durchschnittliche Zeit eines Hashtags in den täglichen Top 50</p>
+        <div class="hbar">
+          <div class="hrow"><span class="lab">2013</span><div class="track"><div class="fill" style="--w:100%">17,5 Std.</div></div></div>
+          <div class="hrow"><span class="lab">2016</span><div class="track"><div class="fill hot" style="--w:68%">11,9 Std.</div></div></div>
+        </div>
+        <figcaption>Twitter, globale Hashtags. Rückgang um rund ein Drittel in drei Jahren. Quelle: Lorenz-Spreen et al. 2019.</figcaption>
+      </figure>
+    </div>
+
+    <div class="cols" style="margin-top:44px">
+      <figure class="fig">
+        <svg id="decay" viewBox="0 0 520 280" role="img" aria-labelledby="decT"><title id="decT">Abklingkurve des Neuigkeitswerts nach Wu und Huberman</title></svg>
+        <figcaption>Neuigkeitswert einer Meldung im Zeitverlauf, berechnet nach der Formel r = exp(−0,4 · t<sup>0,4</sup>), t in Stunden. Wu &amp; Huberman 2007, Daten der Plattform Digg.</figcaption>
+      </figure>
+      <div class="stack prose">
+        <h3>Eine Stunde Neuigkeit</h3>
+        <p>Schon 2007 maßen Fang Wu und Bernardo Huberman an fast 30.000 Meldungen der Plattform Digg, wie schnell Neuigkeit verblasst. Die Abnahme folgt keiner einfachen Halbwertszeit, sondern einer gestreckten Exponentialkurve: anfangs steil, dann flacher. Die typische Zeitspanne lag bei etwa 69 Minuten.</p>
+        <p>Eine spätere Studie um Cristian Candia und Albert-László Barabási fand für Lieder, Filme, Patente und Fachartikel ein zweistufiges Muster. Zuerst fällt die Aufmerksamkeit schnell, solange Menschen noch darüber sprechen. Danach sinkt sie langsam, getragen von dem, was aufgeschrieben und archiviert wurde.</p>
+        <p class="src">Wu &amp; Huberman (2007), PNAS 104(45) <span class="status s">Preprint gelesen</span> · Candia et al., Nature Human Behaviour 3 (2019) <span class="status s">Manuskript</span></p>
+      </div>
+    </div>
+
+    <div class="merk"><span class="tag">Merksatz</span><p>Das Reden vergeht schnell. <span>Was aufgeschrieben ist,</span> vergeht langsam.</p></div>
+
+    <div class="stats">
+      <div class="stat"><span class="n mono">0,967</span><p>Übereinstimmung zwischen Medienagenda und Themenrangliste unentschlossener Wähler, Chapel Hill 1968 (McCombs &amp; Shaw 1972). Die Medien bestimmen mit, worüber man nachdenkt.</p></div>
+      <div class="stat"><span class="n mono">~69<small> Min.</small></span><p>Typische Abklingzeit der Neuigkeit einer Meldung auf Digg (Wu &amp; Huberman 2007).</p></div>
+      <div class="stat"><span class="n mono">7</span><p>Datensätze, in denen Lorenz-Spreen et al. kollektive Aufmerksamkeit über Jahrzehnte verglichen.</p></div>
+    </div>
+  </section>
+
+  <!-- 3 PROTESTWELLE -->
+  <section id="welle">
+    <div class="head">
+      <p class="eyebrow">Kapitel 3 · Sidney Tarrow, Charles Tilly, Erica Chenoweth</p>
+      <h2>Wenn eine Protestwelle bricht</h2>
+    </div>
+    <div class="cols">
+      <div class="stack prose">
+        <p>Der Politikwissenschaftler Sidney Tarrow beschreibt Protest nicht als Einzelereignis, sondern als Zyklus. Ein solcher Zyklus kennzeichnet sich durch zugespitzte Konflikte, schnelle Ausbreitung von den aktiven auf weniger aktive Gruppen, neue Protestformen und neue Deutungsrahmen. Auf die Mobilisierung folgen Höhepunkt und Rückgang.</p>
+        <p>Im Rückgang verlieren Bewegungen Ressourcen: Menschen, Geld, Zeit, Öffentlichkeit. Tilly und Tarrow nennen zwei typische Antworten der Führungsleute. Entweder sie wechseln in organisierte Politik, also Parteien, Verbände, Behörden. Oder sie eskalieren, mit extremeren Zielen und Mitteln.</p>
+        <p>Diese Gabelung ist der Kern des Kapitels. Die meisten Menschen gehen keinen der beiden Wege bis zum Ende. Sie ziehen sich zurück, in ihr Leben, in andere Themen, in Netzwerke, die schlafen.</p>
+        <p class="src">Tarrow (1993), Social Science History · Tilly &amp; Tarrow (2015), Contentious Politics <span class="status s">Sekundär zitiert</span></p>
+      </div>
+      <figure class="fig fork observe">
+        <svg viewBox="0 0 520 330" role="img" aria-labelledby="forkT">
+          <title id="forkT">Mögliche Wege einer Bewegung im Rückgang</title>
+          <path class="edge" d="M110,165 C170,165 170,40 240,40"/>
+          <path class="edge" d="M110,165 C170,165 170,105 240,105"/>
+          <path class="edge" d="M110,165 L240,170"/>
+          <path class="edge" d="M110,165 C170,165 170,235 240,235"/>
+          <path class="edge" d="M110,165 C170,165 170,300 240,300"/>
+          <g class="node hot"><rect x="6" y="140" width="104" height="50" rx="4"/><text x="58" y="161" text-anchor="middle">Rückgang</text><text x="58" y="178" text-anchor="middle" font-size="11" opacity=".7">der Welle</text></g>
+          <g class="node"><rect x="240" y="20" width="270" height="40" rx="4"/><text x="252" y="45">Institutionalisierung · Partei, Verband, Amt</text></g>
+          <g class="node hot"><rect x="240" y="85" width="270" height="40" rx="4"/><text x="252" y="110">Eskalation · kleiner, radikaler Kern</text></g>
+          <g class="node"><rect x="240" y="150" width="270" height="40" rx="4"/><text x="252" y="175">Rückzug · Haltung bleibt, Aktivität nicht</text></g>
+          <g class="node"><rect x="240" y="215" width="270" height="40" rx="4"/><text x="252" y="240">Ruhephase · Netzwerke überwintern</text></g>
+          <g class="node"><rect x="240" y="280" width="270" height="40" rx="4"/><text x="252" y="305">Übertragung · Wechsel in andere Bewegungen</text></g>
+        </svg>
+        <figcaption>Die fünf Ausgänge sind in der Forschung getrennt beschrieben: Institutionalisierung und Eskalation (Tilly &amp; Tarrow), Rückzug (Klandermans, McAdam), Ruhephase (Taylor), Übertragung (Meyer &amp; Whittier). Sie schließen einander nicht aus.</figcaption>
+      </figure>
+    </div>
+
+    <div class="head" style="margin-top:56px"><h3>Größer, schneller, schwächer: Chenoweths Befund</h3></div>
+    <div class="cols">
+      <div class="stack prose">
+        <p>Die Politikwissenschaftlerin Erica Chenoweth hat Hunderte gewaltfreier Kampagnen weltweit ausgewertet. In den 1990er-Jahren erreichten rund 65 Prozent ihre Ziele. Seit 2010 sind es weniger als 34 Prozent. Gleichzeitig sank die durchschnittliche Beteiligung gemessen an der Bevölkerung.</p>
+        <p>Ihre Erklärung: Viele Bewegungen mobilisieren heute sehr schnell, oft über soziale Medien, aber ohne Planung, Bündnisse und Organisation. Sie setzen auf Straßenprotest statt auf störende Mittel wie Generalstreiks. Die Soziologin Zeynep Tufekci nennt das den Unterschied zwischen Signal und Kapazität: Eine riesige Demonstration zeigt nicht mehr automatisch, dass dahinter eine belastbare Organisation steht.</p>
+        <p class="src">Chenoweth (2020). The Future of Nonviolent Resistance. Journal of Democracy 31(3) <span class="status p">Primärtext</span> · Tufekci (2017), Twitter and Tear Gas <span class="status s">Sekundär</span></p>
+      </div>
+      <figure class="fig observe">
+        <div class="hbar">
+          <p class="eyebrow">Erfolgsquote gewaltfreier Kampagnen</p>
+          <div class="hrow"><span class="lab">1990er</span><div class="track"><div class="fill" style="--w:65%">65 %</div></div></div>
+          <div class="hrow"><span class="lab">seit 2010</span><div class="track"><div class="fill hot" style="--w:34%">&lt;34 %</div></div></div>
+          <p class="eyebrow" style="margin-top:12px">Ø Beteiligung, Anteil der Bevölkerung</p>
+          <div class="hrow"><span class="lab">1990er</span><div class="track"><div class="fill cool" style="--w:100%">2,7 %</div></div></div>
+          <div class="hrow"><span class="lab">seit 2010</span><div class="track"><div class="fill hot" style="--w:48%">1,3 %</div></div></div>
+          <p class="eyebrow" style="margin-top:12px">Kampagnen mit gewaltbereiten Rändern</p>
+          <div class="hrow"><span class="lab">1970–2010</span><div class="track"><div class="fill cool" style="--w:33%">30–35 %</div></div></div>
+          <div class="hrow"><span class="lab">2010–2019</span><div class="track"><div class="fill hot" style="--w:52%">&gt;50 %</div></div></div>
+        </div>
+        <figcaption>Quelle: Chenoweth 2020, Journal of Democracy. Werte für die 2020er-Jahre sind hier nicht enthalten, weil sie nicht geprüft werden konnten.</figcaption>
+      </figure>
+    </div>
+
+    <div class="merk"><span class="tag">Merksatz</span><p>Eine volle Straße ist ein <span>Signal</span>. Ob dahinter Kraft steckt, zeigt sich erst, wenn die Straße wieder leer ist.</p></div>
+  </section>
+
+  <!-- 4 MENSCHEN -->
+  <section id="menschen">
+    <div class="head">
+      <p class="eyebrow">Kapitel 4 · Doug McAdam, Kent Jennings, Bert Klandermans</p>
+      <h2>Wohin die Menschen gehen</h2>
+    </div>
+    <div class="cols">
+      <div class="stack prose">
+        <p>Die vielleicht wichtigste Langzeitstudie dazu stammt vom Soziologen Doug McAdam. 1964 fuhren Hunderte meist weiße Studierende nach Mississippi, um beim „Freedom Summer“ schwarze Wähler zu registrieren. Andere hatten sich beworben, waren angenommen worden, aber nicht gefahren.</p>
+        <p>McAdam befragte beide Gruppen rund zwanzig Jahre später. Damit hatte er etwas Seltenes: eine Vergleichsgruppe, die sich zunächst kaum von den Aktiven unterschied. Die Teilnehmer waren auch Jahrzehnte später häufiger politisch aktiv, ordneten sich häufiger links ein und hatten ihr Privatleben anders gestaltet. Ein Sommer hatte Lebensläufe verschoben.</p>
+        <p>Der Politikwissenschaftler Kent Jennings fand in einer Panelstudie mit Befragungen 1965, 1973 und 1982 ein ähnliches Bild für die Protestgeneration der 1960er: sehr starke Kontinuität bei den Haltungen, die mit dem Protest verbunden waren.</p>
+        <p class="src">McAdam (1989), American Sociological Review 54(5) <span class="status p">Primärtext, Tabellen per Textauszug</span> · Jennings (1987), APSR 81(2) <span class="status p">Abstract</span></p>
+      </div>
+      <figure class="fig observe">
+        <p class="eyebrow" style="margin-bottom:16px">Freedom Summer, Befragung 1983/84</p>
+        <div class="cmp">
+          <div class="cmp-row"><span class="q">Damals in einer sozialen Bewegung aktiv</span>
+            <div class="pair"><span class="who">Teilnehmer</span><div class="track"><div class="fill hot" style="--w:48%">48 %</div></div>
+            <span class="who">Absager</span><div class="track"><div class="fill" style="--w:33%">33 %</div></div></div></div>
+          <div class="cmp-row"><span class="q">Bezeichnen sich als links</span>
+            <div class="pair"><span class="who">Teilnehmer</span><div class="track"><div class="fill hot" style="--w:60%">60 %</div></div>
+            <span class="who">Absager</span><div class="track"><div class="fill" style="--w:41%">41 %</div></div></div></div>
+          <div class="cmp-row"><span class="q">Verheiratet (1984)</span>
+            <div class="pair"><span class="who">Teilnehmer</span><div class="track"><div class="fill hot" style="--w:50%">50 %</div></div>
+            <span class="who">Absager</span><div class="track"><div class="fill" style="--w:72%">72 %</div></div></div></div>
+        </div>
+        <figcaption>212 Teilnehmende, 118 „No-Shows“ (angenommen, aber nicht gefahren). McAdam 1989. Die Werte stammen aus einem maschinellen Textauszug der Studie und sollten vor Zitat an der Originaltabelle geprüft werden.</figcaption>
+      </figure>
+    </div>
+
+    <div class="merk"><span class="tag">Merksatz</span><p>Die Welle geht. <span>Die Haltung bleibt.</span> Was sich ändert, ist die Form, in der sie gelebt wird.</p></div>
+
+    <div class="head"><h3>Drei Wege aus der Bewegung</h3></div>
+    <div class="cards">
+      <div class="card"><span class="k">Bleibende</span><p>Sie bleiben in der Bewegung, oft in kleinerem Kreis, oft professionalisiert.</p></div>
+      <div class="card"><span class="k">Wechselnde</span><p>Sie bleiben politisch aktiv, aber in einem anderen Feld oder einer anderen Organisation.</p></div>
+      <div class="card"><span class="k">Aussteigende</span><p>Sie beenden ihr Engagement. Gründe sind fehlende Erfolgserlebnisse, sinkende Bindung und oft ein auslösender Moment wie Streit oder Niederlage.</p></div>
+    </div>
+    <p class="src" style="margin-top:14px">Typologie nach Klandermans, zitiert bei Simiti (2024) <span class="status s">Sekundär</span>. Corrigall-Brown (2011) ergänzt den vorübergehenden Ausstieg mit späterer Rückkehr.</p>
+
+    <div class="cols" style="margin-top:48px">
+      <div class="stack prose">
+        <h3>Ausgebrannt</h3>
+        <p>Ein Grund für den Ausstieg ist Erschöpfung. Cher Weixia Chen und Paul Gorski interviewten 2015 22 Aktivistinnen und Aktivisten aus den USA. Fast alle beschrieben Phasen schweren Burnouts, am häufigsten mit Schlaflosigkeit. Als Ursache nannten sie unter anderem eine „Kultur des Märtyrertums“ in den eigenen Reihen: Wer sich schont, gilt als nicht engagiert genug.</p>
+        <p>Das ist eine kleine, nicht repräsentative Stichprobe. Sie zeigt einen Mechanismus, keine Häufigkeit.</p>
+        <p class="src">Chen &amp; Gorski (2015), Journal of Human Rights Practice 7(3) <span class="status s">Sekundär</span></p>
+      </div>
+      <div class="stats" style="align-self:center">
+        <div class="stat"><span class="n mono">22</span><p>Interviews in der Burnout-Studie von Chen &amp; Gorski.</p></div>
+        <div class="stat"><span class="n mono">~20<small> von 22</small></span><p>beschrieben schwere Burnout-Phasen. Kein Bevölkerungswert.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 KERN -->
+  <section id="kern">
+    <div class="head">
+      <p class="eyebrow">Kapitel 5 · McCauley &amp; Moskalenko, della Porta, Horgan</p>
+      <h2>Der Kern, der bleibt</h2>
+    </div>
+    <div class="cols">
+      <div class="stack prose">
+        <p>Wenn die Masse geht, bleibt manchmal ein kleiner Rest, und der kann sich verschärfen. Die Psychologen Clark McCauley und Sophia Moskalenko nennen das „Kondensation“: Unter staatlichem Druck zieht sich der Großteil zurück, während ein winziger Teil eskaliert.</p>
+        <p>Dazu kommen Gruppenmechanismen. Gleichgesinnte schaukeln sich gegenseitig zu extremeren Positionen hoch. Isolierte Gruppen unter Bedrohung halten enger zusammen. Konkurrierende Gruppen werben um dieselben Unterstützer und überbieten sich mit radikaleren Aktionen.</p>
+        <p>Die Politikwissenschaftlerin Donatella della Porta beschreibt für linke Untergrundgruppen in Italien und Deutschland eine Abfolge: Polizeigewalt und Repression lösen Konkurrenz aus, Gruppen schotten sich ab, ihre Mittel werden militärischer, ihre Ideologie härter. Nach Tarrow treten radikale Gruppen meist in der Phase der Demobilisierung auf, also dann, wenn die breite Welle schon abebbt.</p>
+        <p class="src">McCauley &amp; Moskalenko (2008), Terrorism and Political Violence 20(3) <span class="status p">Primärtext</span> · della Porta (2013), Clandestine Political Violence <span class="status s">Abstract</span> · Sommier u. a. (2019) zu Tarrow <span class="status s">Sekundär</span></p>
+      </div>
+      <figure class="fig observe">
+        <svg viewBox="0 0 520 300" role="img" aria-labelledby="condT" id="condense">
+          <title id="condT">Kondensation: viele Punkte ziehen sich zurück, wenige rücken zusammen</title>
+        </svg>
+        <figcaption>Kondensation, schematisch: Unter Druck verlässt die Mehrheit die Bewegung (grau), ein kleiner Teil rückt zusammen und radikalisiert sich (rot). Animation, keine Daten.</figcaption>
+      </figure>
+    </div>
+
+    <div class="merk"><span class="tag">Merksatz</span><p>Radikale Meinung ist häufig. <span>Radikales Handeln ist selten.</span> Dazwischen liegt eine sehr große Lücke.</p></div>
+
+    <div class="head"><h3>Zwei Pyramiden</h3><p class="prose">McCauley und Moskalenko trennen seit 2017 Meinung und Handlung. Wer radikal denkt, handelt deshalb noch lange nicht radikal. Die meisten Menschen mit radikalen Ansichten tun nie etwas Radikales.</p></div>
+    <div class="pyr">
+      <figure class="fig"><svg viewBox="0 0 320 240" role="img" aria-label="Meinungspyramide: neutral, sympathisierend, rechtfertigend, persönliche Pflicht"><g id="pyrA"></g></svg><figcaption>Meinungspyramide</figcaption></figure>
+      <figure class="fig"><svg viewBox="0 0 320 240" role="img" aria-label="Handlungspyramide: untätig, legal aktiv, radikal mit Rechtsbruch, Terror"><g id="pyrB"></g></svg><figcaption>Handlungspyramide</figcaption></figure>
+    </div>
+    <div class="stats" style="margin-top:22px">
+      <div class="stat"><span class="n mono">~17<small> %</small></span><p>der US-Bevölkerung, rund 36 Millionen, stimmten Aussagen aus dem QAnon-Umfeld zu.</p></div>
+      <div class="stat"><span class="n mono">56</span><p>ideologisch motivierte Straftaten mit QAnon-Bezug bis Februar 2021.</p></div>
+    </div>
+    <p class="src" style="margin-top:10px">Moskalenko &amp; McCauley (2021), Perspectives on Terrorism 15(2) <span class="status p">Primärtext</span>. Das Beispiel illustriert die Lücke zwischen Meinung und Tat.</p>
+
+    <div class="cols" style="margin-top:48px">
+      <div class="stack prose">
+        <h3>Aussteigen heißt nicht umdenken</h3>
+        <p>Der Terrorismusforscher John Horgan unterscheidet zwei Dinge, die oft verwechselt werden. Disengagement heißt, das Handeln zu beenden. Deradikalisierung heißt, die Überzeugung zu ändern. In seinen Interviews mit ehemaligen Militanten hatten fast alle das Handeln beendet. Deradikalisiert war keiner von ihnen.</p>
+        <p>Der Norweger Tore Bjørgo beschreibt, warum Menschen gehen: Druckfaktoren wie Enttäuschung, Ernüchterung über Strategie und Führung, Überforderung und Erschöpfung. Und Zugfaktoren wie Familie, Arbeit und Ausbildung. Meist wirken beide zusammen.</p>
+        <p class="src">Horgan (2008), Perspectives on Terrorism 2(4) <span class="status p">Primärtext</span> · Bjørgo (2009) <span class="status s">Sekundär</span>. Beide beziehen sich auf gewaltbereite Gruppen, nicht auf gewöhnlichen Protest.</p>
+      </div>
+      <figure class="fig">
+        <svg viewBox="0 0 520 220" role="img" aria-labelledby="hgT">
+          <title id="hgT">Zwei getrennte Achsen: Handeln und Überzeugung</title>
+          <line x1="60" y1="190" x2="500" y2="190" stroke="currentColor" opacity=".4"/>
+          <line x1="60" y1="190" x2="60" y2="20" stroke="currentColor" opacity=".4"/>
+          <text x="500" y="210" font-size="11" text-anchor="end" fill="currentColor">Handeln ↑</text>
+          <text x="66" y="18" font-size="11" fill="currentColor">Überzeugung ↑</text>
+          <circle cx="440" cy="45" r="10" fill="var(--signal)"/>
+          <text x="420" y="49" font-size="11" text-anchor="end" fill="currentColor">aktiv &amp; überzeugt</text>
+          <path d="M430,52 C330,90 200,60 140,52" fill="none" stroke="var(--signal)" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arr)"/>
+          <circle cx="130" cy="50" r="10" fill="none" stroke="var(--signal)" stroke-width="2"/>
+          <text x="148" y="80" font-size="11" fill="currentColor">Disengagement: Handeln endet, Überzeugung bleibt</text>
+          <path d="M130,62 L130,160" fill="none" stroke="var(--ink-soft)" stroke-width="1.6" stroke-dasharray="3 5" marker-end="url(#arr2)"/>
+          <text x="140" y="140" font-size="11" fill="currentColor" opacity=".75">Deradikalisierung: seltener, eigener Schritt</text>
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--signal)"/></marker>
+            <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-soft)"/></marker>
+          </defs>
+        </svg>
+        <figcaption>Schema nach Horgan 2008.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 6 RUHEPHASE -->
+  <section id="ruhe">
+    <div class="head">
+      <p class="eyebrow">Kapitel 6 · Verta Taylor, David Meyer &amp; Nancy Whittier</p>
+      <h2>Winterschlaf und Übersprung</h2>
+    </div>
+    <div class="cols">
+      <div class="stack prose">
+        <p>Bewegungen sterben selten ganz. Die Soziologin Verta Taylor prägte 1989 den Begriff „Abeyance“, frei übersetzt Ruhezustand. Gemeint sind kleine, eng verbundene Gruppen, die eine Bewegung durch feindliche Zeiten tragen. Sie halten Identität, Wissen und Kontakte am Leben, bis sich das politische Klima wieder öffnet.</p>
+        <p>Ihr Beispiel ist die amerikanische Frauenbewegung. Nach dem Wahlrecht 1920 schrumpfte sie auf einen kleinen Kreis um die National Woman's Party, überwiegend Frauen aus der Mittel- und Oberschicht, isoliert von anderen Bewegungen. Dieser Kreis hielt den Verfassungszusatz zur Gleichberechtigung am Leben und drängte auf das Verbot der Geschlechterdiskriminierung im Bürgerrechtsgesetz von 1964. Die neue Frauenbewegung der 1960er-Jahre konnte an diese Netzwerke anknüpfen.</p>
+        <p class="src">Taylor (1989), American Sociological Review 54(5) · Rupp &amp; Taylor (1987), Survival in the Doldrums <span class="status s">Sekundär</span></p>
+      </div>
+      <figure class="fig">
+        <canvas id="abeyance" style="width:100%;height:260px;display:block" aria-label="Animation: eine Welle, eine lange flache Phase mit einem glimmenden Kern, dann eine neue Welle"></canvas>
+        <figcaption>Ruhephase, schematisch: Zwischen zwei Wellen glimmt ein kleiner Kern weiter. Keine Daten.</figcaption>
+      </figure>
+    </div>
+
+    <div class="merk"><span class="tag">Merksatz</span><p>Die nächste Welle <span>beginnt in der Flaute</span> der letzten.</p></div>
+
+    <div class="cols">
+      <div class="stack prose">
+        <h3>Übersprung</h3>
+        <p>David Meyer und Nancy Whittier zeigten 1994, dass Bewegungen nicht abgeschlossen sind. Sie wachsen aus anderen und bringen neue hervor. Ihr Beispiel: Die Frauenbewegung der 1980er-Jahre prägte die US-Friedensbewegung, mit feministischen Deutungen, Aktionsformen, mehr Frauen in Führungsrollen und flacheren Hierarchien.</p>
+      </div>
+      <div class="cards">
+        <div class="card"><span class="k">Kanal 1</span><p>Bündnisse zwischen Organisationen</p></div>
+        <div class="card"><span class="k">Kanal 2</span><p>Überlappende Milieus und Szenen</p></div>
+        <div class="card"><span class="k">Kanal 3</span><p>Dieselben Personen in mehreren Bewegungen</p></div>
+        <div class="card"><span class="k">Kanal 4</span><p>Veränderte Rahmenbedingungen für alle</p></div>
+      </div>
+    </div>
+    <p class="src" style="margin-top:12px">Meyer &amp; Whittier (1994). Social Movement Spillover. Social Problems 41(2) <span class="status s">Zusammenfassung</span></p>
+  </section>
+
+  <!-- 7 SPUREN -->
+  <section id="spuren">
+    <div class="head">
+      <p class="eyebrow">Kapitel 7 · Was bleibt in der Gesellschaft</p>
+      <h2>Die Spuren im Boden</h2>
+    </div>
+    <div class="prose stack">
+      <p>Auch wenn die Aufmerksamkeit fällt, kann Protest Einstellungen langfristig verschieben, und zwar in beide Richtungen. Drei Studien zur US-Geschichte zeigen, wie unterschiedlich das ausfallen kann.</p>
+    </div>
+    <div class="cards" style="margin-top:28px">
+      <div class="card"><span class="k">Bürgerrechtsproteste 1960–65</span><p>In Landkreisen mit Protesten identifizieren sich weiße Einwohner Jahrzehnte später häufiger als Demokraten, unterstützen eher Förderprogramme und zeigen weniger rassistische Ressentiments. Grundlage sind über 150.000 Befragte.</p><p class="src">Mazumder (2018), AJPS 62(4) <span class="status p">Abstract</span></p></div>
+      <div class="card"><span class="k">Gewaltfrei gegen gewaltsam, 1960er</span><p>Nähe zu gewaltfreien Protesten ging mit 1,6 bis 2,5 Prozent mehr demokratischen Stimmen einher. Gewaltsame Proteste 1968 verschoben weiße Wähler um 1,5 bis 7,9 Prozent zu den Republikanern.</p><p class="src">Wasow (2020), APSR 114(3) <span class="status p">Abstract</span></p></div>
+      <div class="card"><span class="k">Los Angeles 1992</span><p>Nach den Unruhen stieg die Zustimmung zu Schulausgaben in betroffenen Wahlbezirken um 4,9 Punkte, und die Wahlbeteiligung blieb über ein Jahrzehnt höher.</p><p class="src">Enos, Kaufman &amp; Sands (2019), APSR <span class="status p">Verlagsseite</span></p></div>
+    </div>
+
+    <div class="cols" style="margin-top:56px">
+      <figure class="fig observe">
+        <p class="eyebrow" style="margin-bottom:14px">Unterstützung für Black Lives Matter, US-Erwachsene</p>
+        <div class="hbar">
+          <div class="hrow"><span class="lab">Juni 2020</span><div class="track"><div class="fill hot" style="--w:67%">67 %</div></div></div>
+          <div class="hrow"><span class="lab">April 2023</span><div class="track"><div class="fill" style="--w:51%">51 %</div></div></div>
+        </div>
+        <figcaption>Pew Research Center, 14. Juni 2023, n = 5.073. Gemessen ist Zustimmung in Umfragen, nicht Suchinteresse.</figcaption>
+      </figure>
+      <div class="stack prose">
+        <h3>Ein Abfall, kein Absturz</h3>
+        <p>Die Bewegung nach dem Tod von George Floyd ist ein Beispiel für eine Aufmerksamkeitsspitze. Die Zustimmung sank in knapp drei Jahren um 16 Prozentpunkte, blieb aber über der Hälfte. Das passt zu Downs' Nachphase: weniger Erregung, aber ein höheres Grundniveau als vor der Welle.</p>
+        <p>Die Politikwissenschaftler Frank Baumgartner und Bryan Jones beschreiben Politik als lange Stabilität mit plötzlichen Sprüngen. Was in Phasen hoher Aufmerksamkeit an Institutionen entsteht, überdauert oft die Aufmerksamkeit selbst.</p>
+        <p class="src">Pew Research Center (2023) <span class="status p">Primärtext</span> · Baumgartner &amp; Jones (1993) <span class="status s">Sekundär</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 ERKENNTNISSE -->
+  <section id="erkenntnisse">
+    <div class="head">
+      <p class="eyebrow">Zusammenfassung</p>
+      <h2>Sieben Erkenntnisse</h2>
+    </div>
+    <ol class="take">
+      <li><div><b>Aufmerksamkeit folgt einem Muster.</b><p>Entdeckung, Erregung, Kostenrealität, Abfall, Nachphase. Ein Thema verlässt die Bühne meist ungelöst.</p></div></li>
+      <li><div><b>Die Wellen werden kürzer.</b><p>Messungen zeigen steilere Anstiege und schnellere Abfälle, besonders in sozialen Medien. Wissensbasierte Systeme wie Wikipedia sind kaum betroffen.</p></div></li>
+      <li><div><b>Größe ist nicht Stärke.</b><p>Schnell mobilisierte Bewegungen sind groß, aber oft schwach organisiert. Gewaltfreie Kampagnen sind seit 2010 deutlich seltener erfolgreich.</p></div></li>
+      <li><div><b>Die meisten gehen, aber nicht ganz.</b><p>Wer einmal intensiv aktiv war, bleibt oft lebenslang politisch geprägt. Die Aktivität wechselt, die Haltung bleibt.</p></div></li>
+      <li><div><b>Ein kleiner Rest kann sich verschärfen.</b><p>Radikale Gruppen entstehen häufig, wenn die breite Welle abebbt. Isolation, Konkurrenz und Repression treiben sie an. Es ist eine Minderheit der Minderheit.</p></div></li>
+      <li><div><b>Aussteigen ist nicht umdenken.</b><p>Wer aufhört zu handeln, hat seine Überzeugung nicht unbedingt geändert. Weniger aktiv heißt nicht automatisch weniger radikal.</p></div></li>
+      <li><div><b>Bewegungen überwintern.</b><p>Kleine Netzwerke tragen Wissen und Identität durch ruhige Zeiten. Die nächste Welle baut darauf auf, oft in einem anderen Thema.</p></div></li>
+    </ol>
+  </section>
+
+  <!-- QUELLEN -->
+  <section id="quellen">
+    <div class="head">
+      <p class="eyebrow">Quellen und Prüfstatus</p>
+      <h2>Woher das kommt</h2>
+    </div>
+    <p class="note prose">Geprüft im Oktober 2026. „Primärtext“ heißt: die Originalveröffentlichung oder ihre Verlagsseite wurde eingesehen, teils über maschinelle Zusammenfassung. „Sekundär“ heißt: der Befund stammt aus einer Darstellung Dritter und sollte vor wörtlicher Verwendung am Original geprüft werden. Bewusst weggelassen wurden Aussagen, die sich nicht prüfen ließen, etwa Erfolgsquoten für die 2020er-Jahre.</p>
+    <div class="sources" style="margin-top:22px">
+      <ol>
+        <li>Downs, A. (1972). Up and down with ecology: the „issue-attention cycle“. <i>The Public Interest</i>. <a href="https://www.gwern.net/doc/sociology/1972-downs.pdf" target="_blank" rel="noopener">PDF</a></li>
+        <li>Lorenz-Spreen, P. et al. (2019). Accelerating dynamics of collective attention. <i>Nature Communications</i> 10. <a href="https://www.nature.com/articles/s41467-019-09311-w" target="_blank" rel="noopener">nature.com</a></li>
+        <li>Wu, F. &amp; Huberman, B. (2007). Novelty and collective attention. <i>PNAS</i> 104(45). <a href="https://ar5iv.labs.arxiv.org/html/0704.1158" target="_blank" rel="noopener">arXiv</a></li>
+        <li>Candia, C. et al. The universal decay of collective memory and attention. <i>Nature Human Behaviour</i> 3 (2019). <a href="https://par.nsf.gov/servlets/purl/10124838" target="_blank" rel="noopener">Manuskript</a></li>
+        <li>McCombs, M. &amp; Shaw, D. (1972). The agenda-setting function of mass media. <i>Public Opinion Quarterly</i> 36. <a href="https://fbaum.unc.edu/teaching/articles/POQ-1972-McCOMBS-176-87.pdf" target="_blank" rel="noopener">PDF</a></li>
+        <li>Baumgartner, F. &amp; Jones, B. (1993). <i>Agendas and Instability in American Politics</i>. <a href="https://fbaum.unc.edu/books/dynamics/Ch1-Baumgartner.pdf" target="_blank" rel="noopener">Kapitel</a></li>
+        <li>Tarrow, S. (1993). Cycles of collective action. <i>Social Science History</i>. <a href="https://www.cambridge.org/core/journals/social-science-history/article/abs/cycles-of-collective-action-between-moments-of-madness-and-the-repertoire-of-contention/6E0B20B1013EA86D6D1CF850827BA4A2" target="_blank" rel="noopener">Cambridge</a></li>
+        <li>Sommier, I. et al. (2019). Radicalization processes. In <i>Breaking Laws</i>. <a href="https://www.cambridge.org/core/books/breaking-laws/radicalization-processes/35F6AD9C8635AC1F1583E4889AAA11D0" target="_blank" rel="noopener">Cambridge</a></li>
+        <li>della Porta, D. (2013). <i>Clandestine Political Violence</i>. <a href="https://cadmus.eui.eu/handle/1814/27278" target="_blank" rel="noopener">EUI</a></li>
+        <li>Chenoweth, E. (2020). The future of nonviolent resistance. <i>Journal of Democracy</i> 31(3). <a href="https://www.journalofdemocracy.org/articles/the-future-of-nonviolent-resistance/" target="_blank" rel="noopener">journalofdemocracy.org</a></li>
+        <li>Tufekci, Z. (2017). <i>Twitter and Tear Gas</i>. <a href="https://en.wikipedia.org/wiki/Twitter_and_Tear_Gas" target="_blank" rel="noopener">Überblick</a></li>
+        <li>McAdam, D. (1989). The biographical consequences of activism. <i>American Sociological Review</i> 54(5). <a href="https://scispace.com/pdf/the-biographical-consequences-of-activism-40wgidtouu.pdf" target="_blank" rel="noopener">PDF</a></li>
+        <li>Jennings, M. K. (1987). Residues of a movement. <i>APSR</i> 81(2). <a href="https://ideas.repec.org/a/cup/apsrev/v81y1987i02p367-382_19.html" target="_blank" rel="noopener">RePEc</a></li>
+        <li>Simiti, M. (2024). <i>Greek Review of Social Research</i> 162 (zu Klandermans, Fillieule). <a href="https://ejournals.epublishing.ekt.gr/index.php/ekke/article/download/36638/27653" target="_blank" rel="noopener">PDF</a></li>
+        <li>Chen, C. W. &amp; Gorski, P. (2015). Burnout in social justice and human rights activists. <i>Journal of Human Rights Practice</i> 7(3). <a href="https://integrative.gmu.edu/articles/8856" target="_blank" rel="noopener">GMU</a></li>
+        <li>McCauley, C. &amp; Moskalenko, S. (2008). Mechanisms of political radicalization. <i>Terrorism and Political Violence</i> 20(3). <a href="https://cat-int.org/wp-content/uploads/2022/04/Terrorism-and-Political-Violence-Mechanisms-of-Political-Radicalization-Pathways-Toward-Terrorism-Sophia-Moskalenko-Clark-McCauley-Vol.-20-Issue-3-2008.pdf" target="_blank" rel="noopener">PDF</a></li>
+        <li>McCauley, C. &amp; Moskalenko, S. (2017). Understanding political radicalization: the two-pyramids model. <i>American Psychologist</i> 72(3). <a href="https://www.start.umd.edu/publication/understanding-political-radicalization-two-pyramids-model" target="_blank" rel="noopener">START</a></li>
+        <li>Moskalenko, S. &amp; McCauley, C. (2021). QAnon: radical opinion versus radical action. <i>Perspectives on Terrorism</i> 15(2). <a href="https://pt.icct.nl/sites/default/files/2023-08/moskalenko--mccauley-.pdf" target="_blank" rel="noopener">PDF</a></li>
+        <li>Horgan, J. (2008). Deradicalization or disengagement? <i>Perspectives on Terrorism</i> 2(4). <a href="https://cat-int.org/wp-content/uploads/2022/06/Perspectives-on-Terrorism-Vol-II-Iss-4-2008-02.pdf" target="_blank" rel="noopener">PDF</a></li>
+        <li>Bjørgo, T. (2009), zitiert in: <a href="https://jd.journals.publicknowledgeproject.org/index.php/jd/article/download/815/447/2195" target="_blank" rel="noopener">Journal for Deradicalization</a></li>
+        <li>Taylor, V. (1989). Social movement continuity: the women's movement in abeyance. <i>ASR</i> 54(5). Merkmale nach <a href="https://users.ssc.wisc.edu/~peoliver/teaching/sm_seminar/topics/soc-924-organizations-external-resources-and-professionalization/" target="_blank" rel="noopener">Oliver, Seminarseite</a></li>
+        <li>Rupp, L. &amp; Taylor, V. (1987). <i>Survival in the Doldrums</i>. <a href="https://dc2.philarchive.org/rec/RUPSIT" target="_blank" rel="noopener">PhilArchive</a></li>
+        <li>Meyer, D. &amp; Whittier, N. (1994). Social movement spillover. <i>Social Problems</i> 41(2). <a href="https://academic.oup.com/socpro/article/41/2/277/2925324" target="_blank" rel="noopener">OUP</a></li>
+        <li>Mazumder, S. (2018). The persistent effect of U.S. civil rights protests on political attitudes. <i>AJPS</i> 62(4). <a href="https://ideas.repec.org/a/wly/amposc/v62y2018i4p922-935.html" target="_blank" rel="noopener">RePEc</a></li>
+        <li>Wasow, O. (2020). Agenda seeding. <i>APSR</i> 114(3). <a href="https://ideas.repec.org/a/cup/apsrev/v114y2020i3p638-659_3.html" target="_blank" rel="noopener">RePEc</a></li>
+        <li>Enos, R., Kaufman, A. &amp; Sands, M. (2019). Can violent protest change local policy support? <i>APSR</i>. <a href="https://www.cambridge.org/core/journals/american-political-science-review/article/can-violent-protest-change-local-policy-support-evidence-from-the-aftermath-of-the-1992-los-angeles-riot/C9DD76149BBA4D6854B0B64BA37F0C6D" target="_blank" rel="noopener">Cambridge</a></li>
+        <li>Pew Research Center (2023). Support for the Black Lives Matter movement has dropped considerably from its peak in 2020. <a href="https://www.pewresearch.org/social-trends/2023/06/14/support-for-the-black-lives-matter-movement-has-dropped-considerably-from-its-peak-in-2020/" target="_blank" rel="noopener">pewresearch.org</a></li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>Nach der Welle · Ein Dossier zur Forschung über Aufmerksamkeitszyklen und Protestbewegungen · Stand Oktober 2026</footer>
+</div>
+
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+  /* progress bar */
+  const prog = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    prog.style.width = (h > 0 ? (scrollY / h) * 100 : 0) + '%';
+  }, {passive:true});
+
+  /* hero oscilloscope */
+  const cv = document.getElementById('scope'), ctx = cv.getContext('2d');
+  const readout = document.getElementById('readout');
+  const phases = ['Vorphase','Entdeckung','Kosten','Abfall','Nachphase'];
+  function curve(x){ // x 0..1 one cycle
+    const rise = 1/(1+Math.exp(-(x-0.22)*30));
+    const fall = Math.exp(-Math.max(0,x-0.32)*5.2);
+    return 0.08 + 0.82*rise*(x<0.32?1:fall) + (x>0.32?0.14*(1-fall):0);
+  }
+  function phaseOf(x){ return x<0.17?0:x<0.3?1:x<0.42?2:x<0.7?3:4; }
+  let t0 = performance.now();
+  function size(c){ const r = c.getBoundingClientRect(), d = devicePixelRatio||1; c.width = r.width*d; c.height = r.height*d; c.getContext('2d').setTransform(d,0,0,d,0,0); return r; }
+  let R = size(cv);
+  addEventListener('resize', () => { R = size(cv); if (ab) AR = size(ab); });
+  function drawScope(now){
+    const W = R.width, H = R.height;
+    ctx.clearRect(0,0,W,H);
+    const ink = css('--ink'), sig = css('--signal'), soft = css('--ink-soft');
+    ctx.globalAlpha = .25; ctx.strokeStyle = soft; ctx.lineWidth = 1;
+    for(let i=1;i<5;i++){ const y = H*i/5; ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+    ctx.globalAlpha = 1;
+    const period = 9000, prog = reduce ? 1 : ((now - t0) % period) / period;
+    const pad = 24, top = 40, bot = H - 26;
+    ctx.lineWidth = 2.4; ctx.strokeStyle = ink; ctx.beginPath();
+    const steps = 260, upto = Math.floor(steps*prog);
+    for(let i=0;i<=upto;i++){
+      const x = i/steps, px = pad + x*(W-2*pad), py = bot - curve(x)*(bot-top);
+      i ? ctx.lineTo(px,py) : ctx.moveTo(px,py);
+    }
+    ctx.stroke();
+    // ghost of full curve
+    ctx.globalAlpha = .14; ctx.beginPath();
+    for(let i=0;i<=steps;i++){ const x=i/steps, px=pad+x*(W-2*pad), py=bot-curve(x)*(bot-top); i?ctx.lineTo(px,py):ctx.moveTo(px,py); }
+    ctx.stroke(); ctx.globalAlpha = 1;
+    const x = upto/steps, px = pad + x*(W-2*pad), py = bot - curve(x)*(bot-top);
+    ctx.fillStyle = sig; ctx.beginPath(); ctx.arc(px,py,5.5,0,7); ctx.fill();
+    ctx.globalAlpha = .25; ctx.beginPath(); ctx.arc(px,py,14,0,7); ctx.fill(); ctx.globalAlpha = 1;
+    ctx.font = '11px "JetBrains Mono", monospace'; ctx.fillStyle = soft;
+    [[0.08,'1'],[0.235,'2'],[0.36,'3'],[0.56,'4'],[0.85,'5']].forEach(([xx,l])=>{ ctx.fillText(l, pad + xx*(W-2*pad), H-8); });
+    readout.textContent = 'Phase ' + (phaseOf(x)+1) + ': ' + phases[phaseOf(x)];
+    if(!reduce) requestAnimationFrame(drawScope);
+  }
+  requestAnimationFrame(drawScope);
+
+  /* Downs interactive */
+  const texts = [
+    ['Vorphase','Ein schlimmer Zustand existiert bereits, oft schon lange. Fachleute oder Betroffene wissen davon, die breite Öffentlichkeit nicht.'],
+    ['Alarmierte Entdeckung','Ein Ereignis rückt das Problem schlagartig ins Licht. Die Erregung ist groß, ebenso die Zuversicht, es bald lösen zu können.'],
+    ['Die Kosten werden sichtbar','Langsam wird klar: Eine echte Lösung ist teuer und verlangt Opfer von vielen, oft auch von denen, die gerade noch empört waren.'],
+    ['Allmählicher Abfall','Das Interesse sinkt. Manche sind entmutigt, andere fühlen sich bedroht, wieder andere sind schlicht gelangweilt. Ein neues Thema drängt nach.'],
+    ['Nachphase','Ein langes Zwielicht geringerer Aufmerksamkeit. Aber: Was auf dem Höhepunkt an Behörden, Programmen und Regeln entstand, bleibt oft bestehen.']
+  ];
+  const stageText = document.getElementById('stageText');
+  const segs = document.querySelectorAll('.downs-seg');
+  const btns = document.querySelectorAll('.stages button');
+  const path = document.getElementById('downsPath'), dot = document.getElementById('downsDot');
+  const len = path.getTotalLength();
+  const centers = [80,160,237,327,442];
+  function pointAtX(x){ let lo=0, hi=len; for(let i=0;i<30;i++){ const m=(lo+hi)/2; path.getPointAtLength(m).x < x ? lo=m : hi=m; } return path.getPointAtLength(lo); }
+  function setStage(s){
+    btns.forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.s===s)));
+    segs.forEach(g => g.classList.toggle('on', +g.dataset.s===s));
+    const p = pointAtX(centers[s]); dot.setAttribute('cx',p.x); dot.setAttribute('cy',p.y);
+    stageText.innerHTML = '<h3>' + (s+1) + ' · ' + texts[s][0] + '</h3><p>' + texts[s][1] + '</p>';
+  }
+  btns.forEach(b => b.addEventListener('click', () => setStage(+b.dataset.s)));
+  setStage(1);
+
+  /* decay chart */
+  const svg = document.getElementById('decay'), NS = 'http://www.w3.org/2000/svg';
+  function el(n, a, txt){ const e = document.createElementNS(NS,n); for(const k in a) e.setAttribute(k,a[k]); if(txt!=null) e.textContent = txt; svg.appendChild(e); return e; }
+  const X0=56, X1=500, Y0=228, Y1=24, TMAX=24;
+  const sx = t => X0 + t/TMAX*(X1-X0), sy = r => Y0 - r*(Y0-Y1);
+  for(const r of [0,.25,.5,.75,1]){ el('line',{x1:X0,x2:X1,y1:sy(r),y2:sy(r),stroke:'currentColor',opacity:.12}); el('text',{x:X0-8,y:sy(r)+4,'font-size':11,'text-anchor':'end',fill:'currentColor'}, r.toFixed(2).replace('.',',')); }
+  for(const t of [0,6,12,18,24]){ el('text',{x:sx(t),y:Y0+18,'font-size':11,'text-anchor':'middle',fill:'currentColor'}, t+' h'); }
+  el('text',{x:X0,y:14,'font-size':11,fill:'currentColor'},'Neuigkeitswert (relativ)');
+  let d=''; for(let i=0;i<=200;i++){ const t=i/200*TMAX, r=Math.exp(-0.4*Math.pow(t,0.4)); d += (i?'L':'M')+sx(t).toFixed(1)+','+sy(r).toFixed(1); }
+  const dp = el('path',{d, fill:'none', stroke:'var(--signal)', 'stroke-width':3});
+  const r1 = Math.exp(-0.4);
+  el('circle',{cx:sx(1),cy:sy(r1),r:5,fill:'var(--signal)'});
+  el('text',{x:sx(1)+10,y:sy(r1)-8,'font-size':11,fill:'currentColor'},'nach 1 Std.: '+r1.toFixed(2).replace('.',','));
+  const r24 = Math.exp(-0.4*Math.pow(24,0.4));
+  el('circle',{cx:sx(24),cy:sy(r24),r:5,fill:'currentColor'});
+  el('text',{x:sx(24)-6,y:sy(r24)-12,'font-size':11,'text-anchor':'end',fill:'currentColor'},'nach 24 Std.: '+r24.toFixed(2).replace('.',','));
+
+  /* condensation dots */
+  const cs = document.getElementById('condense');
+  const dots = [];
+  const rnd = (a,b)=>a+Math.random()*(b-a);
+  for(let i=0;i<120;i++){
+    const core = i < 9;
+    const c = document.createElementNS(NS,'circle');
+    const x = rnd(140,380), y = rnd(60,250);
+    c.setAttribute('r', core?5:4); c.setAttribute('cx',x); c.setAttribute('cy',y);
+    c.setAttribute('fill', core ? 'var(--signal)' : 'var(--ink-soft)');
+    cs.appendChild(c);
+    const ang = Math.atan2(y-155, x-260);
+    dots.push({c, x, y, core, tx: core ? 260+rnd(-16,16) : 260+Math.cos(ang)*rnd(250,330), ty: core ? 150+rnd(-16,16) : 155+Math.sin(ang)*rnd(180,240)});
+  }
+  const lbl = document.createElementNS(NS,'text'); lbl.setAttribute('x',16); lbl.setAttribute('y',22); lbl.setAttribute('font-size',11); lbl.setAttribute('fill','currentColor'); cs.appendChild(lbl);
+  function condense(now){
+    const p = reduce ? 0.6 : ((now/1000) % 9) / 9; // 0..1
+    const k = p < .15 ? 0 : p < .6 ? (p-.15)/.45 : p < .85 ? 1 : 1-(p-.85)/.15;
+    const e = k<.5 ? 2*k*k : 1-Math.pow(-2*k+2,2)/2;
+    for(const o of dots){
+      o.c.setAttribute('cx', o.x + (o.tx-o.x)*e);
+      o.c.setAttribute('cy', o.y + (o.ty-o.y)*e);
+      if(!o.core) o.c.setAttribute('opacity', 1 - .75*e);
+    }
+    lbl.textContent = e < .2 ? 'Breite Bewegung' : e < .85 ? 'Druck · die Mehrheit zieht sich zurück' : 'Ein kleiner Kern verdichtet sich';
+    if(!reduce) requestAnimationFrame(condense);
+  }
+  requestAnimationFrame(condense);
+
+  /* pyramids */
+  function pyramid(gid, levels, hotFrom){
+    const g = document.getElementById(gid), n = levels.length, H = 220, top = 10;
+    levels.forEach((name,i) => {
+      const lvl = n-1-i; // 0 bottom
+      const y1 = top + H*(i)/n, y2 = top + H*(i+1)/n;
+      const w1 = 300*(i)/n, w2 = 300*(i+1)/n;
+      const p = document.createElementNS(NS,'path');
+      p.setAttribute('d', `M${160-w1/2},${y1} L${160+w1/2},${y1} L${160+w2/2},${y2} L${160-w2/2},${y2} Z`);
+      p.setAttribute('fill', i < hotFrom ? 'var(--signal)' : 'var(--paper-2)');
+      p.setAttribute('opacity', i < hotFrom ? (0.95 - i*0.2) : 1);
+      p.setAttribute('stroke','var(--card)'); p.setAttribute('stroke-width','2');
+      g.appendChild(p);
+      const t = document.createElementNS(NS,'text');
+      t.setAttribute('x',160); t.setAttribute('y',(y1+y2)/2+4); t.setAttribute('text-anchor','middle');
+      t.setAttribute('fill', i < hotFrom ? '#fff' : 'currentColor'); t.setAttribute('font-size', i===0 ? 10 : 12);
+      t.textContent = name; g.appendChild(t);
+    });
+  }
+  pyramid('pyrA', ['Pflicht','Rechtfertigen','Sympathie','Neutral'], 2);
+  pyramid('pyrB', ['Terror','Rechtsbruch','Legal aktiv','Untätig'], 2);
+
+  /* abeyance canvas */
+  const ab = document.getElementById('abeyance'); const actx = ab.getContext('2d'); let AR = size(ab);
+  function wave(x){ const a = Math.exp(-Math.pow((x-0.16)/0.07,2)), b = Math.exp(-Math.pow((x-0.86)/0.08,2)); return 0.06 + 0.82*Math.max(a,b); }
+  function drawAb(now){
+    const W = AR.width, H = AR.height; actx.clearRect(0,0,W,H);
+    const ink = css('--ink'), sig = css('--signal'), soft = css('--ink-soft');
+    const pad = 16, top = 22, bot = H-30;
+    actx.strokeStyle = ink; actx.lineWidth = 2.2; actx.beginPath();
+    for(let i=0;i<=300;i++){ const x=i/300, px=pad+x*(W-2*pad), py=bot-wave(x)*(bot-top); i?actx.lineTo(px,py):actx.moveTo(px,py); }
+    actx.stroke();
+    const pulse = reduce ? .6 : .5 + .5*Math.sin(now/600);
+    for(let i=0;i<7;i++){
+      const x = 0.3 + i*0.07, px = pad + x*(W-2*pad), py = bot - 0.06*(bot-top) - 10;
+      actx.globalAlpha = .25 + .55*pulse; actx.fillStyle = sig;
+      actx.beginPath(); actx.arc(px, py, 4 + 2*pulse, 0, 7); actx.fill();
+    }
+    actx.globalAlpha = 1; actx.fillStyle = soft; actx.font = '11px "JetBrains Mono", monospace';
+    actx.fillText('Welle 1', pad + 0.12*(W-2*pad), H-10);
+    actx.fillText('Ruhephase · Kern glimmt', pad + 0.36*(W-2*pad), H-10);
+    actx.fillText('Welle 2', pad + 0.82*(W-2*pad), H-10);
+    if(!reduce) requestAnimationFrame(drawAb);
+  }
+  requestAnimationFrame(drawAb);
+
+  /* replay bar animations when in view (content is visible at rest) */
+  if ('IntersectionObserver' in window && !reduce){
+    const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('play'); io.unobserve(e.target); } }), {threshold:.35});
+    document.querySelectorAll('.observe').forEach(n => io.observe(n));
+  }
+})();
+</script>
+
+</body></html>
